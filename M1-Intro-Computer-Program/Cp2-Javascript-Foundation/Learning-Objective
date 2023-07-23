@@ -1,1 +1,26 @@
+Learning Objective
+Introduction
+JavaScript is a versatile programming language that provides decision statements for conditional execution, such as if-else and switch statements. It also includes loops and control statements, like for and while loops, to perform repetitive tasks. JavaScript allows you to work with arrays and strings, which are essential for storing and manipulating data. Objects and JSON play a crucial role in organizing complex data structures and exchanging information between systems, enabling a more interactive web experience.
 
+Duration: 16 hours
+
+Focus: Decision Statements, Loops & Control statements, Arrays & Strings, Objects & JSON, Functions, Asynchronous JavaScript, Basics of OOPs in JavaScript
+
+Prerequisites: IDE with Node.js installed, JavaScript Basics
+
+Theme
+Let's imagine a company called "Bookstore" that sells books online. The "Bookstore" company can have functions like searchBook(), addToCart(), and checkout() are used for specific tasks on the website. The company checks book availability using if-else statements and displays details if the book is in stock. An array of books is maintained and iterated through with a for loop to show available book details.
+
+Strings are manipulated to format book information, while asynchronous JavaScript ensures a smooth checkout process without blocking the user interface. A while loop prompts the user for necessary information until all fields are filled.
+
+Switch cases handle different payment options during checkout, displaying the appropriate form based on the selection. OOPS principles are implemented through classes like Book, Customer, and Order, facilitating better organization, encapsulation, and modularity of the code.
+
+Primary Goals
+Learn how to write and utilize functions effectively, including passing arguments, returning values, and understanding function scope and closures.
+Grasp the concept of conditional statements using if-else statements to make decisions and execute different code blocks based on conditions.
+Develop the ability to use for loops to iterate over arrays and perform repetitive tasks efficiently.
+Learn various techniques to work with arrays and strings, such as accessing elements, modifying values, manipulating strings, and performing common operations like searching, sorting, and joining.
+Understand asynchronous programming concepts, including callbacks, promises, and async/await, to handle time-consuming tasks without blocking the main execution thread.
+Familiarize yourself with while loops and do-while loop and their applications, particularly for scenarios where you need to repeatedly execute a block of code until a specific condition is met.
+Learn how to use switch cases as an alternative to if-else statements when dealing with multiple conditions and making different decisions based on various cases.
+Explore the principles of OOPS, including creating classes, objects, inheritance, encapsulation, and abstraction, to design and implement more structured and modular code.
