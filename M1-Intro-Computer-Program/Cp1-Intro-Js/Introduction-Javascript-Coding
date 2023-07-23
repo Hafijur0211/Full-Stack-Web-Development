@@ -1,0 +1,53 @@
+Print even numbers from 0-10
+Easy
+In a fantastical realm, the wise sorcerer JavaScript summoned forth a mystical array containing a series of even numbers ranging from 0 to 10. Utilizing a flick of his wand and a cunning incantation, he unveiled the enchanted sequence. Your task is to create a JavaScript code that, acting on behalf of the sorcerer, will display all the even numbers within the range of 0 to 10.
+
+Example 1:
+Output:
+0 2 4 6 8 10
+
+// Do not remove nor make any changes in  main() function
+function main() {
+    // Your code goes here
+    for (let i = 0; i <= 10; i++) {
+  if (i % 2 === 0) {
+    console.log(i);
+  }
+}
+}
+
+Sum of two numbers
+Easy
+Write a function that takes two numbers as input and returns their sum.
+
+Example 1:
+Input:
+2 3
+
+Output:
+5
+
+Play with Booleans
+Easy
+Create a variable called isTrue and assign it a boolean value. Then, log the data type of the variable to the console.
+
+Example 1:
+Input:
+true
+
+Output:
+boolean
+
+Example 2:
+Input:
+false
+
+Output:
+boolean
+
+// Do not remove nor make any changes in  main() function
+function main() {
+    //Your code goes here
+    let isTrue = true;
+    console.log(typeof isTrue);
+}
