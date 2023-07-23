@@ -1,0 +1,79 @@
+Skill Mastery Challenge
+What did we learn?
+Programming is the process of creating computer software by writing code that a computer can execute.
+Programming paradigms refer to fundamental styles or approaches to writing computer programs, such as imperative, functional, logic, event-driven, aspect-oriented, and concurrent programming.
+Program structure relates to how a program is organized and constructed, while syntax refers to the rules that govern the structure of the programming language.
+JavaScript is a widely-used interpreted, high-level, and dynamic programming language, mainly used for developing interactive and dynamic web pages and applications.
+JavaScript enables adding interactivity, dynamic elements, and complex user interfaces to websites, as well as communication with back-end systems.
+Setting up a JavaScript development environment involves configuring tools like a text editor, Node.js, package manager, bundler, and project setup.
+JavaScript's popularity arises from its versatility, cross-platform compatibility, active community, and a rich ecosystem of libraries and tools.
+JavaScript powers the internet by enabling dynamic and interactive website user experiences, real-time updates, and responsive web applications.
+Variables in JavaScript are containers that hold values and can be declared using "var," "let," or "const," with different scopes based on where they are defined.
+JavaScript provides various operators for performing actions on values, including arithmetic, comparison, assignment, logical, and ternary operators, enhancing its functionality.
+Best Practices to follow
+Consistent practice is key to becoming proficient in JavaScript programming.
+Choose reputable, up-to-date resources such as official documentation, reputable blogs, and books by well-known authors.
+Learn debugging tools and techniques to identify and fix errors in your code, and use online resources to find solutions to common problems.
+Interview Prep
+Programming Paradigms
+A programming paradigm is a fundamental approach or style of programming that provides a conceptual framework for designing and implementing computer programs. It defines the way programmers think about and structure their code to solve problems. Each programming paradigm has its own set of concepts, principles, and techniques for organizing and manipulating code and data.
+
+Programming paradigms influence how programs are written, how data is organized, how control flow is managed, and how the overall logic is structured. They provide a set of rules and guidelines for developers to follow when designing and implementing software solutions.
+
+Here are some commonly recognized programming paradigms:
+
+Imperative Programming: Imperative programming is a paradigm where programs are structured around statements that change the program's state. It focuses on describing step-by-step instructions and mutable variables. Examples of imperative programming languages include C, Java, and Python.
+Functional Programming: Functional programming emphasizes writing programs using pure functions that avoid changing state or mutable data. It treats computation as the evaluation of mathematical functions and encourages immutability and higher-order functions. Languages like Haskell, Lisp, and JavaScript (to some extent) support functional programming.
+Object-Oriented Programming (OOP): Object-oriented programming is centered around objects that encapsulate data and behavior. It organizes code into classes and uses concepts such as inheritance, polymorphism, and encapsulation. Languages like Java, C++, and Python support OOP.
+Procedural Programming: Procedural programming focuses on procedures or routines that operate on data. It organizes code into procedures (functions or subroutines) and emphasizes structured programming techniques. Languages like C, Pascal, and Fortran follow procedural programming.
+Event-Driven Programming: Event-driven programming revolves around events and event handlers. The program responds to events triggered by user actions or system events, typically using callbacks or event listeners. It is commonly used in graphical user interfaces (GUI) and web development. JavaScript, with its event-driven model, is a prominent example.
+Declarative Programming: Declarative programming describes the desired result or outcome rather than specifying step-by-step instructions. It focuses on expressing what should be achieved rather than how to achieve it. Examples include SQL for database queries and HTML for describing the structure of web pages.
+Logic Programming: Logic programming is based on formal logic. Programs are written as sets of logical rules, and computation involves applying logical inference to derive conclusions. Prolog is a well-known logic programming language.
+Concurrent Programming: Concurrent programming deals with the execution of multiple tasks or processes simultaneously, sharing resources and communicating between them. It aims to solve problems related to concurrency, synchronization, and parallelism. Languages like Go, Erlang, and Java (with threads) support concurrent programming.
+Interaction: alert, prompt, confirm
+In JavaScript, the alert, prompt, and confirm functions are used to interact with users through dialog boxes in a web browser. Here's an overview of each function and its purpose:
+
+alert: The alert function displays a simple message box with a provided message. It is commonly used to show informational messages or to get the user's attention. The message is displayed as a modal dialog box, and the user must click the OK button to dismiss it.
+Example usage:
+
+alert("Hello, World!");
+prompt: The prompt function displays a dialog box that allows the user to enter input. It takes two arguments: the message to be displayed as a prompt and an optional default value for the input field. The function returns the text entered by the user as a string or null if the user cancels the dialog.
+Example usage:
+
+const name = prompt("Please enter your name:", "John Doe");
+if (name !== null) {
+  console.log("Hello, " + name + "!");
+}
+confirm: The confirm function displays a dialog box with a message and two buttons: OK and Cancel. It is typically used to prompt the user for a yes-or-no decision. The function returns true if the user clicks OK and false if the user clicks Cancel.
+Example usage:
+
+const result = confirm("Are you sure you want to delete this item?");
+if (result) {
+  // Delete the item
+}
+These functions are synchronous, meaning that they halt the execution of JavaScript code until the user interacts with the dialog box. While they are useful for simple interactions, they can sometimes interrupt the user experience and are not suitable for complex user interfaces. In those cases, more advanced techniques using HTML, CSS, and JavaScript event handling may be employed.
+
+Strict Mode in JavaScript
+Strict mode is a feature introduced in ECMAScript 5 (ES5) that enables a stricter set of rules for JavaScript code execution. It helps developers catch common mistakes, avoid potential pitfalls, and make JavaScript behavior more predictable. When strict mode is enabled, the JavaScript interpreter applies stricter rules for variable declaration, assignment, function usage, and error handling.
+
+To enable strict mode, you can add the following statement at the beginning of a script or a function:
+
+"use strict";
+Here are some key aspects of strict mode:
+
+Variable Declaration: In strict mode, variables must be declared using the var, let, or const keywords before they are used. Assigning a value to an undeclared variable or using a variable without declaring it results in a ReferenceError.
+Avoiding Implicit Globals: In non-strict mode, assigning a value to an undeclared variable creates a new global variable. Strict mode prevents this behavior, and assigning a value to an undeclared variable throws a ReferenceError.
+No Octal Syntax: In strict mode, Octal literals (e.g., 0123) are not allowed. They are treated as syntax errors instead of being interpreted as octal values.
+Function Invocation: In strict mode, the value of this inside a function is undefined if the function is not called as a method or with the new operator. In non-strict mode, this refers to the global object (window in a browser).
+Deleting Variables and Functions: Deleting variables (delete variableName) and functions (delete functionName) is not allowed in strict mode. Attempting to delete variables or functions results in a SyntaxError.
+Preventing Duplicate Parameters and Object Properties: In strict mode, defining duplicate parameters in function declarations or duplicate object properties in object literals is not allowed. It throws a SyntaxError.
+More Restrictive eval: The eval function in strict mode does not introduce new variables into the surrounding scope. Variables and functions declared within an eval statement are scoped to that eval statement only.
+Strict mode is recommended for modern JavaScript development as it promotes better coding practices, reduces the risk of errors, and helps catch potential bugs earlier. It is especially beneficial when working on large projects or collaborating with other developers. However, be aware that enabling strict mode may cause older, non-compliant code to break, as it enforces stricter rules than older JavaScript versions.
+
+Shortcomings & Challenges
+Learning to handle asynchronous operations in JavaScript can be difficult and requires a different mindset.
+JavaScript's dynamic typing can make it harder to predict the behavior of your code.
+JavaScript's behavior can vary across different browsers, making it important to test your code extensively. 
+Enhance Your Knowledge
+https://javascript.plainenglish.io/what-are-javascript-programming-paradigms-3ef0f576dfdb
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
