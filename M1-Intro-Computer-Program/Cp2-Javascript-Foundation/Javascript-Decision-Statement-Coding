@@ -1,0 +1,84 @@
+Palindrome Strings
+Easy
+Sarah is a web developer who wants to create a JavaScript function to check if a given string is a palindrome. She wants to use this function to build a feature that validates whether user input is a palindrome.
+
+Help Sarah by writing a JavaScript function named isPalindrome that takes a string as input and returns true if the string is a palindrome and false otherwise.
+
+Example 1:
+Input:
+"racecar"
+
+Output:
+true
+
+Example 2:
+Input:
+"hello"
+
+Output:
+false
+
+
+
+
+Disney's Cinderella
+Easy
+Disney's Cinderella has a collection of glass slippers that she wants to organize in a particular order. She wants the slippers to be sorted in increasing order of their size, from the smallest to the largest.
+
+Write a JavaScript function named sortSlippers that takes in one parameter:
+
+slippers: an array of n integers (0 ≤ slippers[i] ≤ 100), representing the size of each glass slipper in Cinderella's collection.
+The function should return a new array containing the same integers as the input array, but sorted in increasing order of their size.
+
+Example 1:
+Input:
+[10, 7, 25, 14]
+
+Output:
+[7,10,14,25]
+
+Example 2:
+Input:
+[7, 9, 5, 11]
+
+Output:
+[5, 7, 9, 11]
+
+// Do not remove nor make any changes in  main() function
+function main() {
+    var slippers = readLine().split(" ").map(x => parseInt(x));
+    console.log(sortSlippers(slippers));
+}
+function sortSlippers(slippers) {
+  // Your code goes here
+  return slippers.sort((a,b) => a -b);
+}
+
+
+
+Tom’s Riddle
+Easy
+Tom is a software engineer who wants to create a JavaScript function to find the maximum number in an array. He plans to use this function to solve various programming challenges that involve finding the largest element in an array.
+
+Help Tom by writing a JavaScript function named findMaxNumber that takes an array of numbers as input and returns the maximum number in the array.
+
+Example 1:
+Input:
+[1, 2, 3, 4, 5]
+
+Output:
+5
+
+Example 2:
+Input:
+[10, 7, 25, 14]
+
+Output:
+25
+
+Example 3:
+Input:
+[-5, -10, -3, -1]
+
+Output:
+-1
