@@ -1,0 +1,435 @@
+JavaScript Operators
+Session Flow (5 minutes read)
+Learning Objective (5 minutes read)
+Introduction
+Theme
+Primary Goals
+JavaScript Operators (120 minutes read)
+What are JavaScript Operators?
+JavaScript Operator Types
+Assignment Operators
+Arithmetic Operators
+Increment(++) and Decrement(--) Operator
+Comparison Operators
+Logical Operators
+Bitwise Operators
+Try it yourself
+String Operators
+Explore Further
+Other JavaScript Operators
+Activity : Code Practice
+Summary (10 minutes read)
+What did we learn?
+Shortcomings & Challenges
+Best Practices
+Enhance Your Knowledge
+
+
+Learning Objective
+Introduction
+A JavaScript operator is a symbol that performs an operation on one or more values (operands) and returns a result.
+
+Duration: 2 Hours
+
+Focus: JavaScript Operators, Different types of operators
+
+Prerequisites: IDE with Node.js installed
+
+Theme
+JavaScript operators are used to manipulate data, just like kitchen tools that manipulate dishes. They help developers create the perfect program, just like a chef creates the perfect dish. From the + operator that combines values to the = operator that assigns values, each one has a unique function, like kitchen utensils.
+
+Primary Goals
+Understand the use and types of JavaScript Operators.
+Gain hands-on knowledge on working with different operators.
+
+
+JavaScript Operators
+Imagine you are a cashier at a grocery store. You are responsible for scanning items and calculating the total cost for the customer. You use a computerized cash register that runs on JavaScript to achieve this. The cash register uses operators such as + and - to calculate the total cost of the items scanned and the change to be returned to the customer. 
+
+For example, you might use the string "Bananas" to represent bananas and the operator + to add the price of bananas to the total cost. All of this is made possible by using the JavaScript operator.
+
+
+
+
+What are JavaScript Operators?
+An operator is a special symbol that performs operations on operands (values and variables).
+
+For example,
+
+console.log(2 + 3); // 5
++ is what we call an operator that does the adding, and 2 and 3 are the numbers we're adding together.
+
+Operators are used to performing various operations.
+Operators can be used to assign values, compare values, and perform arithmetic operations.
+JavaScript Operator Types
+Assignment Operators
+Arithmetic Operators
+Comparison Operators
+Logical Operators
+Bitwise Operators
+String Operators
+Other JavaScript Operators
+Assignment Operators
+Values can be assigned to variables by making use of assignment operators. For example,
+
+const x = 5;
+To assign value 5 to variable x, you can use the = operator.
+
+Below is a list of commonly used assignment operators:
+
+
+
+Operator	Name	Example
+=	Assignment operator	a = 7; // 7
++=	Addition assignment	a += 5; // a = a + 5
+-=	Subtraction Assignment	a -= 2; // a = a - 2
+*=	Multiplication Assignment	a *= 3; // a = a * 3
+/=	Division Assignment	a /= 2; // a = a / 2
+%=	Remainder Assignment	a %= 2; // a = a % 2
+**=	Exponentiation Assignment	a **= 2; // a = square of a
+Important: The most commonly used assignment operator is =. You will easily understand other assignment operators, such as +=, -=, and *=, once you study arithmetic operators in JavaScript.
+Arithmetic Operators
+Operators used for performing arithmetic calculations are known as Arithmetic Operators, which include the following:
+
+const number = 3 + 5; // 8
+When using the + operator in your code, you're basically adding two values together.
+
+
+
+
+
+Operator	Name	Example
++	Addition	a + b
+-	Subtraction	a - b
+*	Multiplication	a * b
+/	Division	a / b
+%	Remainder	a % b
+++	Increment (increment by 1)	x++ or ++x
+--	Decrement (decrement by 1)	--x or x--
+**	Exponentiation (Power)	a ** b
+Example: Arithmetic operators in JavaScript
+
+let num1 = 5;
+let num2 = 3;
+
+// addition
+console.log('num1 + num2 = ', num1 + num2);  // 8
+
+// subtraction
+console.log('num1 - num2 = ', num1 - num2);  // 2
+
+// multiplication
+console.log('num1 * num2 = ', num1 * num2);  // 15
+
+// division
+console.log('num1 / num2 = ', num1 / num2);  // 1.6666666666666667
+
+// remainder
+console.log('num1 % num2 = ', num1 % num2);   // 2
+
+// increment
+console.log('++num1 = ', ++num1); // num1 is now 6
+console.log('num1++ = ', num1++); // prints 6 and then increased to 7
+console.log('num1 = ', num1);     // 7
+
+// decrement
+console.log('--num1 = ', --num1); // num1 is now 6
+console.log('num1-- = ', num1--); // prints 6 and then decreased to 5
+console.log('num1 = ', num1);     // 5
+
+//exponentiation
+console.log('num1 ** num2 =', num1 ** num2);
+Increment(++) and Decrement(--) Operator
+In JavaScript, the increment operator ++ adds 1 to a variable's value, while the decrement operator -- subtracts 1 from a variable's value.
+
+
+
+Example: 
+
+let num = 5
+
+console.log(++num);          // num becomes 6 and prints 6
+console.log(num++);          // Prints 6 and num becomes 7
+console.log(num);            // Prints 7
+console.log(--num);          // num becomes 6 and prints 6
+console.log(num--);          // Prints 6 and num becomes 5
+console.log(num);            // Prints 5
+Explanation:
+
+let num = 5; - Initializes the variable num with the value 5.
+console.log(++num); - Pre-increment: The value of num is incremented by 1 first, making num equal to 6, and then the new value is printed. Output: 6.
+console.log(num++); - Post-increment: The original value of num (which is now 6) is printed first, and then the value of num is incremented by 1, making num equal to 7. Output: 6.
+console.log(num); - The current value of num is printed. Since num was incremented to 7 in the previous step, the output is 7.
+console.log(--num); - Pre-decrement: The value of num is decremented by 1 first, making num equal to 6, and then the new value is printed. Output: 6.
+console.log(num--); - Post-decrement: The original value of num (which is now 6) is printed first, and then the value of num is decremented by 1, making num equal to 5. Output: 6.
+console.log(num); - The current value of num is printed. Since num was decremented to 5 in the previous step, the output is 5.
+Comparison Operators
+
+Comparison operators are used to comparing 2 values and then return a Boolean value, either true or false. For example,
+
+const a = 3, b = 2;
+console.log(a > b); // true
+When using the comparison operator >, we confidently compare whether a is greater than b.
+
+
+
+Operator	Description	Example
+==	Equal to	5 == "5" returns true
+===	Equal value and type	5 === "5" returns false
+!=	Not equal to	5 != 6 returns true
+!==	Not equal value or not equal type	5 !== "5" returns true
+>	Greater than	6 > 5 returns true
+>=	Greater than or equal to	5 >= 5 returns true
+<	Less than	5 < 6 returns true
+<=	Less than or equal to	7 <= 5 returns false
+Example: Comparison operators in JavaScript
+
+// equal operator
+console.log(2 == 2); // true
+console.log(2 == '2'); // true
+
+// not equal operator
+console.log(3 != 2); // true
+console.log('hello' != 'Hello'); // true
+
+// strict equal operator
+console.log(2 === 2); // true
+console.log(2 === '2'); // false
+
+// strict not equal operator
+console.log(2 !== '2'); // true
+console.log(2 !== 2); // false
+Logical Operators
+Logical operators are used for performing logical operations and return either true or false. 
+
+For example,
+
+const x = 5, y = 3;
+(x < 6) && (y < 5); // true
+The logical operator && is utilized in this code. With both x < 6 and y < 5 being true, the result of the operation is confidently true.
+
+
+
+Operators	Description	Example
+&&	Logical AND: true if both the operands are true ,else returns false	x && y
+||	Logical OR: true if either of the operands is true ; returns false if both are false	x || y
+!	Logical NOT: true if the operand is falseand vice-versa.	!x
+Example: Logical Operators in JavaScript
+
+// logical AND
+console.log(true && true); // true
+console.log(true && false); // false
+
+// logical OR
+console.log(true || false); // true
+
+// logical NOT
+console.log(!true); // false
+Logical operators are used in decision-making and loops.
+
+Bitwise Operators
+Bitwise operators are employed to carry out operations on binary representations of numbers. 
+
+Everyday programming rarely involves the use of bitwise operators.
+
+
+Operator	Description	Example
+&	AND	5 & 6 returns 4
+|	OR	5 | 6 returns 7
+^	XOR	5 ^ 6 returns 3
+~	NOT	~5 returns -6
+<<	Left shift	5 << 2 returns 20
+>>	Right shift	5 >> 1 returns 2
+>>>	Zero-fill right shift	5 >>> 1 returns 2
+Example: Bitwise Operators in JavaScript
+
+const a = 5; // 0101 in binary
+const b = 3; // 0011 in binary
+
+// Bitwise AND
+console.log(a & b); // 1 (0001 in binary)
+
+// Bitwise OR
+console.log(a | b); // 7 (0111 in binary)
+
+// Bitwise XOR
+console.log(a ^ b); // 6 (0110 in binary)
+
+// Bitwise NOT
+console.log(~a); // -6 (1010 in binary)
+
+// Left shift
+console.log(a << 1); // 10 (1010 in binary)
+
+// Right shift
+console.log(a >> 1); // 2 (0010 in binary)
+Try it Yourself
+Agree or Disagree
+
+When adding two negative numbers, the result is always negative.
+The && (AND) operator returns true if both operands are true.
+The XOR (^) operator returns true if both operands have the same value.
+The modulus operator (%) returns the quotient of the division of two numbers.
+The ! (NOT) operator returns true if the operand is false.
+Answers
+Agree
+Agree
+Disagree
+Disagree
+Agree
+String Operators
+In JavaScript, +operator is used to concatenate (join) two or more strings.
+
+
+
+Example:
+
+let str1 = "Hello";
+let str2 = "world!";
+let result = str1 + " " + str2; // concatenation using the + operator
+console.log(result); // output: "Hello world!"
+
+
+It's important to note that the + operator performs concatenation when used with strings but performs addition when used with numbers.
+Explore Further
+Uncover and unlock new insights as you dive into the captivating content found in the provided link.
+
+Spread Operator in JavaScript : https://stackabuse.com/spread-operator-in-javascript/
+
+Tackle these questions head-on!
+
+For each question, write "Yes" if the it is true about spread operator or "No" if it does not. 
+
+The spread operator (...) can only be used with arrays. 
+The spread operator can be used to combine multiple arrays into a single array.
+The spread operator creates a shallow copy of the array or object it is applied to. 
+The spread operator can be used to pass individual elements of an array as arguments to a function. 
+The spread operator can be used to merge properties of two or more objects into a new object. 
+Answers:
+No
+Yes
+Yes
+Yes
+Yes
+Other JavaScript Operators
+Below is a list of additional operators that are available in JavaScript.
+
+
+
+Operator	Description	Example
+(condition) ? (if_true) : (else_false);	Ternary operator	x > 0 ? "positive" : "non-positive"
+delete	Delete a property from an object	delete obj.prop
+typeof	Returns the type of a value	typeof x
+void	Evaluates an expression and returns undefined	void(0)
+in	Checks if a property exists in an object	"prop" in obj
+instanceof	Checks if an object is an instance of a particular class or constructor function	x instanceof MyClass
+Example: Ternary Operator
+
+let age = 18;
+let canVote = age >= 18 ? "Yes" : "No";
+console.log(canVote); // Output: Yes
+In this example, we check if the age variable is greater than or equal to 18. If the statement's condition is true, the ternary operator returns "Yes"; otherwise, it returns "No". The result is then stored in the canVote variable.
+
+The same logic can be written using an if-else statement:
+
+let age = 18;
+let canVote;
+
+if (age >= 18) {
+  canVote = "Yes";
+} else {
+  canVote = "No";
+}
+
+console.log(canVote); // Output: Yes
+
+
+Example: typeof Operator
+
+const num = 42;
+const str = "Hello, World!";
+const bool = true;
+const obj = { key: "value" };
+const arr = [1, 2, 3];
+const func = function () {};
+const und = undefined;
+const nul = null;
+
+console.log(typeof num);  // Output: "number"
+console.log(typeof str);  // Output: "string"
+console.log(typeof bool); // Output: "boolean"
+console.log(typeof obj);  // Output: "object"
+console.log(typeof arr);  // Output: "object" (arrays are objects in JavaScript)
+console.log(typeof func); // Output: "function"
+console.log(typeof und);  // Output: "undefined"
+console.log(typeof nul);  // Output: "object" (this is considered a historical bug in JavaScript)
+
+
+According to current data from sources such as Glassdoor, the average salary for a JavaScript developer varies by location, ranging from around $80,000 per year in the United States to around Rs 7,00,000 per year in India.
+Activity : Code Practice
+Open any JavaScript IDE or use VS Code IDE.
+Type in the following code:
+let a=10;
+
+console.log(a++ + ++a)
+console.log(a++ - ++a)
+
+console.log("0" == 0)
+console.log("0" === 0)
+
+console.log((5 > 2) && (7 < 11))
+console.log((7 > 9) || (9 < 5))
+
+
+if(a > 6) {
+	console.log("Pass")
+} else {
+	console.log("Fail")
+}
+
+console.log(a > 6 ? "Pass" : "Fail")
+Press Enter or Return to see the output of each operation in the console.
+Answers
+22
+-2
+
+true
+false
+
+true
+false
+
+"Pass"
+
+"Pass"
+
+
+Summary
+What did we learn?
+JavaScript operators are symbols that perform actions on values and return a result. 
+They are a fundamental aspect of the language and allow developers to perform operations such as arithmetic, comparison, and assignment.
+Arithmetic operators perform basic mathematical operations such as addition (+), subtraction (-), multiplication (*), and division (/).
+Comparison operators are used for comparing two values and return a Boolean result (true or false). Examples include equality (==), inequality (!=), greater than (>), and less than (<).
+Assignment operators serve the purpose of assigning a value to a variable. The most common assignment operator is the equal sign (=).
+Logical operators: These operators perform logical operations such as AND (&&), OR (||), and NOT (!).
+Ternary operator: This operator is a shorthand for an if-else statement and returns one of two values based on a condition.
+JavaScript provides a range of methods for working with strings. 
+Some common methods include .length(to find the length of a string), .substring()(to extract a portion of a string), .indexOf()(to find the position of a substring), .toLowerCase()(to convert a string to lowercase), and .toUpperCase()(to convert a string to uppercase).
+In JavaScript, there is a variety of built-in functions available to manipulate strings, including parseInt() for converting strings to integers, split() for dividing a string into an array of substrings, and replace() for substituting a substring within a string.
+Shortcomings & Challenges
+JavaScript has a type coercion feature, automatically converting values between data types. While this can be convenient sometimes, it can lead to unexpected results if not handled properly.
+JavaScript is a case-sensitive language. This can lead to issues when comparing strings for equality, and developers must know the case sensitivity when working with strings.
+Strings in JavaScript are immutable, meaning that once you create a string, you can't change its characters. This can be inefficient and lead to performance issues, especially when working with large strings.
+JavaScript provides a limited set of built-in methods for manipulating strings, which can make it difficult to perform complex string operations.
+Best Practices
+Be mindful of type coercion when working with strings and other data types in JavaScript. Always use strict equality operators (=== and !==) instead of loose equality operators (== and !=) to avoid unexpected results.
+Choose single or double quotes and use them consistently throughout your code. This helps to avoid confusion and makes the code easier to read.
+Consider using template literals instead of concatenation when working with strings, making it easier to build strings that include expressions or variables.
+Store strings in variables whenever possible to make your code easier to maintain and modify.
+Use shorthand operators (such as +=, -=, and *=) to write concise, readable code.
+Enhance Your Knowledge
+https://www.educative.io/blog/bitwise-and-javascript 
+JavaScript String manipulation techniques developers should know
+https://codepip.com/games/code-crunchers/
+
+
