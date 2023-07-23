@@ -1,0 +1,102 @@
+Number is even or not
+Easy
+Write a function that takes a number as input and returns true if it is an even number, and false otherwise.
+
+Example 1:
+Input:
+4
+
+Output:
+true
+
+Example 2:
+Input:
+5
+
+Output:
+false
+
+// Do not remove nor make any changes in  main() function
+function main() {
+    var num = parseInt(readLine());
+    console.log(isEvenNumber(num));
+}
+function isEvenNumber(num) {
+ // Your code goes here
+   return num % 2 === 0;
+}
+
+
+
+Nature of number
+Easy
+Once upon a time, there was a magical function that could determine the nature of numbers. It had the power to analyze whether a number was positive, negative, or even zero. With this knowledge, it would whisper a message, revealing the true essence of the number to anyone who sought its guidance. Write that magical function and determine the nature of numbers.
+
+Example 1:
+Input:
+5
+
+Output:
+Positive
+
+Example 2:
+Input:
+-5
+
+Output:
+Negative
+
+Example 3:
+Input:
+0
+
+Output:
+Zero
+
+// Do not remove nor make any changes in  main() function
+function main() {
+    var num = parseInt(readLine());
+    console.log(checkNumber(num));
+}
+function checkNumber(num) {
+  // Your code goes here
+  if(num > 0){
+      return "Positive";
+  }
+  else if (num < 0){
+      return "Negative";
+  }
+  else {
+      return "Zero";
+  }
+}
+
+
+
+Minute converter
+Easy
+Imagine you have a magical time converter. It takes a number of minutes as input and instantly transforms it into the equivalent number of seconds. Your task is to write a function that utilizes this converter to help people calculate how many seconds are in a given number of minutes.
+
+Example 1:
+Input:
+3
+
+Output:
+180
+
+Example 2:
+Input:
+0
+
+Output:
+0
+
+// Do not remove nor make any changes in  main() function
+function main() {
+    var minutes = parseInt(readLine());
+    console.log(convertMinutesToSeconds(minutes));
+}
+const convertMinutesToSeconds = function(minutes){
+    // Your code goes here
+    return minutes * 60;
+};
