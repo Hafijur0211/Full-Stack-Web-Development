@@ -1,0 +1,100 @@
+The String Splitter
+Easy
+As a student of JavaScript programming, your teacher has given you an interesting challenge. You are tasked with writing a program that extracts the first half of a string of even length. You know that you need to use string methods to find the length of the string and then split it into two halves. But how do you ensure your code works correctly and produces the expected output?
+
+Can you rise to the challenge of the String Splitter and impress your teacher with your coding skills? The challenge awaits, and it's up to you to take it on.
+
+Example 1:
+Input:
+C
+
+Output:
+C
+
+Example 2:
+Input:
+Kotlin
+
+Output:
+Kot
+
+Example 3:
+Input:
+Java
+
+Output:
+Ja
+
+
+
+Common Element
+Easy
+Samantha is a teacher who is creating a new learning management system for her students. She wants to create a function that will help her find the common elements between two arrays of numbers. She knows that finding the common elements will be very useful for her students to understand the concepts better. She has decided to create a function named findCommonElements that takes two arrays as inputs and returns an array containing the common elements.
+
+Help Samantha by writing a JavaScript function named findCommonElements that takes two arrays as inputs and returns an array containing the common elements. The function should loop through each element of the first array and check if it is present in the second array. If the element is present in both arrays and not already present in the output array, add it to the output array. Finally, return the output array.
+
+Example 1:
+Input:
+[1, 2, 3], [4, 5, 6]
+
+Output:
+[]
+
+Example 2:
+Input:
+[1, 2, 3], [3, 2, 1]
+
+Output:
+[1, 2, 3]
+
+
+
+Simple Calculator
+Easy
+Alice is a math teacher who wants to create a simple calculator using JavaScript. The calculator should be able to perform basic arithmetic operations like addition, subtraction, multiplication, and division.
+
+Help Alice by creating a JavaScript function called simpleCalculator that takes two numbers and an operator (+, -, *, /) as input and returns the arithmetic operation result.
+
+Example 1:
+Input:
+9, 9, +
+
+Output:
+18
+
+Example 2:
+Input:
+5, 2, /
+
+Output:
+2.5
+
+Example 3:
+Input:
+5, 2, *
+
+Output:
+10
+
+Example 4:
+Input:
+5, 2, -
+
+Output:
+3
+
+Example 5:
+Input:
+9, 0, /
+
+Output:
+"Cannot divide by zero."
+
+Example 6:
+Input:
+'9', 2, +
+
+Output:
+"Invalid input. Please enter numeric values."
+
+Example 7:
