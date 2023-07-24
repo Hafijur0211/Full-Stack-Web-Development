@@ -1,0 +1,66 @@
+Counter
+Easy
+Given an integer n, return a counter function. This counter function initially returns n and then returns 1 more than the previous value every subsequent time it is called (n, n + 1, n + 2, etc).
+
+Example 1:
+Input:
+n = 10
+
+Output:
+[10,11,12]
+
+Example 2:
+Input:
+n = -2
+
+Output:
+[-2,-1,0]
+
+
+
+Counter II
+Easy
+Write a function createCounter. It should accept an initial integer init. It should return an object with three functions.
+
+The three functions are:
+
+increment() increases the current value by 1 and then returns it.
+decrement() reduces the current value by 1 and then returns it.
+reset() sets the current value to init and then returns it.
+Example 1:
+Input:
+init = 5
+
+Output:
+[6,5,4]
+
+Example 2:
+Input:
+init = 0
+
+Output:
+[1,0,-1]
+
+
+
+Chunk Array
+Easy
+Given an array arr and a chunk size size, return a chunked array. A chunked array contains the original elements in arr, but consists of subarrays each of length size. The length of the last subarray may be less than size if arr.length is not evenly divisible by size.
+
+You may assume the array is the output of JSON.parse. In other words, it is valid JSON.
+
+Please solve it without using lodash's _.chunk function.
+
+Example 1:
+Input:
+arr = [1,2,3,4,5] size = 1
+
+Output:
+[[1],[2],[3],[4],[5]]
+
+Example 2:
+Input:
+arr = [8,5,3,2,6] size = 6
+
+Output:
+[8,5,3,2,6]
