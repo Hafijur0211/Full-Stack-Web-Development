@@ -1,0 +1,120 @@
+Skill Mastery Challenge
+What did we learn?
+JavaScript comparison operators compare values and return a Boolean indicating whether the comparison is true or false.
+JavaScript logical operators perform logic operations on Boolean values and return a Boolean indicating the result of the operation.
+JavaScript if...else and switch statements are decision-making statements used to execute specific code blocks based on certain conditions.
+A for-loop in JavaScript executes a block of code repeatedly for a specific number of times or to iterate over an array or object.
+The for...in the loop is used to iterate over the enumerable properties of an object, making it a convenient way to loop through the properties of an object without knowing the property names in advance.
+JavaScript arrays are a data structure used to store multiple values in a single variable. They can be created, accessed, modified, and iterated using various built-in methods and operators. Arrays can also be multi-dimensional, allowing more complex data storage and manipulation.
+JavaScript objects can be created using object literal or constructor notation, and their properties and methods can be accessed using dot or bracket notation. Commonly used object methods in JavaScript include Object.keys(), Object.values(), Object.entries(), Object.assign(), and Object.freeze().
+JavaScript variables can have different scopes (global, local, and block-level) and can store various data types, such as numbers, strings, and objects.
+JavaScript is a single-threaded programming language, meaning it can only execute one task at a time. 
+To manage asynchronous operations, JavaScript uses an event loop that constantly checks the call stack and task queue for new tasks to execute.
+JavaScript uses callback functions for handling asynchronous operations such as the setTimeout() and setInterval() functions, which execute code after a specified time interval. clearTimeout() and clearInterval() can be used to cancel these operations.
+OOP focuses on creating objects that encapsulate data and behavior using classes as blueprints and instances as actual objects created from those blueprints.
+JavaScript uses bind, call, and apply to control the value of the this keyword, prototypes for sharing properties and methods among objects, and inheritance through prototype chaining, class extends, and the super keyword.
+Best Practices to follow
+Ensure a solid grasp of basic concepts, such as variables, data types, loops, and conditional statements, before delving into advanced JavaScript topics.
+Make sure to read the documentation for any JavaScript libraries or frameworks you use to understand best practices and use cases.
+Interview Prep
+Object Literals
+Object literals in JavaScript allow you to define and create objects using key-value pairs. They provide a convenient way to organize data and functionality within a single entity. Object literals are created using curly braces ({ }) and can contain properties with corresponding values. Properties can be accessed using dot notation or bracket notation.
+
+const person = {
+  name: 'John',
+  age: 30,
+  sayHello: function() {
+    console.log('Hello!');
+  }
+};
+In this example, person is an object that has three properties: name, age, and sayHello. The name property is assigned the value 'John', the age property is assigned the value 30, and the sayHello property is assigned a function that logs 'Hello!' to the console.
+
+You can access the properties and methods of an object literal using dot notation or square bracket notation:
+
+console.log(person.name); // Output: 'John'
+console.log(person.age); // Output: 30
+person.sayHello(); // Output: 'Hello!'
+Nullish coalescing operator '??'
+The nullish coalescing operator (??) is a relatively new addition to JavaScript introduced in ECMAScript 2020. It provides a concise way to handle situations where you want to select a fallback value when a variable is null or undefined.
+
+The nullish coalescing operator evaluates the expression on its left-hand side and, if the result is null or undefined, it returns the value on its right-hand side. Otherwise, it returns the left-hand side value.
+
+Here's the basic syntax of the nullish coalescing operator:
+
+const result = a ?? b;
+In this example, a is the expression to be evaluated, and b is the fallback value.
+
+The behavior of the nullish coalescing operator differs from the logical OR operator (||) when it comes to "falsy" values other than null and undefined. The nullish coalescing operator only considers null and undefined as indicating the need for fallback values. Any other falsy value, such as an empty string (''), 0, or false, is considered a valid value and will be returned.
+
+Here's an example to illustrate the difference between the nullish coalescing operator and the logical OR operator:
+
+const name = '';
+const displayName = name ?? 'Anonymous';
+console.log(displayName);             // Output: ''
+
+const alternativeDisplayName = name || 'Anonymous';
+console.log(alternativeDisplayName);  // Output: 'Anonymous'
+In this example, name is an empty string. When using the nullish coalescing operator, the fallback value 'Anonymous' is not selected because name is not null or undefined. However, when using the logical OR operator, the empty string is treated as a falsy value, and 'Anonymous' is selected as the fallback value.
+
+The nullish coalescing operator is particularly useful when dealing with optional values or when you explicitly want to handle only null or undefined values.
+
+It's important to note that the nullish coalescing operator has a lower precedence than most other operators, so you might need to use parentheses to ensure the desired evaluation order in complex expressions.
+
+const result = a ?? (b + c);
+In this example, the addition of b and c is evaluated first, and then the nullish coalescing operator is applied to the result.
+
+Overall, the nullish coalescing operator provides a concise and convenient way to handle fallback values when dealing with null or undefined values in JavaScript.
+
+Throwing and Handling exceptions
+Throwing and handling exceptions in JavaScript is essential for managing and responding to errors during code execution.
+
+To throw an exception, you use the throw statement, which interrupts the normal flow and generates an error. Typically, you throw an instance of the Error class or one of its subclasses.
+
+For example:
+
+function divide(a, b) {
+  if (b === 0) {
+    throw new Error('Divide by zero error');
+  }
+  return a / b;
+}
+Try Catch Statement
+Try...catch statements in JavaScript are used for error handling. The code within the try block is executed, and if an exception occurs, the catch block is executed to handle the exception. The catch block takes an error object as a parameter and allows you to handle the error gracefully.
+
+try {
+  // Code that may potentially throw an exception
+} catch (error) {
+  // Code to handle the exception
+}
+Here's an example that demonstrates the usage of try...catch:
+
+try {
+  // Code that might throw an error
+  const result = someFunction();
+  console.log(result);
+} catch (error) {
+  // Code to handle the error
+  console.log('An error occurred:', error.message);
+}
+In this example, the someFunction() function is called within the try block. If an error occurs during the execution of someFunction(), such as a function not being defined or a network request failing, the program will jump to the catch block. The error object is then caught and its message is logged to the console.
+
+You can also include multiple catch blocks to handle different types of errors:
+
+try {
+  // Code that might throw an error
+} catch (errorType1) {
+  // Code to handle errors of type 1
+} catch (errorType2) {
+  // Code to handle errors of type 2
+} finally {
+  // Code that will always run, regardless of errors
+}
+The finally block, if provided, is executed whether an error occurred or not. It is commonly used to perform cleanup tasks, such as closing resources or releasing locks.
+
+Shortcomings & Challenges
+JavaScript has a steep learning curve for beginners due to its complex syntax and object-oriented programming concepts.
+Finding and fixing errors in complex JavaScript code can be time-consuming and challenging.
+Mastering JavaScript's large and evolving syntax, as well as the use of functions and objects, can be challenging.
+Enhance Your Knowledge
+https://www.sitepoint.com/javascript-error-handling/
+https://www.freecodecamp.org/news/understanding-functions-in-javascript/
