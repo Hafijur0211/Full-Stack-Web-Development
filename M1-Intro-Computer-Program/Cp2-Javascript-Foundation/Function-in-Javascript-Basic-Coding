@@ -1,0 +1,57 @@
+Full Name
+Easy
+Write a function getFullName() that takes a first name and a last name as parameters and returns the full name as a string.
+
+Example 1:
+Input:
+firstName = "John" lastName = "Doe"
+
+Output:
+"John Doe"
+
+Example 2:
+Input:
+firstName = "Alice" lastName = "Smith"
+
+Output:
+"Alice Smith"
+
+
+
+Find Prime
+Easy
+Write a function isPrime() that takes a number as a parameter and returns true if it is a prime number, and false otherwise.
+
+Example 1:
+Input:
+7
+
+Output:
+true
+
+Example 2:
+Input:
+12
+
+Output:
+false
+
+
+
+Number of Occurrences
+Easy
+Write a function countOccurrences() that takes an array of numbers and a target number as parameters, and returns the number of times the target number appears in the array.
+
+Example 1:
+Input:
+numbers = [1, 2, 3, 4, 2, 5, 2] target = 2
+
+Output:
+3
+
+Example 2:
+Input:
+numbers = [1, 1, 1, 1] target = 5
+
+Output:
+0
