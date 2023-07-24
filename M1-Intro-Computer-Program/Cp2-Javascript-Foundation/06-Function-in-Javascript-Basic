@@ -1,0 +1,315 @@
+Functions in JavaScript - Basics
+Session Flow (5 mins. read)
+Learning Objective (5 minutes read)
+Introduction
+Theme
+Primary Goals
+Functions in JavaScript - Basics (120 minutes read)
+JavaScript Function
+Function Declarations
+Calling a Function
+Do it yourself
+“return” keyword
+Parameters and Arguments
+Parameters
+Default Parameters
+Arguments
+Activity 1
+Explore Further
+Summary (10 minutes read)
+What did we learn?
+Shortcomings and Challenges
+Best Practices
+Enhance your Knowledge
+
+
+
+
+Learning Objective
+Introduction
+Functions are the building blocks of complex applications and the key to unlocking the full potential of the language.
+
+Duration: 2 hours
+
+Focus: JavaScript Functions, Function Declaration, Calling a Function, Parameters and Arguments
+
+Prerequisites: VS code IDE with Node.js installed
+
+Theme
+A function is a block of code designed to perform a specific task. Functions can be used to organize code and make it reusable, improving the maintainability and readability of your code. This feature of JavaScript is used by many leading companies, such as Google and Microsoft, to build reusable code blocks. It is also helpful for developers because these are easy-to-understand code blocks.
+
+Primary Goals
+Understand the concept and syntax of function declarations in JavaScript.
+Learn how to call a function and pass arguments to it.
+Understand the difference between parameters and arguments and how they are used in a function.
+Understand the different types of functions in JavaScript, including anonymous functions and arrow functions.
+Understand the concept of the call stack and how it is used to manage function calls in JavaScript.
+Learn about hoisting and how it affects how functions are defined and executed in JavaScript.
+
+
+Functions in JavaScript - Basics
+Evan was a software developer who had been working with JavaScript for many years. He had just received a new project that required him to build a complex web application with many features. As he began planning the application, he realized he would need to use functions extensively to keep the code organized and modular.
+
+He started by creating a few simple functions that performed basic tasks, such as formatting dates and times. He then used these functions within larger functions to perform more complex tasks, such as retrieving data from APIs and displaying it on the screen.
+
+As he worked, Evan realized that using functions made debugging and maintaining the code much easier. He could easily isolate errors and fix them without searching through long blocks of code.
+
+JavaScript Function
+A function in JavaScript is a piece of reusable code that, when called or executed, completes a certain operation or computation.
+
+The function keyword, the function name, any optional parameters in parentheses, and the code block encased in curly brackets are used to define functions. They can be called by preceding the function name with the parenthesized parameters.
+
+Functions can also be supplied as arguments to other functions, set to variables, and returned as values by other functions. JavaScript functions are a core component of the language and are often utilized to develop modular code and create complicated applications.
+
+Functions are used to make code less repetitive, more reusable, more modular, and simpler to comprehend. They are crucial for creating intricate software systems and are a fundamental idea in the majority of programming languages.
+
+
+
+Example of a simple JavaScript function:
+
+// Defining the function
+function sum(num1, num2) {
+  console.log(num1 + num2);
+}
+
+// Calling the function
+sum(3, 6);      // Output: 9
+This code defines a function called sum which is taking two arguments num1 and num2 and outputs sum using the + operator.
+
+
+
+Example of a simple JavaScript function which will calculate the area of a rectangle:
+
+function calculateArea(width, height) {
+  let area = width * height;
+  console.log(area);
+}
+
+// Call the function with arguments
+calculateArea(5, 10);
+Function Declarations
+There are numerous ways to build a function in JavaScript. Using a "function declaration" is one technique to define a function.
+A function declaration ties a function to a name or other identifier similarly to how a variable declaration links a value to a variable name.
+
+
+The syntax to declare a function is:
+
+function nameOfFunction () {
+    // function body   
+}
+
+
+To declare a function, a keyword function has been used.
+Like naming a variable, naming a function follows some fundamental guidelines. It is preferable to give your function a name that is descriptive. For instance, you may call the function "add" or "addNumbers" if it is used to add two integers.
+The body of a function is written within {}.
+
+
+For example,
+
+// declaring a function named greet()
+function greet() {
+    console.log("Hello there");
+}
+Calling a Function
+A function is called by simply using the function's name followed by parentheses that contain any arguments to be passed to the function.
+
+
+
+A function called greet() has been declared in the above example. Here's how to use the greet() function.
+
+// function call
+greet();
+
+Example: Display a Text
+
+// declaring a function
+function greet() {
+    console.log("Hello there!");
+}
+
+// calling the function
+greet();     // Output: Hello there!
+
+
+Do it yourself 
+Agree/Disagree:
+
+Using functions in JavaScript helps in organizing and modularizing code. 
+Functions in JavaScript cannot have optional parameters. 
+Debugging and maintaining code is easier when using functions in JavaScript. 
+Function declarations in JavaScript do not follow a syntax that includes the function name and a code block. 
+Answers
+Agree
+Disagree
+Agree
+Disagree
+
+
+“return” keyword
+A return statement is used within a function to exit the function and return a value back to the calling code. When a return statement is encountered, the function immediately stops executing, and the control is returned to the calling code, along with the value specified in the return statement.
+
+Here is an example function that uses the return statement:
+
+function addNumbers(num1, num2) {
+  return num1 + num2;
+}
+
+console.log(result); // Output: 5
+In the above example, the addNumbers function takes in two parameters, num1 and num2, and uses the + operator to add them together. The return statement is then used to return the result of this addition operation to the calling code. Then we are calling the addNumbers function with arguments 2 and 3. The function adds these two numbers together and returns the result to the console, which outputs 5.
+
+Parameters and Arguments
+The functions we've developed so far carry out a task without input. Certain functions, however, can accept inputs and use those inputs to carry out a task.
+
+Parameters
+In JavaScript, parameters are defined along with the function during the function declaration or definition. They act as placeholders for values that will be used within the function. These values are supplied when the function is called or invoked.
+
+Here's an example:
+
+function multiply(a, b) {
+	return a * b;
+}
+In this multiply function, a and b are parameters. The names a and b are used within the function body as variables. You can think of parameters as local variables that are only accessible within the function body.
+
+
+
+If you call a function with too few or too many arguments, JavaScript will not throw an error, but the extra arguments will be ignored or the missing parameters will be assigned a value of undefined. 
+
+For example:
+
+function addNumbers(a, b) {
+  return a + b;
+}
+
+console.log(addNumbers(2));       // Output: NaN (Not a Number)
+console.log(addNumbers(2, 3, 4)); // Output: 5 (ignores extra argument)
+console.log(addNumbers());        // Output: NaN (Not a Number) for both parameters
+
+
+Default Parameters
+To avoid above issue, you can use default parameters, which allow you to provide a default value for a parameter if it is not passed in.
+
+Default parameters is one of the new capabilities in ES6. When calling a function with no argument or with a undefined argument, default parameters allow parameters to have a predetermined value.
+
+For example:
+
+function addNumbers(a = 0, b = 0) {
+  return a + b;
+}
+
+console.log(addNumbers(2));   // Output: 2 (uses default value of 0 for b)
+console.log(addNumbers());    // Output: 0 (uses default values for both parameters)
+Another example:
+
+function greeting (name = 'stranger') {
+  console.log(`Hello, ${name}!`)
+}
+ 
+greeting('Nick')   // Output: Hello, Nick!
+greeting()         // Output: Hello, stranger!
+Arguments
+In JavaScript, arguments are the values that are passed into a function when it is called. They are accessed within the function using the arguments object, which is an array-like object that contains all of the arguments passed to the function.
+
+The arguments object has a length property that specifies the number of arguments passed to the function, and individual arguments can be accessed using array notation (e.g. arguments[0], arguments[1], etc.).
+
+For example:
+
+function addNumbers() {
+  let sum = 0;
+  for (let i = 0; i < arguments.length; i++) {
+    sum += arguments[i];
+  }
+  return sum;
+}
+
+console.log(addNumbers(2, 3, 4)); // Output: 9
+console.log(addNumbers(2, 3));    // Output: 5
+console.log(addNumbers(2));       // Output: 2
+console.log(addNumbers());        // Output: 0
+In this example, addNumbers is a function that sums any number of arguments passed to it using a loop over the arguments object. The first call to addNumbers passes three arguments (2, 3, and 4), the second call passes two arguments (2 and 3), the third call passes one argument (2), and the fourth call passes no arguments. In each case, the function returns the sum of the arguments passed to it.
+
+
+
+Another use case of the arguments object is when you want to create a function with optional parameters. 
+
+For example:
+
+function greet(name, greeting) {
+  if (arguments.length === 1) {
+    greeting = "Hello";
+  }
+  
+  console.log(`${greeting}, ${name}!`);
+}
+
+greet("John");          // Output: "Hello, John!"
+greet("Jane", "Hi");    // Output: "Hi, Jane!"
+In this example, the greet() function accepts two parameters, name and greeting, but the greeting parameter is optional. If only one argument is passed into the function, the greeting variable is set to the default value of "Hello".
+
+
+
+Activity 1 
+Code Practice:
+
+Create a function that takes in two parameters, with the second parameter being optional with a default value. The function should return the result of multiplying the two parameters together.
+
+Call the function with two arguments, and log the result to the console.
+Call the function with only one argument, and log the result to the console.
+Solution
+function multiplyNumbers(num1, num2 = 2) {
+  return num1 * num2;
+}
+
+console.log(multiplyNumbers(5, 6)); // Expected output: 30
+console.log(multiplyNumbers(3));    // Expected output: 6
+
+
+Explore Further
+Uncover and unlock new insights as you dive into the captivating content found in the provided link.
+
+Named Argument and Positional Argument: https://blog.bitsrc.io/javascript-why-named-arguments-are-better-than-positional-arguments-9b15ab3155ef
+
+
+
+Tackle these questions head-on!
+
+Agree/Disagree:
+
+Positional arguments are the only way to pass arguments to functions in JavaScript.
+The use of named arguments with destructuring allows for greater flexibility and readability in function calls.
+Positional arguments are more suitable for functions with a small number of arguments, while named arguments are preferred for functions with a larger number of optional arguments.
+One of the advantages of named arguments is that they eliminate the need to remember the order of arguments in a function call.
+The combination of positional and named arguments provides the most optimal and flexible approach to function parameter handling in JavaScript.
+Answers
+Disagree
+Agree
+Agree
+Agree
+Disagree
+
+
+
+
+According to TIOBE Index March 2023, JavaScript is developers' seventh most loved programming language.
+
+
+Summary
+What did we learn?
+Functions are defined using the "function" keyword, followed by the function name, optional parameters in parentheses, and a code block enclosed in curly brackets.
+JavaScript functions can be called by preceding the function name with the parenthesized parameters.
+Function declarations define a function with a name or identifier, similar to variable declarations.
+Functions can be called multiple times and can accept inputs through parameters.
+Default parameters allow for predetermined values when a function is called without an or undefined argument.
+The "return" keyword sends data from a function call back to the calling code, allowing the output to be stored in a variable for further use.
+Shortcomings & Challenges
+Global variables and side effects: Functions that rely on or modify global variables can introduce side effects, making it difficult to understand the flow of data and the function's impact on the overall program. It's crucial to avoid relying on global variables and strive for pure functions which produce consistent output based on their input and don't cause side effects.
+Naming conflicts: When multiple functions share the same name in a global scope, they may overwrite each other, leading to unexpected behavior. Namespaces, modules, or closures can help prevent naming conflicts and keep the code organized.
+Performance: Creating many functions or using recursion extensively can impact performance, especially in resource-constrained environments. It's essential to consider the trade-offs between code organization and performance when designing your functions.
+Debugging: Debugging functions can be challenging, especially when dealing with higher-order functions or callback functions. Utilizing proper error handling, logging, and debugging tools can help mitigate this challenge.
+Best Practices
+Use descriptive function names: Choose function names that clearly describe their purpose and the tasks they perform. This improves code readability and makes it easier for others to understand the code.
+Keep functions small and focused: Break down complex tasks into smaller, more focused functions. This improves readability, makes the code easier to maintain, and simplifies debugging.
+Avoid global variables: Minimize the use of global variables to reduce the risk of unintended side effects. Instead, use function parameters and local variables to pass data between functions.
+Use pure functions: Whenever possible, write pure functions that do not cause side effects and produce consistent output based on their input. Pure functions are easier to test, debug, and maintain.
+Enhance Your Knowledge
+https://www.javascripttutorial.net/javascript-function/
+https://data-flair.training/blogs/javascript-function/
