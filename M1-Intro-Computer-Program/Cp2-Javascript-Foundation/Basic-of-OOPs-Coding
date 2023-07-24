@@ -1,0 +1,55 @@
+OOPs Rectangle
+Easy
+Create a class called "Rectangle" with the following properties:
+
+width (number): the width of the rectangle.
+height (number): the height of the rectangle.
+The class should have the following methods:
+
+getArea(): returns the area of the rectangle.
+getPerimeter(): returns the perimeter of the rectangle.
+Implement the Rectangle class and demonstrate its usage by creating an instance and calling its methods to compute the area and perimeter.
+
+Example 1:
+Input:
+width: 5 , height: 10
+
+Output:
+50
+30
+
+
+
+OOPs Circle
+Easy
+Create a class called "Circle" with the following properties:
+
+radius (number): the radius of the circle.
+The class should have the following methods:
+
+getArea(): returns the area of the circle.
+getCircumference(): returns the circumference of the circle.
+Implement the Circle class and demonstrate its usage by creating an instance and calling its methods to compute the area and circumference.
+
+Example 1:
+Input:
+radius: 5
+
+Output:
+Area: 78.53981633974483 Circumference: 31.41592653589793
+
+
+
+OOPs Calculator
+Easy
+Create an object called calculator with a property result set to 0. The object should have a method add that takes two parameters and adds them together, storing the result in the result property. Use the bind() method to bind the add method to the calculator object.
+
+Example 1:
+Input:
+5 10
+
+Output:
+15
+
+Explanation:
+5+10 = 15
