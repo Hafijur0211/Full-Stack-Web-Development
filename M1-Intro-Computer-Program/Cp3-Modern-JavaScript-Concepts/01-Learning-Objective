@@ -1,0 +1,21 @@
+Learning Objective
+Introduction
+Improve your programming skills with functional programming for clean and scalable code. Enhance your knowledge with ES5 & ES6 concepts and master RegEx and debugging tools to efficiently handle text patterns and eliminate bugs.
+
+Duration: 6 hours
+
+Focus: Functional Programming, ES5 & ES6 modules, RegEx & Debugging in JavaScript
+
+Prerequisites: Basic JavaScript, VS Code IDE
+
+Theme
+Imagine you're a master chef, but instead of pots and pans, your tools of choice are Functional Programming, ES5 & ES6 Concepts, RegEx & debugging in JavaScript. As you create culinary magic, functional programming empowers you to build modular recipes, each step a pure function ensuring consistency and scalability.
+
+But wait, there's more! ES5 & ES6 Concepts bring a spice rack of features, like arrow functions and classes, allowing you to whip up flavorful code that's easier to read and maintain. Now, let's garnish your dish with RegEx. Just like a master spice blend, RegEx lets you precisely search and manipulate text patterns, ensuring your recipes have the perfect flavor. But hey, even the most skilled chef can encounter cooking mishaps. That's where debugging tools step in, helping you uncover and fix any hiccups, ensuring your dishes are flawless.
+
+So put on your chef's hat and embrace this culinary adventure, where functional programming, ES5 & ES6 Concepts, RegEx, and debugging combine to create deliciously robust JavaScript recipes. Bon appétit!
+
+Primary Goals
+Gain a solid understanding of functional programming concepts, including immutability, pure functions, higher-order functions, recursion, and composition.
+Familiarize yourself with the core concepts of ES5 & ES6, such as variable scoping, function expressions, closures, and asynchronous programming using callbacks.
+Learn the syntax and functionality of RegEx in JavaScript.
