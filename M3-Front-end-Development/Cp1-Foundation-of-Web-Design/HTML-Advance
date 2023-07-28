@@ -1,0 +1,778 @@
+HTML Advanced
+Session flow
+Learning Objective
+Introduction
+Theme
+Primary Goals
+HTML Advanced
+Forms in HTML
+Important attributes of Form control
+Project Implementation Step 1
+Tables in HTML
+Project Implementation Step 2
+Lists in HTML
+Project Implementation Step 3
+iframe in HTML
+Project Implementation Step 4
+Summary
+What did we learn?
+Shortcomings & Challenges
+Best practices to follow
+Enhance your knowledge
+Try it Yourself
+Learning Objective
+Introduction
+HTML (Hypertext Markup Language) has several advanced concepts that can enhance your web development skills and allow you to create more sophisticated and interactive web pages.
+Focus: HTML Forms, Tables, Lists, and iframe
+Prerequisites: VS Code IDE and HTML Basics
+Theme
+Medium is a popular online publishing platform that incorporates various HTML advanced concepts to provide an interactive and user-friendly reading experience. The medium allows users to sign up, log in, and interact with the platform through forms. They use HTML form elements such as input fields, checkboxes, and buttons to collect user information and enable actions like submitting an article or leaving comments.
+They also utilize HTML lists to structure and present content. They use ordered lists (<ol>) and unordered lists (<ul>) to display numbered and bulleted lists, respectively. This helps in presenting information in an organized and readable manner.
+The medium may incorporate HTML tables to present tabular data or layout information in a structured format. Tables can be used for presenting data, such as statistics or comparisons, or for organizing content in a grid-like structure. 
+They may also use iframes to embed external content within their articles. For example, they might embed videos from platforms like YouTube or display interactive elements from other websites. The use of iframes allows Medium to incorporate rich media and interactive features seamlessly into their articles.
+Primary Goals
+Understand the fundamentals of HTML forms and their various input elements.
+Learn how to structure and present tabular data using HTML tables.
+Gain knowledge about creating ordered, unordered and definition lists in HTML.
+Understand the concept of iframes and how to embed external content within a webpage.
+Able to apply your knowledge effectively during the project implementation steps.
+ 
+HTML Advanced
+Forms in HTML
+HTML forms are an essential part of web development as they allow users to input and submit data. HTML provides a set of elements and attributes to create forms. Here's a detailed explanation of HTML forms and their components:
+<form> element: The <form> element is used to create a form. It acts as a container for various form controls. It has two important attributes:
+action: Specify the URL or endpoint where the form data should be sent upon submission.
+method: Specify the HTTP method to be used when submitting the form, either "get" or "post.”
+Here's an example of how the <form> tag is used:
+<form action="/submit_form" method="post">
+  <!-- form controls go here -->
+</form>
+In the upcoming sections of this course, we will explore this type in more detail.
+Form controls: Form controls are elements that allow users to input and select data. Here are some commonly used form controls:
+<input>: Creates an input field for various types of data, such as text, email, password, checkboxes, radio buttons, etc.
+Name: The name field allows users to input their names. It is typically a single-line text input (<input type="text">).
+Email: The email field is used for collecting email addresses. It ensures that the entered value follows a valid email format (<input type="email">).
+Mobile: The mobile field is used to collect users' phone numbers. It can accept numeric input and may include additional validation or formatting requirements (<input type="tel">).
+Radio Button: Radio buttons are used when users need to choose one option from a list. They provide a set of mutually exclusive options, and only one option can be selected at a time (<input type="radio">).
+Checkbox: Checkboxes allow users to select one or more options from a set of choices. Each checkbox is independent of the others, and multiple options can be selected simultaneously (<input type="checkbox">).
+Text area: The text area allows users to input multiple lines of text. It is useful for collecting longer messages, comments, or descriptions (<textarea></textarea>).
+File Upload: The file upload field enables users to select and upload files from their local device to the server. It typically displays a "Browse" or "Choose File" button (<input type="file">).
+Submit Button: The submit button triggers the form submission process. When clicked, it sends the form data to the server for processing (<input type="submit"> or <button type="submit"></button>).
+Here's an example of how different <form> elements are used:
+<input type="text" name="username" id="username">
+<textarea name="message" id="message" rows="4"></textarea>
+<button type="submit">Submit</button>
+Important attributes of Form control:
+name attribute: The name attribute is used to identify form controls when the form is submitted. It serves as the key for the corresponding input value.
+Example:
+<input type="text" name="username">
+label element: The <label> element provides a text label for form controls. It improves accessibility and usability by associating the label with its corresponding control.
+Example:
+<label for="username">Username:</label>
+<input type="text" name="username" id="username">
+required attribute: The required attribute makes a form control mandatory, ensuring the user provides a value before submitting the form.
+Example:
+<input type="text" name="username" required>
+These are the fundamental components of HTML forms. You can enhance forms by implementing form validation, styling, and utilizing JavaScript for client-side interactivity.
+Project Implementation Step 1:
+The code snippet provided is an HTML form for Contact Us section of the Reserve App.
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserve</title>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <header>
+      <img src="./assets/bus.png" alt="bus" width="75px" />
+      <div>Reserve</div>
+      <nav>
+        <a href="" target="_blank">Tickets</a>
+        <a href="" target="_blank">Contact Us</a>
+        <a href="">Login</a>
+        <a href="">Register</a>
+      </nav>
+    </header>
+    <!-- Webpage Main Content -->
+    <main>
+      <form action="#" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required /><br /><br />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required /><br /><br />
+
+        <label for="mobile">Mobile Number:</label>
+        <input type="tel" id="mobile" name="mobile" required /><br /><br />
+
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="male" required />
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female" />
+        <label for="female">Female</label>
+        <input type="radio" id="pnts" name="gender" value="pnts" />
+        <label for="pnts">Prefer not to say</label>
+        <br /><br />
+
+        <label for="message">Message:</label><br />
+        <textarea
+          id="message"
+          name="message"
+          rows="4"
+          cols="50"
+          required
+        ></textarea
+        ><br /><br />
+
+        <label for="image">Upload Image:</label>
+        <input type="file" id="image" name="image" /><br /><br />
+
+        <label for="newsletter">Subscribe to Newsletter:</label>
+        <input type="checkbox" id="newsletter" name="newsletter" /><br /><br />
+
+        <input type="submit" value="Submit" />
+      </form>
+    </main>
+				<hr> <!-- Used to insert a horizontal rule or a horizontal line in a web page.-->
+    <footer>
+      <p>&copy; 2023 AlmaBetter. All rights reserved</p>
+      <div>
+        <h3>Follow Us</h3>
+        <a href="https://www.facebook.com">
+          <img src="./assets/facebook.png" alt="Facebook" width="24px"
+        /></a>
+        <a href="https://www.twitter.com">
+          <img src="./assets/twitter.png" alt="Twitter" width="24px"
+        /></a>
+        <a href="https://www.instagram.com">
+          <img src="./assets/instagram.png" alt="Instagram" width="24px"
+        /></a>
+      </div>
+    </footer>
+  </body>
+</html>
+Output:
+notion image
+ 
+Tables in HTML
+HTML tables can be used to present the bus schedules, including departure times, arrival times, and other details. Each row of the table represents a different bus trip, and each column represents a specific attribute, such as the bus number, origin, destination, departure time, and duration. 
+Attributes that can be applied include:
+<table>: Used to define a table in a web page. It serves as a container for other table-related elements such as <caption>, <thead>, <tbody>, and <tfoot>. It allows you to organize data into rows and columns.
+Example:
+<table>
+  <!-- Table content goes here -->
+</table>
+<caption>: Used to provide a caption or title for the table. It is typically placed inside the <table> element and appears above or below the table, depending on the styling.
+Example:
+<table>
+  <caption>This is a table caption</caption>
+  <!-- Table content goes here -->
+</table>
+<thead>: Used to group the header content of a table. It is usually placed inside the <table> element and contains one or more <tr> elements that define table rows.
+Example:
+<table>
+  <thead>
+    <!-- Table header content goes here -->
+  </thead>
+  <tbody>
+    <!-- Table body content goes here -->
+  </tbody>
+</table>
+<tr>: Used to define a table row. It is typically placed inside the <tbody>, <thead>, or <tfoot> element and contains one or more <td> or <th> elements that define table cells.
+Example:
+<table>
+  <tbody>
+    <tr>
+      <!-- Table body content goes here -->
+    </tr>
+  </tbody>
+</table>
+<th>: Used to define table header cells. It is similar to <td>, but it is specifically used for headers. It is typically placed inside <thead> and <tr> elements.
+Example:
+<table>
+  <thead>
+    <tr>
+      <th>Header 1</th>
+      <th>Header 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Table content goes here -->
+  </tbody>
+</table>
+scope: Used with <th> elements to specify whether a header is associated with a row (scope="row") or a column (scope="col"). It helps in providing semantic information about the header and improves accessibility for screen readers.
+Example:
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Column Header</th>
+      <th scope="row">Row Header</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Table content goes here -->
+  </tbody>
+</table>
+<tbody>: Used to group the body content of a table. It is typically placed inside the <table> element and contains one or more <tr> elements that define table rows.
+Example:
+<table>
+  <thead>
+    <!-- Table header content goes here -->
+  </thead>
+  <tbody>
+    <!-- Table body content goes here -->
+  </tbody>
+</table>
+<td>: Represents a table cell. It is used to define individual cells within a table row. It can contain text, images, links, or other HTML elements.
+Example:
+<table>
+  <tbody>
+    <tr>
+      <td>Cell 1</td>
+      <td>Cell 2</td>
+    </tr>
+  </tbody>
+</table>
+colspan & rowspan: Used with <td> and <th> elements to specify the number of columns or rows a cell should span. colspan is used to make a cell span multiple columns, and rowspan is used to make a cell span multiple rows.
+Example:
+<table>
+  <tr>
+    <td colspan="2">This cell spans two columns</td>
+    <td rowspan="2">This cell spans two rows</td>
+  </tr>
+  <tr>
+    <td>Cell 1</td>
+    <td>Cell 2</td>
+  </tr>
+</table>
+Practical Implementation Step 2:
+The code provided is an HTML table markup for displaying a bus schedule for reserving bus trips.
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserve</title>
+  </head>
+
+  <body>
+    <!-- Navigation Bar -->
+    <header>
+      <img src="./assets/bus.png" alt="bus" width="75px" />
+      <div>Reserve</div>
+      <nav>
+        <a href="" target="_blank">Tickets</a>
+        <a href="" target="_blank">Contact Us</a>
+        <a href="">Login</a>
+        <a href="">Register</a>
+      </nav>
+    </header>
+    <!-- Webpage Main Content -->
+    <main>
+		<!-- Bus Schedule Table -->
+      <table>
+        <caption>Reserve Bus Schedule</caption>
+        <thead>
+          <tr>
+            <th>Bus Details</th>
+            <th colspan="3">Trip Information</th>
+          </tr>
+          <tr>
+            <th scope="col">Bus Number</th>
+            <th scope="col">Origin</th>
+            <th scope="col">Destination</th>
+            <th scope="col">Departure Time</th>
+            <th scope="col">Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ASC712</td>
+            <td>New York City</td>
+            <td>Boston</td>
+            <td>09:00 AM</td>
+            <td>2 hours</td>
+          </tr>
+          <tr>
+            <td>XYZ789</td>
+            <td>San Francisco</td>
+            <td>Los Angeles</td>
+            <td>11:30 AM</td>
+            <td>3 hours</td>
+          </tr>
+          <tr>
+            <td>DEF456</td>
+            <td>Miami</td>
+            <td>Orlando</td>
+            <td>10:45 AM</td>
+            <td>4 hours</td>
+          </tr>
+          <tr>
+            <td>GHI789</td>
+            <td>Chicago</td>
+            <td>St. Louis</td>
+            <td>08:15 AM</td>
+            <td>5 hours</td>
+          </tr>
+          <tr>
+            <td>JKL012</td>
+            <td>Seattle</td>
+            <td>Portland</td>
+            <td>09:30 AM</td>
+            <td>3.5 hours</td>
+          </tr>
+          <tr>
+            <td>MNO345</td>
+            <td>Denver</td>
+            <td>Las Vegas</td>
+            <td>12:00 PM</td>
+            <td>6 hours</td>
+          </tr>
+          <tr>
+            <td>RVC109</td>
+            <td>Atlanta</td>
+            <td>Nashville</td>
+            <td>10:00 AM</td>
+            <td>4.5 hours</td>
+          </tr>
+          <tr>
+            <td>STU901</td>
+            <td>Houston</td>
+            <td>San Antonio</td>
+            <td>11:15 AM</td>
+            <td>2.5 hours</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+				<hr> 
+
+    <footer>
+      <p>&copy; 2023 AlmaBetter. All rights reserved</p>
+      <div>
+        <h3>Follow Us</h3>
+        <a href="https://www.facebook.com">
+          <img src="./assets/facebook.png" alt="Facebook" width="24px" /></a>
+        <a href="https://www.twitter.com">
+          <img src="./assets/twitter.png" alt="Twitter" width="24px" /></a>
+        <a href="https://www.instagram.com">
+          <img src="./assets/instagram.png" alt="Instagram" width="24px" /></a>
+      </div>
+    </footer>
+  </body>
+
+</html>
+Note: The appearance of the output may not be visually appealing, as this code snippet represents the basic structure of HTML tables without any CSS styling. In the upcoming lessons of this chapter, we will learn how to apply CSS to enhance and style the table's presentation.
+ 
+Output:
+notion image
+ 
+Lists in HTML
+Ordered Lists (<ol>): An ordered list is used when you want to display a list of items in a specific order or sequence. Each item in the list is represented by an <li> (list item) element.
+The type attribute of the <ol> element in HTML allows you to specify the numbering style for an ordered list.  If the type attribute is not specified in the <ol> element in HTML, the default numbering style will be used, which is decimal numbers (type="1").
+Here are the possible values for the type attribute:
+type="1": This is the default value and represents decimal numbers (1, 2, 3...).
+type="A": Uppercase Latin letters (A, B, C...).
+type="a": Lowercase Latin letters (a, b, c...).
+type="I": Uppercase Roman numerals (I, II, III...).
+type="i": Lowercase Roman numerals (i, ii, iii...).
+type="1" with start="X": Starts the numbering at a specific number. Replace X with the desired starting number.
+type="A" with start="X": Starts the uppercase lettering at a specific letter. Replace X with the desired starting letter.
+type="a" with start="X": Starts the lowercase lettering at a specific letter. Replace X with the desired starting letter.
+These options provide flexibility in choosing the numbering or lettering style for your ordered lists.
+Example:
+<!-- When type of ordered list is not specified -->
+<ol>
+  <li>Item 1</li>
+  <li>Item 2</li>
+	<li>Item 3</li>
+</ol>
+
+<!-- When type of ordered list is specified -->
+<ol type="I">
+  <li>First item</li>
+  <li>Second item</li>
+  <li>Third item</li>
+</ol>
+Unordered Lists (<ul>): An unordered list is used when the order of the items is not important. Each item in the list is represented by an <li> element, and the items are typically displayed with bullet points.
+Example:
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+	<li>Item 3</li>
+</ul>
+Definition Lists (<dl>): A definition list is used to present a list of terms and their corresponding definitions. It consists of <dt> (definition term) elements, which represent the terms, and <dd> (definition description) elements, which represent the definitions.
+<dfn>: In HTML lists, the <dfn> element is used to define and highlight the definition or the term being defined within a list. It stands for "definition" and is typically used within <li> elements in a definition list (<dl>).
+Example:
+<!-- Without using dfn element -->
+<dl>
+  <dt>First Term</dt>
+  <dd>Description...</dd>
+  <dt>Second Term</dt>
+  <dd>Description...</dd>
+</dl>
+
+<!-- With dfn element -->
+<dl>
+  <dt><dfn>First Term</dfn></dt>
+  <dd>Description...</dd>
+  <dt><dfn>Second Term</dfn></dt>
+  <dd>Description...</dd>
+</dl>
+Nested Lists: HTML allows you to nest lists within other lists to create hierarchical structures. This means you can have lists inside <li> elements.
+Example:
+<ul>
+  <li>Route 1
+    <ul>
+      <li>Item 1</li>
+      <li>Item 2</li>
+    </ul>
+  </li>
+  <li>Route 2
+    <ul>
+      <li>Item 1</li>
+      <li>Item 2</li>
+    </ul>
+  </li>
+</ul>
+Practical Implementation Step 3:
+The code provided is HTML code that is used to create a structured list and definition list on Reserve App.
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserve</title>
+  </head>
+
+  <body>
+    <!-- Navigation Bar -->
+    <header>
+      <img src="./assets/bus.png" alt="bus" width="75px" />
+      <div>Reserve</div>
+      <nav>
+        <a href="" target="_blank">Tickets</a>
+        <a href="" target="_blank">Contact Us</a>
+        <a href="">Login</a>
+        <a href="">Register</a>
+      </nav>
+    </header>
+    <!-- Webpage Main Content -->
+    <main>
+      <!-- Ordered Lists -->
+      <h3>A step-by-step booking process</h3>
+      <ol>
+        <li>Select origin and destination</li>
+        <li>Choose date and time</li>
+        <li>Enter passenger details</li>
+        <li>Confirm booking</li>
+      </ol>
+
+      <!-- Unordered Lists -->
+      <h3>Benefits of booking through Reserve App</h3>
+      <ul>
+        <li>Comfortable seating</li>
+        <li>Reliable service</li>
+        <li>
+          Competitive prices
+          <ul>
+            <li>Discounts for regular customers</li>
+          </ul>
+        </li>
+        <li>Friendly customer support</li>
+      </ul>
+
+      <!-- Definition Lists -->
+      <h3>Type of Bus services</h3>
+      <dl>
+        <dt><dfn>Standard Bus:</dfn></dt>
+        <dd>Regular seating with air conditioning</dd>
+        <dt><dfn>Deluxe Bus:</dfn></dt>
+        <dd>Comfortable seating, extra legroom, and Wi-Fi</dd>
+        <dt><dfn>Executive Bus:</dfn></dt>
+        <dd>Luxurious leather seats, personal entertainment systems, and complimentary meals</dd>
+      </dl>
+
+    </main>
+    <hr> 
+
+
+    <footer>
+      <p>&copy; 2023 AlmaBetter. All rights reserved</p>
+      <div>
+        <h3>Follow Us</h3>
+        <a href="https://www.facebook.com">
+          <img src="./assets/facebook.png" alt="Facebook" width="24px" /></a>
+        <a href="https://www.twitter.com">
+          <img src="./assets/twitter.png" alt="Twitter" width="24px" /></a>
+        <a href="https://www.instagram.com">
+          <img src="./assets/instagram.png" alt="Instagram" width="24px" /></a>
+      </div>
+    </footer>
+  </body>
+
+</html>
+Output:
+notion image
+iframe in HTML
+An iframe (short for inline frame) is an HTML element used to embed or display content from another source within a web page. It allows you to include external documents such as web pages, images, videos, or interactive applications into your own HTML document. 
+Here's an example of how to use an iframe in HTML:
+<iframe src="https://www.example.com"></iframe>
+In the above example, the iframe is used to display the web page located at "https://www.example.com" within the current document.
+Here are some important attributes you can use with the iframe element:
+src: Specifies the URL of the content to be displayed within the iframe.
+Example:
+<iframe src="https://www.example.com"></iframe>
+height: Sets the height of the iframe in pixels or as a percentage of the parent container's height. 
+Pixels: When specifying the height in pixels, you provide a numerical value that represents the exact height of the iframe in pixels. For example:
+<iframe src="https://www.example.com" height="300"></iframe>
+Percentage: When using a percentage value, the height of the iframe is calculated relative to the height of its parent container. For example:
+<div style="height: 500px;">
+  <iframe src="https://www.example.com" height="50%"></iframe>
+</div>
+Here, the parent container <div> has a fixed height of 500 pixels. The iframe within it has a height of 50%, which means it will occupy half of the parent container's height (250 pixels in this case).
+Using a percentage for the iframe's height allows for more dynamic and responsive designs. As the parent container's height changes, the iframe will adjust proportionally.
+It's important to note that if the parent container's height is not explicitly defined or is set to auto, using a percentage for the iframe's height will not have any effect. In such cases, you may need to define a specific height for the parent container to make the percentage value applicable.
+width: Sets the width of the iframe in pixels or as a percentage of the parent container's width.
+Example:
+<iframe src="https://www.example.com" width="500"></iframe>
+frameborder: Specifies whether or not to display a border around the iframe. Accepts values "0" (no border) or "1" (border visible).
+Example:
+<iframe src="https://www.example.com" frameborder="1"></iframe>
+allowfullscreen: Indicates whether the iframe can be displayed in full-screen mode. Used for videos or interactive content. Accepts the value "true" or "false".
+Example:
+<iframe src="https://www.example.com" allowfullscreen></iframe>
+scrolling: Specifies whether or not to display scrollbars within the iframe. Accepts values "yes", "no", or "auto".
+scrolling="yes": This value indicates that scrollbars should always be displayed, regardless of the content size. Both vertical and horizontal scrollbars will be visible, allowing users to scroll through the iframe's content.
+scrolling="no": This value indicates that no scrollbars should be displayed, even if the content exceeds the available space. Users will not be able to scroll within the iframe, and the content will be clipped if it extends beyond the iframe's dimensions.
+crolling="auto": This value lets the browser decide whether to display scrollbars based on the content size. If the content exceeds the available space, the browser will automatically show scrollbars. If the content fits within the iframe, no scrollbars will be displayed.
+Example:
+<iframe src="https://www.example.com" scrolling="yes"></iframe>
+Note: The behavior of the scrolling attribute may vary across different browsers and platforms. In some cases, browsers may ignore the attribute and display scrollbars based on their own default settings. Additionally, modern web development practices often recommend handling scrollbars and scrolling behavior using CSS rather than relying solely on the scrolling attribute.
+sandbox: Provides a sandbox environment for the iframe's content, restricting access to certain features or APIs. The sandbox attribute accepts a space-separated list of values that define the permissions granted to the embedded content. Here are some commonly used values:
+allow-scripts: This value allows the embedded content to execute scripts. Without this value, JavaScript code within the iframe will not run.
+allow-forms: With this value, the embedded content can submit forms. It enables the use of form elements like <input> and <button> within the iframe.
+allow-popups: This value permits the embedded content to open new windows or pop-up windows.
+allow-same-origin: When using this value, the embedded content is restricted to the same origin as the parent document. It means that the iframe can only interact with resources from the same domain, protocol, and port as the parent document.
+allow-top-navigation: This value allows the embedded content to navigate the top-level window. It enables the iframe to change the URL of the parent document.
+Example:
+<iframe src="https://www.example.com" sandbox="allow-scripts allow-forms"></iframe>
+In this example, the iframe's content is allowed to execute scripts and submit forms, but it is restricted from accessing other features like opening pop-ups or navigating the top-level window.
+The sandbox attribute is particularly useful when embedding content from untrusted sources or when you want to isolate the embedded content from the rest of your web page. It provides an additional layer of security by limiting the capabilities of the embedded content and reducing the potential risks associated with executing untrusted code.
+name: Specifies a name for the iframe, which can be used as a target for links or form submissions within the iframe.
+Example:
+<iframe src="https://www.example.com" name="myFrame"></iframe>
+loading: Specifies how the iframe content should be loaded. Accepts values "eager" (immediate loading), "lazy" (deferred loading), or "auto" (browser default).
+Example:
+<iframe src="https://www.example.com" loading="lazy"></iframe>
+title: Provides a title or description for the iframe, which can be used by screen readers or for accessibility purposes.
+Example:
+<iframe src="https://www.example.com" title="Example Website"></iframe>
+Practical Implementation Step 4:
+The code provided is an HTML code snippet that includes an iframe element for the Almabetter website on the Reserve App.
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserve</title>
+  </head>
+
+  <body>
+    <!-- Navigation Bar -->
+    <header>
+      <img src="./assets/bus.png" alt="bus" width="75px" />
+      <div>Reserve</div>
+      <nav>
+        <a href="" target="_blank">Tickets</a>
+        <a href="" target="_blank">Contact Us</a>
+        <a href="">Login</a>
+        <a href="">Register</a>
+      </nav>
+    </header>
+    <!-- Webpage Main Content -->
+    <br>  <!-- Used to insert a single line break -->
+
+    <main>
+      
+		<!-- iframe with its attrbites -->
+			<iframe src="https://www.almabetter.com/courses/full-stack-web-development" 
+							width="1300" 
+							height="650" 
+							title="AlmaBetter Website"
+							frameborder="1" 
+							scrolling="auto" 
+							>
+			</iframe>
+    
+		</main>
+    <br>
+    <footer>
+      <p>&copy; 2023 AlmaBetter. All rights reserved</p>
+      <div>
+        <h3>Follow Us</h3>
+        <a href="https://www.facebook.com">
+          <img src="./assets/facebook.png" alt="Facebook" width="24px" /></a>
+        <a href="https://www.twitter.com">
+          <img src="./assets/twitter.png" alt="Twitter" width="24px" /></a>
+        <a href="https://www.instagram.com">
+          <img src="./assets/instagram.png" alt="Instagram" width="24px" /></a>
+      </div>
+    </footer>
+  </body>
+
+</html>
+Output:
+notion image
+ 
+ 
+Summary
+What did we learn?
+The <form> element is used to create a form and has attributes like action and method. Form controls allow users to input and select data.
+Commonly used form controls include <input>, <textarea>, <select>, and <button>.
+Each form control has attributes like name, label, and required for identification, labeling, and making fields mandatory.
+HTML tables are used to present data in rows and columns.
+Key elements for tables are <table>, <caption>, <thead>, <tbody>, <tfoot>, <tr>, <th>, and <td>.
+Attributes like scope, colspan, and rowspan are used for semantic information and spanning cells.
+Ordered lists (<ol>) are used to display items in a specific order or sequence, whereas Unordered lists (<ul>) are used when item order is not important. Items are typically displayed with bullet points.
+Definition lists (<dl>) are used for presenting terms and their definitions. They consist of <dt> and <dd> elements. <dfn> can be used to highlight definitions.
+Nested lists allow the creation of hierarchical structures by placing lists inside <li> elements.
+An iframe is an HTML element used to embed or display content from another source within a web page.
+Shortcomings & Challenges
+One of the challenges with forms, tables, and lists is ensuring accessibility for users with disabilities.
+Validating user input and providing appropriate error messages can be challenging.
+Forms, tables, and lists may not automatically adapt well to different screen sizes and devices. Designing responsive layouts that properly display and maintain usability on various screen sizes can be a challenge.
+Protecting sensitive user information, preventing cross-site scripting (XSS) attacks, and properly sanitizing user input are essential challenges to address.
+Best practices to follow
+Use semantic HTML elements and attributes to provide clear and meaningful structure to your forms, tables, and lists. This improves accessibility and search engine optimization (SEO), and facilitates better understanding by both humans and machines.
+Provide descriptive labels for form controls to ensure users understand the purpose of each field. Use appropriate attributes like label and aria-label to associate labels with their corresponding form controls.
+Apply security measures such as input validation, sanitization, and proper handling of user input to prevent security vulnerabilities like XSS attacks. Implement encryption and security protocols when handling sensitive data.
+Thoroughly test your forms, tables, and lists across different browsers, devices, and screen sizes. Gather feedback from users to identify any usability issues or areas for improvement.
+ 
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+Multimedia in HTML: https://www.codewithrandom.com/2022/12/10/how-to-add-multimedia-to-html/
+More advanced HTML features: https://www.w3.org/MarkUp/Guide/Advanced.html
+ 
+Try it Yourself
+Let's build this mini project in the VS Code IDE. Don't forget to join the AlmaBetter Community to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
+Question
+Task: Create a Webpage with Advanced HTML Elements
+Create an HTML document structure with the necessary tags including <html>, <head>, and <body>.
+Inside the <head> tag, add a title for your webpage.
+Within the <body> tag, create a header using the <header> tag and add a suitable heading for your webpage.
+Create a form using the <form> tag.
+Include appropriate form elements such as text input, radio buttons, checkboxes, and a submit button.
+Add proper labels for each form element.
+Apply necessary attributes like name, id, and value to the form elements.
+Below the Form, Create an ordered list (<ol>) with at least five list items (<li>).
+Create an unordered list (<ul>) with at least three list items (<li>).
+Build a table with the following details:
+Include a table header using the <th> tag.
+Create a table row (<tr>) with at least three columns (<td>) in each row.
+Populate the table with relevant information.
+At last, create an <iframe> element.
+Set the src attribute to the www.almabetter.com website.
+Adjust the width and height attributes to display the iframe appropriately.
+Solution
+notion image
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Advanced HTML Elements</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Advanced HTML Elements</h1>
+    </header>
+
+    <form>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" value="" /><br />
+
+      <label for="gender">Gender:</label>
+      <input type="radio" id="male" name="gender" value="male" />
+      <label for="male">Male</label>
+      <input type="radio" id="female" name="gender" value="female" />
+      <label for="female">Female</label><br />
+
+      <label for="hobby">Hobbies:</label>
+      <input type="checkbox" id="reading" name="hobby" value="reading" />
+      <label for="reading">Reading</label>
+      <input type="checkbox" id="traveling" name="hobby" value="traveling" />
+      <label for="traveling">Traveling</label><br />
+
+      <input type="submit" value="Submit" />
+    </form>
+
+    <h2>Ordered List</h2>
+    <ol>
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+      <li>Item 4</li>
+      <li>Item 5</li>
+    </ol>
+
+    <h2>Unordered List</h2>
+    <ul>
+      <li>Item A</li>
+      <li>Item B</li>
+      <li>Item C</li>
+    </ul>
+
+    <h2>Table</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>City</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>John Doe</td>
+          <td>25</td>
+          <td>New York</td>
+        </tr>
+        <tr>
+          <td>Jane Smith</td>
+          <td>30</td>
+          <td>London</td>
+        </tr>
+        <tr>
+          <td>Michael Johnson</td>
+          <td>35</td>
+          <td>Paris</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Iframe</h2>
+    <iframe src="https://www.almabetter.com" width="100%" height="500"></iframe>
+  </body>
+</html>
+Explanation
+The provided code is an HTML document that showcases various advanced HTML elements and their usage. Here's a breakdown of the code:
+<!DOCTYPE html>: This is the document type declaration that specifies the HTML version being used.
+<html>: The opening and closing tags that enclose the entire HTML content.
+<head>: The head section of the HTML document that contains metadata and title information.
+<title>: The title of the HTML document, which appears in the browser's title bar or tab.
+<body>: The body section of the HTML document, which contains the visible content of the webpage.
+<header>: A semantic HTML element used to represent the introductory content of the webpage. In this case, it contains an <h1> heading with the text "Advanced HTML Elements".
+<form>: A form element used to create a form for user input. It contains several form controls.
+<label>: A label element associated with form controls. The for attribute links the label to the corresponding control using the id attribute.
+<input>: An input element used to create various form controls. In this code, it includes text input, radio buttons, and checkboxes.
+<h2>: Heading level 2 element used to create subheadings. In this code, it is used to create headings for the ordered list, unordered list, table, and iframe sections.
+<ol>: An ordered list element that represents a numbered list. It contains several <li> (list item) elements, each representing an item in the list.
+<ul>: An unordered list element that represents a bulleted list. It also contains <li> elements.
+<table>: A table element used to create a table structure. It consists of <thead> (table header) and <tbody> (table body) sections. The table header contains a row (<tr>) with <th> (table header cell) elements, representing column headings. The table body contains rows with <tr> elements, each containing <td> (table data cell) elements that represent the data in each column.
+<iframe>: An iframe element used to embed another webpage within the current webpage. It is specified with a src attribute that points to the URL of the webpage to be displayed. The width and height attributes determine the dimensions of the iframe.
+Overall, the code demonstrates the usage of various HTML elements such as headers, forms, lists, tables, and iframes to create different types of content and interactivity in a webpage.
