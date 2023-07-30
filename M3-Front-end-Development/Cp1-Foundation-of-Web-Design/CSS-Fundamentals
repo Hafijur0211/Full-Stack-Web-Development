@@ -1,0 +1,1636 @@
+CSS Fundamentals
+Session Flow
+Learning Objective
+Introduction
+Theme
+Primary Goals
+CSS Fundamentals
+Intro to CSS
+CSS Implementation Approaches
+Project Implementation Step 1
+CSS Syntax and Structure
+CSS Units
+CSS Box Model
+Width and Height
+Project Implementation Step 2
+Padding
+Project Implementation Step 3
+Margin
+Project Implementation Step 4
+Color
+Border
+Project Implementation Step 5
+Text Property
+Project Implementation Step 6
+Background Property
+Project Implementation Step 7
+Summary
+What did we learn?
+Shortcomings & Challenges
+Best practices to follow
+Enhance your knowledge
+Try it Yourself
+Learning Objective
+Introduction
+CSS is used to describe the visual appearance and formatting of a document written in HTML, enabling web designers to create stylish and visually appealing websites.
+Focus: Basics of CSS, CSS Selectors and properties
+Prerequisites: VS Code IDE and HTML
+Theme
+Amazon is one of the world's largest e-commerce websites, and the design and layout of the site play a crucial role in the customer's experience. With the help of CSS, Amazon is able to create visually appealing and user-friendly web pages, making it easy for customers to find and purchase products.
+The use of CSS also allows Amazon to create a consistent look and feel across the site, which helps establish trust and credibility with customers. As a result, Amazon's use of CSS contributes to its success as a leading e-commerce company.
+Primary Goals
+Gain a solid understanding of CSS, its purpose, and how it is used to style web pages.
+Become familiar with fundamental CSS Properties like color, width, font-family, background, etc.
+Apply the concepts learned in each step to implement a project, gradually style a webpage based on the provided project implementation steps.
+Learn how to use appropriate CSS Properties to style different parts of a webpage
+Explore additional CSS properties to enhance the user experience and styling of the webpage.
+ 
+CSS Fundamentals
+Intro to CSS
+CSS (Cascading Style Sheets) is a style sheet language used to describe the presentation of a document written in a markup language like HTML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript.
+It is designed to separate presentation and content, including layout, colors, and fonts. This separation can improve content accessibility, provide more flexibility and control in the specification of presentation characteristics, enable multiple web pages to share formatting, and reduce complexity and repetition in the structural content.
+Here is a simple example of CSS applied to a simple HTML structure:
+<h1>Welcome to AlmaBetter Website</h1>
+<p>This is a paragraph of text.</p>
+In the HTML code, we have a <h1> heading element and a <p> paragraph element.
+h1 {
+  color: red;
+  font-size: 24px;
+}
+
+p {
+  color: green;
+}
+Output:
+notion image
+In the above CSS code:
+The selector h1 selects the <h1> heading element.
+The properties color and font-size are applied to the h1 selector.
+The color property sets the text color of the <h1> heading to red.
+The font-size property sets the font size of the <h1> heading to 24 pixels.
+The selector p selects the <p> paragraph element.
+The color property is applied to the p selector, setting the text color of the paragraph to green.
+ 
+By adding CSS to HTML, you can enhance the visual appearance and styling of your web pages. CSS (Cascading Style Sheets) allows you to control the layout, colors, fonts, and other design elements of your HTML content, making it more engaging and visually appealing to users. 
+With CSS, you can apply styles to specific HTML elements or create custom stylesheets that can be reused across multiple pages, promoting consistency and ease of maintenance. By leveraging the power of CSS, you can create dynamic, responsive, and professional-looking websites that leave a lasting impression on your audience.
+ 
+Important Note: Although this lesson may appear lengthy, it has been designed with beginners in mind. It provides a thorough coverage of every important property in CSS. For those already familiar with these concepts, there is an option to skip reading about all the properties. For instance, you can utilize any of the available CSS units such as pixels, percentages, or viewport-percentage lengths, so there is no necessity to go through all the types. However, they are mentioned to ensure a comprehensive understanding. Similarly, once you understand how the padding-top property is used in CSS, you can apply the same concept to the right, bottom, and left sides. All the different types and their usage are included for your reference. 
+CSS Implementation Approaches
+CSS can be used in a variety of ways, depending on your needs and preferences. Some of the most common approaches include using external or internal style sheets, inline styles, responsive design, and a pre-processor like Sass or Less.
+Inline Approach
+Inline CSS is a style sheet language used for styling individual HTML elements. It consists of style attributes that are added directly to the HTML elements. This approach allows you to apply a specific set of styles to a single element rather than having to apply a style to an entire document or an entire page.
+For example:
+<h1 style="color:pink;">A Pink Heading</h1>
+
+<p style="color:green;">A green paragraph.</p>
+Output:
+notion image
+Embedded Approach
+The embedded approach to using CSS involves styling a web page by adding the CSS code directly within the HTML. This approach is beneficial to developers who are working on small projects that require minimal styling since it is easier to keep track of the code and the changes made. 
+For example:
+<style>
+  h2 {
+    font-size: 1.5rem;
+    color: #2f8d46;
+    text-align: center;
+  }
+
+  p {
+    font-variant: italic;
+  }
+
+</style>
+Output:
+notion image
+External Approach
+The external approach to using CSS is when an external stylesheet is used for styling HTML documents. This approach to using CSS is generally preferred for larger projects or websites, as it allows for easier maintainability and organization of the code. 
+All of the CSS code can be stored in a single file and then linked to the HTML documents, which eliminates the need for copying and pasting code into multiple files. By using an external stylesheet, the code is also easier to debug, as all the code is in one place instead of scattered across multiple documents. 
+For example:
+<head>
+  <link rel="stylesheet" href="stylesheet.css">
+</head>
+Project Implementation Step 1:
+The first step is to add the external CSS file to our project by using the link tag and adding the stylesheet style.css to our web page. This HTML File will be used in all future Project Implementation of CSS.
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserve</title>
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+    <header>
+        <div id="head-title">
+            <img src="./assets/bus.png" alt="bus" id="logo" />
+            <div id="title-name">RESERVE</div>
+        </div>
+        <nav>
+            <div id="hide-display">
+                <a href="" target="_blank" class="nav-elements">Tickets</a>
+                <a href="" target="_blank" class="nav-elements">Contact Us</a>
+            </div>
+            <div id="nav-end">
+                <a href="" id="login">Login</a>
+                <a href="" class="nav-elements">Register</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section id="main-content">
+            <div id="location">
+                <div id="location-select">
+                    <p>From:</p>
+                    <select name="Depart" id="depart">
+                        <option value="Delhi">Delhi</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Bengaluru">Bengaluru</option>
+                        <option value="Chennai">Chennai</option>
+                    </select>
+
+                </div>
+                <div id="location-select">
+                    <p>To:</p>
+                    <select name="arrive" id="arrive">
+                        <option value="Delhi">Delhi</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Bengaluru">Bengaluru</option>
+                        <option value="Chennai">Chennai</option>
+                    </select>
+                </div>
+            </div>
+            <button type="button" id="s-button">Search</button>
+        </section>
+
+        <section>
+            <h1 class="tag-line">Travel with world's largest bus services</h1>
+            <div class="card-collection">
+                <div class="i-card">
+                    <img src="./assets/bus-vector.png" alt="Bus" class="i-image" width="256px" />
+                    <h3 class="i-count">2000+</h3>
+                    <p class="i-count">Bus Collection</p>
+                </div>
+                <div class="i-card">
+                    <img src="./assets/family.png" alt="Family" class="i-image" width="256px" />
+                    <h3 class="i-count">2 Million+</h3>
+                    <p class="i-count">Happy customers globally</p>
+                </div>
+                <div class="i-card">
+                    <img src="./assets/ticket.png" alt="Ticket" class="i-image" width="256px" />
+                    <h3 class="i-count">5000+</h3>
+                    <p class="i-count">Tickets book everyday</p>
+                </div>
+            </div>
+
+        </section>
+        <section id="testimonials">
+            <div class="t-card">
+                <div>
+                    <h3>Vatsal Agarwal</h3>
+                    <h4>Customer since 2020</h4>
+                </div>
+                <p id="rating">4.9 &#9734;</p>
+                <p>Amazing travel experience with reserve. Excellent staff</p>
+            </div>
+            <div class="t-card">
+                <div>
+                    <h3>Rohan Sharma</h3>
+                    <h4>Customer since 2022</h4>
+                </div>
+                <p id="rating">4.3 &#9734;</p>
+                <p>Amazing service. Always a best time with reserve.</p>
+            </div>
+            <div class="t-card">
+                <div>
+                    <h3>Virat Kohli</h3>
+                    <h4>Customer since 2019</h4>
+                </div>
+                <p id="rating">4.5 &#9734;</p>
+                <p>Bus was clean and the journey was smooth. Reached on time.</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 AlmaBetter. All rights reserved</p>
+        <div class="social-media">
+            <a href="https://www.facebook.com"><img src="./assets/facebook.png" alt="Facebook" class="social-icon"></a>
+            <a href="https://www.twitter.com"><img src="./assets/twitter.png" alt="Twitter" class="social-icon"></a>
+            <a href="https://www.instagram.com"><img src="./assets/instagram.png" alt="Instagram"
+                    class="social-icon"></a>
+        </div>
+    </footer>
+</body>
+
+</html>
+ 
+CSS Syntax and Structure
+CSS Syntax has four main parts:
+Selectors: These are the HTML elements that are going to be styled. They are identified using the element name, class name, or ID name.
+Declaration: The declaration is what tells the browser how to render the element on the page. Multiple declarations can be applied to a single element, and are separated by a semicolon.
+Properties: These are the styling attributes that are going to be applied to the HTML elements. Examples of properties include color, font size, width, height, and margin.
+Values: These are the values that are assigned to the styling properties. Examples of values include red, 12px, 100%, and 10px.
+notion image
+CSS Selectors
+CSS selectors are the primary means of targeting elements on a webpage. Selectors allow developers to target specific HTML elements and apply styles to them. Selectors are written using a combination of tag names, class names, IDs, and attributes.
+Selectors can be combined to create more complex selectors. These selectors can be used to target more specific elements. For example, the selector div.container p will target all <p> tags that are children of elements with the class “container”.
+There are multiple types of CSS selectors, which will be explained in detail below:
+Type selector:
+The most basic selector is the type selector, which is used to select elements based on their type or tag name.
+For example: A type selector can be used to select all <h1> elements on a page and apply a certain font size and color to them.
+<!-- HTML File -->
+
+<a>Home</a>
+<!-- CSS File -->
+
+a {
+  color: red;
+}
+Here, all <a> elements will display in the color red.
+Universal selector:
+Universal CSS selectors are a type of selector that is used to target all elements on a web page. This means that they are used to select all HTML elements, regardless of type or class. Universal selectors are denoted by an asterisk (*) and can be used to apply styles to all elements on a page in one declaration.
+Universal selectors are useful when you want to set a style for all elements on a page. For example, you can use a universal selector to set a font size for all elements or a background color for all elements. This can be helpful when you are creating a consistent design across all elements on your page.
+For example:
+* {
+  color: pink;
+}
+Using this piece of code helps turn all elements pink.
+Descendant selector:
+Descendant CSS selectors are used to target elements that are descendants of other elements. A descendant is an element that is a child, grandchild, great-grandchild, and so on, of another element. Descendant selectors target elements based on their relationship to other elements in the HTML document.
+Descendant selectors are made up of two or more selectors separated by a space. The first selector is the ancestor element, and the second selector is the descendant element. For example, a selector such as "div p" would target all <p> elements that are descendants of a <div> element.
+For example:
+<div> 
+	<p>Honesty is the best Policy!</p> 
+</div>
+div p {
+  background-color: green;
+}
+Class selector:
+Class CSS selectors allow developers to specify which HTML elements should be styled a certain way. With class selectors, developers are able to create a class for a particular element and define the specific styles for that class. 
+For example, if you wanted to target a particular <div> element on your page, you would create a class for it and then use the class selector to define the styles for that class. This allows developers to create more specific styling than if they were to use an element selector, which would style all elements of the same type. 
+Additionally, with class selectors, developers can reuse the same class across multiple elements, allowing them to easily create consistent styling throughout their website. 
+For example:
+<div class="content"> Honesty is the best Policy! </div>
+.content {
+  background-color: pink;
+}
+Here, all the elements with the class name “content” will be displayed with a pink background color.
+Id selector:
+CSS ID selectors are used to identify an element on a webpage based on its ID attribute. An ID attribute is a unique identifier applied to a single element on a web page, and can be used to select, style, and manipulate that element. 
+To use an ID selector, the element must have an ID attribute. This is done by adding the attribute “id” to the element tag and giving it a unique value.
+For example:
+<div id="content1"> Honesty is the best Policy! </div>
+#content1 {
+  text-align: center;
+  color: green;
+}
+Here, using the code above will help change the properties of the elements with the id name content1.
+Child selector:
+Child CSS selectors are a way to target elements that are nested inside another element. This allows you to apply styles only to the element that is a child of the specified selector.
+> Immediate Child Selector: An example of a child CSS selector is the > symbol. This symbol is used to target the immediate child of a selector.
+For example: If you wanted to style the <p> elements inside a <div> element, you could use the following selector: div > p.
+div > h1 {
+  background-color: green;
+}
+Using the above code snippet helps select all <h1> elements that are children of a <div> element.
++ Immediate Sibling Selector: Another child CSS selector is the + symbol. This symbol targets only the immediate next sibling of the specified selector. It can be used to style the next element that comes directly after the specified selector.
+For example:
+div + h1 {
+  background-color: green;
+}
+Doing this helps in selecting the first <h1> element that is placed immediately after <div> elements.
+~ Sibling Selector: A general sibling CSS selector is another child selector used to select elements that are siblings of a specified element. It matches the element that is the next sibling of the specified element and shares the same parent. General sibling selectors are written using the tilde character (~).
+For example:
+div ~ h1 {
+  background-color: green;
+}
+This selects all <h1> elements that are next siblings of <div> elements.
+Attribute selector:
+Attribute CSS Selectors are used to select elements based on their attributes and attribute values. This type of selector allows you to target elements based on the presence or value of a given attribute. 
+For example:
+a[type="text"] {
+  color: green;
+}
+This example selects all <a> elements with a “atr” attribute.
+Grouping selector:
+Grouping CSS selectors allows you to apply the same style to multiple elements at once. This is particularly useful when you have several elements that share similar styling. Instead of repeating the styling for each element individually, you can group the selectors together and apply the styling to all of them at once. 
+For example:
+p, h1 {
+  background-color: green;
+}
+Here, both <p> and <h1> are displayed with the background color green.
+Overriding CSS rules:
+CSS Overriding rules refer to the rules that determine how the cascade of styles is applied to a web page. The cascade is the order in which style declarations are applied to the page. 
+The overriding rule states that if two declarations conflict, the latter one will override the earlier one. This rule is important in ensuring that the latest styles are applied to a page and that the page displays correctly.
+The overriding rule of CSS can be further broken down into two parts:
+Specificity: This refers to how specific a selector is. The more specific a selector is, the more likely it is to override other declarations. For example, if two declarations are made, one for the body and one for a particular <div> element, the latter has a higher specificity and will override the former.
+Order: This refers to the order in which the styles are declared. If two declarations conflict, the one that is declared last will override the one that is declared first. This is critical when writing CSS, as you want to ensure that the order of your declarations is such that the styles you want to be applied are applied last.
+Overall, the overriding rule of CSS is an important part of ensuring that the latest styles are applied to a page and that it displays correctly. By understanding and adhering to this rule, you can ensure that your web pages look as intended.
+Comments in CSS:
+CSS comments allow developers to add notes about their style sheets for other developers or themselves. They are also used to "turn off" certain elements of the code. Comments are written with a forward slash and an asterisk, then the comment, another asterisk, and a forward slash.
+For example:
+/* This comment will be ignored by the browser */
+CSS comments are useful for debugging and troubleshooting the code, as well as for providing reminders and explanations to other developers. They are also used to change the appearance of certain elements or sections of the code without having to make any permanent changes.
+In addition, they can be used to help document the code and keep it organized. This can help developers keep track of their code and make it easier to modify and understand in the future.
+CSS Units
+CSS is a styling language that is used to control the look and presentation of a web page. The most common CSS units are:
+Pixels (px): Pixels are the most common unit used in CSS. They are used to define the size of elements on a page. Pixels are absolute units, meaning that they are an exact measurement and cannot be changed.
+Ems (em): Ems are relative units, meaning that they scale according to the font size of the element. 1 em is equal to the current font size, so if the font size is 16px, then 1em is equal to 16px.
+Percentages (%): Percentages are also relative units, but they are based on the size of the parent element. For example, if the parent element is 400px wide, then 50% would be equal to 200px.
+Points (pt): Points are absolute units, used mainly in print media. 1pt is equal to 1/72 of an inch.
+Rems (rem): Rems are relative units, based on the root font size of the document. The root font size is usually 16px, so 1rem would be equal to 16px.
+Viewport-percentage lengths (vw, vh): Viewport-percentage lengths are relative units that are based on the size of the browser window. 1vw is equal to 1% of the width of the browser window, and 1vh is equal to 1% of the height of the browser window.
+Viewport-units (vmin, vmax): Viewport-units are relative units that are based on the size of the browser window. 1vmin is equal to the smaller of 1vw or 1vh, and 1vmax is equal to the larger of 1vw or 1vh.
+CSS Box Model
+The CSS Box Model is a fundamental concept describing the rectangular boxes generated for HTML elements. It is the cornerstone of web page layout and determines the size, position, and behavior of all the elements on the page. The box model consists of four properties: content, padding, border, and margin.
+notion image
+Why is the box model important in CSS?
+The box model is an important concept in CSS because it is the foundation of how we define the size and appearance of elements on a web page. The box model defines the elements of a web page as a "box," with each element occupying a rectangular space. This box is made up of four distinct parts: content, padding, border, and margin.
+A box's content is the element's main part, such as text, images, etc. The padding is the space between the content and the element's border. The border is a visible line around the element, and the margin is the space between the element and any other elements or the edges of the page.
+Properties of the box model in CSS:
+The CSS box model is essential for understanding how web pages are laid out. It is important to understand the properties of the box model to create effective and attractive web page designs.
+Content area: The content area of the Box Model is the area that contains the actual content of the page. This can include text, images, videos, and other elements. The content area is the page's core and is usually the largest part of the Box Model.
+Padding area: The padding area of the box model is the space between the content and the border of an element. It separates the content from the border, creating a visual buffer and giving the element a more aesthetically pleasing appearance. Padding can be applied to all four sides of an element or any combination of the four.
+Border area: The Border Area of the Box Model in CSS is a part of the Box Model, a fundamental concept in CSS. It defines the rectangular area around an element and includes four properties: margin, border, padding, and content. The Border Area of the Box Model defines the width and color of the element's outer boundary.
+Margin area: The margin area of the CSS box model is the space outside the border and between the margin and the other surrounding elements. The margin will push other elements away from it and is affected by the width and height of the element and the padding and border sizes.
+Width & Height
+Width
+CSS width is a property that allows the user to specify the horizontal dimension of an element. It determines how wide an element should be displayed on a web page. 
+The width property can be applied to various types of elements, such as block-level elements (e.g., <div>, <p>, <h1>) and inline elements (e.g., <span>, <a>, <strong>).
+For example:
+div {
+  width: 200px;
+}
+Output:
+notion image
+In this example, the div element will have a fixed width of 200px. It will occupy a specific width on the page.
+auto Width: Setting width to auto allows the element to automatically adjust its width based on its content or the width of its parent container. If the element is a block-level element, it will take up the full available width of its parent container by default. If it is an inline element, it will adjust its width to fit its content. 
+div {
+  width: auto;
+}
+Maximum and Minimum Width: The max-width property allows you to set a maximum width limit for an element, ensuring it does not exceed that value even if the content or parent container allows for a wider width. 
+Conversely, the min-width property sets a minimum width limit, ensuring that the element always occupies at least that width. 
+div {
+  max-width: 500px;
+  min-width: 200px;
+}
+Height
+CSS height is a property that allows you to specify the vertical dimension of an element. It determines how tall an element should be displayed on a web page. 
+The height property can be applied to various types of elements, such as block-level elements (e.g., <div>, <p>, <h1>) and inline elements (e.g., <span>, <a>, <strong>).
+For example:
+div {
+  height: 100px;
+}
+Output:
+notion image
+In this example, the div element will have a fixed height of 100px. It will occupy a specific height on the page.
+auto Height: Setting height to auto allows the element to automatically adjust its height based on its content or the height of its parent container. 
+If the element is a block-level element, it will adjust its height to fit its content vertically. If it is an inline element, it will take up the height determined by the line height of the text within it.
+div {
+  height: auto;
+}
+Maximum and Minimum Height: The max-height property allows you to set a maximum height limit for an element, ensuring it does not exceed that value even if the content or parent container allows for a greater height. 
+On the other hand, the min-height property sets a minimum height limit, ensuring that the element always occupies at least that height.
+div {
+  max-height: 500px;
+  min-height: 200px;
+}
+The height and width properties may have the following values as well:
+% : The percentage value allows you to define the height or width of an element relative to the size of its containing block. For example, width: 50%; will set the width of an element to be 50% of the width of its parent container. This is particularly useful for creating responsive layouts that adapt to different screen sizes.
+initial: The initial value resets the height or width property to its default value. It ensures that the element is rendered with the default dimensions defined by the browser's CSS stylesheet. This can be useful if you want to override any previously applied height or width styles.
+inherit: The inherit value allows the height or width of an element to inherit the value from its parent element. This means that the element will have the same height or width as its parent element if it has explicitly set dimensions. It is useful when you want to maintain consistency in the size of child elements.
+Project Implementation Step 2:
+In this step, we will add the Height and Width to various HTML Elements of our project. Some of the elements we will target using the tag name, Some of the elements we will target using the class names, and others with the ID specifier.
+This will be our first changes to style.css
+header {
+  height: 50px;
+  /* Height of the Header Section */
+}
+
+main {
+  min-height: 100vh;
+  /* Minimum Height of the main Content Section so that Footer will be after that particular minimum height */
+}
+
+#main-content {
+  min-height: 40vh;
+  /* Setting Minimum Height of the main Content */
+}
+#logo {
+  width: 1.5rem;
+  height: 1.5rem;
+  /* Website Logo Image Width */
+}
+
+#location-select {
+  width: 20rem;
+  /* User Select Option Width */
+}
+#s-button {
+  width: fit-content;
+  /* Setting Button Width to fit content */
+}
+
+.i-card {
+  width: 200px;
+  /* Setting Information Card width */
+}
+.i-image {
+  width: 120px;
+  height: 120px;
+  /* Image in information card width and height */
+}
+.t-card {
+  width: 300px;
+  /* testimonials Card Width */
+}
+
+#rating {
+  width: 35px;
+  /* testimonials Card, User Rating Element Width */
+}
+.social-icon {
+  width: 20px;
+  height: 20px;
+  /* Social Icon Width and Height */
+}
+Output:
+notion image
+Padding
+Padding in CSS is the space between an element and its border. It creates space between the elements on a page without using margins or borders. Padding can be applied to any element, including the body, tables, and images.
+Padding can be applied in either pixels, ems, or percentages. Padding applied in pixels will create an exact size for the padding, padding applied in ems will create a relative size based on the element’s font size; and padding applied in percentages will create a relative size for the padding based on the element’s width.
+There are four different properties for padding in CSS: padding-top, padding-bottom, padding-left and padding-right
+padding-top: Top-padding in CSS is a property used to add padding to the top of an element. This property accepts values in pixels, ems, percentages, and more. When using pixels, it is important to remember that the value should be relative to the size of the element.
+For example:
+div {
+  padding-top: 50px;
+}
+Output:
+notion image
+Similarly, padding-bottom, padding-left and padding-right can be implemented to the HTML elements.
+Padding Shorthand
+The padding property is a shorthand property for the above four individual padding properties. The padding shorthand property can be used to set the padding for all sides simultaneously, or it can be used to set different padding values for each side individually. 
+The syntax for the padding shorthand property is as follows:
+padding: top right bottom left;
+top: Specifies the padding value for the top side of the element.
+right: Specifies the padding value for the right side of the element.
+bottom: Specifies the padding value for the bottom side of the element.
+left: Specifies the padding value for the left side of the element.
+ 
+You can provide one, two, three, or four values to the padding property, depending on your requirements:
+If only one value is provided, it will be used for all sides of the element.
+If two values are provided, the first value will be used for the top and bottom, and the second value will be used for the right and left.
+If three values are provided, the first value will be used for the top, the second value for the right and left, and the third value for the bottom.
+If four values are provided, they will be applied to the top, right, bottom, and left sides, respectively, in clockwise order.
+For Example:
+h1 {
+	padding: 30px 60px;
+}
+Output:
+notion image
+Project Implementation Step 3:
+In this step, we will add padding to all the Elements of our project. The Output of one of the elements is shown in the image. 
+* {
+  padding: 0;
+/*Removing Default Padding*/
+}
+
+header {
+  height: 50px;
+}
+
+#logo {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+#login {
+  padding: 5px 30px;
+  /* Padding in Login Button */
+}
+
+#nav {
+  padding-left: 20px;
+  /* Padding in Nav Bar */
+}
+
+main {
+  min-height: 100vh;
+}
+
+#main-content {
+  min-height: 40vh;
+}
+
+#location-select {
+  width: 20rem;
+  padding: 5px;
+  /* User Select Option Padding */
+}
+#s-button {
+  width: fit-content;
+  padding: 8px 30px;
+  /* Search Button Padding */
+}
+
+.i-card {
+  width: 200px;
+  padding: 10px;
+  /* Information Card Padding */
+}
+.i-image {
+  width: 120px;
+  height: 120px;
+}
+
+#testimonials {
+  padding: 20px;
+  /* Internal Padding of Testimanials container */
+}
+
+.t-card {
+  width: 300px;
+  padding: 20px;
+  /* testimonials Card Padding */
+}
+
+#rating {
+  width: 35px;
+}
+.social-icon {
+  width: 20px;
+  height: 20px;
+}
+Output: 
+Padding in Search Button
+notion image
+Margin
+Margin in CSS is the amount of space that exists between the element and other elements on the page. It is the outermost space surrounding an element. It is used to separate elements from each other. This can be used to create the spacing between elements on the page and give them more breathing room.
+There are four different properties for margin in CSS: margin-top, margin-bottom, margin-left and margin-right
+margin-top: Margin-top is a CSS property used to define the space between an element and the elements that are positioned above it. I. It can be used to create space between two elements, to create a border, or to separate elements from the top of the page.
+For example:
+div {
+  margin-top: 50px;
+}
+Output:
+notion image
+Similarly, margin-bottom, margin-left and margin-right can be implemented to the HTML elements.
+Margin Shorthand
+The margin property is a shorthand property for the above four individual padding properties. The margin shorthand property in CSS allows you to specify the margins for all four sides of an element using a single property. 
+Margins are used to create space around elements, separating them from other elements on the page.
+The syntax for the margin shorthand property is as follows:
+margin: top right bottom left;
+Here's a breakdown of each component:
+top: Specifies the margin value for the top side of the element.
+right: Specifies the margin value for the right side of the element.
+bottom: Specifies the margin value for the bottom side of the element.
+left: Specifies the margin value for the left side of the element.
+ 
+You can provide one, two, three, or four values to the margin property, depending on your requirements:
+If only one value is provided, it will be used for all sides of the element.
+If two values are provided, the first value will be used for the top and bottom, and the second value will be used for the right and left.
+If three values are provided, the first value will be used for the top, the second value for the right and left, and the third value for the bottom.
+If four values are provided, they will be applied to the top, right, bottom, and left sides respectively, in clockwise order.
+For Example:
+h1 {
+	margin:50px;
+}
+Output:
+notion image
+Project Implementation Step 4:
+In this step, we will add the margin to all the Elements of our project. The Output of one of the elements is shown in the image. 
+* {
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  /* Removing Default Margin of Body */
+}
+
+header {
+  height: 50px;
+}
+
+#head-title {
+  margin-left: 100px;
+  /* Left Margin on Website Title */
+}
+
+#logo {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 2px;
+  /* Image and Text Spacing using margin */
+}
+
+#login {
+  padding: 5px 30px;
+}
+
+nav {
+  padding-left: 20px;
+}
+
+#nav-end {
+  margin-right: 30px;
+  /* Right Margin of Nav Bar */
+}
+
+.nav-elements {
+  margin: 2px 30px;
+  /* Internal Nav Elements Margin */
+}
+
+main {
+  min-height: 100vh;
+}
+
+#main-content {
+  min-height: 40vh;
+}
+
+#location-select {
+  width: 20rem;
+  padding: 5px;
+  margin: 5px;
+  /* User Select Margin*/
+}
+
+#location-select p {
+  margin: 0.5rem 4px 1rem;
+  /* Paragraph in Location Select Margin */
+}
+
+#depart,
+#arrive {
+  margin: 1rem, 0;
+}
+#s-button {
+  width: fit-content;
+  padding: 8px 30px;
+  margin: 20px 0px;
+  /* Search Button Margin */
+}
+
+.i-card {
+  width: 200px;
+  padding: 10px;
+  margin: 5px 10px;
+  /* Information Card Margin */
+}
+.i-image {
+  width: 120px;
+  height: 120px;
+}
+
+.i-count {
+  margin: 0;
+  /* Removing default margin from information card */
+}
+
+#testimonials {
+  margin-top: 10vh;
+  /*Top Margin of Testimanials container */
+}
+
+.t-card {
+  width: 300px;
+  padding: 20px;
+  margin: 5px;
+  /* testimonials Card Margin */
+}
+
+.t-card h3,
+.t-card p,
+.t-card h4 {
+  margin: 3px;
+}
+
+#rating {
+  width: 35px;
+  margin-top: 5px;
+  /* testimonials Card, User Rating Element Top Margin */
+}
+.social-icon {
+  width: 20px;
+  height: 20px;
+  margin: 0 30px;
+  /* Social Icon Seperation From Each other Margin */
+}
+Output: Social Icons Seperation
+notion image
+Color
+In CSS, colors are typically specified using either a standard color name, a hexadecimal value, an RGB (Red, Green, Blue) value, or an HSL (Hue, Saturation, Lightness) value. 
+Standard color names are literal names for colors, such as green, blue, or black. These are typically used for basic color choices and are easy to remember. 
+Hexadecimal Format
+The hex format of colors in CSS is a six-digit code that defines the combination of red, green, and blue (RGB) values that create a specific color. This code is written as a hash symbol (#) followed by three pairs of two-digit hexadecimal numbers. 
+Each pair of numbers represents one of the three RGB components and determines the intensity of that component in the resulting color. 
+For example: The hex code #FF0000 represents the color red, as it is composed of a full intensity of red (FF) and no green or blue (00). Hex codes are a popular way of representing colors in web design, as they allow easy access to a wide range of colors without needing to set individual RGB values.
+div {
+  color: #ff0000;
+}
+Output:
+notion image
+RGBA Format
+The RGBA format of colors in CSS is a way to define colors using the red, green, and blue values with an additional alpha value. The alpha value represents the opacity of the color, where an alpha value of 1 is fully opaque and an alpha value of 0 is fully transparent. This format is an extension of the RGB color format and allows for more flexibility when creating color variations and effects.
+The short form of RGBA is RGB without alpha value. RGBA colors can be defined in CSS using the rgba() function, which takes four parameters: the red, green, and blue values, as well as the alpha value. 
+For example:
+div {
+  color: rgba(0, 255, 0, 1);
+}
+Output:
+notion image
+HSLA Format
+HSLA stands for Hue, Saturation, Lightness, Alpha, and is a color format used in CSS to describe a color in an image. The hue of the color is represented by a degree between 0 and 360, where 0 is red, 120 is green, and 240 is blue. 
+The saturation is a percentage between 0% and 100%, and is a measure of how intense the color is. The lightness is also a percentage between 0% and 100%, and is a measure of how bright the color is. Finally, the alpha is a decimal number between 0 and 1, and is a measure of the opacity of the color.
+For Example:
+div {
+	color: hsla(240, 50%, 50%, 1);
+}
+Output:
+notion image
+Border
+CSS borders allow developers to create visible lines around HTML elements. These lines can be customized to create a wide range of effects. Using borders, developers can define the size, color, style, and thickness of the lines used to separate elements.
+Border styles include solid, dotted, dashed, double, groove, ridge, inset, outset, none, and hidden. These styles can be combined with color, width, and radius to create a variety of creative effects.
+The border-width property defines the width of the border. It can be defined in pixels, ems, or percentages.
+The border-color property defines the color of the border. The color can be defined using a named color, a hexadecimal color value, or an RGB color value.
+The border-radius property defines the roundness of the corners of the border. The radius can be defined in pixels, ems, or percentages.
+The border-style property defines the style of the border. The available styles are solid, dotted, dashed, double, groove, ridge, inset, outset, none, and hidden.
+ 
+CSS Border width:
+Border width in CSS defines the width of an HTML element's border. The width can be defined in either pixels or percentages. The default width of a border is usually "medium", which is usually 2 pixels.
+h1.text {
+  border-style: solid;
+  border-width: 5px;
+}
+Output:
+notion image
+CSS Border color:
+h1.text {
+  border-style: solid;
+  border-width: 5px;
+  border-color: aqua;
+}
+Output:
+notion image
+CSS Border radius:
+h1.text {
+  border-style: solid;
+  border-width: 5px;
+  border-color: aqua;
+  border-radius: 10px;
+}
+Output:
+notion image
+ 
+CSS Border style:
+CSS border styles allow you to define the style, width, and color of an element's border. By default, the style of an element's border is "none" and the width is "medium". CSS border styles include solid, dashed, dotted, double, groove, ridge, inset, outset, and hidden.
+solid: The solid border style is the most basic of the border styles. It creates a single, solid line around the element.
+dotted: The dotted border style creates a series of small circles or dots that form a line around the element.
+dashed: The dashed border style creates a line of short, straight lines around the element.
+double: The double border style creates two parallel lines around the element.
+groove: The groove style creates a sunken or recessed line, while the ridge style creates a raised or embossed line.
+inset: The inset style creates a border that appears to be cut into the element.
+outset: The outset style creates a border that appears to be pushed out from the element.
+none: The none border style provides no visible border around the element.
+For example:
+h1.text {
+  border-style: solid;
+  border-width: 5px;
+  border-color: aqua;
+  border-radius: 10px;
+  border-style: dashed;
+}
+Output:
+notion image
+Border:0: Border:0 in CSS is a shorthand property used to set the width of all four borders of an element to 0. This property can be used to remove the border of an element that has been set using the border-width property. 
+For example:
+div {
+  border: 0;
+}
+Output:
+notion image
+Border Shorthand
+The border shorthand property in CSS allows you to set all border properties for all four sides of an element using a single property.
+border-width
+border-style (required)
+border-color
+The syntax for the border shorthand property is as follows:
+border: border-width border-style border-color;
+For Example:
+div {
+  border: 4px solid green;
+}
+Output:
+notion image
+Project Implementation Step 5
+* {
+  padding: 0;
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  height: 50px;
+  border-bottom: 3px solid rgba(201, 195, 195, 0.778);
+  /* Bottom Border to Nav Bar */
+}
+
+#head-title {
+  margin-left: 100px;
+}
+
+#logo {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 2px;
+}
+
+#login {
+  padding: 5px 30px;
+  border-radius: 5px;
+  /* Making Login Button Border Rounded */
+}
+
+nav {
+  padding-left: 20px;
+}
+
+#nav-end {
+  margin-right: 30px;
+}
+
+.nav-elements {
+  margin: 2px 30px;
+}
+
+main {
+  min-height: 100vh;
+}
+
+#main-content {
+  min-height: 40vh;
+}
+
+#location-select {
+  width: 20rem;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  /* Making Div Border Rounded */
+}
+
+#location-select p {
+  margin: 0.5rem 4px 1rem;
+}
+
+#depart,
+#arrive {
+  margin: 1rem, 0;
+  border: none;
+  /* removing select default border */
+}
+#s-button {
+  width: fit-content;
+  padding: 8px 30px;
+  margin: 20px 0px;
+  border-radius: none;
+  border-radius: 5px;
+  /* Making Select Button Border Rounded  and removing default border*/
+}
+
+.i-card {
+  width: 200px;
+  padding: 10px;
+  margin: 5px 10px;
+}
+.i-image {
+  width: 120px;
+  height: 120px;
+}
+
+.i-count {
+  margin: 0;
+}
+
+#testimonials {
+  margin-top: 10vh;
+}
+
+.t-card {
+  width: 300px;
+  padding: 20px;
+  margin: 5px;
+}
+
+#rating {
+  width: 35px;
+  margin-top: 5px;
+  border-radius: 4px;
+  /* testimonials Card, User Rating Element border radius*/
+}
+.social-icon {
+  width: 20px;
+  height: 20px;
+  margin: 0 30px;
+}
+Output: Adding Border to Buttons and Removing Default Borders
+notion image
+Text Properties
+CSS text properties are used to control the appearance and styling of text within HTML elements. Some of these properties to modify text include:
+color: The color property sets the color of the text within an HTML element. It accepts various color formats, like named colors, hexadecimal, RGB, or HSL values.
+For Example:
+div {
+	color: #ff0000;
+}
+Output:
+notion image
+font-size: The CSS font-size property is used to change the size of a font. It is used to specify the size of the font. The font-size can be set to a specific length, percentage, or by using one of the absolute-size or relative-size keywords.
+Absolute size: These keywords are absolute size measurements, such as xx-small, x-small, small, medium, large, x-large, and xx-large. These sizes are fixed and are not affected by the user’s font-size preferences.
+Relative-size: These keywords are relative size measurements, such as larger, smaller, and inherit. These sizes are relative to the size of the parent element and are affected by the user’s font-size preferences.
+For example:
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 30px;
+}
+Output:
+notion image
+font-weight: CSS font-weight is a property used to assign a numerical value to a font's weight or boldness. This property allows web developers to create text that is bolder than the normal text. Font-weight can be used to emphasize elements on a web page or to add a unique style to a particular text.
+While the font-weight property is typically used to increase the boldness of a font, it can also be used to reduce the boldness of a font. While a font-weight of 400 is usually used as the normal font weight, a font-weight of 100 can be used to create light text.
+For example:
+h1 {
+  font-weight: bold;
+}
+Output:
+notion image
+font-style: CSS font-style is used to specify the font style of text. It can be used to set a font to be italic, oblique, or normal. Font-style is most commonly used to set italic text, which is often used for emphasis or for when a particular style is necessary.
+Italic text is created using the font-style property and the value ‘italic’. Oblique text is created using the font-style property and the value ‘oblique’. Normal text is the default font-style and does not require a value.
+For example:
+h1 {
+  font-style: italic;
+}
+Output:
+notion image
+font-family: Font-family is a CSS (Cascading Style Sheets) property that allows you to specify the typeface or font of text in a web page. It is used to define a prioritized list of font families or font names that should be applied to an element. 
+The browser will attempt to render the text using the first available font in the list. If the first font is not available on the user's system, it will move to the next font in the list, and so on, until a suitable font is found or a default font is used.
+For example:
+p {
+	font-family: Arial, Helvetica, sans-serif;
+}
+Output:
+notion image
+text-align: Text alignment in CSS is used to determine the horizontal or vertical alignment of text within a block element
+The syntax for the text-align property is simple. It can be used on any block-level element, such as a paragraph or a heading. To align the text, simply set the text-align property to one of the following values:
+left: aligns the text to the left margin
+right: aligns the text to the right margin
+center: centers the text in the element
+justify: spaces out the words so that the text is aligned flush with both the left and right margins
+In addition to these values, you can also set the text-align property to inherit. This will cause the element to inherit the text alignment settings of its parent element.
+For Example:
+h2 {
+  text-align: center
+}
+Output:
+notion image
+text-decoration: The text-decoration property adds decorative styling to the text, like underline, overline, blink, shadow, italic, or line-through. Each of these decorations has different effects and can be used to draw attention to certain elements on a page. 
+For Example:
+h1 {
+  text-decoration: overline;
+}
+
+h2 {
+  text-decoration: line-through;
+}
+
+h3 {
+  text-decoration: underline;
+}
+
+h4 {
+  text-decoration: underline overline;
+}
+Output:
+notion image
+text-transform: The text-transform property controls the capitalization of the text. The text-transform property include values such as uppercase, lowercase, and capitalize.
+For Example:
+div.upper {
+  text-transform: uppercase;
+}
+
+div.lower {
+  text-transform: lowercase;
+}
+
+div.caps {
+  text-transform: capitalize;
+}
+Output:
+notion image
+text-direction: Using the CSS text-direction property, developers can set the text direction of their web pages to either left-to-right (LTR) or right-to-left (RTL). This property can be applied to both the entire webpage, and individual elements such as paragraphs, headings, and lists.
+For example:
+p.textd {
+  direction: rtl;
+}
+Output:
+notion image
+line-height: The line-height property sets the height of each line of text. It can be specified as a number or unitless value. 
+For example:
+div{
+line-height:50px
+}
+Output:
+notion image
+letter-spacing: Letter spacing, or tracking, is a CSS property used to adjust the amount of space between characters in a text element. This property can be used to create a more visually appealing look, making text easier to read or add emphasis to certain words or phrases.
+For example:
+h1 {
+  letter-spacing: 8px;
+}
+Output:
+notion image
+Project Implementation Step 6
+In this step we have applied various text properties to change our text styles
+* {
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  /* Changin font family of whole page */
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  /* making every link black and removing default underline from links */
+}
+
+header {
+  height: 50px;
+  border-bottom: 3px solid rgba(201, 195, 195, 0.778);
+  /* Bottom Border to Nav Bar */
+}
+
+#head-title {
+  margin-left: 100px;
+}
+
+#title-name {
+  color: rgb(245, 119, 47);
+  font-size: large;
+  font-weight: bold;
+  /* Changing Logo Text Color, Boldness and text-size */
+}
+
+#logo {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 2px;
+}
+
+#login {
+  color: white;
+  padding: 5px 30px;
+  border-radius: 5px;
+  font-weight: bold;
+  /* Changing Text Color to White, Making Text Bold*/
+}
+
+nav {
+  padding-left: 20px;
+}
+
+#nav-end {
+  margin-right: 30px;
+}
+
+.nav-elements {
+  margin: 2px 30px;
+  font-weight: bold;
+  /* Making Nav Elements Bold */
+}
+
+main {
+  min-height: 100vh;
+}
+
+#main-content {
+  min-height: 40vh;
+}
+
+#location-select {
+  width: 20rem;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  /* Making Div Border Rounded */
+}
+
+#location-select p {
+  font-size: medium;
+  font-weight: bold;
+  margin: 0.5rem 4px 1rem;
+  /* Changin Font Size and Weight of P inside Location Selection Div */
+}
+
+#depart,
+#arrive {
+  margin: 1rem, 0;
+  border: none;
+  font-size: medium;
+  /* Changing Input Font Size to Medium */
+}
+
+.tag-line {
+  text-align: center;
+  /* ALign text to Center */
+}
+
+#s-button {
+  width: fit-content;
+  padding: 8px 30px;
+  margin: 20px 0px;
+  border-radius: none;
+  border-radius: 5px;
+  color: white;
+  /* Changing Search Button Color to White, Making it bold and font-size to large*/
+}
+
+.i-card {
+  width: 200px;
+  padding: 10px;
+  margin: 5px 10px;
+}
+.i-image {
+  width: 120px;
+  height: 120px;
+}
+
+.i-count {
+  margin: 0;
+}
+
+#testimonials {
+  margin-top: 10vh;
+}
+
+.t-card {
+  width: 300px;
+  padding: 20px;
+  margin: 5px;
+  color: white;
+  /* Changing Testimonials Background Color to White*/
+}
+
+#rating {
+  width: 35px;
+  margin-top: 5px;
+  border-radius: 4px;
+  color: white;
+  font-size: small;
+	text-align: center;
+  /* Changing rating card text to small,color to white and aligning it to center*/
+}
+.social-icon {
+  width: 20px;
+  height: 20px;
+  margin: 0 30px;
+}
+Output:
+notion image
+Background
+The CSS background properties are used to add background effects to different HTML elements.
+There are various different properties to set the background, some of which include:
+background-color
+background-image
+background-repeat
+background-attachment
+background-position
+background
+We will go through each of them one by one,
+background-color
+The CSS background-color property is used to define the background color of an element. This property can be applied to any HTML element, and affects the background color of the entire element, including any padding and border that may be set.
+When applying a background color, it is important to remember that it will be visible behind any content or other elements within the element.
+For example:
+body {
+  background-color: pink;
+}
+Output:
+notion image
+ 
+background-image
+The CSS background-image property allows you to set an image as the background of an element. The background-image property is used in combination with other properties, such as background-repeat, background-position, and background-size, to create a complete background for an element.
+For example:
+body {
+  background-image: url("image.png");
+}
+Output:
+notion image
+ 
+background-repeat
+CSS background-repeat property is used to specify how a background image should be repeated, or tiled, within an element. It is used to control how a background image is displayed in an element and can be used to create patterns or textures. 
+The background-repeat property can be used with any of the background properties such as background-image, background-position and background-attachment.
+The possible values for the background-repeat property are:
+repeat: The background image will be repeated both horizontally and vertically.
+repeat-x: The background image will be repeated only horizontally.
+repeat-y: The background image will be repeated only vertically.
+no-repeat: The background image will not be repeated.
+For example:
+div {
+  background-image: url("paper.gif");
+  background-repeat: repeat-x;
+}
+Output:
+notion image
+background-attachment
+CSS background-attachment property is used to specify whether a background image scrolls with the content or remains fixed/stationary. It is used to create a parallax effect when the user scrolls the page.
+The background-attachment property accepts four values:
+scroll: The scroll value is the default value and it causes the background image to scroll when the content is scrolled.
+fixed: The fixed value causes the image to remain in a fixed position, relative to the viewport. This can create a parallax effect when the user scrolls the page.
+local: The local value is similar to the scroll value, but it causes the background image to move with the content within the element itself.
+inherit: The inherit value allows the element to inherit the background-attachment value from its parent element.
+For example:
+div  {
+  background-image: url("tree_owl.gif");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+Output:
+notion image
+ 
+background-position
+CSS background-position is used to control the position of a background image. It allows you to specify the exact coordinates of where the image should be placed in the background of an element. It can be specified either as a keyword or as a length or percentage value.
+When using keywords, the values left, right, top, bottom, and center can be used to position the background image. The default value is the center. For example, if you set the value of background-position to the top left, the image will be placed in the top left corner of the element.
+For example:
+div { 
+  background-image: url('image.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; 
+}
+Output:
+notion image
+Background (Shorthand)
+background is a property that allows you to define the background of an element, such as a <div>, <p>, or any other HTML element. 
+The background property provides shorthand syntax to set various background-related properties, including background color, image, position, repeat, and more.
+The syntax for the background property is as follows:
+background: background-color background-image background-repeat background-position background-size;
+Project Implementation Step 7
+In this step, we have added background images and background colors to various elements.
+* {
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+header {
+  height: 50px;
+  border-bottom: 3px solid rgba(201, 195, 195, 0.778);
+ }
+
+#head-title {
+  margin-left: 100px;
+}
+
+#title-name {
+  color: rgb(245, 119, 47);
+  font-size: large;
+  font-weight: bold;
+}
+
+#logo {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 2px;
+}
+
+#login {
+  background-color: rgb(245, 119, 47);
+  color: white;
+  padding: 5px 30px;
+  border-radius: 5px;
+  font-weight: bold;
+  /* Adding Background Color to login Button*/
+}
+
+nav {
+  padding-left: 20px;
+}
+
+#nav-end {
+  margin-right: 30px;
+}
+
+.nav-elements {
+  margin: 2px 30px;
+  font-weight: bold;
+}
+
+main {
+  min-height: 100vh;
+}
+
+#main-content {
+  min-height: 40vh;
+  background-image: url("./assets/travel.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  /* Adding Background Image to main content */
+}
+
+#location-select {
+  background-color: white;
+  width: 20rem;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  /*Select Option Background Color to White*/
+}
+
+#location-select p {
+  font-size: medium;
+  font-weight: bold;
+  margin: 0.5rem 4px 1rem;
+}
+
+#depart,
+#arrive {
+  margin: 1rem, 0;
+  border: none;
+  font-size: medium;
+}
+
+.tag-line {
+  text-align: center;
+}
+
+#s-button {
+  width: fit-content;
+  padding: 8px 30px;
+  margin: 20px 0px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background-color: rgb(245, 119, 47);
+  /* Changing Search Button Background Color*/
+}
+
+.i-card {
+  width: 200px;
+  padding: 10px;
+  margin: 5px 10px;
+}
+.i-image {
+  width: 120px;
+  height: 120px;
+}
+
+.i-count {
+  margin: 0;
+}
+
+#testimonials {
+  margin-top: 10vh;
+  padding: 20px;
+  background-color: rgb(246, 245, 245);
+	/*Changing Testimonials Background Color*/
+}
+
+.t-card {
+  width: 300px;
+  padding: 20px;
+  margin: 5px;
+  background-color: white;
+  /* Changing Testimonials Background Color to White*/
+}
+
+#rating {
+  width: 35px;
+  margin-top: 5px;
+  border-radius: 4px;
+  color: white;
+  font-size: small;
+  text-align: center;
+  background-color: rgb(5, 141, 5);
+  /* Changing rating card background color to green*/
+}
+
+footer {
+  background-color: rgba(233, 225, 225, 0.997);
+  /* Changing footer background color */
+}
+
+.social-icon {
+  width: 20px;
+  height: 20px;
+  margin: 0 30px;
+}
+Output:
+notion image
+In this session, we have styled our page with various colors and text properties In the next session, we will align them perfectly using the display property to complete the styling of the web page.
+ 
+Summary
+What did we learn?
+CSS can be used inline, embedded within HTML, or externally linked as a separate stylesheet. The external approach is typically preferred for it’s benefits on larger projects.
+CSS syntax has four main parts: selectors, declarations, properties, and values. Selectors are used to target HTML elements, declarations define how the elements should be styled, properties are styling attributes, and values are assigned to the properties.
+CSS units include pixels (px), ems (em), percentages (%), points (pt), rems (rem), viewport percentage lengths (vw, vh), and viewport units (vmin, vmax).
+The box model in CSS defines the size and appearance of elements on a web page by dividing them into content, padding, border, and margin, allowing precise control over layout and spacing.
+CSS width and height properties define the horizontal and vertical dimensions of elements on a web page, allowing fixed or flexible sizing based on content.
+Padding in CSS creates space between an element and its border, and it can be applied in pixels, ems, or percentages. It includes properties like padding-top, padding-right, padding-bottom, and padding-left, which allow setting padding for specific sides of an element.
+Margin in CSS is the space between an element and other elements on the page, allowing for separation and spacing. It includes properties like margin-top, margin-right, margin-bottom, and margin-left, which define the margin for specific sides of an element.
+Colors in CSS can be specified using standard color names, hexadecimal values, RGB values, or HSL values, providing flexibility and options for defining colors in web design.
+CSS borders allow developers to create visible lines around HTML elements with customizable properties such as width, color, style, and radius.
+Background properties in CSS, such as background-color, background-image, background-repeat, background-attachment, background-position, and background, are used to add background effects to HTML elements.
+Shortcomings & Challenges
+The CSS box model can sometimes lead to unexpected layout issues, especially when dealing with margins, padding, and borders. 
+Applying multiple CSS properties, such as background color, border, and box dimensions, to numerous elements on a page can have a performance impact, especially on slower devices or when dealing with complex layouts.
+Calculating the final dimensions of an element, taking padding and margin into account, can be challenging, especially when nested elements or different box-sizing values are involved.
+Using large background images can have a significant performance impact, especially on devices with slower internet connections or limited processing power.
+Best practices to follow
+Break your CSS code into modular components, or modules, each responsible for styling a specific part of your website or application. This helps improve code organization, reusability, and maintainability.
+Regularly review and optimize your CSS code to eliminate redundant or unused rules. Removing unnecessary box model, width, height, background color, or border properties can help reduce file size and improve rendering performance.
+When using background images, optimize them for web delivery by compressing and resizing them appropriately. This helps improve page load times and overall performance.
+Inline styles can make your code harder to maintain and override. It's best to separate your CSS into external stylesheets or use internal stylesheets within the <head> section of your HTML document.
+ 
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+Fundamental CSS for Beginners: https://levelup.gitconnected.com/fundamental-css-for-beginners-f44e8b9a5da5
+CSS Borders, Padding & Margins: https://www.htmlgoodies.com/css/css-border-padding-margin/
+ 
+Try it Yourself
+Let's build this mini project in the VS Code IDE. Don't forget to join the AlmaBetter Community to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
+Question
+notion image
+ 
+Task 1: Background and Font Style
+Apply the following styles to the appropriate elements:
+Set the background color of the body element to #f2f2f2.
+Set the font family of the body element to Arial, sans-serif.
+Set the font size of the body element to 16px.
+Task 2: Heading Styles
+Apply the following styles to the h1 element:
+Add a border with 1px solid black.
+Add a padding of 10px.
+Task 3: Paragraph Alignment
+Apply the following style to the p element:
+Center align the text.
+Task 4: Link Color
+Apply the following style to the a element:
+Set the text color to blue.
+Task 5: List Styles
+Apply the following styles to the ul and li elements:
+Set the background color of the ul element to #ccc.
+Set the text color of the li elements to #333.
+Task 6: Table Styles
+Apply the following styles to the table, td, and th elements:
+Add a border with 1px solid black.
+Set the width of the table to 100%.
+Add an alternate background color (#f2f2f2) to even rows using nth-child(even) selector.
+Task 7: Custom Class Styles
+Apply the following styles to the elements with the class custom-class:
+Set the background color to green.
+Set the text color to white.
+Task 8: Paragraph Class Styles
+Apply the following style to the p element with the class my-class:
+Set the font style to italic.
+Task 9: Child Selector Styles
+Apply the following style to the p element that is a direct child of the div element:
+Set the text color to red.
+Task 10: Input Style
+Apply the following style to the input element with the attribute type="text":
+Set the background color to lightblue.
+HTML code has been given for your reference. Use it for the given assignment.
+Solution
+notion image
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>CSS Fundamentals</title>
+    <style>
+      body {
+        background-color: #f2f2f2;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+      }
+
+      h1 {
+        border: 1px solid black;
+        padding: 10px;
+      }
+
+      p {
+        text-align: center;
+      }
+
+      a {
+        color: blue;
+      }
+
+      ul {
+        background-color: #ccc;
+        color: white;
+      }
+
+      li {
+        color: #333;
+      }
+
+      table {
+        border: 1px solid black;
+        width: 100%;
+      }
+
+      table td,
+      table th {
+        border: 1px solid black;
+        padding: 8px;
+      }
+
+      table tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      .custom-class {
+        background-color: green;
+        color: white;
+      }
+
+      p.my-class {
+        font-style: italic;
+      }
+
+      div>p {
+        color: red;
+      }
+
+      input[type="text"] {
+        background-color: lightblue;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <h1>Heading 1</h1>
+    <p>This is a paragraph.</p>
+    <p><a href="#">This is a link</a></p>
+    <ul>
+      <li>List item 1</li>
+      <li>List item 2</li>
+      <li>List item 3</li>
+    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>City</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>John Doe</td>
+          <td>25</td>
+          <td>New York</td>
+        </tr>
+        <tr>
+          <td>Jane Smith</td>
+          <td>30</td>
+          <td>London</td>
+        </tr>
+        <tr>
+          <td>Michael Johnson</td>
+          <td>35</td>
+          <td>Paris</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="custom-class">
+      <p>This is a paragraph with a custom class.</p>
+    </div>
+    <p class="my-class">This is a paragraph with the class "my-class".</p>
+    <div>
+      <p>This paragraph is a child of a div.</p>
+    </div>
+    <input type="text" placeholder="Text Input">
+  </body>
+
+</html>
