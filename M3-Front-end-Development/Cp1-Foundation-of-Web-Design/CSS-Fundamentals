@@ -1476,7 +1476,7 @@ CSS Borders, Padding & Margins: https://www.htmlgoodies.com/css/css-border-paddi
  
 Try it Yourself
 Let's build this mini project in the VS Code IDE. Don't forget to join the AlmaBetter Community to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
-Question
+Task 1
 notion image
  
 Task 1: Background and Font Style
@@ -1517,6 +1517,62 @@ Task 10: Input Style
 Apply the following style to the input element with the attribute type="text":
 Set the background color to lightblue.
 HTML code has been given for your reference. Use it for the given assignment.
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>CSS Fundamentals</title>
+		<style>
+      /* Enter your CSS Code here. */
+		</style>
+  </head>
+
+  <body>
+    <h1>Heading 1</h1>
+    <p>This is a paragraph.</p>
+    <p><a href="#">This is a link</a></p>
+    <ul>
+      <li>List item 1</li>
+      <li>List item 2</li>
+      <li>List item 3</li>
+    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>City</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>John Doe</td>
+          <td>25</td>
+          <td>New York</td>
+        </tr>
+        <tr>
+          <td>Jane Smith</td>
+          <td>30</td>
+          <td>London</td>
+        </tr>
+        <tr>
+          <td>Michael Johnson</td>
+          <td>35</td>
+          <td>Paris</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="custom-class">
+      <p>This is a paragraph with a custom class.</p>
+    </div>
+    <p class="my-class">This is a paragraph with the class "my-class".</p>
+    <div>
+      <p>This paragraph is a child of a div.</p>
+    </div>
+    <input type="text" placeholder="Text Input">
+  </body>
+
+</html>
 Solution
 notion image
 <!DOCTYPE html>
@@ -1634,3 +1690,4 @@ notion image
   </body>
 
 </html>
+Task 2: Attempt to identify CSS1, CSS2, and CSS3 classes utilized in the code and share your discoveries on the AlmaBetter Community Platform.
