@@ -1,4 +1,3 @@
-
 Leveraging AI
 Session Flow
 Learning Objective
@@ -7,8 +6,36 @@ Theme
 Primary Goals
 Module Recap
 Chapter 1 - Introduction to JavaScript Programming
+Understanding the Web and its Building Blocks
+Programming paradigms
+Do you know What JavaScript is?
+Variables
+What are JavaScript Operators?
+Other JavaScript Operators
 Chapter 2 - JavaScript Foundations
+If…else statement
+Switch statement
+For loop
+Break and Continue Statement
+JavaScript Array
+String Properties
+JavaScript Maps
+JSON Data
+JavaScript Function
+Parameters and Arguments
+Types of Functions in JavaScript
+Function execution
+Callbacks in JavaScript
+JavaScript Event Loop
+What is OOP?
+`this` Keyword in JavaScript
 Chapter 3 - Modern JavaScript Concepts
+What is Functional Programming?
+Higher Order Function
+Introduction to ES Modules
+JavaScript "use strict”
+JavaScript Regex
+Regular Expression Flags
 Pair Programming with ChatGPT
 Debugging Code
 Experiments - Debugging Code
