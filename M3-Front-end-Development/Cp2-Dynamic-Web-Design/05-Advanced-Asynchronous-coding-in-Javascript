@@ -1,0 +1,1068 @@
+Advanced Asynchronous coding in JavaScript
+Session Flow
+Learning Objective
+Introduction
+Theme
+Primary Goals
+Advanced Asynchronous in JavaScript
+Introduction to Asynchronous JavaScript
+Callback Functions
+Promises
+Chaining Promises
+Project Implementation Step 1
+Async/Await
+Fetch API
+Error Handling in Promises and Async/Await
+Project Implementation Step 2
+Parallel Asynchronous Operations
+Throttling and Debouncing
+Project Implementation Step 3
+WebSockets
+Advanced AJAX Techniques
+Project Implementation Step 4
+Summary
+What did we learn?
+Shortcomings & Challenges
+Best Practices
+Enhance your knowledge
+Try it yourself
+Learning Objective
+Introduction
+Advanced asynchronous programming in JavaScript involves utilizing more sophisticated techniques and features to handle asynchronous tasks and improve code readability and maintainability.
+Focus: Promises, Async/Await, Fetch API, Error Handling in Promises and Async/Await
+Pre-requisites: JavaScript Fundamentals, AJAX, JSON
+Theme
+Google extensively uses advanced asynchronous JavaScript in their products and services. They utilize technologies like Promises, async/await, and event-driven programming to handle complex asynchronous operations, manage real-time data updates, and create responsive user interfaces. Google's suite of web applications, including Gmail, Google Maps, and Google Drive, heavily rely on asynchronous JavaScript for seamless user experiences.
+Facebook employs advanced asynchronous JavaScript techniques to power its social media platform. They utilize React, a JavaScript library for building user interfaces, which internally uses a virtual DOM and asynchronous rendering to update UI components efficiently. Facebook's real-time features, like live notifications and real-time chat, also heavily rely on asynchronous JavaScript for handling updates and event-driven communication.
+Primary Goals
+Understanding of basic asynchronous concepts in JavaScript, such as callbacks, promises, and the async/await syntax. 
+Learn common patterns and techniques for handling asynchronous operations effectively. 
+Understand the various ways to consume and process asynchronous data, as well as error handling and response validation.
+Understanding performance considerations using caching strategies, implementing lazy loading, and employing techniques like throttling and debouncing.
+Learn how to identify and fix common issues like race conditions, deadlocks, and incorrect error handling. 
+Advanced Asynchronous coding in JavaScript
+Introduction to Asynchronous JavaScript
+Asynchronous programming is a technique that enables your program to start a potentially long-running task and still be able to be responsive to other events while that task runs, rather than having to wait until that task has finished. Once that task has finished, your program is presented with the result.
+Many functions provided by browsers, especially the most interesting ones, can potentially take a long time and, therefore, are asynchronous. For example:
+Making HTTP requests using fetch()
+Accessing a user's camera or microphone using getUserMedia()
+Asking a user to select files using showOpenFilePicker()
+So even though you may not have to implement your own asynchronous functions very often, you are very likely to need to use them correctly.
+Callback Functions
+Callback functions are a fundamental concept in JavaScript used for handling asynchronous operations. A callback function is a function that is passed as an argument to another function and is executed when a specific event or condition occurs. It allows you to control the flow of execution and handle the result of an asynchronous operation.
+Here's an example to illustrate the usage of callback functions:
+// Function that performs an asynchronous operation
+function fetchData(url, callback) {
+  // Simulating an asynchronous request
+  setTimeout(() => {
+    const data = { message: 'Data fetched successfully' };
+    callback(data); // Invoke the callback function with the fetched data
+  }, 2000);
+}
+
+// Callback function to handle the fetched data
+function handleData(data) {
+  console.log(data.message);
+}
+
+// Call the fetchData function with the URL and callback function
+fetchData('<https://api.example.com/data>', handleData);
+In the above example, the fetchData function simulates an asynchronous request by using setTimeout to wait for 2 seconds. Once the request is complete, it invokes the callback function passed as an argument, passing the fetched data as an argument to the callback.
+The handleData function is the callback function defined separately. It receives the fetched data as an argument and logs the message property to the console.
+Finally, we call the fetchData function, providing the URL and the handleData function as the callback. When the data is fetched, the handleData function is executed, processing the fetched data.
+Callback functions are commonly used in scenarios like:
+Making AJAX requests: You can pass a callback function to the AJAX function to handle the response data when it becomes available.
+Event handling: Event listeners often use callback functions to define the actions to be taken when an event occurs, such as clicking a button or submitting a form.
+Asynchronous operations: Callbacks are crucial for handling the results of asynchronous operations like reading files, making database queries, or performing animations.
+Callback-based libraries: Many JavaScript libraries and frameworks use callback functions to provide hooks for customizing behavior or handling specific events.
+When working with callback functions, it's important to handle errors properly by either passing an error as the first argument to the callback or using a separate error callback. Additionally, callback hell (excessive nesting of callbacks) can be avoided by utilizing techniques like named functions, promises, or async/await.
+While callback functions are a powerful and widely used technique, they can sometimes lead to code that is difficult to read and maintain, especially when dealing with complex asynchronous flows. This has led to the development of newer asynchronous patterns like promises and async/await, which provide more elegant and readable ways of handling asynchronous operations.
+Promises
+Promises are a powerful feature introduced in JavaScript to simplify asynchronous programming and improve code readability and maintainability. They provide a way to handle the result of an asynchronous operation (either success or failure) in a more structured and predictable manner.
+A promise represents the eventual completion or failure of an asynchronous operation and can be in one of three states:
+Pending: The initial state of a promise, indicates that the asynchronous operation is still in progress and the final result is not yet available.
+Fulfilled: The state of a promise when the asynchronous operation is successfully completed, resulting in a value. Once fulfilled, the promise is considered "resolved."
+Rejected: The state of a promise when the asynchronous operation encounters an error or failure. Once rejected, the promise is considered "resolved."
+Here's an example that demonstrates the usage of promises:
+// Function that returns a promise
+function fetchData(url) {
+  return new Promise((resolve, reject) => {
+    // Simulating an asynchronous request
+    setTimeout(() => {
+      const data = { message: 'Data fetched successfully' };
+      resolve(data); // Resolve the promise with the fetched data
+      // reject(new Error('Failed to fetch data')); // Uncomment to simulate a rejection
+    }, 2000);
+  });
+}
+
+// Using the promise
+fetchData('<https://api.example.com/data>')
+  .then(data => {
+    console.log(data.message);
+  })
+  .catch(error => {
+    console.error(error);
+  });
+In the example above, the fetchData function returns a promise that encapsulates the asynchronous request. Inside the promise constructor, the asynchronous operation is simulated using setTimeout. When the operation is complete, the resolve function is called with the fetched data to fulfill the promise. Uncommenting the reject line would simulate a rejection by passing an error object.
+To consume the promise, we use the .then() method, which allows us to handle the fulfillment of the promise. Inside the .then() block, we log the message property of the resolved data. Additionally, we can use the .catch() method to handle any errors that occur during the promise execution.
+Promises provide several benefits:
+Improved Readability: Promises to use a chaining syntax that allows for a more linear and readable flow of asynchronous operations, avoiding excessive callback nesting.
+Error Handling: Promises have a built-in mechanism for handling errors through the .catch() method. Errors can be caught and handled at a single point in the promise chain.
+Composition: Promises can be easily composed and combined using methods like Promise.all() or Promise.race(), allowing for advanced handling of multiple asynchronous operations.
+Asynchronous Flow Control: Promises provide better control over the flow of asynchronous operations by using methods like .then(), allowing you to execute subsequent operations only when previous promises have been fulfilled.
+Promises have become a standard part of JavaScript, and many modern APIs and libraries are built on promises. They serve as a foundation for newer asynchronous patterns like async/await, which further enhance the readability and simplicity of asynchronous programming.
+Chaining Promises
+Promise chaining is a technique in JavaScript that allows you to perform sequential asynchronous operations using promises. It provides a clean and readable way to handle a series of asynchronous tasks one after another. Promise chaining is achieved by returning a new promise from each .then() callback, allowing you to chain additional .then() or .catch() handlers.
+Here's an example that demonstrates promise chaining:
+// Function that returns a promise to fetch data
+function fetchData(url) {
+  return new Promise((resolve, reject) => {
+    // Simulating an asynchronous request
+    setTimeout(() => {
+      const data = { message: 'Data fetched successfully' };
+      resolve(data);
+    }, 2000);
+  });
+}
+
+// Chaining promises
+fetchData('<https://api.example.com/data>')
+  .then(data => {
+    console.log(data.message);
+    // Returning a new promise for the next operation
+    return fetchData('<https://api.example.com/other-data>');
+  })
+  .then(otherData => {
+    console.log(otherData.message);
+    // Returning a new promise for the next operation
+    return fetchData('<https://api.example.com/more-data>');
+  })
+  .then(moreData => {
+    console.log(moreData.message);
+  })
+  .catch(error => {
+    console.error(error);
+  });
+In the example above, the fetchData function returns a promise that represents the asynchronous request to fetch data. Inside the promise chain, the first .then() callback is used to handle the resolved data from the initial request. It then returns another promise created by calling fetchData with a different URL.
+The subsequent .then() callbacks handle the resolved data from each promise in the chain, and each one returns a new promise for the next operation in the sequence.
+By chaining promises in this manner, you can ensure that each asynchronous operation is performed sequentially and that the subsequent operations depend on the results of the previous ones.
+If any promise in the chain is rejected, the control jumps to the nearest .catch() block, allowing you to handle the error. It's important to include a .catch() block at the end of the chain to capture any errors that occur in the promise chain.
+Promise chaining provides a clean and readable way to handle sequential asynchronous operations, avoiding callback hell and allowing for better error handling and composition of asynchronous code.
+Project Implementation Step 1:
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Callback Functions, Promises, and Chaining Promises Example</title>
+</head>
+<body>
+  <h1>Callback Functions, Promises, and Chaining Promises Example</h1>
+  
+  <button id="btn">Click Me</button>
+  
+  <script>
+    // Callback Function
+    function fetchData(callback) {
+      setTimeout(() => {
+        const data = 'Hello, World!';
+        callback(null, data); // Pass error as the first argument if applicable
+      }, 2000);
+    }
+    
+    // Promise-based Function
+    function fetchDataPromise() {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          const data = 'Hello, Promise!';
+          resolve(data); // Resolve the promise with the data
+          // If there's an error, reject the promise with an error object: reject(new Error('Error message'));
+        }, 2000);
+      });
+    }
+    
+    // Chaining Promises
+    function processResult(data) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          const processedData = data.toUpperCase();
+          resolve(processedData);
+        }, 2000);
+      });
+    }
+    
+    // Event Listener with Callback Function
+    document.getElementById('btn').addEventListener('click', function() {
+      fetchData(function(error, data) {
+        if (error) {
+          console.log('Error:', error);
+        } else {
+          console.log('Callback Data:', data);
+        }
+      });
+    });
+    
+    // Event Listener with Promises
+    document.getElementById('btn').addEventListener('click', function() {
+      fetchDataPromise()
+        .then(function(data) {
+          console.log('Promise Data:', data);
+          return processResult(data);
+        })
+        .then(function(processedData) {
+          console.log('Processed Data:', processedData);
+        })
+        .catch(function(error) {
+          console.log('Promise Error:', error);
+        });
+    });
+  </script>
+</body>
+</html>
+Output:
+notion image
+Explanation:
+In this example:
+The fetchData function demonstrates the use of a callback function. It simulates an asynchronous operation and calls the provided callback function with the fetched data after a delay of 2 seconds.
+The fetchDataPromise function showcases a promise-based approach. It returns a promise that resolves with the fetched data after a delay of 2 seconds.
+The processResult function represents a promise that processes the data received from the previous promise.
+The first event listener uses a callback function to handle the button click event. It calls the fetchData function and provides a callback function to receive the data or handle any errors.
+The second event listener uses promises and demonstrates promise chaining. It calls the fetchDataPromise function and chains it with the processResult function using then to process the data further. It also includes a catch block to handle any errors that may occur during the promise chain.
+By running the HTML document and clicking the "Click Me" button, you can see the results in the browser console. The callback function approach and the promise-based approach both fetch data asynchronously and log it to the console. The chained promises demonstrate how the data can be processed further in subsequent promise handlers.
+Async/Await
+Async/await is a syntactic feature introduced in ECMAScript 2017 (ES8) that provides a more readable and synchronous-like way of writing asynchronous code in JavaScript. It is built on top of promises and offers a simpler and cleaner alternative to promise chaining and nested callbacks.
+Here's an overview of the async/await syntax and its usage:
+Async Functions:
+An async function is declared using the async keyword before the function declaration. It allows you to use the await keyword inside the function body to pause the execution and wait for a promise to resolve before proceeding further.
+async function fetchData() {
+  // Asynchronous code using await
+}
+Await Keyword:
+The await keyword is used to pause the execution of an async function until a promise is resolved. It can only be used inside an async function. When encountering an await expression, the function will be paused, and control will be handed back to the caller until the promise is fulfilled. The await keyword can be used with any promise-based function, including built-in methods like fetch() or custom functions that return promises.
+async function fetchData() {
+  const data = await fetch('<https://api.example.com/data>');
+  console.log(data);
+}
+Error Handling:
+Async functions handle promise rejections and thrown errors by automatically wrapping them in a rejected promise. You can use regular try/catch blocks to handle errors in an async function. If an error is thrown inside an async function, the promise will be rejected, and you can catch the error using a try/catch block or handle it using the .catch() method.
+async function fetchData() {
+  try {
+    const response = await fetch('<https://api.example.com/data>');
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+Returning Promises:
+Async functions automatically wrap the returned value in a resolved promise. If you return a value from an async function, it will be equivalent to wrapping it in Promise.resolve(). If you throw an error inside an async function, it will be equivalent to returning a rejected promise.
+async function fetchData() {
+  return 'Data fetched successfully';
+}
+
+fetchData().then(result => {
+  console.log(result); // Output: Data fetched successfully
+});
+Async/await provides a more synchronous-like coding style for handling asynchronous operations, making code easier to read and reason about. It allows you to write code that appears to be sequential, even though it's executing asynchronously. However, it's important to note that async/await is still based on promises and doesn't eliminate the asynchronous nature of JavaScript.
+Async/await is widely supported in modern JavaScript environments and is commonly used for handling asynchronous operations, such as making HTTP requests, interacting with databases, or performing complex asynchronous tasks.
+Fetch API
+The Fetch API is a modern JavaScript API that provides an interface for making HTTP requests and handling responses. It simplifies the process of sending and receiving data over the network, replacing older techniques like XMLHttpRequest.
+Here's an overview of how to use the Fetch API:
+Making a GET Request:
+To make a GET request using the Fetch API, you can use the fetch() function, providing the URL of the resource you want to retrieve.
+fetch('<https://api.example.com/data>')
+  .then(response => {
+    // Handle the response
+  })
+  .catch(error => {
+    // Handle any errors
+  });
+The fetch() function returns a promise that resolves to the response of the HTTP request. You can use .then() to handle the response, which allows you to access information like the response headers and status. In the .catch() block, you can handle any errors that occur during the request.
+Handling the Response:
+Inside the .then() block, you can handle the response using various methods provided by the Response object. For example, you can use the .json() method to parse the response as JSON data.
+fetch('<https://api.example.com/data>')
+  .then(response => response.json())
+  .then(data => {
+    // Handle the parsed JSON data
+  })
+  .catch(error => {
+    // Handle any errors
+  });
+Making Other Types of Requests:
+By default, the Fetch API performs a GET request. However, you can also make other types of requests, such as POST, PUT, DELETE, etc., by providing additional options in the fetch() function.
+fetch('<https://api.example.com/data>', {
+  method: 'POST',
+  body: JSON.stringify({ key: 'value' }),
+  headers: {
+    'Content-Type': 'application/json'
+  }
+})
+  .then(response => {
+    // Handle the response
+  })
+  .catch(error => {
+    // Handle any errors
+  });
+In the example above, we specify the method option as "POST" and provide a JSON payload in the body option. The headers option is used to set the content type as JSON.
+Handling Errors:
+The Fetch API does not reject the promise on HTTP error status codes (e.g., 404 or 500). It only rejects the promise if a network error occurs or the request is aborted. To handle HTTP errors, you need to check the response status in the .then() block and throw an error if necessary.
+fetch('<https://api.example.com/data>')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('HTTP error, status = ' + response.status);
+    }
+    return response.json();
+  })
+  .then(data => {
+    // Handle the response data
+  })
+  .catch(error => {
+    // Handle any errors
+  });
+In the example above, we check the response.ok property is false, indicating an HTTP error. We throw an error with a custom message containing the response status.
+The Fetch API provides a flexible and powerful way to perform HTTP requests and handle responses in modern JavaScript applications. It supports various options, response-handling methods, and error-handling techniques, making it a preferred choice for many developers.
+Error Handling in Promises and Async/Await
+Error handling in Promise-based and async/await code involves capturing and handling errors that occur during asynchronous operations. Both approaches provide mechanisms for handling errors, but they differ slightly in their syntax and usage.
+Error Handling in Promises:
+In Promise-based code, you can handle errors using the .catch() method, which allows you to catch any rejected promises or thrown errors within the promise chain.
+fetchData()
+  .then(data => {
+    // Process the data
+  })
+  .catch(error => {
+    // Handle the error
+  });
+In the example above, the .catch() block is used to handle any errors that occur during the promise chain. If any promise in the chain is rejected or an error is thrown, the control jumps to the nearest .catch() block, allowing you to handle the error.
+You can also handle errors within each .then() callback by returning a rejected promise:
+fetchData()
+  .then(data => {
+    // Process the data
+    if (data.error) {
+      return Promise.reject(new Error('Data processing error'));
+    }
+    return data;
+  })
+  .catch(error => {
+    // Handle the error
+  });
+In this example, if the data processing encounters an error condition, the .then() callback returns a rejected promise using Promise.reject(), and the error is caught in the .catch() block.
+Error Handling in async/await:
+In async/await code, error handling is done using regular try/catch blocks. You can wrap the awaited promise inside a try block and catch any errors that occur using the catch block.
+async function fetchData() {
+  try {
+    const data = await fetch('<https://api.example.com/data>');
+    // Process the data
+  } catch (error) {
+    // Handle the error
+  }
+}
+In the example above, the awaited promise (fetch()) is wrapped inside a try block, and any errors that occur during the execution are caught in the catch block.
+You can also use the throw statement to throw an error within an async function manually:
+async function fetchData() {
+  try {
+    const data = await fetch('<https://api.example.com/data>');
+    if (data.error) {
+      throw new Error('Data processing error');
+    }
+    // Process the data
+  } catch (error) {
+    // Handle the error
+  }
+}
+If the data processing encounters an error condition, the throw statement is used to throw an error, which is then caught in the catch block.
+Both Promise-based code with .catch() and async/await code with try/catch blocks provide effective ways to handle errors in asynchronous operations. The choice between the two depends on personal preference and the specific requirements of your codebase.
+Project Implementation Step 2:
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Async/Await and Fetch API Example</title>
+</head>
+<body>
+  <div id="data-container">
+    <h2>Data will be displayed here</h2>
+  </div>
+
+  <script>
+    // Function to fetch data from an API using Fetch API
+    async function fetchData() {
+      try {
+        const response = await fetch('https://api.example.com/data');
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        const data = await response.json();
+        return data;
+      } catch (error) {
+        throw new Error(`Error: ${error.message}`);
+      }
+    }
+
+    // Function to display the fetched data on the webpage
+    function displayData(data) {
+      const dataContainer = document.getElementById('data-container');
+      const dataHeading = document.createElement('h2');
+      dataHeading.textContent = 'Fetched Data:';
+      const dataParagraph = document.createElement('p');
+      dataParagraph.textContent = JSON.stringify(data);
+
+      dataContainer.innerHTML = '';
+      dataContainer.appendChild(dataHeading);
+      dataContainer.appendChild(dataParagraph);
+    }
+
+    // Call the fetchData function and handle errors
+    async function fetchDataAndDisplay() {
+      try {
+        const data = await fetchData();
+        displayData(data);
+      } catch (error) {
+        const dataContainer = document.getElementById('data-container');
+        const errorParagraph = document.createElement('p');
+        errorParagraph.style.color = 'red';
+        errorParagraph.textContent = `Error occurred: ${error.message}`;
+        dataContainer.appendChild(errorParagraph);
+      }
+    }
+
+    // Call the fetchDataAndDisplay function
+    fetchDataAndDisplay();
+  </script>
+</body>
+</html>
+Output:
+notion image
+Explanation:
+In this example:
+The fetchData function uses the Fetch API to fetch data from an API endpoint (https://api.example.com/data). It awaits the response and checks if the response is successful. If not, it throws an error. If successful, it parses the response as JSON and returns the data.
+The displayData function receives the fetched data and dynamically creates HTML elements to display the data on the webpage. It clears any existing content in the data-container div and appends the heading and paragraph elements with the fetched data.
+The fetchDataAndDisplay function is an async function that calls the fetchData function. It awaits the data, and if successful, calls the displayData function. If any error occurs during the process, it catches the error and appends an error message to the data-container div.
+The script is placed at the end of the HTML document to ensure the DOM elements are available when the JavaScript code executes.
+When the HTML document loads, the fetchDataAndDisplay function is called to fetch data and display it on the webpage. Any errors that occur during the process are appropriately handled and displayed.
+This example demonstrates the use of async/await to handle asynchronous operations, the Fetch API to make HTTP requests, and proper error handling in Promises.
+Parallel Asynchronous Operations
+Performing multiple asynchronous operations in parallel is a common requirement in JavaScript applications, especially when you need to fetch data from multiple sources or perform independent tasks concurrently. There are several approaches to achieving parallel asynchronous operations:
+Promise.all():
+The Promise.all() method allows you to execute multiple promises concurrently and wait for all of them to resolve. It takes an array of promises as input and returns a new promise that resolves to an array of the resolved values in the same order.
+const promise1 = fetch('<https://api.example.com/data1>');
+const promise2 = fetch('<https://api.example.com/data2>');
+const promise3 = fetch('<https://api.example.com/data3>');
+
+Promise.all([promise1, promise2, promise3])
+  .then(responses => {
+    // Handle the resolved responses
+  })
+  .catch(error => {
+    // Handle any errors
+  });
+In this example, Promise.all() is used to execute three fetch requests concurrently. The resulting promise resolves with an array of responses. You can handle the resolved responses in the .then() block.
+Async/await with Promise.all():
+You can also use async/await with Promise.all() to achieve parallel asynchronous operations in a more readable and synchronous-like manner.
+async function fetchData() {
+  try {
+    const [response1, response2, response3] = await Promise.all([
+      fetch('<https://api.example.com/data1>'),
+      fetch('<https://api.example.com/data2>'),
+      fetch('<https://api.example.com/data3>')
+    ]);
+    // Handle the resolved responses
+  } catch (error) {
+    // Handle any errors
+  }
+}
+
+fetchData();
+In this example, Promise.all() is used with an array of fetch requests inside an async function. The await keyword pauses the execution until all the promises are resolved, and the resolved responses are destructured into separate variables for further processing.
+Async/await with Promise.race():
+If you want to perform parallel operations but only care about the result of the first resolved promise (or the fastest one), you can use Promise.race().
+async function fetchData() {
+  try {
+    const response = await Promise.race([
+      fetch('<https://api.example.com/data1>'),
+      fetch('<https://api.example.com/data2>'),
+      fetch('<https://api.example.com/data3>')
+    ]);
+    // Handle the fastest resolved response
+  } catch (error) {
+    // Handle any errors
+  }
+}
+
+fetchData();
+In this example, Promise.race() is used with an array of fetch requests inside an async function. The await keyword pauses the execution until the first promise in the array is resolved, and the result is stored in the response variable.
+Performing multiple asynchronous operations in parallel can improve the efficiency and performance of your code. Choose the appropriate approach based on your specific requirements and whether you need to handle all the resolved values or only care about the first one.
+Throttling and Debouncing
+Throttling and debouncing are two techniques used to control the rate at which a function is invoked during asynchronous operations, such as handling user input or making frequent API requests. These techniques help optimize performance and avoid excessive function calls.
+Throttling:
+Throttling limits the frequency of function invocation by ensuring that the function is called at a fixed interval, regardless of how many times it is triggered. It ensures that the function is invoked at regular intervals and prevents it from being called more frequently than the specified threshold.
+function throttle(func, delay) {
+  let timeoutId;
+
+  return function() {
+    if (!timeoutId) {
+      timeoutId = setTimeout(() => {
+        func.apply(this, arguments);
+        timeoutId = null;
+      }, delay);
+    }
+  };
+}
+
+const throttledFn = throttle(apiCall, 500);
+
+// Example usage
+input.addEventListener('input', throttledFn);
+In this example, the throttle function is a higher-order function that takes a function func and a delay delay as parameters. It returns a new function that wraps the original function and ensures it is invoked at most once within the specified delay. The throttled function can be attached to event listeners to control the rate of function invocation.
+Debouncing:
+Debouncing delays the execution of a function until a certain period of inactivity has passed. It ensures that the function is invoked after a pause in activity rather than immediately after each event trigger. Debouncing is useful when you want to trigger a function only when the user has stopped interacting with an input or when a certain amount of time has passed since the last function call.
+function debounce(func, delay) {
+  let timeoutId;
+
+  return function() {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      func.apply(this, arguments);
+    }, delay);
+  };
+}
+
+const debouncedFn = debounce(apiCall, 500);
+
+// Example usage
+input.addEventListener('input', debouncedFn);
+In this example, the debounce function is a higher-order function that takes a function func and a delay delay as parameters. It returns a new function that wraps the original function and ensures it is invoked only after the specified delay has passed since the last function call. The debounced function can be attached to event listeners to trigger the function after a pause in activity.
+Throttling and debouncing are useful techniques to prevent unnecessary or excessive function calls during asynchronous operations. Throttling ensures that a function is called at regular intervals while debouncing delays the function invocation until a pause in activity. These techniques can improve performance and responsiveness in scenarios where frequent function calls are not required.
+Project Implementation Step 3:
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Parallel Async, Throttling, and Debouncing Example</title>
+</head>
+<body>
+  <button id="parallelButton">Parallel Async</button>
+  <button id="throttleButton">Throttling</button>
+  <button id="debounceButton">Debouncing</button>
+
+  <script>
+    // Parallel Asynchronous Operations Example
+document.getElementById('parallelButton').addEventListener('click', async () => {
+  const urls = ['https://api.example.com/endpoint1', 'https://api.example.com/endpoint2', 'https://api.example.com/endpoint3'];
+
+  // Perform async requests in parallel
+  const responses = await Promise.all(urls.map(url => fetch(url)));
+  const data = await Promise.all(responses.map(response => response.json()));
+
+  console.log('Parallel Async:', data);
+});
+
+// Throttling Example
+document.getElementById('throttleButton').addEventListener('click', throttle(() => {
+  console.log('Throttling: Button clicked');
+}, 1000));
+
+// Debouncing Example
+const debouncedFunction = debounce(() => {
+  console.log('Debouncing: Button clicked');
+}, 1000);
+document.getElementById('debounceButton').addEventListener('click', debouncedFunction);
+
+// Helper function for throttling
+function throttle(func, delay) {
+  let timeoutId;
+  return function () {
+    if (!timeoutId) {
+      func.apply(this, arguments);
+      timeoutId = setTimeout(() => {
+        timeoutId = null;
+      }, delay);
+    }
+  };
+}
+
+// Helper function for debouncing
+function debounce(func, delay) {
+  let timeoutId;
+  return function () {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      func.apply(this, arguments);
+    }, delay);
+  };
+}
+
+  </script>
+</body>
+</html>
+Output:
+notion image
+Explanation:
+In the above example:
+The "Parallel Async" button demonstrates parallel asynchronous operations. When clicked, it sends multiple asynchronous requests to different endpoints using fetch and Promise.all. The responses are then logged in the console.
+The "Throttling" button showcases throttling. It limits the rate at which the click event handler is executed. In this example, the click event is throttled to execute at most once every 1 second. The throttling function is implemented using a helper function called throttle.
+The "Debouncing" button demonstrates debouncing. It ensures that the click event handler is only executed after a certain period of inactivity. In this example, the click event is debounced to execute only when there is no click event within 1 second. The debouncing function is implemented using a helper function called debounce.
+You can run this example in a web browser, click the buttons, and observe the behavior in the console. The parallel asynchronous operations will fetch data from different endpoints simultaneously, throttling will limit the rate of event execution, and debouncing will ensure that the event handler executes only after a certain period of inactivity.
+Note:
+In a real-world scenario, you would replace the API endpoints and asynchronous operations with your own implementation based on your requirements.
+WebSockets
+WebSockets is a communication protocol that enables real-time, full-duplex communication between a client (typically a web browser) and a server. Unlike traditional HTTP requests, which are based on a request-response model, WebSockets allow for continuous, bidirectional communication, making them ideal for real-time applications such as chat systems, collaborative editing, and live data updates.
+Here's an overview of how WebSockets work:
+Establishing a WebSocket Connection:
+To establish a WebSocket connection, the client sends a WebSocket handshake request to the server. If the server supports WebSockets, it responds with a WebSocket handshake response, and the connection is established. The handshake typically occurs over HTTP or HTTPS and includes a specific WebSocket protocol header.
+WebSocket API:
+Once the connection is established, the client and server can send data back and forth in real time. In JavaScript, you can use the WebSocket API, which provides methods and events for interacting with WebSocket connections.
+To create a WebSocket connection, you can use the following syntax:
+const socket = new WebSocket('wss://example.com/socket');
+The URL passed to the WebSocket constructor specifies the WebSocket server's address, typically using the ws:// or wss:// protocol.
+Sending and Receiving Data:
+Once the WebSocket connection is open, you can send and receive data between the client and server using the send() and onmessage methods, respectively.
+To send data from the client to the server:
+socket.send('Hello, server!');
+To handle incoming data from the server:
+socket.onmessage = function(event) {
+  console.log('Received message from server:', event.data);
+};
+The event.data property contains the received data from the server.
+Handling WebSocket Events:
+The WebSocket API provides various events that you can listen to, allowing you to handle different states of the WebSocket connection. Some commonly used events include:
+open: Triggered when the WebSocket connection is successfully established.
+message: Triggered when a message is received from the server.
+close: Triggered when the WebSocket connection is closed.
+error: Triggered when an error occurs during the WebSocket connection.
+You can listen to these events using the corresponding event handlers:
+socket.onopen = function(event) {
+  console.log('WebSocket connection established.');
+};
+
+socket.onclose = function(event) {
+  console.log('WebSocket connection closed.');
+};
+
+socket.onerror = function(error) {
+  console.error('WebSocket error:', error);
+};
+Closing the WebSocket Connection:
+To close the WebSocket connection, you can call the close() method:
+socket.close();
+Closing the connection is important to release server resources and ensure proper cleanup.
+WebSockets provide a powerful mechanism for real-time communication between clients and servers. They eliminate the need for continuous polling and enable efficient, bidirectional data transfer. WebSockets are supported by most modern browsers and are widely used in applications requiring real-time updates or instant communication.
+Advanced AJAX Techniques
+Advanced AJAX techniques encompass various topics and concepts beyond basic AJAX usage. Here are three key areas of focus: JSONP, CORS, and working with APIs.
+JSONP (JSON with Padding):
+JSONP is a technique used to overcome the same-origin policy limitation of AJAX requests. It allows cross-domain communication by making use of <script> tags, which are not subject to same-origin restrictions. JSONP works by injecting a <script> tag into the HTML document that loads a JavaScript file from a different domain. The server responds with a callback function that wraps the JSON data, enabling the client-side code to access the data.
+Example usage of JSONP:
+function handleResponse(data) {
+  // Handle the JSONP response data
+}
+
+const script = document.createElement('script');
+script.src = '<https://api.example.com/data?callback=handleResponse>';
+document.head.appendChild(script);
+In this example, a callback function named handleResponse is defined to process the JSONP response. A script tag is created dynamically with the src attribute pointing to the JSONP endpoint. The callback function name is included as a query parameter, typically named callback, to inform the server how to wrap the JSON data. When the script is loaded, the server responds with the JSON data wrapped in a function call to handleResponse.
+CORS (Cross-Origin Resource Sharing):
+CORS is a mechanism that allows controlled cross-origin requests in modern browsers. It enables web applications to make AJAX requests to different domains while maintaining security. CORS involves both server-side configuration and client-side handling.
+On the server side, the server needs to respond to the AJAX requests with the appropriate CORS headers, such as Access-Control-Allow-Origin, Access-Control-Allow-Methods, and Access-Control-Allow-Headers. These headers inform the browser which domains are allowed to make requests and what types of requests are allowed.
+On the client side, the browser automatically handles the CORS preflight requests (OPTIONS method) to determine if the actual request (e.g., GET, POST) is allowed. If the server responds with the appropriate CORS headers, the browser proceeds with the actual request. Otherwise, the browser blocks the request due to security restrictions.
+Working with APIs:
+Working with APIs involves making AJAX requests to remote servers to retrieve data or perform actions. APIs provide a structured way to interact with external services, such as retrieving weather data, accessing social media feeds, or interacting with cloud services. Commonly used APIs provide documentation specifying the endpoints, request formats (e.g., JSON, XML), authentication methods (e.g., API keys, OAuth), and response formats.
+To work with APIs, you typically use AJAX techniques to send HTTP requests, handle responses, and process data. This may involve making GET, POST, PUT, or DELETE requests to different endpoints, sending request parameters or payload data, and handling authentication and authorization.
+Libraries like Axios, Fetch API, or jQuery's AJAX methods provide convenient wrappers for making API requests, handling responses, and handling errors.
+It's important to read and follow the API documentation to understand the authentication requirements, rate limits, data formats, and any specific guidelines for accessing and using the API.
+These advanced AJAX techniques, including JSONP, CORS, and working with APIs, allow you to overcome cross-domain restrictions and interact with external services securely and efficiently. Understanding these concepts expands your capabilities for data retrieval and integration within web applications.
+Project Implementation Step 4:
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WebSocket and AJAX Example</title>
+</head>
+<body>
+  <h1>WebSocket and AJAX Example</h1>
+  <button id="fetchButton">Fetch Data</button>
+  <script>
+    // WebSocket implementation
+    var socket = new WebSocket('wss://example.com/socket');
+
+    socket.onopen = function(event) {
+      console.log('WebSocket connection established.');
+    };
+
+    socket.onmessage = function(event) {
+      var message = event.data;
+      console.log('Received message: ' + message);
+      // Process the received message
+    };
+
+    socket.onclose = function(event) {
+      console.log('WebSocket connection closed.');
+    };
+
+    // AJAX implementation
+    function fetchData() {
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+            console.log('Received data: ', response);
+            // Process the received data
+          } else {
+            console.log('Error: ' + xhr.status);
+          }
+        }
+      };
+      xhr.open('GET', 'https://example.com/data', true);
+      xhr.send();
+    }
+
+    // Trigger AJAX request on button click
+    document.getElementById('fetchButton').addEventListener('click', function() {
+      fetchData();
+    });
+  </script>
+</body>
+</html>
+Explanation:
+In this example, we have an HTML document that demonstrates the use of WebSockets and advanced AJAX techniques.
+The WebSocket implementation establishes a WebSocket connection to a server using the WebSocket object. We define event handlers for onopen, onmessage, and onclose events. When the connection is opened, the onopen handler is triggered, and a message is logged to the console. When a message is received from the server, the onmessage handler processes the message. If the connection is closed, the onclose handler is triggered.
+The AJAX implementation utilizes the XMLHttpRequest object to fetch data from a server. The fetchData function sends an asynchronous GET request to the specified URL. On receiving a response, the onreadystatechange event handler checks the response's status and processes the received data if the request is successful. Any errors are logged to the console.
+Finally, a button with the ID fetchButton is present in the HTML. When the button is clicked, it triggers the fetchData function to initiate the AJAX request.
+This example demonstrates how to establish a WebSocket connection and handle incoming messages, as well as how to make an AJAX request and process the received data, all within a single HTML document.
+ 
+Take Home Assignment
+Task 1: Fetch API and Callback Functions
+Using the Fetch API, retrieve data from a JSON endpoint asynchronously. Implement a callback function that handles the fetched data and displays it on the webpage.
+Task 2: Promises and Error Handling
+Refactor Task 1 using Promises to handle the Fetch API request. Implement error handling to display an error message in case the request fails.
+Task 3: Chaining Promises and Parallel Asynchronous Operations
+Create a function that fetches data from two different JSON endpoints asynchronously. Use Promise chaining to process the results from both requests. Display the combined result on the webpage.
+Task 4: Async/Await and Error Handling
+Refactor Task 3 using the async/await syntax instead of Promise chaining. Handle any errors that might occur during the asynchronous operations.
+Task 5: Throttling and Debouncing
+Implement throttling and debouncing techniques to control the rate of invoking a function that simulates frequent user actions (e.g., button clicks). Observe the differences in behavior between throttling and debouncing.
+ 
+Expected Output:
+Before clicking on the buttons
+Before clicking on the buttons
+ 
+After clicking the buttons
+After clicking the buttons
+Solution
+index.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Asynchronous Operations Assignment</title>
+</head>
+<body>
+		<h1>Asynchronous Operations Assignment</h2>
+    <button id="task1-btn">Task 1: Fetch API with Callback</button>
+    <button id="task2-btn">Task 2: Fetch API with Promises</button>
+    <button id="task3-btn">Task 3: Chaining Promises</button>
+    <button id="task4-btn">Task 4: Async/Await</button>
+    <button id="throttle-btn">Throttle Button</button>
+    <button id="debounce-btn">Debounce Button</button>
+
+    <div id="output"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+ 
+script.js
+// Task 1: Fetch API with Callback Function
+function fetchDataWithCallback(callback) {
+    fetch('https://jsonplaceholder.typicode.com/todos/1')
+      .then(response => response.json())
+      .then(data => {
+        callback(data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }
+  
+  document.getElementById('task1-btn').addEventListener('click', () => {
+    fetchDataWithCallback(data => {
+      document.getElementById('output').innerText = JSON.stringify(data);
+    });
+  });
+  
+  // Task 2: Fetch API with Promises and Error Handling
+  function fetchDataWithPromise() {
+    return fetch('https://jsonplaceholder.typicode.com/todos/2')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }
+  
+  document.getElementById('task2-btn').addEventListener('click', () => {
+    fetchDataWithPromise()
+      .then(data => {
+        document.getElementById('output').innerText = JSON.stringify(data);
+      });
+  });
+  
+  // Task 3: Chaining Promises and Parallel Asynchronous Operations
+  function fetchParallelData() {
+    const promise1 = fetch('https://jsonplaceholder.typicode.com/todos/3').then(response => response.json());
+    const promise2 = fetch('https://jsonplaceholder.typicode.com/todos/4').then(response => response.json());
+  
+    Promise.all([promise1, promise2])
+      .then(results => {
+        const combinedResult = results.flat();
+        document.getElementById('output').innerText = JSON.stringify(combinedResult);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }
+  
+  document.getElementById('task3-btn').addEventListener('click', () => {
+    fetchParallelData();
+  });
+  
+  // Task 4: Async/Await and Error Handling
+  async function fetchDataWithAsyncAwait() {
+    try {
+      const response = await fetch('https://jsonplaceholder.typicode.com/todos/5');
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      document.getElementById('output').innerText = JSON.stringify(data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
+  
+  document.getElementById('task4-btn').addEventListener('click', () => {
+    fetchDataWithAsyncAwait();
+  });
+  
+  // Throttling and Debouncing
+  
+  // Throttling
+  function throttle(callback, delay) {
+    let lastCallTime = 0;
+    return function (...args) {
+      const now = new Date().getTime();
+      if (now - lastCallTime >= delay) {
+        callback.apply(this, args);
+        lastCallTime = now;
+      }
+    };
+  }
+  
+  // Debouncing
+  function debounce(callback, delay) {
+    let timeoutId;
+    return function (...args) {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        callback.apply(this, args);
+      }, delay);
+    };
+  }
+  
+  function onThrottleClick() {
+    console.log('Throttled click!');
+  }
+  
+  function onDebounceClick() {
+    console.log('Debounced click!');
+  }
+  
+  const throttledClick = throttle(onThrottleClick, 1000);
+  const debouncedClick = debounce(onDebounceClick, 1000);
+  
+  document.getElementById('throttle-btn').addEventListener('click', throttledClick);
+  document.getElementById('debounce-btn').addEventListener('click', debouncedClick);
+Summary
+What did we learn?
+Understanding and using callback functions for asynchronous operations. Passing functions as arguments to other functions to handle the results of asynchronous tasks. Managing callback hell or the pyramid of doom by structuring callbacks properly.
+Introduction to Promises as a way to simplify asynchronous programming. Creating and returning Promises to encapsulate asynchronous tasks.
+Chaining Promises for sequential execution using .then() and .catch() methods. Handling errors in Promises using .catch() to propagate and handle rejected Promises. Using Promise.all() to handle multiple Promises concurrently and wait for all of them to resolve.
+Overview of async/await syntax for writing asynchronous code in a synchronous style. Marking functions with the async keyword to enable the use of await inside them. Using await to pause the execution of a function until a Promise is resolved. Error handling in async/await code using try/catch blocks to catch and handle errors.
+Working with the Fetch API to make HTTP requests and handle responses. Using fetch() to make GET, POST, PUT, DELETE, and other types of requests. Handling response data using .json(), .text(), and other methods. Handling errors and network issues in Fetch requests.
+Understanding error handling in Promises and async/await code. Using .catch() method in Promises to handle and propagate errors. Using try/catch blocks in async/await to catch and handle errors. Properly handling and logging errors to aid in debugging.
+Shortcomings & Challenges
+Advanced asynchronous techniques introduce complexity, making code harder to debug and reason about compared to synchronous code.
+Chaining multiple asynchronous operations can lead to callback hell, reducing code readability and maintainability.
+Error handling in asynchronous code is challenging, as traditional try-catch blocks may not catch errors, leading to unexpected behavior or crashes.
+Managing resource-intensive tasks in asynchronous operations can be difficult to ensure efficient resource usage and prevent leaks.
+Debugging asynchronous code is complex, requiring careful inspection and step-by-step debugging.
+Testing asynchronous code requires special considerations for handling callbacks, delaying assertions, and managing errors.
+Best Practices
+Use Promises or async/await for clean, readable code and structured handling of asynchronous operations.
+Handle errors in async operations using catch blocks (Promises) or try/catch blocks (async/await) for stability and user experience.
+Throttle or debounce async operations for frequent or rapid tasks like user input.
+Consider Fetch API for AJAX requests, with support for Promises and async/await for streamlined handling.
+Optimize performance by executing independent async operations concurrently with Promise.all() or async/await parallel execution.
+ 
+Enhance Your Knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+Generators and Iterators: Async iteration and generators (javascript.info)
+Web Workers: Web Workers in Javascript - GeeksforGeeks
+ 
+Try it Yourself
+Let's solve these coding problems in the VS Code IDE. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
+Task 1: Looking to dive deep into Advanced JavaScript concepts? Solve these detailed coding problems directly in the VS Code IDE!
+Problem
+Task 1: Fetch API and Callback Functions
+Using the Fetch API, retrieve data from a JSON endpoint asynchronously. Implement a callback function that handles the fetched data and displays it on the webpage.
+Task 2: Promises and Error Handling
+Refactor Task 1 using Promises to handle the Fetch API request. Implement error handling to display an error message in case the request fails.
+Task 3: Chaining Promises and Parallel Asynchronous Operations
+Create a function that fetches data from two different JSON endpoints asynchronously. Use Promise chaining to process the results from both requests. Display the combined result on the webpage.
+Task 4: Async/Await and Error Handling
+Refactor Task 3 using the async/await syntax instead of Promise chaining. Handle any errors that might occur during the asynchronous operations.
+Task 5: Throttling and Debouncing
+Implement throttling and debouncing techniques to control the rate of invoking a function that simulates frequent user actions (e.g., button clicks). Observe the differences in behavior between throttling and debouncing.
+ 
+Expected Output:
+Before clicking on the buttons
+Before clicking on the buttons
+ 
+After clicking the buttons
+After clicking the buttons
+Solution
+index.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Asynchronous Operations Assignment</title>
+</head>
+<body>
+		<h1>Asynchronous Operations Assignment</h2>
+    <button id="task1-btn">Task 1: Fetch API with Callback</button>
+    <button id="task2-btn">Task 2: Fetch API with Promises</button>
+    <button id="task3-btn">Task 3: Chaining Promises</button>
+    <button id="task4-btn">Task 4: Async/Await</button>
+    <button id="throttle-btn">Throttle Button</button>
+    <button id="debounce-btn">Debounce Button</button>
+
+    <div id="output"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+ 
+script.js
+// Task 1: Fetch API with Callback Function
+function fetchDataWithCallback(callback) {
+    fetch('https://jsonplaceholder.typicode.com/todos/1')
+      .then(response => response.json())
+      .then(data => {
+        callback(data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }
+  
+  document.getElementById('task1-btn').addEventListener('click', () => {
+    fetchDataWithCallback(data => {
+      document.getElementById('output').innerText = JSON.stringify(data);
+    });
+  });
+  
+  // Task 2: Fetch API with Promises and Error Handling
+  function fetchDataWithPromise() {
+    return fetch('https://jsonplaceholder.typicode.com/todos/2')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }
+  
+  document.getElementById('task2-btn').addEventListener('click', () => {
+    fetchDataWithPromise()
+      .then(data => {
+        document.getElementById('output').innerText = JSON.stringify(data);
+      });
+  });
+  
+  // Task 3: Chaining Promises and Parallel Asynchronous Operations
+  function fetchParallelData() {
+    const promise1 = fetch('https://jsonplaceholder.typicode.com/todos/3').then(response => response.json());
+    const promise2 = fetch('https://jsonplaceholder.typicode.com/todos/4').then(response => response.json());
+  
+    Promise.all([promise1, promise2])
+      .then(results => {
+        const combinedResult = results.flat();
+        document.getElementById('output').innerText = JSON.stringify(combinedResult);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }
+  
+  document.getElementById('task3-btn').addEventListener('click', () => {
+    fetchParallelData();
+  });
+  
+  // Task 4: Async/Await and Error Handling
+  async function fetchDataWithAsyncAwait() {
+    try {
+      const response = await fetch('https://jsonplaceholder.typicode.com/todos/5');
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      document.getElementById('output').innerText = JSON.stringify(data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
+  
+  document.getElementById('task4-btn').addEventListener('click', () => {
+    fetchDataWithAsyncAwait();
+  });
+  
+  // Throttling and Debouncing
+  
+  // Throttling
+  function throttle(callback, delay) {
+    let lastCallTime = 0;
+    return function (...args) {
+      const now = new Date().getTime();
+      if (now - lastCallTime >= delay) {
+        callback.apply(this, args);
+        lastCallTime = now;
+      }
+    };
+  }
+  
+  // Debouncing
+  function debounce(callback, delay) {
+    let timeoutId;
+    return function (...args) {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        callback.apply(this, args);
+      }, delay);
+    };
+  }
+  
+  function onThrottleClick() {
+    console.log('Throttled click!');
+  }
+  
+  function onDebounceClick() {
+    console.log('Debounced click!');
+  }
+  
+  const throttledClick = throttle(onThrottleClick, 1000);
+  const debouncedClick = debounce(onDebounceClick, 1000);
+  
+  document.getElementById('throttle-btn').addEventListener('click', throttledClick);
+  document.getElementById('debounce-btn').addEventListener('click', debouncedClick);
+Task 2: How do you feel about your confidence level in this lesson after solving this question? Share your experience and insights with your Cohort group on AlmaBetter's Community Platform.
