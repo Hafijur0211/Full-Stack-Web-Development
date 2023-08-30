@@ -1,0 +1,910 @@
+Introduction to Tailwind CSS
+Session Flow
+Learning Objective
+Introduction
+Theme
+Primary Goals
+Introduction to Tailwind CSS
+Intro to Tailwind CSS
+Method for Setting up Tailwind CSS
+Project Implementation Step 1
+Containers and Break Points
+Box Sizing
+Width and Height
+Project Implementation Step 2
+Border
+Column
+Project Implementation Step 3
+Background Property
+Project Implementation Step 4
+Padding and Margin
+Text Property
+Project Implementation Step 5
+Summary
+What did we learn?
+Shortcomings & Challenges
+Best Practices
+Enhance your knowledge
+Try it yourself
+Learning Objective
+Introduction
+Tailwind CSS is a popular utility-first CSS framework that provides a highly customizable set of pre-designed CSS classes.
+Focus: Basics of Tailwind CSS and it’s Utility Classes
+Pre-requisite: HTML and CSS
+Theme
+Acme Solutions, a dynamic software development company, found themselves facing a common challenge: maintaining consistency and efficiency in their UI development across multiple projects. However, their journey took an exciting turn when they discovered the game-changing potential of Tailwind CSS.
+With Tailwind CSS, Acme Solutions discovered a paradigm shift in their UI development process. The utility-first approach, where developers use pre-defined utility classes to style their components, resonated with the company's goal of creating consistent and maintainable UIs.
+The comprehensive set of utility classes provided by Tailwind CSS gave the development team an extensive palette to work with, enabling them to build UI components quickly and effortlessly.
+Primary Goals
+Understand the purpose and structure of Tailwind CSS for efficient webpage styling.
+Familiarize yourself with Tailwind's utility classes for color, width, font, and background manipulation.
+Implement a project using Tailwind CSS, following step-by-step instructions.
+Apply appropriate Tailwind classes to style different webpage components effectively.
+Explore additional Tailwind CSS properties to enhance the user experience and create visually appealing web pages.
+ 
+Introduction to Tailwind CSS
+Intro to Tailwind CSS
+notion image
+Tailwind CSS is a CSS framework that includes a set of pre-designed utility classes for speedy prototyping and interface development. 
+Unlike typical CSS frameworks, Tailwind CSS emphasizes utility-first design, allowing you to easily style specific HTML components with simple, reusable classes.
+This method allows you to easily construct complicated layouts and designs without having to write bespoke CSS. Instead of setting CSS rules for each element, you may accomplish the same effect by utilizing Tailwind's wide collection of utility classes. 
+This speeds up and improves the efficiency of development, especially for large-scale projects.
+Tailwind CSS also has a responsive design framework that allows you to easily change your layout for multiple screen sizes and devices.
+Here is a simple example of Tailwind CSS applied to a simple HTML structure:
+<!DOCTYPE html>
+
+<head>
+    <title>Tailwind CSS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <h1 class="text-green-500 text-xl p-2">Welcome to AlmaBetter Space</h1>
+    <h1 class="text-red-500 text-xl p-2">Applying CSS Classes Using Tailwind CSS</h1>
+    <h2></h2>
+</body>
+
+</html>
+Output:
+notion image
+Utility-First Approach
+Tailwind CSS, a prominent utility-first CSS framework, emphasizes the "Utility First" approach. It refers to the practice of creating user interfaces with minimal, single-purpose utility classes rather than implementing bespoke CSS rules.
+Traditional CSS frameworks often include a significant number of preset components with pre-styled classes that you may apply to HTML elements. 
+Tailwind CSS uses an unconventional approach. Rather than relying on pre-designed components, it offers a large collection of utility classes that you can use directly in your HTML code.
+Utility First Approach Features:
+Atomic Classes: Tailwind Atomic Classes CSS contains a plethora of atomic utility classes that target certain CSS attributes like margins, padding, font sizes, colors, and so on. Each utility class defines a single style rule, allowing you to style your items beautifully.
+Responsive: It includes responsive utility classes that allow you to create responsive designs without having to write bespoke media queries. To provide different styles at different breakpoints, use classes such as sm:text-lg or lg:flex.
+Configurability: It is extremely adjustable, enabling you to tailor the utility classes to your project's exact requirements. Using Tailwind's configuration file, you can change the default parameters or even add your own custom utility classes.
+Rapid Prototyping: Tailwind CSS's Utility First methodology is especially well-suited for quick prototyping and iterative development. You may easily experiment with alternative styles, make changes on the fly, and iterate on your design more effectively by employing utility classes.
+Methods For setting up Tailwind CSS
+CDN (Content Delivery Network) approach:
+To set up Tailwind CSS using the CDN approach, you need to follow these steps:
+Add the following code to the head of your HTML file:
+	<script src="https://cdn.tailwindcss.com"></script>
+Add the necessary classes to your HTML elements. You can find a list of classes in the Tailwind CSS documentation.
+Test your page in a web browser to see the results.
+This is the most straightforward approach to setting up Tailwind CSS, as it requires no additional tools or setup. However, larger projects may have better options, as they can increase the loading time for your pages.
+Overall, the CDN approach to setting up Tailwind CSS is a good option for small projects or testing the library before using it in a larger project.
+Setup Tailwind CSS with npm CLI
+To set up Tailwind CSS using the npm and webpack approach, you need to follow these steps:
+Install Tailwind CSS using npm by running the following command in your terminal:
+npm install tailwindcss
+Create a CSS file in your project and import Tailwind CSS into it. For example:
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+Adding Template files. You can do this by creating a tailwind.config.js file and adding the following code:
+module.exports = {
+  content: ["./src/**/*.{html,js}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+Add the necessary classes to your HTML elements. You can find the list of classes in the Tailwind CSS documentation.
+Test your page in a web browser to see the results.
+This approach to setting up Tailwind CSS is more involved than the CDN approach but provides more flexibility and control over the library. It is also a good option for larger projects, as it can improve the performance of your pages. 
+Overall, the npm and webpack approach to setting up Tailwind CSS is a good option for projects that require more control over the library and for projects that are likely to grow in size.
+Project Implementation Step 1
+In this step, we will add our CDN in our HTML file to use CSS Utility Classes.
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserve</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Added Tailwind CDN -->
+</head>
+
+<body>
+    <header>
+        <div>
+            <img src="./assets/bus.png" alt="bus" />
+            <div>RESERVE</div>
+        </div>
+        <nav>
+            <div>
+                <a href="" target="_blank" class="nav-elements">Tickets</a>
+                <a href="" target="_blank" class="nav-elements">Contact Us</a>
+            </div>
+            <div>
+                <a href="">Login</a>
+                <a href="" class="nav-elements">Register</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <div>
+                <div>
+                    <p>From:</p>
+                    <select name="Depart">
+                        <option value="Delhi">Delhi</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Bengaluru">Bengaluru</option>
+                        <option value="Chennai">Chennai</option>
+                    </select>
+
+                </div>
+                <div>
+                    <p>To:</p>
+                    <select name="arrive">
+                        <option value="Delhi">Delhi</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Bengaluru">Bengaluru</option>
+                        <option value="Chennai">Chennai</option>
+                    </select>
+                </div>
+            </div>
+            <button type="button">Search</button>
+        </section>
+
+        <section>
+            <h1 class="">Travel with world's largest bus services</h1>
+            <div class="">
+                <div class="">
+                    <img src="./assets/bus-vector.png" alt="Bus" class="" width="256px" />
+                    <h3 class="">2000+</h3>
+                    <p class="">Bus Collection</p>
+                </div>
+                <div class="">
+                    <img src="./assets/family.png" alt="Family" class="" width="256px" />
+                    <h3 class="">2 Million+</h3>
+                    <p class="">Happy customers globally</p>
+                </div>
+                <div class="">
+                    <img src="./assets/ticket.png" alt="Ticket" class="" width="256px" />
+                    <h3 class="">5000+</h3>
+                    <p class="">Tickets book everyday</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="">
+                <div>
+                    <h3>Vatsal Agarwal</h3>
+                    <h4>Customer since 2020</h4>
+                </div>
+                <p>4.9 &#9734;</p>
+                <p>Amazing travel experience with reserve. Excellent staff</p>
+            </div>
+            <div class="">
+                <div>
+                    <h3>Rohan Sharma</h3>
+                    <h4>Customer since 2022</h4>
+                </div>
+                <p>4.3 &#9734;</p>
+                <p>Amazing service. Always a best time with reserve.</p>
+            </div>
+            <div class="">
+                <div>
+                    <h3>Virat Kohli</h3>
+                    <h4>Customer since 2019</h4>
+                </div>
+                <p>4.5 &#9734;</p>
+                <p>Bus was clean and the journey was smooth. Reached on time.</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 AlmaBetter. All rights reserved</p>
+        <div class="">
+            <a href="https://www.facebook.com"><img src="./assets/facebook.png" alt="Facebook" class=""></a>
+            <a href="https://www.twitter.com"><img src="./assets/twitter.png" alt="Twitter" class=""></a>
+            <a href="https://www.instagram.com"><img src="./assets/instagram.png" alt="Instagram" class=""></a>
+        </div>
+    </footer>
+</body>
+
+</html>
+Containers and Break Points
+In web design, a container is a layout element used to hold and organize other content on a web page. A container typically has a fixed or maximum width and may have padding or margin to create space around its contents.
+In Tailwind, The container class sets the max-width of an element to match the min-width of the current breakpoint. 
+Example
+<div class="container">
+		This is a simple container
+</div>
+Output
+notion image
+Responsive Containers
+The container class also offers responsive variations like md:container by default, which allow you to make anything behave as a container only at a specific breakpoint and above.
+Example
+<div class="md:container">
+		 This is a simple container
+</div>
+Breakpoints
+In Tailwind CSS, breakpoints refer to specific screen sizes or device widths at which your website's layout or design may change to accommodate different screen resolutions. 
+Tailwind provides a set of default breakpoints, but you can also customize them according to your project's needs.
+By utilizing breakpoints in Tailwind CSS, you can apply different utility classes to elements at different screen sizes.  This allows you to create responsive designs that adapt and respond to various devices, such as smartphones, tablets, and desktops, without writing custom media queries.
+The default breakpoints in Tailwind CSS are as follows:
+sm: Small screens (e.g., smartphones). The minimum width is set to 640px.
+md: Medium screens (e.g., tablets). The minimum width is set to 768px.
+lg: Large screens (e.g., laptops). The minimum width is set to 1024px.
+xl: Extra-large screens (e.g., desktops). The minimum width is set to 1280px.
+2xl: The minimum width is set to 1536px
+To use breakpoints in Tailwind CSS, you append the desired breakpoint prefix to the utility class. 
+Example
+<div class="mt-5 md:mt-3">
+        Here Below md screen size i.e.768px The screen will be having a higher top margin as compared to screen size
+        more than 768px
+</div>
+notion image
+Here the element will have a top margin of 5 (default) but will change to 3 on medium screens and larger.
+Box-Sizing
+Introduction to Box-Sizing
+The box-sizing property in CSS determines how the width and height of an element are calculated, taking into account the element's content, padding, and border. The default value of box-sizing is content-box , which means that the element's width and height only include the content area, but not the padding or border.
+In Tailwind CSS, the box-border utility class can be used to set the box-sizing property to border-box , while the box-content utility class sets it to content-box . These classes can be applied to any element to change the way its width and height are calculated.
+Box-Sizing Utilities in Tailwind
+In Tailwind CSS, there are several utility classes provided to control the box-sizing property:
+box-border : This utility class sets the box-sizing property to border-box , which includes the element's content, padding, and border in its total width and height calculation.
+Example
+<div class="box-border w-48 h-24 border-4 border-red-500">Box 1</div>
+<div class="box-border w-48 h-24 border-2 border-blue-500">Box 2</div>
+<div class="box-border w-48 h-24 border border-green-500">Box 3</div>
+Output
+notion image
+In this example, each element has a total width and height of 48x24 pixels, regardless of their border size. This creates a consistent layout that is easier to manage.
+box-padding : This utility class sets the box-sizing property to padding-box , which includes the element's content and padding in its total width and height calculation, but not the border.
+Example
+<div class="box-padding p-4 bg-red-500">Box 1</div>
+<div class="box-padding p-4 bg-blue-500">Box 2</div>
+<div class="box-padding p-4 bg-green-500">Box 3</div>
+Output
+notion image
+box-content : This utility class sets the box-sizing property to content-box , which only includes the element's content in its total width and height calculation.
+These utility classes can be applied to any element in your HTML to control how its width and height are calculated. For example, if you want an element's width and height to include its padding and border, you can apply the box-border utility class to it. By using these utility classes, you can quickly and easily control the box-sizing property of your elements in Tailwind CSS, without having to write custom CSS rules.
+Width and Height
+Width
+In Tailwind CSS, the width utility class is used to control the width of an element. It allows you to set the width of an element using predefined classes that represent different width values.
+The format for width utility class is w-4
+Example
+<div class="w-80">This is the width of the box</div>
+Output:
+notion image
+Tailwind CSS provides a wide range of width-related utility classes, allowing you to set widths using fixed values, percentages, or relative units.
+Fixed Width: User can set a fixed width for an element using classes like w-4, w-8, w-16, etc. These classes set the width to a specific value in rem units. For instance, w-4 sets the width to 1rem, w-8 sets it to 2rem, and so on.
+Percentage Width: Tailwind CSS provides classes for setting widths in percentages. For example, w-1/2 sets the width to 50% of its parent container, w-1/3 sets it to 33.33%, and so on. You can use fractions like w-2/5, w-3/4, etc., to achieve specific percentage-based widths.
+Full Width: The w-full class is used to set the width of an element to 100% of its parent container. This is commonly used to make an element expand to fill the available horizontal space.
+Minimum and Maximum Width: Tailwind CSS provides classes for setting the minimum and maximum widths of an element. You can use classes like min-w-0, max-w-xs, min-w-screen, etc., to define minimum and maximum width constraints.
+Height
+In Tailwind CSS, the height utility class is used to control the height of an element. It allows you to set the height using predefined classes that represent different height values and behaviors.
+The format for height utility class is h-4
+Example
+<div class="h-80 w-80">This is the width of the box</div>
+Output
+notion image
+Tailwind CSS provides a wide range of height-related utility classes, allowing you to set height using fixed values, percentages, or relative units.
+Fixed Height: User can set a fixed height for an element using classes like h-4, h-8, h-16, etc. These classes set the height to a specific value in rem units. For example, h-4 sets the height to 1rem, h-8 sets it to 2rem, and so on.
+Percentage Height: Tailwind CSS provides classes for setting heights in percentages. For instance, h-1/2 sets the height to 50% of its parent container, h-1/3 sets it to 33.33%, and so on. Using fractions like h-2/5, h-3/4, etc., allows you to achieve specific percentage-based heights.
+Full Height: The h-full class is used to set the height of an element to 100% of its parent container. This is commonly used to make an element expand to fill the available vertical space.
+Minimum and Maximum Height: Tailwind CSS provides classes for setting the minimum and maximum heights of an element. You can use classes like min-h-0, max-h-xs, min-h-screen, etc., to define minimum and maximum height constraints.
+Arbitrary Value: User can set an arbitrary value (px, vh, em, rem) for both Height and Width in tailwind. The format for using an arbitrary value is h-[20px] or w-[40vh].
+ 
+Project Implementation Step 2
+Setting Image Width and Height
+<div class="">
+    <img src="./assets/bus-vector.png" alt="Bus" class="w-32 h-32" />
+    <h3 class="">2000+</h3>
+    <p class="">Bus Collection</p>
+</div>
+<div class="">
+    <img src="./assets/family.png" alt="Family" class="w-32 h-32" />
+    <h3 class="">2 Million+</h3>
+    <p class="">Happy customers globally</p>
+</div>
+<div class="">
+    <img src="./assets/ticket.png" alt="Ticket" class="w-32 h-32" />
+    <h3 class="">5000+</h3>
+    <p class="">Tickets book everyday</p>
+</div>
+Output:
+notion image
+Borders
+Tailwind provides a comprehensive set of utility classes for working with borders, allowing you to easily customize their thickness, style, and color. Most of borders property in Tailwind CSS includes:
+Border Width: Tailwind CSS provides utility classes to set the width of borders. You can use classes like border, border-2, border-4, etc., to specify the thickness of the border. The default border width is border, which sets a thin border.
+Example
+<div class="border-2">Tailwind border</div>
+Output:
+notion image
+User can specify border in one direction only and different width for different border sides. User can use the border-{side}, border-{side}-0, border-{side}-2, border-{side}-4, or border-{side}-8 utilities to set the border width for one side of an element. Here side value can be t for top, b for bottom, l for left and r for right.
+Example
+<div class="border-t-2 border-green-600">Tailwind border</div>
+Output:
+notion image
+You can also specify border in either left or right at once using border-x-2 and in top or bottom at once using border-y-2.
+Border Color: With Tailwind CSS, you can set the color of borders using utility classes. For example, border-gray-300, border-red-500, border-blue-900, etc., apply predefined or custom colors to the border. You can also use the border-transparent class to make the border invisible.
+Example
+<div class="border-2 border-green-600">Tailwind border</div>
+Output:
+notion image
+User can specify different border color in different direction for different border sides. User can use the border-{side}-color, border-{side}-green,  utilities to set the border color for one side of an element. Here side value can be t for top, b for bottom, l for left and r for right.
+Example
+<div class="border-t-2 border-green-600">Tailwind border</div>
+Output:
+notion image
+You can also specify border color in either left or right at once using border-x-green and in top or bottom at once using border-y-black.
+Border Radius: You can use classes like rounded, rounded-md, rounded-lg, etc., to add varying levels of border radius to the corners of an element. By default, rounded adds a small border radius, while rounded-full creates a fully rounded circle.
+Example
+<div class="border-2 border-rounded-md">Tailwind border</div>
+Output:
+notion image
+ 
+User can also specify different border radius in all the 4 direction as well.
+Border Style: Classes such as border-solid, border-dashed, border-dotted, and border-double allow you to set the border style to solid, dashed, dotted, or double, respectively.
+Example
+<div class="border-2 border-green-600 border-dashed">Tailwind border</div>
+Output
+notion image
+border-none: It can be used to remove the border currently present
+Columns
+The Column Utility class allows you to specify the number of columns a particular element should occupy within a parent container. It follows a responsive approach, which means you can define different column configurations based on screen sizes using breakpoints.
+Acme Solutions, a dynamic software development company, faced a common challenge: maintaining consistency and efficiency in their UI development across multiple projects. However, their journey took an exciting turn when they discovered the game-changing potential of Tailwind CSS.
+Example
+<div class="columns-3 ...">
+        <div>Col 1</div>
+        <div>Col 2</div>
+        <div>Col 3</div>
+        <!-- ... -->
+</div>
+Output:
+notion image
+Column Gap: The column gap utility is used to specify the gap between the columns. You can use the gap-{x} utility to specify the gap between the columns made. for e.g. gap-2gap-3. 
+Project Implementation Step 3
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserve</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Added Tailwind CDN -->
+</head>
+
+<body>
+    <header class="w-full border-b-2 border-[rgba(201, 195, 195, 0.778)] columns-1">
+        <div>
+            <img src="./assets/bus.png" alt="bus" class="w-8 h-8" />
+            <div>RESERVE</div>
+        </div>
+        <nav>
+            <div>
+                <a href="" target="_blank" class="nav-elements">Tickets</a>
+                <a href="" target="_blank" class="nav-elements">Contact Us</a>
+            </div>
+            <div>
+                <a href="" class="rounded-md">Login</a>
+                <a href="" class="nav-elements">Register</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="w-full h-[40vh]">
+            <div class="w-full">
+                <div class="w-1/4 border">
+                    <p>From:</p>
+                    <select name="Depart" class="border-none">
+                        <option value="Delhi">Delhi</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Bengaluru">Bengaluru</option>
+                        <option value="Chennai">Chennai</option>
+                    </select>
+
+                </div>
+                <div class="w-1/4 border">
+                    <p>To:</p>
+                    <select name="arrive" class="border-none">
+                        <option value="Delhi">Delhi</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Bengaluru">Bengaluru</option>
+                        <option value="Chennai">Chennai</option>
+                    </select>
+                </div>
+            </div>
+            <button type="button" class="rounded-md border-none">Search</button>
+        </section>
+
+        <section class="w-full">
+            <h1 class="">Travel with world's largest bus services</h1>
+            <div class="columns-3">
+                <div class="h-60 border-2 border-gray-400">
+                    <img src="./assets/bus-vector.png" alt="Bus" class="w-32 h-32" />
+                    <h3 class="">2000+</h3>
+                    <p class="">Bus Collection</p>
+                </div>
+                <div class="h-60  border-2 border-gray-400">
+                    <img src="./assets/family.png" alt="Family" class="w-32 h-32" />
+                    <h3 class="">2 Million+</h3>
+                    <p class="">Happy customers globally</p>
+                </div>
+                <div class="h-60  border-2 border-gray-400">
+                    <img src="./assets/ticket.png" alt="Ticket" class="w-32 h-32" />
+                    <h3 class="">5000+</h3>
+                    <p class="">Tickets book everyday</p>
+                </div>
+            </div>
+        </section>
+        <section class="w-full columns-3">
+            <div class="border">
+                <div>
+                    <h3>Vatsal Agarwal</h3>
+                    <h4>Customer since 2020</h4>
+                </div>
+                <p>4.9 &#9734;</p>
+                <p>Amazing travel experience with reserve. Excellent staff</p>
+            </div>
+            <div class="border">
+                <div>
+                    <h3>Rohan Sharma</h3>
+                    <h4>Customer since 2022</h4>
+                </div>
+                <p>4.3 &#9734;</p>
+                <p>Amazing service. Always a best time with reserve.</p>
+            </div>
+            <div class="border">
+                <div>
+                    <h3>Virat Kohli</h3>
+                    <h4>Customer since 2019</h4>
+                </div>
+                <p>4.5 &#9734;</p>
+                <p>Bus was clean and the journey was smooth. Reached on time.</p>
+            </div>
+        </section>
+    </main>
+    <footer class="w-full columns-2">
+        <p>&copy; 2023 AlmaBetter. All rights reserved</p>
+        <div class="">
+            <a href="https://www.facebook.com"><img src="./assets/facebook.png" alt="Facebook" class="w-8 h-8"></a>
+            <a href="https://www.twitter.com"><img src="./assets/twitter.png" alt="Twitter" class="w-8 h-8"></a>
+            <a href="https://www.instagram.com"><img src="./assets/instagram.png" alt="Instagram" class="w-8 h-8"></a>
+        </div>
+    </footer>
+</body>
+
+</html>
+Output:
+notion image
+Background
+Background properties are used to control the visual aspects of the background of an element. Tailwind provides a range of utility classes for working with background properties, allowing you to easily customize the background color, position, repeat, size, and image
+Background Color: The bg-{color} class sets the background color of an element. You can use predefined colors like bg-red-500, bg-blue-900, or specify your own custom colors.
+Example
+<div class="bg-gray-200">This div has a gray background.</div>
+Output
+notion image
+Background Attachment : The background attachment property controls whether the background scrolls with the content or remains fixed in place. You can use classes like bg-fixed, bg-local, or bg-scroll to set the desired attachment behavior.
+Example
+<div class="bg-fixed">This background is fixed.</div>
+Background Position: The bg-{position} class allows you to set the position of the background image within the element. You can use classes like bg-top, bg-center, bg-bottom, or specify custom positions.
+Example
+<div class="bg-center">This background is centered.</div>
+Background Repeat: The background repeat property controls how the background image is repeated. You can use classes like bg-repeat, bg-no-repeat, bg-repeat-x, or bg-repeat-y to specify the repeat behavior.
+Example
+<div class="bg-repeat">This background image is repeated.</div>
+Background Size: The background size property controls the size of the background image. You can use classes like bg-cover, bg-contain, bg-auto, or specify custom sizes using bg-{size}.
+Project Implementation Step 4
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserve</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Added Tailwind CDN -->
+</head>
+
+<body>
+    <header class="w-full border-b-2 border-[rgba(201, 195, 195, 0.778)] columns-1">
+        <div>
+            <img src="./assets/bus.png" alt="bus" class="w-8 h-8" />
+            <div>RESERVE</div>
+        </div>
+        <nav>
+            <div>
+                <a href="" target="_blank" class="nav-elements">Tickets</a>
+                <a href="" target="_blank" class="nav-elements">Contact Us</a>
+            </div>
+            <div>
+                <a href="" class="rounded-md bg-orange-400">Login</a>
+                <a href="" class="nav-elements">Register</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="w-full h-[40vh] bg-gradient-to-r from-cyan-500 to-blue-500">
+            <div class="w-full">
+                <div class="w-1/4 border">
+                    <p>From:</p>
+                    <select name="Depart" class="border-none">
+                        <option value="Delhi">Delhi</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Bengaluru">Bengaluru</option>
+                        <option value="Chennai">Chennai</option>
+                    </select>
+
+                </div>
+                <div class="w-1/4 border">
+                    <p>To:</p>
+                    <select name="arrive" class="border-none">
+                        <option value="Delhi">Delhi</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Bengaluru">Bengaluru</option>
+                        <option value="Chennai">Chennai</option>
+                    </select>
+                </div>
+            </div>
+            <button type="button" class="rounded-md border-none bg-orange-400">Search</button>
+        </section>
+
+        <section class="w-full">
+            <h1 class="">Travel with world's largest bus services</h1>
+            <div class="columns-3">
+                <div class="h-52 border-2 border-gray-400">
+                    <img src="./assets/bus-vector.png" alt="Bus" class="w-32 h-32" />
+                    <h3 class="">2000+</h3>
+                    <p class="">Bus Collection</p>
+                </div>
+                <div class="h-52  border-2 border-gray-400">
+                    <img src="./assets/family.png" alt="Family" class="w-32 h-32" />
+                    <h3 class="">2 Million+</h3>
+                    <p class="">Happy customers globally</p>
+                </div>
+                <div class="h-52  border-2 border-gray-400">
+                    <img src="./assets/ticket.png" alt="Ticket" class="w-32 h-32" />
+                    <h3 class="">5000+</h3>
+                    <p class="">Tickets book everyday</p>
+                </div>
+            </div>
+        </section>
+        <section class="w-full columns-3 bg-gray-100">
+            <div class="border">
+                <div>
+                    <h3>Vatsal Agarwal</h3>
+                    <h4>Customer since 2020</h4>
+                </div>
+                <p class="w-10 h-6 rounded-md bg-green-600">4.9 &#9734;</p>
+                <p>Amazing travel experience with reserve. Excellent staff</p>
+            </div>
+            <div class="border">
+                <div>
+                    <h3>Rohan Sharma</h3>
+                    <h4>Customer since 2022</h4>
+                </div>
+                <p class="w-10 h-6 rounded-md bg-green-600">4.3 &#9734;</p>
+                <p>Amazing service. Always a best time with reserve.</p>
+            </div>
+            <div class="border">
+                <div>
+                    <h3>Virat Kohli</h3>
+                    <h4>Customer since 2019</h4>
+                </div>
+                <p class="w-10 h-6 rounded-md bg-green-600">4.5 &#9734;</p>
+                <p>Bus was clean and the journey was smooth. Reached on time.</p>
+            </div>
+        </section>
+    </main>
+    <footer class="w-full columns-2 bg-red-100">
+        <p>&copy; 2023 AlmaBetter. All rights reserved</p>
+        <div class="">
+            <a href="https://www.facebook.com"><img src="./assets/facebook.png" alt="Facebook" class="w-8 h-8"></a>
+            <a href="https://www.twitter.com"><img src="./assets/twitter.png" alt="Twitter" class="w-8 h-8"></a>
+            <a href="https://www.instagram.com"><img src="./assets/instagram.png" alt="Instagram" class="w-8 h-8"></a>
+        </div>
+    </footer>
+</body>
+
+</html>
+Output:
+notion image
+Padding and Margin
+Padding
+Padding is a utility class used to add space around the content of an element. It allows you to control the spacing between the element's content and its border. 
+The padding utility classes in Tailwind CSS follow a specific naming convention, allowing you to easily specify different padding values for different sides of an element. Here's an explanation of how padding works in Tailwind CSS:
+The padding utility classes follow the format {property}{sides}-{size}, where:
+{property} is the abbreviation for padding (p).
+{sides} specifies which sides of the element to apply the padding to. It can be any combination of t (top), b (bottom), l (left), and r (right).
+{size} represents the size of the padding, and it can be a numeric value or one of the predefined sizes (0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24, 32, 40, 48, 56, 64, px, 0.5, 1.5, 2.5, 3.5, 1/2, 1/3, 2/3, 1/4, 2/4, 3/4, 1/5, 2/5, 3/5, 4/5, 1/6, 2/6, 3/6, 4/6, 5/6, full).
+Example
+<div class="p-4">This div has a padding of 4 units on all sides.</div>
+
+<div class="pt-2 pr-4 pb-6 pl-8">This div has different padding values for each side.</div>
+
+<div class="px-6 py-3">This div has horizontal padding of 6 units and vertical padding of 3 units.</div>
+
+<div class="p-px">This div has a padding of 1 pixel on all sides.</div>
+
+<div class="p-0.5">This div has a padding of 0.5 units on all sides.</div>
+
+<div class="p-1/2">This div has a padding of half the width of its parent container on all sides.</div>
+Output
+notion image
+Margin
+Margin is a utility class used to add space around an element, creating separation between the element and other nearby elements. 
+The margin utility classes follow a specific naming convention that allows you to specify different margin values for different sides of an element. Here's an explanation of how margin works in Tailwind CSS:
+The margin utility classes follow the format {property}{sides}-{size}, where:
+{property} is the abbreviation for margin (m).
+{sides} specifies which sides of the element to apply the margin to. It can be any combination of t (top), b (bottom), l (left), and r (right).
+{size} represents the size of the margin, and it can be a numeric value or one of the predefined sizes (0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24, 32, 40, 48, 56, 64, auto, px, 0.5, 1.5, 2.5, 3.5, 1/2, 1/3, 2/3, 1/4, 2/4, 3/4, 1/5, 2/5, 3/5, 4/5, 1/6, 2/6, 3/6, 4/6, 5/6, full).
+Example
+<div class="m-4">This div has a margin of 4 units on all sides.</div>
+
+<div class="mt-2 mr-4 mb-6 ml-8">This div has different margin values for each side.</div>
+
+<div class="mx-6 my-3">This div has horizontal margin of 6 units and vertical margin of 3 units.</div>
+
+<div class="m-px">This div has a margin of 1 pixel on all sides.</div>
+
+<div class="m-0.5">This div has a margin of 0.5 units on all sides.</div>
+
+<div class="m-1/2">This div has a margin of half the width of its parent container on all sides.</div>
+Output
+notion image
+Text Properties
+Text properties refer to utility classes that allow you to control the appearance and styling of text elements. These utility classes provide a convenient way to set various text-related properties without writing custom CSS.
+Text Color: The text-{color} class sets the color of the text. You can use predefined colors like text-red-500, text-blue-900, or specify your own custom colors.
+Tailwind comes with a default color palette that we can use to apply to an element background, border, text, and more. We can also extend more colors if we need.
+Example
+<div class="text-blue-600">Tailwind border</div>
+Output
+notion image
+In Tailwind for every primary color we are adding 500 to the end of the color. This is because Tailwind has 11 different shades of each color ranging from 50, 100,... 950.
+Font Size: Tailwind CSS includes utility classes to set the size of text. You can use classes like text-sm, text-base, text-lgtext-xl, text-2xl, etc., to specify different font sizes
+Example
+<p class="text-sm">Font Size</p>
+<p class="text-base">Font Size</p>
+<p class="text-lg">Font Size</p>
+<p class="text-xl">Font Size</p>
+<p class="text-2xl">Font Size</p>
+Output
+notion image
+Font Weight: The font-{weight} class allows you to set the weight (thickness) of the text. You can use classes like font-thin, font-normal, font-semibold, or font-bold to specify different font weights.
+Example
+<p class="font-bold">Bolded Text</p>
+Output
+notion image
+Font Style: The font-style includes italic and non-italic utility classes which are used to control the style of the font in text elements. It allows you to apply different font styles, such as italic or normal, to your text without writing custom CSS.
+Example
+<p class="italic"> This text is italic</p>
+Output:
+notion image
+Text Alignment: Tailwind CSS provides utility classes text-{alignment} to align text within its container. You can use classes like text-left, text-center, text-right, or text-justify to specify the desired alignment.
+Example
+<p class="text-center">This text is centered.</p>
+Output
+notion image
+Text Decoration : Tailwind CSS includes utility classes to modify the decoration of text. You can use classes like underline, line-through, or no-underline to add underline, strikethrough, or remove the text decoration, respectively.
+Example
+<p class="underline">This text is underlined.</p>
+Output:
+notion image
+Text Transformation : Tailwind CSS provides utility classes to transform the casing of text. You can use classes like uppercase, lowercase, capitalize, or normal-case to modify the text case.
+Example
+<p class="uppercase">This text is in uppercase.</p>
+Output:
+notion image
+Line Height : The leading-{size} class sets the line height of the text. You can use classes like leading-none, leading-tight, leading-normal, or leading-loose to control the spacing between lines.
+Example
+<p class="leading-loose">This text has increased line height.</p>
+Output
+notion image
+Letter Spacing : Tailwind CSS offers utility classes to adjust the spacing between letters in text. You can use classes like tracking-tighter, tracking-normal, or tracking-wider to modify the letter spacing.
+Example
+<p class="tracking-wider">This text has increased letter spacing.</p>
+Project Implementation Step 5
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserve</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Added Tailwind CDN -->
+</head>
+
+<body>
+    <header class="w-full border-b-2 border-[rgba(201, 195, 195, 0.778)] columns-1 font-semibold">
+        <div>
+            <img src="./assets/bus.png" alt="bus" class="w-8 h-8" />
+            <div>RESERVE</div>
+        </div>
+        <nav>
+            <div>
+                <a href="" target="_blank" class="nav-elements">Tickets</a>
+                <a href="" target="_blank" class="nav-elements">Contact Us</a>
+            </div>
+            <div>
+                <a href="" class="rounded-md bg-orange-400 px-4 py-1 text-white">Login</a>
+                <a href="" class="nav-elements">Register</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="w-full h-[40vh] bg-gradient-to-r from-cyan-500 to-blue-500 mt-1">
+            <div class="w-full">
+                <div class="w-1/4 border bg-white rounded-sm">
+                    <p class="pl-1">From:</p>
+                    <select name="Depart" class="border-none w-full">
+                        <option value="Delhi">Delhi</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Bengaluru">Bengaluru</option>
+                        <option value="Chennai">Chennai</option>
+                    </select>
+
+                </div>
+                <div class="w-1/4 border bg-white rounded-sm">
+                    <p class="pl-1">To:</p>
+                    <select name="arrive" class="border-none w-full">
+                        <option value="Delhi">Delhi</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Bengaluru">Bengaluru</option>
+                        <option value="Chennai">Chennai</option>
+                    </select>
+                </div>
+            </div>
+            <button type="button"
+                class="rounded-md border-none bg-orange-400 px-7 text-white font-semibold py-2">Search</button>
+        </section>
+
+        <section class="w-full">
+            <h1 class="text-2xl font-semibold my-4 text-center">Travel with world's largest bus services</h1>
+            <div class="columns-3">
+                <div class="h-52 w-60 border-2 border-gray-400 p-1">
+                    <img src="./assets/bus-vector.png" alt="Bus" class="w-32 h-32" />
+                    <h3 class="text-center font-semibold">2000+</h3>
+                    <p class="text-center font-semibold">Bus Collection</p>
+                </div>
+                <div class="h-52 w-60  border-2 border-gray-400 p-1">
+                    <img src="./assets/family.png" alt="Family" class="w-32 h-32" />
+                    <h3 class="text-center font-semibold">2 Million+</h3>
+                    <p class="text-center font-semibold">Happy customers globally</p>
+                </div>
+                <div class="h-52 w-60  border-2 border-gray-400 p-1">
+                    <img src="./assets/ticket.png" alt="Ticket" class="w-32 h-32" />
+                    <h3 class="text-center font-semibold">5000+</h3>
+                    <p class="text-center font-semibold">Tickets book everyday</p>
+                </div>
+            </div>
+        </section>
+        <section class="w-full columns-3 bg-gray-100 my-8 p-3">
+            <div class="border bg-white p-3">
+                <div>
+                    <h3 class="my-1 font-semibold">Vatsal Agarwal</h3>
+                    <h4 class="my-2 font-semibold">Customer since 2020</h4>
+                </div>
+                <p class="w-10 h-5 rounded-md bg-green-600 text-white my-2 font-normal text-center text-sm">4.9 &#9734;
+                </p>
+                <p>Amazing travel experience with reserve. Excellent staff</p>
+            </div>
+            <div class="border bg-white p-3">
+                <div>
+                    <h3 class="my-1 font-semibold">Rohan Sharma</h3>
+                    <h4 class="my-2 font-semibold">Customer since 2022</h4>
+                </div>
+                <p class="w-10 h-5 rounded-md bg-green-600 text-white my-2 font-normal text-center text-sm">4.3 &#9734;
+                </p>
+                <p>Amazing service. Always a best time with reserve.</p>
+            </div>
+            <div class="border bg-white p-3">
+                <div>
+                    <h3 class="my-1 font-semibold">Virat Kohli</h3>
+                    <h4 class="my-2 font-semibold">Customer since 2019</h4>
+                </div>
+                <p class="w-10 h-5 rounded-md bg-green-600 text-white my-2 font-normal text-center text-sm">4.5 &#9734;
+                </p>
+                <p>Bus was clean and the journey was smooth. Reached on time.</p>
+            </div>
+        </section>
+    </main>
+    <footer class="w-full columns-2 bg-red-100">
+        <p>&copy; 2023 AlmaBetter. All rights reserved</p>
+        <div class="">
+            <a href="https://www.facebook.com"><img src="./assets/facebook.png" alt="Facebook" class="w-8 h-8"></a>
+            <a href="https://www.twitter.com"><img src="./assets/twitter.png" alt="Twitter" class="w-8 h-8"></a>
+            <a href="https://www.instagram.com"><img src="./assets/instagram.png" alt="Instagram" class="w-8 h-8"></a>
+        </div>
+    </footer>
+</body>
+
+</html>
+Output:
+notion image
+ 
+ 
+Summary
+What did we learn?
+Tailwind CSS is a utility-first CSS framework that emphasizes a "Utility First" approach, providing a large collection of atomic utility classes targeting specific CSS attributes like margins, padding, font sizes, and colors.
+Tailwind CSS can be set up using the CDN approach, which involves adding a CDN link and applying classes directly in HTML.
+In Tailwind CSS, the container class sets the maximum width of an element to match the minimum width of the current breakpoint, providing a fixed or maximum-width container for organizing content on a web page.
+Tailwind CSS provides default breakpoints (sm, md, lg, xl, and 2xl), which represent different screen sizes like smartphones, tablets, laptops, desktops, and extra-large screens.
+In Tailwind CSS, the box-sizing property can be controlled using utility classes such as box-border, box-padding, and box-content.
+The width utility class is used to control the width of an element, and the height utility class is used to control the height of an element.
+Tailwind CSS provides a comprehensive set of utility classes for customizing borders, including border width, color, radius, and style.
+Tailwind CSS contains utility classes for controlling text properties such as color, font size, weight, style, alignment, decoration, transformation, line height, and letter spacing.
+Tailwind CSS provides utility classes for customizing background properties such as color, attachment, position, repeat, and size.
+The Column Utility class in Tailwind CSS allows you to create responsive grid layouts by specifying the number of columns an element should occupy within its parent container.
+Shortcomings and Challenges
+Tailwind CSS has a steep learning curve compared to traditional CSS frameworks. It requires developers to familiarize themselves with its utility classes and unique syntax.
+Tailwind CSS generates a large file size due to its extensive utility class library. This can impact the performance of the application, especially on low-bandwidth connections.
+Tailwind CSS primarily uses utility class names like "text-red-500" or "p-4" instead of semantic class names like "primary-heading" or "large-padding." This can make the HTML markup less intuitive and harder to understand.
+Tailwind CSS relies heavily on configuration files to customize its settings. The configuration can be complex, especially for beginners, and requires a deep understanding of the framework's configuration options.
+Best Practices
+Use the Tailwind Configuration File to tailor Tailwind CSS to your project's specific needs, such as defining custom colors, spacing scales, or breakpoints.
+Establish consistent naming conventions for utility classes to ensure clarity and maintainability.
+Instead of creating custom CSS rules, utilize Tailwind CSS's utility class extension feature to modify or extend existing utility classes.
+ 
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+Tailwind CSS: https://tailwindcss.com/docs
+https://tsh.io/blog/tailwind-css-tutorial/
+ 
+Try it Yourself
+Let's solve these coding problems in the VS Code IDE. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
+Task 1: Are you up for a design challenge? Put your creativity to the test with TailwindCSS in the VS Code IDE.
+Problem
+You have been assigned to create a responsive web page using Tailwind CSS. The page should include various layout components and design elements to demonstrate your understanding of Tailwind CSS utility classes. Follow the instructions below to complete the assignment:
+Instructions:
+Create an HTML file named index.html .
+Set up the HTML structure with the appropriate <!DOCTYPE>, <html>, <head>, and <body> tags.
+Inside the <head> tag, link the CSS file styles.css and include the necessary meta tags for responsiveness.
+Design the layout using the following components:
+a) Create a container <div> that spans the full width of the viewport (width should adjust according to breakpoints) and centers the content both horizontally and vertically.
+b) Inside the container, add a header section with a background color of your choice, and ensure it stretches the full width of the container. Add a heading element (e.g., <h1>) with a unique message of your choice, and apply suitable text properties (font size, color, alignment, etc.).
+c) Apply different background colors to the items and ensure they have equal dimensions using the box property.
+d) Add a border to each item, with a thickness and style of your choice.
+Expected Output:
+notion image
+Solution
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tailwind CSS Assignment</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mx-auto h-screen">
+    <header class="bg-blue-500 w-full text-center p-8">
+      <h1 class="text-white text-4xl font-bold">Welcome to Tailwind CSS</h1>
+    </header>
+    <div class="mt-8">
+      <div class="bg-red-300 border border-red-600 p-4 text-center">Item 1</div>
+      <div class="bg-green-300 border border-green-600 p-4 text-center">Item 2</div>
+      <div class="bg-blue-300 border border-blue-600 p-4 text-center">Item 3</div>
+      <div class="bg-yellow-300 border border-yellow-600 p-4 text-center">Item 4</div>
+      <div class="bg-purple-300 border border-purple-600 p-4 text-center">Item 5</div>
+      <div class="bg-indigo-300 border border-indigo-600 p-4 text-center">Item 6</div>
+      <div class="bg-pink-300 border border-pink-600 p-4 text-center">Item 7</div>
+    </div>
+  </div>
+</body>
+</html>
+Task 2: Feel free to add additional formatting (TailwindCSS utility classes) to enhance the user experience. Share your experience and insights with your Cohort group on AlmaBetter's Community Platform.
