@@ -1,1 +1,22 @@
-
+Learning Objective
+Introduction
+React.js is a popular JavaScript library for building user interfaces (UIs) and front-end applications. Developed by Facebook, React.js provides a declarative and efficient way to create interactive UI components, making it easier to develop complex web applications.
+Focus: JSX, Components, State & Props, Hooks, Redux, Event Handling, Unit Testing, Lifecycle Methods, and Project Deployment using Netlify
+Prerequisites: HTML, CSS, JavaScript, and ES6+ Concepts
+Theme
+Facebook utilizes React.js to power its user interface, enabling dynamic and interactive components on its platform. React's virtual DOM efficiently manages updates, allowing Facebook to handle large amounts of data and deliver a smooth user experience. React's component-based architecture also facilitates code reusability and maintainability, making it easier for Facebook's development teams to collaborate and iterate on features.
+Airbnb employs React.js to build its user interface, enhancing the performance and user experience of its website and mobile apps. React's component-based approach enables Airbnb to create reusable UI elements, ensuring consistency across their platform. With React's efficient rendering and state management, Airbnb can deliver real-time updates and interactive features, such as search filtering and dynamic listings, providing a seamless booking experience for its users.
+Primary Goals
+Learn the core concepts of React.js, such as components, props, state, and lifecycle methods. 
+Learn how to create functional and class components, handle component states, and use props to pass data between components.
+Explore popular libraries like React Router for routing and Redux for state management. Get familiar with the concept of virtual DOM and reconciliation, and testing.
+Getting Practical Experience with Frontend Project Deployment on Netlify.
+Chapter Essentials
+Learning Lessons
+The chapter comprises multiple lessons centered around React events Lifecycle methods, Optimization techniques, Unit Testing, and Project Deployment.
+The lesson consists of learning material and engaging activities that enhance the learner's experience.
+Once you have grasped a particular set of concepts, the lesson will proceed to Practical Implementation Steps. These steps aim to empower you with the ability to put theoretical knowledge into practice by working on a project.
+In addition, every lesson includes 10 MCQs aimed at enhancing knowledge.
+Skill Mastery Challenge
+The chapter includes a Skill Mastery Challenge with a Summary section for the given chapter for best practices, challenges, and additional references, an Interview Prep section with industry-specific concepts, and a Competency Challenge featuring a one-hour session with 40 MCQs for reinforced learning and identifying improvement areas.
+Earning the Competency Challenge Certificate will ensure the completion of this chapter.
