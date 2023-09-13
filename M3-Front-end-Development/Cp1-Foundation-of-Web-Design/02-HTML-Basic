@@ -627,15 +627,16 @@ Inline and Block Elements: https://medium.com/ux-art/html-block-and-inline-eleme
  
 Try it Yourself
 Let's build this mini project in the VS Code IDE. Don't forget to join the AlmaBetter Community to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
-Question
-Task: Create a Personal Profile Webpage
-Create an HTML document structure with the necessary tags including <html>, <head>, and <body>.
+Task 1: Experience hands-on HTML practice like never before! Engage with these coding problems in the VS Code IDE and witness your code come to life.
+Problem
+Create a Personal Profile Webpage
+Create an HTML document structure with the necessary tags, including <html>, <head>, and <body>.
 Inside the <head> tag, add a title for your webpage.
 Within the <body> tag, create a header using the <header> tag and add a suitable heading for your personal profile.
 Below the header, create a section using the <section> tag.
 Inside the section, include the following elements:
 A heading with your full name using an appropriate heading tag.
-An image of yourself using the <img> tag. You can use a placeholder image or include a link to your own image and give it the width and height of 200px.
+An image of yourself using the <img> tag. You can use a placeholder image or include a link to your own image and give it a width and height of 200px.
 A paragraph describing yourself, your interests, or any other relevant information.
 A list of your hobbies using the <p> tags.
 After the section, create a footer using the <footer> tag and include a copyright notice.
@@ -680,3 +681,14 @@ notion image
   </body>
 
 </html>
+Task 2: Propose a mnemonic to easily remember the important HTML Tags and Elements and share your insights on AlmaBetter's Community platform.
+For example:
+💡
+Happy Tiger Dances In Bright Daylight.  
+Each letter in the mnemonic represents the first letter of an important HTML tag or element:
+H: <h1> (Heading 1)
+T: <title> (Document Title)
+D: <div> (Division)
+I: <img> (Image)
+B: <button> (Button)
+a: <a> (Anchor/Link)
