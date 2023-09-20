@@ -1,0 +1,650 @@
+Arrays & Strings
+Session Flow
+Learning Objective
+Introduction
+Theme
+Primary Goals
+Arrays & Strings
+Introduction to Array
+What is an Array?
+Why is an Array data structure required?
+Types of Array
+One-dimensional Arrays
+Multi-dimensional Arrays
+Activity: Fill in the blanks
+Working with Array
+Creating an Array
+Accessing Array Elements
+Modifying Array Elements
+Array methods
+Activity: Code Practice
+Introduction to Strings
+What is a String?
+Why is a String data structure required?
+String Declaration
+String Operations
+Activity: Fill in the blanks
+Working with Strings
+Real-world Examples of Strings
+Summary
+What did we learn?
+Shortcomings & Challenges
+Best practices to follow
+Enhance your knowledge
+Try it yourself
+ 
+Learning Objective
+Introduction
+JavaScript arrays and strings are both types of data structures that can hold multiple values. Arrays are used to store multiple values in a single variable, while strings are used to store text. They both have a variety of built-in methods that allow you to manipulate and interact with the data they hold.
+Focus: Arrays, Types of Array, Working with Array, Array methods, Strings, String Operations, Working with String, Real-world examples
+Prerequisites: VS Code IDE with Node.js installed, JavaScript Basics & Foundations
+Theme
+Imagine you're a librarian in a vast library of books. In JavaScript, Arrays are like the shelves in your library, each holding a collection of books (values) in a specific order. You can add a book, remove one, or even rearrange them. You can also find a particular book by its position on the shelf.
+Now, think of Strings as the stories within the books. They are sequences of characters, like sentences, paragraphs, or entire chapters. You can  read them, edit them, combine them, or even search for a specific word or phrase.
+Arrays and strings are powerful tools that help you organize, manipulate, and access your data, just like managing books in a library.
+Primary Goals
+Understand the different types of arrays and strings available in JavaScript.
+Develop proficiency in manipulating arrays using JavaScript.
+Gain a solid understanding of strings as a fundamental data structure.
+Familiarize yourself with common operations used with strings.
+Utilize and interact effectively with the String data structure in JavaScript.
+Arrays & Strings
+Introduction to Array
+For instance, In a cricket match, if a team scores a total of 277 runs in a match, an array could be used to store the individual scores of each player. The array could contain elements such as 0, 18, 97, 35, 91, 21, and 15 representing the number of runs scored by each player and extras.
+notion image
+So, we can store runs scored by each player in a array called runs as:
+let runs = [0, 18, 97, 35, 91, 21, 15];
+We can also store the name of players in another array called batters as:
+let batters = ["Virender Sehwag", "Sachin Tendulkar", "Gautam Gambhir", "Virat Kohli", "MS Dhoni", "Yuvraj Singh", "Extras"];
+Arrays can also be used to perform various operations on the above data, such as calculating the total number of runs scored by the team, the highest and lowest scores, and the average score per player and many more things.
+In addition, arrays can be used to store and manipulate other types of data related to cricket or any sport, such as player statistics, match schedules, and team rankings. The flexibility and versatility of arrays make them a valuable Data Structure for sports enthusiasts and analysts.
+What is an Array?
+Arrays are generally described as "list-like objects"; they are basically single objects that contain multiple values stored in a list. It provides a simple and efficient way to store and manipulate data, making them a valuable tool for any programmer.
+Why is an Array data structure required?
+Here are some of the main reasons why we use arrays:
+Storing multiple values: Arrays in JavaScript allow us to store multiple values of the different data type in a single variable. This is useful when we need to work with a large amount of data, such as a list of names or numbers.
+Easy access to data: We can access an element by its index (position within the array), which allows us to quickly retrieve the data we need.
+Efficient memory management: Arrays are a very efficient way to manage memory. They allow us to allocate a fixed amount of memory for a specific number of elements, which reduces memory fragmentation and helps to optimize performance.
+Sorting and searching: Arrays are also useful for sorting and searching data. We can use built-in functions to sort an array in ascending or descending order, or to search for a specific value within the array.
+Types of Array
+JavaScript has two types of arrays: One-dimensional arrays and Multi-dimensional arrays.
+One-Dimensional Arrays
+A 1-D array can be visualized as a line of containers where each container can hold one item.
+notion image
+let array = [1, 2, 3, 4];
+The items in the array are given a non-negative numeric label known as an index, which indicates their location in the array. It's important to note that arrays usually begin with an index of 0. The index starts from zero and goes up to the length of the array minus one.
+Here's an another example of a one-dimensional array:
+let fruits = ["apple", "banana", "orange", "kiwi"];
+To access a value in a one-dimensional array, you can use the index of the value. 
+For example: to access the second value in the fruits array, you can use the index 1.
+let secondFruit = fruits[1];    // "banana"
+You can also loop through the values in a one-dimensional array using a for loop:
+for (let i = 0; i < fruits.length; i++) {
+  console.log(fruits[i]);
+}
+One-dimensional arrays are commonly used to store lists of items or sets of values. They are ideal for situations where you have a collection of data that you want to be able to access quickly and easily. For example, an array of numbers could be used to store the scores of students in a class.
+Multi-Dimensional Arrays
+In JavaScript, a multi-dimensional array is an array of arrays. Each element in the array is itself an array. Multi-dimensional arrays are used to store tables of data or matrices.
+notion image
+A 2-D array can be visualized as a carton used for storing eggs. We can imagine the 3 rows as the first input index and 4 columns as the second input index when accessing the 2-d array.
+let matrix = [
+  [1,  2,  3],
+  [4,  5,  6],
+  [7,  8,  9],
+	[10, 11, 12]
+];
+To access a value in a multi-dimensional array, you need to use two indices: one for the row and one for the column. For example, to access the value in the second row and third column of the matrix array, you can use the indices [1][2]:
+let value = matrix[1][2];  // 6
+let value1 = matrix[3][1]; // 11
+You can also loop through the values in a multi-dimensional array using nested for loops:
+for (let i = 0; i < matrix.length; i++) {
+  for (let j = 0; j < matrix[i].length; j++) {
+    console.log(matrix[i][j]);
+  }
+}
+Multi-dimensional arrays are commonly used to store tables of data or matrices. They are ideal for situations where you need to organize data into rows and columns. For example, a two-dimensional array could be used to store the sales figures for a company, with each row representing a different month and each column representing a different product.
+ 
+Activity: Fill in the blanks
+Arrays have a fixed size and allow easy access to elements using __________ (index/label/identifier).
+Arrays are efficient for memory management, reducing memory __________ (usage/fragmentation/allocation).
+Arrays allow us to store multiple values of the different data types in a single variable, making them useful for handling __________ (collections/groups/sets).
+Multi-dimensional arrays are used to store tables of data or __________ (matrices/records/structures).
+Multi-dimensional arrays require __________ (multiple/nested/separate) indices to access elements.
+Answers
+index
+Fragmentation
+collections
+matrices
+nested
+ 
+Working with Array
+Creating an Array
+There are two ways of creating an Array in JavaScript: Array Constructor and Array Literal.
+Array Constructor
+To create an array in JavaScript, we can use the Array constructor:
+notion image
+We can also create an array with initial values using the constructor.
+In this example: we create an array called myArray with three string values.
+let myArray = new Array("apple", "banana", "orange");
+Array Literal
+We can also create an array using the array literal notation, which is a shorthand way of creating an array:
+notion image
+We can also create an array with initial values using the array literal notation.
+In this example: we create an array called myArray with three string values.
+let myArray = ["apple", "banana", "orange"];
+type_of_variable: JavaScript have 3 types of variables, i.e. var, let, and const.
+variable_name: Variable name can be anything which begins with a letter, _ and $, except for some reserved keywords.
+data_elements: Array elements are entered inside the square brackets [ ]. Array can be initialized as an empty array.
+new keyword: new keyword is used to initialize a constructor.
+Array constructor: It is used to create Array objects.
+Accessing Array Elements
+We can access individual elements within an array using their index, which starts at 0 for the first element.
+Here is an example of accessing an element within an array:
+let myArray = ["apple", "banana", "orange"];
+console.log(myArray[0]);
+
+// Output
+"apple"
+In this example, we accessed the first element within myArray using its index (0) and log it to the console.
+Modifying Array Elements
+We can modify individual elements within an array by assigning a new value to their index.
+Here is an example of modifying an element within an array:
+let myArray = ["apple", "banana", "orange"];
+myArray[1] = "grape";
+
+console.log(myArray);
+
+// Output
+["apple", "grape", "orange"]
+In this example, we modified the second element within myArray (index 1) by assigning a new value "grape" to it.
+Array methods
+JavaScript arrays have a number of built-in methods that allow you to manipulate and interact with them.
+Here are some of the most commonly used array methods:
+push():This method adds one or more elements to the end of an array. The original array is modified, and the new length of the array is returned as the result. This method is commonly used to add new elements to an array. 
+For example:
+let myArray = ["apple", "banana", "orange"];
+myArray.push("pear");
+
+console.log(myArray);
+
+// Output
+["apple", "banana", "orange", "pear"]
+pop():This method removes the last element from an array. The original array is modified, and the removed element is returned as the result. This method is commonly used to remove the last element from an array.
+For example:
+let myArray = ["apple", "banana", "orange"];
+myArray.pop();
+
+console.log(myArray);
+
+// Output
+["apple", "banana"]
+shift(): This method removes the first element from an array. The original array is modified, and the removed element is returned as the result. This method is commonly used to remove the first element from an array.
+For example:
+let myArray = ["apple", "banana", "orange"];
+myArray.shift();
+
+console.log(myArray);
+
+// Output
+["banana", "orange"]
+unshift(): This method adds one or more elements to the beginning of an array. The original array is modified, and the new length of the array is returned as the result. This method is commonly used to add new elements to the beginning of an array.
+For example:
+let myArray = ["apple", "banana", "orange"];
+myArray.unshift("pear", "watermelon");
+
+console.log(myArray);
+
+// Output
+["pear", "watermelon", "apple", "banana", "orange"]
+slice(): This method returns a portion of an array. The original array is not modified, and the result is a new array containing the selected elements. This method is commonly used to make a copy of a portion of an array. 
+For example:
+let myArray = ["apple", "banana", "orange"];
+let newArray = myArray.slice(1, 2);
+
+console.log(newArray);
+
+// Output
+["banana"]
+splice(): This method adds or removes elements from an array. The original array is modified, and the removed elements (if any) are returned as the result. This method is commonly used to add or remove elements from an array at a specific position.
+For example:
+let myArray = ["apple", "banana", "orange"];
+myArray.splice(1, 1, "pear", "watermelon");
+
+console.log(myArray);
+
+// Output
+["apple", "pear", "watermelon", "orange"]
+concat(): This method joins two or more arrays. The original arrays are not modified, and the result is a new array containing all the elements of the original arrays. This method is commonly used to combine multiple arrays into a single array.
+For example:
+let myArray1 = ["apple", "banana", "orange"];
+let myArray2 = ["pear", "mango"];
+let newArray = myArray1.concat(myArray2);
+
+console.log(newArray);
+
+// Output
+["apple", "banana", "orange", "pear", "mango"]
+join(): This method joins all elements of an array into a string. The original array is not modified, and the result is a new string containing all the elements separated by a specified separator. This method is commonly used to convert an array into a comma-separated string.
+For example:
+let myArray = ["apple", "banana", "orange"];
+let myString = myArray.join(", ");
+
+console.log(myString);
+
+// Output
+"apple, banana, orange"
+reverse(): This method reverses the order of elements in an array. The original array is modified, and the result is the reversed array. This method is commonly used to reverse the order of elements in an array.
+For example:
+let myArray = ["apple", "banana", "orange"];
+myArray.reverse();
+
+console.log(myArray);
+
+// Output
+["orange", "banana", "apple"]
+sort(): This method sorts the elements of an array. The original array is modified, and the result is the sorted array. This method is commonly used to sort the elements of an array in ascending or descending order.
+For example:
+let myArray = ["banana", "apple", "orange"];
+myArray.sort();
+
+console.log(myArray);
+
+// Output
+["apple", "banana", "orange"]
+filter(): This method creates a new array with all elements that pass the test implemented by the provided function. It is commonly used to filter elements from an array based on a condition.
+For example:
+let myArray = [1, 2, 3, 4, 5];
+let newArray = myArray.filter(function(element) {
+  return element % 2 === 0;
+});
+
+console.log(newArray);
+
+// Output
+[2, 4]
+map(): This method creates a new array with the results of calling a provided function on every element in the calling array. It is commonly used to transform the elements of an array. 
+For example:
+let myArray = [1, 2, 3];
+let newArray = myArray.map(function(element) {
+  return element * 2;
+});
+
+console.log(newArray);
+
+// Output
+[2, 4, 6]
+reduce(): This method applies a function against an accumulator and each element in the array (from left to right) to reduce it to a single value. It is commonly used to calculate a single value based on the elements of an array.
+For example:
+let myArray = [1, 2, 3, 4, 5];
+let sum = myArray.reduce(function(accumulator, currentValue) {
+  return accumulator + currentValue;
+});
+
+console.log(sum);
+
+// Output
+15
+includes(): This method determines whether an array includes a certain value among its entries. It is commonly used to check if an array contains a specific element.
+For example:
+let myArray = ["apple", "banana", "orange"];
+let containsBanana = myArray.includes("banana");
+
+console.log(containsBanana);
+
+// Output
+true
+flat(): This method creates a new array with all sub-array elements concatenated into it recursively up to the specified depth. It is commonly used to flatten an array that contains nested arrays.
+For example:
+let myArray = [1, 2, [3, 4, [5, 6]]];
+let flattenedArray = myArray.flat(2);
+
+console.log(flattenedArray);
+
+// Output
+[1, 2, 3, 4, 5, 6]
+ 
+Activity: Code Practice
+Write the JavaScript code that performs the given operations on the arr = [69, 92, 45, 7, 28] array and print the output of each operation:
+Displays the number at the third index of the array.
+Find if the array contains 7 or not.
+Adds 33 at the beginning of the array.
+Subtracts 5 from every number in the array using the map method.
+Solution
+const arr = [69, 92, 45, 7, 28];
+
+// 1. Display the number at the third index of the array.
+const numberAtThirdIndex = arr[2];
+console.log(numberAtThirdIndex);
+
+// 2. Find if the array contains 7 or not.
+const containsSeven = arr.includes(7);
+console.log(containsSeven);
+
+// 3. Adds 33 at the beginning of the array.
+arr.unshift(33);
+console.log(arr);
+
+// 4. Subtracts 5 from every number in the array using the map method.
+const subtractedArr = arr.map((num) => num - 5);
+console.log(subtractedArr);
+ 
+Introduction to Strings
+What is a String?
+A string is a data structure used to represent a sequence of characters. It is often used to represent text in computer programs.
+notion image
+Why is a String data structure required?
+Strings are an essential data type in computer programming languages. They are used to represent text, and their immutability makes them useful for storing and manipulating text data. Because strings are immutable, any changes to a string create a new string. This characteristic makes strings efficient for managing text data in computer programs.
+Strings can also be used in regular expressions, a powerful tool for searching and manipulating text data. Regular expressions allow developers to search for patterns within text data and perform complex operations, such as finding and replacing specific patterns.
+String Declaration
+In JavaScript, a string can be declared using single or double quotes.
+For example:
+let myString = 'This is a string with single quote.';
+let myString = "This is a string with double quote.";
+Strings can also be declared using backticks (`), a template literal. Template literals allow for string interpolation, meaning variables can be embedded directly into the string.
+For example:
+let name = "John";
+let greeting = `Hello, ${name}!`;
+The variable name is embedded into the string using ${} syntax in the above example. The resulting string is "Hello, John!".
+It is also possible to declare an empty string.
+For example:
+let emptyString = "";
+String Operations
+JavaScript provides a variety of operations that you can perform on strings.
+Here are some of the most commonly used ones:
+Concatenation: Concatenation is the process of joining two or more strings together. In JavaScript, you can concatenate strings using the + operator.
+let string1 = 'Hello';
+let string2 = 'World';
+let result = string1 + ' ' + string2;
+
+console.log(result);
+
+// Output
+"Hello World"
+String Length: You can find the length of a string using the length property.
+let string = 'AlmaBetter';
+
+console.log(string.length);
+
+// Output
+10
+Accessing Characters: You can access individual characters in a string using the bracket notation [].
+let string = 'Hello World';
+
+console.log(string[0]);
+console.log(string[6]);
+
+// Output
+"H"
+"W"
+Substring: You can extract a substring from a string using the substring() method. This method takes two arguments: the starting and ending indexes (optional).
+let string = 'Hello World';
+
+console.log(string.substring(0, 5));
+console.log(string.substring(6));
+
+// Output
+"Hello"
+"World"
+String Search: You can search for a specific string within a larger string using the search() method. This method returns the index of the first occurrence of the specified string, or -1 if the string is not found.
+let string = 'Hello World';
+
+console.log(string.search('World'));
+console.log(string.search('JavaScript'));
+
+// Output
+6
+-1
+String Replace: You can replace a substring within a string using the replace() method. This method takes two arguments: the substring to be replaced and the replacement string.
+let string = 'Hello World';
+
+console.log(string.replace('World', 'JavaScript'));
+
+// Output
+"Hello JavaScript"
+ 
+Activity: Fill in the blanks
+A string is a data structure used to represent a __________ (collection / sequence / combination) of characters. 
+Strings are useful for __________ (manipulating / formatting / encrypting) and __________ (storing / analyzing / decrypting) text data.
+String interpolation allows for embedding __________ (variables / functions / comments) directly into the string.
+Answers
+sequence
+manipulating, storing
+variables
+ 
+ 
+Working with Strings
+Using indexOf() method in JavaScript
+// Finding Substring inside another string
+function findSubstring(string, substring) {
+  return string.indexOf(substring);
+}
+
+// Output
+const string = "Hello, World!";
+const substring = "World";
+const index = findSubstring(string, substring);
+
+console.log(index);
+
+// Output
+7
+The time complexity of this code is O(n), where n is the length of the string being searched.
+Explanation
+Define a function called findSubstring that takes two parameters: string and substring.
+Use the built-in indexOf() method in JavaScript to look for the substring inside the string.
+The method returns the index of the first occurrence of the substring in the string. If the substring is not found, the method returns -1.
+The returned index is stored in a variable called index.
+The console.log() method is used to output the value of the index variable to the console.
+Remove spaces from the string
+// Removing spaces from the string
+function removeSpaces(string) {
+  let newString = "";
+  for (let i = 0; i < string.length; i++) {
+    if (string[i] !== " ") {
+      newString += string[i];
+    }
+  }
+  return newString;
+}
+
+// Output
+const string = "Hello, there!";
+const newString = removeSpaces(string);
+
+console.log(newString); // Output: "Hello,there!"
+The time complexity of this code is O(n), where n is the length of the string being searched.
+Explanation
+Define a function called removeSpaces that takes a string parameter.
+Create an empty string called newString.
+Use a for loop to iterate through each character in the string.
+If the current character is not a space, add it to the newString string.
+When the loop is done, return the newString string.
+Real-world Examples of Strings
+Spam Detection
+By using strings, email filters can identify a set of keywords that are commonly found in spam emails and use them to weed out unwanted messages. This has greatly reduced the financial loss associated with spam emails.
+Bioinformatics
+By using string matching algorithms, bioinformaticians can identify patterns in DNA sequences that would have been impossible to detect otherwise. This has led to significant advances in genetic research and has helped in the identification of new genetic disorders.
+Intrusion Detection System
+By using string matching algorithms, intrusion detection systems can identify patterns in network traffic that are indicative of malicious activity. This has helped in the prevention of cyber attacks and has greatly enhanced the security of computer networks.
+Search Engines
+Search engines can identify relevant content based on the presence of certain keywords. This has greatly improved the efficiency of web searches and has made it easier to find relevant information on the internet.
+ 
+Summary
+What did we learn?
+Arrays are like these containers in JavaScript that hold a bunch of different data items.
+Arrays start counting from zero, so the first item in an array is actually the zeroth item.
+You can make an array using either the array literal or array constructor syntax - both work great!
+Arrays can hold all sorts of different data types, like strings, numbers, objects, and even other arrays, so they're really versatile.
+There are two main types of arrays: one-dimensional arrays (for simple lists) and multi-dimensional arrays (for more complex data).
+To add something to an array, you can just use the push() or unshift() method, and to remove something, use the pop() or shift() method.
+Strings are fundamental data types that are used to represent text. They are used in a wide range of applications, from simple text messages to complex web applications.
+Strings can be created using either single or double quotes, depending on the programmer's preference.
+One of the most powerful features of strings in JavaScript is their ability to be concatenated using the + operator. This allows programmers to combine multiple strings into a single, larger string easily.
+Strings in JavaScript are immutable, which means that once they are created, they cannot be changed. This can be a limitation in some applications, but it also provides a level of security and reliability in programs that rely on strings.
+Shortcomings & Challenges
+One of the challenges with arrays is that they can become quite complex and difficult to manage when dealing with large amounts of data.
+Another challenge is that it can be easy to accidentally modify an array when you don't mean to, which can lead to bugs and errors in your code.
+Strings can be memory-intensive, so be mindful of large strings.
+Another potential limitation of strings in JavaScript is their immutability. While this feature provides a level of security and reliability, it can also be a challenge in some applications where dynamic string manipulation is required. In such cases, alternate data types like arrays or mutable string libraries can be used.
+Best practices to follow
+Use descriptive variable names when declaring arrays.
+When looping through arrays, use the for...of loop instead of a traditional for loop or forEach() method.
+Use built-in array methods like sort(), slice(), splice(), concat(), filter(), and map() to manipulate arrays, rather than manually manipulating the array using loops and conditions.
+Use single quotes for string literals unless you need to use an apostrophe inside the string.
+Use template literals for complex string concatenation.
+ 
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+How to Work with Strings, Arrays, and Objects in JS: https://www.freecodecamp.org/news/javascript-basics-strings-arrays-objects/
+Objects and Arrays: https://eloquentjavascript.net/04_data.html
+ 
+Try it Yourself
+Let's solve these coding problems on AlmaBetter IDE. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
+Task 1: Conquer coding challenges in the AlmaBetter IDE and showcase your skills with innovative solutions.
+Problems
+Problem 1: Prime In Diagonal
+You are a computer scientist working for a large tech company. You have been tasked with writing a program to find the largest prime number that lies on at least one of the diagonals of a 0-indexed two-dimensional integer array.
+The variable nums represent the array. The elements of the array are integers, and they can be any value from 1 to 300.
+Your program must first check each element of the array to see if it is a prime number. If it is, then the program must keep track of the largest prime number that it has found so far.
+Next, the program must iterate through the array and check each diagonal to see if it contains a prime number. The two diagonals of the array are the main diagonal (which runs from the top left corner to the bottom right corner) and the secondary diagonal (which runs from the top right corner to the bottom left corner).
+If the program finds a prime number on either of the diagonals, then it must update the largest prime number that it has found so far.
+Note that:
+An integer is prime if it is greater than 1 and has no positive integer divisors other than 1 and itself.
+An integer val is on one of the diagonals of nums if there exists an integer i for which nums[i][i] = val or an i for which nums[i][nums.length - i - 1] = val.
+notion image
+In the above diagram, one diagonal is [1,5,9] and another diagonal is [3,5,7].
+Example 1:
+Input: nums = [[1,2,3],[5,6,7],[9,10,11]]
+
+Output: 11
+Explanation: The numbers 1, 3, 6, 9, and 11 are the only numbers present
+on at least one of the diagonals. Since 11 is the largest prime, we return 11.
+notion image
+Example 2:
+Input: nums = [[1,2,3],[5,17,7],[9,11,10]]
+
+Output: 17
+Explanation: The numbers 1, 3, 9, 10, and 17 are all present on at least
+one of the diagonals. 17 is the largest prime, so we return 17.
+notion image
+Constraints:
+1 <= nums.length <= 300
+nums.length == numsi.length
+1 <= nums[i][j] <= 4*10^6
+ 
+Problem 2: Form the Smallest Number From Two Digit Arrays
+You are a software engineer working on a new project that requires you to generate unique IDs. You have two arrays of digits, nums1, and nums2, that you can use to create the IDs. Each array contains unique digits, and you need to create the smallest ID possible that contains at least one digit from each array.
+Can you write a program to solve this problem? The program should take the two arrays as input and output the smallest ID possible.
+Example 1:
+Input: nums1 = [4,1,3], nums2 = [5,7]
+
+Output: 15
+
+Explanation: The number 15 contains the digit 1 from nums1 and the
+digit 5 from nums2.
+It can be proven that 15 is the smallest number we can have.
+notion image
+Example 2:
+Input: nums1 = [3,5,2,6], nums2 = [3,1,7]
+
+Output: 3
+
+Explanation:The number 3 contains the digit 3 which exists in both arrays.
+notion image
+Constraints:
+1 <= nums1.length, nums2.length <= 9
+1 <= nums1[i], nums2[i] <= 9
+All digits in each array are unique.
+Problem 3: Most Common Word
+You are a data scientist working for a large social media company. You have been tasked with developing a new algorithm that will identify the most frequent word in a paragraph that is not banned. The company wants to use this algorithm to filter out spam and other unwanted content from its platform.
+The problem is that the definition of a "word" is not always clear-cut. For example, should "the" and "that" be considered separate words, or should they be treated as one word? Additionally, the words in a paragraph may be case-insensitive, so "dog" and "DOG" would be considered the same word.
+Example 1:
+Input: paragraph = "Bob hit a ball, the hit BALL flew far after it was hit.",
+banned = ["hit"]
+
+Output: "ball"
+
+Explanation:
+"hit" occurs 3 times, but it is a banned word.
+"ball" occurs twice (and no other word does),
+so it is the most frequent non-banned word in the paragraph.
+Note that words in the paragraph are not case sensitive,
+that punctuation is ignored (even if adjacent to words, such as "ball,"),
+and that "hit" isn't the answer even though it occurs more because it is banned.
+notion image
+Example 2:
+Input: paragraph = "a.", banned = []
+Output: "a"
+notion image
+Constraints:
+1 <= paragraph.length <= 1000
+paragraph consists of English letters, space ' ', or one of the symbols: "!?',;.".
+0 <= banned.length <= 100
+1 <= banned[i].length <= 10
+banned[i] consists of only lowercase English letters.
+Solutions
+Solution 1: Prime In Diagonal
+function main() {
+    const numsRows = parseInt(readLine().trim(), 10);
+	const numsColumns = parseInt(readLine().trim(), 10);
+	let nums = Array(numsRows);
+	for (let i = 0; i < numsRows; i++) {
+		nums[i] = readLine().replace(/\s+$/g, '').split(' ').map(numsTemp => parseInt(numsTemp, 10));
+	}
+    console.log(diagonalPrime(nums));
+}
+var diagonalPrime = function(nums) {
+    let m = 0
+    let prime = (num) =>{
+        if(num < 2){return false}
+        if(num == 2){return true}
+        if(num%2 == 0){return false}
+        for(let i = 3 ; i < Math.sqrt(num) +1; i += 2){if(num%i == 0){return false}}
+        return true
+    }
+    for(let i = 0 ; i < nums.length ; i++){
+        if(prime(nums[i][i])){ m = (m>nums[i][i])?m:nums[i][i]}
+        if(prime(nums[i][nums.length - i - 1])){
+            m = (m>nums[i][nums.length - i - 1])?m:nums[i][nums.length - i - 1]
+        }
+    }
+    return m
+};
+Solution 2: Form the Smallest Number From Two Digit Arrays
+function main() {
+    var nums1 = readLine().split(" ").map(x => parseInt(x));
+    var nums2 = readLine().split(" ").map(x => parseInt(x));
+    console.log(minNumber(nums1, nums2));
+}
+var minNumber = function(nums1, nums2) {
+     let both = [];
+    for (const x of nums1) {
+        if (nums2.includes(x)) both.push(x);
+    }
+    if (both.length > 0) return Math.min(...both);
+    let pa = Math.min(...nums1), pb = Math.min(...nums2);
+    return pa < pb ? pa + "" + pb : pb + "" + pa; 
+};
+Solution 3: Most Common Word
+function main() {
+	var paragraph = readLine();
+    var banned = readLine().split(" ").map(x => (x));
+    console.log(mostCommonWord(paragraph, banned));
+}
+var mostCommonWord = function(paragraph, banned) {
+    let arr = paragraph.toLowerCase().split(/\W+/g)
+    let map = {}
+
+    for(let word of arr) {
+        if(!map[word]) {
+            map[word] = 1        
+        } else {
+            map[word]++
+        }
+    }
+
+   return Object.keys(map).sort((a,b) => {
+        return map[b] - map[a]
+    }).filter(word => !banned.includes(word))[0]
+};
+Task 2: Which question did you find challenging and Why? Share your thoughts in your Cohort group at AlmaBetter Community Platform.
