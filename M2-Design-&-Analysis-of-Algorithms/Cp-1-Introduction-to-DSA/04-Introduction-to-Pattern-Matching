@@ -1,0 +1,389 @@
+Introduction to Pattern Matching
+Session Flow
+Learning Objective 
+Introduction
+Theme
+Primary Goals
+Getting Started with Pattern Matching 
+Introduction to Pattern Matching
+What is Pattern Matching?
+How does pattern matching work?
+Email Address Pattern Matching Example
+Activity: Fill in the blanks
+RegEx in Pattern Matching
+Pattern Matching Use Cases
+Pattern Matching Algorithm
+Naive String Matching Algorithm
+Finite Automaton Algorithm
+Boyer-Moore Algorithm
+Activity: True or False
+Summary 
+What did we learn?
+Shortcomings & Challenges
+Best practices to follow
+Enhance your knowledge
+Try it yourself
+ 
+Learning Objective
+Introduction
+Pattern matching in JavaScript is a powerful technique developers use to efficiently search, validate, and manipulate text within strings or data sets. With pattern-matching algorithms, we can uncover hidden connections, solve complex problems, and discover new possibilities.
+Focus: Basics of pattern-matching, Regular expressions, Pattern matching algorithms, and their applications
+Prerequisites: VS Code IDE with Node.js installed, JavaScript Basics & Foundations
+Theme 
+Imagine you're a detective trying to solve a case. You have a bunch of clues in front of you - footprints, fingerprints, witness statements, and more. But how do you make sense of all this information and find the culprit? The answer is pattern matching.
+Pattern matching is like being a detective for data. It's a powerful tool for identifying meaningful relationships and uncovering hidden insights that might not be apparent at first glance. From finding the right words in a text document to detecting anomalies in a large dataset, pattern matching can help you make sense of complex information and make more informed decisions.
+But just like being a detective, pattern matching takes practice and skill. With the right training and tools, however, anyone can learn to harness the power of pattern matching and unlock new possibilities for innovation and problem-solving.
+Primary Goals
+Understand the basic concepts of pattern matching and its relevance to various fields such as computer science, statistics, and machine learning.
+Learn how to write code using pattern-matching techniques to solve problems and extract useful information from data sources such as text, images, and numerical data.
+Become familiar with pattern-matching algorithms and techniques, such as regular expressions, decision trees, and neural networks.
+Develop a practical understanding of how pattern matching can be applied in real-world scenarios, such as natural language processing, computer vision, and fraud detection.
+Gain practical experience by implementing and testing pattern-matching algorithms in real-world scenarios.
+ 
+Getting Started with Pattern Matching
+Introduction to Pattern Matching
+Google's search engine and advertising platforms rely on pattern-matching algorithms to deliver accurate search results and targeted advertisements to users. When a user enters a search query, the search engine analyzes the query's patterns, keywords, and contextual information to provide the most appropriate and helpful search results. By identifying patterns in the query and comparing them to patterns found on web pages, Google ensures that users receive the most relevant information.
+What is Pattern Matching?
+Pattern matching is a fundamental concept in computer science and refers to the process of finding specific sequences of characters or patterns within a larger sequence of characters, such as a string or a text. The primary objective of pattern matching is to determine whether the given pattern exists within the larger sequence and, if so, at what position or positions it occurs.
+Pattern matching is widely used in various applications and scenarios, including text processing, data analysis, search algorithms, compiler design, regular expressions, and many more. It allows us to efficiently identify and extract relevant information from large volumes of data.
+The process of pattern matching involves two main components:
+Pattern: The pattern is the sequence of characters or symbols that we want to find within the larger text. It can be a single word, a phrase, or any sequence of characters we are searching for.
+Text: The text refers to the larger sequence of characters in which we want to search for the given pattern. It can be a document, a string, or any collection of characters.
+The pattern matching algorithms use various techniques and data structures to efficiently perform the search for patterns within the text. Some popular pattern matching algorithms include the Naive String Matching Algorithm, Boyer-Moore Algorithm, Knuth-Morris-Pratt Algorithm, Finite Automaton Algorithm, and more.
+Pattern matching is a crucial concept in computer science because it enables the development of powerful and efficient search and matching algorithms, making it possible to process large amounts of data quickly and accurately. It has applications in various fields, such as text search in web browsers, data mining, natural language processing, bioinformatics, and information retrieval systems, among others.
+How does pattern matching work?
+Regular expressions tell computer programs which pattern to look for in testing data. Sometimes, the program is intelligent enough to pick patterns from a set of data values and automatically generate a regex. Some programs or tools have a built-in regex library that contains commonly used patterns, such as credit card numbers, U.S. phone numbers, date time formats, email addresses, etc.
+Here's a basic explanation of how it works:
+Defining a Pattern: The first step in pattern matching is to define a pattern. This pattern can be a simple string, a complex regular expression, or a data structure with placeholders.
+Matching the Pattern: Once the pattern is defined, the pattern matching algorithm will try to match this pattern against the input data. The algorithm will check if the input data follows the structure of the pattern, and if the elements of the data fit the constraints of the pattern.
+Extracting Information: If the pattern matches, the algorithm can extract the parts of the data that correspond to the placeholders in the pattern. This is useful for parsing complex data structures or extracting specific pieces of information from a text.
+Email Address Pattern Matching Example
+For example, in the case of text processing, you might define a pattern to extract email addresses from a text. The pattern could be a regular expression that describes the structure of an email address (something like ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$). The pattern matching algorithm would then scan the text, find all sequences of characters that match this pattern, and extract them.
+To figure out what a pattern-matching algorithm is, let’s take the example of validating the pattern of email addresses. The first step is to define the regex that communicates the pattern of a valid email address. 
+A sample pattern of a valid email address may look like this: [name]@[domain].[domain-extension]. In the regex language, this pattern will be translated as: ^[^\s@]+@[^\s@]+\.[^\s@]+$ where,
+^: matches the beginning of the string
+[^\s@]+: matches one or more characters that are not whitespace or "@" symbol (i.e., the username)
+@: matches the "@" symbol
+[^\s@]+: matches one or more characters that are not whitespace or "@" symbol (i.e., the domain)
+\.: matches a literal "." symbol
+[^\s@]+: matches one or more characters that are not whitespace or "@" symbol (i.e., domain-extension)
+$: matches the end of the string
+Here are some examples of implementing the same pattern in JavaScript:
+In JavaScript the Email Address Regex Pattern will look like:
+function isValidEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+// Example usage
+const email1 = "michael.scott@gmail.com";
+const email2 = "pam.beesly_gmail.com";
+console.log(isValidEmail(email1));
+console.log(isValidEmail(email2));
+
+// Output
+true
+false
+In the above code the email string regular expression pattern i.e. emailRegex will be matched with the input string email1, email2 and based on that Email will be validated if that email is valid or not.
+No.
+Test
+Result
+Reason for failure
+1.
+michael.scott@gmail.com
+Valid
+ㅤ
+2.
+pam.beesly_gmail.com
+Invalid
+Missing @ symbol.
+ 
+Activity: Fill in the blanks
+In computer vision, pattern matching is used to recognize and classify ________ (textures / objects / facial expressions) based on their visual characteristics.
+Pattern matching involves comparing a given input to a set of predefined _______ (edges / shapes / patterns) or rules.
+One of the most exciting aspects of pattern matching is its __________ (versatility / autonomous nature / surveillance system).
+Answers
+Objects
+Patterns
+Versatility
+ 
+RegEx in Pattern Matching
+Regular expressions (regex) play a crucial role in pattern matching in JavaScript. They provide a powerful and flexible way to search, extract, and manipulate text based on specific patterns. In JavaScript, you can use the RegExp object or the literal notation with slashes (/pattern/) to define regular expressions.
+Here are some ways regular expressions are used for pattern matching in JavaScript:
+Matching: Regular expressions are used to check if a pattern exists in a string. The test() method of the RegExp object or the test() method of a string can be used for this purpose.
+Example:
+const regex = /apple/;
+console.log(regex.test("I love apples."))
+console.log(regex.test("Oranges are juicy.")); 
+
+// Output
+true
+false
+Searching and Extracting: Regular expressions can be used to search for patterns in a string and extract the matched portions. The match() method of a string is used for this task.
+Example:
+const regex = /\\d{2}-\\d{2}-\\d{4}/;
+const str = "Date of birth: 12-31-1990";
+const match = str.match(regex);
+console.log(match);
+
+// Output
+["12-31-1990"]
+Replacing: Regular expressions are used to replace parts of a string that match a pattern with new text. The replace() method of a string is used for this task.
+Example:
+const regex = /apple/g;
+const str = "I have an apple and an orange.";
+const newStr = str.replace(regex, "banana");
+console.log(newStr);
+
+// Output
+"I have a banana and an orange."
+Validation: Regular expressions are used to validate strings based on specific patterns. They can be used for tasks such as email validation, phone number validation, or password strength checks.
+Example (email validation):
+const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/;
+const email = "user@example.com";
+console.log(regex.test(email));
+
+// Output
+true
+Splitting: Regular expressions can be used to split a string into an array based on a delimiter or a pattern. The split() method of a string is used for this task.
+Example:
+const regex = /[,\\s]+/; // Matches commas and spaces
+const str = "apple, banana, orange, kiwi";
+const fruitsArray = str.split(regex);
+console.log(fruitsArray);
+
+// Output
+["apple", "banana", "orange", "kiwi"]
+Regular expressions are a powerful tool for pattern matching in JavaScript and are widely used for text processing and validation tasks in web development, data parsing, and more.
+Pattern Matching Use Cases
+Pattern matching is one of the most fundamental concepts across different fields, such as computer programming, data science and analysis, natural language processing, and more.
+If we specifically talk about pattern matching and validation in the data field, here are some of its most common applications:
+Text editors and word processors: String matching algorithms help in finding specific words, phrases, or patterns in text, making tasks like replacing words and formatting easier.
+Search engines: String matching algorithms enable search engines to find relevant web pages based on user queries, considering factors like word frequency, context, and synonyms to generate accurate results.
+Virus detection: String matching algorithms search for virus signatures in files or memory by comparing known patterns, helping antivirus software detect and handle infected files.
+Genetics: String matching algorithms compare DNA or RNA sequences, aiding in identifying genetic mutations and establishing evolutionary relationships between organisms.
+Plagiarism detection: String matching algorithms check for similarities between texts, assisting in identifying instances of plagiarism and maintaining academic integrity.
+Natural language processing: String matching algorithms analyze text for tasks like named entity recognition, part-of-speech tagging, and sentiment analysis, extracting relevant information and classifying text efficiently.
+Pattern Matching Algorithms
+Pattern matching algorithms are a set of techniques used to find occurrences or patterns of a given string (pattern) within a larger text (main string) efficiently. These algorithms play a crucial role in text processing, search engines, data mining, and many other applications.
+Here are some commonly used pattern matching algorithms:
+Naive String Matching Algorithm
+Finite Automaton Algorithm
+Boyer-Moore Algorithm
+Naive String Matching Algorithm
+The Naive String Matching Algorithm is one of the simplest approaches to find occurrences of a given pattern within a larger text (main string). It works by comparing each character of the pattern with each character of the main string, character by character, starting from every position in the main string.
+Here's a step-by-step explanation of the Naive String Matching Algorithm:
+Input:
+mainString: The larger text in which we want to find occurrences of the pattern.
+pattern: The string we want to search for in the main string.
+Algorithm:
+Initialize two variables, n for the length of the main string, and m for the length of the pattern.
+Start a loop from i = 0 to n - m (inclusive). This is because there is no possibility of finding the pattern after n - m positions in the main string.
+For each position i, start another loop from j = 0 to m (inclusive).
+Compare each character of the pattern with the corresponding character of the main string starting from position i.
+If any character mismatches, break the inner loop and move to the next position in the main string.
+If all characters match, we have found an occurrence of the pattern. Perform the necessary action (e.g., print the index i) and continue searching for other occurrences.
+Output:
+The algorithm may output the index/indices where the pattern is found in the main string or the count of occurrences, depending on the requirement.
+Here's a JavaScript implementation of the Naive String Matching Algorithm:
+function naiveStringMatch(mainString, pattern) {
+  const n = mainString.length;
+  const m = pattern.length;
+  const occurrences = [];
+
+  for (let i = 0; i <= n - m; i++) {
+    let j;
+    for (j = 0; j < m; j++) {
+      if (mainString[i + j] !== pattern[j]) {
+        break;
+      }
+    }
+
+    if (j === m) {
+      occurrences.push(i);
+    }
+  }
+
+  return occurrences;
+}
+
+// Example usage:
+const mainString = "ABABABCABABABC";
+const pattern = "ABABC";
+console.log(naiveStringMatch(mainString, pattern));
+
+// Output
+[2, 9]
+In this example, the Naive String Matching Algorithm finds two occurrences of the pattern "ABABC" in the main string "ABABABCABABABC" at indices 2 and 9.
+However, note that the Naive algorithm has a time complexity of O((n-m+1) * m) in the worst case, making it inefficient for large texts or patterns. More advanced string matching algorithms like Knuth-Morris-Pratt or Boyer-Moore are preferred for better performance.
+Finite Automaton Algorithm
+The Finite Automaton Algorithm, also known as the Finite State Machine (FSM) Algorithm or the String Matching Machine Algorithm, is a pattern matching algorithm used to find occurrences of a given pattern within a larger text. It utilizes a finite automaton, which is a computational model represented as a directed graph, to efficiently match the pattern against the main string.
+Here's a step-by-step explanation of the Finite Automaton Algorithm for pattern matching:
+Preprocessing:
+Construct a finite automaton (FSM) based on the pattern. The FSM is a directed graph representing the transitions between states based on the characters of the pattern.
+Input:
+mainString: The larger text in which we want to find occurrences of the pattern.
+pattern: The string we want to search for in the main string.
+Algorithm:
+Start at the initial state of the FSM.
+For each character in the main string, follow the corresponding transition in the FSM.
+If the transition leads to an accepting state (indicating a complete match), record the occurrence of the pattern at the current position in the main string.
+If there is no valid transition for a character, return to the initial state and continue matching.
+Output:
+The algorithm outputs the index/indices where the pattern is found in the main string or the count of occurrences, depending on the requirement.
+Boyer-Moore Algorithm
+The Boyer-Moore Algorithm is an efficient pattern matching algorithm used to find occurrences of a given pattern within a larger text (main string). It works by comparing characters of the pattern with characters of the main string from right to left and utilizes two primary heuristics: the bad character rule and the good suffix rule.
+Here's a step-by-step explanation of the Boyer-Moore Algorithm:
+Preprocessing:
+Construct two lookup tables: the bad character table and the good suffix table.
+The bad character table stores the rightmost occurrence of each character in the pattern. If a mismatch occurs, this table determines how many positions the pattern can be shifted to the right based on the bad character in the main string.
+The good suffix table stores information about the longest suffix within the pattern that matches a substring from the beginning of the pattern. If a mismatch occurs, this table guides the algorithm on how far to shift the pattern to the right.
+Input:
+mainString: The larger text in which we want to find occurrences of the pattern.
+pattern: The string we want to search for in the main string.
+Algorithm:
+Initialize variables n for the length of the main string and m for the length of the pattern.
+Start a loop from i = 0 to n - m (inclusive). This is because there is no possibility of finding the pattern after n - m positions in the main string.
+Compare each character of the pattern with the corresponding character of the main string from right to left (starting from the end of the pattern).
+If a mismatch occurs at position i + j, use the bad character and good suffix rules to determine the shift value for the pattern.
+Shift the pattern by the calculated shift value and continue comparing characters until a full match is found or the pattern is exhausted.
+Record the index i whenever a match is found.
+Output:
+The algorithm outputs the index/indices where the pattern is found in the main string or the count of occurrences, depending on the requirement.
+ 
+Activity: True or False
+The Naive String Matching Algorithm is highly efficient for large inputs with long patterns.
+A Finite automaton is a mathematical model that recognizes patterns within pictures.
+Pattern-matching algorithms are commonly used in fields such as finance, healthcare, and cybersecurity to detect fraud, predict disease outbreaks, and prevent security breaches.
+The Finite Automaton algorithm is particularly efficient for long patterns with small alphabets.
+Solution
+False
+False
+True
+True
+ 
+Summary
+What did we learn?
+Pattern matching is crucial for Google's search engine and advertising platforms, enabling accurate search results and targeted advertisements based on user queries and web page patterns.
+Pattern matching is a fundamental concept in computer science that involves finding specific sequences of characters (patterns) within larger sequences like strings or texts.
+It is widely used in various applications such as text processing, data analysis, compiler design, regular expressions, and more.
+Pattern matching involves defining a pattern and searching for its occurrences in the input text.
+Regular expressions are powerful tools used for pattern matching in JavaScript, allowing for searching, extracting, and manipulating text based on specific patterns.
+The Naive String Matching Algorithm compares each character of the pattern with each character of the main string to find occurrences of the pattern.
+The Finite Automaton Algorithm uses a finite automaton (FSM) represented as a directed graph to efficiently match patterns against the main string.
+The Boyer-Moore Algorithm is an efficient pattern matching algorithm that compares characters of the pattern with characters of the main string from right to left, utilizing bad character and good suffix rules.
+Pattern matching has diverse use cases, including text editors, search engines, virus detection, genetics, plagiarism detection, and natural language processing.
+By leveraging pattern matching algorithms, computers can efficiently process large amounts of data, making it possible to perform complex tasks accurately and quickly.
+Shortcomings & Challenges
+Pattern matching can be a complex and challenging topic to learn, requiring a solid understanding of programming concepts, mathematics, and logic.
+Different pattern-matching techniques and algorithms have different strengths and weaknesses, and choosing the right one for a given task can be tricky.
+Pattern matching can be computationally intensive, especially when dealing with large datasets or complex patterns.
+Over-reliance on pattern matching can lead to a lack of critical thinking and creativity when working with data, as it may limit the exploration of other possibilities.
+Best practices to follow
+Start with the basics: Before diving into complex pattern-matching techniques, ensure you have a solid understanding of the underlying programming concepts and the basics of pattern matching.
+Choose the right tool for the job: Different pattern-matching algorithms and techniques are suitable for different tasks, so be sure to choose the right tool for the job.
+Break down complex patterns: If you're dealing with a complex pattern, break it down into smaller, more manageable pieces to make it easier to work with.
+Test your code thoroughly: Be sure to test your pattern-matching code thoroughly to ensure that it's working correctly and that it's not introducing any unintended side effects.
+ 
+Enhance Your Knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+Guide to pattern matching: https://dataladder.com/guide-to-pattern-matching-what-it-means-and-how-to-do-it/
+Pattern Matching Algorithms: https://github.com/foo123/PatternMatchingAlgorithms
+ 
+Try it Yourself
+Let's solve these coding problems on AlmaBetter IDE. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
+Task 1: Take a shot at cracking these coding problems right within the AlmaBetter IDE.
+Problems
+Problem 1: Is Palindrome?
+You are a software engineer working for a company that develops word games. You have been tasked with writing a new function to check if a given string is a palindrome. 
+A palindrome is a word or phrase that reads the same backward as forward. For example, "racecar" and "madam" are palindromes.
+Example 1:
+Input: str = "A man, a plan, a canal: Panama"
+
+Output: true
+Example 2:
+Input: str = "race a car"
+
+Output: false
+Problem 2: Find Pattern Occurrences
+You are a software engineer working for a large online retailer. You have been tasked with developing a new feature that will allow users to search for products by pattern. For example, a user could search for all products that contain the word "blue" or all products that start with the letter "A".
+The problem is that the definition of a "pattern" is not always clear-cut. For example, should "blue" and "BLUE" be considered the same pattern? Additionally, the patterns that users might search for could be very long and complex.
+Example 1:
+Input:  str = "abababa", pattern = "aba"
+
+Output: [0, 2, 4]
+Problem 3: Pattern Match
+You are a software developer working for a large company. You have been tasked with developing a new algorithm that will check if a given string matches a pattern of letters and numbers. The company wants to use this algorithm to filter out spam and other unwanted content from their platform.
+The problem is that the pattern can be quite complex. For example, the pattern could be "xyyx", which means that the string must alternate between letters and numbers. Or, the pattern could be "xxyxyxy", which means that the string must have two letters followed by two numbers, and so on.
+You have to develop an algorithm that first breaks the string into characters. Then, the algorithm checks if each character in the string matches the pattern. If the character matches the pattern, the algorithm continues to the next character, until it comes true. If the character does not match the pattern, the algorithm returns false.
+Example 1:
+Input:  pattern = "xyyx", input = "abbc"
+
+Output: false
+Example 2:
+Input:  pattern = "xyyx", input = "abba"
+
+Output: true
+Solutions
+Solution 1: Is Palindrome?
+function main() {
+    var str = readLine();
+    console.log(isPalindrome(str));
+}
+function isPalindrome(str) {
+  // Remove non-alphanumeric characters and convert to lowercase
+  str = str.replace(/[^0-9a-z]/gi, "").toLowerCase();
+
+  // Check if the string is equal to its reverse
+  return str === str.split("").reverse().join("");
+}
+Solution 2: Find Pattern Occurrences
+function main() {
+    var str = readLine();
+    var pattern = readLine();
+    console.log(findPatternOccurrences(str, pattern));
+}
+function findPatternOccurrences(str, pattern) {
+  const occurrences = [];
+  let i = str.indexOf(pattern);
+
+  while (i !== -1) {
+    occurrences.push(i);
+    i = str.indexOf(pattern, i + 1);
+  }
+
+  return occurrences;
+}
+Solution 3: Pattern Match
+function main() {
+    var pattern = readLine();
+    var input = readLine();
+    console.log(matchPattern(pattern, input));
+}
+
+function matchPattern(pattern, input) {
+  if (pattern.length !== input.length) {
+    return false;
+  }
+
+  const map = new Map();
+
+  for (let i = 0; i < pattern.length; i++) {
+    const p = pattern.charAt(i);
+    const c = input.charAt(i);
+
+    if (!map.has(p)) {
+      if (map.has(c)) {
+        return false;
+      }
+      map.set(p, c);
+    } else {
+      if (map.get(p) !== c) {
+        return false;
+      }
+    }
+  }
+
+  return true;
+}
+Task 2: Explain the solution of one of the problem in your Cohort group at AlmaBetter Community Platform.
