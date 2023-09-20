@@ -1,0 +1,436 @@
+Getting Started with DSA
+Session Flow
+Learning Objective
+Introduction
+Theme
+Primary Goals
+Getting Started with Algorithms 
+What is Data Structure?
+Classification of Data Structure
+Activity: Guess the word
+What is an Algorithm?
+Qualities of a Good Algorithm
+Algorithmic Analysis
+Space Complexity
+Time Complexity
+Introduction to Asymptotic Analysis
+Big-Oh/Big-O (O) Notation
+Big Omega (Ω) Notation
+Big Theta (Θ) Notation
+Analyzing Time Complexity
+Common Time Complexities
+Why learn Data structures and Algorithms?
+Summary 
+What did we learn?
+Shortcomings & Challenges
+Best practices to follow
+Enhance your knowledge
+Try it yourself
+Learning Objective
+Introduction 
+Data structures are like the ingredients in a recipe, and algorithms are like the steps you follow to make the recipe. In computer science, data structures organize and store data, while algorithms manipulate and process that data. 
+Focus: Data structure, Classification of Data Structures, Algorithm, Algorithmic Analysis and Introduction to Asymptotic Analysis
+Prerequisites: VS Code IDE with Node.js installed, JavaScript Basics & Foundations
+Theme 
+Imagine you are a software developer working on a new project for a big tech company. You have been tasked with optimizing the code to make it run faster and more efficiently. How do you do that? 
+By learning Data Structures and Algorithms, you can write more efficient code that runs faster and uses fewer resources. This is important for companies because it can save them money and improve the user experience of their products. In fact, a report by Amazon found that for every 100ms increase in page load time, their revenue decreased by 1%.
+This emphasizes the crucial role played by data structures and algorithms in developing high-performance software systems. In this lesson, we will learn the fundamental concepts of data structures and algorithms and how to implement them in JavaScript.
+Primary Goals 
+Understand the significance of data structures and algorithms in computer science and software development.
+Explore data structure classifications and their applications in efficiently managing and storing data.
+Acquire the skills to analyze algorithm efficiency through time and space complexity evaluation.
+Recognize the benefits of learning data structures and algorithms for enhancing code performance and enhancing user experience.
+Getting Started with DSA
+Data structures are used to organize and store information to be easily accessed and manipulated. For example, when you use Google Maps, data structures store information about the roads, landmarks, and other points of interest in your area.
+Algorithms, on the other hand, are a set of instructions that tell a computer how to solve a particular problem. In the case of Google Maps, algorithms are used to calculate the fastest route between two points by analyzing the data stored in its data structures.
+What is Data structure?
+Data Structure is a mechanism for gathering and arranging data to enable us to conduct operations on it efficiently. Data Structures involve organizing data elements in a specific relationship for improved storage and organization. 
+For example:
+We can use an object to store a player's name and age like this:
+let player = {
+  name: "Virat",
+  age: 26
+};
+Here, name is a string and age is a number. We can create multiple player objects and store them in an array like this:
+let players = [
+  { name: "Dhoni", age: 30 },
+  { name: "Gambhir", age: 31 },
+  { name: "Sehwag", age: 33 }
+];
+This is a simple example of how data structures can be used in JavaScript. By organizing data this way, we can easily access and manipulate it using various built-in methods and functions. It's important to design and implement data structures that reduce complexity and increase efficiency, especially when dealing with large amounts of data.
+Classification of Data structure
+Data structures can be classified based on various characteristics like their nature, organization, and behavior. 
+We can classify Data Structures into two categories:
+Primitive Data Structures: In JavaScript, primitive data types are basic data types that are not objects and do not have any methods or properties. They are immutable, meaning their values cannot be changed once they are created.
+They include:
+Numbers: Represents numeric values.
+const age = 30;
+const pi = 3.14;
+Strings: Represents sequences of characters.
+const name = "John Doe";
+const message = "Hello, world!";
+Booleans: Represents true or false values.
+const isTrue = true;
+const isFalse = false;
+Null: Represents the intentional absence of any object value.
+const person = null;
+Undefined: Represents a declared variable without a value assigned.
+let variableWithoutValue;
+Symbols: Represents unique and immutable values used as object properties.
+const id = Symbol("unique_id");
+Non-primitive Data Structures: In JavaScript, non-primitive data types are data structures that can hold multiple values and have methods and properties associated with them. These data structures are implemented as objects in JavaScript.
+They include:
+Array: An ordered list of values, often of the same type, accessed by their index. Arrays in JavaScript are mutable and have methods for manipulating and accessing elements.
+let numbers = [1, 2, 3, 4, 5];
+console.log(numbers.length);
+console.log(numbers[2]);
+
+// Output
+5
+3
+Object: A collection of key-value pairs where the values can be of any data type, including other objects. Objects in JavaScript are mutable and can have properties and methods.
+const person = {
+  name: 'John Doe',
+  age: 30,
+  email: 'john.doe@example.com',
+  address: {
+    city: 'New York',
+    country: 'USA'
+  }
+};
+console.log(person.name);
+console.log(person.address.city);
+
+// Output
+'John Doe'
+'New York'
+Map: A collection of key-value pairs where the keys can be of any data type. Maps in JavaScript provide an efficient way to store and retrieve data based on keys and have methods for working with the key-value pairs.
+let map = new Map();
+map.set('key1', 'value1');
+map.set('key2', 'value2');
+console.log(map.get('key1'));
+
+// Output
+value1
+Set: A collection of unique values where each value can only occur once. Sets in JavaScript provide methods for adding, removing, and checking the presence of elements.
+const uniqueNumbers = new Set([1, 2, 3, 2, 4, 5, 1]);
+console.log(uniqueNumbers);
+
+// Output
+Set(5) { 1, 2, 3, 4, 5 }
+Linked List: A linked list is a data structure where elements, known as nodes, are connected via pointers or references. Each node contains data and a reference to the next node.
+notion image
+Tree: Trees are a non-linear data structure, meaning they do not have a sequential arrangement of elements. Unlike linear data structures such as arrays, linked lists, and stacks, trees allow for a parent-child relationship between elements. In trees, each node can have zero or more child nodes, and each child node can have its own child nodes.
+notion image
+Graph: A graph data structure is a collection of nodes (vertices) and edges that connect them. Graphs are used to represent complex relationships between objects or entities. They are widely used in computer science, including in data structures and algorithms, computer networking, and database management.
+notion image
+ 
+Activity: Guess the word
+Imagine you are on a treasure hunt to find the hidden treasure. To reach the treasure, you must solve a series of riddles. Each riddle will provide clues about a specific primitive data type. 
+Your task is to correctly identify the data type and proceed to the next riddle.
+I am often used to represent words, phrases, and sentences. Concatenation is my specialty, as it can be combined with other values.
+What am I?
+Answer
+If your answer is "String," proceed to the next riddle. If not, revise your answer until you find the correct data type.
+I am a complex data structure that represents a network of interconnected elements. Each element is connected to multiple other elements, forming a web-like structure.
+What am I?
+Answer
+If your answer is "Graph," proceed to the next riddle. If not, revise your answer until you find the correct data type.
+I represent a value that intentionally does not exist or is not assigned. I'm like a blank canvas waiting for something to fill me.
+What am I?
+Answer
+If your answer is "Undefined," proceed to the next riddle. If not, revise your answer until you find the correct data type.
+I represent a collection of elements where each element has a direct connection to the previous and next element. You can think of me as a train with cars linked together.
+What am I?
+Answer
+If your answer is "Linked List," proceed to the next riddle. If not, revise your answer until you find the correct data structure.
+I am a hierarchical data structure with a top-down structure. I have a root element and child elements branching out from it.
+What am I?
+Answer
+If your answer is "Tree," congratulations! You have successfully completed the data structure adventure quest.
+ 
+What is an Algorithm?
+An algorithm is a finite set of instructions or logical steps that are written in a specific order to achieve a predetermined task. An algorithm is not the complete code or program; it is the core logic, which can be expressed through pseudocode or flowchart.
+To be considered a valid algorithm, it must meet the following requirements:
+Inputs: It should have zero or more inputs provided externally to the algorithm.
+Outputs: It must have at least one output obtained.
+Definiteness: Every step of the algorithm must be clearly and precisely defined.
+Finiteness: The algorithm must have a finite number of steps.
+Correctness: Every step of the algorithm must produce an accurate and correct output.
+By following these properties, an algorithm can be written to solve a specific problem effectively and efficiently.
+notion image
+Qualities of a Good Algorithm
+Clearly define input and output: Algorithms should precisely specify the expected input and output, leaving no room for ambiguity.
+Provide clear and unambiguous steps: Each step within the algorithm should be explicit and easy to understand, leaving no confusion about how to proceed at any point.
+Emphasize efficiency: Algorithms should strive to be the most effective solution among various methods to solve a problem, focusing on optimal performance and resource utilization.
+Be language-agnostic: An algorithm should not be tied to specific computer code but instead be written in a way that allows its implementation in various programming languages, promoting versatility and adaptability.
+Algorithmic Analysis
+Suppose you have to find a particular book in a library. You could look for it by wandering aimlessly through the shelves until you stumble upon it, or you could ask a librarian for help. However, the most efficient way to find the book would be to use the library's catalog system.
+Similarly, in computer science, when solving a problem, there can be multiple algorithms to choose from, each with varying levels of efficiency (for example, sorting problem has lot of algorithms like insertion sort, selection sort, quick sort and many more). Algorithm analysis helps us determine which is efficient in terms of time and space consumed.
+The performance of an algorithm is measured on the basis of the following properties :
+Space Complexity
+Time Complexity
+Space Complexity
+When an algorithm is running, it needs space to store inputs, variables, and program code. Space complexity is the amount of memory that is required to run an algorithm or process.
+Let's take two examples to illustrate space complexity:
+Constant Space Complexity: O(1)
+function getFirstElement(array) {
+  return array[0];
+}
+
+let arr = [1, 2, 3, 4, 5];
+console.log(getFirstElement(arr));
+
+// Output
+1
+In this example, no matter how large the input array is, the function only ever uses one variable (array). Therefore, it has a constant space complexity of O(1).
+Linear Space Complexity: O(n)
+function getAllElements(array) {
+  let newArray = [];
+  for (let i = 0; i < array.length; i++) {
+    newArray[i] = array[i];
+  }
+  return newArray;
+}
+
+let arr = [1, 2, 3, 4, 5];
+console.log(getAllElements(arr));
+
+// Output
+[1, 2, 3, 4, 5]
+In this example, the function creates a new array that is a copy of the input array. Therefore, the amount of memory used by the function (i.e., the space complexity) grows linearly with the size of the input, giving it a space complexity of O(n).
+It is crucial for developers to consider the space complexity of their algorithms because it directly affects the performance of a program. If an algorithm requires too much memory, it may cause the system to slow down or crash due to a lack of memory.
+Time Complexity
+Time complexity is the time taken by the algorithm to execute each set of instructions. When solving a problem using an algorithm, it's important to choose the most efficient one to save time and computational resources.
+The time complexity of an algorithm is closely linked to the size of its input. As the input size grows, so does the algorithm's run time.
+Let's take two examples to illustrate time complexity:
+Constant Time Complexity: O(1)
+This means that the algorithm's execution time remains constant, regardless of the size of the input. Whether you have 10 elements or 10 million elements, the algorithm will take approximately the same amount of time to complete its task.
+function getFirstElement(array) {
+  return array[0];
+}
+
+let arr = [1, 2, 3, 4, 5];
+console.log(getFirstElement(arr));
+
+// Output
+1
+In this example, no matter how large the input array is, the function only needs to perform one operation: returning the first element. Therefore, it has a constant time complexity of O(1).
+Linear Time Complexity: O(n)
+This means that the time taken by an algorithm grows linearly with the size of the input. As the input size (n) increases, the time taken to complete the algorithm also increases proportionally.
+function findElement(array, element) {
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === element) {
+      return i;
+    } }
+  return -1;
+}
+
+let arr = [1, 2, 3, 4, 5];
+console.log(findElement(arr, 3));
+
+// Output
+2
+In this example, in the worst-case scenario, the function has to look at every element in the array once. Therefore, the time complexity grows linearly with the size of the input, giving it a time complexity of O(n).
+It's important to check if an algorithm is stable before running the analysis and to have a good understanding of the data being analyzed.
+Introduction to Asymptotic Analysis
+Asymptotic notation is a method used to compare the efficiency of different algorithms. It is not feasible to compare two algorithms directly as it heavily depends on the hardware and tools used for the comparison, such as the operating system, CPU model, and processor generation. Even if the time and space complexity of two algorithms are calculated on the same system, their performance may still be affected by subtle changes in the system environment.
+Asymptotic analysis is used to compare the time and space complexity of two algorithms based on the changes in their performance with the increment or decrement in the input size.
+ There are three main types of asymptotic notations: 
+Big-Oh (O) notation
+Big Omega (Ω) notation
+Big Theta (Θ) notation
+Big-Oh/Big-O (O) Notation
+Big O notation is used to describe the performance or complexity of an algorithm in terms of its input size. It provides an upper bound on the growth rate of an algorithm's time or space requirements.
+In simple terms, Big O notation tells you how the runtime or memory usage of an algorithm increases as the input size grows.
+Here's an easy example to illustrate the concept:
+function sum(numbers) {
+  let total = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    total += numbers[i];
+  }
+  return total;
+}
+Explanation
+In this example, we have a function called sum that takes an array of numbers as input and returns their sum.
+To analyze the time complexity of this function using Big O notation, we consider the worst-case scenario, which is when the array has n elements.
+In this case, the function iterates over each element in the array once using a for loop. Therefore, the runtime of the function is directly proportional to the number of elements in the input array, n.
+Using Big O notation, we can express the time complexity of this function as O(n), which reads as "order of n" or "linear time complexity." It indicates that the runtime of the function grows linearly with the input size.
+In simpler terms, it means that if we double the number of elements in the array, the time it takes to run the function will also roughly double.
+It's important to note that Big O notation focuses on the dominant factor that affects the algorithm's performance as the input size grows. It abstracts away constant factors, lower-order terms, and specific details of the algorithm.
+Big O notation provides a standardized way to compare the efficiency of different algorithms. It helps in making informed decisions when choosing the most appropriate algorithm for a given problem based on its scalability.
+notion image
+Big Omega (Ω) Notation
+Big Omega notation, represented by Ω (omega), is used to describe the best-case scenario or lower bound of the runtime complexity of an algorithm. It provides a lower bound on the growth rate of an algorithm's time or space requirements.
+In simple terms, Big Omega notation tells you the minimum amount of time an algorithm will take to run for a given input size.
+Here's an easy example to illustrate the concept:
+function findMin(numbers) {
+  let min = numbers[0];
+  for (let i = 1; i < numbers.length; i++) {
+    if (numbers[i] < min) {
+      min = numbers[i];
+    }
+  }
+  return min;
+}
+Explanation
+In this example, we have a function called findMin that takes an array of numbers as input and returns the smallest number in the array.
+To analyze the time complexity of this function using Big Omega notation, we consider the best-case scenario, which is when the smallest number is at the beginning of the array.
+In this case, the function only needs to compare the first element with the remaining elements once. Therefore, the runtime of the function is directly proportional to the number of elements in the input array, n.
+Using Big Omega notation, we can express the time complexity of this function as Ω(1), which reads as "omega of 1" or "constant time complexity." It indicates that the runtime of the function is constant, regardless of the input size.
+In simpler terms, it means that even if we double or triple the number of elements in the array, the time it takes to run the function will remain relatively the same, as long as the smallest number is at the beginning.
+Similar to Big O notation, Big Omega notation abstracts away constant factors and lower-order terms. It focuses on the best-case performance of an algorithm and provides a lower bound on its runtime complexity.
+Big Omega notation helps in understanding the minimum amount of time an algorithm will take to run, which can be useful in scenarios where the best-case performance is critical for optimizing certain applications or algorithms.
+Big Theta (Θ) Notation
+Big Theta notation, represented by Θ (theta), is used to describe the average-case or tight bound of the runtime complexity of an algorithm. It provides both the lower and upper bounds on the growth rate of an algorithm's time or space requirements.
+In simple terms, Big Theta notation tells you both the best-case and worst-case scenarios of an algorithm and gives a tight estimate of its runtime complexity.
+Here's an easy example to illustrate the concept:
+function containsValue(arr, value) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === value) {
+      return true;
+    }
+  }
+  return false;
+}
+In this example, we have a function called containsValue that takes an array arr and a value to search for, and it returns true if the value is found in the array, or false otherwise.
+To analyze the time complexity of this function using Big Theta notation, we consider both the best-case and worst-case scenarios.
+Best-case scenario: The value is found at the beginning of the array. In this case, the function only needs to compare the first element with the target value, resulting in a constant-time operation. The best-case time complexity is Θ(1).
+Worst-case scenario: The value is not present in the array, or it is located at the end of the array. In this case, the function needs to compare the target value with every element in the array until the end, resulting in a linear-time operation. The worst-case time complexity is Θ(n), where n represents the number of elements in the array.
+In simpler terms, it means that as the input size increases, the time it takes to run the function will increase proportionally on average. However, there will be cases where the runtime can be better (best-case scenario) or worse (worst-case scenario) than the average.
+Big Theta notation helps in providing a tighter estimate of an algorithm's performance by considering both the lower and upper bounds. It gives a more comprehensive understanding of how an algorithm behaves under different input scenarios.
+Analyzing Time Complexity
+Measuring the time complexity of a code involves analyzing how the execution time of the code grows with respect to the input size. It provides valuable insights into how the code's performance scales as the input size increases. There are various methods to measure time complexity, but one common approach is to use Big O notation.
+Here's a step-by-step guide to measuring the time complexity of a code:
+Identify the Input Size: Determine what parameter(s) influence the size of the input to the code. For example, if your code operates on an array, the input size is the length of the array, denoted as "n."
+Identify the Operations: Identify the significant operations in the code that contribute to its overall execution time. Common operations include loops, recursive calls, and specific arithmetic or logical operations.
+Count the Basic Operations: For each identified operation, count the number of times it is executed in terms of the input size "n." Express this count as a function of "n" without considering any constant factors.
+Find the Dominant Term: If the code contains multiple operations, identify the one with the highest growth rate concerning "n." This dominant term represents the primary factor determining the time complexity.
+Express the Time Complexity: Write the time complexity using Big O notation by retaining only the dominant term and removing any constant factors or lower-order terms.
+When analyzing the efficiency of an algorithm, we consider three cases
+Best case: The best case scenario is when the algorithm completes its task in the shortest possible time, and this time acts as a lower bound for the algorithm's time complexity.
+Average case: In the average case, the sum of the running times for every possible input combination is calculated, and the average is taken. This average time serves as both the lower and upper bound for the algorithm's time complexity.
+Worst case: The worst-case scenario is when the algorithm takes the longest time to complete its task, and this time serves as the upper bound for the algorithm's time complexity. 
+Considering these different cases helps us determine the efficiency of an algorithm in different scenarios, allowing us to choose the best algorithm for a given problem.
+Common Time Complexities
+O(1) - Constant Time: The execution time remains constant, regardless of the input size.
+O(log n) - Logarithmic Time: The execution time increases logarithmically with the input size.
+O(n) - Linear Time: The execution time grows linearly with the input size.
+O(n log n) - Linearithmic Time: The execution time increases as a product of the input size and its logarithm.
+O(n^2) - Quadratic Time: The execution time grows quadratically with the input size.
+O(2^n) - Exponential Time: The execution time grows exponentially with the input size.
+Let's consider an example to measure the time complexity of a code that finds the maximum element in an array of integers.
+function findMaxElement(arr) {
+  let max = arr[0];
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] > max) {
+      max = arr[i];
+    }
+  }
+  return max;
+}
+Explanation
+In this code, the input size is the length of the array arr, denoted as "n." We can analyze the time complexity step by step:
+Identify the Input Size: The input size is the length of the array, "n."
+Identify the Operations: The main operation is the loop that iterates through the array elements.
+Count the Basic Operations: The loop runs from index 1 to n-1, so it executes "n-1" times.
+Find the Dominant Term: The loop is the only significant operation, and it runs "n-1" times.
+Express the Time Complexity: The time complexity can be expressed as O(n) since the loop's execution time grows linearly with the input size "n."
+ 
+Activity: Match the following
+Option A
+Option B
+1. Nested Loops
+a. Best-case time complexity of Ω(1)
+2. Sorting Algorithm
+b. Worst-case time complexity of O(n^2)
+3. Constant Time Operation
+c. average-case time complexity of Θ(n log n)
+Answers
+1 - b
+2 - c
+3 - a
+ 
+Why learn Data structures and Algorithms?
+Learning data structures and algorithms is essential for several reasons:
+Problem-Solving Skills: Data structures and algorithms provide a systematic approach to solving complex problems efficiently. By learning them, you can develop strong problem-solving skills that are applicable in various areas of computer science and beyond.
+Optimize Code: Understanding different data structures and algorithms enables you to write more efficient code. Efficient algorithms can significantly improve the performance of software applications, making them faster and more responsive.
+Interview Preparation: Data structures and algorithms are fundamental topics in technical interviews for software engineering and computer science roles. Learning these concepts thoroughly can increase your chances of success in job interviews.
+Algorithm Design: Learning algorithms helps you design your solutions and design them better. You'll be able to identify trade-offs, choose appropriate data structures, and optimize your code.
+Career Advancement: Many tech companies highly value candidates with strong knowledge of data structures and algorithms. Having these skills can open up better job opportunities and career advancement.
+Understanding Libraries and APIs: Knowledge of data structures and algorithms helps you better understand how various libraries and APIs in programming languages work, making you more effective in using them.
+Overall, learning data structures and algorithms is an investment that pays off in your problem-solving abilities, career prospects, and overall growth as a programmer or computer scientist. It forms the backbone of your technical skills, allowing you to tackle a wide range of challenges in the world of computing.
+ 
+Summary
+What did we learn?
+Data structures are a mechanism for organizing and storing data in a specific relationship for improved storage and organization.
+Data structures can be classified into two categories: primitive and non-primitive. Primitive data structures include number, string, boolean, null, undefined, and symbol. Non-primitive data structures include arrays, maps, linked list, stack , treesetc.
+Linear data structures arrange data sequentially with one predecessor and successor. In contrast, non-linear data structures arrange data in a non-linear sequence with multiple predecessors and successors.
+Static data structures have a fixed size, and their memory is allocated at compile time. In contrast, dynamic data structures can grow or shrink dynamically at runtime, and their memory is allocated at runtime.
+Understanding data structures is important for designing and implementing efficient algorithms, especially when dealing with large amounts of data.
+An algorithm is a set of instructions or logical steps written in a specific order to achieve a predetermined task. It must have inputs, at least one output, definiteness, finiteness, and correctness.
+Algorithmic analysis helps determine the efficiency of an algorithm in terms of space and time complexity. Space complexity is the amount of memory required to run an algorithm, while time complexity is the time the algorithm takes to execute each set of instructions.
+The performance of an algorithm is closely linked to its data structures and operations, and it's important to choose the most efficient algorithm for a given task to save time and computational resources.
+Asymptotic analysis is a technique to compare the efficiency of algorithms using asymptotic notation. It compares time and space complexity using three notations: O, Ω, and Θ.
+Big-O(O) provides an upper bound for worst-case runtime, Big-Omega(Ω) provides a lower bound for best-case runtime, and Big-Theta(Θ) represents both upper and lower bounds on the runtime growth rate.
+Algorithm efficiency analysis includes best, average, and worst-case scenarios to choose the most efficient algorithm for a given problem. The best case is the shortest, the worst case is the longest, and the average is the meantime for all possible inputs.
+Shortcomings & Challenges
+Choosing the right data structure for a problem can be challenging, especially when similar options, such as stacks and queues, have different behaviors in adding and removing elements.
+Learning about algorithms and their complexity can be difficult for beginners due to technical requirements and an overwhelming number of variations available.
+Identifying the best and worst algorithm scenarios is easy, but comparing their efficiency based on varying growth rates and complexity is tricky.
+Best practices to follow
+Experimenting with various data structures through coding exercises and real-world applications is a best practice for mastering them and improving skills and confidence in selecting the right structure for any problem.
+Develop a good understanding of algorithms and their analysis; start with the fundamentals, focus on comprehending the underlying principles, and practice coding to reinforce your understanding.
+Analyze different types of algorithms, compare and contrast their performance, and use visualization tools like flowcharts and diagrams.
+To determine the most optimized way to solve a problem is to start by understanding the problem requirements and constraints, analyzing the possible approaches, and comparing their time and space complexities.
+ 
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+Space and Time Complexity in Computer Algorithms: https://towardsdatascience.com/space-and-time-complexity-in-computer-algorithms-a7fffe9e4683
+A beginner's guide to Big O Notation: https://rob-bell.net/2009/06/a-beginners-guide-to-big-o-notation/
+An Ode to Asymptotic Notations: https://medium.com/smelly-code/an-ode-to-asymptotic-notations-64753506bbf1
+ 
+Try it Yourself
+Let's solve these algorithms. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
+Task 1: Brainstorming algorithms.
+Problems
+Problem 1: Write the algorithm for Adding two numbers entered by the user
+Problem 2: Write the algorithm for Finding the largest number among three numbers
+Problem 3: Write the algorithm for Finding the factorial of a number
+Answer
+Problem 1
+Step 1: Start
+Step 2: Declare variables num1, num2 and sum.
+Step 3: Read values num1 and num2.
+Step 4: Add num1 and num2 and assign the result to sum.
+        sum←num1+num2
+Step 5: Display sum
+Step 6: Stop
+Problem 2
+Step 1: Start
+Step 2: Declare variables a,b and c.
+Step 3: Read variables a,b and c.
+Step 4: If a > b
+           If a > c
+              Display a is the largest number.
+           Else
+              Display c is the largest number.
+        Else
+           If b > c
+              Display b is the largest number.
+           Else
+              Display c is the greatest number.
+Step 5: Stop
+Problem 3
+Step 1: Start
+Step 2: Declare variables n, factorial and i.
+Step 3: Initialize variables
+          factorial ← 1
+          i ← 1
+Step 4: Read value of n
+Step 5: Repeat the steps until i = n
+     5.1: factorial ← factorial*i
+     5.2: i ← i+1
+Step 6: Display factorial
+Step 7: Stop
+Task 2: Explain the solution of one of the problem in your Cohort group at AlmaBetter Community Platform.
