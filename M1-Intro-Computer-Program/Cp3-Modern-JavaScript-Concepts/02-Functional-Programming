@@ -1,67 +1,50 @@
 Functional Programming
-Session Flow ( 5 minutes read)
-Learning Objective (5 minutes read)
+Session Flow
+Learning Objective 
 Introduction
 Theme
 Primary Goals
-Functional Programming (120 minutes read)
+Functional Programming 
 What is Functional Programming?
 Pure Functions
 First-Class Objects
-Uses of a First-Class Function
-Try it yourself
+Activity: Guess the words
 Higher Order Function
 Function Composition
-Traditional Approach
-Alternate Approach: compose function and pipe function
 Immutability in JavaScript
-Explore Further
 Declarative and Imperative Code
 Benefits of Functional Programming
-Activity
-Summary (10 minutes read)
+Activity: Fill in the blanks
+Summary 
 What did we learn?
 Shortcomings & Challenges
-Best Practices
-Enhance Your Knowledge
-
-
+Best practices to follow
+Enhance your knowledge
+Try it yourself
 Learning Objective
 Introduction
-Ahoy there! JavaScript is a versatile language that has come a long way since its inception. In this chapter, we'll dive into Functional Programming, a paradigm that can help us write cleaner, more elegant code, and some of the modern concepts that make JavaScript such a powerful tool for web development, like the new features introduced in ES5 and ES6, and learn how they can help us write more efficient and maintainable code and last but not least the fascinating world of Regular Expressions and debugging techniques, two essential skills for any JavaScript developer and  
-
-Duration: 2 hours
-
-Focus:  Functional Programming, RegEx & Debugging in JavaScript and ES5 and ES6 concepts
-
-Prerequisites: NA
-
+Some of the modern concepts that make JavaScript such a powerful tool for web development, like the new features introduced in ES5 and ES6, and learn how they can help us write more efficient and maintainable code and last but not least the fascinating world of Regular Expressions and debugging techniques, two essential skills for any JavaScript developer.
+Focus: Functional Programming, Higher Order Functions, Declarative and Imperative Code
+Prerequisites: VS Code IDE with Node.js installed, JavaScript Basics & Foundations
 Theme
-Picture this: You're a budding web developer, fresh out of college, and you've landed your dream job at a tech startup. You're eager to make a name for yourself and show your skills, but you quickly realize that the company's web app is riddled with bugs, slow performance, and a confusing user interface. You start digging into the codebase, and you discover that most of the code is written in an outdated version of JavaScript. You know you have to act fast to bring the app up to speed, but where do you even begin?
-
-Look no further than the Modern JavaScript Concepts chapter. Here, we'll explore the latest features of ES5 and ES6, like arrow functions and template literals, that can make your code more readable and efficient. But that's not all! We'll also dive into debugging techniques and Regular Expressions, which are essential for keeping your code bug-free and matching patterns in strings. And don't forget about Functional Programming, a paradigm that emphasizes clean, maintainable code. Get ready to take your JavaScript skills to the next level!
-
+Welcome to the world of web development in JavaScript, where Functional Programming, Regular Expressions (RegEx), and Debugging are your indispensable allies!
+Imagine you're building a dynamic web application that processes user input and analyzes sentiment to provide personalized feedback. With Functional Programming, you can effortlessly manage and manipulate user data as it flows through various functions, ensuring a clean and maintainable codebase.
+Now, let's talk about Regular Expressions. Say you want to validate email addresses entered by users. RegEx allows you to craft a pattern that precisely matches the structure of valid emails, ensuring accurate and efficient validation.
+But building such a sophisticated application might introduce some sneaky bugs. That's where Debugging comes to the rescue. Using browser developer tools, you can inspect variables, set breakpoints, and trace execution flow, swiftly identifying and resolving any issues.
 Primary Goals
 Understand ES5 and ES6 Concepts, learning new features and enhancements to write efficient code.
 Master Regular Expressions and Debugging Techniques effectively.
 Understand pure functions, immutability, higher-order functions, and functional programming libraries.
-
-
+ 
 Functional Programming
 Sophie was a software developer who had been working with JavaScript for several years. She was always looking for new and innovative ways to improve her code, and one day she stumbled upon the concept of Functional Programming.
-
 The programming paradigm known as Functional Programming highlights the utilization of pure functions, immutability, and higher-order functions. It was a new way of thinking about programming for Sophie, who had worked primarily with Object-Oriented Programming (OOP) until then.
-
 Sophie quickly realized the benefits of functional programming in JavaScript. Her code became more concise, easier to test, and easier to understand. She also found it easier to reason about her code, which helped her catch bugs and solve problems more quickly.
-
 What is Functional Programming?
 The programming paradigm of Functional Programming emphasizes utilizing functions as building blocks to develop programs. It is based on the mathematical concept of a function, where a function takes input values and produces output values without side effects.
-
 In functional programming, functions are first-class citizens, meaning they can be passed around as arguments to other functions, returned as values from functions, and stored in data structures. Functional programming typically avoids mutable state and relies instead on immutable data structures and pure functions that don't modify the state of the program.
-
-
+notion image
 Here are some characteristics of the functional programming paradigm:
-
 Immutable data refers to the state where values assigned to a variable cannot be altered after the assignment.
 Usage of pure functions: Pure functions always return the same result given the same input and have no side effects.
 Functions of a higher order can take arguments and return values.
@@ -71,18 +54,13 @@ Lazy evaluation: Only compute values when necessary to better use resources.
 Several functional programming languages use type inference to automatically infer types, eliminating the requirement for explicit type annotations.
 Pure Functions
 Pure functions in JavaScript always produce the same result given the same input and have no side effects. Because they make it simpler to analyze code and avoid errors, they are crucial to functional programming.
-
 A pure function accepts one or more input values, computes purely using those values, and then outputs a brand-new result. The function alters no external state, such as global variables or objects passed by reference. The function also doesn't have any unintended consequences, like writing to a file or sending queries over the network.
-
 Here's an example of a pure function in JavaScript:
-
 function add(a, b) {
   return a + b;
 }
 The add function returns the total of two input values, a and b. There are no adverse effects, and it doesn't alter any external conditions. Because it consistently produces the same result given the same input, it is a pure function.
-
 Here is an illustration of a JavaScript impure function, in contrast:
-
 let counter = 0;
 
 function increment() {
@@ -90,32 +68,22 @@ function increment() {
   return counter;
 }
 The increment function changes the external counter variable every time it is called. Because it modifies the external state as a side effect, it is not a pure function.
-
-
-
-Since they make testing and reasoning about code simpler, pure functions are crucial. Pure functions are predictable and can be used confidently in other portions of the code since they always produce the same result when given the same input. It is also simpler to build test cases for pure functions with known input and anticipated output because their behaviour is fully governed by the values of their inputs.
-
+Since they make testing and reasoning about code simpler, pure functions are crucial. Pure functions are predictable and can be used confidently in other portions of the code since they always produce the same result when given the same input. It is also simpler to build test cases for pure functions with known input and anticipated output because their behavior is fully governed by the values of their inputs.
 First-Class Objects
 Functions can be treated like any other value because they are first-class objects in JavaScript. More specifically, functions can be used as values returned from functions, supplied as arguments to other functions, and set to variables.
-
 Here is an illustration of how to give a variable a function:
-
 const add = function(a, b) {
   return a + b;
 };
 A function is defined and given control over the add variable in this code. Thus, using the variable add, the function can be called as follows: add (2, 3).
-
 An illustration of providing a function as an argument to another function is given below:
-
 function operateOnNumbers(a, b, operation) {
   return operation(a, b);
 }
 
 const result = operateOnNumbers(2, 3, add);
-The operateOnNumbers function in this code accepts two numbers and a function as parameters. The numbers are processed by the function, which then returns the outcome. operateOnNumbers receives an argument from the add function as the operation parameter. This makes it possible to utilise the function for more than just addition.
-
+The operateOnNumbers function in this code accepts two numbers and a function as parameters. The numbers are processed by the function, which then returns the outcome. operateOnNumbers receives an argument from the add function as the operation parameter. This makes it possible to utilize the function for more than just addition.
 This is an example of returning a function from another function, to wrap things up:
-
 function createAdder(x) {
   return function(y) {
     return x + y;
@@ -125,87 +93,45 @@ function createAdder(x) {
 const add5 = createAdder(5);
 const result = add5(3); // returns 8
 The createAdder method in this code returns a second function that accepts a single parameter and returns the product of the argument and the value supplied to createAdder. The createAdder method's returning function, which multiplies its input by 5, is assigned to the add5 variable. The outcome of using add5 with the parameter of 3, which returns 8, is then put into the result variable.
-
 Since they enable effective functional programming techniques like closures and higher-order functions, first-class functions are crucial in JavaScript. JavaScript enables developers to construct more adaptable and reusable code by treating functions as values.
-
-Uses of a First-Class Function
-So, we know that functions in JavaScript are first-class citizens. Now, what do we do with that knowledge? First-class functions give us a wide variety of flexible and powerful design patterns. These patterns let us write more readable, dynamic, and concise code. Let’s take a look at a few.
-
-
-
-Try it yourself
-
-ACROSS 
-
-4. This concept is based on the mathematical concept of a function, where a function takes input values and produces output values without side effects. -  __________ transparency
-
-8. Rather than using statements to construct programs, this ________ -oriented approach is frequently used in functional programming.
-
-
-
-DOWN 
-
-1. Pure functions in JavaScript always produce the same result given the same input and have no ____ effects.
-
-2. Functional programming typically avoids mutable state and relies instead on immutable data structures and ____ functions.
-
-3. JavaScript enables developers to construct more adaptable and reusable code by treating functions as _____ order.
-
-5. This programming paradigm emphasizes using functions as building blocks to develop programs. - _______ programming
-
-6. Functions can be treated like any other value because they are ____-class objects in JavaScript.
-
-7. Functions are ____-class citizens in functional programming.
-
-Solution
-ACROSS :
-
-Referential
-Expression
-
-
-DOWN : 
-
-Side
-Pure
-Higher
- 5.  Functional
-
-First
-First
-
-
+ 
+Activity: Guess the words
+DOWN
+1. A technique in functional programming where functions call themselves to solve problems.
+4. __________ Evaluation is a strategy in functional programming where values are computed only when necessary to optimize resource usage.
+ACROSS
+2. A characteristic of functional programming where values assigned to a variable cannot be altered after the assignment.
+3. In JavaScript, functions are considered __________ objects, allowing them to be treated as values and passed around like any other value.
+notion image
+Answers
+Recursion
+Immutable
+First-class
+Lazy
+ 
 Higher Order Function
 In JavaScript, a higher-order function is characterized by its ability to take one or more functions as arguments and/or return another function as its output. Higher-order functions are crucial to functional programming since they allow for strong abstractions and code composition.
-
-
+notion image
 An illustration of a higher-order function that accepts a function as an argument is shown here:
-
 function double(numbers) {
   return numbers.map(function(n) {
     return n * 2;
   });
 }
 The double function in this code accepts a list of numbers as its argument and outputs a new list with each number twice. Each element in the array is transformed by the higher-order function called map, which accepts a function as an input.
-
 An illustration of a higher-order function that does so is as follows:
-
 function add(x) {
   return function(y) {
     return x + y;
   };
 }
 The add function in this code accepts a single parameter, x, and produces a new function, which accepts a single input, y, and produces the result of x plus y. This process, known as "currying," enables the creation of customized functions based on a typical pattern.
-
 Higher-order functions can be used to build reusable code that can be modified to have certain behaviour. For instance, a comparison function may be accepted as an argument by a sorting function, enabling sorting in ascending or descending order according to various criteria. Similar to the predicate function, a filtering function may accept a predicate function as an argument to enable filtering based on various criteria.
-
 Function composition
 Function composition is a method in which the output of one function is passed on to the next, which is passed to another, and so on until the last function is executed to provide the desired outcome. Any number of functions may be included in function compositions.
-
-
-Traditional approach:
+notion image
+Traditional approach
 Traditionally, function composition follows this format:
-
 const double = x => x * 2
 const square = x => x * x
 // Tradition approach
@@ -216,13 +142,10 @@ console.log(output2);
 var output_final = square(double(2));
 console.log(output_final);
 We can see from the code above that in order to square a doubled term, we must first call the double function, then the square function. Either by individually assigning the values to variables and calling functions upon them, or by taking a more direct route.
-
-Alternate approach:
+Alternate approach
 Another approach is to use the compose and pipe functions.
-
 compose function
 compose function takes any number of functions and invokes them all one after the other:
-
 const compose = (...fns) => x => fns.reduceRight((y, f) => f(y), x); 
 const double = x => x * 2
 const square = x => x * x
@@ -230,11 +153,9 @@ const square = x => x * x
 // function composition
 var output_final = compose(square, double)(2);
 console.log(output_final);
-The compose function is created using a broad approach in the code above, allowing it to now accept any number of functions. Even when utilising this implementation, the result stays the same.
-
+The compose function is created using a broad approach in the code above, allowing it to now accept any number of functions. Even when utilizing this implementation, the result stays the same.
 pipe function
 On the other hand, we can reverse the order of the function invocation by using the pipe function:
-
 // function composition using pipe of any number of functions
 const pipe = (...fns) => x => fns.reduce((y, f) => f(y), x); 
 const double = x => x * 2
@@ -244,96 +165,46 @@ const square = x => x * x
 var output_final = pipe(square, double)(2);
 console.log(output_final);
 The pipe function is constructed using a general method in the code above, allowing it to now accept any number of functions. This is similar to the previous compose function, except instead of using the reduceRight technique, it uses reduce. The square function is called before the double function in this case, although it was called in the opposite sequence in our compose function, which results in a different output.
-
 Immutability in JavaScript
 Programmers use the term "immutability" to describe an object's unchangeable state after it has been created. Immutability in JavaScript is crucial for creating reliable, predictable, and maintainable programming.
-
-Primitive values like texts, integers, and booleans are immutable by default in JavaScript. Once a value is set to them, it cannot be modified. For instance, the code that comes after attempts to modify a string after it has been assigned to a variable:
-
+Primitive values like texts, integers, and booleans are immutable by default in JavaScript. Once a value is set to them, it cannot be modified.
+For instance, the code that comes after attempts to modify a string after it has been assigned to a variable:
 let str = 'hello';
 str[0] = 'H'; // This has no effect on the string
 console.log(str); // Output: 'hello'
 The str variable in this code remains unchanged, therefore any effort to modify the string's first character has no impact.
-
 However, JavaScript objects and arrays are by default mutable, allowing their values to be modified after they have been created. As an illustration, the code below creates an object and then changes one of its properties:
-
 const person = {
   name: 'John',
   age: 30
 };
 person.age = 31; // This changes the value of the age property
 The age property of the person object is created in this code with a default value, but that value is later modified.
-
 An approach that is frequently used in JavaScript to achieve immutability for objects and arrays is to generate new objects or arrays rather than altering the ones that already exist. Instead of changing the original object, the code that follows generates a new object with the updated property:
-
 const person = {
   name: 'John',
   age: 30
 };
+
 const updatedPerson = {
   ...person,
   age: 31
 };
 The age property is set to a new value in this code, yet a new object is created that has all the properties of the person object. The original person object is left alone, and the new object is then assigned to the updatedPerson variable.
-
 This function can also be applied to arrays, but instead of changing the existing arrays, it creates new ones using methods like concat, slice, and map.
-
 Immutability is a fundamental idea in JavaScript that helps programmers create reliable, maintainable code. Developers can prevent unanticipated side effects and create more logically sound code by treating objects and arrays as immutable data.
-
-
-
-Explore Further
-Uncover and unlock new insights as you dive into the captivating content found in the provided link.
-
-Recursion Function : https://medium.com/sessionstack-blog/how-javascript-works-recursion-in-javascript-what-it-is-and-how-it-is-used-eef3d734f20d
-
-Tackle these questions head-on!
-
-Q1: What is recursion in JavaScript?
-
-Solution
-Recursion is a programming technique where a function calls itself to solve a problem by breaking it down into smaller, simpler instances of the same problem.
-
-Q2: What are the two essential parts of a recursive function?
-
-Solution
-The base case and the recursive case. The base case specifies when the recursion should stop, and the recursive case defines the process of breaking down the problem and making subsequent recursive calls.
-
-Q3: How is recursion different from iteration?
-
-Solution
-Recursion involves solving a problem by breaking it down into smaller instances and calling the function itself, while iteration involves using loops to repeatedly execute a block of code until a certain condition is met.
-
-Q4: What is the importance of a base case in a recursive function?
-
-Solution
-The base case serves as the termination condition for the recursion. It ensures that the function eventually reaches a stopping point and avoids infinite recursion.
-
-Q5: What is the call stack in the context of recursion?
-
-Solution
-The call stack is a data structure used to manage function calls. In recursion, each recursive function call is added to the call stack, and when the base case is reached, the function calls are resolved and removed from the stack.
-
-
-
 Declarative and Imperative code
-Functional programming can make use of the declarative and imperative programming paradigms. An explanation of each is provided below:
-
+Functional programming can make use of the declarative and imperative programming paradigms.
 Declarative programming is a paradigm for writing computer program in which the desired outcome is described in the code without the control structure or algorithm used to get there being stated explicitly. To put it another way, you tell the computer what you want, and it finds a way to make it happen. Declarative code is frequently more terse and expressive, as well as being potentially simpler to comprehend and maintain.
-
-Declarative code in functional programming sometimes involves manipulating data without the need of explicit loops or conditionals by employing higher-order functions like map, reduce, and filter. Here is an illustration of a declarative function that doubles the values of an array using map:
-
+Declarative code in functional programming sometimes involves manipulating data without the need of explicit loops or conditionals by employing higher-order functions like map, reduce, and filter.
+Here is an illustration of a declarative function that doubles the values of an array using map:
 function double(numbers) {
   return numbers.map(n => n * 2);
 }
 Without utilizing a loop or a conditional statement, the map function is used in this code to change each element of the numbers array into a new value.
-
-
-
 Contrarily, in an imperative programming paradigm, loops, conditionals, and mutable state are frequently used in the code to specify the precise procedures to achieve a goal. In other words, you instruct the computer step-by-step on how to carry out a task. Imperative code can frequently be more verbose, less expressive, harder to understand, and require more upkeep.
-
-Imperative code in functional programming frequently uses mutable variables or phrases like for and while loops. An imperative function that doubles the values in an array is shown here as an example:
-
+Imperative code in functional programming frequently uses mutable variables or phrases like for and while loops.
+An imperative function that doubles the values in an array is shown here as an example:
 function double(numbers) {
   const result = [];
   for (let i = 0; i < numbers.length; i++) {
@@ -342,40 +213,28 @@ function double(numbers) {
   return result;
 }
 In this code, a new array result is formed, and a for loop is used to put a new value onto the result array while iterating over each element of the numbers array.
-
 Ultimately, both declarative and imperative programming have advantages and disadvantages and are useful in various contexts. Declarative code is frequently preferred in functional programming because it can result in more expressive and maintainable code. Imperative code may, nevertheless, be more appropriate in some circumstances, such as when working with performance-sensitive code or with changeable data structures.
-
 Benefits of Functional Programming
 Pure functions, immutable data structures, and declarative programming are all emphasized in the functional programming paradigm. The following are a few advantages of functional programming:
-
 Less side effects: Functions simply operate on their inputs and do not affect external state in functional programming, which minimizes side effects. This lowers the likelihood of bugs and makes it simpler to reason about the code.
 Modularity: Functional programming promotes the use of compact, small-scale functions that can be quickly joined to produce more intricate functionality. Because of this, writing reusable and maintainable code is made simpler.
 Expressiveness: Declarative programming is emphasized in functional programming, which makes the code simpler to read and comprehend. Complex logic can be written concisely and accessible by using higher-order functions and other functional programming ideas.
 Testing: Pure functions, which depend solely on their inputs and have no side effects, are encouraged by functional programming because they are simpler to test. As a result, it is simpler to check code accuracy and construct unit tests.
 Scalability: Because functional programming prioritizes the usage of stateless functions and immutable data structures, it can grow effectively. Deadlocks and race situations, which are frequent issues in distributed systems, can be avoided in this way.
-
-
 Generally, functional programming offers a number of advantages that can make it simpler to create reliable, upgradable software. In contrast to traditional imperative programming, it also necessitates a different approach to thinking about programming, so there can be a learning curve for those who are unfamiliar with the paradigm.
-
-
-
-Activity
-Fill in the blanks:
-
-Functional programming can make use of __________ and imperative programming paradigms.
-In declarative programming, you tell the computer what you want, and it finds a way to make it happen without the control structure or algorithm used to get there being stated __________.
-Declarative code in functional programming sometimes involves manipulating data without the need of explicit loops or conditionals by employing higher-order functions like __________, reduce, and filter.
-__________ programming is emphasized in functional programming, which makes the code simpler to read and comprehend.
-Solution
+John McCarthy developed the Lisp programming language in the late 1950s, which was one of the first programming languages to incorporate functional programming concepts.
+ 
+Activity: Fill in the blanks
+Functional programming can make use of __________ (classes / objects / declarative) and imperative programming paradigms.
+In declarative programming, you tell the computer what you want, and it finds a way to make it happen without the control structure or algorithm used to get there being stated __________ (explicitly / specifically / implicitly).
+Declarative code in functional programming sometimes involves manipulating data without the need of explicit loops or conditionals by employing higher-order functions like __________ (map / forEach / loop), reduce, and filter.
+__________ (Inheritance / Modularity / Abstraction) programming is emphasized in functional programming, which makes the code simpler to read and comprehend.
+Answers
 declarative
 explicitly
 map
 Modularity
-
-
-John McCarthy developed the Lisp programming language in the late 1950s, which was one of the first programming languages to incorporate functional programming concepts.
-
-
+ 
 Summary
 What did we learn?
 Functional programming emphasizes writing pure and compound functions and avoiding mutable data, shared state, and side effects.
@@ -385,17 +244,118 @@ Higher-order functions take or return functions as arguments, and function compo
 The const keyword declares a constant value that cannot be reassigned, but the contents of a const variable can still be modified unless you use Object.freeze() or a library like Immutable.js.
 The spread syntax can also be used to create a new copy of an object or array and maintain immutability.
 Functional programming is a declarative programming paradigm that focuses on what the program does, while imperative programming focuses on how it does it. Declarative programming is a layer of abstraction on top of imperative programming, which ultimately compiles instructions for the CPU.
-Shortcomings
+Shortcomings & Challenges
 Difficulty in understanding concepts like currying, higher-order functions, and function composition, which are key concepts in functional programming.
 A lack of familiarity with the functional programming libraries and tools available in JavaScript, which can make it difficult to apply functional programming concepts in real-world projects.
 Difficulty in transitioning from imperative programming to declarative programming, as it requires a different way of thinking about program design.
 A lack of support for some of the functional programming features in older versions of JavaScript, which can limit the language's capabilities.
-Best Practices
+Best practices to follow
 Start with the basics: Begin by learning the fundamentals of functional programming, such as pure functions, immutability, and higher-order functions.
 Practice writing functions: Get plenty of practice writing functions and applying functional programming concepts to simple problems.
 Read functional programming code: Read through code written by experienced functional programmers to gain an understanding of how to apply functional programming concepts to real-world problems.
 Use functional programming libraries: Utilize functional programming libraries and tools like Ramda, Lodash, or Immutable.js to gain experience with functional programming patterns and techniques.
 Refactor existing code: Practice refactoring existing code to make it more functional. This can help you gain experience with functional programming concepts while also improving the code's maintainability and readability.
-Enhance Your Knowledge
-What is Functional Programming?
-Functional programming in JavaScript
+ 
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+Recursion Function : https://medium.com/sessionstack-blog/how-javascript-works-recursion-in-javascript-what-it-is-and-how-it-is-used-eef3d734f20d
+Introduction to functional programming in JavaScript: https://opensource.com/article/17/6/functional-javascript
+ 
+Try it yourself
+Let's solve these coding problems in the AlmaBetter IDE. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
+Task 1: Solve these Coding Problems in the AlmaBetter IDE.
+Problems
+Problem 1: Is Your Year a Leap Year?
+Imagine you are standing in a vast field with your friends, enjoying the warm sunshine and watching the clouds float by. Suddenly, one of your friends turns to you and asks, "Hey, do you know how to determine if a year is a leap year or not?”
+You think for a moment and then realize that you can write a program to help your friend find out if a year is a leap year or not. Can you write a program that takes a year as input and returns true if it is a leap year, and false otherwise?
+Example 1:
+Input: 1996
+Output: true
+Example 2:
+Input: 1700
+Output: false
+Problem 2: To Lower Case
+Once upon a time, there was a young boy named Oliver who loved to write stories. He would spend hours scribbling away in his notebook, creating new characters and adventures. One day, he decided to type up one of his stories on the computer. However, he accidentally left the caps lock on and all the letters were in uppercase. He wished there was an easy way to change all the uppercase letters to lowercase without having to retype the whole story.
+Can you help Oliver by writing a function that takes a string s representing his story, and returns the string after replacing every uppercase letter with the same lowercase letter?
+Example 1:
+Input: Hello
+Output: hello
+Example 2:
+Input: here
+Output: here
+Example 3:
+Input: LOVELY
+Output: lovely
+Constraints:
+1 <= s.length <= 100
+s consists of printable ASCII characters.
+Problem 3: Length of Last Word
+Once upon a time, there was a young girl named Ava who loved to write poetry. She would spend hours crafting beautiful verses and rhymes. One day, she decided to enter a poetry competition where the last word of her poem had to be a specific length. She had written the perfect poem, but she didn’t know how long the last word was.
+Can you help Ava by writing a function that takes a string s representing her poem, consisting of words and spaces, and returns the length of the last word in the string? A word is a maximal substring consisting of non-space characters only.
+Example 1:
+Input: s = "Hello World"
+Output: 5
+Explanation: The last word is "World" with length 5.
+Example 2:
+Input: s = " fly me to the moon "
+Output: 4
+Explanation: The last word is "moon" with length 4.
+Constraints:
+1 <= s.length <= 104
+`s` consists of only English letters and spaces `' '`.
+There will be at least one word in s.
+Solutions
+Problem 1: Is Your Year a Leap Year?
+function main() {
+  var year = parseInt(readLine());
+  console.log(isLeapYear(year));
+}
+
+function isLeapYear(year) {
+  if (year % 4 === 0) {
+    if (year % 100 === 0) {
+      if (year % 400 === 0) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return true;
+    }
+  } else {
+    return false;
+  }
+}
+Problem 2: To Lower Case
+function main() {
+  var s = readLine();
+  console.log(toLowerCase(s));
+}
+var toLowerCase = function(s) {
+  let ans = ""
+  for (let c of s) {
+    let n = c.charCodeAt()
+    ans += n > 64 && n < 91 ? String.fromCharCode(n + 32) : c
+  }
+  return ans
+};
+Problem 3: Length of Last Word
+function main() {
+  var s = readLine();
+  console.log(lengthOfLastWord(s));
+}
+
+var lengthOfLastWord = function(s) {
+  let length = 0,
+    max = 0;
+  for (let i = 0; i < s.length; i++)
+    if (s[i] !== ' ') {
+      length++;
+      max = length;
+    }
+  else
+    length = 0;
+  return max;
+};
+Task 2: Which question did you find challenging and Why? Share your thoughts in your Cohort group at AlmaBetter Community Platform.
+ 
