@@ -136,6 +136,12 @@ if (num > 0) {
   console.log("The number is not positive");
 }
 Explanation
+In this example, the outer if statement tests whether num is greater than 0.
+If it is, the program moves into the first block of code and prints the message "The number is positive" to the console. 
+Then, there's an inner if statement that tests whether num is even or odd using the modulo operator (%). 
+If num is even, the program moves into the first block of code within the inner if statement and prints the message "The number is even" to the console. 
+If num is odd, the program moves into the else block within the inner if statement and prints the message "The number is odd" to the console.
+If num is not greater than 0, the program moves into the else block within the outer if statement and prints the message "The number is not positive" to the console.
 Nested if-else statements can be nested even further to create more complex conditions. However, it's essential to remember that excessive nesting can probably make your code hard to read and maintain.
 Body of if...else With Only One Statement
 In JavaScript, you can use a single statement as the body of an if-else statement without using curly braces {}. This can be useful for writing shorter and more concise code.
