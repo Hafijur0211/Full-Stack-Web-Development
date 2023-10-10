@@ -9,7 +9,7 @@ Kindly complete them and submit your solutions according to the instructions pro
 Code Bug Fixing
 From Questions 1 to 5: A couple of issues are present in the provided code. Identify and rectify these errors to ensure the code functions correctly.
  
-BMI Calculator
+1. BMI Calculator
 Write a JavaScript function calculateBMI that calculates a person's Body Mass Index (BMI) based on their weight and height, and returns a corresponding health classification. The BMI is a commonly used indicator of body weight status and health.
 The function should take two arguments: weight (in kilograms) and height (in meters), and should determine the health classification based on the calculated BMI. To calculate the BMI use the formula: BMI = weight / (height * height)
 The function should return the health classification as a String. Determine the health classification based on the calculated BMI:
@@ -70,7 +70,7 @@ function calculateBMI(weight, height) {
 console.log(calculateBMI(65, 1.75));  // Output: "Normal weight"
 console.log(calculateBMI(45, 1.60));  // Output: "Underweight"
 
-Temperature Converter
+2. Temperature Converter
 Write a JavaScript function convertTemperature that converts temperatures between Celsius and Fahrenheit scales, providing a flexible tool for users to switch between these two common temperature units.
 The function should take two arguments: temperature and unit, where temperature is the numeric value of the temperature to be converted, and unit is a string indicating the initial temperature unit ("C" for Celsius or "F" for Fahrenheit).
 The function should return the converted temperature value rounded to two decimal places with converted scale as a String.
@@ -124,7 +124,7 @@ console.log(convertTemperature(-40, "F")); // Output: "-40.00 C"
 console.log(convertTemperature(100, "K")); // Output: "Invalid unit. Use 'C' for Celsius or 'F' for Fahrenheit"
 
 
-Tip Calculator
+3. Tip Calculator
 Write a JavaScript function calculateTip that calculates the total amount to be paid, including the tip, based on the bill amount and a specified tip percentage.
 The function should take two arguments: billAmount (the total bill amount) and tipPercentage (the tip percentage to be applied, expressed as a decimal). Calculate the tip amount by multiplying the billAmount by the tipPercentage and add the calculated tip amount to the billAmount to get the total amount to be paid.
 The function should return the total amount to be paid, rounded to two decimal places as a Number.
@@ -171,5 +171,96 @@ console.log(example1); // Output: 75.94
 const example2 = calculateTip(90.00, 0.10);
 console.log(example2); // Output: 99
 
+4. Palindrome Checker
+Write a JavaScript function isPalindrome that checks if a given string is a palindrome. A palindrome is a word, phrase, or sequence of characters that reads the same forwards and backwards (ignoring spaces, punctuation, and capitalization).
+The function should take one argument: str (string), and should perform the following steps:
+Convert the input string to lowercase.
+Remove any non-alphanumeric characters (including spaces and punctuation) from the string.
+Compare the modified string with its reverse to determine if it is a palindrome.
+The function should return a boolean value indicating whether the input string is a palindrome.
+Example 1:
+Input: "RaceCar"
+Output: true
+Example 2:
+Input: "Hello"
+Output: false
+ 
+Code with error(s):
+function isPalindrome(str) {
+    // Write your code here
+    const cleanedStr = str.replace(/[^a-z0-9]/g, "");
+    const reversedStr = cleanedStr.split("").reverse().join("");
+    return cleanedStr === reversedStr;
+}
+
+function isPalindrome(str) {
+  // Convert the input string to lowercase
+  const lowerCaseStr = str.toLowerCase();
+
+  // Remove non-alphanumeric characters
+  const cleanStr = lowerCaseStr.replace(/[^a-z0-9]/g, '');
+
+  // Compare with its reverse
+  const reversedStr = cleanStr.split('').reverse().join('');
+
+  // Check if it's a palindrome
+  return cleanStr === reversedStr;
+}
+
+// Test examples
+console.log(isPalindrome("RaceCar")); // Output: true
+console.log(isPalindrome("Hello"));   // Output: false
+
+
+5.Vowel Count
+Write a JavaScript function countVowels that counts the number of vowels (a, e, i, o, u) in a given string. The function should take one argument: str (string).
+The function should return the count of vowels in the input string.
+Example 1:
+Input: "AlmaBetter"
+Output: 4
+Example 2:
+Input: "Coding is fun with fellow learners"
+Output: 10
+ 
+Code with error(s):
+function countVowels(str) {
+    // Write your code here
+    const vowels = ['a', 'e', 'i', 'o', 'u'];
+    const lowerStr = str.toLowerCase();
+    let count = 0;
+
+    for (let i = 0; i <= lowerStr.length; i++) {
+        if (vowels.includes(lowerStr[i])) {
+            count++;
+        }
+    }
+    return count;
+}
+
+function countVowels(str) {
+  // Convert the string to lowercase to handle both uppercase and lowercase vowels
+  str = str.toLowerCase();
+  
+  // Define the vowel characters
+  const vowels = ['a', 'e', 'i', 'o', 'u'];
+  
+  // Initialize a counter for vowels
+  let count = 0;
+  
+  // Loop through each character in the string
+  for (let char of str) {
+    // Check if the character is a vowel
+    if (vowels.includes(char)) {
+      count++;
+    }
+  }
+  
+  // Return the count of vowels
+  return count;
+}
+
+// Example usage:
+console.log(countVowels("AlmaBetter")); // Output: 4
+console.log(countVowels("Coding is fun with fellow learners")); // Output: 10
 
 
