@@ -1,1 +1,71 @@
+The Capstone Project serves as a crucial checkpoint to evaluate your progress and understanding of the coding concepts covered in the course so far.
+The assessment encourages you to manage your time effectively, as you must complete coding tasks within a limited timeframe. This skill is invaluable in a professional coding environment with tight deadlines.
+The Capstone project for this module comprises a total of 20 coding challenges centered around JavaScript principles, accompanied by a video explanation.
+These challenges are categorized into three sections: Code Bug Fixing with 5 questions, Improvised Perspective with 5 questions, and Logic Building with 10 questions.
+Create a video where you introduce yourself (Your name and Cohort name). Within the video, discuss and elaborate on any 5 Coding Problems out of a pool of 20. In your explanation, cover your approach to solving these questions, any obstacles you encountered, and the strategies you employed to overcome them. 
+Utilize Loom or YouTube for the video recording, ensuring that the video's duration falls within the range of 7 minutes to 20 minutes.
+Kindly complete them and submit your solutions according to the instructions provided in the Final Checklist section.
 
+Code Bug Fixing
+From Questions 1 to 5: A couple of issues are present in the provided code. Identify and rectify these errors to ensure the code functions correctly.
+ 
+BMI Calculator
+Write a JavaScript function calculateBMI that calculates a person's Body Mass Index (BMI) based on their weight and height, and returns a corresponding health classification. The BMI is a commonly used indicator of body weight status and health.
+The function should take two arguments: weight (in kilograms) and height (in meters), and should determine the health classification based on the calculated BMI. To calculate the BMI use the formula: BMI = weight / (height * height)
+The function should return the health classification as a String. Determine the health classification based on the calculated BMI:
+If BMI is less than 18.5, the person is classified as "Underweight".
+If BMI is between 18.5 (inclusive) and 24.9 (exclusive), the person is classified as "Normal weight".
+If BMI is between 25 (inclusive) and 29.9 (exclusive), the person is classified as "Overweight".
+If BMI is 29.9 or higher, the person is classified as "Obese".
+Example 1:
+Input: 65, 1.75
+Output: "Normal weight"
+Example 2:
+Input: 45, 1.60
+Output: "Underweight"
+Note:
+Ensure that the provided weight and height values are positive.
+This function provides a basic assessment of body weight status based on BMI, but it's important to consider other factors for a comprehensive health evaluation.
+ 
+Code with error(s):
+function calculateBMI(weight, height) {
+    // Write your code here
+    const bmi = weight / (height * height);
+
+    if (bmi < 18.5) {
+        return "Underweight";
+    } else if (bmi >= 18.5 || bmi < 24.9) {
+        return "Normal weight";
+    } else if (bmi >= 25 || bmi < 29.9) {
+        return "Overweight";
+    } else {
+        return "Obese";
+    }
+}
+
+Solution without error
+
+function calculateBMI(weight, height) {
+  // Ensure that weight and height are positive
+  if (weight <= 0 || height <= 0) {
+    return "Invalid input. Weight and height must be positive.";
+  }
+
+  // Calculate BMI
+  const bmi = weight / (height * height);
+
+  // Determine health classification
+  if (bmi < 18.5) {
+    return "Underweight";
+  } else if (bmi >= 18.5 && bmi < 25) {
+    return "Normal weight";
+  } else if (bmi >= 25 && bmi < 30) {
+    return "Overweight";
+  } else {
+    return "Obese";
+  }
+}
+
+// Example usage:
+console.log(calculateBMI(65, 1.75));  // Output: "Normal weight"
+console.log(calculateBMI(45, 1.60));  // Output: "Underweight"
