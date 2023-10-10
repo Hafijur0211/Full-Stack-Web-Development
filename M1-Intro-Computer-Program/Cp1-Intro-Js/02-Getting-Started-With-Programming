@@ -40,8 +40,8 @@ It involves choosing a programming language, setting up a development environmen
 Focus: What is Programming?, Programming Paradigms, Common Programming languages, Program Structure, and syntax
 Prerequisites: NA
 Theme
-Google relies heavily on computer programming to power its search engine and many other products, such as Google Maps, Gmail, and Google Drive. The company uses programming to develop and improve its algorithms for search and data processing and to create innovative products and features. Google also uses programming to analyze and extract insights from the vast amounts of data it collects through its various services. 
-Without computer programming, Google would not be able to provide the sophisticated search capabilities and user experiences that have made it one of the most valuable companies in the world.
+Amazon's tremendous success can be largely attributed to its adept utilization of computers and technology in clever ways.
+One illustrative example of Amazon's tech-savvy approach is how it tailors product recommendations for its customers. Amazon pays attention to what you've purchased in the past and what you've looked at on their website. Then, they employ specialized math and computer techniques to determine what you might be interested in buying next. This personalized recommendation system helps customers discover new products they might like.
 Primary Goals
 Understand the fundamental programming concepts, including data types, variables, control structures, functions, and algorithms.
 Knowledge of programming paradigms, such as imperative, object-oriented, functional, and logic programming.
@@ -51,10 +51,8 @@ Set up your development environment, including installing the necessary software
 Write and run your first program to gain hands-on experience.
  
 Getting Started with Programming
-Amazon's success can be attributed, in large part, to its innovative use of computer programming and technology.
-One example is Amazon's recommendation system, which suggests products to users based on their previous purchases and browsing history. The recommendation system operates using intricate algorithms and data analytics that have been designed to scrutinize extensive datasets, recognize patterns, and generate customized recommendations.
-Another example of Amazon's use of programming is in its logistics and supply chain management. Amazon uses advanced algorithms and machine learning models to optimize its inventory management, shipping routes, and delivery times. These programs constantly analyze data and make real-time adjustments to ensure that products are delivered to customers as quickly and efficiently as possible.
-Amazon also heavily relies on programming to develop and maintain its vast services and products, including its website, mobile apps, and digital content platforms. The company employs thousands of programmers and software developers to design and develop these services and to constantly improve and update them as technology advances and customer needs to evolve.
+Another key area where Amazon relies on computers is in its supply chain and inventory management. Amazon employs advanced computer programs that function like highly intelligent assistants. These digital assistants use mathematical algorithms and specialized learning to ensure that Amazon has enough products in stock and that they reach customers swiftly and efficiently. This means you can get your orders quickly and without any hitches.
+Additionally, Amazon's computer skills extend to the creation and maintenance of its digital platforms, including its website, mobile apps, and digital content services like movies and music. The company boasts a dedicated team of skilled computer experts who work diligently to ensure that these platforms not only function seamlessly but also continually evolve to meet the changing demands of technology and the preferences of users. This commitment to excellence keeps Amazon at the forefront of the digital landscape.
 What is Full Stack Web Development?
 Full stack web development involves creating, designing, and maintaining web applications using a wide range of technologies, tools, and frameworks tailored to both frontend (client-side) and backend (server-side) components of web development. A full-stack developer is a multifaceted professional capable of handling every aspect of a web application, from crafting visually attractive user interfaces to executing intricate business logic and overseeing databases.
 Frontend vs Backend Web Development
