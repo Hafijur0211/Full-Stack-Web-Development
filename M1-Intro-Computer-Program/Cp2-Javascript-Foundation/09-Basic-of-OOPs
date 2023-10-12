@@ -1,152 +1,206 @@
-Basics of OOPs
-Session Flow (5 minutes read)
-Learning Objective (5 minutes read)
+Basics of OOPS
+Session Flow
+Learning Objective 
 Introduction
 Theme
 Primary Goals
-Basics of OOPs (120 minutes read)
+Basics of OOPs 
 What is OOP?
 ES Classes and instance(object)
+Declaring a class
 Object Instance
-`this` Keyword in JavaScript
-Do it yourself
+`this` keyword
+Activity: True or False
 Bind()
-Call & apply
+Call() & Apply()
 JavaScript Prototype
-Activity 1
+Activity: Fill in the blanks
 JavaScript Inheritance
-Creating a prototype chaining
-Class Extends
-Activity 2
-Explore Further
-Summary (10 minutes read)
+`extends` keyword
+Activity: Fill in the blanks
+Summary 
 What did we learn?
 Shortcomings & Challenges
-Best Practices
-Enhance Your Knowledge
-
-
+Best practices to follow
+Enhance your knowledge
+Try it yourself
+ 
 Learning Objective
 Introduction
-Object Oriented Programming (OOP) is a programming paradigm that uses objects and classes to arrange and structure code. 
-
-Duration: 2 Hours
-
-Focus: OOPs
-
-Prerequisites: VS code IDE with NodeJS installed
-
+Object-Oriented Programming (OOP) is a powerful paradigm that organizes code into reusable objects, providing a clear and intuitive way to model real-world entities and behaviors in software development. By encapsulating data and methods, OOP promotes modularity, abstraction, and extensibility, making it a fundamental concept in modern programming.
+Focus: OOPs and ES Classes, `this` keyword, JavaScript Prototype and Inheritance, extends keyword
+Prerequisites: VS Code IDE with Node.js installed, JavaScript Basics
 Theme
 A team of developers was working on an e-commerce website project and wanted to create a clean, maintainable, and scalable solution that would meet their client's requirements. They were familiar with Object-Oriented Programming. Still, they were using a different programming language and needed to become more familiar with the latest features of JavaScript, such as ES Classes.
-
 By combining the power of JavaScript OOP, and ES Classes, the team was able to create a robust, flexible, and maintainable solution. They used ES Classes to define objects and classes clearly. The result was a well-crafted website that impressed their client.
-
 Primary Goals
-Understand the basics of Object-Oriented Programming (OOP) and its benefits in building complex applications.
-Learn about ES Classes and how they help in implementing OOP in JavaScript.
-Learn about the 'this' keyword and its usage in JavaScript methods.
-Understand the differences between the 'bind', 'apply', and 'call' methods in JavaScript and their use cases.
-Learn about prototypes and inheritance in JavaScript and how they enable inheritance.
-
-
+Grasp the Basics of Object-Oriented Programming (OOP) and Embrace Its Benefits for Building Complex Applications.
+Explore ES Classes: How They Bring Object-Oriented Programming to Life in JavaScript.
+Unveil the Power of 'this' and 'extends': Using JavaScript's Keywords for Effective Method Handling.
+Understand 'bind', 'apply', and 'call': Choosing the Right Tools for JavaScript Method Management.
+Delve into Prototypes and Inheritance: Building Strong Foundations in JavaScript's Object Model.
+ 
 Basics of OOPs
 John was a software developer who had been working with JavaScript for years. He had always used a functional programming approach but knew that Object-Oriented Programming (OOP) was becoming more popular in the industry. So, he decided to take the plunge and learn OOP in JavaScript.
-
 At first, John found the concept of OOP to be confusing. He had to rewire his brain to think in terms of objects, classes, and inheritance. But as he continued to practice, things started to click. John realized how much easier it was to organize his code using OOP. He could group related data and functions together in a logical way, making his code more modular and easier to maintain.
-
 What is OOP?
 The programming paradigm known as OOP, or object-oriented programming, is centered on the use of objects to arrange and structure code. It is founded on the ideas of polymorphism, inheritance, and encapsulation. Object-oriented programming (OOP) treats everything as an object, and objects contain properties and methods that specify their behavior.
-
 Many advantages of OOP include enhanced readability and modularity, better maintenance and scalability, and better code organization and reuse. It is regarded as a fundamental idea in software development and is commonly utilized in contemporary programming languages like Java, Python, and C++.
-
 Example: If you have a Car blueprint, you can create car instances with different names.
-
-
+notion image
 Note: JavaScript is not a class-based object-oriented language. But it still has ways of using object-oriented programming (OOP).
-
-
-
 An object is an entity that is unique and contains properties and methods.
 For instance, a "vehicle" is a real-world object with qualities like color, kind, model, horsepower, and the ability to drive.
 In Object-Oriented Programming, an object's attributes are referred to as properties, and its operations are referred to as methods.
 An object is a class's instance.
 Whether it be a function, array, or string, practically every element in JavaScript is an object.
-
-
 In JavaScript, a method is a property of an object with the value of a function.
-
 Let’s Create our First Object.
-
 let person = {
-	first_name: 'John',
-	last_name: 'Doe',
+  first_name: 'John',
+  last_name: 'Doe',
 
-	//method
-	getPersonDetails: function() {
-		return `The name of the person is
-				${person.first_name} ${person.last_name}`
-	},
+  //method
+  getPersonDetails: function() {
+    return `The name of the person is ${person.first_name} ${person.last_name}`
+  },
 }
 
 console.log(person.first_name);
 console.log(person.getPersonDetails());
+
+// Output
+"John"
+"The name of the person is John Doe"
 ES Classes and instance(object)
-Classes are "special functions," thus the class syntax includes two parts: class expressions and class declarations, much like function expressions and declarations.
-
+ES Classes, short for ECMAScript Classes, are a modern feature introduced in ECMAScript 2015 (ES6) that provides a more structured and convenient way to create and work with objects and prototypes in JavaScript. ES Classes simplify the syntax for creating constructor functions, prototypes, and inheritance, making object-oriented programming (OOP) concepts more accessible and organized.
 Declaring a class
-Using a class declaration is one method of class definition. Use the class keyword along with the class name to declare a class.
+In JavaScript, you can declare a class using the class keyword. Classes provide a way to create blueprints for objects with shared properties and methods.
+Here's the basic syntax for declaring a class in JavaScript:
+class ClassName {
+  constructor(/* constructor parameters */) {
+    // constructor code
+  }
 
-Expression of a class
-A class can also be defined using a class expression. Class expressions can either have names or not. A named class expression's name is specific to the class's body. Yet it may be reached using the name property.
+  method1(/* parameters */) {
+    // method1 code
+  }
 
+  method2(/* parameters */) {
+    // method2 code
+  }
 
+  // ... more methods ...
+}
+Here's a breakdown of the different parts of the class declaration:
+class: The keyword used to declare a class.
+ClassName: Replace this with the desired name of your class.
+constructor: A special method used to initialize object instances. It is called when you create a new object using the class.
+method1, method2, etc.: These are methods of the class. You can define any number of methods within the class.
+Here's an example of declaring and using a simple class in JavaScript:
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
 
-Create a class Rectangle using class declaration.
-
-class Rectangle {
-	constructor (height, width) {
-		this.height = height;
-		this.width = width;
-	}
+  greet() {
+    console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+  }
 }
 
+// Creating instances of the Person class
+const person1 = new Person("Alice", 25);
+const person2 = new Person("Bob", 30);
 
-Create a class Rectangle using class expression.
+// Calling the greet method on the instances
+person1.greet(); // Output: Hello, my name is Alice and I am 25 years old.
+person2.greet(); // Output: Hello, my name is Bob and I am 30 years old.
+In this example, the Person class has a constructor that accepts name and age parameters to initialize object instances. It also has a greet method that logs a greeting message to the console.
+Remember that class declarations in JavaScript are part of the ES6 (ECMAScript 2015) standard, so they might not be supported in very old browsers. However, modern browsers and Node.js support class declarations.
+Example:
+Create a class Rectangle using class declaration.
+class Rectangle {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+}
+Object Instance
+In JavaScript, object instances are created from classes or constructor functions. They are individual objects that are created based on the blueprint provided by a class or constructor. Object instances have their own unique set of properties and can also access methods defined in the class or constructor's prototype.
+Here's how you can create object instances in JavaScript using a Class (ES6 Syntax):
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
 
-let Rectangle = class {
-	constructor(height, width) {
-		this.height = height;
-		this.width = width;
-	}
+  greet() {
+    console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+  }
+}
+
+// Creating instances of the Person class
+const person1 = new Person("Alice", 25);
+const person2 = new Person("Bob", 30);
+
+person1.greet(); // Output: Hello, my name is Alice and I am 25 years old.
+person2.greet(); // Output: Hello, my name is Bob and I am 30 years old.
+In the examples above, person1 and person2 are all object instances created from the Person class. These instances have their own separate data (such as name and age for Person) and can also call methods (such as greet for Person) defined in the class or prototype.
+Creating and working with object instances is a fundamental concept in JavaScript programming, allowing you to model and interact with real-world entities in your code.
+`this` keyword
+The this keyword in JavaScript is a fundamental concept that refers to the current execution context or the context in which a function is called. Its value is dynamically determined at runtime and can vary depending on how and where a function is invoked. Understanding the behavior of this is crucial for correctly accessing and manipulating data within your code.
+Here's a more detailed explanation of the this keyword:
+Global Context: In the global scope (outside of any function or object), this refers to the global object. In a web browser environment, the global object is usually the window object.
+console.log(this === window); // Output: true
+Function Context: When this is used within a regular function (not an arrow function), its value depends on how the function is called.
+In a regular standalone function call, this refers to the global object (window in a browser).
+function printThis() {
+  console.log(this);
+}
+
+printThis(); // Output: window (in a browser)
+In a method of an object, this refers to the object itself.
+const obj = {
+  prop: "Hello",
+  method: function() {
+    console.log(this.prop);
+  }
 };
 
+obj.method(); // Output: Hello
+Method Invocation: When a function is called as a method of an object, this refers to the object that the method is a property of.
+const obj = {
+  prop: "Hello",
+  method: function() {
+    console.log(this.prop);
+  }
+};
 
-Object Instance
-JavaScript enables the creation of object hierarchies and the inheritance of properties and values.
-In class-based languages, the word "instance" has a specific technical meaning.
-An instance in these languages is fundamentally different from a class since it is a single instance of a class.
-Because there is no distinction between classes and instances in JavaScript, the word "instance" does not have this technical meaning.
-Nonetheless, "instance" can be explicitly used to refer to an object created using a certain function Object() { [native code] } function when discussing JavaScript.
-So, you could figuratively state that Jane is an instance of Engineer in this scenario. The phrases parent, child, ancestor, and descendant can also be used colloquially to refer to objects higher or lower in the prototype chain, despite the fact that they do not have formal meanings in JavaScript.
-`this` Keyword in JavaScript
-The this keyword in JavaScript designates an object.
-
-Depending on how this is invoked, which object will be used (used or called).
-
-Depending on how it is used, the this keyword can be used to refer to a variety of objects:
-
-This alludes to the object in an object method.
-
-By itself, this alludes to the universal object. This alludes to the global object in a function. This is undefined in a function when run in strict mode.
-In the context of an event, this describes the element that took in the occurrence.
-fullName : function() {
-	return this.firstName + " " + this.lastName;
+obj.method(); // Output: Hello
+Constructor Invocation: When a function is used as a constructor to create new objects (using the new keyword), this refers to the newly created instance.
+function Person(name) {
+  this.name = name;
 }
 
+const person = new Person("Alice");
+console.log(person.name); // Output: Alice
+Arrow Functions:
+Arrow functions (() => {}) behave differently regarding the this keyword. They capture the value of this from their surrounding context and do not have their own this binding.
+const obj = {
+  prop: "Hello",
+  method: function() {
+    const innerFunc = () => {
+      console.log(this.prop);
+    };
+    innerFunc();
+  }
+};
 
-Do it yourself 
-True or False:
-
+obj.method(); // Output: Hello
+In summary, the value of the this keyword depends on how a function is invoked, whether it is used in a regular function or an arrow function, and whether it's explicitly bound using certain methods. Proper understanding and handling of this are essential for writing correct and maintainable JavaScript code.
+ 
+Activity: True or False
  A class in JavaScript is an instance of an object. 
  A class in JavaScript is an instance of an object. 
  The this keyword in JavaScript designates an object depending on how it is invoked. 
@@ -158,274 +212,332 @@ False
 True
 True
 True
-
-
+ 
 Bind()
-The bind() function transforms the initial function object into a new bound function, an exotic function object (ECMAScript 2015 terminology).
-
-In most cases, calling a bound function causes its wrapped function to run.
-
-the JS engine is binding pokemon as this variable and producing a new instance of pokemonName. It's crucial to realize that it duplicates the pokemonName function.
-Although it wasn't initially on the pokemon object, it is now allowed to call logPokemon() after making a copy of the pokemonName function. It will now recognize its techniques and attributes (Pika and Chu).
-
-
-Furthermore, after a value has been bound, the function can be used just like any other regular function. We could even modify the function to receive and pass parameters.
-
-var pokemon = {
-	firstname: 'Pika',
-	lastname: 'Chu ',
-	getPokeName: function() {
-		var fullname = this. firstname + ' ' + this. lastname;
-		return fullname;
-	}
-};
-var pokemonName = function() {
-	console.log(this.getPokeName() + 'I choose you!');
+The bind() method in JavaScript is used to create a new function that, when invoked, has a specific this value set explicitly. It allows you to establish a fixed context for a function, regardless of how it's called. The bind() method does not immediately invoke the function; instead, it returns a new function with the specified this value and, optionally, pre-bound arguments.
+The syntax for using the bind() method is as follows:
+const newFunction = originalFunction.bind(thisArg[, arg1[, arg2[, ...]]]);
+Here's a breakdown of the parameters:
+originalFunction: The function for which you want to set the this value.
+thisArg: The value to be used as the this value when the new function is called.
+arg1, arg2, etc.: Optional arguments that will be prepended to the arguments passed to the new function.
+Here's an example to illustrate how bind() works:
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  getFullName: function() {
+    return this.firstName + " " + this.lastName;
+  }
 };
 
-var logPokemon = pokemonName.bind(pokemon); // creates new object and binds pokemon.
-//'this' of pokemon = pokemon now
-logPokemon(); // 'Pika Chu I choose you!!
-Call & apply
-The call() method invokes a function using the given this value and any supplied arguments.
-
-That implies that we can call any function and clearly state within the calling function what this should refer to. Very comparable to the bind() method! This will undoubtedly keep us from creating sloppy code.
-
-The call() method differs from bind() primarily in the following ways:
-
-Takes extra parameters into account
-Immediately carries out the task for which it was contacted.
-The function being called on is not copied by the call() method.
-
-
-The functions call() and apply() accomplish the same thing. The only difference in how they operate is that apply() requires an array of all of our parameters, whereas call() expects each parameter to be provided in individually.
-
-var pokemon = {
-	firstname: 'Pika',
-	lastname: 'Chu ',
-	getPokeName: function() {
-		var fullname = this.firstname ++ this.lastname;
-		return fullname;
-	}
+const greeting = function(greetMessage) {
+  console.log(greetMessage + " " + this.getFullName());
 };
 
-var pokemonName = function(snack, hobby) {
-	console.log(this.getPokeName()+' loves '+ snack + ' and ' + hobby);
-};
+const boundGreeting = greeting.bind(person, "Hello");
 
-pokemonName.call(pokemon, 'sushi', 'algorithms'); // Pika Chu loves sushi and algorithms
-pokemonName.apply(pokemon, ['sushi', 'algorithms']); // Pika Chu loves sushi and algorithms
-JavaScript Prototype
-From a prototype, all JavaScript objects derive their properties and methods:
-
-Date objects derive from the Date.prototype class.
-
-Array objects derive from the prototype class Array.
-Person objects descended from the Person.prototype class.
-The prototype inheritance hierarchy is headed by the Object.prototype:
-
-Human, Date, and Array objects all descended from the Object.prototype class.
-
-
-
-By using the prototype property in JavaScript, you can append new properties to object constructors:
-
-function Person(first, last, age, eyecolor){
-	this.firstName = first;
-	this.lastName = last;
-	this.age = age;
-	this.eyeColor = eyecolor;
+boundGreeting(); // Output: Hello John Doe
+In this example, the bind() method is used to create a new function boundGreeting from the greeting function. The this value of boundGreeting is explicitly set to the person object, and the "Hello" argument is pre-bound. When boundGreeting() is called, it outputs "Hello John Doe".
+bind() is particularly useful when you want to create functions that need a specific context, such as event handlers, setTimeout or setInterval functions, and more. It's a way to "fix" the value of this and any arguments before a function is invoked, ensuring predictable behavior.
+Call() & Apply()
+The call() and apply() methods are built-in JavaScript functions that allow you to invoke a function with a specified this value and arguments. They are often used to borrow methods from other objects, set a specific context for a function, or achieve dynamic function invocation.
+Here's how call() and apply() work:
+call() Method: The call() method invokes a function with a given this value and arguments provided individually.
+function greet(message) {
+  console.log(message + " " + this.name);
 }
 
-Person.prototype.nationality = "English";
+const person = { name: "Alice" };
 
-Person.prototype.name = function() {
-	return this.firstName + " " this.lastName;
+greet.call(person, "Hello"); // Output: Hello Alice
+In this example, the call() method is used to invoke the greet function with person as the this value and "Hello" as the argument.
+apply() Method: The apply() method is similar to call(), but it accepts arguments as an array.
+function greet(message) {
+  console.log(message + " " + this.name);
+}
+
+const person = { name: "Alice" };
+
+greet.apply(person, ["Hi"]); // Output: Hi Alice
+Here, apply() is used to achieve the same result as call() but with an array of arguments.
+Both methods allow you to set a specific this context for a function. The primary difference between call() and apply() is how you pass arguments:
+call(thisArg, arg1, arg2, ...) - You pass arguments individually.
+apply(thisArg, [arg1, arg2, ...]) - You pass arguments as an array.
+Here are a couple more examples to illustrate their usage:
+function sum(a, b) {
+  return a + b;
+}
+
+console.log(sum.call(null, 5, 10)); // Output: 15
+console.log(sum.apply(null, [5, 10])); // Output: 15
+Both call() and apply() are particularly useful when working with functions that are not directly attached to an object, as they allow you to specify the context explicitly. The choice between call() and apply() depends on whether you prefer passing arguments individually or as an array.
+JavaScript Prototype
+In JavaScript, the prototype is a fundamental concept that plays a crucial role in object-oriented programming and inheritance. It allows you to add properties and methods to objects, which can then be inherited by other objects. Understanding prototypes is essential for creating efficient and maintainable code.
+Here's an explanation of JavaScript prototypes:
+Prototype Chain: Each object in JavaScript has an associated prototype, which is another object. This creates a prototype chain, where objects inherit properties and methods from their prototype. When you access a property or method on an object, JavaScript first checks if the object itself has that property. If not, it looks up the prototype chain until it finds the property or reaches the end of the chain (usually Object.prototype).
+prototype Property: Constructor functions and classes have a special property called prototype. This property is used to add properties and methods that will be inherited by instances created from the constructor function or class.
+function Person(name) {
+  this.name = name;
+}
+
+Person.prototype.greet = function() {
+  console.log(`Hello, my name is ${this.name}`);
 };
-Activity 1
-Fill in the blanks:
 
-The bind() function transforms the initial function object into a new ______ (bound/wrapped/anonymous) function, an exotic function object (ECMAScript 2015 terminology).
-Calling a bound function usually causes its wrapped function to ______(execute/transform/bind).
-The bind() method duplicates the function object and binds the specified object to its ______(arguments/scope/this context).
-After binding a value, the resulting function can be used like any other ______ (anonymous/regular/callback) function.
-The call() method invokes a function using the specified ______ (this value/function/scope) value and any provided arguments.
+const person = new Person("Alice");
+person.greet(); // Output: Hello, my name is Alice
+Inheritance: Prototypes enable inheritance, allowing you to create objects that inherit properties and methods from other objects.
+function Animal() {}
+Animal.prototype.eat = function() {
+  console.log("Animal is eating.");
+};
+
+function Dog() {}
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.bark = function() {
+  console.log("Dog is barking.");
+};
+
+const dog = new Dog();
+dog.eat(); // Output: Animal is eating.
+dog.bark(); // Output: Dog is barking.
+The prototype is a powerful concept that forms the basis for object-oriented programming and inheritance in JavaScript. It allows you to create reusable code and build complex object relationships efficiently.
+ 
+Activity: Fill in the blanks
+The bind() function transforms the initial function object into a new ____________ (bound / wrapped / anonymous) function, an exotic function object (ECMAScript 2015 terminology).
+Calling a bound function usually causes its wrapped function to ____________ (execute / transform / bind).
+The bind() method duplicates the function object and binds the specified object to its ____________ (arguments / scope / this context).
+After binding a value, the resulting function can be used like any other ____________ (anonymous / regular / callback) function.
+The call() method invokes a function using the specified ____________ (this value / function / scope) value and any provided arguments.
 Answers
 bound
 execute
 "this" context
 Regular
 "this" value
-
-
+ 
 JavaScript Inheritance
-Similar to other languages, JavaScript does not have classes. For inheritance, it makes use of the prototypes and prototype chaining concepts. In this article, we'll talk about utilizing prototypes to implement inheritance in JavaScript.
-
-Prototype Chaining
-
-The term "prototype chaining" refers to the situation in which an object's "dunder proto" or "proto" property points to another object rather than the function Object() { [native code] } function "prototype".
-The chain will form if the other item's dunder proto or proto property points to another object. It's known as prototype chaining.
-Creating a prototype chaining
-The code defines two constructor functions, SuperType and SubType.
-
-// SuperType constructor function
-function SuperType() {
-	this.name = "John"
+In JavaScript, inheritance is a mechanism that allows one object to inherit properties and methods from another object. This is achieved using prototypes and prototype chains. Inheritance is a fundamental concept in object-oriented programming and is used to create a hierarchy of objects with shared behaviors. Here's how inheritance works in JavaScript:
+Prototypal Inheritance: JavaScript uses prototypal inheritance, which means that objects can inherit from other objects. Each object has an associated prototype, which is another object. When a property or method is accessed on an object, and the object itself doesn't have that property, JavaScript looks up the prototype chain to find the property on higher-level prototypes.
+Constructor Functions and Prototypes: Constructor functions are often used to create objects that share common properties and methods. The prototype property of a constructor function is used to define properties and methods that will be inherited by instances created from that constructor.
+function Animal(name) {
+  this.name = name;
 }
 
-//SuperType prototype
-SuperType.prototype.getSuperName = function(){
-	return this.name
-}
-//SubType prototype function
-function SubType(){
-	this.age 26
-}
+Animal.prototype.eat = function() {
+  console.log(`${this.name} is eating.`);
+};
 
-//Inherit the properties from SuperType
-SubType.prototype = new SuperType();
-// Add new property to SubType prototype
-SubType.prototype.getSubAge = function(){
-	return this.age;
+function Dog(name, breed) {
+  Animal.call(this, name);
+  this.breed = breed;
 }
 
-//Create a SubType object
-var subTypeObj = new SubType();
-console.log(subTypeObj.name); //Output: John
-console.log(subTypeObj.age); //Output: 26
-console.log(subTypeObj.getSuperName()); //Output: John
-console.log(subTypeObj.getSubAge()); //Output: 26
-By default, SubType.prototype has a constructor function that points to the constructor function itself and proto property which inherits the default object properties.
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog;
 
-Class Extends
-In order to construct a child class of another class, use the extends keyword (parent).
+Dog.prototype.bark = function() {
+  console.log(`${this.name} is barking.`);
+};
 
-The child class inherits all of the methods from the parent class. Inheritance enables you to reuse the attributes and methods of an existing class when creating a new class.
-
-Note: The parent class is referenced using the super() method in the example above. The function Object() { [native code] } method's super() method allows us to access the parent's properties and methods while also invoking the parent's function Object() { [native code] } method.
-
-
-
-Create a class named "Model" which will inherit the methods from the "Car" class.
-
-class Car {
-  constructor(brand) {
-    this.carname = brand;
+const dog = new Dog("Buddy", "Labrador");
+dog.eat(); // Output: Buddy is eating.
+dog.bark(); // Output: Buddy is barking.
+Class Inheritance (ES6+): With the introduction of ES6, JavaScript also supports class-based inheritance, which provides a more familiar syntax for creating and inheriting from classes.
+class Animal {
+  constructor(name) {
+    this.name = name;
   }
-  present() {
-    return 'I have a ' + this.carname;
+
+  eat() {
+    console.log(`${this.name} is eating.`);
   }
 }
 
-class Model extends Car {
-  constructor(brand, mod) {
-    super(brand);
-    this.model = mod;
+class Dog extends Animal {
+  constructor(name, breed) {
+    super(name);
+    this.breed = breed;
   }
-  show() {
-    return this.present() + ', it is a ' + this.model;
+
+  bark() {
+    console.log(`${this.name} is barking.`);
   }
 }
 
-myCar = new Model("Ford", "Mustang");
-document.getElementById("demo").innerHTML = myCar.show();
+const dog = new Dog("Buddy", "Labrador");
+dog.eat(); // Output: Buddy is eating.
+dog.bark(); // Output: Buddy is barking.
+In both examples, the Dog constructor and class inherit from the Animal constructor and class, respectively. This allows instances of Dog to access properties and methods defined in Animal. Inheritance allows you to create a hierarchy of objects with shared behavior, promoting code reuse and maintaining a clear structure in your applications.
+`extends` keyword
+In JavaScript, the extends keyword is used to create a new class that inherits properties and methods from an existing class. This is a fundamental feature of class-based inheritance and object-oriented programming. The class that is being extended is often referred to as the "superclass" or "parent class," while the new class is the "subclass" or "child class." The extends keyword simplifies the process of creating subclasses and helps organize and reuse code.
+Here's the basic syntax for using the extends keyword to create a subclass:
+class ParentClass {
+  // properties and methods of the parent class
+}
 
+class ChildClass extends ParentClass {
+  // properties and methods of the child class
+}
+Here's an example to illustrate the use of the extends keyword:
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
 
-Activity 2 
-Fill in the blanks:
+  eat() {
+    console.log(`${this.name} is eating.`);
+  }
+}
 
-In JavaScript, inheritance is implemented using __________ (classes/objects/prototypes) and ___________ (interfaces/functions/prototype chaining).
-In prototype chaining, an object's "dunder proto" or "proto" property points to __________ (another object/the function Object() { [native code] } function "prototype"/ the constructor function).
-The extends keyword is used in JavaScript to __________ (define a new class/extend the prototype of an existing class/create a new object).
+class Dog extends Animal {
+  constructor(name, breed) {
+    super(name);
+    this.breed = breed;
+  }
+
+  bark() {
+    console.log(`${this.name} is barking.`);
+  }
+}
+
+const dog = new Dog("Buddy", "Labrador");
+dog.eat(); // Output: Buddy is eating.
+dog.bark(); // Output: Buddy is barking.
+In this example, the Dog class extends the Animal class using the extends keyword. The super(name) call in the Dog constructor refers to the constructor of the parent class (Animal) and initializes the name property using the parent's constructor. The bark method is specific to the Dog class and is not present in the Animal class.
+The extends keyword establishes a prototype chain, allowing instances of the subclass to inherit properties and methods from the parent class. This promotes code reuse and allows you to create a hierarchy of related classes with shared behavior.
+Note: The extends keyword is part of the ES6 (ECMAScript 2015) standard and may not be supported in older browsers. However, it is widely supported in modern browsers and Node.js environments.
+ 
+Activity: Fill in the blanks
+In JavaScript, inheritance is implemented using ____________ (classes / objects / prototypes) and ____________ (interfaces / functions / prototype chaining).
+In JavaScript, the this keyword refers to the ____________ (context / global object /parent function) in which a function is executed. It allows you to access the current object and its properties or methods dynamically.
+Prototypal inheritance in JavaScript is facilitated through the use of ____________ (constructors / objects / prototypes), which form a chain of objects that inherit properties and methods from their prototypes.
+The extends keyword in JavaScript is used to create a ____________ (subclass / superclass / child class) that inherits properties and methods from an existing class, promoting code reuse and establishing a hierarchy of related classes.
 Answers
 prototypes, prototype chaining
-another object
-extend the prototype of an existing class
-
-
-Explore Further
-Uncover and unlock new insights as you dive into the captivating content found in the provided link.
-
-Inheritance Patterns: https://medium.com/@PitaJ/javascript-inheritance-patterns-179d8f6c143c
-
-
-
-Tackle these questions head-on!
-
-You are tasked with creating a program to manage a library of books. Each book has a title, author, and genre. Implement a JavaScript class called Book that represents a book object. The class should have the following properties and methods:
-
-Properties:
-
-title (string): the title of the book
-author (string): the author of the book
-genre (string): the genre of the book
-Methods:
-
-printInfo(): prints the information of the book in the following format: "Title: [title], Author: [author], Genre: [genre]"
-Additionally, create two instances of the Book class, book1 and book2, with the following information:
-
-book1:
-
-Title: "The Great Gatsby"
-Author: "F. Scott Fitzgerald"
-Genre: "Classic"
-book2:
-
-Title: "To Kill a Mockingbird"
-Author: "Harper Lee"
-Genre: "Fiction"
-Print the information of both books using the printInfo() method.
-
-Solution
-// Book class
-class Book {
-  constructor(title, author, genre) {
-    this.title = title;
-    this.author = author;
-    this.genre = genre;
-  }
-
-  printInfo() {
-    console.log(`Title: ${this.title}, Author: ${this.author}, Genre: ${this.genre}`);
-  }
-}
-
-// Create book1 and book2 instances
-const book1 = new Book("The Great Gatsby", "F. Scott Fitzgerald", "Classic");
-const book2 = new Book("To Kill a Mockingbird", "Harper Lee", "Fiction");
-
-// Print information of both books
-book1.printInfo();
-book2.printInfo();
-
-
-
-
-
-
-OOP was first introduced in the 1960s but became popular in the 1990s worldwide.
-
-
+context
+prototypes
+subclass
+ 
 Summary
 What did we learn?
 OOP stands for Object Oriented Programming and is a programming paradigm that uses objects to represent real-world entities and organize code. In OOP, objects contain data and behavior and interact with each other through methods and properties. 
 Key features of OOP include encapsulation, inheritance, and polymorphism, which allow for better organization, reuse, and code maintainability. OOP is widely used in many programming languages and is a fundamental concept in software development.
 ES6 introduced classes in JavaScript, which are blueprints for creating objects (instances). Classes allow for encapsulating data and behavior into reusable components. To create a class, the class keyword is used, followed by the name of the class and a set of curly braces that define the class body. 
-Classes provide a structured way of defining objects and can be used to create reusable components. The class body can contain constructor functions, methods, and properties.To instantiate a class, the newoperator is utilized, which is followed by the class name.
+Classes provide a structured way of defining objects and can be used to create reusable components. The class body can contain constructor functions, methods, and properties. To instantiate a class, the newoperator is utilized, which is followed by the class name.
 this, bind, apply, and call are concepts in JavaScript that are used to control the value of the this keyword. this refers to the current object, but its value can be affected by how a method is called. The bind, apply, and call methods can be used to ensure a specific value of this is used within a method. 
 Bind creates a new function with a specific value of this, apply, and call immediately calls the function with the specified value of this, with apply  taking an array of arguments and call taking a list of arguments separated by commas. These methods help control this value and allow for reusing functions with a different context.
 In JavaScript, an object's prototype can be accessed and modified using the prototype property of its constructor function. This allows objects to inherit properties and methods from other objects and achieve inheritance in the language. 
 The class syntax in ECMAScript 2015 provides a more convenient syntax for creating objects with prototypes and inheritance. 
 The extends keyword can be used to create a subclass that inherits properties and methods from its superclass. In JavaScript, prototypes and inheritance allow for effective code reuse and the creation of complex object-oriented systems.
-Shortcomings
+Shortcomings & Challenges
 JavaScript uses prototypes instead of classes, confusing developers from a class-based OOP background.
 JavaScript's prototype-based inheritance can lead to issues with object mutations if not handled properly.
 JavaScript's functional nature can make it challenging to adhere to the SRP, as functions can easily become bloated with multiple responsibilities.
 JavaScript's dynamic nature makes it difficult to enforce the OCP, as objects can be modified at runtime.
-Best Practices
+Best practices to follow
 Create objects with a well-defined interface to promote loose coupling and easier maintenance.
 A class ought to have a solitary reason for modification, indicating it must have only one responsibility.
 Encapsulate data inside objects and provide methods to access and modify that data.
-Enhance Your Knowledge
-https://www.honeybadger.io/blog/javascript-oop/
-https://dev.to/nehal_mahida/oops-in-javascript-with-easy-to-understand-examples-2ppn
+ 
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+Object Oriented Programming in JavaScript: https://www.honeybadger.io/blog/javascript-oop/
+Inheritance Patterns: https://medium.com/@PitaJ/javascript-inheritance-patterns-179d8f6c143c
+ 
+Try it yourself
+Let's solve these coding problems in the AlmaBetter IDE. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
+Task 1: Take a shot at cracking these coding problems right within the AlmaBetter IDE.
+Problems
+Problem 1: OOPs Rectangle
+Once upon a time, there was a young girl named Charlotte who loved to draw. She would spend hours sketching and coloring in her notebook. One day, she decided to draw a garden with many different flowers and plants. She wanted to draw a rectangular flower bed with a specific width and height, and she wanted to know the area and perimeter of the flower bed so she could plan how many flowers to plant.
+Can you help Charlotte by creating a class called “Rectangle” with the following properties: width (number) representing the width of the rectangle, and height (number) representing the height of the rectangle. The class should have the following methods: getArea() which returns the area of the rectangle, and getPerimeter() which returns the perimeter of the rectangle. Implement the Rectangle class and demonstrate its usage by creating an instance and calling its methods to compute the area and perimeter of Charlotte’s flower bed.
+Example 1:
+Input: width: 5 , height: 10
+Output: 50  30
+Problem 2: OOPs Circle
+Once upon a time, there was a young boy named James who loved to play with marbles. He would spend hours rolling them around and trying to get them into a small circle drawn on the ground. One day, he decided to draw a bigger circle with a specific radius, and he wanted to know the area and circumference of the circle so he could plan how many marbles he could fit inside.
+Can you help James by creating a class called “Circle” with the following property: radius (number) representing the radius of the circle. The class should have the following methods: getArea() which returns the area of the circle, and getCircumference() which returns the circumference of the circle. Implement the Circle class and demonstrate its usage by creating an instance and calling its methods to compute the area and circumference of James’ marble circle.
+Example 1:
+Input: radius: 5
+Output: Area: 78.53981633974483 Circumference: 31.41592653589793
+Problem 3: OOPs Calculator
+Once upon a time, there was a young girl named Harper who loved to solve math problems. She would spend hours working on equations and calculations. One day, she decided to create a calculator to help her with her math problems. She wanted the calculator to have a result property set to 0, and a method to add two numbers together and store the result in the result property. She wished there was an easy way to bind the add method to the calculator object so she could use it easily.
+Can you help Harper by creating an object called calculator with a property result set to 0? The object should have a method add that takes two parameters and adds them together, storing the result in the result property. Use the bind() method to bind the add method to the calculator object so Harper can use it to solve her math problems.
+Example 1:
+Input: 5 10
+Output: 15
+Explanation: 5+10 = 15
+Solutions
+Problem 1: OOPs Rectangle
+function main() {
+  var width = parseInt(readLine());
+  var height = parseInt(readLine());
+
+  // Create an instance of Rectangle
+  const rectangle = new Rectangle(width, height);
+
+  // Compute and print the area
+  console.log(rectangle.getArea());
+
+  // Compute and print the perimeter
+  console.log(rectangle.getPerimeter());
+}
+
+class Rectangle {
+  constructor(width, height) {
+    this.width = width;
+    this.height = height;
+  }
+
+  getArea() {
+    return this.width * this.height;
+  }
+
+  getPerimeter() {
+    return 2 * (this.width + this.height);
+  }
+}
+Problem 2: OOPs Circle
+function main() {
+    var radius = parseInt(readLine());
+
+	// Create an instance of Circle
+	const circle = new Circle(radius);
+
+	// Compute and print the area
+	console.log("Area:", circle.getArea());
+
+	// Compute and print the circumference
+	console.log("Circumference:", circle.getCircumference());
+}
+
+class Circle {
+  constructor(radius) {
+    this.radius = radius;
+  }
+
+  getArea() {
+    return Math.PI * this.radius * this.radius;
+  }
+
+  getCircumference() {
+    return 2 * Math.PI * this.radius;
+  }
+}
+Problem 3: OOPs Calculator
+function main() {
+    var a = parseInt(readLine());
+	var b = parseInt(readLine());
+	boundAdd(a,b);
+	console.log(calculator.result);
+}
+const calculator = {
+  result: 0,
+  add: function (a, b) {
+    this.result = a + b;
+  },
+};
+
+const boundAdd = calculator.add.bind(calculator);
+Task 2: Explain the solution of one of the problem in your Cohort group at AlmaBetter Community Platform.
