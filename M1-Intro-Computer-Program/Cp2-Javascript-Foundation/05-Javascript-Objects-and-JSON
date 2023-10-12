@@ -1,149 +1,129 @@
-JavaScript Objects and JSON 
- Session Flow (5 minutes read)
-Learning Objective (5 minutes read)
+JavaScript Objects and JSON
+ Session Flow
+Learning Objective 
 Introduction
 Theme
 Primary Goals
-JavaScript Objects and JSON (120 minutes read)
-What really is JavaScript Object?
-JavaScript Object Declaration
-Object literal method
-Object constructor method
+JavaScript Objects and JSON 
+JavaScript Object
+Object Declaration
 Accessing Object Properties
-Using dot Notation
-Using bracket Notation
 JavaScript Nested Objects
+Activity: Fill in the blanks
 JavaScript Object Methods
 Accessing Object Methods
+Adding Object Methods
 JavaScript built-in methods
 Adding a method to a JavaScript Object
-Do it yourself
-“this” Keyword
+“this” keyword
 JavaScript Sets
-new Set()
+Set Operations
 JavaScript Maps
-new Map()
-Activity 1
-JSON Data
-Accessing JSON Data
-JSON Objects
-JSON Arrays
-Activity 2
+Map Operations
+Activity: True or False
+JavaScript Object Notation (JSON)
 JavaScript Objects vs JSON
-Explore Further
-Summary (10 minutes read)
+Summary 
 What did we learn?
 Shortcomings & Challenges
-Best Practices
-Enhance Your Knowledge
-
-
+Best practices to follow
+Enhance your knowledge
+Try it yourself
 Learning Objective
 Introduction
 JSON, short for JavaScript Object Notation, is a lightweight format for exchanging data that is both human-readable and machine-readable, making it straightforward for people to create and understand and for computers to interpret and generate.
-
-Duration: 2 Hours
-
-Focus: JavaScript Objects, methods, set, map, and JSON
-
-Prerequisites: IDE with Node.js installed, JavaScript Basics
-
+Focus: JavaScript Objects, Methods, Set, Map, and JSON
+Prerequisites: VS Code IDE with Node.js installed, JavaScript Basics
 Theme
 Netflix uses JavaScript objects to store information about the user's preferences and viewing history and the various TV shows and movies on the platform. This information is then communicated between the front-end and back-end of the application using JSON (JavaScript Object Notation), a lightweight data-interchange format.
-
 This allows Netflix to provide a personalized experience for each user based on their viewing history and preferences. The use of JSON also makes it easy for Netflix to update and maintain the large amounts of data it stores, as it can be easily parsed and processed by both front-end and back-end systems.
-
 Primary Goals
-Learn what javascript objects are and how to access their properties.
+Learn what JavaScript objects are and how to access their properties.
 Learn methods available with JavaScript objects.
 Understand JavaScript sets, their creation, methods, and properties.
 Learn about JavaScript map data structure and its relevance.
 Learn what JSON objects are and why they are widely used.
-
-
+ 
 JavaScript Objects and JSON
 John was a software developer who had been working with JavaScript for a few years. He was tasked with building a new web application that required a lot of data to be displayed on the screen. John knew that he needed to organize this data in a way that would be easy to work with, so he turned to JavaScript objects.
-
 He spent several days building out his JavaScript objects, organizing the data into a hierarchical structure that would make it easy to access and manipulate. But as he worked, he realized that he needed a way to store this data so that it could be easily transmitted between the server and client.
-
 That's when he discovered JSON, a lightweight data interchange format that was perfect for his needs. JSON allowed him to easily serialize his JavaScript objects into a string that could be transmitted over the network, and then deserialize them back into objects on the other end.
-
-What really is JavaScript Object?
+JavaScript Object
 JavaScript's Object type is a data type that can be used to store collections of key-value pairs and more complex entities. Keys are also called properties of an object.
-
-
+notion image
 In JavaScript, most objects are derived from Object, meaning they inherit properties, including methods, from Object.prototype. However, it's possible for these properties to be shadowed, or overridden, by properties with the same name in a derived object.
-
 Here's an example of an object in JavaScript:
-
 In this example, person is an object with three properties: firstName, lastName, and age.
-
 let person = {
   firstName: "John",
   lastName: "Doe",
   age: 30,
 };
-JavaScript Object Declaration
+Object Declaration
 In JavaScript, you can declare an object in two ways:
-
 Object literal method
-//Object literal method
-
 let person = {
   firstName: "John",
   lastName: "Doe",
   age: 30,
 };
 
-console.log(person.firstName);     // "John"
-console.log(person.age);           // 30
-Object constructor method
-//Object constructor method
+console.log(person.firstName);
+console.log(person.age);
 
+// Output
+"John"
+30
+Object constructor method
 let person = new Object();
 
 person.firstName = "John";
 person.lastName = "Doe";
 person.age = 30;
 
-console.log(person.firstName);     // "John"
-console.log(person.age);           // 30
-Both of these methods will create an object with the same properties and values. However, using the object literal syntax is generally preferred because it is more concise and easier to read.
+console.log(person.firstName);
+console.log(person.age);
 
+// Output
+"John"
+30
+Both of these methods will create an object with the same properties and values. However, using the object literal syntax is generally preferred because it is more concise and easier to read.
 Accessing Object Properties
 Two main ways to access object properties are dot notation and bracket notation.
-
-Using dot Notation - Dot notation is used to access properties of an object using the dot (.) operator, followed by the property name. 
-Syntax - objectName.key
-
-Example -
-
+Using dot Notation: Dot notation is used to access properties of an object using the dot (.) operator, followed by the property name. Syntax for Dot Notation is objectName.key.
+Example:
 let person = {
   name: 'John',
   age: 30,
   occupation: 'Developer'
 };
 
-console.log(person.name); // Output: John
-console.log(person.age); // Output: 30
-console.log(person.occupation); // Output: Developer
-Using bracket Notation - Bracket notation is used to access object properties using square brackets ([ ]), with the property name as a string inside the brackets.
-Syntax - objectName["propertyName"]
+console.log(person.name);
+console.log(person.age);
+console.log(person.occupation);
 
-Example -
-
+// Output
+"John"
+30
+"Developer"
+Using bracket Notation: Bracket notation is used to access object properties using square brackets ([ ]), with the property name as a string inside the brackets. Syntax for Bracket Notation is objectName["propertyName"].
+Example:
 let person = {
   name: 'John',
   age: 30,
   occupation: 'Developer'
 };
 
-console.log(person['name']); // Output: John
-console.log(person['age']); // Output: 30
-console.log(person['occupation']); // Output: Developer
+console.log(person['name']);
+console.log(person['age']);
+console.log(person['occupation']);
+
+// Output
+"John"
+30
+"Developer"
 JavaScript Nested Objects
-Objects can contain other objects as properties, known as nested objects.
-
+Objects can contain other objects as properties, known as Nested Objects.
 let person = {
   name: 'John',
   age: 30,
@@ -155,13 +135,14 @@ let person = {
   }
 };
 In this example, the person object has a property called address, which is itself an object with properties street, city, state, and zip.
-
 We can access these properties using either dot notation or bracket notation:
+console.log(person.address.street); 
+console.log(person['address']['city']);
 
-console.log(person.address.street); // Output: 123 Main St
-console.log(person['address']['city']); // Output: Anytown
+// Output
+"123 Main St"
+"Anytown"
 We can also modify, add and remove (using delete keyword) properties of nested objects using dot notation or bracket notation:
-
 // Modify existing properties in an object
 person.address.city = 'Othertown';
 person['address']['zip'] = '54321';
@@ -173,38 +154,71 @@ person['address']['phone'] = '555-1234';
 // Remove properties from an object
 delete person.age;
 delete person['address']['phone'];
+ 
+Activity: Fill in the blanks
+JavaScript's Object type is used to store collections of ____________ (strings / arrays / key-value pair).
+In JavaScript, objects with the same contents but different references are considered ____________ (identical / unique / duplicate) in a Set.
+A JavaScript object can have properties that are ____________ (functions / arrays / objects) in addition to simple values.
+To create an object using the object literal method, we use curly braces {} and define properties as ____________ (strings / integers / functions).
+Objects can contain other objects as properties, known as ____________ (nested properties / nested objects / sub-properties).
+Answers
+key-value pair
+unique
+functions
+strings
+nested objects
+ 
 JavaScript Object Methods
 JavaScript objects are collections of properties, and properties can be either values or functions. Functions that are attached to objects are called object methods.
-
 Here are some commonly used object methods in JavaScript:
-
 Object.keys(): This method returns an array of all the keys (property names) of an object.
 const myObj = { name: "John", age: 30 };
 const keys = Object.keys(myObj);
 
-console.log(keys); // Output: ["name", "age"]
+console.log(keys);
+
+// Output
+["name", "age"]
 Object.values(): This method returns an array of all the values of an object.
 const myObj = { name: "John", age: 30 };
 const values = Object.values(myObj);
 
-console.log(values); // Output: ["John", 30]
+console.log(values);
+
+// Output
+["John", 30]
 Object.entries(): This method returns an array of arrays, where each sub-array contains a key-value pair of the object.
 const myObj = { name: "John", age: 30 };
 const entries = Object.entries(myObj);
 
-console.log(entries); // Output: [["name", "John"], ["age", 30]]
+console.log(entries);
+
+// Output
+[["name", "John"], ["age", 30]]
 Object.assign(): This method is used to copy the values of all enumerable own properties from one or more source objects to a target object.
 const targetObj = { name: "John" };
 const sourceObj = { age: 30 };
 Object.assign(targetObj, sourceObj);
 
-console.log(targetObj); // Output: { name: "John", age: 30 }
+console.log(targetObj);
+
+// Output
+{
+  name: "John",
+  age: 30
+}
 Object.freeze(): This method is used to prevent an object from being modifying.
 const myObj = { name: "John", age: 30 };
 Object.freeze(myObj);
 myObj.age = 40; // This will not modify the object
 
-console.log(myObj) // Output: { name: "John", age: 30 }
+console.log(myObj)
+
+// Output
+{
+  name: "John",
+  age: 30
+}
 Custom method: An object can contain a function as one of its properties. These functions are called methods when they are attached to an object.
 const car = {
   make: "Toyota",
@@ -215,20 +229,19 @@ const car = {
   }
 };
 
-car.startEngine(); // Output: "Engine started!"
+car.startEngine();
+
+// Output
+"Engine started!"
 In this example, we define an object car with properties for its make, model, and year. We also define a method startEngine that simply logs a message to the console when invoked.
-
 To invoke the method, we use the object's name (car) followed by the method name (startEngine) and parentheses ().
-
 Accessing Object Methods
 You can access an object's methods using dot notation or bracket notation.
-
 objectName.methodKey();     // Dot Notation
 objectName["methodKey"]();  // Bracket Notation
-
-
-You can access property by calling an objectName and a key. You can access a method by calling an objectName and a key for that method along with ().
-
+Accessing Object Property: You can access property by calling an objectName and a key.
+Accessing Object Method: You can access a method by calling an objectName and a key for that method along with ().
+Example:
 const person = {
   name: "John",
   age: 30,
@@ -237,21 +250,26 @@ const person = {
   }
 };
 
-// Accessing Property
-console.log(person.name);  // Output: "John"
+// Accessing Object Property
+console.log(person.name);
 
-// Accessing Method
-person.greet();            // Output: "Hello, my name is John and I am 30 years old."
+// Accessing Object Method
+person.greet();
 
-
+// Output
+"John"
+"Hello, my name is John and I am 30 years old."
 Here, the greet method is accessed as person.greet() instead of person.greet.
-
 If you try to access the method with only person.greet, it will give you a function definition.
+console.log(person.greet); 
 
-person.greet; // ƒ () { console.log('hello'); }
-Adding a Method to a JavaScript Object
-You can also add a method in an object. For example,
-
+// Output
+function() {
+  console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+}
+Adding Object Methods
+You can also add a method in an object.
+For example:
 // creating an object
 let student = { };
 
@@ -265,527 +283,443 @@ student.greet = function() {
 
 // accessing a method
 student.greet(); // hello
-
-
 In the above example, an empty student object is created. Then, the name property is added. Similarly, the greet method is also added. In this way, you can add a method as well as a property to an object.
-
-
-
-Do it yourself 
-Code Practice:
-
-Use dot notation to access the value of the age property.
-Use bracket notation to add a new property, city, with the value 'New York', to the person object.
-Use a for...in loop to iterate over the properties of the person object and log each key-value pair.
-Call the sayHi() method on the person object to log the message "Hi, my name is John and I'm a developer.".
-Use the delete operator to remove the job property from the person object.
-const person = {
-  name: 'John',
+“this” keyword
+To access a property of an object from within a method of the same object, you need to use the this keyword.
+For example:
+// Define an object called "person"
+let person = {
+  name: "Rocky",
   age: 30,
-  job: 'developer',
-  sayHi() {
-    console.log(`Hi, my name is ${this.name} and I'm a ${this.job}.`);
-  }
-};
-Solution
-const person = {
-  name: 'John',
-  age: 30,
-  job: 'developer',
-  sayHi() {
-    console.log(`Hi, my name is ${this.name} and I'm a ${this.job}.`);
+  sayHello: function() {
+    console.log("Hello, my name is " + this.name + "."); // Accessing the "name" property using "this"
   }
 };
 
-// 1. Use dot notation to access the value of the age property.
-console.log(person.age);
+person.sayHello(); // Calling the "sayHello" method on the "person" object
 
-// 2. Use bracket notation to add a new property, city, with the value 'New York', to the person object.
-person['city'] = 'New York';
-
-// 3. Use a for...in loop to iterate over the properties of the person object and log each key-value pair.
-for (let key in person) {
-  console.log(`${key}: ${person[key]}`);
-}
-
-// 4. Call the sayHi() method on the person object to log the message "Hi, my name is John and I'm a developer."
-person.sayHi();
-
-// 5. Use the delete operator to remove the job property from the person object.
-delete person.job;
-
-
-“this” Keyword
-To access a property of an object from within a method of the same object, you need to use the this keyword. Let's consider an example.
-
+// Output
+"The name is Rocky"
+Explanation:
+We have an object called person that has properties name and age, and a method called sayHello.
+Inside the sayHello method, we use the this keyword to access the name property of the current object.
+When we call the sayHello method on the person object using person.sayHello(), it will log the message Hello, my name is Rocky. to the console, referencing the value of the name property specified in the person object.
+In order to access the properties of an object, this keyword is used following by . and key. However, the function inside of an object can access its variable in a similar way as a normal function would.
+For example:
 const person = {
-    name: 'John',
-    age: 30,
-
-    // accessing name property by using this.name
-    greet: function() { console.log('The name is' + ' ' + this.name); }
+  name: 'John',
+  age: 30,
+  greet: function() {
+    let surname = 'Doe';
+    console.log('The name is' + ' ' + this.name + ' ' + surname);
+  }
 };
 
 person.greet();
-Output
 
-The name is John
-In the above example, a person object is created. It contains properties (name and age) and a method greet.
-
-In the method greet, while accessing a property of an object, this keyword is used.
-
-In order to access the properties of an object, this keyword is used following by. and key.
-
-
-
-Note: In JavaScript, this keyword when used with the object's method refers to the object. this is bound to an object.
-
-
-However, the function inside of an object can access its variable in a similar way as a normal function would. For example,
-
-const person = {
-    name: 'John',
-    age: 30,
-    greet: function() {
-        let surname = 'Doe';
-        console.log('The name is' + ' ' + this.name + ' ' + surname); }
-};
-
-person.greet();
-Output
-
-The name is John Doe
+// Output
+"The name is John Doe"
 JavaScript Sets
-A JavaScript Set is a collection of unique values.
+In JavaScript, a Set is a built-in object that allows you to store unique values of any type. This means that a Set can contain only distinct values, and any duplicate values are automatically ignored.
+Sets are often used when you need to work with collections of unique elements and perform set operations like union, intersection, and difference.
+In JavaScript, you can create a Set using three different approaches:
+Using the new keyword with the Set() constructor:
+const mySet = new Set();
+Initializing a Set with an array containing initial values using the new keyword and the Set() constructor:
+const fruitsArray = ['apple', 'banana', 'orange'];
+const fruitsSet = new Set(fruitsArray);
+Using the Set Literal (Available from ECMAScript 6):
+const mySet = new Set(['a', 'b', 'c']);
+All three methods create a new Set, but they offer different ways to initialize the Set with initial values. The first method creates an empty Set, and you can later add elements using the .add() method. The second and third methods allow you to create a Set with initial values provided in an array, which is convenient when you have a collection of unique elements.
+Set Operations
+Here's an overview of how to work with JavaScript Sets:
+Adding and Removing Elements:
+const mySet = new Set();
 
-Each value can only occur once in a Set.
+mySet.add('apple');
+mySet.add('banana');
+mySet.add('orange');
+mySet.add('apple');     // Ignored, as 'apple' is already in the Set
+console.log(mySet);
 
-A Set can hold any value of any data type.
+mySet.delete('banana'); // Removes 'banana' from the Set
+console.log(mySet);
 
+mySet.clear();          // Removes all elements from a Set
+console.log(mySet);
 
+// Output
+Set(3) { 'apple', 'banana', 'orange' }
+Set(2) { 'apple', 'orange' }
+Set(0) {}
+Checking if an Element is in the Set:
+const mySet = new Set(['apple', 'banana', 'orange']);
 
-You can create a JavaScript Set by:
+console.log(mySet.has('banana'));
+console.log(mySet.has('grape'));
 
-Passing an Array to new Set()
-Create a new Set and use add() to add values
-Create a new Set and use add() to add variables
-new Set()
-Pass an Array to the new Set() constructor:
+// Output
+true
+false
+Getting the Size of the Set:
+const mySet = new Set(['apple', 'banana', 'orange']);
 
-// Create a Set
-const letters = new Set(["a","b","c"]);
-Create a Set and add literal values:
+console.log(mySet.size);
 
-// Create a Set
-const letters = new Set();
-// Add Values to the Set
-letters.add("a");
-letters.add("b");
-letters.add("c");
-Create a Set and add variables:
+// Output
+3
+Iterating through a Set:
+const mySet = new Set(['apple', 'banana', 'orange']);
 
-// Create Variables
-const a = "a";
-const b = "b";
-const c = "c";
-// Create a Set
-const letters = new Set();
-// Add Variables to the Set
-letters.add(a);
-letters.add(b);
-letters.add(c);
+// Using forEach
+mySet.forEach((value) => {
+  console.log(value);
+});
 
-
-
-
-Method	Description
-new Set()	Creates a new Set
-add()	Adds a new element to the Set
-delete()	Removes an element from a Set
-has()	Returns true if a value exists
-clear()	Removes all elements from a Set
-forEach()	Invokes a callback for each element
-values()	Returns an Iterator with all the values in a Set
-keys()	Same as values()
-entries()	Returns an Iterator with the [value,value] pairs from a Set
-Property	Description
-size	Returns the number elements in a Set
-The forEach() method invokes a function for each Set element:
-
-// Create a Set
-const letters = new Set(["a","b","c"]);
-
-// List all entries
-let text = "";
-letters.forEach (function(value) {
-  text += value;
-})
-The values() method returns an Iterator object containing all the values in a Set:
-
-// Create an Iterator
-const myIterator = letters.values();
-
-// List all Values
-let text = "";
-for (const entry of myIterator) {
-  text += entry;
+// Using for...of loop
+for (const fruit of mySet) {
+  console.log(fruit);
 }
 
+// Output
+apple
+banana
+orange
 
-A Set has no keys.
+apple
+banana
+orange
+Converting Set to Array:
+const mySet = new Set(['apple', 'banana', 'orange']);
 
-keys() returns the same as values().
+const fruitsArray = Array.from(mySet);
+console.log(fruitsArray);
 
-This makes Sets compatible with Maps.
+Output
+[ 'apple', 'banana', 'orange' ]
+Remember that Sets store elements based on their value's uniqueness, not the reference. So, objects with the same contents but different references will be considered unique in a Set.
+For example:
+const obj1 = { name: "John", age: 30 };
+const obj2 = { name: "John", age: 30 };
 
-Similarly,
+const mySet = new Set();
 
-A Set has no keys.
+mySet.add(obj1);
+mySet.add(obj2);
 
-entries() returns [value,value] pairs instead of [key,value] pairs.
+console.log(mySet.size);
 
-This makes Sets compatible with Maps:
-
-// Create an Iterator
-const myIterator = letters.entries();
-
-// List all Entries
-let text = "";
-for (const entry of myIterator) {
-  text += entry;
-}
-
-
-Sets are Objects
-
-typeof returns object:
-instanceof Set returns true:
-typeof letters;      // Returns object
-
-letters instanceof Set;  // Returns true
+// Output
+2    // Even though obj1 and obj2 have the same contents, they are considered unique in the Set
 JavaScript Maps
-A Map holds key-value pairs where the keys can be any datatype.
+In JavaScript, a Map is a built-in object that allows you to store key-value pairs, where each key can be of any data type, and each value can also be of any data type. Maps are useful for associating data and performing lookups based on specific keys.
+Map Operations
+Here's an overview of how to work with JavaScript Sets:
+Creating a Map: You can create a Map in JavaScript using the new keyword with the Map() constructor.
+const myMap = new Map();
+Adding and Removing Entries: To add key-value pairs to a Map, you can use the .set() method, and to remove entries, you can use the .delete() method.
+const myMap = new Map();
 
-A Map remembers the original insertion order of the keys.
+myMap.set('name', 'John');
+myMap.set('age', 30);
+console.log(myMap);
 
-A Map has a property that represents the size of the map.
+myMap.delete('age');
+console.log(myMap);
 
+myMap.clear();
+console.log(myMap);
 
-
-You can create a JavaScript Map by:
-
-Passing an Array to new Map()
-Create a Map and use Map.set()
-new Map()
-You can create a Map by passing an Array to the new Map() constructor:
-
-// Create a Map
-const fruits = new Map([
-  ["apples", 500],
-  ["bananas", 300],
-  ["oranges", 200]
+// Output
+Map(2) { 'name' => 'John', 'age' => 30 }
+Map(1) { 'name' => 'John' }
+Map(0) {}
+Getting the Size of the Map: You can use the .size property to get the number of entries in the Map.
+const myMap = new Map([
+  ['name', 'John'],
+  ['age', 30]
 ]);
-You can add elements to a Map with the set() method:
 
-// Create a Map
-const fruits = new Map();
+console.log(myMap.size);
 
-// Set Map Values
-fruits.set("apples", 500);
-fruits.set("bananas", 300);
-fruits.set("oranges", 200);
+// Output
+2
+Checking if a Key Exists: To check if a specific key exists in the Map, you can use the .has() method.
+const myMap = new Map([
+  ['name', 'John'],
+  ['age', 30]
+]);
 
+console.log(myMap.has('name'));
+console.log(myMap.has('gender'));
 
-Method	Description
-new Map()	Creates a new Map object
-set()	Sets the value for a key in a Map
-get()	Gets the value for a key in a Map
-clear()	Removes all the elements from a Map
-delete()	Removes a Map element specified by a key
-has()	Returns true if a key exists in a Map
-forEach()	Invokes a callback for each key/value pair in a Map
-entries()	Returns an iterator object with the [key, value] pairs in a Map
-keys()	Returns an iterator object with the keys in a Map
-values()	Returns an iterator object of the values in a Map
+// Output
+true
+false
+Getting the Value for a Key: To retrieve the value associated with a specific key, you can use the .get() method.
+const myMap = new Map([
+  ['name', 'John'],
+  ['age', 30]
+]);
 
+console.log(myMap.get('name'));
+console.log(myMap.get('age'));
 
-Property	Description
-size	Returns the number of Map elements
-The set() method can also be used to change existing Map values:
+// Output
+"John"
+30
+Iterating through a Map: You can use various methods to iterate through the entries of a Map, such as forEach() and for...of loop.
+const myMap = new Map([
+  ['name', 'John'],
+  ['age', 30]
+]);
 
-fruits.set("apples", 500);
-The get() method gets the value of a key in a Map:
+// Using forEach
+myMap.forEach((value, key) => {
+  console.log(`${key}: ${value}`);
+});
 
-fruits.get("apples");    // Returns 500
-The delete() method removes a Map element:
+// Using for...of loop
+for (const [key, value] of myMap) {
+  console.log(`${key}: ${value}`);
+}
 
-fruits.delete("apples");
-The clear() method removes all the elements from a Map:
+// Output
+name: John
+age: 30
 
-fruits.clear();
-The has() method returns true if a key exists in a Map:
+name: John
+age: 30
+Converting Map to Array: To convert a Map into an array of key-value pairs, you can use the Array.from() method.
+const myMap = new Map([
+  ['name', 'John'],
+  ['age', 30]
+]);
 
-fruits.has("apples");
-Maps are Objects
+const entriesArray = Array.from(myMap);
+console.log(entriesArray);
 
-typeof returns object
-instanceof Map returns true
-typeof fruits; // Returns object:
-
-fruits instanceof Map; // Returns true:
-
-
-Activity 1 
-True or False:
-
-The Set object in JavaScript stores only unique values.
-The Map object in JavaScript stores key-value pairs where both the key and the value can be of any type.
-The Set object in JavaScript maintains the order in which elements were added.
-The Map object in JavaScript provides a get()method to retrieve the value associated with a given key.
-The Set object in JavaScript provides a has()method to check whether a given element is present in the set.
+// Output
+[ [ 'name', 'John' ], [ 'age', 30 ] ]
+Remember that unlike objects, Maps maintain the insertion order of elements, making them suitable for scenarios where order matters. Additionally, Maps allow you to use any data type as keys, making them more versatile than objects for certain use cases.
+ 
+Activity: True or False
+Sets can contain duplicate values, and they automatically remove duplicates when adding elements to the Set.
+You can use any data type as a key in a JavaScript Map, including arrays and other objects.
+When creating a Set using the Set constructor, you can pass an array with duplicate values, and the Set will automatically remove the duplicates.
+The Object.keys() method returns an array of all the values of an object.
+The Set object in JavaScript provides a has() method to check whether a given element is present in the set.
 Answers
-True. The Setobject in JavaScript stores only unique values, which means that it will not allow duplicate elements.
-True. The Mapobject in JavaScript stores key-value pairs where both the key and the value can be of any type.
-True. The Setobject in JavaScript maintains the order in which elements were added, which means that you can iterate over the elements in the order they were added.
-True. The Mapobject in JavaScript provides a get()
- method to retrieve the value associated with a given key.
-True. The Setobject in JavaScript provides a has()
- method to check whether a given element is present in the set.
-
-
-JSON
-JSON stands for Javascript Object Notation. JSON is a text-based data format that is used to store and transfer data. For example,
-
-// JSON syntax
+False. JavaScript Sets can only contain unique values, and they automatically ignore duplicate values when adding elements.
+True. JavaScript Maps allow any data type to be used as keys, including arrays, objects, and even functions.
+True. When creating a Set using the Set constructor and passing an array with duplicate values, the Set will automatically remove the duplicates.
+False. The Object.keys() method returns an array of all the keys (property names) of an object, not the values.
+True. The Setobject in JavaScript provides a has() method to check whether a given element is present in the set.
+ 
+ 
+JavaScript Object Notation (JSON)
+JavaScript Object Notation (JSON) is a lightweight data interchange format that is easy for both humans and machines to read and write. It is primarily used to transmit data between a server and a web application as an alternative to XML.
+It is language-independent and widely supported in various programming languages, making it an ideal choice for data exchange over the web.
+JSON data is represented as key-value pairs similar to JavaScript objects, and it follows a specific syntax:
+Data is enclosed in curly braces {}.
+Each data item is represented as a key-value pair separated by a colon :.
+Keys (also known as properties) must be strings enclosed in double quotes ".
+Values can be strings, numbers, booleans, null, arrays, or other JSON objects.
+Data items are separated by commas ,.
+Here's a simple example of JSON data representing information about a person:
 {
-    "name": "John",
-    "age": 22,
-    "gender": "male",
-
+  "name": "John Doe",
+  "age": 30,
+  "email": "john@example.com",
+  "isMarried": false,
+  "hobbies": ["reading", "painting", "traveling"],
+  "address": {
+    "street": "123 Main St",
+    "city": "Anytown",
+    "country": "USA"
+  }
 }
-In JSON, the data are in key/value pairs separated by a comma,
+JavaScript provides built-in methods to work with JSON: JSON is a native part of the language, so parsing and serialization are straightforward tasks using JSON.parse() and JSON.stringify() methods, respectively.
+JSON.stringify(): This method is used to convert a JavaScript object or value to a JSON-formatted string.
+JSON.parse(): This method is used to parse a JSON-formatted string and convert it back into a JavaScript object or value.
+For example:
+To convert a JavaScript object to a JSON string
+const person = {
+  name: "John Doe",
+  age: 30,
+  email: "john@example.com",
+};
 
-JSON was derived from JavaScript. So, the JSON syntax resembles JavaScript object literal syntax. However, the JSON format can be accessed and be created by other programming languages too.
+const jsonStr = JSON.stringify(person);
+console.log(jsonStr);
 
-Note: JavaScript Objects and JSON are not the same. You will learn about their differences later in this tutorial.
+// Output
+'{"name":"John Doe","age":30,"email":"john@example.com"}'
+And to parse a JSON string back into a JavaScript object
+const jsonString = '{"name":"John Doe","age":30,"email":"john@example.com"}';
 
+const parsedObject = JSON.parse(jsonString);
+console.log(parsedObject.name);
+console.log(parsedObject.age);
+console.log(parsedObject.email); 
 
-
-JSON Data
-JSON data consists of key/value pairs similar to JavaScript object properties. The key and values are written in double quotes separated by a colon: For example,
-
-// JSON data
-"name": "John"
-Note: JSON data requires double-quotes for the key.
-
-Accessing JSON Data
-You can access JSON data using the dot notation. Its syntax is variableName.key. For example,
-
-// JSON object
-const data = {
-    "name": "John",
-    "age": 22,
-    "hobby": {
-	"reading" : true,
-	"gaming" : false,
-	"sport" : "football"
-    },
-    "class" : ["JavaScript", "HTML", "CSS"]
-}
-
-// accessing JSON object
-console.log(data.name); // John
-console.log(data.hobby); // { gaming: false, reading: true, sport: "football"}
-
-console.log(data.hobby.sport); // football
-console.log(data.class[1]); // HTML
-
-
-You can also use square bracket syntax [] to access JSON data. For example,
-
-// JSON object
-const data = {
-    "name": "John",
-    "age": 22
-}
-
-// accessing JSON object
-console.log(data["name"]); // John
-JSON Object
-The JSON object is written inside curly braces { }. JSON objects can contain multiple key/value pairs. For example,
-
-// JSON object
-{ "name": "John", "age": 22 }
-JSON Array
-JSON array is written inside square brackets [ ]. For example,
-
-// JSON array
-[ "apple", "mango", "banana"]
-
-// JSON array containing objects
-[
-    { "name": "John", "age": 22 },
-    { "name": "Peter", "age": 20 }.
-    { "name": "Mark", "age": 23 }
-]
-Note: JSON data can contain objects and arrays. However, unlike JavaScript objects, JSON data cannot contain functions as values.
-
-
-
-Activity 2 
-Practice Code:
-
-Write a JSON object that represents a list of books, where each book has a title, author, year, and genre.
-
-Solution
-{
-  "books": [
-    {
-      "title": "To Kill a Mockingbird",
-      "author": "Harper Lee",
-      "year": 1960,
-      "genre": "Fiction"
-    },
-    {
-      "title": "1984",
-      "author": "George Orwell",
-      "year": 1949,
-      "genre": "Science Fiction"
-    },
-    {
-      "title": "Pride and Prejudice",
-      "author": "Jane Austen",
-      "year": 1813,
-      "genre": "Romance"
-    }
-  ]
-}
-
-
-
-
-
-
-JavaScript Objects VS JSON
+// Output
+"John Doe"
+30
+"john@example.com"
+JSON vs JavaScript Objects
 Though the syntax of JSON is similar to the JavaScript object, JSON is different from JavaScript objects.
-
-
-
-JSON	JavaScript Object
-The key in the key/value pair should be in double quotes.	The key in the key/value pair can be without double quotes.
-JSON cannot contain functions.	JavaScript objects can contain functions.
-JSON can be created and used by other programming languages.	JavaScript objects can only be used in JavaScript.
-
-
-Explore Further
-Uncover and unlock new insights as you dive into the captivating content found in the provided link.
-
-Object Serialisation and Deserialisation: https://www.oreilly.com/library/view/javascript-the-definitive/9781449393854/ch06s09.html
-
-
-
-Tackle these questions head-on!
-
-Given below is the object representing a superhero with the following properties: name, alias, power, and costume.
-
-const superhero = {
-  name: 'Superman',
-  alias: 'Clark Kent',
-  power: 'Flight',
-  costume: 'Blue and Red'
-};
-
-const serializedHero = JSON.stringify(superhero);
-console.log(serializedHero);
-
-const deserializedHero = JSON.parse(serializedHero);
-console.log(deserializedHero);
-Now your task is to:
-
-Access and display the individual properties of the deserializedHero object to verify that the deserialization was successful.
-Update the power of the superhero by changing its value.
-Serialize the updated superhero object again and store it in the serializedHero variable.
-Print the updated serializedHero to the console.
-Solution
-const superhero = {
-  name: 'Superman',
-  alias: 'Clark Kent',
-  power: 'Flight',
-  costume: 'Blue and Red'
-};
-
-const serializedHero = JSON.stringify(superhero);
-console.log(serializedHero);
-
-const deserializedHero = JSON.parse(serializedHero);
-console.log(deserializedHero);
-
-// Task 1
-console.log('Name:', deserializedHero.name);
-console.log('Alias:', deserializedHero.alias);
-console.log('Power:', deserializedHero.power);
-console.log('Costume:', deserializedHero.costume);
-
-// Task 2
-deserializedHero.power = 'Super Strength';
-
-// Task 3
-const updatedSerializedHero = JSON.stringify(deserializedHero);
-
-// Task 4
-console.log(updatedSerializedHero);
-Expected Output
-
-Individual Properties:
-
-Name: Superman
-Alias: Clark Kent
-Power: Flight
-Costume: Blue and Red
-Updated Serialized JSON string:
-
-{
-"name":"Superman",
-"alias":"Clark Kent",
-"power":"Super Strength",
-"costume":"Blue and Red"
-}
-
-
-
-
-
-
+Feature
+JSON
+JavaScript Object
+Format
+Text-based format with strict syntax rules.
+JavaScript native data type.
+Keys
+Must be enclosed in double quotes.
+Can be strings or symbols.
+Property Assignment
+Assignment with : between key and value.
+Assignment with : between key and value.
+Methods
+No methods or functions allowed.
+Can have methods (functions) associated with the object.
+Data Types
+Supports a limited set of data types: strings, numbers, booleans, arrays, objects, and null.
+Supports all JavaScript data types, including functions, and can hold references to other objects.
+Duplicate Keys
+Not allowed, each key must be unique.
+Allowed, but duplicate keys will overwrite previous ones.
+Data Serialization
+Used for data interchange between different systems and programming languages.
+Used for organizing data and implementing functionality within JavaScript code.
+Usage
+Commonly used for data exchange with servers and APIs.
+Widely used for data manipulation and storage within JavaScript applications.
+In summary, JSON is primarily used for data exchange between different systems, while JavaScript objects are an integral part of JavaScript and are used for data organization and manipulation within JavaScript code. JSON has a strict syntax and supports a limited set of data types, whereas JavaScript objects have more flexibility in terms of data types and can contain methods for performing actions.
 According to BuiltWith, JSON is used by over 1.8 million websites, making it one of the most widely used data formats on the web.
+ 
 Summary
 What did we learn?
 JavaScript objects are fundamental data type in the language and allow you to represent complex data structures, including arrays, functions, and even other objects. 
-Objects can be created using the object literal syntax {key1: value1, key2: value2, ...}or using the Objectconstructor. 
+Objects can be created using the object literal syntax {key1: value1, key2: value2, ...} or using the Object constructor. 
 They provide a flexible and versatile way to organize and store data in JavaScript and are widely used for tasks such as storing collections of data, organizing code into modules, and more.
 You can access properties of an object using either dot notation object.property or bracket notation object["property"].
 Object methods are functions that are associated with an object and can be invoked using the dot notation or bracket notation.
 They can access the object properties and other methods within the same object using the this keyword.
 Sets in JavaScript are a collection of unique values. They are similar to arrays, but each value in a set must be unique.
-Mapsin JavaScript are collections of key-value pairs. Unlike sets, maps allow you to store values with a specific key and retrieve values by that key.
+Maps in JavaScript are collections of key-value pairs. Unlike sets, maps allow you to store values with a specific key and retrieve values by that key.
 The JavaScript Object Notation (JSON) is a lightweight format utilized for the exchange of data that can be effortlessly comprehended and produced by both human beings and machines.
 JSON objects could be converted to JavaScript objects using the JSON.parse() method, and JavaScript objects can be converted to JSON using the JSON.stringify() method.
 Shortcomings & Challenges
 Dynamically adding or removing properties from an object can create challenges in maintaining the object's structure and comprehending its properties.
-Sets only store unique values, so it is not possible to store duplicate values in a set.
 Maps do not enforce any type restrictions on keys, which can lead to unexpected results if the keys are not of the expected type.
 JSON only supports a limited set of data types, including numbers, strings, arrays, and objects.
 JSON does not support JavaScript functions, so it is not possible to store a function in a JSON object.
-JSON objects can only contain strings as keys, so it is not possible to use other types of keys (such as numbers or objects).
-Best Practices
+Best practices to follow
 Store related data together in an object, to help reduce the amount of redundant data in your code.
 Avoid using objects as associative arrays, where the keys are not meaningful and only serve as indices into the array. Instead, use arrays for this purpose.
 Use the Object.freeze method to prevent objects from being modified.
-Use the Set.has method to check if a value is present in a set.
-Use the Map.delete method to remove a key-value pair from a map.
 Validate JSON strings before parsing them to ensure that they are valid and conform to the expected structure.
-Enhance Your Knowledge
-https://webkul.com/blog/javascript-object-methods/
-https://blog.alexdevero.com/sets-in-javascript/ 
-https://www.microverse.org/blog/how-to-work-with-json-in-javascript
+ 
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+Object Serialisation and Deserialisation: https://www.oreilly.com/library/view/javascript-the-definitive/9781449393854/ch06s09.html
+How to Work With JSON objects in Javascript: https://www.microverse.org/blog/how-to-work-with-json-in-javascript
+Introduction to Sets in JavaScript: https://blog.alexdevero.com/sets-in-javascript/
+ 
+Try it yourself
+Let's solve these coding problems in the AlmaBetter IDE. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
+Task 1: Conquer coding challenges in the AlmaBetter IDE and showcase your skills with innovative solutions.
+Problems
+Problem 1: The JSON Parser
+In a world of data exchange, the people need a JavaScript function that can parse JSON strings and convert them into JavaScript objects. They seek the power to transform their data structures seamlessly, enabling communication and understanding between systems.
+Write a JavaScript function called parseJSON that takes a JSON string as input and returns the corresponding JavaScript object. Assume that the input JSON string will always be valid.
+Example 1:
+Input:
+{"name": "John", "age": 30, "isStudent": true}
 
+Output:
+{ name: 'John', age: 30, isStudent: true }
+Example 2:
+Input:
+{"colors": ["red", "green", "blue"], "length": 3}
 
+Output:
+{ colors: ['red', 'green', 'blue'], length: 3 }
+Example 3:
+Input:
+{"colors": ["red", "green", "blue"], "length": 3}
+
+Output:
+{ colors: ['red', 'green', 'blue'], length: 3 }
+Problem 2: The Object Merger
+In a world of data amalgamation, the people need a JavaScript function that can merge two objects into a single, unified object. They seek to combine the strengths of multiple objects to create a comprehensive data structure.
+Write a JavaScript function called mergeObjects that takes two objects as inputs and returns a new object that combines the properties of both objects. If there are overlapping properties, the value from the second object should take precedence.
+Example 1:
+Input:
+{ "name": "John", "age": 30 }
+
+{ "isStudent": true, "age": 25 }
+
+Output:
+{ name: "John", age: 25, isStudent: true }
+Example 2:
+Input:
+{ "a": 1, "b": 2 } { "c": 3 }
+
+Output:
+{ a: 1, b: 2, c: 3 }
+Problem 3: The Nested Object Finder
+In a world of complex data structures, the people need a JavaScript function that can find the value of a given property within a nested object. They seek to explore the depths of their data and retrieve valuable information.
+Write a JavaScript function called findNestedValue that takes an object and a string representing the property path as inputs. The property path will be a dot-separated string, representing the hierarchy of nested properties.
+The function should return the value of the property if found within the nested object. If the property is not found or any intermediate property is not an object, the function should return null.
+Example 1:
+Input:
+{"person":{"name": "John","age": 30,"address": {"city": "New York","country":"USA"}}}
+
+person.name
+
+Output:
+John
+Example 2:
+Input:
+{"person":{"name": "John","age": 30,"address": {"city": "New York","country":"USA"}}}
+
+person.address.city
+
+Output:
+New York
+Example 3:
+Input:
+{"person":{"name": "John","age": 30,"address": {"city": "New York","country":"USA"}}}
+
+person.address.postalCode
+
+Output:
+null
+Solutions
+Solution 1: The JSON Parser
+function parseJSON(jsonString) {
+  return JSON.parse(jsonString);
+}
+Solution 2: The Object Merger
+function mergeObjects(obj1, obj2) {
+  return { ...obj1, ...obj2 };
+}
+Solution 3: The Nested Object Finder
+function findNestedValue(obj, propertyPath) {
+  const pathArray = propertyPath.split(".");
+  let result = obj;
+
+  for (let property of pathArray) {
+    if (result && typeof result === "object" && property in result) {
+      result = result[property];
+    } else {
+      return null;
+    }
+  }
+
+  return result;
+}
+Task 2: Which question did you find challenging and Why? Share your thoughts in your Cohort group at AlmaBetter Community Platform.
