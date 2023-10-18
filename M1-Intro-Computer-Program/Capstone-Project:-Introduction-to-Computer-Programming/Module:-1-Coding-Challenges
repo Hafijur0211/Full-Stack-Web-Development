@@ -543,3 +543,343 @@ console.log(fizzBuzz(12));
 
 console.log(fizzBuzz(5));
 // Output: ["1", "2", "Fizz", "Buzz", "5"]
+
+
+Logic Building Coding Questions
+From Questions 1 to 10: You have been tasked to develop the logic for the provided coding problems.
+ 
+Prime Numbers
+
+Write a JavaScript function findPrimes that takes a positive integer n as input and returns an array of prime numbers less than or equal to n.
+Example 1:
+Input: 20
+Output: [2, 3, 5, 7, 11, 13, 17, 19]
+Example 2:
+Input: 9
+Output: [2, 3, 5, 7]
+Note:
+Exclude 1 from the resulting array.
+
+// Solution
+
+function isPrime(num) {
+  if (num <= 1) return false;
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) return false;
+  }
+  return true;
+}
+
+function findPrimes(n) {
+  const primes = [];
+  for (let i = 2; i <= n; i++) {
+    if (isPrime(i)) {
+      primes.push(i);
+    }
+  }
+  return primes;
+}
+
+// Test examples
+console.log(findPrimes(20)); // Output: [2, 3, 5, 7, 11, 13, 17, 19]
+console.log(findPrimes(9));  // Output: [2, 3, 5, 7]
+
+
+Character Reversal
+
+Write a JavaScript function reverseString that takes a string as input and returns the string with its characters reversed.
+Example 1:
+Input: "JavaScript"
+Output: "tpircSavaJ"
+Example 2:
+Input: "AlmaBetter University"
+Output: "ytisrevinU retteBamlA"
+
+// Solution
+
+function reverseString(inputString) {
+    // Split the string into an array of characters, reverse it, and then join back into a string
+    return inputString.split('').reverse().join('');
+}
+
+// Test examples
+console.log(reverseString("JavaScript")); // Output: "tpircSavaJ"
+console.log(reverseString("AlmaBetter University")); // Output: "ytisrevinU retteBamlA"
+
+Sign of Product
+
+Write a JavaScript function signOfProduct that takes an array of integers as input and returns the sign of the product of all the integers in the array.
+The function should return one of the following values:
+1 if the product is positive.
+-1 if the product is negative.
+0 if the product is zero.
+Implement the function efficiently, without actually computing the product.
+Example 1:
+Input: [2, -3, 5, 4]
+Output: -1
+Example 2:
+Input: [1, 2, 0]
+Output: 0
+Note:
+The array nums will contain at least one integer.
+You are not allowed to use any built-in functions to compute the product or determine the sign. You should implement the logic based on mathematical principles.
+
+// Solution
+
+function signOfProduct(nums) {
+    // Initialize count of negative numbers
+    let negativeCount = 0;
+
+    // Iterate through the array
+    for (let num of nums) {
+        // Check the sign of the number
+        if (num < 0) {
+            negativeCount++;
+        } else if (num === 0) {
+            // If there's a zero, the product will be zero, so return 0
+            return 0;
+        }
+    }
+
+    // Determine the sign based on the count of negative numbers
+    return negativeCount % 2 === 0 ? 1 : -1;
+}
+
+// Test examples
+console.log(signOfProduct([2, -3, 5, 4])); // Output: -1
+console.log(signOfProduct([1, 2, 0])); // Output: 0
+
+
+Check Sign
+
+Write a JavaScript function checkSign that takes three numbers as input and returns a string representing the signs of the numbers.
+If all three numbers are positive, return "+++"
+If two numbers are positive and one is negative, return "++-"
+If one number is positive and two are negative, return "+--"
+If all three numbers are negative, return "---"
+Example 1:
+Input: 2, 5, 7
+Output: "+++"
+Example 2:
+Input: 8, -3, 4
+Output: "++-"
+Note:
+None of the numbers can be equal to 0.
+
+// Solution
+
+function checkSign(num1, num2, num3) {
+    // Determine the signs of the numbers
+    const sign1 = num1 > 0 ? '+' : '-';
+    const sign2 = num2 > 0 ? '+' : '-';
+    const sign3 = num3 > 0 ? '+' : '-';
+
+    // Combine the signs to form the result string
+    const result = sign1 + sign2 + sign3;
+
+    return result;
+}
+
+// Test examples
+console.log(checkSign(2, 5, 7)); // Output: "+++"
+console.log(checkSign(8, -3, 4)); // Output: "++-"
+
+URL Slug Generator
+
+Imagine you're working on a blog platform. Write a JavaScript function generateSlug that takes a title string and generates a URL-friendly slug by replacing spaces with hyphens and converting the text to lowercase.
+Example 1:
+Input: "Hello World"
+Output: "hello-world.com"
+Example 2:
+Input: "AlmaBetter Web Dev"
+Output: "almabetter-web-dev.com"
+
+// Solution
+
+function generateSlug(title) {
+    // Convert the title to lowercase and replace spaces with hyphens
+    const slug = title.toLowerCase().replace(/\s+/g, '-');
+
+    // Append ".com" to the slug
+    const finalSlug = slug + ".com";
+
+    return finalSlug;
+}
+
+// Test examples
+console.log(generateSlug("Hello World")); // Output: "hello-world.com"
+console.log(generateSlug("AlmaBetter Web Dev")); // Output: "almabetter-web-dev.com"
+
+Shortest Word Distance
+
+Given an array of strings wordsDict and two distinct strings word1 and word2, which are both present in the array. Write a JavaScript function shortestDistance that returns the minimum distance between the positions of word1 and word2 within the list of words.
+Example 1:
+const wordsDict = ["practice", "makes", "perfect", "coding", "makes"];
+
+Input: wordsDict, "coding", "makes"
+Output: 1
+Example 2:
+const wordsDict = ["apple", "banana", "cherry", "apple", "date", "banana", "fig"];
+
+Input: wordsDict, "apple", "fig"
+Output: 3
+Note:
+Strings can be present more than once in the array.
+
+// Solution
+
+function shortestDistance(wordsDict, word1, word2) {
+    let index1 = -1;
+    let index2 = -1;
+    let minDistance = Infinity;
+
+    for (let i = 0; i < wordsDict.length; i++) {
+        if (wordsDict[i] === word1) {
+            index1 = i;
+        } else if (wordsDict[i] === word2) {
+            index2 = i;
+        }
+
+        if (index1 !== -1 && index2 !== -1) {
+            minDistance = Math.min(minDistance, Math.abs(index1 - index2));
+        }
+    }
+
+    return minDistance;
+}
+
+// Test examples
+const wordsDict1 = ["practice", "makes", "perfect", "coding", "makes"];
+console.log(shortestDistance(wordsDict1, "coding", "makes")); // Output: 1
+
+const wordsDict2 = ["apple", "banana", "cherry", "apple", "date", "banana", "fig"];
+console.log(shortestDistance(wordsDict2, "apple", "fig")); // Output: 3
+
+Flip Game
+
+You are playing the following Flip Game with your friend: Given a string that contains only these two characters: + and -, you and your friend take turns to flip two consecutive "++" into "--". The game ends when a person can no longer make a move and therefore the other person will be the winner.
+Write a JavaScript function findMove that takes a string as input and calculates all the possible states of the string after a valid move has been made and return the states in an array of strings.
+Example 1:
+Input: "++++"
+Output: ["--++", "+--+", "++--"]
+Example 2:
+Input: "++-++"
+Output: ["---++", "++---"]
+Note:
+If there is no valid move, return an empty list [].
+
+// Solution
+
+function findMove(s) {
+    const result = [];
+
+    for (let i = 0; i < s.length - 1; i++) {
+        if (s[i] === '+' && s[i + 1] === '+') {
+            const nextState = s.substring(0, i) + '--' + s.substring(i + 2);
+            result.push(nextState);
+        }
+    }
+
+    return result;
+}
+
+// Test examples
+console.log(findMove("++++")); // Output: ["--++", "+--+", "++--"]
+console.log(findMove("++-++")); // Output: ["---++", "++---"]
+
+
+Swap Consecutive Characters
+
+Write a JavaScript function swapConsecutiveCharacters that takes a string as input and rearranges the consecutive characters within the string in a swapped manner and returns a swapped string.
+Example 1:
+Input: "abcdef"
+Output: "badcfe"
+Example 2:
+Input: "AlmaBetter"
+Output: "lAameBttre"
+
+// Solution
+
+function swapConsecutiveCharacters(input) {
+    const charArray = input.split('');
+
+    for (let i = 0; i < charArray.length - 1; i += 2) {
+        // Swap consecutive characters
+        const temp = charArray[i];
+        charArray[i] = charArray[i + 1];
+        charArray[i + 1] = temp;
+    }
+
+    return charArray.join('');
+}
+
+// Test examples
+console.log(swapConsecutiveCharacters("abcdef")); // Output: "badcfe"
+console.log(swapConsecutiveCharacters("AlmaBetter")); // Output: "lAameBttre"
+
+
+Array Intersection
+
+Write a JavaScript function arrayIntersection that takes two arrays as input and returns a new array containing the elements that are common in both arrays, without any duplicates.
+Example 1:
+Input: [1, 2, 2, 3, 4, 5], [2, 3, 3, 6]
+Output: [2, 3]
+Example 2:
+Input: [70, 20, 30, 50], [30, 40, 50, 60, 70]
+Output: [30, 50, 70]
+Note:
+The order of elements in the output array does not matter.
+If there is no common elements, return an empty list [].
+
+// Solution
+
+function arrayIntersection(arr1, arr2) {
+    const set1 = new Set(arr1);
+    const set2 = new Set(arr2);
+
+    // Use filter to get elements common in both sets
+    const intersection = [...set1].filter(element => set2.has(element));
+
+    return intersection;
+}
+
+// Test examples
+console.log(arrayIntersection([1, 2, 2, 3, 4, 5], [2, 3, 3, 6])); // Output: [2, 3]
+console.log(arrayIntersection([70, 20, 30, 50], [30, 40, 50, 60, 70])); // Output: [30, 50, 70]
+
+
+Insert 7
+You are given a string consisting of characters, including spaces. Your task is to insert the character "7" immediately after every set of 6 characters from the start of the string, while ignoring spaces. The spaces should be skipped while counting the characters.
+Write a JavaScript function insert7 that takes a string as input and returns the modified string after performing the required insertion.
+Example 1:
+Input: "Hello World and Universe!"
+Output: "Hello W7orld an7d Unive7rse!"
+Example 2:
+Input: "Full Stack Web Development"
+Output: "Full St7ack Web7 Develo7pment"
+
+// Solution
+
+function insert7(input) {
+    const characters = input.split('');
+    let count = 0;
+
+    for (let i = 0; i < characters.length; i++) {
+        // Skip spaces while counting characters
+        if (characters[i] !== ' ') {
+            count++;
+        }
+
+        // Insert '7' after every set of 6 characters
+        if (count === 6) {
+            characters.splice(i + 1, 0, '7');
+            count = 0; // Reset count for the next set
+        }
+    }
+
+    return characters.join('');
+}
+
+// Test examples
+console.log(insert7("Hello World and Universe!")); // Output: "Hello W7orld an7d Unive7rse!"
+console.log(insert7("Full Stack Web Development")); // Output: "Full St7ack Web7 Develo7pment"
