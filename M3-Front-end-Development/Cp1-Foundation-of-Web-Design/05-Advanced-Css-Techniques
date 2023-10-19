@@ -1,1 +1,1653 @@
+Advanced CSS Techniques
+Session flow
+Learning Objective
+Introduction
+Theme
+Primary Goals
+Advanced CSS Techniques
+Display
+Flexbox
+Project Implementation Step 1
+Position
+Project Implementation Step 2
+Responsive Web Design
+Project Implementation Step 3
+Transition and Transform
+Animation
+Project Implementation Step 4
+Project Implementation Step 5
+Project Implementation Step 6
+Summary
+What did we learn?
+Shortcomings & Challenges
+Best practices to follow
+Enhance your knowledge
+Try it Yourself
+Learning Objective
+Introduction
+CSS (Cascading Style Sheets) has always been the secret sauce of web design, but now we're taking it to the next level. Say goodbye to the ordinary and embrace the extraordinary as we dive into the marvelous depths of CSS advanced topics.
+Focus: Display, Position, Animations, and Media Queries
+Prerequisites: VS Code IDE, HTML and CSS Basics
+Theme
+Let's imagine you're the mastermind behind a trendy online clothing store called "Funky Threads Boutique.” With Display, we'll organize rad t-shirts, snazzy sneakers, and funky accessories in a super cool grid layout - shopping made easy! Position will spotlight our star product, the "Glow-in-the-Dark Disco Jacket," floating it center stage with a neon spotlight effect. Animations will bring playfulness, with the logo twirling and products bouncing on hover - pure pizzazz! And Media Queries ensure our site looks fabulous on phones, tablets, or desktops - no fashion faux pas here. Let's groove and style our way to a standout online boutique!
+Primary Goals
+Learn how to control the flow and positioning of elements using the display property.
+Gain a solid understanding of CSS position values and how to precisely position elements on a web page using CSS positioning techniques.
+Learn how to bring web pages to life with CSS animations and transitions to create smooth effects.
+Enhance the user experience through fluid layouts, media queries, and mobile optimization.
+Able to apply your knowledge effectively during the project implementation steps.
+ 
+Advanced CSS Techniques
+Display
+CSS Display is a property used to control the way an element is displayed on the page. It helps to define the type of box used for the element, and can also affect the element’s positioning and the way it interacts with other elements on the page. 
+There are several different values that can be used for the display property, each of which will display the element differently. The most commonly used values are block, inline, inline-block, and none. In addition to these values, CSS Display also includes a few more advanced options. This includes flexbox, grid, table, and run-in.
+Inline display: Inline display in CSS is a type of display setting that defines the display of an element as an inline-level box. This means that the element is displayed on the same line as other elements that are also set to inline. 
+It does not take up its own line, and its margins and padding will not affect the positioning of surrounding elements. Inline elements will appear in the same line as text and other inline elements, and will not take up the full width of their parent element. Inline elements are commonly used for styling text, such as setting font styles or adding images.
+Example
+div {
+  display: inline; 
+  width: 100px;
+  height: 50px;
+  padding: 5px;
+  border: 1px solid blue;  
+  background-color: aqua; 
+}
+Output:
+notion image
+Inline-block display: Inline-block display is a way to display an element in HTML using CSS. By setting the display property of an element to inline-block, the element will be displayed inline (on the same line as other elements) but will still be considered a block element and therefore be able to accept width and height values. 
+Example
+div {
+  display: inline-block;
+  width: 100px;
+  height: 50px;
+  padding: 5px;
+  border: 1px solid blue;    
+  background-color: aqua; 
+}
+Output:
+notion image
+Block display: Block display in CSS is used to define how an element is displayed on a page. It is a type of layout model in which elements are aligned and stacked on top of each other, as opposed to inline elements, which are positioned side-by-side.
+The width and height properties can be used to define the size of the element, and the margin, padding, and border properties can be used to define the spacing between elements.
+Example
+div {
+  display: block;
+  width: 100px;
+  height: 50px;
+  padding: 5px;
+  border: 1px solid blue;    
+  background-color: aqua; 
+}
+Output:
+notion image
+Run-in display: A run-in display is a term used in CSS (Cascading Style Sheets) to describe how blocks of text and other elements are displayed. This form of display allows a text element to be "run in" or merged with the next text element, creating a more compact and visually pleasing layout. 
+This can be beneficial when trying to create more efficient use of space on a web page. 
+Example
+div {
+  display: run-in;
+}
+Output:
+notion image
+None display: CSS's "none" display value is a powerful tool that can be used to completely remove an element from the page layout. When this value is applied to an element, it is no longer visible in the page or takes up any space. 
+This can be useful in a variety of situations, such as hiding elements from view temporarily, removing them from the page layout completely, or making them disappear when the user interacts with the page.
+The "none" display value can be applied to any HTML element, including divs, images, and form elements. To apply it to an element, simply add the "display: none;" declaration to the element's CSS declaration block.
+Example
+h1 {
+  display: none;
+}
+Output:
+In this case, h1 elements are not displayed on the screen.
+Flexbox
+The Flexbox paradigm allows us to arrange the content of our website. Not only that, but it also assists us in developing the structure required for developing responsive websites for numerous devices.
+Flexbox is a CSS  layout module designed to provide a flexible and efficient way to arrange and align elements within a container. It aims to solve common layout challenges, such as vertical centering, equal-height columns, and responsive design.
+Flexbox Architecture
+At its core, Flexbox introduces a one-dimensional layout model, meaning it deals with either rows or columns. 
+By using Flexbox, you can easily distribute space and control the alignment of elements along the main axis (horizontal for rows and vertical for columns) and the cross axis (vertical for rows and horizontal for columns).
+notion image
+Flexbox introduces several properties that allow you to control the layout and behavior of Flex Containers and Flex Items.
+For Parent Element:
+display: It specifies the display type of the element. Setting it to flex or inline-flex establishes a Flex Container.
+flex-direction: It defines the direction of the main axis and the order in which Flex Items are laid out. It’s values can be row (default), row-reverse, column, or column-reverse.
+Example
+<!DOCTYPE html>
+<html>
 
+  <head>
+    <style>
+      .box {
+        display: flex;
+        flex-direction: row-reverse;
+        border: 2px solid black;
+      }
+
+      .inside {
+        min-width: 50px;
+        min-height: 50px;
+        margin: 5px;
+        background-color: red;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="box">
+      <div class="inside">1</div>
+      <div class="inside">2</div>
+      <div class="inside">3</div>
+      <div class="inside">4</div>
+    </div>
+  </body>
+
+</html>
+Output:
+notion image
+flex-wrap: It determines whether Flex Items should wrap onto multiple lines or remain on a single line. It’s values can be nowrap (default), wrap, or wrap-reverse.
+Example
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <style>
+      .box {
+        display: flex;
+        flex-direction: row-reverse;
+        flex-wrap: wrap;
+        border: 2px solid black;
+      }
+
+      .inside {
+        min-width: 200px;
+        min-height: 200px;
+        margin: 5px;
+        background-color: red;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="box">
+      <div class="inside">1</div>
+      <div class="inside">2</div>
+      <div class="inside">3</div>
+      <div class="inside">4</div>
+      <div class="inside">5</div>
+      <div class="inside">6</div>
+      <div class="inside">7</div>
+      <div class="inside">8</div>
+      <div class="inside">9</div>
+      <div class="inside">10</div>
+      <div class="inside">11</div>
+    </div>
+  </body>
+
+</html>
+Output:
+notion image
+justify-content: It controls the alignment and distribution of Flex Items along the main axis. It offers options such as flex-start, flex-end, center, space-between, space-around, and space-evenly.
+Example
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <style>
+      .box {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+        border: 2px solid black;
+      }
+
+      .inside {
+        min-width: 200px;
+        min-height: 200px;
+        margin: 5px;
+        background-color: red;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="box">
+      <div class="inside">1</div>
+      <div class="inside">2</div>
+      <div class="inside">3</div>
+      <div class="inside">4</div>
+    </div>
+  </body>
+
+</html>
+Output:
+notion image
+align-items: It specifies the alignment of Flex Items along the cross axis. It’s values can be flex-start, flex-end, center, baseline, or stretch.
+Example
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <style>
+      .box {
+        display: flex;
+        align-items: center;
+        border: 2px solid black;
+        height: 400px;
+      }
+
+      .inside {
+        min-width: 200px;
+        min-height: 200px;
+        margin: 5px;
+        background-color: red;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="box">
+      <div class="inside">1</div>
+      <div class="inside">2</div>
+      <div class="inside">3</div>
+      <div class="inside">4</div>
+    </div>
+  </body>
+
+</html>
+Output:
+notion image
+ 
+align-content: It defines the alignment and spacing of multiple lines of Flex Items along the cross axis when they wrap. It’s options include flex-start, flex-end, center, space-between, space-around, and stretch.
+For Flex Items (Child Elements) Inside Flex Container
+flex-grow: It determines how much the Flex Item can grow relative to other items if there is extra space on the main axis. A value of 0 means it won't grow, and a positive value indicates the proportion of available space it can take.
+Example
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <style>
+      .box {
+        display: flex;
+        align-items: center;
+        border: 2px solid black;
+        height: 400px;
+      }
+
+      .inside {
+        min-width: 200px;
+        min-height: 200px;
+        margin: 5px;
+        background-color: red;
+      }
+
+      #one {
+        flex-grow: 1;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="box">
+      <div class="inside" id="one">1</div>
+      <div class="inside">2</div>
+      <div class="inside">3</div>
+      <div class="inside">4</div>
+    </div>
+  </body>
+
+</html>
+Output:
+notion image
+flex-shrink: it defines how much the Flex Item can shrink relative to other items if there is insufficient space on the main axis.  A value of 0 means it won't shrink, and a positive value indicates the proportion of space it can give up.
+flex-basis: It sets the initial size of the Flex Item on the main axis before any remaining space is distributed. It can be a specific length value, auto (based on the item's content size), or 0 (equivalent to flex-basis: 0%).
+flex: It is a shorthand property combining flex-grow, flex-shrink, and flex-basis in one declaration. The values are written in the following order: flex-grow, flex-shrink, flex-basis.
+Project Implementation Step 1:
+In all the Project Implementation Steps in Advanced CSS, we will use the same HTML file as used in CSS Fundamentals.
+* {
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:visited {
+  color: black;
+}
+
+header {
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 3px solid rgba(201, 195, 195, 0.778);
+}
+
+#head-title {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 100px;
+}
+
+#title-name {
+  color: rgb(245, 119, 47);
+  font-size: large;
+  font-weight: bold;
+}
+
+#logo {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 2px;
+}
+
+#login {
+  background-color: rgb(245, 119, 47);
+  color: white;
+  padding: 5px 30px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+nav {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+}
+
+#nav-end {
+  margin-right: 30px;
+}
+
+.nav-elements {
+  margin: 2px 30px;
+  font-weight: bold;
+}
+
+main {
+  min-height: 100vh;
+}
+
+#main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  background-image: url("./assets/travel.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  min-height: 40vh;
+}
+
+#location {
+  display: flex;
+  justify-content: center;
+}
+
+#location-select {
+  background-color: white;
+  margin: 5px;
+  padding: 5px;
+  width: 20rem;
+  box-shadow: 0px 0px 1px 1px rgb(189, 185, 185);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  font-size: medium;
+}
+
+#location-select p {
+  font-size: medium;
+  font-weight: bold;
+  margin: 0.5rem 4px 1rem;
+}
+
+#depart,
+#arrive {
+  margin: 1rem, 0;
+  outline: none;
+  border: none;
+  font-size: medium;
+}
+
+.tag-line {
+  text-align: center;
+}
+
+#s-button {
+  padding: 8px 30px;
+  background-color: rgb(245, 119, 47);
+  color: white;
+  font-weight: bold;
+  font-size: large;
+  border: none;
+  border-radius: 5px;
+  width: fit-content;
+  margin: 20px 0px;
+}
+
+.i-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5px 10px;
+  box-shadow: 0px 0px 2px 2px rgb(189, 185, 185);
+  padding: 10px;
+  width: 200px;
+}
+
+.i-image {
+  width: 120px;
+  height: 120px;
+}
+
+.i-count {
+  margin: 0;
+}
+
+.card-collection {
+  display: flex;
+  justify-content: center;
+}
+
+#testimonials {
+  display: flex;
+  justify-content: center;
+  margin-top: 10vh;
+  background-color: rgb(246, 245, 245);
+  padding: 20px;
+}
+
+.t-card {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 1em gray;
+}
+
+.t-card h3,
+.t-card p,
+.t-card h4 {
+  margin: 3px;
+}
+
+#rating {
+  width: 35px;
+  background-color: rgb(5, 141, 5);
+  text-align: center;
+  color: white;
+  font-size: small;
+  margin-top: 5px;
+  border-radius: 4px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(233, 225, 225, 0.977);
+}
+
+.social-icon {
+  width: 20px;
+  height: 20px;
+  margin: 0 3px;
+}
+Output:
+notion image
+Position
+CSS position is a property used to define how an element is positioned on a web page. It is used to control the flow of elements on a page, as well as to layer elements on top of one another. There are five possible values for the position: 
+Static positioning: A static position in CSS is the default position for an element in a web page. This position is without any special positioning instructions, and the element will appear as it normally would in the document flow. 
+The element will be positioned according to the normal flow of the document, which means that any elements preceding it in the HTML will appear above it, and any elements following it will appear below it. This is the simplest form of positioning and can be used for most web page elements.
+Example
+h1 {
+  position: static;
+  border: 3px solid aqua;
+}
+Output:
+notion image
+Relative positioning: Relative positioning in CSS is a positioning technique that allows an element to be positioned relative to its current position within the HTML document. This is different from absolute positioning, which positions an element relative to its parent container or the entire page. 
+It can be used to create overlapping elements, as well as to create a space between elements on the page.
+Relative positioning is achieved by using the position property and setting it to relative. The top, right, bottom, and left properties can then be used to position the element relative to its current position.
+Example
+h1 {
+  position: relative;
+  left: 40px;
+  border: 3px solid aqua;
+}
+Output:
+notion image
+Absolute positioning: Absolute positioning in CSS is a way to position elements on a page relative to the browser window or its parent container. It is achieved by using the position property and setting it to absolute. 
+When using absolute positioning, the element is taken out of the normal flow of the page and is positioned relative to its closest positioned ancestor (or the browser window if no ancestor is found).
+Absolute positioning is best used for elements that need to stay in a fixed location on the page, such as a navigation menu or a footer. It is also useful for elements that should not move when the page is resized, such as a logo.
+Example
+div.relative {
+  position: relative;
+  width: 400px;
+  height: 200px;
+  border: 3px solid aqua;
+} 
+
+div.absolute {
+  position: absolute;
+  top: 80px;
+  right: 0;
+  width: 200px;
+  height: 100px;
+  border: 3px solid aqua;
+}
+Output:
+notion image
+Fixed positioning: Fixed position in CSS is a positioning property that allows an element to remain in a fixed position on the page, even when the page is scrolled. It is used to keep an element in a fixed spot on the page, even when the page is scrolled. This is often used for navigation bars, so the user can easily navigate the page without having to scroll back up to the top.
+It is also used for advertising, so the advertisement stays in the same spot even when the user scrolls down the page. Fixed positioning is set using the position property with the value of “fixed”. The top, right, bottom, and left properties are then used to determine the exact position of the element.
+Example
+Code:
+h1 {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  border: 3px solid aqua;
+}
+Output:
+notion image
+Sticky positioning: Sticky positioning is a CSS property that allows elements to become "sticky" or "fixed" based on the user's scroll position within a container. 
+When an element is set to "position: sticky," it remains in its normal position within the document flow until the user scrolls to a specific threshold, at which point it becomes fixed to a specified position.
+The user must also specify at least one of top, right, bottom or left for sticky positioning to work.
+Example
+div.sticky {
+  position: sticky;
+  top: 0;
+  padding: 5px;
+  background-color: red;
+  border: 2px solid #4CAF50;
+  color: white;
+}
+Output:
+notion image
+To Change the flow of an element using the position property, CSS provides four other different properties, which are:
+top: top property allows the user to specify the distance between the top edge of an element and the top edge of its containing element or the nearest positioned ancestor. 
+bottom: Similar to top, the bottom property allows you to define the distance between the bottom edge of an element and the bottom edge of its containing element or the nearest positioned ancestor. .
+left: The left property determines the distance between the left edge of an element and the left edge of its containing element or the nearest positioned ancestor.
+right: In contrast to left, the right property specifies the distance between the right edge of an element and the right edge of its containing element or the nearest positioned ancestor.
+If the user doesn't explicitly set values for top, bottom, left, or right, or if the element's position property is not set to absolute, fixed, relative, or sticky, these properties are not active, and the element will follow the natural flow of the document.
+Project Implementation Step 2:
+In this Step, We will make the navbar sticky so that it will stick on top when the User scrolls down.
+header {
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 3px solid rgba(201, 195, 195, 0.778);
+  background-color: white;
+  position: sticky;
+  top: 0;
+	/*Making Navbar Stick to the top*/
+}
+Output:
+notion image
+Responsive Web Design
+The term responsive web design was coined by Ethan Marcotte. Responsive Web Design makes it easy to use fluid grids, flexible images, and media queries to incrementally improve his webpage for different viewing contexts. 
+For example:
+Smartphone: 320px
+Tablet: 768px
+Netbook: 1024px
+Desktop: 1600px
+Let's look at a simple usage of media queries with an example. This example specifies that resizing the window below 500 pixels will change the background color.
+Example
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        background-color: yellow;
+      }
+
+      @media only screen and (max-width: 500px) {
+        body {
+          background-color: green;
+        }
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <p>If you resize the browser window and the width of this document is less than 500 pixels, the background-color is "green", otherwise it is "yellow"</p>
+  </body>
+
+</html>
+Output:
+For Big Screen
+For Big Screen
+ 
+For Screen less than 500px
+For Screen less than 500px
+Media Queries
+CSS Media Query allows web developers to apply different styles and layout rules based on the characteristics of the device or browser displaying the web page. 
+By using media queries, you can create responsive web designs that adapt to different screen sizes and devices, providing an optimal viewing experience for users.
+The media type indicates the device's category, such as "screen" for computer screens or "print" for printers. Specific requirements such as screen width, device orientation, resolution, and others are defined by the expressions.
+A media query consists of a media type that can contain one or more expressions that can be either true or false.
+Media Query Syntax:
+@media not | only mediatype and (expression) {
+  // Code content
+}
+The result of the query is true if the specified media matches the type of device the document is displayed on. If the media query is true, then a style sheet is applied.
+The media type indicates the device's category, such as "screen" for computer screens or "print" for printers. Specific requirements such as screen width, device orientation, resolution, and others are defined by the expressions.
+There are various media types for media queries, some of which include:
+all: This media type applies to all types of devices.
+print: It specifically targets printers, allowing you to define styles for printing purposes.
+screen: This type is used for computer screens, smartphones, tablets, and similar devices. It's the most commonly used media type for creating responsive designs.
+speech: It is designed for screen readers that read the content aloud, allowing you to optimize the presentation for auditory output.
+There are various Media functions that can be used for media queries, some of which include:
+notion image
+Here is an example of the media query:
+@media screen and (max-width: 768px) {
+  /* Styles applied when the screen width is 768 pixels or less */
+  body {
+    background-color: lightblue;
+  }
+}
+In this example, the media query targets screens (@media screen) and includes a condition that checks if the maximum width of the screen is 768 pixels or less (and (max-width: 768px)). If the condition is met, the styles within the media query will be applied, in this case, changing the background color of the body element to light blue.
+Project Implementation Step 3:
+We will make our website responsive using media queries.
+@media screen and (max-width: 760px) {
+  header {
+    justify-content: space-around;
+  }
+
+  #head-title {
+    margin-left: 4px;
+  }
+
+  nav {
+    padding-left: 0px;
+    justify-content: flex-end;
+  }
+
+  #nav-end {
+    margin-right: 0px;
+  }
+
+  #location {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  header {
+    justify-content: space-around;
+  }
+
+  #title-name {
+    font-size: medium;
+  }
+
+  #logo {
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-right: 1px;
+  }
+
+  #head-title {
+    margin-left: 4px;
+  }
+
+  nav {
+    padding-left: 0px;
+    justify-content: flex-end;
+  }
+
+  #nav-end {
+    margin-right: 0px;
+  }
+
+  .nav-elements {
+    margin: 2px 10px;
+  }
+
+  #main-content {
+    min-height: 35vh;
+  }
+
+  #location-select {
+    width: 15rem;
+    padding: 2px;
+    marging: 0px;
+  }
+
+  #hide-display {
+    display: none;
+  }
+
+  #main-content {
+    background-size: 600px 400px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .tag-line {
+    font-size: large;
+  }
+
+  .t-card {
+    margin: 10px 1px;
+    padding: 20px 10px;
+  }
+
+  .card-collection {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #testimonials {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .social-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .t-card {
+    width: 280px;
+  }
+}
+Output:
+notion image
+Transitions and Transforms
+Transitions
+CSS transitions allow you to create smooth and gradual animations between different states or property values of an element.
+They provide a way to add motion and visual effects to your web page without the need for JavaScript or complex animations.
+With CSS transitions, you can specify which CSS properties should be animated, the duration of the animation, and the timing function that controls how the animation progresses over time. 
+When the specified property values change, the transition smoothly interpolates between the initial and final values, creating a gradual transition effect.
+CSS transitions offer several properties that control the animation:
+transition-property: This property allows you to specify which CSS properties should be animated during the transition change.
+The syntax for transition property is:
+transition-property: width;
+There are various values for transition-property which include:
+None is used to indicate that no property should be chosen.
+all is used to define all the attributes to be selected; however, because not all properties are animate-able, only the animate-able properties will be changed.
+We can provide a single property or a list of properties separated by commas. property1, property2,..., and so forth.
+transition-duration: This property lets you specify how long it will take to transition from one CSS property to the next. Here time for transition will be told to the user.
+The syntax for transition duration is:
+transition-duration: time;
+transition-timing-function: This attribute allows you to control the rate and manner of change throughout the transition. For example, the transition should be quick at first and gradual in the conclusion.
+The syntax for transition-timing-function is:
+transition-timing-function: ease|ease-in|ease-out|ease-in-out|linear| step-start|step-end;
+transition-delay: This parameter allows you to specify the length of time you want to wait before the transition begins. The time taken for start of the transition.
+The syntax for transition-delay property is:
+transition-delay: 2s;
+Transition Shorthand
+According to the syntax below, you may merge all four transition properties stated above into a single shorthand property. This saves us from writing large codes and keeps things tidy. Take note of the property ordering; it is significant.
+The syntax for transition shorthand is:
+transition: (property name) | (duration) | (timing function) | (delay);
+Example
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>CSS Transition</title>
+
+    <style>
+      h1 {
+        color: black;
+        text-align: center;
+      }
+
+      div.element {
+        height: 150px;
+        width: 150px;
+        border: 2px solid black;
+        margin: 0 auto;
+        background: yellow;
+        transition: all 2s ease;
+      }
+
+      div.element:hover {
+        height: 300px;
+        width: 300px;
+        background: #BBDEFB;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Transitions</h1>
+
+    <div class="element">
+    </div>
+  </body>
+</html>
+Output:
+Transforms
+CSS transform is a CSS property that allows you to apply various types of transformations to an element, such as rotating, scaling, skewing, and translating (moving) it in 2D or 3D space. 
+Transformations modify the appearance and position of an element without affecting the normal document flow or layout.
+Below is a list of some basic 2D transformation methods:
+translate(x,y): Used to translate the element along the x and y axes.
+translateX(n): Used to translate the element along the X axis.
+translateY(n): Used to translate the element along the Y axis.
+rotate(): Used to rotate an element based on an angle.
+scale(x,y): Used to change the width and height of an element.
+scaleX(n): used to change the width of the element.
+scaleY(n): used to change the height of the element.
+skewX(): Specifies a skew transformation along the X axis.
+skewY(): Specifies a skew transformation along the Y axis.
+matrix(): Specifies a matrix transformation.
+We will explain some of them one by one:
+translate(): The CSS translate() method is used to move an element from its current position according to specified parameters (X and Y axis).
+Let's see an example of translating an element 50 pixels to the right and 100 pixels down from the current position.
+Example
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <style>
+      div {
+        width: 300px;
+        height: 100px;
+        background-color: lightgreen;
+        border: 1px solid black;
+        transform: translate(100px, 80px);
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div>
+      This div element is translated 50 pixels right, and 100 pixels down from its current position by using translate () method.
+    </div>
+  </body>
+
+</html>
+Output:
+notion image
+rotate(): The CSS rotate() method is used to rotate an element clockwise or counterclockwise according to the specified angle.
+Let's look at a rotating example at 30 degrees in clockwise direction.
+Example
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <style>
+      div {
+        width: 300px;
+        height: 100px;
+        background-color: lightpink;
+        border: 1px solid black;
+      }
+
+      div#myDiv {
+        transform: rotate(30deg);
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div>
+      This a normal div element.
+    </div>
+    <div id="myDiv">
+      This is the 30 degree clockwise rotated div element by using rotate() method.
+    </div>
+  </body>
+
+</html>
+Output:
+notion image
+scale(): The CSS scale() method is used to increase or decrease the size of an element according to the given width and height.
+Let's take an example to increase the size of an element by increasing its width and height two times.
+Example
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <style>
+      div {
+        margin: 150px;
+        width: 200px;
+        height: 100px;
+        background-color: lightpink;
+        border: 1px solid black;
+        border: 1px solid black;
+        transform: scale(2.5, 2);
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div>
+      This div element is scaled 2.5 times of its original width, and 2 times of its original height.
+    </div>
+  </body>
+
+</html>
+Output:
+notion image
+skewX(): The CSS skewX() method is used to skew an element along the X axis according to the specified angle.
+Let's look at an example of distorting a 30 degree element along the X axis.
+Example
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <style>
+      div {
+        width: 300px;
+        height: 100px;
+        background-color: lightpink;
+        border: 1px solid black;
+      }
+
+      div#myDiv {
+        transform: skewX(30deg);
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div>
+      This a normal div element.
+    </div>
+    <div id="myDiv">
+      This div element is skewed 30 degrees along the X-axis.
+    </div>
+  </body>
+
+</html>
+Output:
+notion image
+skewY(): The CSS skewY() method is used to skew an element along the Y axis according to the specified angle.
+Let's look at an example of distorting a 30 degree element along the Y axis.
+Example
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <style>
+      div {
+        width: 300px;
+        height: 100px;
+        background-color: lightpink;
+        border: 1px solid black;
+      }
+
+      div#myDiv {
+        transform: skewY(30deg);
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div>
+      This a normal div element.
+    </div>
+    <div id="myDiv">
+      This div element is skewed 30 degrees along the Y-axis.
+    </div>
+  </body>
+
+</html>
+Output:
+notion image
+skew(): The CSS skew() method is used to skew an element along the X and Y axes according to the specified angle.
+Let's tilt the element 30 degrees along the x-axis and 20 degrees along the y-axis.
+Example
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <style>
+      div {
+        width: 300px;
+        height: 100px;
+        background-color: lightpink;
+        border: 1px solid black;
+      }
+
+      div#myDiv {
+        transform: skew(30deg, 20deg);
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div>
+      This a normal div element.
+    </div>
+    <div id="myDiv">
+      This div element is skewed 30 degrees along the X-axis, and 20 degrees along the Y-axis.
+    </div>
+  </body>
+
+</html>
+Output:
+notion image
+Animations
+CSS animations allow you to create more complex and dynamic motion effects on web pages. Animations consist of keyframes that define the intermediate states and property values that an element should have at different points during the animation.
+Here are the properties commonly used to control CSS animations:
+animation-name: It specifies the name of the keyframe animation defined using @keyframes. This property is mandatory for animations.
+animation-name: myAnimation;
+animation-duration: It sets the duration of the animation in seconds or milliseconds.
+animation-duration: 2s; /* 2 seconds */
+animation-duration: 500ms; /* 500 milliseconds */
+animation-timing-function: It defines the acceleration and deceleration of the animation. It determines how the intermediate states are calculated over the duration. Common values include ease (default), linear, ease-in, ease-out, ease-in-out, and cubic-bezier(n,n,n,n).
+animation-timing-function: ease-in-out;
+animation-delay: It specifies a delay before the animation starts. It can be set in seconds or milliseconds.
+animation-delay: 1s;       /* 1 second */
+animation-delay: 250ms;    /* 250 milliseconds */
+animation-iteration-count: It sets the number of times the animation should repeat. It can be a specific number or infinite to repeat indefinitely.
+animation-iteration-count: 3;           /* Repeat 3 times */
+animation-iteration-count: infinite;    /* Repeat indefinitely */
+animation-direction: It determines whether the animation should play in a forward direction, in reverse, or alternate between forward and reverse on each iteration. Values include normal (default), reverse, alternate, and alternate-reverse.
+animation-direction: reverse;
+animation-fill-mode: Specifies how the element should be styled before and after the animation. Values include none (default), forwards, backwards, and both.
+animation-fill-mode: forwards;
+animation-play-state: Controls whether the animation is running or paused. Values are running (default) and paused.
+animation-play-state: paused;
+animation: It is a shorthand property that combines multiple animation properties into a single declaration. 
+It allows you to specify the animation-name, animation-duration, animation-timing-function, animation-delay, animation-iteration-count, animation-direction, and animation-fill-mode in one line.
+animation: myAnimation 2s ease-in-out 1s infinite alternate;
+Keyframes
+Keyframes are used to define the intermediate states and property values of an animation. Keyframes allow you to specify how an element should appear at various points during an animation's timeline. 
+Each keyframe represents a specific point in time, and you can define the CSS properties and their values that should be applied at that moment.
+Explanation:
+@keyframes myAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+In this code, myAnimation is the name given to the keyframe animation. It consists of three keyframes defined at 0%, 50%, and 100%. At the beginning (0%), the element has an opacity of 0. At 50%, the opacity is set to 0.5, and a scale transform is applied. Finally, at 100%, the opacity is set to 1.
+Animation Example:
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <style>
+      @keyframes slide-in {
+        0% {
+          transform: translateX(-100%);
+        }
+
+        100% {
+          transform: translateX(0);
+        }
+      }
+
+      .box {
+        width: 200px;
+        margin: 0 auto;
+        height: 200px;
+        background-color: red;
+        animation-name: slide-in;
+        animation-duration: 2s;
+        animation-timing-function: ease-in-out;
+        animation-delay: 1s;
+        animation-iteration-count: infinite;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="box">
+      This a normal div element.
+    </div>
+  </body>
+
+</html>
+Output:
+ 
+Project Implementation Step 4
+We will style the search button in such a way that it will animate in different colors while hovering.
+#s-button:hover {
+  background-image: linear-gradient(to right,
+      #e7484f,
+      #e7484f 16.65%,
+      #f68b1d 16.65%,
+      #f68b1d 33.3%,
+      #fced00 33.3%,
+      #fced00 49.95%,
+      #009e4f 49.95%,
+      #009e4f 66.6%,
+      #00aac3 66.6%,
+      #00aac3 83.25%,
+      #732982 83.25%,
+      #732982 100%,
+      #e7484f 100%);
+  animation: slidebg 2s linear infinite;
+}
+
+@keyframes slidebg {
+  to {
+    background-position: 20vw;
+  }
+}
+Output:
+notion image
+Project Implementation Step 5
+This is the design of the contact us form in the HTML advance Lesson, Here we have aligned and styled the form. In this the style for header and footer is same as the home page.
+HTML:
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserve</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style2.css"> -->
+
+  </head>
+
+  <body>
+    <header>
+      <div id="head-title">
+        <img src="./assets/bus.png" alt="bus" id="logo" />
+        <div id="title-name">RESERVE</div>
+      </div>
+      <nav>
+        <div id="hide-display">
+          <a href="" target="_blank" class="nav-elements">Tickets</a>
+          <a href="" target="_blank" class="nav-elements">Contact Us</a>
+        </div>
+        <div id="nav-end">
+          <a href="" id="login">Login</a>
+          <a href="" class="nav-elements">Register</a>
+        </div>
+      </nav>
+    </header>
+    <main id="contact-us">
+      <form action="#" method="post" id="contact-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required /><br /><br />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required /><br /><br />
+
+        <label for="mobile">Mobile Number:</label>
+        <input type="tel" id="mobile" name="mobile" required /><br /><br />
+
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="male" required />
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female" />
+        <label for="female">Female</label>
+        <input type="radio" id="pnts" name="gender" value="pnts" />
+        <label for="pnts">Prefer not to say</label>
+        <br /><br />
+
+        <label for="message">Message:</label><br /><br />
+        <textarea id="message" name="message" rows="4" cols="50" required></textarea><br /><br />
+
+        <label for="image">Upload Image:</label>
+        <input type="file" id="image" name="image" /><br /><br />
+
+        <label for="newsletter">Subscribe to Newsletter:</label>
+        <input type="checkbox" id="newsletter" name="newsletter" /><br /><br />
+
+        <input type="submit" value="Submit" id="button-submit" />
+      </form>
+    </main>
+    <footer>
+      <p>&copy; 2023 AlmaBetter. All rights reserved</p>
+      <div class="social-media">
+        <a href="https://www.facebook.com"><img src="./assets/facebook.png" alt="Facebook" class="social-icon"></a>
+        <a href="https://www.twitter.com"><img src="./assets/twitter.png" alt="Twitter" class="social-icon"></a>
+        <a href="https://www.instagram.com"><img src="./assets/instagram.png" alt="Instagram" class="social-icon"></a>
+      </div>
+    </footer>
+  </body>
+
+</html>
+CSS:
+#contact-us {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  background-color: #79e0ee;
+}
+
+#contact-form {
+  max-height: 900px;
+  border: 2px solid #ffd0d0;
+  padding: 30px;
+  border-radius: 5px;
+  font-size: large;
+  font-weight: 700;
+  background-color: #ffd0d0;
+}
+
+#button-submit {
+  height: 30px;
+  width: 100px;
+  color: white;
+  background-color: rgb(80, 78, 78);
+  border: none;
+}
+
+#contact-form input {
+  padding: 2px;
+}
+Output:
+notion image
+Project Implementation Step 6
+This is the design of the tables in the HTML advance Lesson, Here we have aligned and styled the tables. In this the style for header and footer is same as that of home page.
+HTML:
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserve</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style2.css"> -->
+
+  </head>
+
+  <body>
+    <header>
+      <div id="head-title">
+        <img src="./assets/bus.png" alt="bus" id="logo" />
+        <div id="title-name">RESERVE</div>
+      </div>
+      <nav>
+        <div id="hide-display">
+          <a href="" target="_blank" class="nav-elements">Tickets</a>
+          <a href="" target="_blank" class="nav-elements">Contact Us</a>
+        </div>
+        <div id="nav-end">
+          <a href="" id="login">Login</a>
+          <a href="" class="nav-elements">Register</a>
+        </div>
+      </nav>
+    </header>
+    <main id="table-layout">
+      <table id="table-style">
+        <caption>Reserve Bus Schedule</caption>
+        <thead>
+          <tr>
+            <th>Bus Details</th>
+            <th colspan="4">Trip Information</th>
+          </tr>
+          <tr>
+            <th scope="col">Bus Number</th>
+            <th scope="col">Origin</th>
+            <th scope="col">Destination</th>
+            <th scope="col">Departure Time</th>
+            <th scope="col">Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ASC712</td>
+            <td>New York City</td>
+            <td>Boston</td>
+            <td>09:00 AM</td>
+            <td>2 hours</td>
+          </tr>
+          <tr>
+            <td>XYZ789</td>
+            <td>San Francisco</td>
+            <td>Los Angeles</td>
+            <td>11:30 AM</td>
+            <td>3 hours</td>
+          </tr>
+          <tr>
+            <td>DEF456</td>
+            <td>Miami</td>
+            <td>Orlando</td>
+            <td>10:45 AM</td>
+            <td>4 hours</td>
+          </tr>
+          <tr>
+            <td>GHI789</td>
+            <td>Chicago</td>
+            <td>St. Louis</td>
+            <td>08:15 AM</td>
+            <td>5 hours</td>
+          </tr>
+          <tr>
+            <td>JKL012</td>
+            <td>Seattle</td>
+            <td>Portland</td>
+            <td>09:30 AM</td>
+            <td>3.5 hours</td>
+          </tr>
+          <tr>
+            <td>MNO345</td>
+            <td>Denver</td>
+            <td>Las Vegas</td>
+            <td>12:00 PM</td>
+            <td>6 hours</td>
+          </tr>
+          <tr>
+            <td>RVC109</td>
+            <td>Atlanta</td>
+            <td>Nashville</td>
+            <td>10:00 AM</td>
+            <td>4.5 hours</td>
+          </tr>
+          <tr>
+            <td>STU901</td>
+            <td>Houston</td>
+            <td>San Antonio</td>
+            <td>11:15 AM</td>
+            <td>2.5 hours</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+    <footer>
+      <p>&copy; 2023 AlmaBetter. All rights reserved</p>
+      <div class="social-media">
+        <a href="https://www.facebook.com"><img src="./assets/facebook.png" alt="Facebook" class="social-icon"></a>
+        <a href="https://www.twitter.com"><img src="./assets/twitter.png" alt="Twitter" class="social-icon"></a>
+        <a href="https://www.instagram.com"><img src="./assets/instagram.png" alt="Instagram" class="social-icon"></a>
+      </div>
+    </footer>
+  </body>
+
+</html>
+CSS:
+#table-layout {
+  padding: 50px 15px;
+}
+
+caption {
+  font-size: large;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+
+#table-style {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  min-height: 70vh;
+}
+
+#table-style td,
+#table-style th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#table-style tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#table-style tr:hover {
+  background-color: #ddd;
+}
+
+#table-style th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #04aa6d;
+  color: white;
+}
+Output:
+notion image
+ 
+Summary
+What did we learn?
+The CSS display property allows you to control the way elements are displayed on a webpage. It offers different values such as block, inline, inline-block, none, flexbox, grid, table, and run-in.
+The CSS position property is used to control the positioning of elements on a web page. 
+The position property offers five values: static, relative, absolute, fixed, and sticky. Static is the default positioning, where elements flow naturally in the document.
+Responsive web design utilizes fluid grids, flexible images, and media queries to create adaptive layouts for different devices and screen sizes. 
+Media queries allow developers to apply specific styles and layout rules based on device characteristics, enabling optimal viewing experiences.
+CSS transitions allow for smooth and gradual animations between different states or property values of an element, providing visual effects without the need for JavaScript or complex animations
+CSS transform is a property that allows you to apply various transformations to an element, such as translation, rotation, scaling, and skewing.
+CSS animations enable the creation of dynamic and interactive visual effects on web pages by defining keyframes and animating properties, enhancing the user experience and engagement.
+Shortcomings & Challenges
+Not all browsers support the latest CSS animation features, transitions, transforms, or positioning properties. This can result in inconsistent or broken animations across different browsers and versions.
+CSS animations and advanced transition techniques can have a steep learning curve, requiring a good understanding of keyframes, timing functions, and animation properties.
+CSS animations and transitions provide high-level control over the animation effects, but they may not offer fine-grained control over every aspect of the animation.
+CSS animations and transitions are primarily designed for visual effects and do not provide extensive interactivity. While they can respond to user interactions like hover or click events, they have limitations when it comes to complex interactive animations or dynamic user input.
+Best practices to follow
+To ensure better browser compatibility, use vendor prefixes (-webkit-, -moz-, -o-, -ms-) for CSS animation properties. Additionally, consider using polyfills or fallbacks for older browsers that do not support certain animation features.
+Use animations and transitions sparingly and purposefully to enhance the user experience and draw attention to important elements or interactions. Avoid excessive or distracting animations that can overwhelm or confuse users.
+Test your animations across different browsers, devices, and screen sizes to ensure consistent behavior. Iterate and refine your animations based on user feedback and performance observations to optimize their effectiveness.
+While CSS animations and transitions can achieve a lot, combining them with JavaScript can offer more control and interactivity. Consider using JavaScript libraries or frameworks like GSAP or Anime.js for advanced animation effects or complex interactive animations that go beyond CSS capabilities.
+ 
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+CSS Flexbox Tutorial with Flexbox Properties Cheat Sheet: https://www.freecodecamp.org/news/css-flexbox-tutorial-with-cheatsheet/
+How To Create Advanced Animations With CSS: https://www.smashingmagazine.com/2022/10/advanced-animations-css/
+CSS Display and CSS Position: https://dev.to/w3tsa/css-display-and-css-position-4ldi
+ 
+Try it Yourself
+Let's build this mini project in the VS Code IDE. Don't forget to join the AlmaBetter Community to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
+Task 1: Unleash your creativity with CSS problem-solving – conquer challenges right in the VS Code IDE.
+Problem
+Task 1: Create a CSS class called "box" that sets the display property to "block" and the background color to "orange". Apply this class to the HTML element with the ID "box1".
+HTML Code for reference
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <style>
+      /* Enter your CSS Code here. */
+    </style>
+  </head>
+
+  <body>
+    <div id="box1" class="box">This is a box.</div>
+  </body>
+
+</html>
+Task 2: Create a CSS class called "flex-container" that sets the display property to "flex" and the flex direction to "column". Apply this class to the HTML element with the class "container".
+HTML Code for reference
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <style>
+      /* Enter your CSS Code here. */
+    </style>
+  </head>
+
+  <body>
+    <div class="container flex-container">
+      <div class="box">Box 1</div>
+      <div class="box">Box 2</div>
+      <div class="box">Box 3</div>
+    </div>
+  </body>
+
+</html>
+Task 3: Create a CSS class called "absolute-position" that sets the position property to "absolute" and the top property to "20px" and left property to "100px". Apply this class to the HTML element with the ID "box2".
+HTML Code for reference
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <style>
+      /* Enter your CSS Code here. */
+    </style>
+  </head>
+
+  <body>
+    <div id="box2" class="absolute-position">This is an absolute positioned box.</div>
+  </body>
+
+</html>
+Task 4: Create a CSS media query that targets screens with a maximum width of 768 pixels. Inside the media query, set the background color of the HTML body to "#c3b3a3".
+HTML Code for reference
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <style>
+      /* Enter your CSS Code here. */
+    </style>
+  </head>
+
+  <body>
+    <div>
+      Responsiveness using Media Query.
+      It changes color when screen size is changed less than 768px.
+    </div>
+  </body>
+
+</html>
+Task 5: Create a CSS class called "transition" that sets the transition property to "background-color" and the transition duration to "0.3s". Apply this class to the HTML element with the ID "box3". On hover, change the background color of "box3" to "#ff0000".
+HTML Code for reference
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <style>
+      /* Enter your CSS Code here. */
+    </style>
+  </head>
+
+  <body>
+    <div id="box3" class="transition">Hover over me</div>
+  </body>
+
+</html>
+Solution
+Task 1
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <style>
+      .box {
+        display: block;
+        background-color: orange;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div id="box1" class="box">This is a box.</div>
+  </body>
+
+</html>
+Task 2
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <style>
+      .flex-container {
+        display: flex;
+        flex-direction: column;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="container flex-container">
+      <div class="box">Box 1</div>
+      <div class="box">Box 2</div>
+      <div class="box">Box 3</div>
+    </div>
+  </body>
+
+</html>
+Task 3
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <style>
+      .absolute-position {
+        position: absolute;
+        top: 50px;
+        left: 100px;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div id="box2" class="absolute-position">This is an absolute positioned box.</div>
+  </body>
+
+</html>
+Task 4
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <style>
+      @media (max-width: 768px) {
+        body {
+          background-color: #c3b3a3;
+        }
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div>
+      Responsiveness using Media Query.
+      It changes color when screen size is changed less than 768px.
+    </div>
+  </body>
+
+</html>
+Task 5
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <style>
+      .transition {
+        transition: background-color 0.3s;
+      }
+
+      #box3:hover {
+        background-color: #ff0000;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div id="box3" class="transition">Hover over me</div>
+  </body>
+
+</html>
+Task 2: Feel free to add additional information or formatting to enhance the user experience. Share your experience and insights with your Cohort group on AlmaBetter's Community Platform.
