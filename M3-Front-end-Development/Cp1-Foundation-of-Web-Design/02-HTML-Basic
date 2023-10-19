@@ -1,32 +1,19 @@
-HTML Basics
-Session Flow
+HTML Advanced
+Session flow
 Learning Objective
 Introduction
 Theme
 Primary Goals
-HTML Basics
-Introduction to HTML
-HTML <!DOCTYPE html> Declaration
-<html> tag
+HTML Advanced
+Forms in HTML
+Important attributes of Form control
 Project Implementation Step 1
-<head> tag
+Tables in HTML
 Project Implementation Step 2
-<body> tag
+Lists in HTML
 Project Implementation Step 3
-<header> tag
-<img> tag
-<div> tag
+iframe in HTML
 Project Implementation Step 4
-<main> tag
-<section> tag
-Dropdown in HTML
-Project Implementation Step 5
-<p> tag
-<h1> to <h6> tags
-<button> tag
-Project Implementation Step 6
-<footer> tags
-Project Implementation Step 7
 Summary
 What did we learn?
 Shortcomings & Challenges
@@ -35,292 +22,233 @@ Enhance your knowledge
 Try it Yourself
 Learning Objective
 Introduction
-HTML, or Hypertext Markup Language, is the backbone of the web. It is a markup language that structures the content of web pages, defining the elements, layout, and formatting.
-Focus: Basics of HTML, Different HTML Tags, and Attributes
-Prerequisites: VS Code IDE
+HTML (Hypertext Markup Language) has several advanced concepts that can enhance your web development skills and allow you to create more sophisticated and interactive web pages.
+Focus: HTML Forms, Tables, Lists, and iframe
+Prerequisites: VS Code IDE and HTML Basics
 Theme
-Airbnb is a popular online marketplace for booking accommodations and experiences worldwide. HTML plays a crucial role in shaping the user interface and functionality of Airbnb's website. From displaying property listings, interactive search filters, and booking calendars to user reviews, host profiles, and secure payment options, HTML is instrumental in structuring and presenting the vast amount of information on the platform.
-By leveraging HTML effectively, Airbnb ensures a visually appealing and user-friendly experience for individuals seeking accommodations or hosting their properties. HTML's flexibility allows Airbnb to cater to diverse user needs and provide a seamless browsing and booking process for travelers around the globe.
+Medium is a popular online publishing platform that incorporates various HTML advanced concepts to provide an interactive and user-friendly reading experience. The medium allows users to sign up, log in, and interact with the platform through forms. They use HTML form elements such as input fields, checkboxes, and buttons to collect user information and enable actions like submitting an article or leaving comments.
+They also utilize HTML lists to structure and present content. They use ordered lists (<ol>) and unordered lists (<ul>) to display numbered and bulleted lists, respectively. This helps in presenting information in an organized and readable manner.
+The medium may incorporate HTML tables to present tabular data or layout information in a structured format. Tables can be used for presenting data, such as statistics or comparisons, or for organizing content in a grid-like structure. 
+They may also use iframes to embed external content within their articles. For example, they might embed videos from platforms like YouTube or display interactive elements from other websites. The use of iframes allows Medium to incorporate rich media and interactive features seamlessly into their articles.
 Primary Goals
-Gain a solid understanding of HTML, its purpose, and how it is used to structure web pages.
-Become familiar with fundamental HTML tags like <!DOCTYPE html>, <html>, <head>, <body> etc.
-Apply the concepts learned in each step to implement a project, gradually building a webpage based on the provided project implementation steps.
-Learn how to use appropriate HTML tags to structure different parts of a webpage, such as the header, main content, sections, and footer.
-Explore additional HTML elements and features like dropdown menus to enhance the user experience and interactivity of the webpage.
+Understand the fundamentals of HTML forms and their various input elements.
+Learn how to structure and present tabular data using HTML tables.
+Gain knowledge about creating ordered, unordered and definition lists in HTML.
+Understand the concept of iframes and how to embed external content within a webpage.
+Able to apply your knowledge effectively during the project implementation steps.
  
-HTML Basics
-Introduction to HTML
-HTML stands for Hypertext Markup Language. It is the standard markup language used for creating web pages and applications. HTML provides a structured way to organize and format the content of a webpage, including text, images, videos, links, forms, and more.
-HTML is composed of a series of elements or tags, which are enclosed within angle brackets (< and >). These tags define the structure and semantics of the content. For example, the <h1> tag represents a heading, the <p> tag represents a paragraph, and the <img> tag represents an image.
-Here's a simple example of an HTML document structure:
-<!DOCTYPE html>
-<html>
-<head>
-  <title>My First Web Page</title>
-</head>
-<body>
-  <h1>Welcome to My Web Page</h1>
-  <p>This is a paragraph of text.</p>
-  <img src="image.jpg" alt="Example Image">
-  <a href="https://www.example.com">Visit Example.com</a>
-</body>
-</html>
-In this example, we have an HTML document enclosed within the <html> tag. The document is divided into two main sections: the <head> section, which contains meta-information about the document, such as the title displayed in the browser's title bar, and the <body> section, which contains the visible content of the webpage.
-Inside the <body> section, we have various HTML elements. The <h1> tag represents a heading, the <p> tag represents a paragraph, the <img> tag displays an image, and the <a> tag creates a hyperlink to another web page. We will study them thoroughly.
-HTML is a markup language, meaning it uses tags to structure and format the content, but it does not directly control the visual appearance of the webpage. The presentation and styling of HTML elements are typically handled using CSS (Cascading Style Sheets) and JavaScript for interactivity.
-By combining HTML, CSS, and JavaScript, web developers can create interactive and visually appealing websites and web applications that can be accessed and displayed in web browsers on various devices. HTML is a fundamental building block of the web and serves as the backbone for creating web pages and delivering content on the internet.
-HTML <!DOCTYPE html> Declaration
-Every HTML document should start with a <!DOCTYPE> declaration.
-So as you know, this declaration isn't an HTML tag. It's more like a heads-up to the browser, letting it know what type of document to expect.
-In HTML 5, the declaration is simple:
-<!DOCTYPE html>
-
-<!-- HTML elements go here -->
-Comments in HTML
-In HTML, you can add comments to your code to provide explanations, notes, or reminders for yourself or other developers. Comments are not displayed in the browser when the page is rendered and are ignored by the HTML parser. They are purely for human readability. Here's how you can add comments in HTML:
-Single-line comments: To add a comment that spans a single line, you can use the <!-- --> syntax. Anything between these opening and closing comment tags will be treated as a comment.
-Here's an example:
-<!-- This is a single-line comment -->
-Multi-line comments: If you want to add comments that span multiple lines, you can use a combination of <!-- at the beginning and --> at the end.
-Here's an example:
-<!--
-    This is a multi-line comment.
-    It can span multiple lines.
--->
-Note
-It's important to note that comments should be used judiciously and for valid reasons, such as explaining complex code, providing context, or temporarily disabling code. They can be helpful for yourself and other developers working on the codebase. However, excessive or unnecessary comments can clutter the code and make it harder to read and maintain.
-Remember that comments are ignored by the browser and don't affect the rendered output of the HTML page. They are purely for documentation and organization purposes within the HTML source code.
-<html> tag
-The <html> tag is the root element of an HTML document. It holds everything together and represents the whole web page. Remember to close it with </html> to keep things in order.
-Here's the deal with the <html> tag:
-Nesting: All the other HTML elements, like <head> and <body>, hang out inside the <html> tag. The <head> usually comes right after the <html> tag, and the <body> follows the <head>.
-Structure Power: Whatever you put between the <html> tags determines how your web page looks and behaves. You can add headers, paragraphs, lists, images, links, and all that jazz.
-HTML Language Alert: With the <html> tag, you can specify the HTML version and language. For example, <html lang="en"> tells the browser and search engines that it's English content they're dealing with.
-Here's an example of a basic HTML structure using the <html> tag:
-<!DOCTYPE html>
-<html lang="en">
-
-  <!-- More HTML elements go here -->
-
-</html>
-The <html> tag serves as the foundation for structuring and organizing the elements that make up a web page, allowing browsers to interpret and render the content correctly.
+HTML Advanced
+Forms in HTML
+HTML forms are an essential part of web development as they allow users to input and submit data. HTML provides a set of elements and attributes to create forms. Here's a detailed explanation of HTML forms and their components:
+<form> element: The <form> element is used to create a form. It acts as a container for various form controls. It has two important attributes:
+action: Specify the URL or endpoint where the form data should be sent upon submission.
+method: Specify the HTTP method to be used when submitting the form, either "get" or "post.”
+Here's an example of how the <form> tag is used:
+<form action="/submit_form" method="post">
+  <!-- form controls go here -->
+</form>
+In the upcoming sections of this course, we will explore this type in more detail.
+Form controls: Form controls are elements that allow users to input and select data. Here are some commonly used form controls:
+<input>: Creates an input field for various types of data, such as text, email, password, checkboxes, radio buttons, etc.
+Name: The name field allows users to input their names. It is typically a single-line text input (<input type="text">).
+Email: The email field is used for collecting email addresses. It ensures that the entered value follows a valid email format (<input type="email">).
+Mobile: The mobile field is used to collect users' phone numbers. It can accept numeric input and may include additional validation or formatting requirements (<input type="tel">).
+Radio Button: Radio buttons are used when users need to choose one option from a list. They provide a set of mutually exclusive options, and only one option can be selected at a time (<input type="radio">).
+Checkbox: Checkboxes allow users to select one or more options from a set of choices. Each checkbox is independent of the others, and multiple options can be selected simultaneously (<input type="checkbox">).
+Text area: The text area allows users to input multiple lines of text. It is useful for collecting longer messages, comments, or descriptions (<textarea></textarea>).
+File Upload: The file upload field enables users to select and upload files from their local device to the server. It typically displays a "Browse" or "Choose File" button (<input type="file">).
+Submit Button: The submit button triggers the form submission process. When clicked, it sends the form data to the server for processing (<input type="submit"> or <button type="submit"></button>).
+Here's an example of how different <form> elements are used:
+<input type="text" name="username" id="username">
+<textarea name="message" id="message" rows="4"></textarea>
+<button type="submit">Submit</button>
+Important attributes of Form control:
+name attribute: The name attribute is used to identify form controls when the form is submitted. It serves as the key for the corresponding input value.
+Example:
+<input type="text" name="username">
+label element: The <label> element provides a text label for form controls. It improves accessibility and usability by associating the label with its corresponding control.
+Example:
+<label for="username">Username:</label>
+<input type="text" name="username" id="username">
+required attribute: The required attribute makes a form control mandatory, ensuring the user provides a value before submitting the form.
+Example:
+<input type="text" name="username" required>
+These are the fundamental components of HTML forms. You can enhance forms by implementing form validation, styling, and utilizing JavaScript for client-side interactivity.
 Project Implementation Step 1:
-The first step is to create an opening <html> tag and include the lang attribute to specify the language of the document.
+The code snippet provided is an HTML form for Contact Us section of the Reserve App.
 <!DOCTYPE html>
 <html lang="en">
-
-  <!-- More HTML elements go here -->
-
-</html>
-<head> tag
-The <head> tag is like the behind-the-scenes superstar of an HTML document. It contains important information and instructions for the browser, shaping how your web page is presented and behaves.
-Here's the deal with the <head> tag:
-Meta-information: Within the <head> tags, you can include elements like <title>, <meta>, <link>, and <style>. These elements provide crucial details and instructions to the browser, such as the document title, character encoding, linked stylesheets, and more.
-This meta tag specifies the character encoding for the HTML document. In this case, it is set to "UTF-8," a widely-used character encoding standard that supports a wide range of characters and alphabets. UTF-8 ensures the webpage can properly display and handle different languages and special characters.
-A favicon, short for "favorite icon," is a small icon associated with a website displayed in the browser's address bar, next to the page title, and in bookmarks or tabs. It helps users quickly identify and recognize a website.
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />: This meta tag is related to responsive web design and is used to control the initial layout and scaling of the webpage on different devices. It includes two properties:
-width=device-width: This property sets the width of the webpage to the width of the device's screen. It ensures that the webpage adjusts its layout to fit the screen size, allowing for a better user experience on various devices.
-initial-scale=1.0: This property sets the initial zoom level when the webpage is first loaded. A value of 1.0 means that the webpage is displayed at a 1:1 scale without any zooming. This ensures that the webpage appears at an optimal size when accessed on different devices.
-Document Title: One key element in the <head> section is <title>. It lets you set the title that appears in the browser's title bar or tab. It's like naming your web page!
-External Resources and Scripts: The <head> section is where you can link external resources, such as CSS stylesheets and JavaScript files, using the <link> and <script> elements. These resources enhance the presentation and functionality of your web page.
-SEO and Accessibility Boost: You can also include meta tags, like <meta name="description" content="...">, in the <head> section to provide a description of your web page for search engines. It's an opportunity to improve search engine optimization (SEO) and make your page more accessible.
-Here's an example of an HTML structure with the <head> tag:
- <head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="shortcut icon" href="favicon.ico" />
-    <title>Title of the document</title>
- </head>
-In this example, the <head> section contains the <meta> element to specify the character encoding, the <title> element for the document title, and the <link> and <script> elements to link external CSS and JavaScript files, respectively.
-Project Implementation Step 2:
-Now, create an <head> tag inside the html document and add <meta> and <title> tags inside it.
-<!DOCTYPE html>
-<html lang="en">
-
- <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Reserve</title>
-</head>
-
-</html>
-Output:
-notion image
-<body> tag
-The <body> tag is where the real action happens in an HTML document. It represents the content users see and interact with on your web page. It's where you bring together all the elements to create a visually appealing, interactive, and engaging experience for your website visitors. Don't forget to close it with </body> to keep things organized.
-Here's the scoop on the <body> tag:
-Content: All the visible elements that make up your web page, such as text, images, headings, paragraphs, links, and more, reside within the <body> tags. This is where you bring your web page to life!
-Page Structure: The order and arrangement of elements within the <body> tag define the structure and layout of your web page. You can use HTML elements like <header>, <nav>, <main>, <section>, and <footer> to organize and structure your content for better readability and accessibility.
-Interactive Elements: The <body> section is where you can include interactive elements like forms, buttons, input fields, and multimedia content such as videos and audio. These elements allow users to interact with your web page and enhance the user experience.
-Styling and Scripting: You can also include inline styles or link external CSS stylesheets within the <body> section to define the visual appearance of your content. Additionally, JavaScript code can be placed within <script> tags in the <body> section to add interactivity and dynamic behavior to your web page.
-Here's an example of an HTML structure with the <body> tag:
-<body>
-    <header>
-      <!-- More HTML elements go here -->
-    </header>
-
-    <main>
-      <!-- More HTML elements go here -->
-    </main>
-
-    <footer>
-      <!-- More HTML elements go here -->
-    </footer>
-</body>
-In this example, the <body> section contains the visible content of the web page, such as the <header> section, a <main> section, and a <footer> section at the end.
-Semantic Elements
-Semantic elements in HTML are tags that provide meaning and structure to the content within a webpage. They help to convey the purpose and significance of different sections or elements of a webpage, making the code more readable, accessible, and search engine-friendly. Here are some commonly used semantic elements in HTML: <header>, <nav>, <main>,  <section>, <aside>, <footer>.
-In the non-semantic example, <div> is a generic container element that does not provide any specific meaning or structure to the content. It is often used for grouping or styling purposes. While it can be styled to resemble a heading visually, it does not carry the semantic significance of a heading, making it less informative to assistive technologies and search engines.
-By using semantic elements, you make your HTML more meaningful and accessible, enhancing the overall user experience and improving the search engine optimization of your website.
-Project Implementation Step 3:
-Add a <body> tag with with a <header> tag inside it.
-<!DOCTYPE html>
-<html lang="en">
-
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reserve</title>
   </head>
-
   <body>
+    <!-- Navigation Bar -->
     <header>
-      <!-- More HTML elements go here -->
-    </header>
-
-		<main>
-      <!-- More HTML elements go here -->
-    </main>
-
-    <footer>
-      <!-- More HTML elements go here -->
-    </footer>
-  </body>
-
-</html>
-<header> tag
-The <header> tag is an HTML semantic element that represents the introductory section or a container for the header of a webpage or a section within a webpage. It typically contains information considered introductory or related to the overall content of the webpage. Here's a breakdown of its usage and characteristics:
-The <header> element is usually placed at the top of a webpage or within a section to introduce the main content or provide a consistent header across multiple sections. 
-The <header> tag carries semantic meaning, signaling that the enclosed content is related to the introductory or navigational aspects of the webpage. Assistive technologies, search engines, and developers can interpret this information to understand the significance of the content within the header.
-<header>
-  <nav>
-    <!-- More HTML elements go here -->
-  </nav>
-</header>
-<nav> tag
-In HTML, the <nav> tag is used to define a section of a webpage that contains navigation links. It is part of the semantic HTML5 markup, which provides a clearer structure and meaning to the content of a webpage. The <nav> element is typically used to group together a set of navigation-related links.
-Here's an explanation of the elements commonly used within a <nav> tag:
-<a> (Anchor) Tag: The <a> tag is used to create a hyperlink. It is commonly used within the <nav> element to define individual navigation links. The anchor tag is represented as <a> and </a> with the link text between them.
-href Attribute: The href attribute is used within the <a> tag to specify the URL (Uniform Resource Locator) that the link should navigate to when clicked. It is assigned a value, such as a web page URL or an anchor within the same page. For example, href="http://example.com" would link to the webpage at "http://example.com.”
-target Attribute: The target attribute is used within the <a> tag to specify how the linked webpage should open when clicked. The attribute value determines the target window or tab for the link. Common values include:
-_blank: Opens the linked webpage in a new browser tab or window.
-_self: Opens the linked webpage in the same window or tab.
-_parent: Opens the linked webpage in the parent frame or window.
-_top: Opens the linked webpage in the full body of the window, canceling any frames.
-A custom name: Opens the linked webpage in a specific named target, which can be defined in the target attribute of another element, such as a frame or iframe.
-By using these elements together, the <nav> tag provides a structured way to group navigation links (<a> tags) and specify their destinations (href attribute) and how they should open (target attribute). This helps create a clear and meaningful navigation structure for website visitors.
-<nav>
-  <a href="http://example.com" target="_blank">Home</a>
-  <a href="http://example.com/about" target="_self">About Us</a>
-  <a href="#services" target="_self">Our Services</a>
-</nav>
-<img> tag
-The <img> tag is an HTML element used to insert an image into a webpage. It is a self-closing tag, meaning it does not require a closing tag.
-The <img> tag has several attributes that define the properties and behavior of the image:
-src: This attribute specifies the URL or file path of the image to be displayed. It can be a relative or absolute path.
-alt: The alt attribute provides alternative text for the image. It is displayed when the image fails to load or for accessibility purposes to describe the image to users with visual impairments.
-width & height: These attributes define the width and height dimensions of the image in pixels. They can be used to set the image's display size on the webpage.
-title: The title attribute provides additional information about the image. When a user hovers over the image, the title text is displayed as a tooltip.
-<img src="path/to/image.jpg" alt="Description of the image" width="300" height="200" title="Image Title" class="image-class" id="image-id">
-<div> tag
-The <div> tag in HTML is a fundamental element used to create a division or section within a webpage. It serves as a container or wrapper that allows you to group and organize other HTML elements, such as text, images, forms, or other HTML tags, together as a cohesive unit.
-The <div> tag itself does not have any inherent semantic meaning, as it is a generic container. It is primarily used for styling and layout purposes or to group related elements for scripting or styling purposes.
-Note: You can apply CSS styles to a <div> element using classes or IDs to control its appearance and behavior.
-<div>
-  <!-- More HTML elements go here -->
-</div>
-Project Implementation Step 4:
-This code represents the header section of a webpage. It consists of an image, a heading, and a navigation menu.
-<html lang="en">
-
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
-  </head>
-
-  <body>
-
-    <header>
-      <img src="./assests/bus.png" alt="bus" width="750px" />
+      <img src="./assets/bus.png" alt="bus" width="75px" />
       <div>Reserve</div>
       <nav>
-        <a href=" " target="_blank">Tickets</a>
-        <a href=" " target="_blank">Contact Us</a>
-        <a href=" " target="_blank">Login</a>
-        <a href=" " target="_blank">Register</a>
+        <a href="" target="_blank">Tickets</a>
+        <a href="" target="_blank">Contact Us</a>
+        <a href="">Login</a>
+        <a href="">Register</a>
       </nav>
     </header>
-
+    <!-- Webpage Main Content -->
     <main>
-      <!-- More HTML elements go here -->
+      <form action="#" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required /><br /><br />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required /><br /><br />
+
+        <label for="mobile">Mobile Number:</label>
+        <input type="tel" id="mobile" name="mobile" required /><br /><br />
+
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="male" required />
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female" />
+        <label for="female">Female</label>
+        <input type="radio" id="pnts" name="gender" value="pnts" />
+        <label for="pnts">Prefer not to say</label>
+        <br /><br />
+
+        <label for="message">Message:</label><br />
+        <textarea
+          id="message"
+          name="message"
+          rows="4"
+          cols="50"
+          required
+        ></textarea
+        ><br /><br />
+
+        <label for="image">Upload Image:</label>
+        <input type="file" id="image" name="image" /><br /><br />
+
+        <label for="newsletter">Subscribe to Newsletter:</label>
+        <input type="checkbox" id="newsletter" name="newsletter" /><br /><br />
+
+        <input type="submit" value="Submit" />
+      </form>
     </main>
-
+				<hr> <!-- Used to insert a horizontal rule or a horizontal line in a web page.-->
     <footer>
-      <!-- More HTML elements go here -->
-    </footer>
-  </body>
-
-</html>
-Output:
-notion image
-<main> tag
-The <main> tag is a semantic HTML5 element used to define the main content area of a webpage. It represents the primary content of a document or a section within a document. The <main> element should typically be unique within a webpage and not be nested within other <main> elements.
-The purpose of the <main> tag is to provide clarity and structure to the HTML markup by identifying the main content section that is relevant to the page's topic or purpose. It helps search engines, screen readers, and other assistive technologies to understand and navigate the primary content of the webpage more easily.
-Here's an example of how the <main> tag can be used:
-<main>
+      <p>&copy; 2023 AlmaBetter. All rights reserved</p>
       <div>
-          <!-- More HTML elements go here -->
+        <h3>Follow Us</h3>
+        <a href="https://www.facebook.com">
+          <img src="./assets/facebook.png" alt="Facebook" width="24px"
+        /></a>
+        <a href="https://www.twitter.com">
+          <img src="./assets/twitter.png" alt="Twitter" width="24px"
+        /></a>
+        <a href="https://www.instagram.com">
+          <img src="./assets/instagram.png" alt="Instagram" width="24px"
+        /></a>
       </div>
-</main>
-<section> tag
-In HTML, the <section> tag is used to define a section or a distinct grouping of content within a webpage. It is a semantic element that helps to structure and organize the content of a webpage into meaningful sections.
-The <section> tag is typically used when there is a logical division or theme within the content. 
-For example: A webpage about a company may have sections for "About Us," "Services," and "Contact Information." Each of these sections can be represented using the <section> tag.
-<section>
-      <!-- More HTML elements go here -->
-</section>
-Using the <section> tag helps developers and search engines understand the structure and hierarchy of the webpage. It provides a way to group related content together and allows for easier styling and targeting of specific sections using CSS or JavaScript.
-It's important to note that the <section> tag does not imply any specific styling or formatting. It is a generic container element, and its meaning and purpose should be determined based on the content it contains.
-Dropdown in HTML
-In HTML, a dropdown, also known as a select or dropdown menu, is a form element that allows users to select one option from a list of predefined options. When the user clicks on the dropdown, a list of options is displayed, and they can choose one option from the list. The selected option is displayed as the default or current selection in the dropdown.
-To create a dropdown in HTML, you use the <select> element along with the <option> elements to define the available options.
-<select> Element:
-The <select> element represents a control that provides a list of options for the user. It acts as a container for the <option> elements and defines the dropdown menu.
-Attributes of the <select> element:
-name: Specifies the name of the select element, which is used to identify the selected option when the form is submitted.
-multiple: If specified, allows the user to select multiple options at once.
-size: Specifies the number of visible options in the dropdown menu.
-Here's an example of how the <select> element can be used:
-<select name="fruits">
-  <option value="apple">Apple</option>
-  <option value="banana">Banana</option>
-  <option value="orange">Orange</option>
-</select>
-<option> Element:
-The <option> element is used to define the individual options within the <select> element. Each <option> represents a choice that the user can select from the dropdown menu.
-Attributes of the <option> element:
-value: Specifies the value associated with the option. This value is sent to the server when the form is submitted.
-selected: Specifies that the option should be pre-selected when the page loads.
-Here's an example of how the <option> element can be used:
-<select name="fruits">
-  <option value="apple">Apple</option>
-  <option value="banana" selected>Banana</option>
-  <option value="orange">Orange</option>
-</select>
-In the above example, the "Banana" option is pre-selected because of the selected attribute. When the form is submitted, the selected option's value attribute (in this case, "banana") will be sent to the server.
-Project Implementation Step 5:
-This code represents a section that includes two dropdown menus for selecting departure and arrival locations. The <section> tag defines a section within the webpage.
+    </footer>
+  </body>
+</html>
+Output:
+notion image
+ 
+Tables in HTML
+HTML tables can be used to present the bus schedules, including departure times, arrival times, and other details. Each row of the table represents a different bus trip, and each column represents a specific attribute, such as the bus number, origin, destination, departure time, and duration. 
+Attributes that can be applied include:
+<table>: Used to define a table in a web page. It serves as a container for other table-related elements such as <caption>, <thead>, <tbody>, and <tfoot>. It allows you to organize data into rows and columns.
+Example:
+<table>
+  <!-- Table content goes here -->
+</table>
+<caption>: Used to provide a caption or title for the table. It is typically placed inside the <table> element and appears above or below the table, depending on the styling.
+Example:
+<table>
+  <caption>This is a table caption</caption>
+  <!-- Table content goes here -->
+</table>
+<thead>: Used to group the header content of a table. It is usually placed inside the <table> element and contains one or more <tr> elements that define table rows.
+Example:
+<table>
+  <thead>
+    <!-- Table header content goes here -->
+  </thead>
+  <tbody>
+    <!-- Table body content goes here -->
+  </tbody>
+</table>
+<tr>: Used to define a table row. It is typically placed inside the <tbody>, <thead>, or <tfoot> element and contains one or more <td> or <th> elements that define table cells.
+Example:
+<table>
+  <tbody>
+    <tr>
+      <!-- Table body content goes here -->
+    </tr>
+  </tbody>
+</table>
+<th>: Used to define table header cells. It is similar to <td>, but it is specifically used for headers. It is typically placed inside <thead> and <tr> elements.
+Example:
+<table>
+  <thead>
+    <tr>
+      <th>Header 1</th>
+      <th>Header 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Table content goes here -->
+  </tbody>
+</table>
+scope: Used with <th> elements to specify whether a header is associated with a row (scope="row") or a column (scope="col"). It helps in providing semantic information about the header and improves accessibility for screen readers.
+Example:
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Column Header</th>
+      <th scope="row">Row Header</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Table content goes here -->
+  </tbody>
+</table>
+<tbody>: Used to group the body content of a table. It is typically placed inside the <table> element and contains one or more <tr> elements that define table rows.
+Example:
+<table>
+  <thead>
+    <!-- Table header content goes here -->
+  </thead>
+  <tbody>
+    <!-- Table body content goes here -->
+  </tbody>
+</table>
+<td>: Represents a table cell. It is used to define individual cells within a table row. It can contain text, images, links, or other HTML elements.
+Example:
+<table>
+  <tbody>
+    <tr>
+      <td>Cell 1</td>
+      <td>Cell 2</td>
+    </tr>
+  </tbody>
+</table>
+colspan & rowspan: Used with <td> and <th> elements to specify the number of columns or rows a cell should span. colspan is used to make a cell span multiple columns, and rowspan is used to make a cell span multiple rows.
+Example:
+<table>
+  <tr>
+    <td colspan="2">This cell spans two columns</td>
+    <td rowspan="2">This cell spans two rows</td>
+  </tr>
+  <tr>
+    <td>Cell 1</td>
+    <td>Cell 2</td>
+  </tr>
+</table>
+Practical Implementation Step 2:
+The code provided is an HTML table markup for displaying a bus schedule for reserving bus trips.
 <!DOCTYPE html>
 <html lang="en">
 
@@ -331,6 +259,7 @@ This code represents a section that includes two dropdown menus for selecting de
   </head>
 
   <body>
+    <!-- Navigation Bar -->
     <header>
       <img src="./assets/bus.png" alt="bus" width="75px" />
       <div>Reserve</div>
@@ -341,79 +270,176 @@ This code represents a section that includes two dropdown menus for selecting de
         <a href="">Register</a>
       </nav>
     </header>
+    <!-- Webpage Main Content -->
     <main>
-      <section>
-        <p>From:</p>
-        <select name="Depart" id="depart">
-          <option value="Delhi">Delhi</option>
-          <option value="Mumbai">Mumbai</option>
-          <option value="Bengaluru">Bengaluru</option>
-          <option value="Chennai">Chennai</option>
-        </select>
-        <p>To:</p>
-        <select name="arrive" id="arrive">
-          <option value="Delhi">Delhi</option>
-          <option value="Mumbai">Mumbai</option>
-          <option value="Bengaluru">Bengaluru</option>
-          <option value="Chennai">Chennai</option>
-        </select>
-      </section>
+		<!-- Bus Schedule Table -->
+      <table>
+        <caption>Reserve Bus Schedule</caption>
+        <thead>
+          <tr>
+            <th>Bus Details</th>
+            <th colspan="3">Trip Information</th>
+          </tr>
+          <tr>
+            <th scope="col">Bus Number</th>
+            <th scope="col">Origin</th>
+            <th scope="col">Destination</th>
+            <th scope="col">Departure Time</th>
+            <th scope="col">Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ASC712</td>
+            <td>New York City</td>
+            <td>Boston</td>
+            <td>09:00 AM</td>
+            <td>2 hours</td>
+          </tr>
+          <tr>
+            <td>XYZ789</td>
+            <td>San Francisco</td>
+            <td>Los Angeles</td>
+            <td>11:30 AM</td>
+            <td>3 hours</td>
+          </tr>
+          <tr>
+            <td>DEF456</td>
+            <td>Miami</td>
+            <td>Orlando</td>
+            <td>10:45 AM</td>
+            <td>4 hours</td>
+          </tr>
+          <tr>
+            <td>GHI789</td>
+            <td>Chicago</td>
+            <td>St. Louis</td>
+            <td>08:15 AM</td>
+            <td>5 hours</td>
+          </tr>
+          <tr>
+            <td>JKL012</td>
+            <td>Seattle</td>
+            <td>Portland</td>
+            <td>09:30 AM</td>
+            <td>3.5 hours</td>
+          </tr>
+          <tr>
+            <td>MNO345</td>
+            <td>Denver</td>
+            <td>Las Vegas</td>
+            <td>12:00 PM</td>
+            <td>6 hours</td>
+          </tr>
+          <tr>
+            <td>RVC109</td>
+            <td>Atlanta</td>
+            <td>Nashville</td>
+            <td>10:00 AM</td>
+            <td>4.5 hours</td>
+          </tr>
+          <tr>
+            <td>STU901</td>
+            <td>Houston</td>
+            <td>San Antonio</td>
+            <td>11:15 AM</td>
+            <td>2.5 hours</td>
+          </tr>
+        </tbody>
+      </table>
     </main>
-
+				<hr> 
 
     <footer>
-      <!-- More HTML elements go here -->
+      <p>&copy; 2023 AlmaBetter. All rights reserved</p>
+      <div>
+        <h3>Follow Us</h3>
+        <a href="https://www.facebook.com">
+          <img src="./assets/facebook.png" alt="Facebook" width="24px" /></a>
+        <a href="https://www.twitter.com">
+          <img src="./assets/twitter.png" alt="Twitter" width="24px" /></a>
+        <a href="https://www.instagram.com">
+          <img src="./assets/instagram.png" alt="Instagram" width="24px" /></a>
+      </div>
     </footer>
-  
-</body>
+  </body>
 
 </html>
+Note: The appearance of the output may not be visually appealing, as this code snippet represents the basic structure of HTML tables without any CSS styling. In the upcoming lessons of this chapter, we will learn how to apply CSS to enhance and style the table's presentation.
+ 
 Output:
 notion image
-<p> tag
-In HTML, the <p> tag is used to define a paragraph element. It is a block-level element that represents a self-contained unit of text or content.
-When the <p> tag is used, it typically denotes a new paragraph of text within a larger document. By default, paragraphs are rendered with some space before and after them, creating a visual separation between different paragraphs.
-<p>This is a paragraph of text.</p>
-The <p> tag can be used to structure and organize text content on a webpage, making it more readable and structured for both users and search engines. It is commonly used in blog posts, articles, and other textual content on websites.
-<h1> to <h6> tags
-In HTML, <h1> to <h6> are heading tags used to define different levels of headings in a document. These tags are part of the structural elements in HTML and play a crucial role in organizing and visually formatting the content.
-The <h1> tag represents the highest level of heading and is typically used for the main title or heading of a webpage. It carries the most significance and is visually displayed as the largest and most prominent heading.
-The hierarchy continues with <h2> being the second-level heading, <h3> as the third level, and so on, down to <h6>, which represents the lowest level of heading. As the heading level increases (from <h1> to <h6>), the font size and visual prominence typically decrease, reflecting the diminishing importance of the heading structure.
-<h1>Heading 1</h1>
-<h2>Heading 2</h2>
-<h3>Heading 3</h3>
-<h4>Heading 4</h4>
-<h5>Heading 5</h5>
-<h6>Heading 6</h6>
-notion image
-Here's an overview of the general usage and typical scenarios for each heading level:
-<h1>: Typically used for the main title of the webpage. There should generally be only one <h1> per page.
-<h2>: Used for major section headings or subheadings within the main content area.
-<h3> to <h6>: Used for subsections or headings of decreasing importance within the content. These tags are often used to create hierarchical structures, with <h3> being a subsection of <h2>, <h4> being a subsection of <h3>, and so on.
-It's important to use heading tags appropriately to maintain a logical and meaningful structure for your content. This not only helps with visual styling but also improves accessibility and search engine optimization by providing a clear hierarchy of information.
-<button> tag
-The <button> tag in HTML is used to create a clickable button on a webpage. It is a versatile element that can be used for various purposes, such as submitting forms, triggering JavaScript functions, or navigating to another page. The <button> tag can have different attributes to specify its behavior and appearance. 
-Here's an example code to illustrate the usage of the <button> tag with some common attributes:
-type: Specify the type of the button. It can take different values.
-<button type="button">Learn More</button> <!-- Regular button  - - >
-<button type="submit">Submit</button> <!-- Submit button in a form - ->
-<button type="reset">Reset</button> <!-- Reset button in a form - ->
-disabled: Disables the button, making it unclickable and visually inactive.
-<button disabled>Disabled Button</button>
-value: Specify the value associated with the button when submitting a form.
-<button type="submit" value="submit">Submit</button>
-Project Implementation Step 6:
-<footer> tags
-In HTML, the <footer> tag is used to define the footer section of a webpage. It represents the bottommost part of a document or a specific section within a document, typically containing information related to the document itself or the website.
-The <footer> tag is a semantic element that helps convey the structure and meaning of the content to both browsers and search engines. It is commonly placed inside the <body> element of an HTML document, typically after the main content.
-The footer section often includes information such as copyright notices, legal disclaimers, contact details, links to relevant pages or documents, and navigation menus specific to the footer. It provides a consistent location for this information across multiple pages of a website.
-Here's an example of how the <footer> tag can be used in HTML:
-<footer>
-  <!-- More HTML elements go here -->
-</footer>
-Including a <footer> tag in an HTML document helps improve its structure, accessibility, and user experience by separating the footer section from the main content and providing a designated area for important information related to the webpage or website.
-Project Implementation Step 7:
-The given code represents a footer section of a webpage.
+ 
+Lists in HTML
+Ordered Lists (<ol>): An ordered list is used when you want to display a list of items in a specific order or sequence. Each item in the list is represented by an <li> (list item) element.
+The type attribute of the <ol> element in HTML allows you to specify the numbering style for an ordered list.  If the type attribute is not specified in the <ol> element in HTML, the default numbering style will be used, which is decimal numbers (type="1").
+Here are the possible values for the type attribute:
+type="1": This is the default value and represents decimal numbers (1, 2, 3...).
+type="A": Uppercase Latin letters (A, B, C...).
+type="a": Lowercase Latin letters (a, b, c...).
+type="I": Uppercase Roman numerals (I, II, III...).
+type="i": Lowercase Roman numerals (i, ii, iii...).
+type="1" with start="X": Starts the numbering at a specific number. Replace X with the desired starting number.
+type="A" with start="X": Starts the uppercase lettering at a specific letter. Replace X with the desired starting letter.
+type="a" with start="X": Starts the lowercase lettering at a specific letter. Replace X with the desired starting letter.
+These options provide flexibility in choosing the numbering or lettering style for your ordered lists.
+Example:
+<!-- When type of ordered list is not specified -->
+<ol>
+  <li>Item 1</li>
+  <li>Item 2</li>
+	<li>Item 3</li>
+</ol>
+
+<!-- When type of ordered list is specified -->
+<ol type="I">
+  <li>First item</li>
+  <li>Second item</li>
+  <li>Third item</li>
+</ol>
+Unordered Lists (<ul>): An unordered list is used when the order of the items is not important. Each item in the list is represented by an <li> element, and the items are typically displayed with bullet points.
+Example:
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+	<li>Item 3</li>
+</ul>
+Definition Lists (<dl>): A definition list is used to present a list of terms and their corresponding definitions. It consists of <dt> (definition term) elements, which represent the terms, and <dd> (definition description) elements, which represent the definitions.
+<dfn>: In HTML lists, the <dfn> element is used to define and highlight the definition or the term being defined within a list. It stands for "definition" and is typically used within <li> elements in a definition list (<dl>).
+Example:
+<!-- Without using dfn element -->
+<dl>
+  <dt>First Term</dt>
+  <dd>Description...</dd>
+  <dt>Second Term</dt>
+  <dd>Description...</dd>
+</dl>
+
+<!-- With dfn element -->
+<dl>
+  <dt><dfn>First Term</dfn></dt>
+  <dd>Description...</dd>
+  <dt><dfn>Second Term</dfn></dt>
+  <dd>Description...</dd>
+</dl>
+Nested Lists: HTML allows you to nest lists within other lists to create hierarchical structures. This means you can have lists inside <li> elements.
+Example:
+<ul>
+  <li>Route 1
+    <ul>
+      <li>Item 1</li>
+      <li>Item 2</li>
+    </ul>
+  </li>
+  <li>Route 2
+    <ul>
+      <li>Item 1</li>
+      <li>Item 2</li>
+    </ul>
+  </li>
+</ul>
+Practical Implementation Step 3:
+The code provided is HTML code that is used to create a structured list and definition list on Reserve App.
 <!DOCTYPE html>
 <html lang="en">
 
@@ -424,6 +450,7 @@ The given code represents a footer section of a webpage.
   </head>
 
   <body>
+    <!-- Navigation Bar -->
     <header>
       <img src="./assets/bus.png" alt="bus" width="75px" />
       <div>Reserve</div>
@@ -434,172 +461,320 @@ The given code represents a footer section of a webpage.
         <a href="">Register</a>
       </nav>
     </header>
+    <!-- Webpage Main Content -->
     <main>
-      <section>
-        <p>From:</p>
-        <select name="Depart" id="depart">
-          <option value="Delhi">Delhi</option>
-          <option value="Mumbai">Mumbai</option>
-          <option value="Bengaluru">Bengaluru</option>
-          <option value="Chennai">Chennai</option>
-        </select>
-        <p>To:</p>
-        <select name="arrive" id="arrive">
-          <option value="Delhi">Delhi</option>
-          <option value="Mumbai">Mumbai</option>
-          <option value="Bengaluru">Bengaluru</option>
-          <option value="Chennai">Chennai</option>
-        </select>
-        <button type="button">Search</button>
-      </section>
-      <section>
-        <h1>Travel with world's largest bus services</h1>
-        <div>
-          <img src="./assets/bus-vector.png" alt="Bus" width="256px" />
-          <h3>2000+</h3>
-          <p>Bus Collection</p>
-        </div>
-        <div>
-          <img src="./assets/family.png" alt="Family" width="256px" />
-          <h3>2 Million+</h3>
-          <p>Happy customers globally</p>
-        </div>
-        <div>
-          <img src="./assets/ticket.png" alt="Ticket" width="256px" />
-          <h3>5000+</h3>
-          <p>Tickets book everyday</p>
-        </div>
-      </section>
-      <section>
-        <div>
-          <h3>Vatsal Agarwal</h3>
-          <h4>Customer since 2020</h4>
-          <p>4.9 *</p>
-          <p>Amazing travel experience with reserve. Excellent staff</p>
-        </div>
-        <div>
-          <h3>Rohan Sharma</h3>
-          <h4>Customer since 2022</h4>
-          <p>4.3 *</p>
-          <p>Amazing service. Always a best time with reserve.</p>
-        </div>
-        <div>
-          <h3>Virat Kohli</h3>
-          <h4>Customer since 2019</h4>
-          <p>4.5 *</p>
-          <p>Bus was clean and the journey was smooth. Reached on time.</p>
-        </div>
-      </section>
+      <!-- Ordered Lists -->
+      <h3>A step-by-step booking process</h3>
+      <ol>
+        <li>Select origin and destination</li>
+        <li>Choose date and time</li>
+        <li>Enter passenger details</li>
+        <li>Confirm booking</li>
+      </ol>
+
+      <!-- Unordered Lists -->
+      <h3>Benefits of booking through Reserve App</h3>
+      <ul>
+        <li>Comfortable seating</li>
+        <li>Reliable service</li>
+        <li>
+          Competitive prices
+          <ul>
+            <li>Discounts for regular customers</li>
+          </ul>
+        </li>
+        <li>Friendly customer support</li>
+      </ul>
+
+      <!-- Definition Lists -->
+      <h3>Type of Bus services</h3>
+      <dl>
+        <dt><dfn>Standard Bus:</dfn></dt>
+        <dd>Regular seating with air conditioning</dd>
+        <dt><dfn>Deluxe Bus:</dfn></dt>
+        <dd>Comfortable seating, extra legroom, and Wi-Fi</dd>
+        <dt><dfn>Executive Bus:</dfn></dt>
+        <dd>Luxurious leather seats, personal entertainment systems, and complimentary meals</dd>
+      </dl>
+
     </main>
+    <hr> 
+
+
     <footer>
-        <p>&copy; 2023 AlmaBetter. All rights reserved</p>
-        <div class="social-media">
-          <a href="https://www.facebook.com"><img src="facebook.png" alt="Facebook"></a>
-          <a href="https://www.twitter.com"><img src="twitter.png" alt="Twitter"></a>
-          <a href="https://www.instagram.com"><img src="instagram.png" alt="Instagram"></a>
-        </div>
+      <p>&copy; 2023 AlmaBetter. All rights reserved</p>
+      <div>
+        <h3>Follow Us</h3>
+        <a href="https://www.facebook.com">
+          <img src="./assets/facebook.png" alt="Facebook" width="24px" /></a>
+        <a href="https://www.twitter.com">
+          <img src="./assets/twitter.png" alt="Twitter" width="24px" /></a>
+        <a href="https://www.instagram.com">
+          <img src="./assets/instagram.png" alt="Instagram" width="24px" /></a>
+      </div>
     </footer>
-</body>
+  </body>
 
 </html>
 Output:
 notion image
+iframe in HTML
+An iframe (short for inline frame) is an HTML element used to embed or display content from another source within a web page. It allows you to include external documents such as web pages, images, videos, or interactive applications into your own HTML document. 
+Here's an example of how to use an iframe in HTML:
+<iframe src="https://www.example.com"></iframe>
+In the above example, the iframe is used to display the web page located at "https://www.example.com" within the current document.
+Here are some important attributes you can use with the iframe element:
+src: Specifies the URL of the content to be displayed within the iframe.
+Example:
+<iframe src="https://www.example.com"></iframe>
+height: Sets the height of the iframe in pixels or as a percentage of the parent container's height. 
+Pixels: When specifying the height in pixels, you provide a numerical value that represents the exact height of the iframe in pixels. For example:
+<iframe src="https://www.example.com" height="300"></iframe>
+Percentage: When using a percentage value, the height of the iframe is calculated relative to the height of its parent container. For example:
+<div style="height: 500px;">
+  <iframe src="https://www.example.com" height="50%"></iframe>
+</div>
+Here, the parent container <div> has a fixed height of 500 pixels. The iframe within it has a height of 50%, which means it will occupy half of the parent container's height (250 pixels in this case).
+Using a percentage for the iframe's height allows for more dynamic and responsive designs. As the parent container's height changes, the iframe will adjust proportionally.
+It's important to note that if the parent container's height is not explicitly defined or is set to auto, using a percentage for the iframe's height will not have any effect. In such cases, you may need to define a specific height for the parent container to make the percentage value applicable.
+width: Sets the width of the iframe in pixels or as a percentage of the parent container's width.
+Example:
+<iframe src="https://www.example.com" width="500"></iframe>
+frameborder: Specifies whether or not to display a border around the iframe. Accepts values "0" (no border) or "1" (border visible).
+Example:
+<iframe src="https://www.example.com" frameborder="1"></iframe>
+allowfullscreen: Indicates whether the iframe can be displayed in full-screen mode. Used for videos or interactive content. Accepts the value "true" or "false".
+Example:
+<iframe src="https://www.example.com" allowfullscreen></iframe>
+scrolling: Specifies whether or not to display scrollbars within the iframe. Accepts values "yes", "no", or "auto".
+scrolling="yes": This value indicates that scrollbars should always be displayed, regardless of the content size. Both vertical and horizontal scrollbars will be visible, allowing users to scroll through the iframe's content.
+scrolling="no": This value indicates that no scrollbars should be displayed, even if the content exceeds the available space. Users will not be able to scroll within the iframe, and the content will be clipped if it extends beyond the iframe's dimensions.
+crolling="auto": This value lets the browser decide whether to display scrollbars based on the content size. If the content exceeds the available space, the browser will automatically show scrollbars. If the content fits within the iframe, no scrollbars will be displayed.
+Example:
+<iframe src="https://www.example.com" scrolling="yes"></iframe>
+Note: The behavior of the scrolling attribute may vary across different browsers and platforms. In some cases, browsers may ignore the attribute and display scrollbars based on their own default settings. Additionally, modern web development practices often recommend handling scrollbars and scrolling behavior using CSS rather than relying solely on the scrolling attribute.
+sandbox: Provides a sandbox environment for the iframe's content, restricting access to certain features or APIs. The sandbox attribute accepts a space-separated list of values that define the permissions granted to the embedded content. Here are some commonly used values:
+allow-scripts: This value allows the embedded content to execute scripts. Without this value, JavaScript code within the iframe will not run.
+allow-forms: With this value, the embedded content can submit forms. It enables the use of form elements like <input> and <button> within the iframe.
+allow-popups: This value permits the embedded content to open new windows or pop-up windows.
+allow-same-origin: When using this value, the embedded content is restricted to the same origin as the parent document. It means that the iframe can only interact with resources from the same domain, protocol, and port as the parent document.
+allow-top-navigation: This value allows the embedded content to navigate the top-level window. It enables the iframe to change the URL of the parent document.
+Example:
+<iframe src="https://www.example.com" sandbox="allow-scripts allow-forms"></iframe>
+In this example, the iframe's content is allowed to execute scripts and submit forms, but it is restricted from accessing other features like opening pop-ups or navigating the top-level window.
+The sandbox attribute is particularly useful when embedding content from untrusted sources or when you want to isolate the embedded content from the rest of your web page. It provides an additional layer of security by limiting the capabilities of the embedded content and reducing the potential risks associated with executing untrusted code.
+name: Specifies a name for the iframe, which can be used as a target for links or form submissions within the iframe.
+Example:
+<iframe src="https://www.example.com" name="myFrame"></iframe>
+loading: Specifies how the iframe content should be loaded. Accepts values "eager" (immediate loading), "lazy" (deferred loading), or "auto" (browser default).
+Example:
+<iframe src="https://www.example.com" loading="lazy"></iframe>
+title: Provides a title or description for the iframe, which can be used by screen readers or for accessibility purposes.
+Example:
+<iframe src="https://www.example.com" title="Example Website"></iframe>
+Practical Implementation Step 4:
+The code provided is an HTML code snippet that includes an iframe element for the Almabetter website on the Reserve App.
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserve</title>
+  </head>
+
+  <body>
+    <!-- Navigation Bar -->
+    <header>
+      <img src="./assets/bus.png" alt="bus" width="75px" />
+      <div>Reserve</div>
+      <nav>
+        <a href="" target="_blank">Tickets</a>
+        <a href="" target="_blank">Contact Us</a>
+        <a href="">Login</a>
+        <a href="">Register</a>
+      </nav>
+    </header>
+    <!-- Webpage Main Content -->
+    <br>  <!-- Used to insert a single line break -->
+
+    <main>
+      
+		<!-- iframe with its attrbites -->
+			<iframe src="https://www.almabetter.com/courses/full-stack-web-development" 
+							width="1300" 
+							height="650" 
+							title="AlmaBetter Website"
+							frameborder="1" 
+							scrolling="auto" 
+							>
+			</iframe>
+    
+		</main>
+    <br>
+    <footer>
+      <p>&copy; 2023 AlmaBetter. All rights reserved</p>
+      <div>
+        <h3>Follow Us</h3>
+        <a href="https://www.facebook.com">
+          <img src="./assets/facebook.png" alt="Facebook" width="24px" /></a>
+        <a href="https://www.twitter.com">
+          <img src="./assets/twitter.png" alt="Twitter" width="24px" /></a>
+        <a href="https://www.instagram.com">
+          <img src="./assets/instagram.png" alt="Instagram" width="24px" /></a>
+      </div>
+    </footer>
+  </body>
+
+</html>
+Output:
+notion image
+ 
  
 Summary
 What did we learn?
-Sure, here's the text with backticks added before and after the HTML elements and tags:
-HTML is the standard markup language used for creating web pages and applications. It provides a structured way to organize and format content on a webpage.
-HTML documents start with the <!DOCTYPE html> declaration to specify the HTML version.
-Comments can be added in HTML using <!-- --> syntax.
-The <html> tag is the root element of an HTML document and contains other elements.
-The <head> tag contains meta-information, such as the document title and linked stylesheets.
-The <body> tag represents the visible content of the webpage and includes interactive elements.
-Semantic elements like <header>, <nav>, <main>, <section>, <aside>, and <footer> provide meaning and structure to the content.
-Insert images into a webpage using the <img> tag. Group and organize HTML elements with the <div> tag.
-Create dropdown menus using the <select> and <option> tags. Define paragraphs of text or content with the <p> tag.
-Use headings of different levels (<h1> to <h6>) for structuring content. Create clickable buttons with the <button> tag.
+The <form> element is used to create a form and has attributes like action and method. Form controls allow users to input and select data.
+Commonly used form controls include <input>, <textarea>, <select>, and <button>.
+Each form control has attributes like name, label, and required for identification, labeling, and making fields mandatory.
+HTML tables are used to present data in rows and columns.
+Key elements for tables are <table>, <caption>, <thead>, <tbody>, <tfoot>, <tr>, <th>, and <td>.
+Attributes like scope, colspan, and rowspan are used for semantic information and spanning cells.
+Ordered lists (<ol>) are used to display items in a specific order or sequence, whereas Unordered lists (<ul>) are used when item order is not important. Items are typically displayed with bullet points.
+Definition lists (<dl>) are used for presenting terms and their definitions. They consist of <dt> and <dd> elements. <dfn> can be used to highlight definitions.
+Nested lists allow the creation of hierarchical structures by placing lists inside <li> elements.
+An iframe is an HTML element used to embed or display content from another source within a web page.
 Shortcomings & Challenges
-Different web browsers may interpret HTML code differently, leading to inconsistencies in how webpages are displayed. 
-Ensuring web content is accessible to users with disabilities is an important challenge. 
-Creating webpages that adapt and display well on different devices and screen sizes can be challenging. 
-Search engine optimization requires careful consideration of HTML structure, meta tags, headings, and content organization. 
+One of the challenges with forms, tables, and lists is ensuring accessibility for users with disabilities.
+Validating user input and providing appropriate error messages can be challenging.
+Forms, tables, and lists may not automatically adapt well to different screen sizes and devices. Designing responsive layouts that properly display and maintain usability on various screen sizes can be a challenge.
+Protecting sensitive user information, preventing cross-site scripting (XSS) attacks, and properly sanitizing user input are essential challenges to address.
 Best practices to follow
-Adhering to HTML standards and validating HTML code helps ensure proper rendering across different browsers and devices.
-Utilize semantic elements (<header>, <nav>, <main>, etc.) to provide clear structure and meaning to the content. This improves accessibility and helps search engines understand the page's content.
-Maintain consistent code formatting and indentation to improve code readability and maintainability.
-Include descriptive alt attributes for images to provide alternative text for users who cannot see them. This improves accessibility and helps with SEO.
-Use heading tags (<h1> to <h6>) in a logical hierarchy to structure content. Use <h1> for the main page heading and subsequent headings for sub-sections.
-Optimize HTML structure, meta tags, and content to improve search engine visibility. Use relevant keywords, descriptive titles, and meta descriptions.
+Use semantic HTML elements and attributes to provide clear and meaningful structure to your forms, tables, and lists. This improves accessibility and search engine optimization (SEO), and facilitates better understanding by both humans and machines.
+Provide descriptive labels for form controls to ensure users understand the purpose of each field. Use appropriate attributes like label and aria-label to associate labels with their corresponding form controls.
+Apply security measures such as input validation, sanitization, and proper handling of user input to prevent security vulnerabilities like XSS attacks. Implement encryption and security protocols when handling sensitive data.
+Thoroughly test your forms, tables, and lists across different browsers, devices, and screen sizes. Gather feedback from users to identify any usability issues or areas for improvement.
  
 Enhance your knowledge
 Supercharge your knowledge by exploring the resources provided! 📚
-Text-level Semantic Elements: https://www.w3.org/TR/2014/REC-html5-20141028/text-level-semantics.html
-Inline and Block Elements: https://medium.com/ux-art/html-block-and-inline-elements-b65775e86599
+Multimedia in HTML: https://www.codewithrandom.com/2022/12/10/how-to-add-multimedia-to-html/
+More advanced HTML features: https://www.w3.org/MarkUp/Guide/Advanced.html
  
 Try it Yourself
 Let's build this mini project in the VS Code IDE. Don't forget to join the AlmaBetter Community to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
-Task 1: Experience hands-on HTML practice like never before! Engage with these coding problems in the VS Code IDE and witness your code come to life.
-Problem
-Create a Personal Profile Webpage
-Create an HTML document structure with the necessary tags, including <html>, <head>, and <body>.
+Task 1: Ready to dive into the world of web development? Tackle these HTML coding challenges right within the VS Code IDE!
+Problem 
+Task: Create a Webpage with Advanced HTML Elements
+Create an HTML document structure with the necessary tags including <html>, <head>, and <body>.
 Inside the <head> tag, add a title for your webpage.
-Within the <body> tag, create a header using the <header> tag and add a suitable heading for your personal profile.
-Below the header, create a section using the <section> tag.
-Inside the section, include the following elements:
-A heading with your full name using an appropriate heading tag.
-An image of yourself using the <img> tag. You can use a placeholder image or include a link to your own image and give it a width and height of 200px.
-A paragraph describing yourself, your interests, or any other relevant information.
-A list of your hobbies using the <p> tags.
-After the section, create a footer using the <footer> tag and include a copyright notice.
+Within the <body> tag, create a header using the <header> tag and add a suitable heading for your webpage.
+Create a form using the <form> tag.
+Include appropriate form elements such as text input, radio buttons, checkboxes, and a submit button.
+Add proper labels for each form element.
+Apply necessary attributes like name, id, and value to the form elements.
+Below the Form, Create an ordered list (<ol>) with at least five list items (<li>).
+Create an unordered list (<ul>) with at least three list items (<li>).
+Build a table with the following details:
+Include a table header using the <th> tag.
+Create a table row (<tr>) with at least three columns (<td>) in each row.
+Populate the table with relevant information.
+At last, create an <iframe> element.
+Set the src attribute to the www.almabetter.com website.
+Adjust the width and height attributes to display the iframe appropriately.
 Solution
 notion image
 <!DOCTYPE html>
 <html>
-
   <head>
-    <title>Personal Profile</title>
+    <title>Advanced HTML Elements</title>
   </head>
 
   <body>
     <header>
-      <h1>My Personal Profile</h1>
+      <h1>Advanced HTML Elements</h1>
     </header>
 
-    <section>
-      <div>
-        <h2>Adam Swann</h2>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" width="200" height="200" alt="Adam Swann" />
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-          sagittis odio ac elit bibendum, ut luctus lacus volutpat. Curabitur
-          sed metus eu tortor tristique mattis. Mauris dignissim diam nec erat
-          semper tristique. Duis faucibus lectus ac ipsum vestibulum lobortis.
-          In tincidunt risus sed arcu congue, nec viverra felis sagittis.
-          Integer eu diam tortor.
-        </p>
-      </div>
-      <div>
-        <h3>Hobbies</h3>
-        <p>1. Reading</p>
-        <p>2. Traveling</p>
-        <p>3. Playing musical instruments</p>
-      </div>
-    </section>
+    <form>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" value="" /><br />
 
-    <footer>
-      &copy; 2023 My Personal Profile. All rights reserved.
-    </footer>
+      <label for="gender">Gender:</label>
+      <input type="radio" id="male" name="gender" value="male" />
+      <label for="male">Male</label>
+      <input type="radio" id="female" name="gender" value="female" />
+      <label for="female">Female</label><br />
+
+      <label for="hobby">Hobbies:</label>
+      <input type="checkbox" id="reading" name="hobby" value="reading" />
+      <label for="reading">Reading</label>
+      <input type="checkbox" id="traveling" name="hobby" value="traveling" />
+      <label for="traveling">Traveling</label><br />
+
+      <input type="submit" value="Submit" />
+    </form>
+
+    <h2>Ordered List</h2>
+    <ol>
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+      <li>Item 4</li>
+      <li>Item 5</li>
+    </ol>
+
+    <h2>Unordered List</h2>
+    <ul>
+      <li>Item A</li>
+      <li>Item B</li>
+      <li>Item C</li>
+    </ul>
+
+    <h2>Table</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>City</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>John Doe</td>
+          <td>25</td>
+          <td>New York</td>
+        </tr>
+        <tr>
+          <td>Jane Smith</td>
+          <td>30</td>
+          <td>London</td>
+        </tr>
+        <tr>
+          <td>Michael Johnson</td>
+          <td>35</td>
+          <td>Paris</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Iframe</h2>
+    <iframe src="https://www.almabetter.com" width="100%" height="500"></iframe>
   </body>
-
 </html>
-Task 2: Propose a mnemonic to easily remember the important HTML Tags and Elements and share your insights on AlmaBetter's Community platform.
-For example:
-💡
-Happy Tiger Dances In Bright Daylight.  
-Each letter in the mnemonic represents the first letter of an important HTML tag or element:
-H: <h1> (Heading 1)
-T: <title> (Document Title)
-D: <div> (Division)
-I: <img> (Image)
-B: <button> (Button)
-a: <a> (Anchor/Link)
+Explanation
+The provided code is an HTML document that showcases various advanced HTML elements and their usage. Here's a breakdown of the code:
+<!DOCTYPE html>: This is the document type declaration that specifies the HTML version being used.
+<html>: The opening and closing tags that enclose the entire HTML content.
+<head>: The head section of the HTML document that contains metadata and title information.
+<title>: The title of the HTML document, which appears in the browser's title bar or tab.
+<body>: The body section of the HTML document, which contains the visible content of the webpage.
+<header>: A semantic HTML element used to represent the introductory content of the webpage. In this case, it contains an <h1> heading with the text "Advanced HTML Elements".
+<form>: A form element used to create a form for user input. It contains several form controls.
+<label>: A label element associated with form controls. The for attribute links the label to the corresponding control using the id attribute.
+<input>: An input element used to create various form controls. In this code, it includes text input, radio buttons, and checkboxes.
+<h2>: Heading level 2 element used to create subheadings. In this code, it is used to create headings for the ordered list, unordered list, table, and iframe sections.
+<ol>: An ordered list element that represents a numbered list. It contains several <li> (list item) elements, each representing an item in the list.
+<ul>: An unordered list element that represents a bulleted list. It also contains <li> elements.
+<table>: A table element used to create a table structure. It consists of <thead> (table header) and <tbody> (table body) sections. The table header contains a row (<tr>) with <th> (table header cell) elements, representing column headings. The table body contains rows with <tr> elements, each containing <td> (table data cell) elements that represent the data in each column.
+<iframe>: An iframe element used to embed another webpage within the current webpage. It is specified with a src attribute that points to the URL of the webpage to be displayed. The width and height attributes determine the dimensions of the iframe.
+Overall, the code demonstrates the usage of various HTML elements such as headers, forms, lists, tables, and iframes to create different types of content and interactivity in a webpage.
+Task 2: Discuss your approach to resolving any challenges encountered while solving this question on AlmaBetter's Community platform.
