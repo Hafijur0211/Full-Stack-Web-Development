@@ -1,1 +1,1033 @@
+Bootstrap Advanced
+Session Flow
+Learning Objective
+Introduction
+Theme
+Primary Goals
+Bootstrap Advanced
+Forms
+Project Implementation Step 1
+Tables
+Project Implementation Step 2
+Border
+Project Implementation Step 3
+Shadow
+Project Implementation Step 4
+Responsive Design with Bootstrap
+Project Implementation Step 5
+Accordion
+Project Implementation Step 6
+Summary
+What did we learn?
+Shortcomings & Challenges
+Best practices to follow
+Enhance your knowledge
+Try it Yourself
+Learning Objective
+Introduction
+Advanced Bootstrap expands on the foundation of the core framework and offers advanced features and customization options, empowering developers to create highly sophisticated and visually appealing websites.
+Focus: Bootstrap Forms, tables, shadow, responsiveness, border, and accordion
+Prerequisites: VS Code IDE, HTML, CSS and Bootstrap Basics
+Theme
+Coursera incorporates Bootstrap's form components for user-friendly registration and login forms, styled using form classes. Tables on the course catalog pages display course details with responsive functionality. Bootstrap's shadow utility classes enhance the interface by adding visual depth to cards, menus, and modals. The website's layout seamlessly adapts to different devices using Bootstrap's responsive grid system. Border utility classes emphasize and separate elements like buttons and cards. Coursera uses Bootstrap's accordion component to present collapsible content, aiding easy navigation through course syllabus pages.
+By leveraging these Bootstrap concepts, Coursera enhances the user experience on its website, creating an intuitive and visually appealing platform for online learning.
+Primary Goals
+Learn how to create and style different types of form inputs & collapsible content sections using accordion.
+Learn table styling options, including striped rows, hover effects, and bordered tables.
+Understand the different types of shadows available and how they can be customized using Bootstrap's built-in classes.
+Learn how to create responsive layouts using Bootstrap's grid system and breakpoints.
+Explore different border styles, sizes, and colors available in Bootstrap.
+ 
+Bootstrap Advanced
+Forms
+In Bootstrap, forms are an essential component that allows users to input and submit data. Bootstrap provides a set of CSS classes and JavaScript functionality to style and enhance form elements. Here are some key concepts and classes related to forms in Bootstrap:
+Form Structure: A basic form structure in Bootstrap consists of a <form> element, which acts as a container for all the form fields. You can place form fields such as inputs, checkboxes, radio buttons, and buttons inside this container.
+Form Classes: Bootstrap provides various classes to style and customize form elements. Some commonly used classes include:
+.form-control: This class is applied to form fields like <input>, <textarea>, and <select> to style them as block-level elements with consistent width and appearance.
+.form-label: This class is used for styling labels associated with form fields.
+.form-check: This class is applied to checkboxes and radio buttons to style them.
+.form-check-label: This class is used for styling labels associated with checkboxes and radio buttons.
+.form-group: This class is used to group related form elements together, providing spacing and visual consistency.
+.form-text: This class is used to add additional explanatory text or help text to form fields.
+Input Types: Bootstrap supports various HTML input types like text, email, password, number, date, etc. You can add these input types to <input> elements to leverage browser-native validation and behavior.
+Grid System: Bootstrap's grid system can be used to create responsive form layouts. You can use classes like .row and .col-* to organize form elements in a grid-like structure, allowing for different column sizes on different screen sizes.
+Validation: Bootstrap provides built-in form validation styles and classes to highlight invalid form fields and display error messages. You can apply the .was-validated class to the <form> element to enable the validation styles.
+Form Sizing: Bootstrap allows you to adjust the size of form elements using classes like .form-control-sm for smaller inputs and .form-control-lg for larger inputs.
+Form Layouts: Bootstrap offers layout options for forms, such as horizontal forms and inline forms. Horizontal forms align labels and form controls in a row, while inline forms place labels and controls side by side on a single line.
+Forms Example
+<!DOCTYPE html>
+<html>
 
+  <head>
+    <title>Bootstrap Form Example</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>Form in Bootstrap</h2>
+      <form class="needs-validation" novalidate>
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+          <div class="invalid-feedback">
+            Please enter your name.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+          <div class="invalid-feedback">
+            Please enter a valid email address.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Message</label>
+          <textarea class="form-control" id="message" rows="3" placeholder="Enter your message" required></textarea>
+          <div class="invalid-feedback">
+            Please enter a message.
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="checkbox" required>
+            <label class="form-check-label" for="checkbox">
+              I agree to the terms and conditions
+            </label>
+            <div class="invalid-feedback">
+              You must agree to the terms and conditions.
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </body>
+
+</html>
+Output:
+notion image
+Practical Implementation Step 1:
+Tables
+Bootstrap provides a set of classes and styles for creating responsive and visually appealing tables. 
+Basic Table Structure: A basic table structure in Bootstrap consists of the <table> element, which contains one or more <tr> (table row) elements. Inside each row, you can include table data cells <td> or table header cells <th>. Table header cells are typically used to define column headers.
+Table Classes: Bootstrap offers various classes to style and enhance tables. Some commonly used classes include:
+.table: This class is applied to the <table> element to make it a Bootstrap table. It adds basic styling and formatting.
+.table-striped: This class adds zebra-striping to the table rows, alternating the background color of each row for improved readability.
+.table-bordered: This class adds borders to all the cells and the table itself.
+.table-hover: This class adds a hover effect to table rows, highlighting the row under the mouse pointer.
+.table-responsive: This class makes the table horizontally scrollable on small screens to prevent overflow.
+.table-group-divider: Add a thicker border, darker between table groups - <thead>, <tbody>, and <tfoot>.
+.table-light: Used to apply a light background color to a table.
+Example:
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>John Doe</td>
+      <td>john@example.com</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Jane Smith</td>
+      <td>jane@example.com</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Mike Johnson</td>
+      <td>mike@example.com</td>
+    </tr>
+  </tbody>
+</table>
+Output:
+notion image
+Table Sizing: Bootstrap provides classes to control the size of tables. You can use .table-sm for a smaller table or .table-lg for a larger table.
+Example:
+<!-- For a smaller table -->
+<table class="table table-striped table-sm">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>John Doe</td>
+      <td>john@example.com</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Jane Smith</td>
+      <td>jane@example.com</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Mike Johnson</td>
+      <td>mike@example.com</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- For a larger table -->
+<table class="table table-striped table-lg">
+  <!-- Table content goes here -->
+</table>
+Output:
+notion image
+Contextual Classes: Bootstrap offers contextual classes to add color-coded backgrounds to table rows or cells, indicating different states or categories. Some commonly used classes include .table-primary, .table-success, .table-danger, etc.
+Practical Implementation Step 2:
+Here, we've applied the table class of Bootstrap to the Reserve Bus Schedule Table.
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserve Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar bg-body-secondary shadow">
+        <div class="container-fluid">
+          <div class="navbar-nav d-flex flex-row align-items-center">
+            <a class="navbar-brand fs-4 fw-medium" href="./index.html">
+              <img src="../assets/bus.png" alt="Bus" height="50" />
+              Reserve
+            </a>
+            <a class="nav-link p-2 disabled">Tickets</a>
+            <a class="nav-link p-2 active" href="./route.html">Bus Routes</a>
+            <a class="nav-link p-2" href="./contactus.html">Contact Us</a>
+          </div>
+
+          <div class="navbar-nav d-flex flex-row justify-content-end align-items-center">
+            <button type="button" class="btn btn-warning fw-bold">Login</button>
+            <button type="button" class="btn fw-bold">Register</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="py-5 col-6 offset-md-3 justify-content-center">
+      <h1 class="text-center text-danger pb-5">Bus Routes</h1>
+      <table class="table table-hover">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First Bus</th>
+            <th scope="col">Last Bus</th>
+            <th scope="col">Route</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <tr>
+            <th scope="row">1</th>
+            <td>7:00 AM</td>
+            <td>10:00 PM</td>
+            <td>Mumbai - Chennai</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>9:30 AM</td>
+            <td>12:30 PM</td>
+            <td>Mumbai - Delhi</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>11:15 AM</td>
+            <td>11:45 PM</td>
+            <td>Mumbai - Bangalore</td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td>2:45 PM</td>
+            <td>4:30 PM</td>
+            <td>Chennai - Delhi</td>
+          </tr>
+          <tr>
+            <th scope="row">5</th>
+            <td>5:30 PM</td>
+            <td>7:00 PM</td>
+            <td>Chennai - Bangalore</td>
+          </tr>
+          <tr>
+            <th scope="row">6</th>
+            <td>8:00 PM</td>
+            <td>11:00 PM</td>
+            <td>Delhi - Bangalore</td>
+          </tr>
+          <tr>
+            <th scope="row">7</th>
+            <td>9:45 PM</td>
+            <td>12:30 AM</td>
+            <td>Delhi - Mumbai</td>
+          </tr>
+          <tr>
+            <th scope="row">8</th>
+            <td>10:30 PM</td>
+            <td>1:00 AM</td>
+            <td>Bangalore - Mumbai</td>
+          </tr>
+          <tr>
+            <th scope="row">9</th>
+            <td>6:30 AM</td>
+            <td>8:30 PM</td>
+            <td>Chennai - Delhi</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+
+    <footer class="d-flex justify-content-between pt-3 bg-secondary align-content-between">
+      <p class="fw-bold ps-2">© 2023 AlmaBetter. All rights reserved</p>
+      <div class="d-flex">
+        <p class="fw-bold">Follow Us:</p>
+        <a href="https://www.facebook.com" class="px-2">
+          <img src="../assets/facebook.png" alt="Facebook" width="24px" /></a>
+        <a href="https://www.twitter.com" class="px-2">
+          <img src="../assets/twitter.png" alt="Twitter" width="24px" /></a>
+        <a href="https://www.instagram.com" class="px-2">
+          <img src="../assets/instagram.png" alt="Instagram" width="24px" /></a>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  </body>
+
+</html>
+Output:
+notion image
+Border
+In Bootstrap, you can apply borders to various elements, including tables, divs, buttons, and more, using the available border classes. Here are some commonly used border classes in Bootstrap:
+.border: This class can be added to any element to apply a generic border with the default border color.
+Border Colors: Bootstrap provides contextual border color classes that you can use to apply different border colors. These classes are named based on Bootstrap's contextual color system, such as .border-primary, .border-secondary, .border-success, .border-danger, .border-warning, .border-info, .border-light, and .border-dark.
+Example:
+<body>
+  <div class="container">
+    <h2>Bootstrap Border Color</h2>
+    <div class="border border-primary p-3 mb-3">Primary Border Color</div>
+    <div class="border border-success p-3 mb-3">Success Border Color</div>
+    <div class="border border-danger p-3 mb-3">Danger Border Color</div>
+    <div class="border border-info p-3 mb-3">Info Border Color</div>
+    <div class="border border-dark p-3 mb-3">Dark Border Color</div>
+  </div>
+</body>
+Output:
+notion image
+ 
+Border Styles: Bootstrap offers border-style classes that allow you to change the appearance of the border. You can use classes like .border-0 to remove the border, .border-solid for a solid line border.
+Here are the available border-{size} classes in Bootstrap:
+border-0: Removes the border from the element.
+border-1: Adds a 1-pixel border to the element.
+border-2: Adds a 2-pixel border to the element.
+border-3: Adds a 3-pixel border to the element.
+border-4: Adds a 4-pixel border to the element.
+border-5: Adds a 5-pixel border to the element.
+Example:
+<body>
+  <div class="container">
+    <h2>Bootstrap Border Styles</h2>
+    <div class="border border-0 p-3 mb-3">No Border</div>
+    <div class="border border-2 p-3 mb-3">This element has a 2-pixel border.</div>
+    <div class="border border-4 p-3 mb-3">This element has a 4-pixel border.</div>
+  </div>
+</body>
+Output:
+notion image
+Border Radius: Bootstrap also provides classes to add border-radius to elements. You can use classes like .rounded to add a small border radius, .rounded-circle for a circular shape, or .rounded-pill for a pill-shaped element.
+Example:
+<body>
+  <div class="container">
+    <h2>Bootstrap Border Radius</h2>
+    <div class="border rounded p-3 mb-3">Rounded Border</div>
+    <div class="border rounded-circle p-3 mb-3">Circular Border</div>
+    <div class="border rounded-pill p-3 mb-3">Pill-shaped Border</div>
+  </div>
+</body>
+Output:
+notion image
+Practical Implementation Step 3:
+We've implemented a Border class to the Reserve Bus Schedule Table.
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserve Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar bg-body-secondary shadow">
+        <div class="container-fluid">
+          <div class="navbar-nav d-flex flex-row align-items-center">
+            <a class="navbar-brand fs-4 fw-medium" href="./index.html">
+              <img src="../assets/bus.png" alt="Bus" height="50" />
+              Reserve
+            </a>
+            <a class="nav-link p-2 disabled">Tickets</a>
+            <a class="nav-link p-2 active" href="./route.html">Bus Routes</a>
+            <a class="nav-link p-2" href="./contactus.html">Contact Us</a>
+          </div>
+
+          <div class="navbar-nav d-flex flex-row justify-content-end align-items-center">
+            <button type="button" class="btn btn-warning fw-bold">Login</button>
+            <button type="button" class="btn fw-bold">Register</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="py-5 col-6 offset-md-3 justify-content-center">
+      <h1 class="text-center text-danger pb-5">Bus Routes</h1>
+      <table class="table table-hover border border-2">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First Bus</th>
+            <th scope="col">Last Bus</th>
+            <th scope="col">Route</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <tr>
+            <th scope="row">1</th>
+            <td>7:00 AM</td>
+            <td>10:00 PM</td>
+            <td>Mumbai - Chennai</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>9:30 AM</td>
+            <td>12:30 PM</td>
+            <td>Mumbai - Delhi</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>11:15 AM</td>
+            <td>11:45 PM</td>
+            <td>Mumbai - Bangalore</td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td>2:45 PM</td>
+            <td>4:30 PM</td>
+            <td>Chennai - Delhi</td>
+          </tr>
+          <tr>
+            <th scope="row">5</th>
+            <td>5:30 PM</td>
+            <td>7:00 PM</td>
+            <td>Chennai - Bangalore</td>
+          </tr>
+          <tr>
+            <th scope="row">6</th>
+            <td>8:00 PM</td>
+            <td>11:00 PM</td>
+            <td>Delhi - Bangalore</td>
+          </tr>
+          <tr>
+            <th scope="row">7</th>
+            <td>9:45 PM</td>
+            <td>12:30 AM</td>
+            <td>Delhi - Mumbai</td>
+          </tr>
+          <tr>
+            <th scope="row">8</th>
+            <td>10:30 PM</td>
+            <td>1:00 AM</td>
+            <td>Bangalore - Mumbai</td>
+          </tr>
+          <tr>
+            <th scope="row">9</th>
+            <td>6:30 AM</td>
+            <td>8:30 PM</td>
+            <td>Chennai - Delhi</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+
+    <footer class="d-flex justify-content-between pt-3 bg-secondary align-content-between">
+      <p class="fw-bold ps-2">© 2023 AlmaBetter. All rights reserved</p>
+      <div class="d-flex">
+        <p class="fw-bold">Follow Us:</p>
+        <a href="https://www.facebook.com" class="px-2">
+          <img src="../assets/facebook.png" alt="Facebook" width="24px" /></a>
+        <a href="https://www.twitter.com" class="px-2">
+          <img src="../assets/twitter.png" alt="Twitter" width="24px" /></a>
+        <a href="https://www.instagram.com" class="px-2">
+          <img src="../assets/instagram.png" alt="Instagram" width="24px" /></a>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  </body>
+
+</html>
+Output:
+notion image
+Shadow
+To add a shadow to an element in Bootstrap, you can use the built-in utility class called shadow. The shadow class can be added to any HTML element to give it a shadow effect. 
+Example:
+<div class="shadow">This element has a shadow.</div>
+Output:
+notion image
+By default, the shadow class applies a subtle shadow effect to the element. If you want a more pronounced or specific shadow style, Bootstrap also provides additional shadow classes:
+shadow-sm: Applies a smaller, subtler shadow.
+shadow-lg: Applies a larger, more pronounced shadow.
+shadow-none: Removes the shadow effect.
+Example:
+<div class="shadow-lg">This element has a large shadow.</div>iv>
+Output:
+notion image
+Practical Implementation Step 4:
+Here, we'll implement the shadow class of Bootstrap to the Main page of the Reserve App.
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserve Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar bg-body-secondary shadow">
+        <div class="container-fluid">
+          <div class="navbar-nav d-flex flex-row align-items-center">
+            <a class="navbar-brand fs-4 fw-medium" href="./index.html">
+              <img src="../assets/bus.png" alt="Bus" height="50" />
+              Reserve
+            </a>
+            <a class="nav-link p-2 disabled">Tickets</a>
+            <a class="nav-link p-2" href="./route.html">Bus Routes</a>
+            <a class="nav-link p-2" href="./contactus.html">Contact Us</a>
+          </div>
+
+          <div class="navbar-nav d-flex flex-row justify-content-end align-items-center">
+            <button type="button" class="btn btn-warning fw-bold">Login</button>
+            <button type="button" class="btn fw-bold">Register</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="bg-info-subtle p-5">
+        <div class="navbar-nav d-flex justify-content-evenly flex-row align-items-center pt-5" style="padding-left: 25em; padding-right: 25em">
+          <select class="form-select m-3" aria-label="Default select example">
+            <option selected>Select Boarding City</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Bengaluru">Bengaluru</option>
+            <option value="Chennai">Chennai</option>
+          </select>
+
+          <select class="form-select m-3" aria-label="Default select example">
+            <option selected>Select Arrival City</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Bengaluru">Bengaluru</option>
+            <option value="Chennai">Chennai</option>
+          </select>
+        </div>
+        <div class="d-flex justify-content-evenly flex-row p-5">
+          <button type="submit" class="btn btn-outline-danger">Submit</button>
+        </div>
+      </section>
+      <section class="bg-light p-5">
+        <h1 class="text-center">Travel with world's largest bus services</h1>
+        <div class="d-flex justify-content-evenly p-5 text-center">
+          <div class="bg-white shadow rounded-2 col-2">
+            <div class="shadow-sm p-3">
+              <img src="../assets/bus-vector.png" alt="Bus" width="128px" class="mb-2" />
+            </div>
+            <div class="pt-4">
+              <h3>2000+</h3>
+              <p>Bus Collection</p>
+            </div>
+          </div>
+
+          <div class="bg-white shadow rounded-2 col-3">
+            <div class="shadow-sm p-3">
+              <img src="../assets/family.png" alt="Family" width="128px" class="mb-2" />
+            </div>
+            <div class="pt-4">
+              <h3>2 Million+</h3>
+              <p>Happy customers globally</p>
+            </div>
+          </div>
+
+          <div class="bg-white shadow rounded-2 col-2">
+            <div class="shadow-sm p-3">
+              <img src="../assets/ticket.png" alt="Ticket" width="128px" class="mb-2" />
+            </div>
+            <div class="pt-4">
+              <h3>5000+</h3>
+              <p>Tickets book everyday</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-dark-subtle p-5">
+        <h1 class="text-center">
+          Here's what a few of our customers have to say
+        </h1>
+        <div class="d-flex justify-content-evenly p-5 text-center">
+          <div class="bg-white shadow rounded-2 col-3 d-flex flex-column">
+            <div class="d-flex flex-row justify-content-between mt-2">
+              <div class="col-2 bg-warning p-3 rounded-circle fw-bold ms-2">
+                VA
+              </div>
+              <div class="col-6 d-flex flex-column text-start ps-2">
+                <div class="fw-bold">Vatsal Agarwal</div>
+                <div>Customer since 2020</div>
+              </div>
+              <div class="col-3 pt-3 fw-bold text-danger">★ 4.9</div>
+            </div>
+            <div class="p-3 text-start">
+              Amazing travel experience with reserve. Excellent staff
+            </div>
+          </div>
+
+          <div class="bg-white shadow rounded-2 col-3 d-flex flex-column">
+            <div class="d-flex flex-row justify-content-between mt-2">
+              <div class="col-2 bg-warning p-3 rounded-circle fw-bold ms-2">
+                RS
+              </div>
+              <div class="col-6 d-flex flex-column text-start ps-2">
+                <div class="fw-bold">Rohan Sharma</div>
+                <div>Customer since 2022</div>
+              </div>
+              <div class="col-3 pt-3 fw-bold text-danger">★ 4.3</div>
+            </div>
+            <div class="p-3 text-start">
+              Amazing service. Always a best time with reserve.
+            </div>
+          </div>
+          <div class="bg-white shadow rounded-2 col-3 d-flex flex-column">
+            <div class="d-flex flex-row justify-content-between mt-2">
+              <div class="col-2 bg-warning p-3 rounded-circle fw-bold ms-2">
+                VK
+              </div>
+              <div class="col-6 d-flex flex-column text-start ps-2">
+                <div class="fw-bold">Virat Kohli</div>
+                <div>Customer since 2019</div>
+              </div>
+              <div class="col-3 pt-3 fw-bold text-danger">★ 4.5</div>
+            </div>
+            <div class="p-3 text-start">
+              Bus was clean and the journey was smooth. Reached on time.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="d-flex justify-content-between pt-3 bg-secondary align-content-between">
+      <p class="fw-bold ps-2">© 2023 AlmaBetter. All rights reserved</p>
+      <div class="d-flex">
+        <p class="fw-bold">Follow Us:</p>
+        <a href="https://www.facebook.com" class="px-2">
+          <img src="../assets/facebook.png" alt="Facebook" width="24px" /></a>
+        <a href="https://www.twitter.com" class="px-2">
+          <img src="../assets/twitter.png" alt="Twitter" width="24px" /></a>
+        <a href="https://www.instagram.com" class="px-2">
+          <img src="../assets/instagram.png" alt="Instagram" width="24px" /></a>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  </body>
+
+</html>
+Output:
+notion image
+Responsive Design with Bootstrap
+Bootstrap follows a mobile-first approach, which means that the default styles and grid system are designed for mobile devices. It provides a responsive grid system that allows you to create a layout that adapts to different screen sizes.
+Responsive Grid System: Bootstrap's grid system is based on a 12-column layout, divided into rows and columns. You can use predefined classes like col-sm, col-md, col-lg, and col-xl to specify how columns should behave on different screen sizes. This allows you to create responsive layouts by adjusting the column widths based on the screen size. The col-* classes are used to define the width of an element, while the offset-* classes determine the amount of space before an element.
+Here's how col-* and offset-* classes work in Bootstrap:
+col-* Classes:
+The col-* classes specify the number of columns an element should occupy. The asterisk * in the class represents the number of columns.
+For example, col-6 would make an element span 6 columns, taking up half of the available width in the container. Similarly, col-4 would occupy one-third of the width (4 out of 12 columns), and col-12 would make the element take up the entire width.
+You can use these classes in combination to create more complex layouts. For instance, you could have two elements side by side using col-6 for each, or three elements with col-4 for each, and so on.
+offset-* Classes:
+The offset-* classes create empty space (offset) before an element. They determine the number of columns the element should be pushed to the right.
+For example, offset-2 would add 2 columns worth of empty space before an element, pushing it to the right.
+Like col-* classes, you can use offset-* classes in combination to achieve more complex layouts. For example, you could use offset-2 and col-8 together to create a layout where an element is centered with 2 columns of empty space on each side.
+Responsive Utilities: Bootstrap provides a variety of utility classes that help in creating responsive designs. These classes include d-none and d-{sm/md/lg/xl}-none for hiding elements on specific screen sizes, d-{sm/md/lg/xl}-block for displaying elements on specific screen sizes, and text-{sm/md/lg/xl}-center for aligning text horizontally.
+Responsive Navigation: Bootstrap offers a responsive navigation component called the Navbar. The Navbar automatically collapses into a mobile-friendly menu when viewed on smaller screens. You can customize the appearance and behavior of the Navbar using various classes and options provided by Bootstrap.
+Responsive Images: Bootstrap provides classes like img-fluid to create responsive images. The img-fluid class ensures that the image scales properly based on the container size, preventing it from overflowing or becoming too small.
+Responsive Typography: Bootstrap includes typography classes that automatically adjust the font size and line height based on the screen size. Classes like text-{sm/md/lg/xl}-* can be used to control the typography at different breakpoints.
+Media Queries: Bootstrap utilizes CSS media queries behind the scenes to handle responsiveness. These media queries target specific screen sizes and apply different styles accordingly. You can also customize these media queries or create your own to achieve more specific responsive behavior.
+Practical Implementation Step 5:
+The provided code snippet demonstrates the implementation of responsiveness on the form element.
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserve Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar bg-body-secondary shadow">
+        <div class="container-fluid">
+          <div class="navbar-nav d-flex flex-row align-items-center">
+            <a class="navbar-brand fs-4 fw-medium" href="./index.html">
+              <img src="../assets/bus.png" alt="Bus" height="50" />
+              Reserve
+            </a>
+            <a class="nav-link p-2 disabled">Tickets</a>
+            <a class="nav-link p-2" href="./route.html">Bus Routes</a>
+            <a class="nav-link p-2 active" href="./contactus.html">Contact Us</a>
+          </div>
+
+          <div class="navbar-nav d-flex flex-row justify-content-end align-items-center">
+            <button type="button" class="btn btn-warning fw-bold">Login</button>
+            <button type="button" class="btn fw-bold">Register</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="p-5">
+      <h1 class="text-center text-warning pb-5">Contact Us</h1>
+
+      <!--     Here's the form element where responsiveness has been applied.     -->
+      <form class="col-xxl-4 offset-xxl-4 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 col-md-8 offset-md-2">
+        <div class="form-group py-1">
+          <label for="name">Name:</label>
+          <input type="text" class="form-control" id="name" name="name" required />
+        </div>
+        <div class="form-group py-1">
+          <label for="email">Email:</label>
+          <input type="email" class="form-control" id="email" name="email" required />
+        </div>
+        <div class="form-group py-1">
+          <label for="mobile">Mobile Number:</label>
+          <input type="tel" class="form-control" id="mobile" name="mobile" pattern="[0-9]{10}" required />
+          <small class="form-text text-muted">Please enter a 10-digit mobile number.</small>
+        </div>
+        <div class="form-group py-1">
+          <label>Gender:</label>
+          <div class="form-check form-check-inline">
+            <input type="radio" class="form-check-input" id="genderMale" name="gender" value="male" required />
+            <label class="form-check-label" for="genderMale">Male</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input type="radio" class="form-check-input" id="genderFemale" name="gender" value="female" required />
+            <label class="form-check-label" for="genderFemale">Female</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input type="radio" class="form-check-input" id="nts" name="gender" value="nts" required />
+            <label class="form-check-label" for="nts">Prefer not to say</label>
+          </div>
+        </div>
+        <div class="form-group py-1">
+          <label for="message">Message:</label>
+          <textarea class="form-control" id="message" name="message" rows="3"></textarea>
+        </div>
+        <div class="form-group py-1">
+          <label for="image">Upload Image:</label>
+          <input type="file" class="form-control-file" id="image" name="image" />
+        </div>
+        <div class="form-check py-1">
+          <input type="checkbox" class="form-check-input" id="newsletter" name="newsletter" />
+          <label class="form-check-label" for="newsletter">Subscribe to Newsletter</label>
+        </div>
+        <div class="d-flex justify-content-center my-3">
+          <button type="submit" class="btn btn-primary col-12">Submit</button>
+        </div>
+      </form>
+    </main>
+
+    <footer class="d-flex justify-content-between pt-3 bg-secondary align-content-between">
+      <p class="fw-bold ps-2">© 2023 AlmaBetter. All rights reserved</p>
+      <div class="d-flex">
+        <p class="fw-bold">Follow Us:</p>
+        <a href="https://www.facebook.com" class="px-2">
+          <img src="../assets/facebook.png" alt="Facebook" width="24px" /></a>
+        <a href="https://www.twitter.com" class="px-2">
+          <img src="../assets/twitter.png" alt="Twitter" width="24px" /></a>
+        <a href="https://www.instagram.com" class="px-2">
+          <img src="../assets/instagram.png" alt="Instagram" width="24px" /></a>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  </body>
+
+</html>
+Explanation:
+col-xxl-4: This class specifies that the form should occupy 4 columns on extra-extra-large (xxl) screens. The xxl breakpoint is typically used for very large screens, such as desktops with high resolutions.
+offset-xxl-4: The offset-xxl-4 class adds a margin to the left of the form, pushing it 4 columns to the right. This creates empty space before the form.
+col-xl-6: This class indicates that the form should span 6 columns on extra-large (xl) screens. The xl breakpoint is often used for large desktop screens.
+offset-xl-3: Similar to the previous offset class, offset-xl-3 adds a margin to the left of the form, pushing it 3 columns to the right on extra-large screens.
+col-lg-8: This class specifies that the form should occupy 8 columns on large (lg) screens. The lg breakpoint is typically used for medium-sized desktop screens.
+offset-lg-2: Once again, offset-lg-2 adds a margin to the left, pushing the form 2 columns to the right on large screens.
+col-md-8: This class indicates that the form should span 8 columns on medium (md) screens. The md breakpoint is often used for tablets or smaller desktop screens.
+offset-md-2: The offset-md-2 class adds a margin to the left, pushing the form 2 columns to the right on medium screens.
+Mobile - 375px
+Mobile - 375px
+ 
+Tablet - 768px
+Tablet - 768px
+ 
+Laptop - 1024px
+Laptop - 1024px
+ 
+ 
+ 
+Accordion
+An accordion is a component that allows you to create collapsible and expandable content sections. It is commonly used to organize and present information in a compact and interactive manner. The Bootstrap accordion is based on the use of the collapse and card components.
+To create an accordion in Bootstrap, you typically need to follow these steps:
+Structure your HTML:
+Wrap the accordion inside a container element, such as a <div>.
+Create a series of collapsible content sections using the <div> element and give each section a unique ID.
+Apply the Bootstrap classes:
+Add the accordion class to the container element.
+For each content section, create a <div> with the card class.
+Inside each card, include a card-header and a card-body element.
+Add the necessary attributes and data-* attributes:
+Assign the id attribute to each card element with a unique ID.
+Add the data-bs-toggle="collapse" attribute to the card-header element.
+Set the href attribute of the card-header to the ID of the corresponding card-body element.
+Include the data-bs-parent="#accordionId" attribute on the container element, where accordionId is the ID of the container.
+Example:
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Accordion Item #1
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Accordion Item #2
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Accordion Item #3
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+</div>
+Output:
+notion image
+Practical Implementation Step 6:
+Here, we'll implement the Accordion to the FAQ section of the Contact Us page of the Reserve App.
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserve Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar bg-body-secondary shadow">
+        <div class="container-fluid">
+          <div class="navbar-nav d-flex flex-row align-items-center">
+            <a class="navbar-brand fs-4 fw-medium" href="./index.html">
+              <img src="../assets/bus.png" alt="Bus" height="50" />
+              Reserve
+            </a>
+            <a class="nav-link p-2 disabled">Tickets</a>
+            <a class="nav-link p-2" href="./route.html">Bus Routes</a>
+            <a class="nav-link p-2 active" href="./contactus.html">Contact Us</a>
+          </div>
+
+          <div class="navbar-nav d-flex flex-row justify-content-end align-items-center">
+            <button type="button" class="btn btn-warning fw-bold">Login</button>
+            <button type="button" class="btn fw-bold">Register</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="p-5">
+      <h1 class="text-center text-warning pb-5">Contact Us</h1>
+      <form class="col-xxl-4 offset-xxl-4 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 col-md-8 offset-md-2">
+        <!-- Form elements goes here. -->
+      </form>
+
+      <!-- Accordion Implementation -->
+
+      <h1 class="text-center text-secondary pt-5">FAQs</h1>
+      <div class="accordion col-xxl-6 offset-xxl-3 col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-10 offset-md-1" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              What payment methods are accepted for bus ticket bookings?
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              We accept various payment methods including credit cards, debit
+              cards, net banking, and digital wallets. You can choose the
+              payment option that is most convenient for you during the booking
+              process.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Can I choose my seat on the bus?
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              Yes, you can select your preferred seat during the booking
+              process. Our website provides a seat selection feature that allows
+              you to view the available seats and choose the one that suits your
+              preference.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              What if I need to cancel my bus ticket?
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              If you need to cancel your bus ticket, you can do so through our
+              website. Please refer to our cancellation policy for information
+              on applicable charges and refund eligibility. It's recommended to
+              cancel your ticket as early as possible to avoid any cancellation
+              fees.
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="d-flex justify-content-between pt-3 bg-secondary align-content-between">
+      <p class="fw-bold ps-2">© 2023 AlmaBetter. All rights reserved</p>
+      <div class="d-flex">
+        <p class="fw-bold">Follow Us:</p>
+        <a href="https://www.facebook.com" class="px-2">
+          <img src="../assets/facebook.png" alt="Facebook" width="24px" /></a>
+        <a href="https://www.twitter.com" class="px-2">
+          <img src="../assets/twitter.png" alt="Twitter" width="24px" /></a>
+        <a href="https://www.instagram.com" class="px-2">
+          <img src="../assets/instagram.png" alt="Instagram" width="24px" /></a>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  </body>
+
+</html>
+Output:
+notion image
+ 
+Summary
+What did we learn?
+Bootstrap forms provide essential components for user data input and submission, including styling options like .form-control for inputs, .form-label for labels, .form-check for checkboxes and radio buttons, and .form-group for grouping elements.
+It offers flexibility in form sizing with classes like .form-control-sm for smaller inputs and .form-control-lg for larger inputs.
+Bootstrap offers a variety of classes, such as .table, .table-striped, .table-bordered, and .table-hover to enhance the table's visual presentation.
+Bootstrap provides contextual border color classes, such as .border-primary, .border-secondary, one can choose from different border styles like solid and dashed. 
+It offers border size classes (border-1, border-2, etc.) to specify the width of the border applied to elements.
+Adding shadows to elements in Bootstrap is simple by using the shadow class, which applies a subtle shadow effect by default.
+Bootstrap's responsive grid system allows you to create layouts that adapt to different screen sizes using classes like col-sm, col-md, col-lg, and col-xl.
+Responsive utility classes such as d-none, d-{sm/md/lg/xl}-none, d-{sm/md/lg/xl}-block, and text-{sm/md/lg/xl}-center help in creating responsive designs.
+Bootstrap's accordion component allows you to create collapsible and expandable content sections. Apply Bootstrap classes like accordion, card, card-header, and card-body to the respective elements.
+Shortcomings & Challenges
+Customization beyond Bootstrap's options can be challenging, requiring additional CSS or style overrides.
+Bootstrap's predefined breakpoints may limit precise control over specific screen sizes or custom breakpoints.
+Overusing Bootstrap's components and default styles can lead to a generic appearance and a lack of a unique visual identity.
+Best practices to follow
+Test and tweak the responsiveness of your layouts to ensure optimal user experience on various devices.
+Use Bootstrap's components as a foundation but strive to inject your own design elements and styles to differentiate your project. 
+Focus on user experience by ensuring forms are intuitive and easy to fill, tables are readable and interactive, shadows add depth without overwhelming the design, and the accordion is well-organized and collapsible.
+Only include the necessary plugins and consider using minified versions of CSS and JavaScript files to reduce file sizes and improve loading times.
+ 
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+Toasts: https://getbootstrap.com/docs/5.3/components/toasts/
+Popovers: https://getbootstrap.com/docs/5.3/components/popovers/
+ 
+Try it Yourself
+Let's build this mini project in the VS Code IDE. Don't forget to join the AlmaBetter Community to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
+Task 1: Ready to beautify the web? Use your Bootstrap skills to design the webpage using VS Code IDE.
+Problem
+Task: Fill the appropriate Flex class “flex-row” or “flex-column” in the code snippet according to the given Flexbox layout.
+notion image
+<section>
+  <div class="container p-2 bg-dark">
+    <div class="d-flex ___________" style="height: 500px;">
+      <div class="bg-primary col m-2"></div>
+      <div class="d-flex ___________ col">
+        <div class="bg-secondary col m-2"></div>
+        <div class="d-flex ___________ col">
+          <div class="bg-success col m-2"></div>
+          <div class="d-flex ___________ col">
+            <div class="bg-danger col m-2"></div>
+            <div class="bg-warning col m-2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+Solution
+<section>
+  <div class="container p-2 bg-dark">
+    <div class="d-flex flex-row" style="height: 500px;">
+      <div class="bg-primary col m-2"></div>
+      <div class="d-flex flex-column col">
+        <div class="bg-secondary col m-2"></div>
+        <div class="d-flex flex-row col">
+          <div class="bg-success col m-2"></div>
+          <div class="d-flex flex-column col">
+            <div class="bg-danger col m-2"></div>
+            <div class="bg-warning col m-2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+Task 2: How do you feel about your confidence level in this lesson after practicing the code? Share your experience and insights with your Cohort group on AlmaBetter's Community Platform.
