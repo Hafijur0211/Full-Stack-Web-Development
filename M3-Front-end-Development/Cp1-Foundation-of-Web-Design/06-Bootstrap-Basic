@@ -1,1 +1,1186 @@
+Bootstrap Basics
+Session Flow
+Learning Objective
+Introduction
+Theme
+Primary Goals
+HTML Basics
+Introduction to Bootstrap
+Project Implementation Step 1
+Containers
+Navigation
+Buttons
+Project Implementation Step 2
+Typography
+Colors
+Margin and Padding
+Project Implementation Step 3
+Columns
+Project Implementation Step 4
+Flex Layout
+Utilities
+Project Implementation Step 5
+Summary
+What did we learn?
+Shortcomings & Challenges
+Best practices to follow
+Enhance your knowledge
+Try it Yourself
+Learning Objective
+Introduction
+Bootstrap is a powerful and versatile front-end framework that streamlines the process of building responsive websites. Its grid system, pre-styled components, cross-browser compatibility, and customization options make it an ideal choice for beginners and experienced developers.
+Focus: Bootstrap Containers, Navbar, Button, Typography, Colors, Margin, Padding and Flexbox
+Prerequisites: VS Code IDE, HTML and CSS
+Theme
+Tech Solutions Inc., a fictional technology consulting company, maximizes its website's potential with a range of Bootstrap features and components. They utilize Bootstrap Containers to establish a consistent and responsive layout, ensuring content is neatly organized across devices. The implementation of Bootstrap navbar enhances navigation by offering easy access to different sections. The integration of Bootstrap buttons enables smooth user interactions with various calls to action.
+Typography styles provided by Bootstrap help Tech Solutions Inc. maintain a visually appealing and readable content hierarchy. Adhering to a consistent color scheme through Bootstrap's color classes allows for cohesive branding. The company employs Bootstrap's margin and padding classes to achieve proper spacing and alignment between elements.
+Lastly, the Flexbox layout system provided by Bootstrap empowers Tech Solutions Inc. to create flexible and responsive designs, adapting seamlessly to different screen sizes and orientations.
+By utilizing these Bootstrap components and features, Tech Solutions Inc. enhances the visual appeal, responsiveness, and user-friendliness of its website, effectively showcasing its technology consulting services to businesses.
+Primary Goals
+Understand the fundamental concepts and principles of Bootstrap.
+Learn how to create responsive layouts using Bootstrap Containers.
+Explore the various options and customization features of Bootstrap's Navbar component.
+Master the usage of Bootstrap's button styles and variations, typography and color classes.
+Learn how to effectively use margin and padding classes to control spacing in Bootstrap.
+Understand the basics of Flexbox and how it can be utilized in Bootstrap for flexible layouts.
+ 
+Bootstrap basics
+Introduction to Bootstrap
+Bootstrap is a popular front-end framework that simplifies the process of building responsive and visually appealing websites. It was originally developed by Twitter, and it has since become one of the most widely used frameworks in web development.
+notion image
+Key Features of Bootstrap
+Responsive Grid System: One of the key features of Bootstrap is its responsive grid system. The grid system allows you to create a flexible and responsive layout for your website, ensuring that it looks great on different devices and screen sizes.
+Pre-styled Components: Bootstrap provides a wide range of pre-styled components, such as buttons, forms, navigation bars, dropdowns, modals, and more. These components save you time and effort by giving you a solid foundation to build upon.
+Cross-browser Compatibility: Bootstrap is designed to work consistently across different browsers and platforms. It takes care of handling browser inconsistencies, allowing you to focus on building your website without worrying about compatibility issues.
+Customization Options: Although Bootstrap comes with a default set of styles and components, it is highly customizable. You can easily customize the framework by modifying variables, overriding styles, and choosing which components to include in your project. This flexibility allows you to create unique and personalized designs.
+Getting Started with Bootstrap
+Step 1: Download or include Bootstrap files:
+Visit the official Bootstrap website (getbootstrap.com) and download the Bootstrap package.
+Alternatively, you can use a Content Delivery Network (CDN) to include the Bootstrap files directly in your HTML document. This method is faster and doesn't require downloading any files. You can find the necessary CDN links in the Bootstrap documentation.
+Step 2: Set up your HTML file:
+Create a new HTML file or open an existing one in a code editor of your choice.
+Add the <!DOCTYPE html> declaration at the beginning of your HTML file to specify the document type.
+Inside the <head> section of your HTML file, include the Bootstrap CSS file by adding the following code:
+<link rel="stylesheet" href="path/to/bootstrap.css">
+If you are using a CDN, replace the path/to/bootstrap.css with the appropriate CDN link.
+Step 3: Add the necessary HTML structure:
+Start building your HTML structure by adding the necessary elements, such as <div> containers, headings, navigation bars, forms, and so on.
+Refer to the Bootstrap documentation and examples to understand how to structure your HTML to take advantage of Bootstrap's grid system and components.
+Step 4: Utilize Bootstrap classes:
+Bootstrap provides a set of CSS classes that you can add to your HTML elements to apply specific styles and functionality.
+For example, to create a responsive grid layout, use the .container class to wrap your content and use .row and .col-* classes to define the grid structure.
+Explore the various classes available for buttons, forms, typography, navigation, and other components, and apply them to your HTML elements as needed.
+Step 5: Add JavaScript files (optional):
+Bootstrap includes JavaScript components, such as modals, dropdowns, carousels, and tooltips.
+If you want to use these interactive components, you need to include the Bootstrap JavaScript files.
+Inside the <body> section of your HTML file, add the following code before the closing </body> tag:
+<script src="path/to/bootstrap.js"></script>
+Again, if you are using a CDN, replace the path/to/bootstrap.js with the appropriate CDN link.
+Step 6: Preview and test:
+Save your HTML file and open it in a web browser to preview your Bootstrap-styled webpage.
+Test your webpage on different devices and screen sizes to ensure it is responsive and displays correctly.
+ 
+By following these steps, you will be able to incorporate Bootstrap into your HTML and CSS files and start building responsive and visually appealing websites using Bootstrap's features and components.
+Practical Implementation Step 1:
+Let's conduct a test to ensure that the Bootstrap integration is functioning correctly and operating as expected.
+<!DOCTYPE html>
+<html>
 
+  <head>
+    <title>Bootstrap Integration Test</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <h1 class="text-primary">Welcome to Bootstrap Integration Test</h1>
+    </div>
+  </body>
+
+</html>
+Output: 
+notion image
+Containers
+In Bootstrap, containers are used to wrap and center the content within a webpage. By default, containers in Bootstrap have a fixed maximum width and are horizontally centered on the page. They also provide padding to ensure proper spacing between the content and the edges of the container.
+Bootstrap provides two types of containers:
+Fixed-Width Container: To create a fixed-width container, use the class .container. The container will have a responsive width that adjusts based on the screen size.
+Example:
+<div class="container"> 
+  <!-- Content goes here -->
+</div>
+Fluid Container: To create a full-width container that spans the entire width of the viewport, use the class .container-fluid. The container's width will dynamically adjust to fit different screen sizes.
+Example:
+<div class="container-fluid"> 
+  <!-- Content goes here --> 
+</div>
+Containers should be used as a parent element to wrap up the main content of your webpage. You can add additional rows and columns within the container to create a responsive grid layout using Bootstrap's grid system.
+By utilizing Bootstrap's containers, you can create a consistent and responsive layout for your web pages that adapts well to different screen sizes and devices.
+Navigation
+Navigation refers to creating menus and navigation bars for websites or web applications. Bootstrap provides several classes and components that make it easy to create responsive and visually appealing navigation menus.
+Here are some key Bootstrap components and classes for navigation:
+Navbar: The Navbar component is a responsive and customizable navigation bar. It provides various options for creating a navigation menu with branding, links, buttons, and dropdowns. The Navbar can be placed at the top of the page or within a container.
+Example
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Logo</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Services</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+Output:
+notion image
+Navs: The Navs component allows you to create tabbed navigation menus. You can create horizontal or vertical tabs, stacked or justified tabs, and include dropdown menus within tabs. Navs can be used for organizing content and switching between different sections of a website.
+Example
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Tab 1</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Tab 2</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Tab 3</a>
+  </li>
+</ul>
+Output:
+notion image
+These are some of the primary navigation-related components and classes in Bootstrap. By utilizing these components and applying the appropriate classes, you can create responsive and functional navigation menus for your website or web application.
+Buttons
+Buttons are an essential component in Bootstrap that allows developers to create interactive and visually appealing elements for user interaction. Bootstrap provides a variety of button styles and options that can be easily implemented in your web projects.
+Bootstrap buttons can be used as links (<a> tags) or as regular buttons (<button> or <input> elements).
+Here are some of the key classes and options for working with buttons in Bootstrap:
+Default Buttons: Bootstrap provides a default button style that you can use by adding the class .btn to an anchor tag (<a>) or button tag (<button> or <input type="button">).
+Example
+<button class="btn btn-primary">Primary Button</button>
+Output:
+notion image
+Button Colors: Bootstrap offers several contextual color classes to style buttons with different colors. Common color classes include .btn-primary, .btn-secondary, .btn-success, .btn-info, .btn-warning, .btn-danger, .btn-light, and .btn-dark.
+Example:
+<button class="btn btn-success">Success Button</button>
+Output:
+notion image
+Button Sizes: Bootstrap provides classes to adjust the size of buttons. You can use .btn-sm for small buttons, .btn-lg for large buttons, and .btn-block to create full-width buttons.
+Example
+<button class="btn btn-primary btn-lg">Large Button</button>
+Output:
+notion image
+Button Styles: Bootstrap offers additional button styles, such as outline buttons and button groups. Outline buttons can be created by adding the class .btn-outline-* to the button element. The asterisk (*) represents the desired color class. Button groups allow you to group related buttons together. Use the .btn-group class on a container element, and add the .btn class to each individual button.
+Examples
+<button class="btn btn-outline-primary">Outline Button</button>
+<div class="btn-group" role="group" aria-label="Button group"> 
+  <button type="button" class="btn btn-primary">Button 1</button> 
+  <button type="button" class="btn btn-primary">Button 2</button>
+  <button type="button" class="btn btn-primary">Button 3</button> 
+</div>
+Output:
+notion image
+Button States: Bootstrap provides classes to indicate different states of a button, such as active, disabled, and loading. Add the .active class to a button to highlight its active state. Add the disabled attribute to disable a button. For loading buttons, use the .btn class along with .disabled or disabled attribute, and include the class .spinner-border or .spinner-grow to display a loading spinner.
+Example
+<button class="btn btn-primary active">Active Button</button>
+Output:
+notion image
+ 
+You can further customize buttons by combining classes, adding icons, or incorporating additional Bootstrap features like tooltips and dropdowns. Refer to the official Bootstrap documentation for more details and examples of working with buttons in Bootstrap.
+Practical Implementation Step 2:
+Here, we'll demonstrate the implementation of Bootstrap's Navbar, buttons, and container class.
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserve Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="container-fluid">
+          <div class="navbar-nav">
+            <a class="navbar-brand" href="./index.html">
+              <img src="../assets/bus.png" alt="Bus" height="50" />
+              Reserve
+            </a>
+            <a class="nav-link disabled">Tickets</a>
+            <a class="nav-link" href="./route.html">Bus Routes</a>
+            <a class="nav-link" href="./contactus.html">Contact Us</a>
+          </div>
+
+          <div class="navbar-nav ">
+            <button type="button" class="btn btn-warning fw-bold">Login</button>
+            <button type="button" class="btn fw-bold">Register</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+  </body>
+
+</html>
+Output: 
+notion image
+Typography
+Typography refers to the styles and classes provided by the framework to handle text-related elements and create visually appealing typography on web pages. Bootstrap offers a range of typography-related features, including font styles, headings, paragraphs, and text alignment.
+Here are some key aspects of typography in Bootstrap:
+Font Styles: Bootstrap includes a set of CSS classes that allow you to apply different font styles to your text. For example:
+.lead class: Increases the font size and adds extra line height to create prominently and emphasized text.
+.text-muted class: This applies a muted or subdued color to the text, often used for secondary or less important content.
+fw-{weight}: Bootstrap provides a set of utility classes to apply different font weights. These classes follow the format fw-{weight}, where {weight} can be one of the following values:
+fw-light for light font-weight
+fw-normal for normal font-weight (default)
+fw-bold for bold font-weight
+fw-bolder for a bolder font-weight than the parent element
+fw-lighter for a lighter font-weight than the parent element
+.text-primary, .text-success, .text-info, etc.: Apply specific colors to the text for various contextual purposes.
+Example
+<p class="lead">This is a prominent and emphasized text.</p>
+<p class="text-muted">This text is in a muted or subdued color.</p>
+<p class="fw-bold">This text is bold.</p>
+<p class="fw-light">This text is light.</p>
+<p class="text-primary">This text has a primary color.</p>
+<p class="text-success">This text has a success color.</p>
+Output:
+notion image
+ 
+Headings: Bootstrap provides CSS classes for styling HTML headings (<h1> to <h6>) consistently. These classes include:
+.h1, .h2, .h3, .h4, .h5, .h6: Applies predefined font sizes and styles to the respective heading levels.
+.display-*: Creates large display headings with different font sizes. The * represented a numeric value from 1 to 4, where higher values result in larger headings.
+Example
+<h1 class="h1">Heading 1</h1>
+<h2 class="h2">Heading 2</h2>
+<h1 class="display-1">Display Heading 1</h1>
+<h2 class="display-2">Display Heading 2</h2>
+Output:
+notion image
+Paragraphs: Bootstrap offers classes to style paragraphs (<p>) and other text blocks:
+.lead: Applies larger font size and increased line height to create attention-grabbing paragraphs.
+.text-justify: Justifies the text, spreading it evenly across the width of the container.
+.text-nowrap: Prevents text from wrapping onto a new line, useful for situations like navigation menus.
+Example
+<p class="lead">This is a lead paragraph with larger font size.</p>
+<p class="text-justify">This text is justified and evenly spread across the container.</p>
+<p class="text-nowrap">This text will not wrap onto a new line.</p>
+Output:
+notion image
+Text Alignment: Bootstrap provides classes to align text within its parent container:
+.text-start, .text-center, .text-end: Aligns the text to the left, center, or right within the container.
+.float-start, .float-end, .float-none: Positions the text along with floating options, suitable for responsive layouts.
+Example
+<p class="text-start">Start aligned text on all viewport sizes.</p>
+<p class="text-center">Center aligned text on all viewport sizes.</p>
+<p class="text-end">End aligned text on all viewport sizes.</p>
+
+<div class="float-start">Float start on all viewport sizes</div><br>
+<div class="float-end">Float end on all viewport sizes</div><br>
+<div class="float-none">Don't float on all viewport sizes</div>
+Output:
+notion image
+notion image
+By leveraging these classes, you can easily apply consistent and visually appealing typography to your web pages, saving time and effort in custom styling. Refer to the Bootstrap documentation for more detailed information and additional typography classes available.
+Colors
+Bootstrap provides a set of predefined color classes that you can use to style elements on your web page. These classes are based on a color palette defined by Bootstrap.
+Here are some commonly used color classes in Bootstrap:
+Text Colors:
+text-primary: Sets the text color to the primary color defined in the Bootstrap theme.
+text-secondary: Sets the text color to the secondary color defined in the Bootstrap theme.
+text-success: Sets the text color to indicate success.
+text-danger: Sets the text color to indicate danger or error.
+text-warning: Sets the text color to indicate a warning.
+text-info: Sets the text color to provide informational content.
+text-light: Sets the text color to a light shade.
+text-dark: Sets the text color to a dark shade.
+text-muted: Sets the text color to a muted or subdued shade.
+Example
+<div class="container">
+  <h1 class="text-primary">Primary Color Text</h1>
+  <h2 class="text-secondary">Secondary Color Text</h2>
+  <p class="text-success">Success Color Text</p>
+  <p class="text-danger">Danger Color Text</p>
+  <p class="text-warning">Warning Color Text</p>
+  <p class="text-info">Info Color Text</p>
+  <p class="text-light bg-dark">Light Color Text</p>
+  <p class="text-dark">Dark Color Text</p>
+  <p class="text-muted">Muted Color Text</p>
+</div>
+Output:
+notion image
+Background Colors:
+bg-primary: Sets the background color to the primary color defined in the Bootstrap theme.
+bg-secondary: Sets the background color to the secondary color defined in the Bootstrap theme.
+bg-success: Sets the background color to indicate success.
+bg-danger: Sets the background color to indicate danger or error.
+bg-warning: Sets the background color to indicate a warning.
+bg-info: Sets the background color to provide informational content.
+bg-light: Sets the background color to a light shade.
+bg-dark: Sets the background color to a dark shade.
+bg-muted: Sets the background color to a muted or subdued shade.
+Example
+<div class="bg-primary text-white p-3">
+  <h1>Welcome to my website</h1>
+  <p>This is an example of using the bg-primary class to set the background color to the primary color defined in Bootstrap.</p>
+</div>
+Output:
+notion image
+Margin and Padding
+In Bootstrap, the margin and padding classes are utility classes that allow you to add spacing around elements on your webpage. These classes provide a convenient way to adjust the spacing without writing custom CSS code.
+In Bootstrap, the margin and padding classes provide flexibility in applying spacing to different sides of elements. The classes follow the format property-{size}-{direction} or {property}x-{size}/{property}y-{size} for horizontal and vertical property, respectively. Property can be anything among margin (m that set margin) and padding (p that set padding).
+Here is an explanation of the direction and sizes available for these classes :
+Direction:
+t (top): Applies margin or padding to the top side of an element.
+b (bottom): Applies margin or padding to the bottom side of an element.
+s (start): Applies margin or padding to the left side in LTR (left-to-right) languages or right side in RTL (right-to-left) languages.
+e (end): Applies margin or padding to the right side in LTR languages or left side in RTL languages.
+x (horizontal): Applies margin or padding to both left and right sides of an element.
+y (vertical): Applies margin or padding to both top and bottom sides of an element.
+Blank: Applies margin or padding to all four sides (top, bottom, left, and right) of an element.
+Example
+<div class="m-3">
+  <p>This is a div with margin applied to all sides.</p>
+</div>
+
+<div class="mx-2">
+  <p>This is a div with horizontal margin applied (left and right).</p>
+</div>
+
+<div class="my-4">
+  <p>This is a div with vertical margin applied (top and bottom).</p>
+</div>
+Output:
+notion image
+Size:
+0: Sets the margin or padding size to 0, effectively removing it.
+1 (default): Sets the margin or padding size to 0.25 times the default spacing value ($spacer).
+2 (default): Sets the margin or padding size to 0.5 times the default spacing value ($spacer).
+3 (default): Sets the margin or padding size to the default spacing value ($spacer).
+4 (default): Sets the margin or padding size to 1.5 times the default spacing value ($spacer).
+5 (default): Sets the margin or padding size to 3 times the default spacing value ($spacer).
+auto: Sets the margin to "auto," allowing the browser to automatically calculate and distribute the margin space.
+Example
+<div class="p-3">
+  <p class="px-2 py-3">This paragraph has horizontal padding of 2 units and vertical padding of 3 units.</p>
+  <button class="btn btn-primary pt-4 pb-2 ps-4 pe-1">Button</button>
+</div>
+Output:
+notion image
+By combining the appropriate side and size values, you can easily apply margin and padding to elements in different configurations, achieving the desired spacing and layout in your Bootstrap-based webpages.
+Project Implementation Step 3:
+In this code snippet, we have utilized Bootstrap's features for managing margins, padding, colors, and typography.
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserve Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar bg-body-secondary">
+        <div class="container-fluid">
+          <div class="navbar-nav ">
+            <a class="navbar-brand " href="./index.html">
+              <img src="./assets/bus.png" alt="Bus" height="50" />
+              Reserve
+            </a>
+            <a class="nav-link p-2 disabled">Tickets</a>
+            <a class="nav-link p-2" href="./route.html">Bus Routes</a>
+            <a class="nav-link p-2" href="./contactus.html">Contact Us</a>
+          </div>
+
+          <div class="navbar-nav ">
+            <button type="button" class="btn btn-warning fw-bold">Login</button>
+            <button type="button" class="btn fw-bold">Register</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="bg-info-subtle p-5">
+        <div class="navbar-nav pt-5" style="padding-left: 25em; padding-right: 25em">
+          <select class="form-select m-3" aria-label="Default select example">
+            <option selected>Select Boarding City</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Bengaluru">Bengaluru</option>
+            <option value="Chennai">Chennai</option>
+          </select>
+
+          <select class="form-select m-3" aria-label="Default select example">
+            <option selected>Select Arrival City</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Bengaluru">Bengaluru</option>
+            <option value="Chennai">Chennai</option>
+          </select>
+        </div>
+        <div class="p-5">
+          <button type="submit" class="btn btn-outline-danger">Submit</button>
+        </div>
+      </section>
+      <section class="bg-light p-5">
+        <h1 class="text-center">Travel with world's largest bus services</h1>
+        <div class="p-5 text-center">
+          <div class="bg-white">
+            <div class="-sm p-3">
+              <img src="./assets/bus-vector.png" alt="Bus" width="128px" class="mb-2" />
+            </div>
+            <div class="pt-4">
+              <h3>2000+</h3>
+              <p>Bus Collection</p>
+            </div>
+          </div>
+
+          <div class="bg-white ">
+            <div class="-sm p-3">
+              <img src="./assets/family.png" alt="Family" width="128px" class="mb-2" />
+            </div>
+            <div class="pt-4">
+              <h3>2 Million+</h3>
+              <p>Happy customers globally</p>
+            </div>
+          </div>
+
+          <div class="bg-white ">
+            <div class="-sm p-3">
+              <img src="./assets/ticket.png" alt="Ticket" width="128px" class="mb-2" />
+            </div>
+            <div class="pt-4">
+              <h3>5000+</h3>
+              <p>Tickets book everyday</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-dark-subtle p-5">
+        <h1 class="text-center">
+          Here's what a few of our customers have to say
+        </h1>
+        <div class="p-5 text-center">
+          <div class="bg-white">
+            <div class="mt-2">
+              <div class="bg-warning p-3 fw-bold ms-2">
+                VA
+              </div>
+              <div class="ps-2">
+                <div class="fw-bold">Vatsal Agarwal</div>
+                <div>Customer since 2020</div>
+              </div>
+              <div class="pt-3 fw-bold text-danger">★ 4.9</div>
+            </div>
+            <div class="p-3 text-start">
+              Amazing travel experience with reserve. Excellent staff
+            </div>
+          </div>
+
+          <div class="bg-white ">
+            <div class="mt-2">
+              <div class="bg-warning p-3 fw-bold ms-2">
+                RS
+              </div>
+              <div class="text-start ps-2">
+                <div class="fw-bold">Rohan Sharma</div>
+                <div>Customer since 2022</div>
+              </div>
+              <div class="pt-3 fw-bold text-danger">★ 4.3</div>
+            </div>
+            <div class="p-3 text-start">
+              Amazing service. Always a best time with reserve.
+            </div>
+          </div>
+          <div class="bg-white ">
+            <div class="mt-2">
+              <div class="bg-warning p-3 fw-bold ms-2">
+                VK
+              </div>
+              <div class="text-start ps-2">
+                <div class="fw-bold">Virat Kohli</div>
+                <div>Customer since 2019</div>
+              </div>
+              <div class="pt-3 fw-bold text-danger">★ 4.5</div>
+            </div>
+            <div class="p-3 text-start">
+              Bus was clean and the journey was smooth. Reached on time.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="pt-3 bg-secondary ">
+      <p class="fw-bold ps-2">© 2023 AlmaBetter. All rights reserved</p>
+      <div class="">
+        <p class="fw-bold">Follow Us:</p>
+        <a href="https://www.facebook.com" class="px-2">
+          <img src="./assets/facebook.png" alt="Facebook" width="24px" /></a>
+        <a href="https://www.twitter.com" class="px-2">
+          <img src="./assets/twitter.png" alt="Twitter" width="24px" /></a>
+        <a href="https://www.instagram.com" class="px-2">
+          <img src="./assets/instagram.png" alt="Instagram" width="24px" /></a>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  </body>
+
+</html>
+Output:
+notion image
+notion image
+Columns
+In Bootstrap, columns are a fundamental part of the grid system and allow you to create responsive layouts. Columns are used to divide the horizontal space within a row and organize content into a grid-based structure.
+Here's an overview of how to use columns in Bootstrap:
+Container: Wrap your rows and columns in a container to provide a fixed-width layout. Use the class .container for a fixed-width container or .container-fluid for a full-width container. 
+Row: Inside the container, create a row using the class .row. Rows act as a horizontal grouping for columns and ensure proper alignment.
+Column Classes: Bootstrap provides a range of column classes that define the width and behavior of columns. The most commonly used classes are:
+.col: This class creates a column that automatically adjusts its width based on the available space. By default, it will occupy 100% of the row width on mobile devices and scale down on larger screens.
+.col-{breakpoint}-{columns}: Use these classes to create columns of specific widths at different breakpoints. For example, .col-sm-6 will create a column that occupies 50% of the row width on small screens and above.
+.col-{breakpoint}-auto: Use this class to create a column that automatically adjusts its width based on the content. For example, .col-lg-auto will create a column that takes up only the necessary width on large screens.
+Example
+In this example, we have created a container with a row containing two columns. On small screens and above, each column will occupy 50% of the row width.
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      Column 1
+    </div>
+    <div class="col-sm-6">
+      Column 2
+    </div>
+  </div>
+</div>
+Output:
+notion image
+Column Nesting: You can nest columns inside other columns to create more complex layouts. Simply add a new .row within an existing column and create new columns inside it.
+Example
+In this example, the second column is divided into two nested columns, each occupying 50% of the parent column's width.
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      Column 1
+    </div>
+    <div class="col-sm-6">
+      <div class="row">
+        <div class="col-6">
+          Nested Column 1
+        </div>
+        <div class="col-6">
+          Nested Column 2
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+Output:
+notion image
+Columns in Bootstrap provide a flexible way to create responsive layouts. By utilizing different column classes and nesting columns, you can achieve a variety of grid-based designs that adapt well to different screen sizes.
+Project Implementation Step 4:
+Here, we've utilized Bootstrap's column system to incorporate columns into various components and sections of the Reserve App.
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserve Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar bg-body-secondary">
+        <div class="container-fluid">
+          <div class="navbar-nav d-flex flex-row align-items-center">
+            <a class="navbar-brand fs-4 fw-medium" href="./index.html">
+              <img src="../assets/bus.png" alt="Bus" height="50" />
+              Reserve
+            </a>
+            <a class="nav-link p-2 disabled">Tickets</a>
+            <a class="nav-link p-2" href="./route.html">Bus Routes</a>
+            <a class="nav-link p-2" href="./contactus.html">Contact Us</a>
+          </div>
+
+          <div class="navbar-nav d-flex flex-row justify-content-end align-items-center">
+            <button type="button" class="btn btn-warning fw-bold">Login</button>
+            <button type="button" class="btn fw-bold">Register</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="bg-info-subtle p-5">
+        <div class="navbar-nav d-flex justify-content-evenly flex-row align-items-center pt-5" style="padding-left: 25em; padding-right: 25em">
+          <select class="form-select m-3" aria-label="Default select example">
+            <option selected>Select Boarding City</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Bengaluru">Bengaluru</option>
+            <option value="Chennai">Chennai</option>
+          </select>
+
+          <select class="form-select m-3" aria-label="Default select example">
+            <option selected>Select Arrival City</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Bengaluru">Bengaluru</option>
+            <option value="Chennai">Chennai</option>
+          </select>
+        </div>
+        <div class="d-flex justify-content-evenly flex-row p-5">
+          <button type="submit" class="btn btn-outline-danger">Submit</button>
+        </div>
+      </section>
+      <section class="bg-light p-5">
+        <h1 class="text-center">Travel with world's largest bus services</h1>
+        <div class="d-flex justify-content-evenly p-5 text-center">
+          <div class="bg-white rounded-2 col-2">
+            <div class="-sm p-3">
+              <img src="../assets/bus-vector.png" alt="Bus" width="128px" class="mb-2" />
+            </div>
+            <div class="pt-4">
+              <h3>2000+</h3>
+              <p>Bus Collection</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2 col-3">
+            <div class="-sm p-3">
+              <img src="../assets/family.png" alt="Family" width="128px" class="mb-2" />
+            </div>
+            <div class="pt-4">
+              <h3>2 Million+</h3>
+              <p>Happy customers globally</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2 col-2">
+            <div class="-sm p-3">
+              <img src="../assets/ticket.png" alt="Ticket" width="128px" class="mb-2" />
+            </div>
+            <div class="pt-4">
+              <h3>5000+</h3>
+              <p>Tickets book everyday</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-dark-subtle p-5">
+        <h1 class="text-center">
+          Here's what a few of our customers have to say
+        </h1>
+        <div class="d-flex justify-content-evenly p-5 text-center">
+          <div class="bg-white rounded-2 col-3 d-flex flex-column">
+            <div class="d-flex flex-row justify-content-between mt-2">
+              <div class="col-2 bg-warning p-3 rounded-circle fw-bold ms-2">
+                VA
+              </div>
+              <div class="col-6 d-flex flex-column text-start ps-2">
+                <div class="fw-bold">Vatsal Agarwal</div>
+                <div>Customer since 2020</div>
+              </div>
+              <div class="col-3 pt-3 fw-bold text-danger">★ 4.9</div>
+            </div>
+            <div class="p-3 text-start">
+              Amazing travel experience with reserve. Excellent staff
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2 col-3 d-flex flex-column">
+            <div class="d-flex flex-row justify-content-between mt-2">
+              <div class="col-2 bg-warning p-3 rounded-circle fw-bold ms-2">
+                RS
+              </div>
+              <div class="col-6 d-flex flex-column text-start ps-2">
+                <div class="fw-bold">Rohan Sharma</div>
+                <div>Customer since 2022</div>
+              </div>
+              <div class="col-3 pt-3 fw-bold text-danger">★ 4.3</div>
+            </div>
+            <div class="p-3 text-start">
+              Amazing service. Always a best time with reserve.
+            </div>
+          </div>
+          <div class="bg-white rounded-2 col-3 d-flex flex-column">
+            <div class="d-flex flex-row justify-content-between mt-2">
+              <div class="col-2 bg-warning p-3 rounded-circle fw-bold ms-2">
+                VK
+              </div>
+              <div class="col-6 d-flex flex-column text-start ps-2">
+                <div class="fw-bold">Virat Kohli</div>
+                <div>Customer since 2019</div>
+              </div>
+              <div class="col-3 pt-3 fw-bold text-danger">★ 4.5</div>
+            </div>
+            <div class="p-3 text-start">
+              Bus was clean and the journey was smooth. Reached on time.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="d-flex justify-content-between pt-3 bg-secondary align-content-between">
+      <p class="fw-bold ps-2">© 2023 AlmaBetter. All rights reserved</p>
+      <div class="d-flex">
+        <p class="fw-bold">Follow Us:</p>
+        <a href="https://www.facebook.com" class="px-2">
+          <img src="../assets/facebook.png" alt="Facebook" width="24px" /></a>
+        <a href="https://www.twitter.com" class="px-2">
+          <img src="../assets/twitter.png" alt="Twitter" width="24px" /></a>
+        <a href="https://www.instagram.com" class="px-2">
+          <img src="../assets/instagram.png" alt="Instagram" width="24px" /></a>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  </body>
+
+</html>
+Output:
+notion image
+notion image
+Flex Layout
+Bootstrap utilizes the power of CSS Flexbox to create flexible and responsive layouts. Flexbox is a CSS layout module that allows elements to be arranged within a container, providing flexible positioning and alignment capabilities. Bootstrap provides a set of utility classes that leverage Flexbox to assist in building responsive designs.
+Here are some key aspects of Flexbox in Bootstrap:
+Flex Container: To create a flex container, add the .d-flex class to a parent element. This class sets the display property to flex and establishes a flex context for its child elements.
+Flex Direction: Bootstrap provides classes to control the direction of flex items within a flex container. Use the following classes to set the flex-direction:
+.flex-row: Displays flex items horizontally in a row (default).
+.flex-column: Displays flex items vertically in a column.
+.flex-row-reverse: Displays flex items horizontally in reverse order.
+.flex-column-reverse: Displays flex items vertically in reverse order.
+Flex Alignment: Bootstrap offers utility classes to align flex items within a flex container:
+.justify-content-{alignment}: Aligns flex items horizontally. Replace {alignment} with one of the following values:
+start: Aligns items to the start of the container (left-aligned).
+center: Aligns items at the center of the container.
+end: Aligns items to the end of the container (right-aligned).
+between: Distributes items evenly with space between them.
+around: Distributes items evenly with space around them.
+.align-items-{alignment}: Aligns flex items vertically. Replace {alignment} with one of the following values:
+start: Aligns items at the start of the container.
+center: Aligns items at the center of the container.
+end: Aligns items at the end of the container.
+Flex Wrapping:
+By default, flex items will wrap onto new lines when the container becomes narrower than the combined width of its flex items. You can control this wrapping behavior using the .flex-wrap-{value} class:
+.flex-wrap: Allows items to wrap onto new lines (default).
+.flex-nowrap: Prevents items from wrapping.
+.flex-wrap-reverse: Wraps items onto new lines in reverse order.
+Flexbox Example
+Let's create a 3x3 grid using the flex property in Bootstrap!
+notion image
+Code
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Flexbox in Bootstrap</title>
+  </head>
+
+  <body>
+    <div class="d-flex flex-column">
+      <div class="d-flex flex-row">
+        <div class="card">
+          <div class="card-body d-flex flex-column justify-content-start align-items-start">
+            <h5 class="card-title">Top Left</h5>
+            <p class="card-text">Some text goes here.</p>
+            <p class="card-text">Some more text goes here.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body d-flex flex-column justify-content-start align-items-center">
+            <h5 class="card-title">Center Top</h5>
+            <p class="card-text">Some text goes here.</p>
+            <p class="card-text">Some more text goes here.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body d-flex flex-column justify-content-start align-items-end">
+            <h5 class="card-title">Top Right</h5>
+            <p class="card-text">Some text goes here.</p>
+            <p class="card-text">Some more text goes here.</p>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex flex-row">
+        <div class="card">
+          <div class="card-body d-flex flex-column justify-content-center align-items-start">
+            <h5 class="card-title">Middle Left</h5>
+            <p class="card-text">Some text goes here.</p>
+            <p class="card-text">Some more text goes here.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body d-flex flex-column justify-content-center align-items-center">
+            <h5 class="card-title">Center</h5>
+            <p class="card-text">Some text goes here.</p>
+            <p class="card-text">Some more text goes here.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body d-flex flex-column justify-content-center align-items-end">
+            <h5 class="card-title">Middle Right</h5>
+            <p class="card-text">Some text goes here.</p>
+            <p class="card-text">Some more text goes here.</p>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex flex-row">
+        <div class="card">
+          <div class="card-body d-flex flex-column justify-content-end align-items-start">
+            <h5 class="card-title">Bottom Left</h5>
+            <p class="card-text">Some text goes here.</p>
+            <p class="card-text">Some more text goes here.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body d-flex flex-column justify-content-end align-items-center">
+            <h5 class="card-title">Center Bottom</h5>
+            <p class="card-text">Some text goes here.</p>
+            <p class="card-text">Some more text goes here.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body d-flex flex-column justify-content-end align-items-end">
+            <h5 class="card-title">Bottom Right</h5>
+            <p class="card-text">Some text goes here.</p>
+            <p class="card-text">Some more text goes here.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>
+Utilities
+In Bootstrap, utility classes are a set of predefined classes that you can apply directly to HTML elements to add various styling and functionality quickly. These utility classes are designed to handle common tasks like spacing, alignment, visibility, and grid layout.
+Here's an overview of some commonly used utility classes in Bootstrap:
+Alignment Utilities: Bootstrap includes classes for aligning elements:
+.text-{alignment}: Sets the text alignment to left, center, right, or justify.
+.align-{alignment}: Aligns elements vertically within a container. Replace {alignment} with top, middle, bottom, baseline, or stretch.
+Example
+<div class="text-center">Centered text</div>
+<div class="align-items-center d-flex" style="height: 200px; border: 1px solid #ccc;">
+  <div class="align-self-start">Top-aligned item</div>
+  <div class="align-self-center">Middle-aligned item</div>
+  <div class="align-self-end">Bottom-aligned item</div>
+</div>
+Output:
+notion image
+Visibility Utilities: Bootstrap provides classes to control the visibility of elements:
+.visible-{breakpoint}: Makes an element visible at a specific breakpoint (xs, sm, md, lg, or xl).
+.invisible: Makes an element invisible but still takes up space.
+Example
+<div class="visible-md">Visible on medium screens</div>
+<div class="invisible">Invisible element</div>
+Output:
+notion image
+Gap Utilities: Bootstrap 5 introduced gap utilities for managing spacing between grid columns or flex items:
+.gap-{size}: Sets the gap between columns or flex items. Replace {size} with 0 to 5 (representing a scale of spacing).
+Example
+<div class="row gap-3">
+  <div class="col">Column 1</div>
+  <div class="col">Column 2</div>
+  <div class="col">Column 3</div>
+</div>
+Output:
+notion image
+Project Implementation Step 5:
+Here, we have utilized Flexbox and other Bootstrap utilities, as discussed earlier, to structure different sections of the Reserve App, such as the Navbar, Main section, Testimonials, and Footer.
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserve Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar bg-body-secondary">
+        <div class="container-fluid">
+          <div class="navbar-nav d-flex flex-row align-items-center">
+            <a class="navbar-brand fs-4 fw-medium" href="./index.html">
+              <img src="../assets/bus.png" alt="Bus" height="50" />
+              Reserve
+            </a>
+            <a class="nav-link p-2 disabled">Tickets</a>
+            <a class="nav-link p-2" href="./route.html">Bus Routes</a>
+            <a class="nav-link p-2" href="./contactus.html">Contact Us</a>
+          </div>
+
+          <div class="navbar-nav d-flex flex-row justify-content-end align-items-center">
+            <button type="button" class="btn btn-warning fw-bold">Login</button>
+            <button type="button" class="btn fw-bold">Register</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="bg-info-subtle p-5">
+        <div class="navbar-nav d-flex justify-content-evenly flex-row align-items-center pt-5" style="padding-left: 25em; padding-right: 25em">
+          <select class="form-select m-3" aria-label="Default select example">
+            <option selected>Select Boarding City</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Bengaluru">Bengaluru</option>
+            <option value="Chennai">Chennai</option>
+          </select>
+
+          <select class="form-select m-3" aria-label="Default select example">
+            <option selected>Select Arrival City</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Bengaluru">Bengaluru</option>
+            <option value="Chennai">Chennai</option>
+          </select>
+        </div>
+        <div class="d-flex justify-content-evenly flex-row p-5">
+          <button type="submit" class="btn btn-outline-danger">Submit</button>
+        </div>
+      </section>
+      <section class="bg-light p-5">
+        <h1 class="text-center">Travel with world's largest bus services</h1>
+        <div class="d-flex justify-content-evenly p-5 text-center">
+          <div class="bg-white col-2">
+            <div class="-sm p-3">
+              <img src="../assets/bus-vector.png" alt="Bus" width="128px" class="mb-2" />
+            </div>
+            <div class="pt-4">
+              <h3>2000+</h3>
+              <p>Bus Collection</p>
+            </div>
+          </div>
+
+          <div class="bg-white col-3">
+            <div class="-sm p-3">
+              <img src="../assets/family.png" alt="Family" width="128px" class="mb-2" />
+            </div>
+            <div class="pt-4">
+              <h3>2 Million+</h3>
+              <p>Happy customers globally</p>
+            </div>
+          </div>
+
+          <div class="bg-white col-2">
+            <div class="-sm p-3">
+              <img src="../assets/ticket.png" alt="Ticket" width="128px" class="mb-2" />
+            </div>
+            <div class="pt-4">
+              <h3>5000+</h3>
+              <p>Tickets book everyday</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-dark-subtle p-5">
+        <h1 class="text-center">
+          Here's what a few of our customers have to say
+        </h1>
+        <div class="d-flex justify-content-evenly p-5 text-center">
+          <div class="bg-white col-3 d-flex flex-column">
+            <div class="d-flex flex-row justify-content-between mt-2">
+              <div class="col-2 bg-warning p-3 fw-bold ms-2">
+                VA
+              </div>
+              <div class="col-6 d-flex flex-column text-start ps-2">
+                <div class="fw-bold">Vatsal Agarwal</div>
+                <div>Customer since 2020</div>
+              </div>
+              <div class="col-3 pt-3 fw-bold text-danger">★ 4.9</div>
+            </div>
+            <div class="p-3 text-start">
+              Amazing travel experience with reserve. Excellent staff
+            </div>
+          </div>
+
+          <div class="bg-white col-3 d-flex flex-column">
+            <div class="d-flex flex-row justify-content-between mt-2">
+              <div class="col-2 bg-warning p-3 fw-bold ms-2">
+                RS
+              </div>
+              <div class="col-6 d-flex flex-column text-start ps-2">
+                <div class="fw-bold">Rohan Sharma</div>
+                <div>Customer since 2022</div>
+              </div>
+              <div class="col-3 pt-3 fw-bold text-danger">★ 4.3</div>
+            </div>
+            <div class="p-3 text-start">
+              Amazing service. Always a best time with reserve.
+            </div>
+          </div>
+          <div class="bg-white col-3 d-flex flex-column">
+            <div class="d-flex flex-row justify-content-between mt-2">
+              <div class="col-2 bg-warning p-3 fw-bold ms-2">
+                VK
+              </div>
+              <div class="col-6 d-flex flex-column text-start ps-2">
+                <div class="fw-bold">Virat Kohli</div>
+                <div>Customer since 2019</div>
+              </div>
+              <div class="col-3 pt-3 fw-bold text-danger">★ 4.5</div>
+            </div>
+            <div class="p-3 text-start">
+              Bus was clean and the journey was smooth. Reached on time.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="d-flex justify-content-between pt-3 bg-secondary align-content-between">
+      <p class="fw-bold ps-2">© 2023 AlmaBetter. All rights reserved</p>
+      <div class="d-flex">
+        <p class="fw-bold">Follow Us:</p>
+        <a href="https://www.facebook.com" class="px-2">
+          <img src="../assets/facebook.png" alt="Facebook" width="24px" /></a>
+        <a href="https://www.twitter.com" class="px-2">
+          <img src="../assets/twitter.png" alt="Twitter" width="24px" /></a>
+        <a href="https://www.instagram.com" class="px-2">
+          <img src="../assets/instagram.png" alt="Instagram" width="24px" /></a>
+      </div>
+    </footer>
+  </body>
+
+</html>
+Output:
+notion image
+ 
+Summary
+What did we learn?
+Bootstrap is a widely used front-end framework for building responsive websites.
+Key features of Bootstrap include a responsive grid system, pre-styled components, cross-browser compatibility, and customization options.
+To get started with Bootstrap, you can either download the Bootstrap package or include it via a CDN. Set up your HTML file by including the Bootstrap CSS file and adding the necessary HTML structure.
+Bootstrap containers are used to wrap and center content within a webpage. There are fixed-width containers (.container) and fluid containers (.container-fluid). 
+Bootstrap offers components like Navbar and Navs. The Navbar component allows for the creation of responsive and customizable navigation bars, while the Navs component enables the creation of tabbed navigation menus.
+Bootstrap provides a wide range of button styles and options to create default buttons, apply different colors to buttons, adjust button sizes, and utilize additional button styles such as outline buttons and button groups.
+Typography in Bootstrap involves applying different font styles and handling headings, paragraphs, and text alignment.
+Bootstrap provides predefined color classes for text and background colors. The content lists commonly used color classes such as text-primary, bg-success, and bg-muted.
+Margin classes (m-, mx-, my-, mt-, mb-, ml-, mr-) add margin to elements, while padding classes (p-, px-, py-, pt-, pb-, pl-, pr-) add padding.
+The container class (container or container-fluid) wraps rows and columns. Rows (row class) act as horizontal containers for columns. Column classes (col, col-{breakpoint}-{columns}, col-{breakpoint}-auto) define the width and behavior of columns.
+Bootstrap utilizes CSS Flexbox to create flexible and responsive layouts. To create a flex container, use the d-flex class. Flex direction, alignment, and wrapping behavior can be modified with various Bootstrap classes.
+Shortcomings & Challenges
+Bootstrap has a learning curve, especially for beginners who are new to front-end development or unfamiliar with CSS frameworks.
+While Bootstrap offers customization options, there may be cases where you need highly specific or unique designs that are not easily achievable using the provided classes and components. 
+Some of Bootstrap's components and functionalities rely on JavaScript. If you're aiming for a lightweight or JavaScript-free website, this dependency may be a drawback.
+While Bootstrap aims for cross-browser compatibility, there can still be differences in rendering and behavior across various browsers and versions.
+Best practices to follow
+Assess your project requirements and customize Bootstrap accordingly. Include only the necessary components, styles, and functionalities to avoid unnecessary overhead.
+Keep up with Bootstrap updates and new releases to take advantage of bug fixes, performance improvements, and new features. Regularly check the Bootstrap documentation and community resources for updates and best practices.
+Bootstrap provides a solid foundation, but you may need to write custom CSS to fine-tune the design and achieve a unique look. Utilize custom CSS to override Bootstrap styles or add additional styling as per your project's requirements.
+Leverage Bootstrap's responsive grid system and components to create a mobile-friendly and responsive layout. Test your website on different screen sizes and devices to ensure optimal responsiveness.
+Use semantic HTML elements appropriately to enhance accessibility and SEO. Avoid relying solely on Bootstrap classes for structural and semantic purposes.
+ 
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+Introduction To Bootstrap 4 Flex Layout: https://medium.com/codingthesmartway-com-blog/introduction-to-bootstrap-4-flex-layout-flexbox-for-bootstrap-f85405ce5ebf
+Bootstrap Grid: https://www.sitepoint.com/bootstrap-grid-mastering-flexbox/
+ 
+Try it Yourself
+Let's build this mini project in the VS Code IDE. Don't forget to join the AlmaBetter Community to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
+Task 1: Bootstrap lovers, this one's for you! Take up this challenge and show off your understanding of Bootstrap in the VS Code IDE.
+Problem
+Task: Customizing the Card Layout
+Card Design:
+Customize the background color and text color of the cards:
+Set the background color to a light gray (#f8f9fa).
+Set the text color to a dark gray (#333).
+Add a box-shadow to the cards to give them a subtle depth effect.
+Adjust the padding and margins to provide appropriate spacing between cards.
+Image Styling:
+Add a border-radius to the card images to give them rounded corners.
+Set the height of the images to 250px to maintain a consistent size.
+Button Styling:
+Customize the button style:
+Change the background color to a shade of blue (#007bff).
+Set the text color to white (#fff).
+Increase the font size and adjust the padding to make the button more prominent.
+Add a hover effect to the button to make it interactive.
+Responsive Design:
+Ensure that the card layout is responsive and adapts to different screen sizes.
+Test the responsiveness by resizing the browser window or using device emulators.
+Optional:
+Add any additional customizations or enhancements to further improve the visual appearance or user experience of the card layout. This could include animations, transitions, or other creative elements.
+Solution
+notion image
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Card Layout</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+      .card {
+        background-color: #f8f9fa;
+        color: #333;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <img src="https://images.pexels.com/photos/17268371/pexels-photo-17268371/free-photo-of-city-landscape-beach-water.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" alt="Image 1" height="250px" />
+            <div class="card-body">
+              <h5 class="card-title">Card 1</h5>
+              <p class="card-text">This is the description for Card 1.</p>
+              <a href="#" class="btn btn-primary">Learn More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="https://images.pexels.com/photos/16811798/pexels-photo-16811798/free-photo-of-cars-parking-on-urban-street.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" alt="Image 2" height="250px" />
+            <div class="card-body">
+              <h5 class="card-title">Card 2</h5>
+              <p class="card-text">This is the description for Card 2.</p>
+              <a href="#" class="btn btn-primary">Learn More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="https://images.pexels.com/photos/17462058/pexels-photo-17462058/free-photo-of-sea-landscape-beach-water.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" alt="Image 3" height="250px" />
+            <div class="card-body">
+              <h5 class="card-title">Card 3</h5>
+              <p class="card-text">This is the description for Card 3.</p>
+              <a href="#" class="btn btn-primary">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+
+</html>
+Task 2: Explore the Bootstrap documentation and share your favorite Bootstrap class or effect with your peers on the AlmaBetter Community platform.
