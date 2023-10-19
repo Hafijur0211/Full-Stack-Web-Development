@@ -661,7 +661,8 @@ More advanced HTML features: https://www.w3.org/MarkUp/Guide/Advanced.html
  
 Try it Yourself
 Let's build this mini project in the VS Code IDE. Don't forget to join the AlmaBetter Community to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
-Question
+Task 1: Ready to dive into the world of web development? Tackle these HTML coding challenges right within the VS Code IDE!
+Problem 
 Task: Create a Webpage with Advanced HTML Elements
 Create an HTML document structure with the necessary tags including <html>, <head>, and <body>.
 Inside the <head> tag, add a title for your webpage.
@@ -776,3 +777,4 @@ The provided code is an HTML document that showcases various advanced HTML eleme
 <table>: A table element used to create a table structure. It consists of <thead> (table header) and <tbody> (table body) sections. The table header contains a row (<tr>) with <th> (table header cell) elements, representing column headings. The table body contains rows with <tr> elements, each containing <td> (table data cell) elements that represent the data in each column.
 <iframe>: An iframe element used to embed another webpage within the current webpage. It is specified with a src attribute that points to the URL of the webpage to be displayed. The width and height attributes determine the dimensions of the iframe.
 Overall, the code demonstrates the usage of various HTML elements such as headers, forms, lists, tables, and iframes to create different types of content and interactivity in a webpage.
+Task 2: Discuss your approach to resolving any challenges encountered while solving this question on AlmaBetter's Community platform.
