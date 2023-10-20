@@ -1,1 +1,557 @@
+Introduction to Searching Algorithms
+Session Flow
+Learning Objective
+Introduction
+Theme
+Primary Goals
+Introduction to Searching Algorithms 
+Introduction to Linear Search
+Working of Linear Search
+Implementation of Linear Search
+Time Complexity of Linear Search
+Space Complexity of Linear Search
+Variations of Linear Search
+Introduction to Binary Search
+Working of Binary Search
+Implementation of Binary Search
+Time Complexity of Binary Search
+Space Complexity of Linear Search
+How does Binary Searching help us?
+Activity: Fill in the blanks
+Introduction to Hashmap
+What are Hashmaps?
+Working of Hashmap
+Implementation of Hashmap
+Time Complexity of Hashmap
+Where to use Hashmaps?
+Activity: True or False
+Summary 
+What did we learn?
+Shortcomings & Challenges
+Best practices to follow
+Enhance your knowledge
+Try it yourself
+ 
+ 
+ 
+Learning Objective
+Introduction
+Linear and binary search are two of the most basic and fundamental algorithms in computer science and programming. Both are used to search for a specific value from a collection of data. A Hashmap is a data structure comprising key-value pairs, providing constant-time storage and data retrieval, irrespective of the collection size.
+Focus: Introduction to Linear Search, Binary Search, and Hashmap, Implementation, and Use Cases
+Prerequisites: VS Code IDE with Node.js installed, JavaScript Basics & Foundations, Introduction to DSA
+Theme
+In a library setting, let's consider a scenario where you need to assist patrons in finding books efficiently. When a patron requests a book without providing additional details, you perform a Linear search by sequentially checking each shelf. This method is useful when books are unsorted, or patrons have limited information about the book.
+To enhance search speed, you have sorted the books on each shelf, allowing you to employ Binary search. When a patron provides the exact title of the book, you start searching from the middle, comparing the target title with the current book's title. Based on the comparison, you continue searching in the lower or upper half of the shelf until the desired book is found.
+Additionally, you have implemented a digital catalog using a Hashmap. Each book title serves as a key, and the corresponding shelf number is the value. By hashing the book titles, you can quickly retrieve the shelf number for any book, enabling patrons to locate books based on their titles efficiently.
+Primary Goals
+Acquire a comprehensive understanding of the linear search and binary search algorithms, including their underlying concepts and practical implementation.
+Analyze and grasp the time and space complexity of both linear search and binary search to assess their efficiency and performance characteristics.
+Master the implementation of a hashmap in JavaScript, a fundamental data structure for organizing key-value pairs.
+Explore and recognize the diverse applications of hashmaps, such as efficient data retrieval, caching mechanisms, and frequency counting, enabling optimized data manipulation in various scenarios.
+ 
+Introduction to Searching Algorithms
+As a software engineer, James loved solving problems using algorithms. One day, he was assigned to develop a search function for a large e-commerce website that had thousands of products.
+James knew he had to choose the right search algorithm to make the function efficient and fast. He decided to implement both linear search and binary search and tried to use the best algorithm for searching for the product.
+The e-commerce website's customers were also happy with the new search function, as they could quickly and easily find the products they were looking for. James was proud of his work and knew his algorithms would continue to help people solve problems efficiently and effectively.
+Introduction to Linear Search
+Linear search, also known as sequential search, is a simple search algorithm that traverses an array or list sequentially to find a specific target element. It starts from the beginning of the array and checks each element one by one until either the target element is found or the end of the array is reached.
+Linear search is often used on small collections or for situations where the collection is unsorted or has a random order.
+Working of Linear Search
+Start at the Beginning: Linear Search starts at the first element of the collection.
+Compare with Target: It compares the current element with the target value that needs to be found.
+Match Found: If the current element matches the target value, the search is successful, and the index of the element is returned.
+Move to the Next Element: If the current element does not match the target value, Linear Search moves to the next element in the collection.
+Repeat the Process: Steps 3 and 4 are repeated until a match is found or the entire collection has been traversed.
+End of Search: If the entire collection has been traversed without finding a match, Linear Search concludes that the target value is not present in the collection and returns a special value (e.g., -1) to indicate the absence of the target.
+notion image
+Implementation of Linear Search
+In JavaScript, we can implement linear search using a for loop that iterates through each element of an array and compares it with the search element.
+Here's a simple implementation of the Linear Search algorithm in JavaScript:
+function linearSearch(arr, target) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === target) {
+      return i; // Match found, return the index
+    }
+  }
+  return -1; // No match found, return -1
+}
 
+// Example usage
+var arr = [4, 2, 7, 1, 9];
+var target = 7;
+console.log(linearSearch(arr, target)); // Output: 2
+Explanation
+The linearSearch function is defined with two parameters: arr, which is the collection to be searched, and target, which is the value to be found.
+It iterates over each element of the collection using a for loop.
+In each iteration, it compares the current element with the target value using the === equality operator.
+If a match is found, the index of the element is returned.
+If the entire collection is traversed without finding a match, the function returns -1 to indicate the absence of the target value.
+The function can be used to search for a target value in an array or any other collection.
+Linear search is a simple but inefficient algorithm, especially for large lists. For large lists, other searching algorithms like binary search or hash tables are more efficient.
+Time Complexity of Linear Search
+Worst-case time complexity: O(n)
+Linear Search checks each element in the collection in the worst case, where n is the size of the collection.
+Average-case time complexity: O(n)
+On average, Linear Search needs to examine half of the elements in the collection to find the target value.
+Best-case time complexity: O(1)
+The best-case scenario occurs when the target value is found at the beginning of the collection. In this case, Linear Search performs only one comparison.
+Space Complexity of Linear Search
+Space complexity of Linear Search: O(1)
+Linear Search requires a constant amount of extra space to store variables for iteration and comparison, regardless of the size of the collection.
+Variations of Linear Search
+There are a few variations of linear search that can be used depending on the specific problem requirements. Here are some examples:
+Simple Linear Search: This is the basic implementation of linear search, where we loop through each element of the array and check if it's equal to the target value. If we find a match, we return the index of the element.
+function linearSearch(arr, target) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === target) {
+      return i;
+    }
+  }
+  return -1; // Target value not found
+}
+Last Occurrence Linear Search: In this variation, instead of returning the index of the first occurrence of the target value, we return the index of the last occurrence of the target value.
+function lastOccurrenceLinearSearch(arr, target) {
+  let lastIndex = -1;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === target) {
+      lastIndex = i;
+    }
+  }
+  return lastIndex;
+}
+Recursive Linear Search: This variation uses recursion to search for the target value. The array is split into two parts: the first element and the remaining elements. The first element is compared to the target value, and if it's a match, we return the index. If not, we recursively call the function on the remaining elements until the target value is found or we reach the end of the array.
+function recursiveLinearSearch(arr, target, start = 0) {
+  if (start >= arr.length) {
+    return -1; // Target value not found
+  }
+  if (arr[start] === target) {
+    return start;
+  }
+  return recursiveLinearSearch(arr, target, start + 1);
+}
+Sentinel Linear Search: In this variation, we add a "sentinel" value to the end of the array equal to the target value. This allows us to eliminate the need to check if we've reached the end of the array during the search, which can improve performance for very large arrays.
+function sentinelLinearSearch(arr, target) {
+  const lastIndex = arr.length - 1;
+  const lastValue = arr[lastIndex];
+  arr[lastIndex] = target;
+  
+  let i = 0;
+  while (arr[i] !== target) {
+    i++;
+  }
+  
+  arr[lastIndex] = lastValue; // Reset the array to its original state
+  if (i < lastIndex || arr[lastIndex] === target) {
+    return i;
+  }
+  return -1; // Target value not found
+}
+Introduction to Binary Search
+Binary search is a searching algorithm used to find the position of a specific value in a sorted array or list by repeatedly dividing the search interval in half. It works by comparing the middle element of the array to the target value and adjusting the search interval accordingly until the target value is found or the search interval is empty. 
+This approach allows for a significant reduction in the number of elements that need to be checked in comparison to linear search, resulting in a more efficient algorithm for searching large, sorted datasets.
+notion image
+Binary search is a more efficient search algorithm that works well for larger arrays. It involves dividing the array in half at each iteration, eliminating half of the remaining elements until the desired element is found.
+Working of Binary Search
+Start with a Sorted Collection: Binary Search requires the collection to be sorted in ascending or descending order for optimal performance.
+Define Search Space: Binary Search starts with the entire collection as the initial search space.
+Find the Middle Element: It calculates the middle element of the search space by averaging the indices of the low and high ends.
+Compare with Target: The middle element is compared with the target value that needs to be found.
+Match Found: If the middle element matches the target value, the search is successful, and the index of the element is returned.
+Adjust Search Space: If the middle element is greater than the target value, the search is narrowed down to the lower half of the search space. Otherwise, if the middle element is less than the target value, the search is narrowed down to the upper half of the search space.
+Repeat the Process: Steps 3 to 6 are repeated until a match is found or the search space becomes empty (indicating the absence of the target value).
+End of Search: If the search space becomes empty without finding a match, Binary Search concludes that the target value is not present in the collection and returns a special value (e.g., -1) to indicate the absence of the target.
+notion image
+Implementation of Binary Search
+Here's a simple implementation of the Binary Search algorithm in JavaScript:
+function binarySearch(arr, target) {
+  let left = 0;
+  let right = arr.length - 1;
+
+  while (left <= right) {
+    let mid = Math.floor((left + right) / 2);
+    if (arr[mid] === target) {
+      return mid;
+    } else if (arr[mid] < target) {
+      left = mid + 1;
+    } else {
+      right = mid - 1;
+    }
+  }
+
+  return -1;
+}
+Explanation
+The binarySearch function takes in two parameters: arr, which is the sorted array to search in, and target, which is the value being searched for.
+Two pointers, left and right, are initialized. The left pointer is set to the beginning of the array (index 0), and the right pointer is set to the end of the array (index arr.length - 1).
+The code enters a while loop that continues as long as the left pointer is less than or equal to the right pointer. This condition ensures that there is still a valid range to search within the array.
+Inside the while loop, the code calculates the middle index, mid, by taking the average of the left and right pointers and rounding it down using Math.floor((left + right) / 2). This index represents the middle element of the current search range.
+The code checks if the value at the middle index, arr[mid], is equal to the target value. If it is, it means the target has been found, and the code returns the index mid.
+If arr[mid] is less than the target value, it means the target value must be in the right half of the remaining search range. The left pointer is moved to mid + 1, effectively discarding the left half of the search range.
+If arr[mid] is greater than the target value, it means the target value must be in the left half of the remaining search range. The right pointer is moved to mid - 1, effectively discarding the right half of the search range.
+If the while loop completes without finding the target value, the code reaches the end of the function and returns -1 to indicate that the target value is not present in the array.
+Time Complexity of Binary Search
+Worst-case time complexity: O(log n)
+Binary Search divides the search space in half at each iteration. In the worst case, it continues dividing until the search space reduces to a single element or becomes empty. This process can be repeated a maximum of log n times, where n is the size of the sorted collection.
+Average-case time complexity: O(log n)
+The average-case time complexity of Binary Search is also O(log n). It divides the search space in half at each step, leading to a logarithmic time complexity.
+Best-case time complexity: O(1)
+The best-case scenario occurs when the target value is found at the middle of the sorted collection. In this case, Binary Search performs only one comparison and terminates, resulting in constant time complexity.
+Space Complexity of Binary Search
+Space complexity of Binary Search: O(1)
+Binary Search uses a constant amount of extra space to store variables for iteration and comparison, regardless of the size of the sorted collection. It does not require any additional space that grows with the input size.
+How does Binary Searching help us?
+Binary search is a very useful algorithm in JavaScript for searching sorted arrays efficiently. Here are some ways binary search can help us in JavaScript:
+Faster searching: Binary search can be significantly faster than linear search for large datasets, especially when the data is sorted. This makes it an important algorithm for performance-critical JavaScript applications.
+Smaller memory footprint: Binary search only requires a small amount of memory to execute, making it a good choice for resource-constrained environments such as mobile devices or embedded systems.
+More efficient algorithms: Binary search is a fundamental building block for more advanced search algorithms such as interpolation search or exponential search. These algorithms use a similar strategy as binary search but are optimized for specific use cases.
+Better user experience: Faster search times can lead to a better user experience in JavaScript applications such as search engines or e-commerce sites. Binary search can reduce the time it takes for users to find the information they are looking for.
+Simplified code: Implementing binary search in JavaScript is relatively straightforward, especially with the availability of powerful array methods such as Array.prototype.slice() and Array.prototype.splice(). This makes the binary search a good choice for developers looking for a simple, efficient search algorithm for their JavaScript applications.
+Binary search is an important algorithm for efficient searching in JavaScript applications. By taking advantage of its speed, small memory footprint, and ease of implementation, developers can build fast and responsive applications that provide a great user experience.
+ 
+Activity: Fill in the blanks
+The time complexity of the binary search algorithm is _____________ (O(n) / O(1) / O(log n)).
+The time complexity of the linear search algorithm is _____________ (O(n) / O(log n) / O(1) ).
+In binary search, the search interval is adjusted based on whether the _____________ (first / last / middle) element is less than or greater than the target value. 
+The time complexity of linear search grows _____________ (exponentially / linearly / quadratically) with the size of the data set. In contrast, the time complexity of binary search grows logarithmically with the size of the data set.
+Answers
+O(log n)
+O(n)
+middle
+linearly
+ 
+Introduction to Hashmap
+A library catalog is a tool librarians use to organize and locate books within a library. Just like how a library catalog stores information about where a book is located in a library, a Hashmap in JavaScript stores key-value pairs.
+Each book in the library has a unique identification number, known as the call number, that allows the librarian to locate it quickly. Similarly, each key in the Hashmap is unique and allows for quick retrieval of the corresponding value.
+notion image
+When a new book is added to the library, the librarian assigns it a call number and records it in the catalog. Similarly, when a new key-value pair is added to the hashmap, JavaScript assigns it a unique identifier using a hash function and stores it in the hashmap.
+Like how a library catalog allows for quick and efficient location of books within the library, a hashmap allows for quick and efficient retrieval of values based on their corresponding keys.
+What are Hashmaps?
+A hashmap is a collection of key-value pairs that allows you to store and retrieve data constantly, regardless of the collection size. Hashmaps are often used to implement associative arrays, dictionaries, and other data structures.
+notion image
+A hashmap in JavaScript is implemented using an object, a built-in data type in the language. The keys in the object are used to store and retrieve values, and the values themselves can be of any data type, including strings, numbers, arrays, and even other objects.
+Hashmaps can be used in JavaScript to store and retrieve key-value pairs efficiently. While JavaScript does not have a built-in Hashmap data structure, you can create a Hashmap by using an object as a key-value store and generating unique keys for each value using a hash function.
+Working of Hashmap
+Initialize an Empty Hashmap: To create a hashmap in JavaScript, you can use the Map object or utilize objects as key-value pairs.
+Hashing the Key: When inserting a key-value pair into the hashmap, the key is hashed using a hashing function. The hashing function converts the key into a unique numeric value, known as the hash code. The hash code determines the index or bucket where the key-value pair will be stored.
+Store the Key-Value Pair: Using the hash code, the key-value pair is stored in the corresponding bucket or location in the hashmap. JavaScript's Map object automatically handles this process, while with objects, the hash code is typically used as a property name to store the value.
+Retrieve a Value: To retrieve a value from the hashmap, the key is hashed again to obtain the hash code. Using the hash code, the hashmap locates the bucket or property associated with the key and returns the corresponding value.
+Update or Remove a Value: To update or remove a value, the process is similar to retrieval. The key is hashed to find the corresponding bucket or property, and the value is updated or removed accordingly.
+Handling Collisions: Collisions occur when different keys produce the same hash code. To handle collisions, the hashmap employs various techniques such as chaining (using linked lists or arrays within the buckets to store multiple key-value pairs with the same hash code) or open addressing (finding an alternative empty location within the hashmap to store the colliding key-value pair).
+Resize and Rehash: As the number of key-value pairs in the hashmap grows, the hashmap may need to be resized to maintain efficient performance. Resizing involves creating a larger array or allocating additional memory space and rehashing all the key-value pairs to distribute them across the new buckets.
+To add a key-value pair to a hashmap in JavaScript, you can assign a value to a property of the object using the key as the property name. 
+For example:
+const hashmap = {}; 
+hashmap['key1'] = 'Arithmetic Operators'; 
+hashmap['key2'] = 'Logical Operators';
+hashmap['key3'] = 'Comparison Operators';
+hashmap['key4'] = 'Bitwise Operators';
+In this example, we create a hashmap empty object and add two key-value pairs using bracket notation. The keys are strings, and the values are also strings, but they could be any data type.
+notion image
+To retrieve a value from the hashmap, you can use the same bracket notation to access the property by its key:
+console.log(hashmap['key1']); // output: 'Arithmetic Operators'
+If the key does not exist in the hashmap, attempting to retrieve its value will return undefined.
+Implementation of Hashmap
+Here's a simple implementation of the Hashmap in JavaScript:
+// Hashmap implementation using objects
+class HashMap {
+  constructor() {
+    this.map = {}; // Object to store key-value pairs
+  }
+
+  // Insert a key-value pair into the hashmap
+  insert(key, value) {
+    this.map[key] = value;
+  }
+
+  // Retrieve the value associated with a given key
+  get(key) {
+    return this.map[key];
+  }
+
+  // Remove a key-value pair from the hashmap
+  remove(key) {
+    delete this.map[key];
+  }
+
+  // Check if a key exists in the hashmap
+  contains(key) {
+    return key in this.map;
+  }
+
+  // Get the number of key-value pairs in the hashmap
+  size() {
+    return Object.keys(this.map).length;
+  }
+
+  // Get all keys in the hashmap
+  keys() {
+    return Object.keys(this.map);
+  }
+
+  // Get all values in the hashmap
+  values() {
+    return Object.values(this.map);
+  }
+}
+
+// Usage example
+const myHashMap = new HashMap();
+
+myHashMap.insert("name", "John");
+myHashMap.insert("age", 30);
+
+console.log(myHashMap.get("name")); // Output: John
+console.log(myHashMap.contains("age")); // Output: true
+
+myHashMap.remove("age");
+console.log(myHashMap.size()); // Output: 1
+console.log(myHashMap.keys()); // Output: [ 'name' ]
+console.log(myHashMap.values()); // Output: [ 'John' ]
+Explanation
+The HashMap class is defined with a constructor that initializes an empty object (this.map) to store key-value pairs.
+The insert method takes a key and a value as parameters and assigns the value to the key in the map object. This is done by using the key as a property name and assigning the value to that property.
+The get method takes a key as a parameter and returns the corresponding value from the map object by accessing the property with that key.
+The remove method takes a key as a parameter and removes the key-value pair from the map object using the delete operator.
+The contains method takes a key as a parameter and checks if the key exists in the map object. It returns true if the key is present as a property in the map object and false otherwise.
+The size method returns the number of key-value pairs in the map object by using Object.keys(this.map).length, which returns an array of keys and retrieves its length.
+The keys method returns an array of all the keys in the map object by using Object.keys(this.map).
+The values method returns an array of all the values in the map object by using Object.values(this.map).
+Time Complexity of Hashmap
+Let’s take a problem statement that can be solved with two approaches, and at the end, we’ll analyze that time complexity.
+Given an array of integers, find two numbers that add up to a target number.
+notion image
+Using Traditional Approach:
+function twoSum(nums, target) {
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = i + 1; j < nums.length; j++) {
+      if (nums[i] + nums[j] === target) {
+        return [i, j];
+      }
+    }
+  }
+
+  return null;
+}
+
+let nums = [4, 2, 5, 17, 9];
+let target = 11;
+let result = twoSum(nums, target);
+console.log(result)
+
+// Output
+[1, 4]
+Explanation
+The code uses two nested for loops to iterate through all possible pairs of elements in the nums array.
+The outer loop iterates over each element from the beginning to the second-to-last element. It uses the variable i to represent the index of the first element in the pair.
+The inner loop iterates over each element following the element represented by i. It uses the variable j to represent the index of the second element in the pair. The inner loop starts from i + 1 to avoid considering the same pair multiple times and unnecessary duplicate calculations.
+For each pair of elements, the code checks if their sum equals the target value: if (nums[i] + nums[j] === target). If it does, it means that the pair of elements satisfies the condition, and the code returns an array containing the indices [i, j].
+If no pair is found after checking all possible combinations, the code returns null to indicate that no solution was found.
+The time complexity of this algorithm is O(n^2), where n is the number of elements in the nums array. This is because the code uses two nested loops that iterate over the entire array. For each element, the inner loop iterates over the remaining elements. As a result, the number of iterations is roughly proportional to n * (n-1) / 2, which simplifies to O(n^2) in Big O notation. Therefore, the time complexity is O(n^2).
+Using Hashmap:
+function twoSum(nums, target) {
+  const map = new Map();
+
+  for (let i = 0; i < nums.length; i++) {
+    const complement = target - nums[i];
+    if (map.has(complement)) {
+      return [map.get(complement), i];
+    }
+    map.set(nums[i], i);
+  }
+
+  return null;
+}
+
+let nums = [4, 2, 5, 17, 9];
+let target = 11;
+let result = twoSum(nums, target);
+console.log(result);
+
+// Output
+[1, 4]
+Explanation
+A Map data structure is created to store the array elements and their indices. The map will allow efficient lookups to find the complement of each element later on.
+The code iterates through the nums array using a for loop.
+For each element, it calculates the complement by subtracting the current element from the target: const complement = target - nums[i];
+It then checks if the complement is present in the map using the has method: if (map.has(complement)). If it is, that means we have found the two elements that sum up to the target.
+If the complement is found in the map, the code returns an array containing the indices of the complement and the current element: [map.get(complement), i].
+If the complement is not found in the map, the code adds the current element and its index to the map using the set method: map.set(nums[i], i).
+If the loop finishes without finding a valid pair, it returns null to indicate that no solution was found.
+The time complexity of this algorithm is O(n), where n is the number of elements in the nums array. This is because the code only needs to iterate through the array once to find the desired pair of numbers. The map operations (insertion, deletion, and lookup) have an average time complexity of O(1) since they are implemented using a hash table. Therefore, the overall time complexity is dominated by the single loop, resulting in a linear time complexity of O(n).
+Where to use Hashmaps?
+Hashmaps are a fundamental data structure in computer science and are widely used in various programming languages, including JavaScript.
+In JavaScript, hashmaps are implemented using objects, and they are an important data structure for storing and retrieving key-value pairs efficiently.
+Caching data: Hash tables can be used to cache data in memory, which can significantly improve the performance of web applications. 
+For example, you could use a hash table to cache the results of expensive database queries so that subsequent requests for the same data can be served quickly from memory.
+Counting occurrences: Hash tables can be used to count the occurrences of elements in an array. 
+For example, you could use a hash table to count the number of times each word appears in a text document or to count the frequency of each character in a string.
+Storing user sessions: Hash maps can be used to store user sessions in memory.
+When a user logs in to a web application, a hash map can be used to store the user's session ID and any associated data, such as their name, email, and preferences.
+Storing configuration data: Hash maps can be used to store configuration data for a web application. 
+For example, you could use a hash map to store the database connection string, the SMTP server details, and other settings that are used throughout the application.
+Implementing memoization: Memoization is a technique used to speed up the execution of functions by caching the results of expensive function calls. Hash tables can be used to implement memoization in JavaScript. 
+By storing the input arguments and their corresponding output values in a hash table, the function can quickly retrieve the cached result for any previously seen input.
+ 
+Activity: True or False
+A hashmap is used to organize and locate books within a library. 
+JavaScript has a built-in Hashmap data structure. 
+The keys in a Map object can be of any data type, including objects and functions.
+A hash table's efficiency depends on the hash function's quality and the strategy used to handle collisions. 
+Answers
+True
+False
+True
+True
+ 
+Summary
+What did we learn?
+Linear search is a simple algorithm that sequentially checks each element in a dataset until the desired element is found. It is efficient for small datasets but can become slow and inefficient for larger datasets.
+Binary search is a more advanced algorithm that utilizes a divide-and-conquer approach to search for the desired element. It works by repeatedly dividing the dataset in half and eliminating the half that does not contain the desired element. 
+In JavaScript, the linear search can be implemented using a simple for loop that iterates through each element in the dataset. In contrast, binary search can be implemented recursively or iteratively using the divide-and-conquer approach.
+Understanding the time complexity of linear and binary search algorithms is important for choosing the right algorithm for a given dataset. Linear search has a time complexity of O(n), while binary search has a time complexity of O(log n).
+Mastering linear and binary search algorithms in JavaScript is essential for any programmer looking to improve their problem-solving skills and write more efficient and optimized code.
+A hashmap is a data structure consisting of key-value pairs that can be accessed constantly. It is implemented in JavaScript using an object and is useful for implementing associative arrays and other data structures. 
+Hash tables are similar to hashmaps but are typically implemented using an array. The main advantage of using a hashmap is its constant-time access to values. 
+The time complexity of a hashmap is O(1) for insertion, deletion, and retrieval operations.
+Shortcomings & Challenges
+Linear search can become slow and inefficient for larger datasets. This is because it has a time complexity of O(n), where n is the size of the dataset. Therefore, it is not recommended to use linear search for large datasets.
+Both linear search and binary search algorithms can be memory-intensive, especially if the dataset is very large. This can lead to performance issues and slow down the program's overall operation.
+Hashmaps can also experience collisions, where multiple keys may hash to the same index, impacting performance. 
+Hash tables can experience degraded performance as the number of elements grows and collisions become more frequent.
+Best practices to follow
+Linear search is efficient for small datasets, while binary search is more efficient for larger datasets. Always choose the appropriate algorithm based on the size and characteristics of the dataset.
+When implementing the algorithms, always consider ways to optimize the code for performance. This includes reducing unnecessary loops or function calls, avoiding duplicate code, and using efficient data structures.
+Test and debug thoroughly: Test the implementation of the algorithms with different datasets to ensure that they are working as expected. Debug any errors that are encountered during testing to ensure that the algorithms are functioning properly.
+Be mindful of potential collisions, where multiple keys may hash to the same index, and implement a strategy to handle them, such as chaining or open addressing.
+Consider the size of the hashmap when initializing it, as having too many or too few buckets can affect performance.
+Avoid modifying the keys of the hashmap after they have been added, as this can cause issues with accessing and retrieving values.
+ 
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+JavaScript Hash Table – Associative Array Hashing in JS: https://www.freecodecamp.org/news/javascript-hash-table-associative-array-hashing-in-js/
+SHA-1, SHA-2 and SHA-256 Hash Algorithms: https://www.thesslstore.com/blog/difference-sha-1-sha-2-sha-256-hash-algorithms/
+Try it yourself
+Let's solve these coding problems on AlmaBetter IDE. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
+Task 1: Take a shot at cracking these coding problems right within the AlmaBetter IDE.
+Problems
+Problem 1: Linear Search in Array
+Imagine that you are a librarian. You are responsible for keeping track of the books in the library. The library has a large collection of books, and it can be difficult to find a particular book.
+One day, a customer comes to the library and asks for a book called "The Adventures of Sherlock Holmes." You know that the library has a copy of the book, but you need to find it quickly.
+In this situation, you have to use linear search to find the book. Linear search is a simple algorithm that works by checking each element in the array until the target value is found.
+Example 1:
+Input:  4 6 7 8 2 9 0 2
+
+Output: 4
+Explanation:
+2 is at index 4 in the array
+Example 2:
+Input:  3 6 7 9 1 5 8
+
+Output: 1
+Explanation:
+since 8 is not present in the array so returned -1.
+Problem 2: Binary Search
+Imagine that you are a software engineer working on a search engine. You are tasked with writing a function that can search for a target value in a sorted array of integers. 
+You start by thinking about how you would search for a target value in a sorted array manually. You would continue this process recursively until you found the target value or until you had searched the entire array. If target exists, then return its index. Otherwise, return -1.
+You must write an algorithm with O(log n) runtime complexity.
+Example 1:
+Input:  nums = [2,3,7,9,11], target=9
+
+Output: 3
+Explanation:
+9 exists in nums and its index is 3
+ 
+Example 2:
+Input:  nums = [-1,0,2,3,7,9,11], target=10
+
+Output: 1
+Explanation:
+10 does not exist in nums so return -1
+ 
+Constraints:
+1 <= nums.length <= 10
+-10^4 < nums[i], target < 10^4
+All the integers in nums are unique.
+nums is sorted in ascending order.
+Problem 3: Search Insert Position
+Imagine that you are a game developer who is creating a new game. The game has a level where the player needs to find a hidden key. The key is randomly generated, but it will always be in the sorted array of numbers between 1 and 100.
+You have to write a program that will return the index if the target is found. If not, return the index where it would be if it were inserted in order.
+You must write an algorithm with O(log n) runtime complexity. The algorithm works in O(log n) time, where n is the number of numbers in the array. 
+Example 1:
+Input:  nums = [1,3,5,6], target = 5
+
+Output: 2
+Explanation:
+5 exist at index 2
+ 
+Example 2:
+Input:  nums = [1,3,5,6], target = 2
+
+Output: 1
+Explanation:
+2 will exist at Index 1 between 1 and 3
+ 
+Constraints:
+1 <= nums.length <= 104
+104 <= nums[i] <= 104
+nums contain distinct values sorted in ascending order.
+104 <= target <= 104
+Solutions
+Problem 1: Linear Search in Array
+function main() {
+  var arr = readLine().split(" ").map(x => parseInt(x));
+  var target = parseInt(readLine());
+  console.log(linearSearch(arr, target));
+}
+
+const linearSearch = function(arr, target) {
+  for (let i = 0; i < arr.length; i++) {
+    if (target === arr[i]) {
+      return i + 1;
+    }
+  }
+  return -1;
+};
+Problem 2: Binary Search
+function main() {
+  var nums = readLine().split(" ").map(x => parseInt(x));
+  var target = parseInt(readLine());
+  console.log(search(nums, target));
+}
+
+var search = function(nums, target) {
+  let left = 0;
+  let right = nums.length - 1;
+  while (left <= right) {
+    let mid = parseInt((left + right) / 2);
+    if (nums[mid] == target) {
+      return mid;
+    } else if (nums[mid] < target) {
+      left = mid + 1;
+    } else {
+      right = mid - 1;
+    }
+  }
+  return -1;
+};
+Problem 3: Search Insert Position
+function main() {
+  var nums = readLine().split(" ").map(x => parseInt(x));
+  var target = parseInt(readLine());
+  console.log(searchInsert(nums, target));
+}
+
+var searchInsert = function(nums, target) {
+  let left = 0;
+  let right = nums.length - 1
+  while (left <= right) {
+    let mid = Math.trunc(left + (right - left) / 2)
+    if (nums[mid] === target) {
+      return mid
+    } else if (nums[mid] < target) {
+      left = mid + 1
+    } else right = mid - 1
+  }
+  return left
+};
+Task 2: Explain the solution of one of the problem in your Cohort group at AlmaBetter Community Platform.
