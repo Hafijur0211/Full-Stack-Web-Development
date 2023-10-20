@@ -1,1 +1,564 @@
+Introduction to Sorting Algorithms
+Session Flow
+Learning Objective 
+Introduction
+Theme
+Primary Goals
+Introduction to Sorting Algorithms 
+Introduction to Bubble Sort
+Working of Bubble Sort
+Implementation of Bubble Sort
+Time complexity of Bubble sort
+Space Complexity of Bubble sort
+Introduction to Selection Sort
+Working of Selection Sort
+Implementation of Selection Sort
+Time complexity of Selection Sort
+Space Complexity of Selection Sort
+Activity: True or False
+Introduction to Insertion Sort
+Working of Insertion Sort
+Implementation of Insertion Sort
+Time complexity of Insertion Sort
+Space Complexity of Insertion Sort
+Introduction to Merge Sort
+Working of Merge Sort
+Implementation of Merge Sort
+Time complexity of Merge Sort
+Space Complexity of Merge Sort
+Activity: Fill in the blanks
+Introduction to Quick Sort
+Working of Quick Sort
+Implementation of Quick Sort
+Time complexity of Quick Sort
+Space Complexity of Quick Sort
+Summary 
+What did we learn?
+Shortcomings & Challenges
+Best practices to follow
+Enhance your knowledge
+Try it yourself
+ 
+Learning Objective
+Introduction
+Sorting algorithms compare and rearrange elements: Bubble Sort compares adjacent elements; Insertion Sort shifts elements; Selection Sort selects and places the smallest (or largest), Quick Sort partitions and recursively sorts; Merge Sort divides, recursively sorts, and merges.
+Focus: Introduction, Working, Implementation and Analysis of Bubble sort, Selection sort, Insertion sort, Merge sort, and Quick sort
+Prerequisites: VS Code IDE with Node.js installed, JavaScript Basics & Foundations, Introduction to DSA
+Theme
+Netflix utilizes sorting algorithms in its recommendation system to personalize the content recommendations for each user. Sorting algorithms are used to analyze user preferences, viewing history, and ratings to determine the most relevant movies and TV shows to suggest. By applying sorting algorithms, Netflix can efficiently sort and present a tailored list of recommendations to individual users, enhancing their viewing experience and increasing engagement on the platform.
+Furthermore, sorting algorithms play a crucial role in Netflix's content categorization and browsing functionalities. When users browse through different genres, release years, or actors, sorting algorithms are used to sort and present the content in a meaningful and organized manner. This allows users to navigate and find the content they are interested in easily.
+By leveraging sorting algorithms, Netflix optimizes its recommendation system and enhances the user experience by delivering personalized content suggestions and facilitating efficient content discovery.
+Primary Goals
+Understand the basics of sorting algorithms and their working.
+Implement Bubble Sort, Selection Sort, Merge Sort, Quick Sort, and Insertion Sort in JavaScript and optimize them for better performance.
+Analyze the time complexity and performance of each algorithm.
+Learn to choose the appropriate algorithm and use it effectively for solving problems.
+ 
+Introduction to Sorting Algorithms
+Introduction to Bubble Sort
+Bubble Sort is a straightforward sorting technique that operates by continuously examining each neighboring pair in a sequence and exchanging their positions if they are not in the correct sequence. The algorithm's name, "Bubble Sort," comes from the way elements gradually ascend to their correct positions in the sequence, akin to bubbles rising to the surface. This method is performed repeatedly until the sequence is entirely sorted.
+Working of Bubble Sort
+Compare the First Two Elements: Start at the beginning of the list. Compare the first and second elements. Switch their positions if the first element is greater than the second.
+Move to the Next Pair: Move one position to the right and compare the second and third elements. Again, if the second element is larger than the third, swap them.
+Continue Until the End of the List: Repeat this process for each pair of adjacent elements in the list, from the start to the end. At the end of this process, The largest item in the list will have moved to the end due to the "bubbling up" process finding its correct position.
+Repeat the Process: Now, start again from the beginning of the list. To continue, repeat the process of comparing neighboring pairs and switching them if they are not in the correct sequence. This time, since the largest element has already found its correct position, you need to go only up to the second last element.
+Continue Until the List is Sorted: Keep repeating this process, each time going up to one less element until you go through the list without making a single swap. At this point, the list is fully sorted.
+notion image
+Implementation of Bubble Sort
+Here's a simple implementation of the Bubble Sort algorithm in JavaScript:
+function bubbleSort(arr) {
+  let length = arr.length;
+  for (let i = 0; i < length; i++) {
+    for (let j = 0; j < length - i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        // Swap arr[j] and arr[j + 1]
+        let temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
+      }
+    }
+  }
+  return arr;
+}
 
+// Example usage
+var arr = [6, 2, 5, 3, 9];
+console.log(bubbleSort(arr));
+
+// Output
+[2, 3, 5, 6, 9]
+Explanation
+The bubbleSort function is defined with one parameter, arr, which is the array to be sorted.
+Two nested loops are used to iterate over the array. The outer loop runs for each element, and the inner loop compares each element with its adjacent element.
+If the current element is greater than the next one, they are swapped. This is done using a temporary variable, temp.
+This process continues until the entire array is sorted, with smaller elements "bubbling" towards the front of the array and larger ones moving towards the end.
+The sorted array is then returned.
+Time Complexity of Bubble Sort
+Worst-case time complexity: O(n^2)
+This happens when the input list is in reverse order, meaning every pair of elements is swapped in every pass through the list.
+Average-case time complexity: O(n^2)
+On average, Bubble Sort will need to go through the entire array n times for each of the n elements.
+Best-case time complexity: O(n)
+This happens when the input list is already sorted. In this case, bubble sort only needs to pass through the list once to confirm that it is sorted.
+Space Complexity of Bubble Sort
+The space complexity of Bubble Sort: O(1)
+Bubble Sort is an in-place sorting algorithm, meaning it only uses a constant amount of extra space to rearrange the elements directly within the input array or list.
+Introduction to Selection Sort
+Selection sort is a simple comparison-based sorting algorithm. It works by dividing the input into a sorted and an unsorted region. The sorted region is initially empty, while the unsorted region contains all the elements. The algorithm repeatedly selects the smallest (or largest, depending on the ordering) element from the unsorted region and moves it into the sorted region. This process continues until the unsorted region is empty and the sorted region contains all the elements.
+Working of Selection Sort
+Identify the Smallest Element: Start at the beginning of the list. Identify the smallest element in the list.
+Swap the Smallest Element: Swap the smallest element found with the first element of the list. Now, the first element of the list is the smallest and can be considered as part of the sorted portion of the list.
+Move to the Next Element: Move one position to the right. This is the first element in the unsorted portion of the list.
+Identify the Smallest Element in the Unsorted Portion: From this position, identify the smallest element in the unsorted portion of the list.
+Swap the Smallest Element: Swap the smallest element found with the first element in the unsorted portion of the list. Now, this element can be considered as part of the sorted portion of the list.
+Repeat Until the List is Sorted: Keep repeating this process, each time starting from the next unsorted element, until you reach the end of the list. At this point, the list is fully sorted.
+notion image
+Implementation of Selection Sort
+Here's a simple implementation of the Selection Sort algorithm in JavaScript:
+function selectionSort(arr) {
+  let len = arr.length;
+  for (let i = 0; i < len; i++) {
+    // Assume the first element of the unsorted part is the smallest
+    let min = i;
+    for (let j = i + 1; j < len; j++) {
+      // If any element is smaller, mark its position
+      if (arr[min] > arr[j]) {
+        min = j;
+      }
+    }
+    // If the current first element isn't the smallest then swap it with the smallest
+    if (min !== i) {
+      let tmp = arr[i];
+      arr[i] = arr[min];
+      arr[min] = tmp;
+    }
+  }
+  return arr;
+}
+
+// Example usage
+var arr = [3, 7, 5, 4, 2, 1, 6];
+console.log(selectionSort(arr));
+
+// Output
+[1, 2, 3, 4, 5, 6, 7]
+Explanation
+The outer loop (for (let i = 0; i < len; i++)) iterates over each element in the array. Each iteration represents a single pass through the unsorted portion of the array.
+Inside the outer loop, we assume that the first element of the unsorted part of the array is the smallest. We store its index in the variable min.
+The inner loop (for (let j = i + 1; j < len; j++)) iterates over the unsorted portion of the array. If it finds an element smaller than the current min, it updates min to the index of that element.
+After the inner loop finishes, we check if min is different from i. If it is, it means we found a smaller element in the unsorted portion of the array. We then swap the element at index i with the element at index min.
+The outer loop continues to the next element (which is the first element of the unsorted portion of the array), and the process repeats until the entire array is sorted.
+ 
+Time Complexity of Selection Sort
+Worst-case time complexity: O(n^2)
+The worst-case scenario for selection sort occurs when the array is sorted in descending order and we want to sort it in ascending order. In this situation, the algorithm has to perform the maximum number of comparisons and swaps, leading to the highest possible computational complexity.
+Average-case time complexity: O(n^2)
+This situation arises when the elements within the array are in a jumbled order.
+Best-case time complexity: O(n^2)
+This happens when the input list is already sorted. In this case, selection sort only needs to pass through the list once to confirm that it is sorted.
+Space Complexity of Selection Sort
+Space complexity of Selection Sort: O(1)
+Selection sort is an in-place sorting algorithm that only uses a constant amount of extra space to hold the current minimum element and its index, regardless of the size of the input array.
+ 
+Activity: True or False
+Bubble Sort compares adjacent elements and swaps them if they are not in the correct sequence after the first pass.
+Bubble Sort always starts by comparing the first two elements of the list.
+Bubble Sort has a worst-case time complexity of O(n^2), regardless of the initial order of the elements.
+Selection Sort has a worst-case time complexity of O(n^2).
+Bubble Sort requires additional space to store temporary variables during the sorting process, proportional to the size of the input list.
+Answers
+False
+False
+True
+True
+False
+ 
+Introduction to Insertion Sort
+Insertion sort is another simple comparison-based sorting algorithm. It works by dividing the input into a sorted and an unsorted region. The sorted region is initially just the first element, while the unsorted region contains all the other elements. The algorithm repeatedly takes the first element from the unsorted region and inserts it into the correct position in the sorted region. This process continues until the unsorted region is empty and the sorted region contains all the elements.
+The algorithm maintains two subarrays in a given array.
+Sorted Subarray : The subarray which is already sorted.
+Unsorted Subarray : The remaining subarray which is unsorted.
+Working of Insertion Sort
+Start with the Second Element: Begin with the second element of the list. Assume that the first element is already sorted.
+Compare and Insert: Compare the second element with the elements in the sorted portion of the list. Insert the second element at the correct position in the sorted portion, shifting other elements as needed.
+Move to the Next Element: Move one position to the right and consider it as the next element in the unsorted portion of the list.
+Compare and Insert Again: Compare the new element with the elements in the sorted portion of the list. Insert the element at its correct position in the sorted portion, shifting other elements if necessary.
+Repeat Until the List is Sorted: Continue this process, moving to the next unsorted element and inserting it into the correct position within the sorted portion, until all elements are sorted.
+List is Fully Sorted: Once all elements have been inserted into their correct positions, the list is fully sorted.
+notion image
+Implementation of Insertion Sort
+Here's a simple implementation of the Insertion Sort in JavaScript:
+function insertionSort(arr) {
+  for (let i = 1; i < arr.length; i++) {
+    let key = arr[i];
+    let j = i - 1;
+    
+    while (j >= 0 && arr[j] > key) {
+      arr[j + 1] = arr[j];
+      j--;
+    }
+    
+    arr[j + 1] = key;
+  }
+  
+  return arr;
+}
+
+// Example usage
+let arr = [5, 3, 6, 2, 10];
+console.log(insertionSort(arr));
+
+// Output
+[2, 3, 5, 6, 10]
+Explanation
+The insertionSort function takes an array arr as input.
+It iterates through the array using a for loop, starting from the second element (i = 1) and continuing until the last element (i < arr.length).
+Inside the loop, the current element is stored in the key variable.
+Another variable j is initialized to i - 1, representing the index of the previous element.
+A while loop is used to compare the key with the elements before it, iterating as long as j is greater than or equal to 0 and the element at arr[j] is greater than the key.
+If the condition in the while loop is true, it means the previous element needs to be moved one position ahead to make space for the key. The element at arr[j] is shifted to the right by assigning it to arr[j + 1].
+The j index is decremented (j--) to continue comparing the key with the previous elements.
+Once the while loop condition becomes false, the correct position for the key in the sorted portion of the array is found, and it is inserted at arr[j + 1].
+The for loop continues with the next element, repeating the process until all elements are sorted.
+Finally, the sorted array arr is returned from the insertionSort function.
+Time Complexity of Insertion Sort
+Worst-case time complexity: O(n^2)
+The worst-case scenario for insertion sort occurs when the array is sorted in reverse order, and we want to sort it in ascending order. In this case, each element needs to be compared and shifted to its correct position, resulting in a quadratic time complexity.
+Average-case time complexity: O(n^2)
+On average, insertion sort also requires quadratic time to sort the elements. This occurs when the input array is randomly shuffled or has no specific pattern.
+Best-case time complexity: O(n)
+The best-case scenario for insertion sort occurs when the input array is already sorted in ascending order. In this case, the algorithm makes a single pass through the array, comparing each element to its previous element and making no shifts. This results in a linear time complexity.
+Space Complexity of Insertion Sort
+Space complexity of Insertion Sort: O(1)
+Insertion sort is an in-place sorting algorithm, meaning it does not require additional space proportional to the input size. It performs sorting operations directly on the input array, using a constant amount of extra space for variables and temporary storage, regardless of the size of the input array.
+Introduction to Merge Sort
+Merge sort is a divide-and-conquer algorithm that works by dividing an array into two halves, sorting each half, and then merging the two halves. The algorithm is recursive, meaning it continues dividing the sub-arrays until they are small enough to be sorted easily.
+Working of Merge Sort
+Divide: Divide the unsorted array into two equal-sized subarrays. This step is recursively applied until each subarray contains only one element. This can be done by repeatedly dividing the array in half.
+Merge: Merge the subarrays in a sorted manner to produce a new sorted array. This is done by comparing the elements from the two subarrays and selecting the smaller element to place in the merged array. Continue this process until all elements from both subarrays are merged into a single sorted array.
+Recursion: Recursively repeat the divide and merge steps on the subarrays until all subarrays have been sorted and merged into a single sorted array.
+Complete Merge: After merging all subarrays, the original unsorted array will be completely sorted.
+notion image
+Implementation of Merge Sort
+Here is an example implementation of Merge Sort in JavaScript:
+function mergeSort(arr) {
+  // Base case: If the array has only one element, it is already sorted
+  if (arr.length <= 1) {
+    return arr;
+  }
+
+  // Split the array into two halves
+  const mid = Math.floor(arr.length / 2);
+  const leftHalf = arr.slice(0, mid);
+  const rightHalf = arr.slice(mid);
+
+  // Recursively sort the left and right halves
+  const sortedLeft = mergeSort(leftHalf);
+  const sortedRight = mergeSort(rightHalf);
+
+  // Merge the sorted halves
+  return merge(sortedLeft, sortedRight);
+}
+
+function merge(leftArr, rightArr) {
+  const mergedArr = [];
+  let leftIndex = 0;
+  let rightIndex = 0;
+
+  // Compare elements from the left and right arrays and merge them in sorted order
+  while (leftIndex < leftArr.length && rightIndex < rightArr.length) {
+    if (leftArr[leftIndex] < rightArr[rightIndex]) {
+      mergedArr.push(leftArr[leftIndex]);
+      leftIndex++;
+    } else {
+      mergedArr.push(rightArr[rightIndex]);
+      rightIndex++;
+    }
+  }
+
+  // Add the remaining elements from the left or right array (if any)
+  mergedArr.push(...leftArr.slice(leftIndex));
+  mergedArr.push(...rightArr.slice(rightIndex));
+
+  return mergedArr;
+}
+
+// Example usage
+const arr = [6, 5, 3, 1, 8, 7, 2, 4];
+const sortedArr = mergeSort(arr);
+console.log(sortedArr);
+
+// Output
+[1, 2, 3, 4, 5, 6, 7, 8]
+Explanation
+The mergeSort function takes an array arr as input and recursively divides it into smaller halves until each subarray has only one element or is empty. This is done using the concept of divide and conquer.
+The base case checks if the array has only one element or is empty. In such cases, the array is already sorted, so it is returned as is.
+If the array has more than one element, it is split into two halves using the slice method. The midpoint of the array is calculated to determine the split.
+The mergeSort function is then called recursively on the left and right halves to sort them individually.
+The merge function is responsible for merging the sorted left and right halves back into a single sorted array. It compares the elements from the two arrays and adds them to a new array, mergedArr, in sorted order.
+The elements are compared one by one using two index pointers (leftIndex and rightIndex) that iterate through the left and right arrays, respectively. The smaller element is added to mergedArr, and the corresponding index is incremented.
+After the comparison and merging process, any remaining elements in either the left or right array are added to mergedArr using the slice method and the spread operator (...).
+Finally, the sorted array is returned from the mergeSort function
+Time Complexity of Merge Sort
+Worst-case time complexity: O(n log n)
+The worst-case scenario for merge sort occurs when we have to recursively split the array until we reach individual elements and then merge them back together. In this case, the time complexity is logarithmic due to the recursive nature of the algorithm and the merging step.
+Average-case time complexity: O(n log n)
+On average, merge sort also has a time complexity of n log n. It consistently divides the array into halves and performs merging operations. This results in efficient sorting even for large input sizes.
+Best-case time complexity: O(n log n)
+The best-case scenario for merge sort also has a time complexity of n log n. Regardless of the initial order of the elements, merge sort divides the array into halves until each subarray contains a single element and then merges them back together. This guarantees the time complexity of n log n.
+Space Complexity of Merge Sort
+Space complexity of Merge Sort: O(n)
+Merge sort requires additional space to store temporary arrays during the merging process. The space complexity is directly proportional to the size of the input array. However, the auxiliary space used is not dependent on the order of the elements or the input size. Therefore, the space complexity of merge sort is considered linear.
+ 
+Activity: Fill in the blanks
+Merge sort is a _________ (Greedy / Divide-and-conquer / Dynamic programming) algorithm.
+Merge sort has a time complexity of _________ (O(n) / O(n log n) / O(n^2)).
+In merge sort, the two sorted subarrays are merged together using the _________ (split / merge / concat) function.
+In insertion sort, the number of swaps required to sort an array is __________ (equal / proportional / less than) to the number of inversions in the array. 
+The time complexity of insertion sort is __________ (O(n) / O(n log n) / O(n^2)).
+Answers
+Divide-and-conquer
+O(n log n)
+merge
+equal
+O(n^2)
+ 
+Introduction to Quick Sort
+Quick Sort is a commonly used sorting algorithm that uses a divide-and-conquer approach to sort an array of elements. It works by selecting a 'pivot' element from the array and partitioning the other elements into two sub-arrays, according to whether they are less than or greater than the pivot. The sub-arrays are then sorted recursively. This can be done in-place, requiring small additional amounts of memory to perform the sorting.
+Working of Quick Sort
+Choose a Pivot: Select a pivot element from the list. The pivot can be any element, but it's common to choose the last element or a random element.
+Partitioning: Reorder the list so that all elements less than the pivot come before it, and all elements greater than the pivot come after it. The pivot should be in its final sorted position.
+Recursive Sort: Recursively apply the above two steps to the sublists formed by the partitioning. That is, select a pivot for each sublist and partition the sublist until all sublists are sorted.
+Combine the Sorted Sublists: Once all sublists are sorted, combine them to obtain the final sorted list.
+Repeat steps 1 to 4 until the entire list is sorted. The pivot selection and partitioning steps play a crucial role in the efficiency of the quicksort algorithm. By selecting a good pivot and efficiently partitioning the list, quicksort achieves a fast average-case time complexity.
+notion image
+Implementation of Quick Sort
+Here is an example implementation of Quick Sort in JavaScript:
+function quickSort(arr) {
+  if (arr.length <= 1) {
+    return arr;
+  }
+
+  const pivot = arr[arr.length - 1];
+  const left = [];
+  const right = [];
+
+  for (let i = 0; i < arr.length - 1; i++) {
+    if (arr[i] < pivot) {
+      left.push(arr[i]);
+    } else {
+      right.push(arr[i]);
+    }
+  }
+
+  return [...quickSort(left), pivot, ...quickSort(right)];
+}
+
+// Example usage
+const arr = [5, 3, 6, 2, 10];
+console.log(quickSort(arr));
+
+// Output
+[2, 3, 5, 6, 10]
+Explanation
+The quickSort function takes an array arr as input.
+If the array has one or fewer elements, it is already considered sorted and is returned as is.
+Otherwise, a pivot element is chosen. In this implementation, we select the last element of the array as the pivot.
+We create two empty arrays, left and right, to hold elements less than the pivot and elements greater than or equal to the pivot, respectively.
+We iterate through the array (excluding the pivot) and compare each element to the pivot. Elements smaller than the pivot are added to the left array, and elements greater than or equal to the pivot are added to the right array.
+We recursively apply the quickSort function to the left and right arrays, which sorts them independently.
+Finally, we combine the sorted left array, pivot, and sorted right array using the spread operator (...) to obtain the final sorted array.
+Time Complexity of Quick Sort
+Worst-case time complexity: O(n^2)
+The worst-case scenario for quicksort occurs when the pivot selection is poor, leading to highly unbalanced partitions. This can happen, for example, when the input array is already sorted or nearly sorted. In this case, the algorithm may make n recursive calls, each dealing with only one fewer element, resulting in a quadratic time complexity.
+Average-case time complexity: O(n log n)
+On average, quicksort has a time complexity of O(n log n). This is because, on average, the partitioning process splits the array into two roughly equal halves. Each recursive call deals with approximately half of the elements, leading to a balanced divide-and-conquer approach.
+Best-case time complexity: O(n log n)
+The best-case scenario for quicksort occurs when the pivot selection consistently divides the array into two equal or almost equal halves. This results in an efficient divide-and-conquer strategy, leading to a time complexity of O(n log n).
+Space Complexity of Quick Sort
+Space complexity of Quick Sort: O(log n)
+Quicksort generally has a space complexity of O(log n) due to the recursive calls and the partitioning process. This represents the maximum amount of space required by the call stack to handle the recursive calls. However, quicksort is an in-place sorting algorithm, meaning it does not require additional space proportional to the input size. It operates directly on the input array, using only a small amount of extra space for variables and temporary storage during the sorting process.
+ 
+Summary 
+What did we learn?
+Bubble Sort is a simple sorting algorithm that repeatedly compares adjacent elements and swaps them if they are in the wrong order until the list is sorted.
+The time complexity of bubble sort is O(n^2) and space complexity is O(1).
+Selection sort is a simple sorting algorithm that works by selecting the smallest element and swapping it with the first element of the unsorted array.
+The time complexity of selection sort is O(n^2), which makes it inefficient for large data sets.
+Selection sort is stable and adaptable to various data types. It is also an in-place sorting algorithm, which means it has O(1) space complexity.
+Insertion Sort is a simple sorting algorithm that works by repeatedly inserting an element from an unsorted list into its correct position in a sorted list.
+It maintains two subarrays in a given array: Sorted Subarray and Unsorted Subarray.
+The time complexity of Insertion sort is O(n^2) in average and worst cases, and O(n) in the best case, while its space complexity is O(1).
+Merge sort is a divide-and-conquer algorithm that recursively divides an array into halves until it reaches atomic values, sorts each half, and then merges them back together.
+The algorithm has a time complexity of O(n log n) and a space complexity of O(n).
+Quick Sort is a sorting algorithm that uses a divide-and-conquer approach to sort an array of elements.
+Quick Sort has an average time complexity of O(n log n), making it a relatively fast sorting algorithm for large data sets. The worst-case time complexity of quick sort is O(n^2).
+Shortcomings & Challenges
+Understanding implementation of Selection sort and how it differs from other sorting algorithms can be challenging, as it performs more swaps and may be less efficient in terms of time complexity.
+Novice learners may find it challenging to comprehend the nested loop structure and the mechanism of shifting elements to their rightful position within the sorted subarray in Insertion Sort.
+Partitioning the input array correctly is a crucial aspect of learning Quicksort, but this can be a challenging task.
+Keeping track of the indices and array partitions involved in the sorting algorithms can be confusing, which often leads to errors in their implementation.
+Best practices to follow
+Understand the logic and step-by-step process of sorting algorithms before implementation by reading the pseudocode and comprehending the code flow
+Practice implementing the sorting algorithm in code with a simple example to identify potential challenges and pitfalls.
+Analyze time and space complexity to optimize sorting algorithm's performance and memory usage.
+Comparing sorting algorithms helps identify their pros and cons, understand their differences, and determine which algorithm is most suitable for a particular use case.
+Regularly test your code on diverse inputs, including edge cases and extreme values, to identify and address any bugs or issues.
+ 
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+Annotated Algorithms: https://smithspencer817.medium.com/annotated-algorithms-bubble-sort-insertion-sort-and-selection-sort-d9df71eb6609
+Stability analysis of Sorting Algorithms: https://trstringer.com/sorting-stability/
+Sorting Algorithms in JavaScript: https://www.educba.com/sorting-algorithms-in-javascript/
+ 
+Try it yourself
+Let's solve these coding problems on AlmaBetter IDE. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
+Task 1: Conquer coding challenges in the AlmaBetter IDE and showcase your skills with innovative solutions.
+Problems
+Problem 1: Bubble Sort
+You are a software engineer working for a large e-commerce company. You have been tasked with developing a new algorithm to sort the products on the company's website. The company wants to use this algorithm to ensure that the products are displayed in a logical order, making it easier for customers to find what they are looking for.
+The problem is that the products on the website are often added and removed frequently. This means that the sorting algorithm needs to be able to quickly and efficiently sort the products, even if the order of the products changes frequently.
+You have to implement Bubble Sort, a simple but effective sorting algorithm. 
+Example 1:
+Input:  const arr = [3, 9, 8, 10, 7, 1]
+
+Output: [1, 3, 7, 8, 9, 10]
+Explanation:
+The output array has been sorted using bubble sort.
+Constraints:
+Restrict the input format that is mentioned. Use whatever you have learned in the live class curriculum to solve this challenge.
+Problem 2: Selection Sort
+You are a software engineer working for a large online retailer. You have been tasked with developing a new algorithm to sort the products in the company's inventory. The company wants to use this algorithm to make it easier for customers to find the products they are looking for.
+The problem is that the company's inventory is very large, and sorting it using traditional sorting algorithms can take time and effort. 
+You are expected to implement Selection Sort.
+Example 1:
+Input:  const arr = [33, 66, 99, 88, 11];
+
+Output: [11, 33, 66, 88, 99]
+Explanation:
+The output array has been sorted using selection sort.
+Constraints:
+Restrict the input format that is mentioned. Use whatever you have learned in live class curriculum to solve this challenge.
+Problem 3: Merge Sort
+You are a software engineer working for a large financial company. You have been tasked with developing a new algorithm that will sort large arrays of data. The company wants to use this algorithm to improve the performance of its trading systems.
+The problem is that sorting large arrays of data can be computationally expensive. You have to implement Merge Sort, a recursive algorithm that sorts an array by dividing it into smaller and smaller subarrays until they are sorted, and then merging the sorted subarrays back together.
+Example 1:
+Input:  let arr = [41, 5, 9, 1, 99]
+
+Output: [1, 5, 9, 41, 99]
+Explanation:
+The output array has been sorted by merge sort.
+Constraints:
+Restrict the input format that is mentioned. Use whatever you have learned in the live class curriculum to solve this challenge.
+Solutions
+Problem 1: Bubble Sort
+function main() {
+  let n = parseInt(readLine());
+  let arr = [];
+  for (let i = 0; i < n; i++) {
+    let num = parseInt(readLine());
+    arr.push(num);
+  }
+  console.log(bubbleSort(arr, n));
+}
+
+function swap(arr, xp, yp) {
+  var temp = arr[xp];
+  arr[xp] = arr[yp];
+  arr[yp] = temp;
+}
+
+function bubbleSort(arr, n) {
+  var i, j;
+  for (i = 0; i < n - 1; i++) {
+    for (j = 0; j < n - i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        swap(arr, j, j + 1);
+
+      }
+    }
+  }
+  return arr;
+}
+Problem 2: Selection Sort
+function main() {
+  let n = parseInt(readLine());
+  let arr = [];
+  for (let i = 0; i < n; i++) {
+    let num = parseInt(readLine());
+    arr.push(num);
+  }
+  selectionSort(arr, n);
+  console.log(arr);
+}
+
+function swap(arr, xp, yp) {
+  var temp = arr[xp];
+  arr[xp] = arr[yp];
+  arr[yp] = temp;
+}
+
+function selectionSort(arr, n) {
+  var i, j, min_idx;
+  for (i = 0; i < n - 1; i++) {
+    min_idx = i;
+    for (j = i + 1; j < n; j++)
+      if (arr[j] < arr[min_idx])
+        min_idx = j;
+    swap(arr, min_idx, i);
+  }
+}
+Problem 3: Merge Sort
+function main() {
+  let n = parseInt(readLine());
+  let arr = [];
+  for (let i = 0; i < n; i++) {
+    let num = parseInt(readLine());
+    arr.push(num);
+  }
+  mergeSort(arr, 0, n - 1);
+  console.log(arr);
+}
+
+function merge(arr, l, m, r) {
+  var n1 = m - l + 1;
+  var n2 = r - m;
+  var L = new Array(n1);
+  var R = new Array(n2);
+  for (var i = 0; i < n1; i++)
+    L[i] = arr[l + i];
+  for (var j = 0; j < n2; j++)
+    R[j] = arr[m + 1 + j];
+  var i = 0;
+  var j = 0;
+  var k = l;
+  while (i < n1 && j < n2) {
+    if (L[i] <= R[j]) {
+      arr[k] = L[i];
+      i++;
+    } else {
+      arr[k] = R[j];
+      j++;
+    }
+    k++;
+  }
+  while (i < n1) {
+    arr[k] = L[i];
+    i++;
+    k++;
+  }
+  while (j < n2) {
+    arr[k] = R[j];
+    j++;
+    k++;
+  }
+}
+
+function mergeSort(arr, l, r) {
+  if (l >= r) return;
+  var m = l + parseInt((r - l) / 2);
+  mergeSort(arr, l, m);
+  mergeSort(arr, m + 1, r);
+  merge(arr, l, m, r);
+}
+Task 2: Explain the solution of one of the problem in your Cohort group at AlmaBetter Community Platform.
