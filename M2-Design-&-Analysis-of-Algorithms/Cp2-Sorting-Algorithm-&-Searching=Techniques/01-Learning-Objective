@@ -1,1 +1,20 @@
-
+Learning Objective
+Introduction
+Searching and sorting algorithms are essential in computer science, allowing efficient data retrieval and organization. They enable finding specific elements and arranging data in a desired order, serving as fundamental tools for numerous applications.
+Focus: Sorting Algorithm and Searching Algorithm, techniques, their implementation, advantages, and coding analysis
+Prerequisites: VS Code IDE with Node.js installed, JavaScript Basics & Foundations, DSA Basics
+Theme
+Amazon heavily relies on Searching and Sorting algorithms to provide efficient search and sorting functionalities for its vast product catalog. When customers search for specific items, Amazon's search algorithm quickly retrieves relevant results, considering factors like relevance, popularity, and customer ratings. Additionally, sorting algorithms are used to present search results based on criteria like price, customer reviews, and availability, allowing users to find and compare products easily.
+Primary Goals
+Understand the different types of sorting algorithms and searching algorithms and their relative strengths and weaknesses.
+Analyze the time and space complexity of various searching and sorting algorithms.
+Gain hands-on experience implementing and applying sorting and searching algorithms to real-world problems.
+Chapter Essentials
+Learning Lessons
+The chapter comprises multiple lessons that center around Sorting Algorithms, and Searching Algorithms.
+The lesson consists of learning material and engaging activities that enhance the learner's experience.
+Lessons conclude with coding questions to practice various coding concepts in IDE. Solving the coding problems will enhance understanding and proficiency in the taught technologies.
+In addition, every lesson includes 10 MCQs aimed at enhancing knowledge.
+Skill Mastery Challenge
+The chapter includes a Skill Mastery Challenge with a Summary section for the given chapter for best practices, challenges, and additional references, an Interview Prep section with industry-specific concepts, and a Competency Challenge featuring a one-hour session with 40 MCQs for reinforced learning and identifying improvement areas.
+Earning the Competency Challenge Certificate will ensure the completion of this chapter.
