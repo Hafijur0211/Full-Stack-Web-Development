@@ -1,1 +1,426 @@
+Advanced Searching Algorithms
+Session Flow
+Learning Objective
+Introduction
+Theme
+Primary Goals
+Advanced Searching Algorithms 
+Introduction to Ternary Search
+Working of Ternary Search
+Implementation of Ternary Search
+Time complexity of Ternary Search
+Space Complexity of Ternary Search
+Activity: Agree or Disagree
+Introduction to Jump Search
+Working of Jump Search
+Implementation of Jump Search
+Time complexity of Jump Search
+Space Complexity of Jump Search
+Activity: Fill in the blanks
+Introduction to Exponential Search
+Working of Exponential Search
+Implementation of Exponential Search
+Time complexity of Exponential Search
+Space Complexity of Exponential Search
+Practical Applications of Searching Algorithms
+Summary 
+What did we learn?
+Shortcomings & Challenges
+Best practices to follow
+Enhance your knowledge
+Try it yourself
+ 
+Learning Objective
+Introduction
+In this introduction, we'll be diving deeper into time and space complexity analysis specifically as it relates to searching algorithms. We'll explore different algorithms such as linear search, binary search, and hash tables, and analyze how they perform under different scenarios. By the end of this topic, you'll have a solid understanding of these concepts and be well on your way to becoming a proficient algorithm analyst!
+Focus: Introduction, Working, Implementation, and Analysis of Ternary Search, Jump Search, and Exponential Search
+Prerequisites: VS Code IDE with Node.js installed, JavaScript Basics & Foundations, Introduction to DSA
+Theme
+Ternary Search is like searching for a book in a massive library. Imagine you're looking for a specific book, and the librarian tells you if it's in the left, middle, or right section. With each step, you narrow down your search, quickly honing in on your desired book. Jump Search comes in handy when you need to find a specific item in a sorted list. Imagine you're looking for the Ace of Spades in a deck of cards. Instead of checking each card individually, you can jump ahead a fixed number of cards, greatly reducing your search time. Exponential Search is akin to finding your way through a complex maze. Instead of aimlessly wandering, you explore larger areas, doubling the search space until you're closer to your destination. Then, you switch to a more precise search method to reach your goal efficiently.
+These searching algorithms offer practical solutions in various scenarios, whether it's searching for a book, locating an item in a sorted list, or navigating through intricate data structures.
+Primary Goals
+Understand the concept of dividing the search space into three parts and narrowing down the search range.
+Comprehend the idea of making jumps in a sorted list to quickly approach the target element.
+Grasp the concept of exponentially increasing the search range to approach the target element.
+Analyze the time and space complexity of Ternary Search, Jump Search, and Exponential Search to understand its efficiency.
+ 
+Advanced Searching Algorithms
+Introduction to Ternary Search
+Ternary search is a divide-and-conquer algorithm used to find an element in a sorted array. It is an improvement over binary search as it divides the array into three parts instead of two, reducing the number of comparisons required.
+Working of Ternary Search
+Define the Search Space: Ternary search starts with a sorted array and defines the search space by setting the left and right pointers initially to the first and last indices of the array, respectively.
+Divide the Search Space: Divide the search space into three equal parts by setting two mid-point pointers: mid1 = left + (right - left) / 3 and mid2 = right - (right - left) / 3.
+Compare with the Target: Compare the target value with the elements at mid1 and mid2. There are three possible outcomes:
+If the target matches the element at mid1, the search is successful, and the index of mid1 is returned.
+If the target matches the element at mid2, the search is successful, and the index of mid2 is returned.
+If the target is smaller than the element at mid1, update the right pointer to mid1 - 1 and repeat the process.
+If the target is larger than the element at mid2, update the left pointer to mid2 + 1 and repeat the process.
+If the target is between the elements at mid1 and mid2, the search space is further divided, and the process is repeated recursively on the appropriate subarray.
+Repeat the Process: Steps 2 and 3 are repeated until either a match is found or the search space becomes empty.
+End of Search: If the search space becomes empty without finding a match, ternary search concludes that the target value is not present in the array and returns a special value (e.g., -1) to indicate the absence of the target.
+Implementation of Ternary Search
+Here's a simple implementation of the Ternary Search algorithm in JavaScript:
+function ternarySearch(arr, target) {
+  let left = 0;
+  let right = arr.length - 1;
 
+  while (left <= right) {
+    let mid1 = left + Math.floor((right - left) / 3);
+    let mid2 = right - Math.floor((right - left) / 3);
+
+    if (arr[mid1] === target) {
+      return mid1;
+    }
+
+    if (arr[mid2] === target) {
+      return mid2;
+    }
+
+    if (target < arr[mid1]) {
+      right = mid1 - 1;
+    } else if (target > arr[mid2]) {
+      left = mid2 + 1;
+    } else {
+      left = mid1 + 1;
+      right = mid2 - 1;
+    }
+  }
+
+  return -1; // Target not found
+}
+
+// Example usage
+var arr = [1, 2, 3, 4, 5, 6, 7];
+var target = 5;
+console.log(ternarySearch(arr, target));
+
+// Output
+4 (index of the target element)
+Explanation
+The left and right pointers are initialized to the first and last indices of the array, respectively.
+The while loop continues as long as the left pointer is less than or equal to the right pointer. This ensures that the search space is not empty.
+Inside the loop, two mid-point pointers, mid1 and mid2, are calculated to divide the search space into three equal parts.
+If the target value is found at mid1 or mid2, the function returns the corresponding index.
+If the target is smaller than the element at mid1, the right pointer is updated to mid1 - 1 to search in the left subarray.
+If the target is larger than the element at mid2, the left pointer is updated to mid2 + 1 to search in the right subarray.
+If the target is between the elements at mid1 and mid2, the search space is divided further by updating the left pointer to mid1 + 1 and the right pointer to mid2 - 1.
+The loop continues until a match is found or the search space becomes empty.
+If the search space becomes empty without finding a match, the function returns -1 to indicate that the target value is not present in the array.
+Time Complexity of Ternary Search
+Worst-case time complexity: O(log3(n))
+The worst-case time complexity of ternary search is logarithmic with base 3. This is because the search space is divided into three equal parts in each iteration, reducing the search space by a factor of 3 at every step. Therefore, the number of comparisons required to find the target element grows logarithmically with the size of the input array.
+Average-case time complexity: O(log3(n))
+The average-case time complexity of ternary search is also logarithmic with base 3. It performs a similar number of comparisons as the worst-case scenario on average.
+Best-case time complexity: O(1)
+The best-case time complexity of ternary search occurs when the target element is found at the first attempt, resulting in a constant time complexity.
+Space Complexity of Ternary Search
+Space complexity of Ternary Search: O(1)
+Ternary search is an in-place algorithm that uses a constant amount of extra space. It does not require additional data structures or recursion, resulting in a space complexity of O(1).
+ 
+Activity: Agree or Disagree
+Ternary search is more efficient than binary search. 
+Ternary search's space complexity of O(n) makes it a memory-efficient algorithm for searching in large arrays.
+Ternary search can be modified to handle non-sorted arrays by applying a sorting algorithm before performing the search. 
+Ternary search is not suitable for dynamically changing arrays where elements are frequently inserted or removed, as it requires a sorted array for efficient searching. 
+Ternary search requires a sorted array as input, which limits its applicability compared to other search algorithms. 
+Answers
+Disagree
+Disagree
+Agree
+Agree
+Agree
+ 
+Introduction to Jump Search
+Jump search is a searching algorithm used to find the position of a target value in a sorted array. It works by jumping ahead a fixed number of steps and then linearly searching within the block until the target value is found or exceeded.
+Working of Jump Search
+Define the Block Size: Jump search begins by determining the block size to jump ahead. It is typically calculated as the square root of the length of the array, denoted as step = √n, where n is the length of the array.
+Jump Ahead: Starting from the beginning of the array, jump ahead by step indices at a time until you find an element greater than or equal to the target value, or you reach the end of the array.
+Linear Search Within the Block: Once the block with the target value is identified (either by finding the target value or exceeding it), perform a linear search within the block from the previous step to locate the exact position of the target value.
+Repeat or Conclude: If the target value is found, return its index. If the target value is not found and the end of the array is not reached, repeat the process by jumping to the next block and performing another linear search. Continue until the target value is found or the end of the array is reached.
+Implementation of Jump Search
+Here's a simple implementation of the Jump Search algorithm in JavaScript:
+function jumpSearch(arr, target) {
+  const n = arr.length;
+  const step = Math.floor(Math.sqrt(n));
+  let prev = 0;
+
+  // Finding the block where the target may exist
+  while (arr[Math.min(step, n) - 1] < target) {
+    prev = step;
+    step += Math.floor(Math.sqrt(n));
+
+    if (prev >= n) {
+      return -1; // Target not found
+    }
+  }
+
+  // Performing a linear search within the block
+  while (arr[prev] < target) {
+    prev++;
+
+    if (prev === Math.min(step, n)) {
+      return -1; // Target not found
+    }
+  }
+
+  // Check if the target is found
+  if (arr[prev] === target) {
+    return prev; // Index of the target element
+  }
+
+  return -1; // Target not found
+}
+
+// Example usage
+var arr = [1, 2, 3, 4, 5, 6, 7];
+var target = 5;
+console.log(jumpSearch(arr, target));
+
+// Output
+4 (index of the target element)
+Explanation
+The block size step is calculated as the square root of the length of the array, rounded down to the nearest integer.
+The algorithm starts by jumping ahead step indices at a time until it finds a block where the target value may exist (i.e., the current block's last element is greater than or equal to the target value, or the end of the array is reached).
+Once the block is identified, a linear search is performed within the block to find the exact position of the target value.
+If the target value is found, the function returns its index. If the target value is not found within the block and the end of the array is not reached, the process is repeated by jumping to the next block and performing another linear search.
+The algorithm continues until the target value is found or the end of the array is reached.
+If the target value is not found, the function returns -1 to indicate the absence of the target value in the array.
+Time Complexity of Jump Search
+Worst-case time complexity: O(√n)
+The worst-case time complexity of jump search is O(√n), where n is the length of the array. This occurs when the target value is located at the last element of a block, and the algorithm performs a linear search within that block or reaches the end of the array.
+Average-case time complexity: O(√n)
+The average-case time complexity of jump search is also O(√n). On average, the algorithm performs fewer comparisons compared to linear search, resulting in improved efficiency.
+Best-case time complexity: O(1)
+The best-case time complexity of jump search occurs when the target value is found in the first comparison, resulting in a constant time complexity of O(1).
+Space Complexity of Jump Search
+Space complexity of Jump Search: O(1)
+Jump search is an in-place algorithm that does not require additional data structures. It operates directly on the input array, utilizing only a few variables for tracking indices and values. Therefore, its space complexity is O(1).
+ 
+Activity: Fill in the blanks
+The Jump Search algorithm performs a __________(linear / binary / sequential) search within the identified block to find the exact position of the target value.
+The block size in Jump Search is calculated as the __________(square root / logarithmic / reciprocal) of the length of the array.
+The Jump Search algorithm returns the index of the target element if it is found, or __________(-1 / 0 / null) if the target value is not present in the array.
+Jump Search is an __________(in-place / recursive / efficient) algorithm that operates directly on the input array without requiring additional data structures.
+The average-case time complexity of Jump Search is __________(O(1) / O(log n) / O(√n)), resulting in improved efficiency compared to linear search.
+Answers
+sequential
+square root
+-1
+in-place
+O(√n) 
+ 
+Introduction to Exponential Search
+Exponential search is a searching algorithm designed to find the position of a target value in a sorted array by repeatedly doubling the search range. It combines elements of both binary search and linear search algorithms.
+Working of Exponential Search
+Determine the Search Range: Start with a minimum search range of size 1 (index 0) and gradually increase the search range by doubling its size until an element greater than or equal to the target value is found, or the end of the array is reached.
+Perform Binary Search: Once the search range is identified, perform a binary search within that range to locate the exact position of the target value.
+Repeat or Conclude: If the target value is found, return its index. If the target value is not found and the end of the array is not reached, repeat the process by doubling the search range and performing another binary search. Continue until the target value is found or the end of the array is reached.
+Implementation of Exponential Search
+Here's a simple implementation of the Exponential Search algorithm in JavaScript:
+function exponentialSearch(arr, target) {
+  const n = arr.length;
+
+  if (arr[0] === target) {
+    return 0; // Target found at the first element
+  }
+
+  let i = 1;
+  while (i < n && arr[i] <= target) {
+    i *= 2;
+  }
+
+  // Perform binary search within the identified range
+  let left = Math.floor(i / 2);
+  let right = Math.min(i, n - 1);
+
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2);
+
+    if (arr[mid] === target) {
+      return mid; // Target found
+    }
+
+    if (arr[mid] < target) {
+      left = mid + 1; // Target may be in the right half
+    } else {
+      right = mid - 1; // Target may be in the left half
+    }
+  }
+
+  return -1; // Target not found
+}
+
+// Example usage
+var arr = [1, 2, 3, 4, 5, 6, 7];
+var target = 5;
+console.log(exponentialSearch(arr, target));
+
+// Output
+4 (index of the target element)
+Explanation
+The algorithm begins by checking if the first element of the array is the target value. If it is, the function returns the index 0 since the target value is found.
+The search range starts with a size of 1 (index 0) and gradually doubles its size by multiplying the index i by 2 until an element greater than or equal to the target value is found, or the end of the array is reached.
+Once the search range is identified, a binary search is performed within that range to find the exact position of the target value.
+The binary search repeatedly divides the search range in half and compares the middle element with the target value. Depending on the comparison, the search range is adjusted accordingly by moving the left or right boundary.
+The process continues until the target value is found or the search range is exhausted.
+If the target value is found, the function returns its index. If the target value is not found and the end of the array is reached, the function returns -1 to indicate the absence of the target value.
+Time Complexity of Exponential Search
+Worst-case time complexity: O(log n)
+The worst case time complexity of exponential search is O(log n), where n is the length of the array. This occurs when the target value is located at the end of the array, and the algorithm performs a binary search on the last search range, which has a size of n/2 (assuming the array is sorted in ascending order).
+Average-case time complexity: O(log n)
+The average-case time complexity of exponential search is also O(log n). On average, the search range is divided in half during each iteration of the binary search, resulting in efficient searching.
+Best-case time complexity: O(1)
+The best-case time complexity of exponential search occurs when the target value is found at the first element of the array, resulting in a constant time complexity of O(1).
+Space Complexity of Exponential Search
+Space complexity of Exponential Search: O(1)
+Exponential search is an in-place algorithm that does not require additional data structures. It operates directly on the input array, utilizing only a few variables for tracking indices and values. Therefore, its space complexity is O(1).
+Practical Applications of Searching Algorithms
+Searching algorithms are widely used in computer science and have practical applications in various fields. Some of the most common applications of searching algorithms are:
+Database Search: Used in databases to efficiently locate records based on criteria.
+Web Search Engines: Employ searching algorithms to retrieve relevant web pages based on search queries.
+File Searching: Used in file systems and operating systems to locate files based on attributes.
+Genetic Sequencing: Searches for patterns or sequences in DNA or protein databases.
+Artificial Intelligence: Used for pathfinding in robotics and game-playing algorithms.
+Information Retrieval: Retrieves relevant information from large collections based on user queries.
+Recommendation Systems: Searches for relevant items or suggestions based on user preferences.
+Data Mining: Searches for patterns or associations in large datasets for extracting insights.
+These applications highlight the diverse usage of searching algorithms in different domains, from databases and web search engines to artificial intelligence and data mining.
+ 
+Summary
+What did we learn?
+Algorithm analysis is essential for understanding the behavior of algorithms as input size increases.
+Different types of searching algorithms have different time and space complexities, which affect their performance in practice.
+The best, worst, and average case analysis of searching algorithms provides insights into their performance in different scenarios.
+Empirical analysis involves measuring the performance of algorithms in practice to determine their efficiency.
+Determining the optimal search algorithm for a specific problem requires taking into account the tradeoffs between time and space complexity.
+Searching algorithms have practical applications in various fields, including e-commerce, social media, and search engines.
+Efficient searching algorithms can significantly improve the performance of real-world applications, providing a better user experience.
+Shortcomings & Challenges
+The time and space complexities of algorithms may vary depending on the hardware and software used to run them.
+Selecting the optimal search algorithm for a specific problem may require trial-and-error and experimentation, which can be time-consuming and costly.
+Searching algorithms may not always provide the most efficient solution to a problem, and alternative approaches may need to be considered.
+Best practices to follow
+Understand the basic concepts of algorithm analysis, including time and space complexity, before diving into the specifics of searching algorithms.
+When analyzing searching algorithms, consider their time and space complexities in different scenarios, including best, worst, and average cases.
+Use empirical analysis to measure the performance of searching algorithms in practice.
+Consider the tradeoffs between time and space complexity when selecting an optimal search algorithm for a specific problem.
+Implement and optimize searching algorithms using efficient data structures and programming techniques.
+Stay up-to-date with the latest research and developments in the field of algorithm analysis.
+Test and validate the performance of searching algorithms using real-world data and use cases.
+ 
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+Tri-Search Algorithm: https://www.scribd.com/document/429615758/Tri-Search-A-New-and-Efficient-Searching-Algorithm-An-Extension-of-Ternary-Search-Approach-with-Variable-Partitioning
+Searching Algorithms In JavaScript: https://www.scriptonitejs.com/javascript-searching-algorithms/
+ 
+Try it yourself
+Let's solve these coding problems on AlmaBetter IDE. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
+Task 1: Conquer coding challenges in the AlmaBetter IDE and showcase your skills with innovative solutions.
+Problems
+Problem 1: Find the Highest Altitude
+There is a biker going on a road trip. The road trip consists of n + 1 points at different altitudes. The biker starts his trip on point 0 with an altitude equal to 0.
+You are given an integer array gain of length n where gain[i] is the net gain in altitude between points i and i + 1 for all (0 <= i < n). Return to the highest altitude of a point.
+Example 1:
+Input:  gain = [-5,1,5,0,-7]
+
+Output: 1
+Explanation:
+The altitudes are [0,-5,-4,1,1,-6]. The highest is 1.
+ 
+Example 2:
+Input:  gain = [-4,-3,-2,-1,4,3,2]
+
+Output: 0
+Explanation:
+The altitudes are [0,-4,-7,-9,-10,-6,-3,-1]. The highest is 0.
+ 
+Constraints:
+n == gain.length
+1 <= n <= 100
+100 <= gain[i] <= 100
+Problem 2: Find the Kth Largest Integer in an Array
+Imagine that you are a data analyst who is tasked with analyzing a large dataset of financial transactions. The dataset contains a column of numbers that represent the amount of money that was transferred in each transaction. You need to find the kth largest amount of money that was transferred in the dataset.
+You have an array of strings nums and an integer k. Each string in nums represents an integer without leading zeros.
+Return the string that represents the kth largest integer in nums.
+Note: Duplicate numbers should be counted distinctly. For example, if nums is ["1","2","2"], "2" is the first-largest integer, "2" is the second-largest integer, and "1" is the third-largest integer.
+Example 1:
+Input:  nums = ["3","6","7","10"], k = 4
+
+Output: "3"
+Explanation:
+The numbers in nums sorted in non-decreasing order are ["3","6","7","10"]. The 4th largest integer in nums is "3".
+ 
+Example 2:
+Input:  nums = ["2","21","12","1"], k = 3
+
+Output: "2"
+Explanation:
+The numbers in nums sorted in non-decreasing order are ["1","2","12","21"]. The 3rd largest integer in nums is "2".
+Constraints:
+1 <= k <= nums.length <= 104
+1 <= nums[i].length <= 100 nums[i] consists of only digits.
+nums[i] will not have any leading zeros.
+Problem 3: Interpolation Search
+Bob is searching for a specific value in a sorted array, and he knows that the elements are uniformly distributed. To optimize his search, he wants to use the interpolation search algorithm. Help Bob by writing a function to perform interpolation search and find the index of the target value.
+Example 1:
+Input:
+arr = [1, 3, 5, 7, 9], target = 5
+
+Output:
+2
+
+Example 2:
+Input:
+arr = [2, 4, 6, 8, 10], target = 7
+
+Output:
+-1
+Solutions
+Solution 1: Find the Highest Altitude
+function main() {
+  var gain = readLine().split(" ").map(x => parseInt(x));
+  console.log(largestAltitude(gain));
+}
+
+const largestAltitude = function(gain) {
+  let previous = 0;
+  let biggest = 0;
+
+  for (let i = 0; i < gain.length; i += 1) {
+    previous += gain[i];
+    if (previous > biggest) biggest = previous;
+  }
+  return biggest;
+};
+Solution 2: Find the Kth Largest Integer in an Array
+function main() {
+  var nums = readLine().split(" ").map(x => (x));
+  var k = parseInt(readLine());
+  console.log(kthLargestNumber(nums, k));
+}
+
+var kthLargestNumber = function(nums, k) {
+  nums.sort((a, b) => BigInt(a) < BigInt(b) ? 1 : BigInt(a) > BigInt(b) ? -1 : 0);
+  return nums[k - 1]
+};
+Solution 3: Interpolation Search
+function main() {
+    var arr = readLine().split(" ").map(x => parseInt(x));
+    var target = parseInt(readLine());
+    console.log(interpolationSearch(arr, target));
+}
+function interpolationSearch(arr, target) {
+  let left = 0;
+  let right = arr.length - 1;
+
+  while (left <= right && target >= arr[left] && target <= arr[right]) {
+    const pos = left + Math.floor((target - arr[left]) * (right - left) / (arr[right] - arr[left]));
+    
+    if (arr[pos] === target) return pos;
+    if (arr[pos] < target) left = pos + 1;
+    else right = pos - 1;
+  }
+
+  return -1;
+}
+Task 2: After solving these questions, how do you feel about your level of confidence in this lesson, share your experience with your Cohort group at AlmaBetter Community Platform.
