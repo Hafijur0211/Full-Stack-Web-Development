@@ -1,1 +1,535 @@
+Advanced Sorting Algorithms
+Session Flow
+Learning Objective
+Introduction
+Theme
+Primary Goals
+Advanced Sorting Algorithms 
+Introduction to Heap Sort
+Working of Heap Sort
+Implementation of Heap Sort
+Time complexity of Heap Sort
+Space Complexity of Heap Sort
+Activity: True or False
+Introduction to Bucket Sort
+Working of Bucket Sort
+Implementation of Bucket Sort
+Time complexity of Bucket Sort
+Space Complexity of Bucket Sort
+Introduction to Radix Sort
+Working of Radix Sort
+Implementation of Radix Sort
+Time complexity of Radix Sort
+Space Complexity of Radix Sort
+Activity: Fill in the blanks
+Introduction to Counting Sort
+Working of Counting Sort
+Implementation of Counting Sort
+Time complexity of Counting Sort
+Space Complexity of Counting Sort
+Summary 
+What did we learn?
+Shortcomings & Challenges
+Best practices to follow
+Enhance your knowledge
+Try it yourself
+ 
+Learning Objective
+Introduction
+Time and space complexity analysis is a crucial aspect of evaluating the efficiency of sorting algorithms. It involves determining how the algorithms' runtime and memory usage change with different input sizes.
+Focus: Introduction, Working, Implementation, and Analysis of Heap Sort, Bucket Sort, Radix Sort, and Counting Sort
+Prerequisites: VS Code IDE with Node.js installed, JavaScript Basics & Foundations, Introduction to DSA
+Theme
+In the world of e-commerce, sorting algorithms play a crucial role in providing a seamless shopping experience for customers. Let's consider a real-world scenario where a popular online marketplace needs to sort a vast array of products based on their prices.
+Heap Sort can be an ideal choice in this scenario. With its efficient memory usage, it can handle large data sets, such as the countless products available for sale. The algorithm organizes the products based on their prices, allowing customers to easily navigate through various price ranges and find the best deals.
+On the other hand, Bucket Sort proves useful when dealing with a wide range of product prices. Imagine the marketplace has products ranging from inexpensive items to luxury goods. By dividing the price range into buckets and sorting each bucket separately, Bucket Sort enables efficient categorization of products, facilitating better browsing and filtering options for customers.
+Radix Sort comes into play when the marketplace needs to sort products based on multiple attributes simultaneously. For instance, besides price, the marketplace might want to sort products by brand, rating, and popularity. Radix Sort can handle this scenario by sequentially sorting the products based on each attribute, ensuring a comprehensive and accurate sorting result.
+Counting Sort can be utilized in situations where the marketplace needs to sort products based on specific criteria, such as the number of customer reviews. By counting the occurrences of each review count, Counting Sort can efficiently arrange the products in ascending or descending order of review counts, providing valuable insights for customers looking for highly rated or popular items.
+Primary Goals
+Grasp the fundamental concepts, underlying principles , and the step-by-step process involved in each sorting algorithm.
+Analyze the time and space complexity of each sorting algorithm.
+Gain proficiency in implementing these sorting algorithms in JavaScript.
+ 
+Advanced Sorting Algorithms
+Introduction to Heap Sort
+Heap Sort is an efficient and comparison-based sorting algorithm that uses a binary heap data structure to sort elements. It divides the input into a sorted region and an unsorted region, repeatedly extracting the maximum element from the unsorted region and placing it at the end of the sorted region. The algorithm takes advantage of the heap property, which ensures that the maximum (or minimum, depending on the heap type) element is always at the root of the heap.
+Working of Heap Sort
+Build the Heap: The first step in Heap Sort is to build a heap from the input array. This involves arranging the elements of the array into a binary heap structure. The heap can be built in linear time using a bottom-up approach starting from the last non-leaf node and sifting down each node to its correct position.
+Extract the Maximum Element: Once the heap is built, the maximum element is located at the root of the heap. It is swapped with the last element in the unsorted region of the array. This effectively places the maximum element in its correct sorted position at the end of the array.
+Restore Heap Property: After swapping the maximum element, the heap property may be violated. To restore the heap property, sift down the new root (previously the last element of the unsorted region) to its correct position in the heap.
+Repeat the Process: Repeat steps 2 and 3 until the entire array is sorted. In each iteration, the sorted region of the array expands by one element, and the unsorted region decreases by one element.
+Final Sorted Array: After all iterations, the array will be completely sorted in ascending order.
+notion image
+Implementation of Heap Sort
+Here's a simple implementation of the Heap Sort algorithm in JavaScript:
+function heapSort(arr) {
+  let length = arr.length;
 
+  // Build the heap
+  for (let i = Math.floor(length / 2) - 1; i >= 0; i--) {
+    heapify(arr, length, i);
+  }
+
+  // Extract elements one by one from the heap
+  for (let i = length - 1; i > 0; i--) {
+    // Swap the root (maximum element) with the last element
+    let temp = arr[0];
+    arr[0] = arr[i];
+    arr[i] = temp;
+
+    // Restore heap property for the remaining heap
+    heapify(arr, i, 0);
+  }
+
+  return arr;
+}
+
+function heapify(arr, length, rootIndex) {
+  let largest = rootIndex;
+  let left = 2 * rootIndex + 1;
+  let right = 2 * rootIndex + 2;
+
+  // Compare the root with the left child
+  if (left < length && arr[left] > arr[largest]) {
+    largest = left;
+  }
+
+  // Compare the largest with the right child
+  if (right < length && arr[right] > arr[largest]) {
+    largest = right;
+  }
+
+  // If the largest element is not the root, swap them and heapify the affected subtree
+  if (largest !== rootIndex) {
+    let temp = arr[rootIndex];
+    arr[rootIndex] = arr[largest];
+    arr[largest] = temp;
+
+    // Recursively heapify the affected subtree
+    heapify(arr, length, largest);
+  }
+}
+
+// Example usage
+var arr = [6, 2, 5, 3, 9];
+console.log(heapSort(arr));
+
+// Output
+[2, 3, 5, 6, 9]
+Explanation
+The heapSort function is defined with one parameter, arr, which is the array to be sorted.
+The heapify function is a helper function used to maintain the heap property. It takes the array, the length of the heap, and the index of the current root node as parameters.
+In the heapSort function, the initial heap is built by calling heapify on each non-leaf node in the array, starting from the last non-leaf node and moving upwards.
+The maximum element (root) is extracted by swapping it with the last element in the unsorted region of the array. Then, the heap property is restored by calling heapify on the root.
+Steps 4 and 5 are repeated until the entire array is sorted.
+The sorted array is then returned.
+Time Complexity of Heap Sort
+Worst-case time complexity: O(n log n)
+Heap Sort has a worst-case time complexity of O(n log n) for both the average and worst cases. This is because building the heap takes O(n) time, and extracting the maximum element and restoring the heap property both take O(log n) time. Since these operations are performed n times, the overall time complexity is O(n log n).
+Average-case time complexity: O(n log n)
+Heap Sort has the same average-case time complexity as the worst case, which is O(n log n).
+Best-case time complexity: O(n log n)
+The best-case time complexity of Heap Sort is also O(n log n). This occurs when the input array is already sorted or contains identical elements. Although building the heap still takes O(n) time, the extraction and restoration steps will require fewer comparisons but still take O(log n) time, resulting in the same overall time complexity.
+Space Complexity of Heap Sort
+The space complexity of Heap Sort: O(1)
+Heap Sort is an in-place sorting algorithm, meaning it does not require any additional space proportional to the input size. The sorting is done directly within the input array, resulting in a space complexity of O(1).
+ 
+Activity: True or False
+The heap sort algorithm divides the input into a sorted region and an unsorted region. 
+Heap sort uses a binary heap data structure to sort elements. 
+The heap sort algorithm has a worst-case time complexity of O(n^2). 
+The space complexity of heap sort is O(n).
+Heap sort can be implemented using a bottom-up approach to build the heap. 
+Answers
+True
+True
+False
+False
+True
+ 
+Introduction to Bucket Sort
+Bucket Sort is a sorting algorithm that works by distributing elements of an input array into a finite number of buckets. Each bucket is then sorted individually, either using a different sorting algorithm or by recursively applying the bucket sort algorithm. After sorting all the buckets, the elements are concatenated to obtain the sorted array.
+Working of Bucket Sort
+Create Buckets: Divide the range of the input values into a fixed number of equally sized intervals or buckets. Each bucket represents a subrange of values.
+Distribute Elements: Iterate over the input array and place each element into its corresponding bucket based on its value. The placement can be determined by dividing the element by the range of values and multiplying it by the number of buckets.
+Sort Buckets: Sort each bucket individually, either using another sorting algorithm or by recursively applying the bucket sort algorithm if the bucket size is large enough.
+Concatenate Buckets: After all the buckets are sorted, concatenate them in order to obtain the sorted array. The elements from each bucket are combined to form the final sorted array.
+notion image
+Implementation of Bucket Sort
+Here's a simple implementation of the Bucket Sort algorithm in JavaScript:
+function bucketSort(arr, bucketSize = 5) {
+  if (arr.length === 0) {
+    return arr;
+  }
+
+  // Find the minimum and maximum values in the input array
+  let minValue = arr[0];
+  let maxValue = arr[0];
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] < minValue) {
+      minValue = arr[i];
+    } else if (arr[i] > maxValue) {
+      maxValue = arr[i];
+    }
+  }
+
+  // Determine the number of buckets needed
+  const bucketCount = Math.floor((maxValue - minValue) / bucketSize) + 1;
+  const buckets = new Array(bucketCount);
+
+  // Initialize the buckets
+  for (let i = 0; i < bucketCount; i++) {
+    buckets[i] = [];
+  }
+
+  // Distribute the elements into the buckets
+  for (let i = 0; i < arr.length; i++) {
+    const bucketIndex = Math.floor((arr[i] - minValue) / bucketSize);
+    buckets[bucketIndex].push(arr[i]);
+  }
+
+  // Sort each bucket and concatenate them
+  const sortedArray = [];
+  for (let i = 0; i < bucketCount; i++) {
+    insertionSort(buckets[i]);
+    sortedArray.push(...buckets[i]);
+  }
+
+  return sortedArray;
+}
+
+function insertionSort(arr) {
+  const length = arr.length;
+  for (let i = 1; i < length; i++) {
+    const current = arr[i];
+    let j = i - 1;
+    while (j >= 0 && arr[j] > current) {
+      arr[j + 1] = arr[j];
+      j--;
+    }
+    arr[j + 1] = current;
+  }
+}
+
+// Example usage
+var arr = [6, 2, 5, 3, 9];
+console.log(bucketSort(arr));
+
+// Output
+[2, 3, 5, 6, 9]
+Explanation
+The bucketSort function is defined with two parameters: arr, the input array to be sorted, and bucketSize, the number of elements that can be placed in each bucket. The default bucketSize is set to 5 if not provided.
+The minimum and maximum values of the input array are determined to establish the range of values.
+The number of buckets needed is calculated based on the range of values and the bucketSize.
+An array of empty buckets is created.
+The elements of the input array are distributed into the buckets based on their values.
+Each non-empty bucket is sorted individually either by applying insertion sort if the bucket size is 1, or by recursively applying bucket sort to the bucket with a reduced bucketSize.
+The sorted elements from each bucket are concatenated to form the final sorted array, which is then returned.
+Time Complexity of Bucket Sort
+Average-case time complexity: O(n + k)
+The average-case time complexity of Bucket Sort depends on the average number of elements in each bucket. When the elements are evenly distributed across the buckets, the average time complexity becomes linear. Here, n represents the number of elements in the input array, and k represents the number of buckets.
+Worst-case time complexity: O(n^2)
+The worst-case time complexity of Bucket Sort occurs when all the elements fall into the same bucket. In such cases, the algorithm needs to use another sorting algorithm, such as insertion sort, to sort the elements within the bucket. This results in a quadratic time complexity.
+Space Complexity of Bucket Sort
+The space complexity of Bucket Sort: O(n + k)
+Bucket Sort requires additional space to store the buckets and their elements. The space complexity is dependent on the number of elements in the input array (n) and the number of buckets (k). In the worst case, when all the elements fall into the same bucket, the space complexity is O(n). However, on average, the space complexity is O(n + k).
+Introduction to Radix Sort
+Radix Sort is a non-comparative sorting algorithm that sorts elements by processing their digits or bits from the least significant digit to the most significant digit. It works based on the concept of grouping elements by their place value and repeatedly sorting them based on each digit or bit position. Radix Sort can be applied to both integer and string representations.
+Working of Radix Sort
+Choose a Radix: Radix Sort uses a radix, which represents the number of unique digits or bits in the elements being sorted. Common radices include base 10 (decimal) for integers and base 2 (binary) for bits.
+Grouping by Digits/Bits: Start by considering the least significant digit or bit of each element. Group the elements into buckets based on the value of this digit or bit. Elements with the same digit or bit value are placed in the same bucket.
+Sorting Each Bucket: Sort the elements within each bucket. This can be done using any stable sorting algorithm, such as counting sort, insertion sort, or recursively applying Radix Sort.
+Repeat for Each Digit/Bit: Move to the next significant digit or bit and repeat steps 2 and 3 until all digits or bits have been processed.
+Concatenating Buckets: After sorting the elements based on the most significant digit or bit, concatenate the elements from each bucket to obtain the fully sorted array.
+notion image
+Implementation of Radix Sort
+Here's a simple implementation of the Radix Sort algorithm in JavaScript:
+function radixSort(arr) {
+  const max = Math.max(...arr);
+  let divisor = 1;
+
+  while (divisor <= max) {
+    arr = countingSort(arr, divisor);
+    divisor *= 10;
+  }
+
+  return arr;
+}
+
+function countingSort(arr, divisor) {
+  const count = new Array(10).fill(0);
+  const n = arr.length;
+  const output = new Array(n);
+
+  for (let i = 0; i < n; i++) {
+    const digit = Math.floor((arr[i] / divisor) % 10);
+    count[digit]++;
+  }
+
+  for (let i = 1; i < 10; i++) {
+    count[i] += count[i - 1];
+  }
+
+  for (let i = n - 1; i >= 0; i--) {
+    const digit = Math.floor((arr[i] / divisor) % 10);
+    output[count[digit] - 1] = arr[i];
+    count[digit]--;
+  }
+
+  for (let i = 0; i < n; i++) {
+    arr[i] = output[i];
+  }
+
+  return arr;
+}
+
+// Example usage
+var arr = [170, 45, 75, 90, 802, 24, 2, 66];
+console.log(radixSort(arr));
+
+// Output
+[2, 24, 45, 66, 75, 90, 170, 802]
+Explanation
+The radixSort function is defined, taking an array arr as a parameter.
+The maximum value in the array, max, is calculated to determine the number of digits or bits to process.
+The countingSort function is defined, which implements the counting sort algorithm.
+The countingSort function takes the input array arr and a divisor as parameters.
+An array count is initialized to store the count of each digit or bit.
+The input array is iterated, and the count of each digit or bit is incremented accordingly.
+The count array is modified to store the cumulative count of each digit or bit.
+The input array is iterated in reverse order, and each element is placed in its correct position in the output array based on the digit or bit value.
+The output array is copied back to the input array.
+The countingSort function returns the sorted array.
+The radixSort function performs multiple iterations of the counting sort, gradually considering digits or bits of increasing significance.
+Finally, the sorted array is returned.
+Time Complexity of Radix Sort
+Time complexity: O(d * (n + k))
+Here, n represents the number of elements in the input array, d represents the number of digits or bits in the maximum element, and k represents the range of values for each digit or bit (usually 10 or 2). The time complexity of Radix Sort is linear with respect to the number of elements and the number of digits or bits being processed.
+Space Complexity of Radix Sort
+The space complexity of Radix Sort: O(n + k)
+Radix Sort requires additional space to store the count array and the output array used in the counting sort step. The space complexity is dependent on the number of elements in the input array (n) and the range of values for each digit or bit (k).
+ 
+Activity: Fill in the blanks
+The concatenation of sorted buckets in Bucket Sort results in _____________ (a partially sorted array / a fully sorted array / an unsorted array).
+If the bucket size in Bucket Sort is larger, the number of recursive calls __________(increases / decreases / remains the same).
+The number of buckets needed in Bucket Sort is determined by the __________(size of the input array / range of values in the input array / desired sorting order).
+Radix Sort uses a radix, which represents the number of unique ________ (digits / letters / symbols) in the elements being sorted.
+Radix Sort works based on the concept of grouping elements by their ________ (magnitude / binary / place) value and repeatedly sorting them based on each digit or bit position.
+Answers
+a fully sorted array
+decreases
+range of values in the input array
+digits
+place
+ 
+Introduction to Counting Sort
+Counting Sort is a non-comparative sorting algorithm that works by determining the number of occurrences of each distinct element in the input array. It creates a count array to store the frequency of each element and uses this information to determine the correct position of each element in the sorted output array. Counting Sort assumes that the input elements are integers or can be mapped to integers.
+Working of Counting Sort
+Determine Range: Find the minimum and maximum values in the input array to determine the range of values for the count array.
+Count Frequencies: Create a count array of size range, initialized with all zeros. Iterate through the input array, and for each element, increment the corresponding index in the count array.
+Compute Cumulative Counts: Modify the count array to store the cumulative count of each element. Each count represents the number of elements that are less than or equal to the corresponding index.
+Place Elements in Sorted Order: Iterate through the input array in reverse order. For each element, find its index in the count array, which represents its sorted position in the output array. Place the element in the correct position, and decrement the count in the count array for that index.
+Build Sorted Array: The output array is now sorted, with elements placed in their correct order based on their counts.
+notion image
+Implementation of Counting Sort
+Here's a simple implementation of the Counting Sort algorithm in JavaScript:
+function countingSort(arr) {
+  if (arr.length === 0) {
+    return arr;
+  }
+
+  const max = Math.max(...arr);
+  const min = Math.min(...arr);
+  const range = max - min + 1;
+  const count = new Array(range).fill(0);
+  const output = new Array(arr.length);
+
+  for (let i = 0; i < arr.length; i++) {
+    count[arr[i] - min]++;
+  }
+
+  for (let i = 1; i < range; i++) {
+    count[i] += count[i - 1];
+  }
+
+  for (let i = arr.length - 1; i >= 0; i--) {
+    output[count[arr[i] - min] - 1] = arr[i];
+    count[arr[i] - min]--;
+  }
+
+  return output;
+}
+
+// Example usage
+var arr = [4, 2, 2, 8, 3, 3, 1];
+console.log(countingSort(arr));
+
+// Output
+[1, 2, 2, 3, 3, 4, 8]
+Explanation
+The countingSort function is defined, taking an array arr as a parameter.
+The minimum and maximum values in the array, min and max, are determined to establish the range of values.
+A count array, count, is created with a size equal to the range of values. It is initialized with all zeros.
+The input array is iterated, and the count of each element is incremented in the corresponding index of the count array.
+The count array is modified to store the cumulative count of each element.
+The input array is iterated in reverse order. Each element is placed in its correct position in the output array based on its count, and the count is decremented.
+The sorted output array is returned.
+Time Complexity of Counting Sort
+Time complexity: O(n + k)
+Counting Sort has a linear time complexity, where n represents the number of elements in the input array and k represents the range of values. It performs two passes over the input array: one to count the occurrences of each element and another to place the elements in their sorted order. The time complexity is not affected by the initial order of the input elements.
+Space Complexity of Counting Sort
+The space complexity of Counting Sort: O(n + k)
+Counting Sort requires additional space to store the count array and the output array. The space complexity is dependent on the number of elements in the input array (n) and the range of values (k). The space complexity is considered linear.
+ 
+Summary
+What did we learn?
+Heap Sort is a comparison-based sorting algorithm that uses a binary heap data structure.
+Heap Sort has a time complexity of O(n log n) in all cases, making it efficient for large datasets. Heap Sort operates directly on the input array, resulting in a space complexity of O(1).
+Bucket Sort is a non-comparative sorting algorithm that divides the input into a fixed number of buckets. It distributes the elements into the buckets based on their values and applies another sorting algorithm within each bucket.
+Bucket Sort is useful when the input is uniformly distributed over a range.
+It has an average-case time complexity of O(n + k), where n is the number of elements and k is the number of buckets used. The space complexity of Bucket Sort is O(n + k), depending on the number of elements and the number of buckets.
+Radix Sort is a non-comparative sorting algorithm that sorts elements based on their digits or bits from the least significant to the most significant. It works by repeatedly sorting the elements based on each digit or bit position.
+Radix Sort has a time complexity of O(d * (n + k)), where d is the number of digits or bits, n is the number of elements, and k is the range of values for each digit or bit.
+The space complexity of Radix Sort is O(n + k), depending on the number of elements and the range of values.
+Counting Sort is a non-comparative sorting algorithm that determines the frequency of each distinct element in the input array. It creates a count array to store the occurrence of each element and uses this information to place elements in the correct order.
+Counting Sort has a time complexity of O(n + k), where n is the number of elements and k is the range of values.
+The space complexity of Counting Sort is O(n + k), depending on the number of elements and the range of values.
+Shortcomings & Challenges
+Space Complexity: Some of these sorting algorithms, such as Bucket Sort and Counting Sort, may require additional memory to store auxiliary data structures like buckets or count arrays. This can be a challenge when dealing with limited memory resources or sorting very large datasets.
+Data Distribution: The performance of these sorting algorithms can be sensitive to the distribution of the input data. Unevenly distributed or skewed data can lead to suboptimal performance and slower execution times.
+Non-Adaptive: These sorting algorithms do not adapt their runtime based on the input data. They have fixed time complexities and do not take advantage of pre-sorted or partially sorted input arrays. This can result in unnecessary comparisons and swaps, leading to inefficiencies in certain scenarios.
+Best practices to follow
+Carefully handle the indexing in the array, as most implementations start indexing at 1 rather than 0.
+Select an efficient sorting algorithm to sort the elements within each bucket. Insertion Sort or Quick Sort are commonly used for this step.
+Handle negative numbers properly by applying appropriate transformations or by using a variant of Radix Sort like MSD (Most Significant Digit) or LSD (Least Significant Digit) Radix Sort.
+Ensure that the range of input elements is known in advance, as Counting Sort requires this information to allocate the counting array.
+ 
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+Sorting Algorithms - Comparing the Best and the Rest: https://levelup.gitconnected.com/sorting-algorithms-comparing-the-best-and-the-rest-2448129f5b4a
+Time Complexity of Sorting Algorithms: https://www.boardinfinity.com/blog/time-complexity-of-sorting-algorithms/
+Shell Sort: https://learnersbucket.com/tutorials/algorithms/shell-sort-algorithm-in-javascript/
+ 
+Try it yourself
+Let's solve these coding problems on AlmaBetter IDE. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
+Task 1: Conquer coding challenges in the AlmaBetter IDE and showcase your skills with innovative solutions.
+Problems
+Problem 1: Sort Colors
+You are a software engineer working for a large online retailer. You have been tasked with developing a new algorithm to sort an array of red, white, and blue objects in place. The company wants to use this algorithm to improve the efficiency of its shipping process.
+The problem is that the objects in the array are only sometimes sorted in the correct order. 
+For example, the array might contain the following objects:
+[2, 0, 2, 1, 1, 0]
+The algorithm must sort the objects in the array so that they are in the following order:
+[0, 0, 1, 1, 2, 2]
+You have to develop an algorithm that first partitions the array into three subarrays: one for red objects, one for white objects, and one for blue objects. Then, the algorithm sorts each subarray in-place. Finally, the algorithm merges the three subarrays back together.
+We will use the integers 0, 1, and 2 to represent the color red, white, and blue, respectively.
+You must solve this problem without using the library's sort function.
+Constraints:
+n == nums.length
+1 <= n <= 300
+nums[i] is either 0, 1, or 2.
+Problem 2: Missing Number
+You are a data scientist working for a large e-commerce company. You have been tasked with developing a new algorithm that will help the company to identify fraudulent transactions. The company wants to use this algorithm to protect its customers from financial loss.
+The problem is that fraudulent transactions often involve patterns of missing numbers. For example, a fraudulent transaction might involve a credit card number that is missing a digit.
+You have to develop an algorithm that first breaks the credit card number into its individual digits. Then, the algorithm checks if each digit is present in the array. If a digit is absent in the array, the algorithm adds the digit to the array. Finally, the algorithm returns the only digit that is not in the array.
+Example 1:
+Input:  nums = [3, 0, 1]
+
+Output: 2
+Explanation:
+n = 3 since there are 3 numbers, so all numbers are in the range [0,3]. 2 is the missing number in the range since it does not appear in nums.
+Example 2:
+Input:  nums = [0, 1]
+
+Output: 2
+Explanation:
+n = 2 since there are 2 numbers, so all numbers are in the range [0,2]. 2 is the missing number in the range since it does not appear in nums.
+Constraints:
+n == nums.length
+1 <= n <= 104
+0 <= nums[i] <= n
+All the numbers of nums are unique.
+Problem 3: Largest Number After Digit Swaps by Parity
+Imagine that you are a contestant on a game show. The host of the show gives you a positive integer, and you are challenged to find the largest possible value of the number after any number of swaps of digits that have the same parity.
+The host tells you that the num is 1234. You immediately realize that you can swap the 1 and the 4 to get 3412, which is a larger number. However, you also realize that you could swap the 2 and the 3 to get 3214, which is even larger.
+You start to think about all the different ways that you could swap the digits of the number. You realize that there are many different possibilities, and you start to wonder if there is a way to find the optimal solution.
+You have to write a code that returns the largest possible value of num after any number of swaps.
+Example 1:
+Input:  1234
+
+Output: 3412
+Explanation:
+Swap the digit 3 with the digit 1, this results in the number 3214. Swap the digit 2 with the digit 4, this results in the number 3412. Note that there may be other sequences of swaps, but it can be shown that 3412 is the largest possible number. Also note that we may not swap the digit 4 with the digit 1 since they are of different parities.
+Example 2:
+Input:  6587
+
+Output: 8765
+Explanation:
+Swap the digit 8 with the digit 6, this results in the number 85675. Swap the first digit 5 with the digit 7, this results in the number 87655. Note that there may be other sequences of swaps but it can be shown that 87655 is the largest possible number.
+Constraints:
+1 <= num <= 10^9
+Solutions
+Problem 1: Sort Colors
+function main() {
+  var nums = readLine().split(" ").map(x => parseInt(x));
+  console.log(sortColors(nums));
+}
+
+var sortColors = function(nums) {
+  let zero = 0,
+    one = 0,
+    two = 0;
+  for (let n of nums) {
+    n === 0 ? zero++ : n === 1 ? one++ : two++;
+  }
+  for (let i = 0; i < nums.length; i++) {
+    i < zero ? (nums[i] = 0) : i < zero + one ? (nums[i] = 1) : (nums[i] = 2);
+  }
+  return nums;
+};
+Problem 2: Missing Number
+function main() {
+  var nums = readLine().split(" ").map(x => parseInt(x));
+  console.log(missingNumber(nums));
+}
+
+var missingNumber = function(nums) {
+  let ans = nums.length;
+
+  for (let i = 0; i < nums.length; ++i)
+    ans ^= i ^ nums[i];
+
+  return ans;
+};
+Problem 3: Largest Number After Digit Swaps by Parity
+function main() {
+  var num = parseInt(readLine());
+  console.log(largestInteger(num));
+}
+
+var largestInteger = function(num) {
+  num = num.toString()
+  let even = []
+  let odd = []
+  let result = ''
+
+  for (let i = 0; i < num.length; i++) {
+    num[i] % 2 === 0 ? even.push(num[i]) : odd.push(num[i])
+  }
+
+  if (even.length > 1) even.sort((a, b) => (+a) - (+b))
+  if (odd.length > 1) odd.sort((a, b) => (+a) - (+b))
+
+  for (let i = 0; i < num.length; i++) {
+    if (+num[i] % 2 === 0 && even.length) {
+      result += even.pop()
+    } else if (+num[i] % 2 !== 0 && odd.length) {
+      result += odd.pop()
+    } else {
+      result += num[i]
+    }
+  }
+
+  return +result;
+};
+Task 2: Which question did you find challenging and Why? Share your thoughts in your Cohort group at AlmaBetter Community Platform.
