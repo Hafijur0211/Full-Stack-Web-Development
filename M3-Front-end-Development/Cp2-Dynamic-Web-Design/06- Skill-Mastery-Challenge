@@ -1,1 +1,87 @@
-
+Skill Mastery Challenge
+What did we learn?
+Dynamic web design involves the use of client-side scripting languages like JavaScript to add interactivity to web pages. We learn how to manipulate the Document Object Model (DOM) to dynamically update content, handle user interactions, and create interactive features.
+AJAX allows you to make asynchronous requests to the server without reloading the entire web page. We learn how to use AJAX techniques to fetch data from the server, update specific parts of the page, and create seamless user experiences.
+Understanding event-driven programming is crucial in dynamic web design. We learn how to handle user interactions like clicks, mouse movements, form submissions, and keyboard events using event listeners. This enables us to respond to user actions and trigger appropriate actions on the web page.
+Dynamic web design involves dynamically changing the styling of elements based on user actions or application state. You learn techniques like CSS transitions and animations, manipulating CSS classes, and modifying styles programmatically to create visually appealing and interactive designs.
+Learning how to select and manipulate DOM elements using JavaScript, such as adding, modifying, or removing elements dynamically. Implementing DOM manipulation to create dynamic content, build user interfaces, and respond to user interactions.
+Gaining proficiency in using jQuery, a popular JavaScript library, to simplify and streamline DOM manipulation and event handling.
+Understanding how AJAX (Asynchronous JavaScript and XML) works to enable seamless communication between the client and server without requiring page reloads.
+Learning to fetch data from the server, update content dynamically, and handle responses asynchronously using jQuery's AJAX methods.
+Shortcomings & Challenges
+Excessive and inefficient DOM manipulation can have a negative impact on performance. Frequent updates to the DOM can cause reflows and repaints, resulting in a slower user experience.
+Different browsers may implement DOM features, events, or AJAX techniques differently, leading to inconsistencies and compatibility issues.
+Managing and handling numerous DOM events can become complex, especially in large-scale applications. Event propagation, event delegation, and properly managing event listeners across dynamic elements can be challenging.
+Depending heavily on jQuery can lead to unnecessary library overhead, reduced performance, and difficulty in migrating to newer frameworks or vanilla JavaScript.
+Asynchronous JavaScript, such as AJAX requests or Promise-based code, introduces challenges in managing complex asynchronous workflows and handling errors. 
+Callback hell, race conditions, and managing dependencies between asynchronous tasks can make code harder to read, debug, and maintain. Utilizing modern asynchronous patterns like async/await or adopting libraries like Axios or Fetch API can help mitigate these challenges.
+Best Practices
+When performing multiple manipulations on the same DOM element, store the reference to the element in a variable to avoid querying the DOM repeatedly. This improves performance.
+Whenever possible, utilize native DOM methods (e.g., getElementById, querySelector, createElement) instead of jQuery or other libraries. Native methods tend to be faster and have better browser support.
+Attach event handlers to parent elements and use event delegation to handle events for multiple elements efficiently. This reduces the number of event handlers and simplifies event management, especially for dynamically added or removed elements.
+Optimize the usage of jQuery selectors by being specific with the element, class, or ID you want to target. Avoid using overly broad selectors that can lead to unnecessary DOM traversal.
+Utilize Promises or the newer async/await syntax for asynchronous JavaScript operations. This allows for cleaner and more readable code, better error handling, and easier synchronization of multiple asynchronous tasks.
+Implement throttling or debouncing techniques to control the rate at which certain functions are called, especially for events like scrolling or resizing. This helps optimize performance and reduces unnecessary function invocations.
+Interview Prep
+How does the DOM represent the structure of an HTML document?
+The DOM represents the structure of an HTML document as a tree-like structure called the DOM tree. The root of the tree is the document object, which represents the entire HTML document. Each element in the HTML document, such as <html>, <body>, and <div>, is represented by a corresponding object in the DOM tree. These objects are interconnected based on their hierarchical relationship in the HTML document.
+How DOM events work?
+DOM events follow a bubbling or capturing phase, where an event triggered on an element can propagate through its parent elements or descend into its child elements.
+During the event flow, event handlers can be attached to specific elements to listen and respond to events. When an event is triggered, it propagates through the DOM tree, invoking the appropriate event handlers attached to the elements involved. Event handlers can perform actions, modify the DOM, or trigger additional events.
+How would you handle cross-browser compatibility issues when working with DOM?
+Cross-browser compatibility is essential for ensuring that web applications work consistently across different browsers. To handle cross-browser compatibility issues when working with DOM, consider the following practices:
+Use feature detection: Instead of relying on browser detection, use feature detection techniques like checking the availability of specific properties, methods, or APIs before using them. Libraries like Modernizr can assist in feature detection.
+Follow web standards: Adhere to web standards and specifications while developing your code. Ensure that you write valid HTML, CSS, and JavaScript that aligns with the standards defined by W3C.
+Test across browsers: Regularly test your web application on different browsers and versions to identify any compatibility issues. Use browser testing tools or services to simulate various browser environments and catch discrepancies.
+Utilize polyfills: Polyfills are code snippets that provide backward compatibility for newer features or APIs that might not be supported by older browsers. By including polyfills, you can ensure consistent behavior across different browser versions.
+Stay updated: Keep yourself informed about browser updates, feature deprecations, and emerging web standards. Stay up to date with the latest best practices and techniques to maintain compatibility with modern browsers.
+Difference between synchronous and asynchronous AJAX requests
+In synchronous AJAX requests, the browser blocks the execution of other JavaScript code until the request completes, which means the user interface becomes unresponsive. Asynchronous AJAX requests, on the other hand, allow other JavaScript code to continue executing while the request is being processed. Asynchronous requests are commonly used as they provide a better user experience and prevent the UI from freezing.
+What is the purpose of Promise.all() and Promise.race()?
+Promise.all() and Promise.race() are useful Promise utility methods. Promise.all() takes an array of Promises and returns a new Promise that fulfills when all the input Promises are resolved or rejects if any of the input Promises are rejected. This is helpful when you want to perform multiple asynchronous operations in parallel and wait for all of them to complete. Promise.race() takes an array of Promises and returns a new Promise that fulfills or rejects as soon as any of the input Promises fulfills or rejects. This is useful when you want to respond to the first asynchronous operation that completes.
+Difference between custom elements and standard elements
+Custom elements allow developers to define their own reusable HTML elements with custom behavior and functionality. They are created using the Custom Elements API and can be used and manipulated just like standard HTML elements. The key difference is that custom elements have a name that is not predefined by HTML, allowing developers to create their own tags.
+How do you create and dispatch a custom event?
+To create a custom event, you can use the CustomEvent constructor, passing the event type as the first argument. Additional properties or data can be attached to the event using the detail property of the CustomEvent object. To dispatch the custom event, you can use the dispatchEvent method on the target element or any other element in the DOM hierarchy.
+What is the virtual DOM, and how does it improve performance in web applications?
+The virtual DOM is a concept where a lightweight, in-memory representation of the actual DOM is maintained by frameworks like React. When changes are made to the virtual DOM, the framework reconciles the changes with the real DOM, minimizing the number of actual DOM manipulations. This approach improves performance by reducing the number of costly DOM operations, making updates more efficient and faster.
+What are the benefits and trade-offs of using the virtual DOM?
+The benefits of using the virtual DOM include improved performance by reducing direct DOM manipulation, easier development by providing a declarative way to handle UI updates, and better application stability through the framework's diffing and reconciliation process. However, using the virtual DOM adds some overhead due to the additional abstraction layer and can be unnecessary for smaller or less complex applications. Additionally, frameworks using the virtual DOM may have a learning curve and require additional tooling and build steps.
+How can you implement a custom AjaxTransport in jQuery?
+To implement a custom AjaxTransport, you can use the $.ajaxTransport method provided by jQuery. It allows you to define a function that takes the options parameter and returns an object with send and abort methods. The send method handles the AJAX request, and the abort method cancels the request if needed.
+Difference between Debouncing and Throttling with example
+Debouncing is a technique where you delay the execution of a function until after a certain amount of time has passed. This is useful if you have a frequently used function—say, a scroll or resize event listener—and don’t want to trigger it too frequently because that might slow down the browser.
+No matter how many times the user fires the event, the connected function will only run once the user stops firing the event, according to the Debouncing approach. Ex: Imagine that a user clicks a button five times in the space of 100 milliseconds. That function won’t be called during debouncing. If the debouncing time is 2000 milliseconds after the user has ceased clicking, the function will be called 2000 milliseconds later.
+function debounce(func, delay) {
+    let timerId;
+    return function () {
+        const context = this;
+        const args = arguments;
+        clearTimeout(timerId);
+        timerId = setTimeout(function () {
+            func.apply(context, args);
+        }, delay);
+    };
+}
+Throttling is a similar technique to debouncing, but instead of delaying the execution of a function, it limits the rate at which a function. This is useful when a function, such as a mousemove or keydown event listener, may be called repeatedly but need not be run each time.
+Throttling is a technique in which, no matter how many times the user fires the event, the attached function will be executed only once in a given time interval. Throttling ensures that the function executes at regular intervals.
+function throttle(callback, delay = 1000) {
+      let shouldWait = false;
+      return (...args) => {
+        if (shouldWait) return;
+        callback(...args);
+        shouldWait = true;
+        setTimeout(() => {
+              shouldWait = false;
+        }, delay);
+      };
+}
+ 
+Enhance Your Knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Examples
+https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Whitespace
+ 
+Try it yourself
+Task 1: Take on the Competency Challenge Quiz. 🚀
+Task 2: Share your accomplishment to brag on the AlmaBetter Community Platform. 💻😄
