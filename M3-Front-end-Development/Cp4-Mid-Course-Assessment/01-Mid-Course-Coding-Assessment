@@ -1,1 +1,494 @@
+Majority Element
+Easy
+solved
+Given an array nums of size n, return the majority element.
+
+The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
+
+Example 1:
+Input:
+nums = [3,2,3]
+
+Output:
+3
+
+Example 2:
+Input:
+[2,2,1,1,1,2,2]
+
+Output:
+2
+
+Constraints:
+- n == nums.length
+- 1 <= n <= 5 * 104
+- 109 <= nums[i] <= 109
+
+
+// Hints
+
+var majorityElement = function(nums) {
+    let count = 0;
+    let res = 0;
+    for (let num of nums) {
+        if (count === 0) {
+            res = num;
+        }
+        if (res === num) {
+            count = count + 1;
+        } else {
+            count = count - 1;
+        }
+    }
+    return res;
+};
+
+
+Find First and Last Position of Element in Sorted Array
+Easy
+unsolved
+Given an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given target value.
+
+If target is not found in the array, return [-1, -1].
+
+You must write an algorithm with O(log n) runtime complexity.
+
+Example 1:
+Input:
+nums = [5,7,7,8,8,10] target = 8
+
+Output:
+[3,4]
+
+Example 2:
+Input:
+nums = [5,7,7,8,8,10]
+
+Output:
+target = 6
+
+Constraints:
+- 0 <= nums.length <= 105
+- 109 <= nums[i] <= 109
+- nums is a non-decreasing array.
+- 109 <= target <= 109
+
+// Hints
+
+var searchRange = function(nums, target){
+        let ans = [-1, -1];
+        let low = 0;
+        let high = nums.length - 1;
+
+        while(low <= high) {
+            let mid = Math.floor((low + high) / 2);
+            if(nums[mid] == target) {
+                while(nums[low] != target) {
+                    low++;
+                }
+                while(nums[high] != target) {
+                    high--;
+                }
+                ans[0] = low;
+                ans[1] = high;
+
+                return ans;
+            }
+            else if(target > nums[mid]) {
+                low = mid + 1;
+            }
+            else {
+                high = mid - 1;
+            }
+        }
+        return ans;
+    }
+
+Plus One
+Medium
+unsolved
+You are given a large integer represented as an integer array digits, where each digits[i] is the ith digit of the integer. The digits are ordered from most significant to least significant in left-to-right order. The large integer does not contain any leading 0's.
+
+Increment the large integer by one and return the resulting array of digits.
+
+Example 1:
+Input:
+digits = [1,2,3]
+
+Output:
+[1,2,4]
+
+Explanation:
+The array represents the integer 123. Incrementing by one gives 123 + 1 = 124. Thus, the result should be [1,2,4].
+
+Example 2:
+Input:
+digits = [4,3,2,1]
+
+Output:
+[4,3,2,2]
+
+Explanation:
+The array represents the integer 4321. Incrementing by one gives 4321 + 1 = 4322. Thus, the result should be [4,3,2,2].
+
+Constraints:
+- 1 <= digits.length <= 100
+- 0 <= digits[i] <= 9
+- digits does not contain any leading 0's.
+
+// Hints
+
+var plusOne = function(digits) {
+    let digit_length = digits.length;
+    let i = digit_length - 1;
+
+    while (digits[i] == 9 && i >= 0) {
+        i -= 1;
+    }
+
+    if (i == -1) {
+        let results = Array(digit_length + 1).fill(0);
+        results[0] = 1;
+        return results;
+    }
+
+    let results = Array(digit_length).fill(0);
+    results[i] = digits[i] + 1;
+
+    for (let j = i-1; j >= 0; j--) {
+        results[j] = digits[j];
+    }
+
+    return results;
+};
+
+Elimination Game
+Medium
+unsolved
+You have a list arr of all integers in the range [1, n] sorted in a strictly increasing order. Apply the following algorithm on arr:
+
+Starting from left to right, remove the first number and every other number afterward until you reach the end of the list.
+Repeat the previous step again, but this time from right to left, remove the rightmost number and every other number from the remaining numbers.
+Keep repeating the steps again, alternating left to right and right to left, until a single number remains.
+Given the integer n, return the last number that remains in arr.
+
+Example 1:
+Input:
+n = 9
+
+Output:
+6
+
+Explanation:
+arr = [1, 2,3, 4,5, 6,7, 8,9] arr = [2,4, 6,8] arr = [2, 6] arr = [6]
+
+Example 2:
+Input:
+n = 1
+
+Output:
+1
+
+Constraints:
+- 1 <= n <= 109
+
+// Hints
+
+const lastRemaining = function(n){
+    if (n === 1) return 1;
+    let remaining = lastRemaining(Math.floor(n / 2));
+    return n % 2 === 0 ? 2 * (n / 2 - remaining) + 1 : 2 * remaining;
+};
+
+Gray Code
+Medium
+unsolved
+An n-bit gray code sequence is a sequence of 2n integers where:
+
+Every integer is in the inclusive range [0, 2n - 1],
+The first integer is 0,
+An integer appears no more than once in the sequence,
+The binary representation of every pair of adjacent integers differs by exactly one bit, and
+The binary representation of the first and last integers differs by exactly one bit.
+Given an integer n, return any valid n-bit gray code sequence.
+
+Example 1:
+Input:
+n = 2
+
+Output:
+[0,1,3,2]
+
+Explanation:
+The binary representation of [0,1,3,2] is [00,01,11,10]. -00 and 01 differ by one bit -01 and11 differ by one bit -11 and 10 differ by one bit -10 and00 differ by one bit [0,2,3,1] is also a valid gray code sequence, whose binary representation is [00,10,11,01]. -00 and10 differ by one bit -10 and 11 differ by one bit -11 and01 differ by one bit -01 and 00 differ by one bit
+
+Example 2:
+Input:
+n = 1
+
+Output:
+[0,1]
+
+Constraints:
+- 1 <= n <= 16
+
+// Hints
+
+const grayCode = function(n){
+    const ans = [0];
+
+    for (let i = 0; i < n; i++) {
+      for (let j = ans.length - 1; j >= 0; j--) {
+        ans.push(ans[j] | 1 << i);
+      }
+    }
+
+    return ans;
+};
+
+Matchsticks to Square
+Hard
+unsolved
+You are given an integer array matchsticks where matchsticks[i] is the length of the ith matchstick. You want to use all the matchsticks to make one square. You should not break any stick, but you can link them up, and each matchstick must be used exactly one time.
+
+Return true if you can make this square and false otherwise.
+
+Example 1:
+Input:
+matchsticks = [1,1,2,2,2]
+
+Output:
+true
+
+Explanation:
+You can form a square with length 2, one side of the square came two sticks with length 1.
+
+Example 2:
+Input:
+matchsticks = [3,3,3,3,4]
+
+Output:
+false
+
+Explanation:
+You cannot find a way to form a square with all the matchsticks.
+
+Constraints:
+- 1 <= matchsticks.length <= 15
+- 1 <= matchsticks[i] <= 108
+
+// Hints
+
+const makesquare = function(matchsticks){
+    const sum = matchsticks.reduce((a, b) => a + b);
+    if (sum % 4 !== 0) return false;
+    const side = sum / 4;
+    matchsticks.sort((a, b) => b - a);
+    const sides = [0, 0, 0, 0];
+    const backTrack = (index) => {
+        if (index === matchsticks.length) {
+            return sides.every(side => side === side);
+        }
+        for (let i = 0; i < 4; i++) {
+            if (sides[i] + matchsticks[index] <= side) {
+                sides[i] += matchsticks[index];
+                if (backTrack(index + 1)) return true;
+                sides[i] -= matchsticks[index];
+            }
+        }
+        return false;
+    }
+    return backTrack(0);
+};
+
+Repeated DNA Sequences
+Hard
+unsolved
+The DNA sequence is composed of a series of nucleotides abbreviated as 'A', 'C', 'G', and 'T'.
+
+For example, "ACGAATTCCG" is a DNA sequence.
+When studying DNA, it is useful to identify repeated sequences within the DNA.
+
+Given a string s that represents a DNA sequence, return all the 10-letter-long sequences (substrings) that occur more than once in a DNA molecule. You may return the answer in any order.
+
+Example 1:
+Input:
+s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"
+
+Output:
+["AAAAACCCCC","CCCCCAAAAA"]
+
+Example 2:
+Input:
+s = "AAAAAAAAAAAAA"
+
+Output:
+["AAAAAAAAAA"]
+
+Constraints:
+1 <= s.length <= 105
+s[i] is either 'A', 'C', 'G', or 'T'
+
+// Hints
+
+var findRepeatedDnaSequences = function(s) {
+  let map = {};
+	let res = [];
+	for (let i = 0; i <= s.length-10; i++) {
+		let s10 = s.substring(i, i+10);
+        if(!map[s10]) map[s10]=1
+		else map[s10] += 1;
+		if (map[s10] === 2) res.push(s10);
+	}
+	return res;
+};
+
+Buy Two Chocolates
+Easy
+unsolved
+Problem
+You are given an integer array prices representing the prices of various chocolates in a store. You are also given a single integer money, which represents your initial amount of money.
+
+You must buy exactly two chocolates in such a way that you still have some non-negative leftover money. You would like to minimize the sum of the prices of the two chocolates you buy.
+
+Return the amount of money you will have leftover after buying the two chocolates. If there is no way for you to buy two chocolates without ending up in debt, return money. Note that the leftover must be non-negative.
+
+Example 1:
+
+
+Input: prices = [1,2,2], money = 3
+Output: 0
+Explanation: Purchase the chocolates priced at 1 and 2 units respectively.
+You will have 3 - 3 = 0 units of money afterwards. Thus, we return 0.
+Example 2:
+
+
+Input: prices = [3,2,3], money = 3
+Output: 3
+Explanation: You cannot buy 2 chocolates without going in debt, so we return 3.
+Constraints:
+
+2 <= prices.length <= 50
+1 <= prices[i] <= 100
+1 <= money <= 100
+
+// Hints
+
+var buyChoco = function(prices, money) {
+    const sortPrices = prices.sort((a,b)=>a-b)
+    const ans = money-sortPrices[0]-sortPrices[1]
+    return ans >= 0 ? ans : money  
+};
+
+Divisor Game
+Easy
+unsolved
+Alice and Bob take turns playing a game, with Alice starting first.Initially, there is a number N on the chalkboard. On each players's turn, that player makes a move consisting of:
+
+Choosing any x with 0 < x < N and N % x == 0.
+Replacing the number N on the chalkboard with N - x.
+Also, if a player cannnot make a move, they lose the game.Return true if and only if Alice wins the game, assuming both players play optimally.
+
+Example 1:
+
+Input: N = 2
+
+Output: true
+
+Explanation: Alice chooses 1, and Bob has no more moves.
+
+Example 2:
+
+Input: N = 3
+
+Output: false
+
+Explanation: Alice chooses 1, Bob chooses 1, and Alice has no more moves.
+
+Your Task:
+
+You don't need to read input or print anything. Your task is to complete the function divisorGame() which takes an integer N as parameters and returns true if alice wins the game.
+
+Expected Time Complexity: O(1)
+
+Expected Auxiliary Space: O(1)
+
+**Constraints:**1 ≤ N ≤ 10^3
+
+// Hints
+
+function divisorGame(N) {
+    if (N === 1) {
+        return false;
+    }
+
+    for (let x = 1; x < N; x++) {
+        if (N % x === 0) {
+            if (!divisorGame(N - x)) {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
+Minimize the sum of product
+Easy
+unsolved
+You are given two arrays, A and B, of equal size N. The task is to find the minimum value of A[0] * B[0] + A[1] * B[1] + .... + A[N-1] * B[N-1], where shuffling of elements of arrays A and B is allowed.
+
+Example 1:
+
+
+Input:
+N = 3
+A[] = {3, 1, 1}
+B[] = {6, 5, 4}
+Output:
+23
+Explanation:1*6+1*5+3*4 = 6+5+12
+= 23 is the minimum sum
+Example 2:
+
+
+Input:
+N = 5
+A[] = {6, 1, 9, 5, 4}
+B[] = {3, 4, 8, 2, 4}
+Output:
+80
+Explanation:
+2*9+3*6+4*5+4*4+8*1
+=18+18+20+16+8
+= 80 is the minimum sum
+Your Task:
+
+You don't need to read input or print anything. Your task is to complete the function minValue() which takes the arrays A[], B[] and its size N as inputs and returns the minimum sum.
+
+**Expected Time Complexity:**O(N. log(N))
+
+**Expected Auxiliary Space:**O(1)
+
+Constraints:
+
+1 ≤ N ≤ 10^5
+
+1 ≤ A[] ≤ 10^5
+
+// Hints
+
+function minValue(A, B, N) {
+    // Sort the arrays in ascending order
+    A.sort((a, b) => a - b);
+    B.sort((a, b) => a - b);
+
+    // Calculate the minimum sum of products
+    let minSum = 0;
+    for (let i = 0; i < N; i++) {
+        minSum += A[i] * B[N - i - 1];
+    }
+
+    return minSum;
+}
 
