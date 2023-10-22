@@ -1,0 +1,129 @@
+Project Management & Deployment
+Session Flow
+Learning Objective
+Introduction
+Theme
+Primary Goals
+Project Management & Deployment
+What is Git?
+What is GitHub?
+Setting up a GitHub Account
+Local and Remote Repositories
+Deploying Static Webpage on GitHub Pages
+Summary
+What did we learn?
+Shortcomings & Challenges
+Best Practices to follow
+Enhance your knowledge
+Learning Objective
+Introduction
+Git is a distributed version control system that tracks changes in files. GitHub is a web-based platform that hosts Git repositories, enabling collaboration, code sharing, and version control management.
+Focus: Git, GitHub and Project Deployment
+Prerequisites: None
+Theme
+Git and GitHub have revolutionized the way Microsoft approaches software development and collaboration. Git serves as the backbone of Microsoft's version control system, allowing developers to track changes, work on different branches, and merge code seamlessly. 
+This enables multiple developers to work simultaneously on the same codebase while maintaining a clear history of changes.
+GitHub, as a web-based platform, provides a centralized hub for hosting Git repositories. It offers a rich set of features and tools that enhance collaboration within Microsoft teams. 
+Developers can easily create and manage repositories, create branches, and submit pull requests for code reviews. GitHub's issue tracking system helps manage and prioritize tasks, while the wiki feature allows teams to document projects and share knowledge effectively.
+Primary Goals
+Familiarize yourself with additional Git and GitHub features and tools that can optimize your development workflow
+Learn how to initialize a Git repository on your local machine to start tracking changes in your projects. 
+Explore GitHub and learn how to create a remote repository, clone it to your local machine, and establish a connection between the local and remote repositories.
+Understand how to push changes from your local repository to GitHub and pull changes from remote repositories.
+Learn how to use GitHub Pages for hosting static websites.
+ 
+Project Management & Deployment
+What Is Git?
+Git is a distributed version control system engineered to oversee and monitor alterations to files, encompassing source code.
+Its primary objectives are:
+Version control: Git tracks changes made to files over time, enabling developers to view and revert to previous code versions easily.
+Collaboration: Git facilitates collaboration between multiple developers working on the same codebase by allowing them to work on separate branches, merge changes, and resolve conflicts.
+Speed and efficiency: Git is designed to be fast and efficient, allowing developers to work on large codebases quickly and efficiently.
+Security: Git provides robust security features, including cryptographic hashing and encryption, to ensure the integrity and confidentiality of code.
+Flexibility: Git can be used for managing any type of file, making it a versatile tool for version control and collaboration.
+What is GitHub?
+GitHub is an online platform that offers hosting services for Git repositories. It allows developers to store and manage their Git repositories in the cloud, making it easier to collaborate with other developers, track changes, and manage code versions.
+In addition to hosting Git repositories, GitHub also provides features such as issue tracking, project management, code review, and documentation, making it a comprehensive platform for software development.
+GitHub has become an essential tool for many open-source projects and is used by developers worldwide for both personal and professional projects.
+Setting up a GitHub account
+To create a GitHub account, visit https://github.com/signup if you don't already have one.
+notion image
+ 
+After you complete the setup you can open your profile.
+notion image
+ 
+Once you are done with setting up the GitHub you have to navigate to https://git-scm.com/. This will be where you install git.
+notion image
+ 
+Once you are done installing git it will install a program called git bash in your machine. You can open that.
+notion image
+What you can do is connect the git bash to your GitHub account using the following commands
+git config --global user.name "your_user_namer"
+git config --global user.email "your_email"
+To verify it you can type
+git config --global --list
+Local and Remote Repositories
+The local repository refers to the Git repository that is saved on your computer system.
+The remote repository refers to a Git repository that is stored on a remote computer.
+The remote repository is usually used by teams as a central repository into which everyone pushes the changes from his local repository and from which everyone pulls changes to his local repository.
+Once you decide it's a good time to share the changes, you push the changes from your local repository to the remote repository. This copies the changes from .git folder on your local computer to .git folder on the remote computer. From this moment, your changes are visible to people who have access to the remote repository.
+notion image
+The .git folder houses all essential information for the project, as well as details related to commits, remote repository addresses, and more. Additionally, it includes a log that maintains the commit history, enabling you to revert to a preferred version of the code when needed.
+The .git folder encompasses comprehensive documentation of each alteration made to the codebase. This directory serves as a repository, meticulously cataloging snapshots of modifications, thereby facilitating the ability to revert changes and reinstate the preferred version of the code.
+The .git folder is hidden to prevent accidental deletion or modification of the folder. The version history of the code base will be lost if this folder is deleted. This means, we will not be able to rollback changes made to the code in future.
+Creating Local Git Repo
+So now we will navigate to the app we used last time for testing and initialize a git repo.
+In git bash we will navigate to our project folder and type git init. This will initialize a local git repository:
+notion image
+Now lets push the local repo to the remote repo we just created.
+First of all to stage the code to local repo we type git add .
+notion image
+You can see all the files that were pushed to local repo. Now we need to commit this changes we type:
+git commit -m "Initial Commit"
+-m is for the message we want to associate with that commit
+notion image
+Now our local repo setup is completed! Now we will push this local repo to remote repo we created on github.
+On the home page of your GitHub repo you can see the commands to do this:
+notion image
+notion image
+After executing these commands, your local repo is now pushed to your remote repo on GitHub.
+You can refresh your GitHub repo to see the changes:
+notion image
+Now if some changes are made only on remote repo and you want to get those changes in remote repo you can pull those. For Example let’s edit the readme file on the GitHub repo.
+To pull the changes we use the command git pull:
+notion image
+That’s it. This is how you can manage your project using git and GitHub!!
+Deploying Static Webpage on GitHub Pages
+Deploy Your Local Repository on GitHub
+Go to your repository on GitHub and navigate to the Settings tab.
+notion image
+Under the Pages section, select the main branch from the dropdown menu.
+notion image
+Click on the Save button to apply the changes.
+GitHub will now build and deploy your static page from the main branch. It may take a few moments for the deployment to complete.
+Once the deployment is complete, you can access your static page using the URL mentioned in the "GitHub Pages" section of your repository settings. It should be in the format https://<username>.github.io/<repository_name>.
+notion image
+Our Page is deployed : https://rachit-almabetter.github.io/Bus-reserve/
+ 
+Summary
+What did we learn?
+Git is a distributed version control system that enables efficient collaboration, secure tracking of file changes, and flexible management of code versions.
+GitHub is a cloud-based platform for hosting and managing Git repositories, providing collaboration tools and features for efficient software development.
+The local repository is the Git repository stored on your computer, while the remote repository is the repository stored on a remote computer, often used as a central repository for collaboration and sharing changes between team members.
+To deploy your local repository on GitHub, configure the GitHub Pages settings in your repository's settings tab and select the main branch as the source.
+Shortcomings & Challenges
+Git has a relatively steep learning curve, especially for beginners who are new to version control systems.
+Git repositories can become large in size, especially when they contain many revisions and binary files. Cloning and working with large repositories can be time-consuming and resource-intensive.
+Git does not have built-in support for handling large files, which can be problematic when dealing with assets such as images, videos, or binary files.
+Git does not track or include empty directories in its repository. While this may not affect the functionality of the code, it can sometimes disrupt the desired project structure.
+Best practices to follow
+Make frequent and granular commits to capture logical units of work, ensuring that each commit has a clear and concise purpose.
+Use descriptive commit messages that explain the changes made, providing clarity to other developers reviewing the code history.
+Encourage code reviews through pull requests, allowing peers to provide feedback, catch errors, and ensure code quality before merging changes into the main branch.
+Utilize collaboration features of GitHub, such as issue tracking, comments, and project boards, to facilitate effective communication and coordination within development teams.
+ 
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site
+https://dev.to/github/how-to-host-your-first-site-for-free-on-github-pages-45ob
+ 
