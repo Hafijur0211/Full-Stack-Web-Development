@@ -1,1 +1,22 @@
-
+Learning Objective
+Introduction
+Dynamic web design refers to the practice of creating websites that are interactive, adaptable, and responsive to user actions and data input. Unlike static websites that display fixed content, dynamic websites can change and update their content dynamically based on various factors, such as user preferences, database interactions, real-time data, or external APIs.
+Focus: DOM Manipulation, DOM Events, jQuery and AJAX, Asynchronous JavaScript
+Pre-requisites: HTML and CSS, JavaScript Fundamentals
+Theme
+Google is known for its fast and highly dynamic web applications. One notable example is Google Maps, which provides a dynamic and interactive mapping experience. As users pan or zoom the map, the application dynamically loads and renders new map tiles, overlays, and markers, providing a seamless and responsive experience.
+Facebook extensively uses dynamic web design to create an engaging and personalized user experience. Features like real-time chat, live notifications, and news feed updates are implemented using dynamic techniques. As new content is posted or events occur, the web page dynamically updates and displays the latest information without requiring a full page refresh.
+Netflix utilizes dynamic web design to create a smooth and personalized streaming experience. The user interface dynamically adjusts based on user interactions, such as searching for content, playing videos, or navigating through different sections. Netflix also leverages advanced recommendation algorithms to dynamically recommend personalized content based on user preferences and viewing history.
+Primary Goals
+Learn how to navigate through the DOM tree, accessing parent, child, and sibling nodes, as this is crucial for DOM manipulation.
+Learning AJAX allows you to send and receive data from the server seamlessly, enabling dynamic updates and real-time interactions.
+Familiarize yourself with jQuery provides a concise and intuitive syntax for interacting with the Document Object Model (DOM).
+Chapter Essentials
+Learning Lessons
+The chapter comprises multiple lessons centered around DOM, Ajax, jQuery, and Asynchronous JavaScript.
+The lesson consists of learning material and engaging activities that enhance the learner's experience.
+Once you have grasped a particular set of concepts, the lesson will proceed to Practical Implementation Steps. These steps aim to empower you with the ability to put theoretical knowledge into practice by working on a project.
+In addition, every lesson includes 10 MCQs aimed at enhancing knowledge.
+Skill Mastery Challenge
+The chapter includes a Skill Mastery Challenge with a Summary section for the given chapter for best practices, challenges, and additional references, an Interview Prep section with industry-specific concepts, and a Competency Challenge featuring a one-hour session with 40 MCQs for reinforced learning and identifying improvement areas.
+Earning the Competency Challenge Certificate will ensure the completion of this chapter.
