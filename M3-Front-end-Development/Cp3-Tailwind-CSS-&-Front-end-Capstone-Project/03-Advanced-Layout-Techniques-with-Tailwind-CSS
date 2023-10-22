@@ -1,0 +1,984 @@
+Advanced Layout Techniques with Tailwind CSS
+Session Flow
+Learning Objective
+Introduction
+Theme
+Primary Goals
+Advanced Layout Techniques with Tailwind CSS
+Display
+Flexbox
+Grid
+Project Implementation Step 1
+Position
+Project Implementation Step 2
+Responsive Web Design
+Project Implementation Step 3
+Transitions and Transforms
+Animations and Box Shadow
+Project Implementation Step 4
+Summary
+What did we learn?
+Shortcomings & Challenges
+Best Practices
+Enhance your knowledge
+Try it yourself
+Learning Objective
+Introduction
+Tailwind CSS provides a wide range of utility classes out of the box, and it also offers advanced concepts and features that can enhance your development workflow.
+Focus: Tailwind CSS Advance Properties and Utility Classes
+Pre-requisite: HTML, CSS and Basic Tailwind CSS
+Theme
+In modern web development, creating a responsive layout that works well on different devices is essential. This is where Tailwind CSS Advance Concepts come into play. 
+By utilizing pre-defined classes such as flex, grid, and float, developers can easily create responsive designs that adjust to different screen sizes and devices. Tailwind CSS Advance Concepts also make it easy to maintain a consistent visual style throughout a website.
+With classes like transitions and transform, developers can quickly create content and create a cohesive design. This saves time and ensures that the website looks polished and professional.
+By understanding and utilizing Tailwind CSS Advance Concepts, developers can easily create robust, high-performing websites.
+Primary Goals
+Understand the purpose and structure of advanced Tailwind CSS Concepts.
+Familiarize yourself with Tailwind's utility classes for flex and grid to make a better User Interface
+Implement a project using Tailwind CSS, following step-by-step instructions.
+Apply appropriate Tailwind classes to make the whole Website responsive.
+Explore additional Tailwind CSS properties such as animations and translate to enhance the user experience and create visually appealing webpages.
+ 
+Advanced Layout Techniques with Tailwind CSS
+Display
+The display property is a utility class that controls how an element is displayed in the layout. It provides a convenient way to apply different display values to HTML elements without writing custom CSS.
+By applying Tailwind's display utility classes to HTML elements, you can easily change their display behavior without directly manipulating CSS styles. This helps to create responsive and flexible layouts with minimal effort.
+Tailwind provides various properties to manipulate display, some of which include:
+block: This sub-property makes an element behave as a block-level element, taking up the entire width of its parent container and creating a new line before and after the element.
+Example
+<div>
+        This is a <span class="block">Block</span>element.
+</div>
+Output:
+notion image
+inline: This sub-property makes an element behave as an inline-level element, allowing other elements to appear beside it on the same line.
+Example
+<div>
+        This is a <div class="inline border border-black">Inline</div> element.
+</div>
+Output:
+notion image
+inline-block: This sub-property combines the characteristics of both inline and block elements. It allows other elements to be on the same line, but also allows you to set width and height properties.
+Example
+<div>
+        This is a <span class="inline-block w-32 h-10">Inline Block</span> element.
+</div>
+Output:
+notion image
+hidden: This sub-property hides an element from the layout. It removes the element from the document flow, and it won't be visible on the page. Example usage: 
+Example
+<div class="hidden">This is Hidden</div>
+table: This sub-property makes an element behave like a table element. It respects the table layout algorithm and allows you to use table-related classes like table-row, table-cell, etc.
+Example
+<div class="table w-1/3">
+        <div class="table-header-group border border-black">
+            <div class="table-row border border-black">
+                <div class="table-cell text-left border border-black">Song</div>
+                <div class="table-cell text-left border border-black">Artist</div>
+                <div class="table-cell text-left border border-black">Year</div>
+            </div>
+        </div>
+</div>
+Output:
+notion image
+Flexbox
+Tailwind CSS provides extensive support for Flexbox through its utility classes.
+In Flexbox, there are two main components: the flex container and its child items. The container is a parent element that establishes a flex formatting context, while the items are the children contained within the container.
+There are various utility classes for Flexbox in Tailwind, some of which include:
+flex: Display Utility: To enable Flexbox, you need to apply the display: flex; property to the container element. In Tailwind CSS, you can achieve this by using the flex utility class.
+Example
+<div class="flex">
+        <div class="w-52 h-52 bg-red-300 m-2">Box 1</div>
+        <div class="w-52 h-52 bg-red-300 m-2">Box 2</div>
+        <div class="w-52 h-52 bg-red-300 m-2">Box 3</div>
+        <div class="w-52 h-52 bg-red-300 m-2">Box 4</div>
+ </div>
+Output:
+notion image
+flex-direction: The flex-direction property determines the direction of the main axis, which controls the flow of flex items. The available values are row, row-reverse, column, and column-reverse. The default value is row.
+In Tailwind CSS, you can use the flex-row, flex-row-reverse, flex-col, and flex-col-reverse utility classes to set the flex direction.
+Example
+<div class="flex flex-row-reverse">
+        <div class="w-52 h-52 bg-red-300 m-2">Box 1</div>
+        <div class="w-52 h-52 bg-red-300 m-2">Box 2</div>
+        <div class="w-52 h-52 bg-red-300 m-2">Box 3</div>
+        <div class="w-52 h-52 bg-red-300 m-2">Box 4</div>
+ </div>
+Output:
+notion image
+justify-content: The justify-content property aligns flex items along the main axis. It controls the distribution of the remaining space when items don't fill the entire container. Some common values include start, end, center, between, around, and evenly. 
+In Tailwind CSS, you can use the justify-start, justify-end, justify-center, justify-between, justify-around, and justify-evenly utility classes.
+Example
+<div class="flex justify-center">
+        <div class="w-52 h-52 bg-red-300 m-2">Box 1</div>
+        <div class="w-52 h-52 bg-red-300 m-2">Box 2</div>
+        <div class="w-52 h-52 bg-red-300 m-2">Box 3</div>
+</div>
+Output:
+notion image
+align-items: The align-items property aligns flex items along the cross axis, perpendicular to the main axis. It’s common values include start, end, center, baseline, and stretch. 
+In Tailwind CSS, you can use the items-start, items-end, items-center, items-baseline, and items-stretch utility classes.
+Example
+<div class="flex h-96 border-2 border-black items-center">
+        <div class="w-52 h-52 bg-red-300 m-2">Box 1</div>
+        <div class="w-52 h-52 bg-red-300 m-2">Box 2</div>
+        <div class="w-52 h-52 bg-red-300 m-2">Box 3</div>
+</div>
+Output:
+notion image
+flex-wrap: The flex-wrap property determines whether flex items should wrap into multiple lines if they can't fit within the container. Values include nowrap, wrap, and wrap-reverse. 
+In Tailwind CSS, you can use the flex-wrap, flex-wrap-reverse, and flex-nowrap utility classes.
+Example
+<div class="flex flex-wrap">
+        <div class="w-52 h-52 bg-red-300 m-2">Box 1</div>
+        <div class="w-52 h-52 bg-red-300 m-2">Box 2</div>
+        <div class="w-52 h-52 bg-red-300 m-2">Box 3</div>
+        <div class="w-52 h-52 bg-red-300 m-2">Box 4</div>
+				<div class="w-52 h-52 bg-red-300 m-2">Box 5</div>
+        <div class="w-52 h-52 bg-red-300 m-2">Box 6</div>
+        <div class="w-52 h-52 bg-red-300 m-2">Box 7</div>
+ </div>
+Output
+notion image
+flex-basis: The flex-basis property specifies the initial size of a flex item along the main axis before any available space is distributed. In Tailwind CSS, you can use the flex-initial, flex-auto, flex-none, and flex-{size} utility classes to set the flex-basis property.
+Example
+<div class="flex ">
+        <div class="w-52 h-52 bg-red-300 m-2 flex-1">Box 1</div>
+        <div class="w-52 h-52 bg-red-300 m-2">Box 2</div>
+        <div class="w-52 h-52 bg-red-300 m-2">Box 3</div>
+</div>
+Output:
+notion image
+flex-grow: It specifies the flex-grow property, which determines how much the item can grow relative to other flex items. 
+You can use values like grow  or grow-0, to define the growth factor.
+Example
+<div class="flex ">
+        <div class="w-52 h-52 bg-red-300 m-2 grow">Box 1</div>
+        <div class="w-52 h-52 bg-red-300 m-2">Box 2</div>
+        <div class="w-52 h-52 bg-red-300 m-2">Box 3</div>
+</div>
+Output:
+notion image
+flex-shrink: It specifies the flex-shrink property, which determines how much the item can shrink relative to other flex items. You can use values like shrink, shrink-0, to define the shrink factor.
+ 
+Grid
+In Tailwind CSS, the grid system is a powerful feature that allows you to create responsive layouts using a flexible grid structure. It provides a set of utility classes that make it easy to define grid layouts without having to write custom CSS.
+The grid system in Tailwind CSS is based on CSS Grid Layout, which is a two-dimensional grid-based layout system. It enables you to define rows and columns and position elements within the grid.
+There are many utilities in Grid, some of which include:
+grid: This class establishes the container as a grid and sets some default grid properties. To start using the grid system in Tailwind CSS, you need to add the grid utility class to a parent container element.
+Example
+<div class="grid"></div>
+By default, this will create a grid with a single column.
+grid-cols-n: To define the number of columns in the grid, you can use the grid-cols-{n} utility class, where {n} represents the desired number of columns. You can also use the auto-cols utility class to automatically size the columns based on their content.
+Example
+<div class="grid grid-cols-3"></div>
+This will create a grid with three column.
+col-span-n: To specify the width of individual columns, you can use the col-span-{n} utility class, where {n} indicates the number of columns the element should span.
+Example
+<div class="col-span-2"></div>
+grid-rows-n: In addition to columns, Tailwind CSS provides utilities for defining rows. You can use the grid-rows-{n} utility class to specify the number of rows in the grid container.
+Example
+<div class="grid grid-cols-3 grid-rows-2"></div>
+gap-{size}: It is used to set set the gap between grid cells. You can use predefined sizes like gap-2 or specify your own custom sizes. gap-2 is equal to 0.5 rem and gap-4 is equal to 1 rem.
+Example
+<div class="grid grid-cols-3 grid-rows-2 gap-4"></div>
+grid-flow-{value}: The grid-flow-{value} utility class is used to control the flow of grid items within a grid container. It allows you to specify how the grid items should be positioned and flow within the grid cells.
+It can various different values which include:
+grid-flow-row: This value sets the default flow behavior where the grid items are positioned in rows from left to right and top to bottom. This is the default value if the grid-flow-{value} class is not specified.
+grid-flow-col: This value changes the flow behavior, and the grid items are positioned in columns from top to bottom and left to right.
+grid-flow-row-dense: This value enables the dense packing of grid items within the grid cells, which means empty cells are filled if a smaller grid item follows a larger one.
+grid-flow-col-dense: This value enables dense packing in column flow, where empty cells are filled if a smaller grid item follows a larger one in a column-wise direction.
+Grid Example
+<div class="grid grid-cols-4 gap-4">
+        <div class="w-full h-20 bg-green-300">01</div>
+        <div class="w-full h-20 bg-green-300 col-span-2">02</div>
+        <div class="w-full h-20 bg-green-300">03</div>
+        <div class="w-full h-20 bg-green-300">04</div>
+        <div class="w-full h-20 bg-green-300">05</div>
+        <div class="w-full h-20 bg-green-300">06</div>
+        <div class="w-full h-20 bg-green-300">07</div>
+        <div class="w-full h-20 bg-green-300">08</div>
+        <div class="w-full h-20 bg-green-300">09</div>
+    </div>
+Output
+notion image
+Project Implementation Step 1
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserve</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Added Tailwind CDN -->
+</head>
+
+<body>
+    <header
+        class="w-full border-b-4 border-[rgba(201, 195, 195, 0.778)] font-semibold flex justify-between p-2 items-center">
+        <div class="flex items-center ml-10">
+            <img src="./assets/bus.png" alt="bus" class="w-8 h-8 mr-1" />
+            <div class="text-orange-500 font-bold">RESERVE</div>
+        </div>
+        <nav class="flex-1 flex justify-between ml-10">
+            <div>
+                <a href="" target="_blank" class="nav-elements mx-5">Tickets</a>
+                <a href="" target="_blank" class="nav-elements mx-5">Contact Us</a>
+            </div>
+            <div class="mr-5">
+                <a href="" class="rounded-md bg-orange-400 px-5 py-1 text-white mx-3">Login</a>
+                <a href="" class="nav-elements mx-3">Register</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section
+            class="w-full h-[40vh] bg-gradient-to-r from-cyan-500 to-blue-500 flex flex-col justify-end items-center pb-5">
+            <div class="w-full flex justify-center">
+                <div class="w-1/4 border bg-white rounded-sm m-5 p-1 rounded-lg">
+                    <p class="pl-1 font-semibold">From:</p>
+                    <select name="Depart" class="border-none w-full">
+                        <option value="Delhi">Delhi</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Bengaluru">Bengaluru</option>
+                        <option value="Chennai">Chennai</option>
+                    </select>
+
+                </div>
+                <div class="w-1/4 border bg-white rounded-sm m-5 p-1 rounded-lg">
+                    <p class="pl-1 font-semibold">To:</p>
+                    <select name="arrive" class="border-none w-full">
+                        <option value="Delhi">Delhi</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Bengaluru">Bengaluru</option>
+                        <option value="Chennai">Chennai</option>
+                    </select>
+                </div>
+            </div>
+            <button type="button"
+                class="rounded-md border-none bg-orange-400 px-7 text-white font-semibold py-2">Search</button>
+        </section>
+
+        <section class="w-full mt-10">
+            <h1 class="text-2xl font-bold my-4 text-center">Travel with world's largest bus services</h1>
+            <div class="flex justify-center mt-10 mb-20">
+                <div class="h-52 w-56 border-2 border-gray-400 p-1 mx-3 flex flex-col justify-center items-center">
+                    <img src="./assets/bus-vector.png" alt="Bus" class="w-32 h-32" />
+                    <h3 class="text-center font-bold mt-2">2000+</h3>
+                    <p class="text-center font-semibold">Bus Collection</p>
+                </div>
+                <div class="h-52 w-56  border-2 border-gray-400 p-1 mx-3 flex flex-col justify-center items-center">
+                    <img src="./assets/family.png" alt="Family" class="w-32 h-32" />
+                    <h3 class="text-center font-bold mt-2">2 Million+</h3>
+                    <p class="text-center font-semibold">Happy customers globally</p>
+                </div>
+                <div class="h-52 w-56  border-2 border-gray-400 p-1 mx-3 flex flex-col justify-center items-center">
+                    <img src="./assets/ticket.png" alt="Ticket" class="w-32 h-32" />
+                    <h3 class="text-center font-bold mt-2">5000+</h3>
+                    <p class="text-center font-semibold">Tickets book everyday</p>
+                </div>
+            </div>
+        </section>
+        <section class="w-full flex justify-center bg-gray-100 my-8 p-5">
+            <div class="border bg-white p-3 max-w-sm mx-1">
+                <div>
+                    <h3 class="my-1 font-semibold">Vatsal Agarwal</h3>
+                    <h4 class="my-2 font-semibold">Customer since 2020</h4>
+                </div>
+                <p class="w-10 h-5 rounded-md bg-green-600 text-white my-2 font-normal text-center text-sm">4.9 &#9734;
+                </p>
+                <p>Amazing travel experience with reserve. Excellent staff</p>
+            </div>
+            <div class="border bg-white p-3 max-w-sm mx-1">
+                <div>
+                    <h3 class="my-1 font-semibold">Rohan Sharma</h3>
+                    <h4 class="my-2 font-semibold">Customer since 2022</h4>
+                </div>
+                <p class="w-10 h-5 rounded-md bg-green-600 text-white my-2 font-normal text-center text-sm">4.3 &#9734;
+                </p>
+                <p>Amazing service. Always a best time with reserve.</p>
+            </div>
+            <div class="border bg-white p-3 max-w-sm mx-1">
+                <div>
+                    <h3 class="my-1 font-semibold">Virat Kohli</h3>
+                    <h4 class="my-2 font-semibold">Customer since 2019</h4>
+                </div>
+                <p class="w-10 h-5 rounded-md bg-green-600 text-white my-2 font-normal text-center text-sm">4.5 &#9734;
+                </p>
+                <p>Bus was clean and the journey was smooth. Reached on time.</p>
+            </div>
+        </section>
+    </main>
+    <footer class="w-full flex justify-between bg-red-100 p-2">
+        <p class="flex-1 text-center font-semibold">&copy; 2023 AlmaBetter. All rights reserved</p>
+        <div class="flex-1 flex justify-center gap-2">
+            <a href="https://www.facebook.com"><img src="./assets/facebook.png" alt="Facebook" class="w-8 h-8"></a>
+            <a href="https://www.twitter.com"><img src="./assets/twitter.png" alt="Twitter" class="w-8 h-8"></a>
+            <a href="https://www.instagram.com"><img src="./assets/instagram.png" alt="Instagram" class="w-8 h-8"></a>
+        </div>
+    </footer>
+</body>
+
+</html>
+Output
+notion image
+Position
+The Position utility in Tailwind CSS provides a set of classes that allow you to control the positioning of elements on a web page. It simplifies the process of using CSS positioning properties such as position, top, bottom, left, and right.
+The position property determines the type of positioning used for an element. Tailwind CSS provides the following utility classes for the position property:
+static: This is the default positioning, where the element follows the normal flow of the document.
+Example
+<div class="bg-blue-200">
+     <div class="static w-24 h-24 bg-green-600">This is a static box</div>
+</div>
+Output
+notion image
+fixed: The element is positioned relative to the browser window, and it remains in the same position even when the page is scrolled.
+Example
+<div class="bg-blue-200 p-5">
+        <div class="fixed top-5 left-5 w-24 h-24 bg-green-600">This is a fixed box</div>
+</div>
+Output
+notion image
+absolute: The element is positioned relative to its closest positioned ancestor, if any. If no ancestor is positioned, it is positioned relative to the initial containing block, typically the browser window.
+Example
+<div class="bg-blue-200 p-5">
+        <div class="absolute top-5 left-5 w-24 h-24 bg-green-600">This is a absolute box</div>
+</div>
+Output
+notion image
+relative: The element is positioned relative to its normal position, allowing you to use the top, bottom, left, and right properties to offset it.
+Example
+<div class="relative m-2 bg-blue-200 p-5">
+        <div class="absolute top-5 left-5 w-24 h-24 bg-green-600">This is a relative box</div>
+</div>
+Output:
+notion image
+sticky: The element is positioned based on the user's scroll position. It behaves like relative positioning until it reaches a specified threshold, after which it becomes fixed.
+Example
+<div class="sticky top-0">
+        <div class="w-24 h-24 bg-green-600">This is a relative box</div>
+</div>
+Project Implementation Step 2
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserve</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Added Tailwind CDN -->
+</head>
+
+<body>
+    <header
+        class="w-full border-b-4 border-[rgba(201, 195, 195, 0.778)] font-semibold flex justify-between p-2 items-center sticky top-0 bg-white">
+				<!-- Making Navbar Sticky -->
+        <div class="flex items-center ml-10">
+            <img src="./assets/bus.png" alt="bus" class="w-8 h-8 mr-1" />
+            <div class="text-orange-500 font-bold">RESERVE</div>
+        </div>
+        <nav class="flex-1 flex justify-between ml-10">
+            <div>
+                <a href="" target="_blank" class="nav-elements mx-5">Tickets</a>
+                <a href="" target="_blank" class="nav-elements mx-5">Contact Us</a>
+            </div>
+            <div class="mr-5">
+                <a href="" class="rounded-md bg-orange-400 px-5 py-1 text-white mx-3">Login</a>
+                <a href="" class="nav-elements mx-3">Register</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section
+            class="w-full h-[40vh] bg-gradient-to-r from-cyan-500 to-blue-500 flex flex-col justify-end items-center pb-5">
+            <div class="w-full flex justify-center">
+                <div class="w-1/4 border bg-white rounded-sm m-5 p-1 rounded-lg">
+                    <p class="pl-1 font-semibold">From:</p>
+                    <select name="Depart" class="border-none w-full">
+                        <option value="Delhi">Delhi</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Bengaluru">Bengaluru</option>
+                        <option value="Chennai">Chennai</option>
+                    </select>
+
+                </div>
+                <div class="w-1/4 border bg-white rounded-sm m-5 p-1 rounded-lg">
+                    <p class="pl-1 font-semibold">To:</p>
+                    <select name="arrive" class="border-none w-full">
+                        <option value="Delhi">Delhi</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Bengaluru">Bengaluru</option>
+                        <option value="Chennai">Chennai</option>
+                    </select>
+                </div>
+            </div>
+            <button type="button"
+                class="rounded-md border-none bg-orange-400 px-7 text-white font-semibold py-2">Search</button>
+        </section>
+
+        <section class="w-full mt-10">
+            <h1 class="text-2xl font-bold my-4 text-center">Travel with world's largest bus services</h1>
+            <div class="flex justify-center mt-10 mb-20">
+                <div class="h-52 w-56 border-2 border-gray-400 p-1 mx-3 flex flex-col justify-center items-center">
+                    <img src="./assets/bus-vector.png" alt="Bus" class="w-32 h-32" />
+                    <h3 class="text-center font-bold mt-2">2000+</h3>
+                    <p class="text-center font-semibold">Bus Collection</p>
+                </div>
+                <div class="h-52 w-56  border-2 border-gray-400 p-1 mx-3 flex flex-col justify-center items-center">
+                    <img src="./assets/family.png" alt="Family" class="w-32 h-32" />
+                    <h3 class="text-center font-bold mt-2">2 Million+</h3>
+                    <p class="text-center font-semibold">Happy customers globally</p>
+                </div>
+                <div class="h-52 w-56  border-2 border-gray-400 p-1 mx-3 flex flex-col justify-center items-center">
+                    <img src="./assets/ticket.png" alt="Ticket" class="w-32 h-32" />
+                    <h3 class="text-center font-bold mt-2">5000+</h3>
+                    <p class="text-center font-semibold">Tickets book everyday</p>
+                </div>
+            </div>
+        </section>
+        <section class="w-full flex justify-center bg-gray-100 my-8 p-5">
+            <div class="border bg-white p-3 max-w-sm mx-1">
+                <div>
+                    <h3 class="my-1 font-semibold">Vatsal Agarwal</h3>
+                    <h4 class="my-2 font-semibold">Customer since 2020</h4>
+                </div>
+                <p class="w-10 h-5 rounded-md bg-green-600 text-white my-2 font-normal text-center text-sm">4.9 &#9734;
+                </p>
+                <p>Amazing travel experience with reserve. Excellent staff</p>
+            </div>
+            <div class="border bg-white p-3 max-w-sm mx-1">
+                <div>
+                    <h3 class="my-1 font-semibold">Rohan Sharma</h3>
+                    <h4 class="my-2 font-semibold">Customer since 2022</h4>
+                </div>
+                <p class="w-10 h-5 rounded-md bg-green-600 text-white my-2 font-normal text-center text-sm">4.3 &#9734;
+                </p>
+                <p>Amazing service. Always a best time with reserve.</p>
+            </div>
+            <div class="border bg-white p-3 max-w-sm mx-1">
+                <div>
+                    <h3 class="my-1 font-semibold">Virat Kohli</h3>
+                    <h4 class="my-2 font-semibold">Customer since 2019</h4>
+                </div>
+                <p class="w-10 h-5 rounded-md bg-green-600 text-white my-2 font-normal text-center text-sm">4.5 &#9734;
+                </p>
+                <p>Bus was clean and the journey was smooth. Reached on time.</p>
+            </div>
+        </section>
+    </main>
+    <footer class="w-full flex justify-between bg-red-100 p-2">
+        <p class="flex-1 text-center font-semibold">&copy; 2023 AlmaBetter. All rights reserved</p>
+        <div class="flex-1 flex justify-center gap-2">
+            <a href="https://www.facebook.com"><img src="./assets/facebook.png" alt="Facebook" class="w-8 h-8"></a>
+            <a href="https://www.twitter.com"><img src="./assets/twitter.png" alt="Twitter" class="w-8 h-8"></a>
+            <a href="https://www.instagram.com"><img src="./assets/instagram.png" alt="Instagram" class="w-8 h-8"></a>
+        </div>
+    </footer>
+</body>
+
+</html>
+Output
+notion image
+Responsive Web Design
+In Tailwind CSS, responsiveness refers to the ability to create different styles and layouts that adapt and respond to different screen sizes or breakpoints. Tailwind CSS provides a responsive utility class system that makes it easy to apply styles based on different viewport widths.
+To achieve responsiveness in Tailwind CSS, you can use responsive breakpoints, which are predefined screen sizes. The default breakpoints in Tailwind CSS are:
+sm: Small screens (640px and up)
+md: Medium screens (768px and up)
+lg: Large screens (1024px and up)
+xl: Extra-large screens (1280px and up)
+2xl: Extra-extra-large screens (1536px and up)
+To apply styles based on these breakpoints, you can use the responsive utility classes provided by Tailwind CSS. These classes allow you to specify different styles for different screen sizes.
+Example
+By default, Tailwind uses a mobile-first breakpoint system, What this means is that unprefixed utilities (like uppercase) take effect on all screen sizes, while prefixed utilities (like md:uppercase) only take effect at the specified breakpoint and above.
+Project Implementation Step 3
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserve</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Added Tailwind CDN -->
+</head>
+
+<body>
+    <header
+        class="w-full border-b-4 border-[rgba(201, 195, 195, 0.z778)] font-semibold flex justify-between p-2 items-center sticky top-0 bg-white">
+        <!-- Making Navbar Sticky -->
+        <div class="flex items-center ml-2 sm:ml-10">
+            <img src="./assets/bus.png" alt="bus" class="w-8 h-8 mr-1" />
+            <div class="text-orange-500 font-bold">RESERVE</div>
+        </div>
+        <nav class="flex-1 flex justify-end sm:justify-between ml-2 sm:ml-10">
+            <div class="hidden sm:inline">
+                <a href="" target="_blank" class="nav-elements mx-5">Tickets</a>
+                <a href="" target="_blank" class="nav-elements mx-5">Contact Us</a>
+            </div>
+            <div class="mr-1 sm:mr-5">
+                <a href="" class="rounded-md bg-orange-400 px-5 py-1 text-white mx-1 sm:mx-3">Login</a>
+                <a href="" class="nav-elements nx-1 sm:mx-3">Register</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section
+            class="w-full h-[40vh] bg-gradient-to-r from-cyan-500 to-blue-500 flex flex-col justify-center sm:justify-end items-center pb-5">
+            <div class="w-full flex justify-center flex-col sm:flex-row">
+                <div class=" sm:w-60 md:w-80  lg:w-96 border bg-white rounded-sm m-5 p-1 rounded-lg">
+                    <p class="pl-1 font-semibold">From:</p>
+                    <select name="Depart" class="border-none w-full">
+                        <option value="Delhi">Delhi</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Bengaluru">Bengaluru</option>
+                        <option value="Chennai">Chennai</option>
+                    </select>
+
+                </div>
+                <div class=" sm:w-60 md:w-80  lg:w-96 border bg-white rounded-sm m-5 p-1 rounded-lg">
+                    <p class="pl-1 font-semibold">To:</p>
+                    <select name="arrive" class="border-none w-full">
+                        <option value="Delhi">Delhi</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Bengaluru">Bengaluru</option>
+                        <option value="Chennai">Chennai</option>
+                    </select>
+                </div>
+            </div>
+            <button type="button"
+                class="rounded-md border-none bg-orange-400 px-7 text-white font-semibold py-2">Search</button>
+        </section>
+
+        <section class="w-full mt-10">
+            <h1 class="text-2xl font-bold my-4 text-center">Travel with world's largest bus services</h1>
+            <div class="flex flex-col sm:flex-row items-center justify-center mt-10 mb-20">
+                <div
+                    class="h-52 w-56 border-2 border-gray-400 p-1 mx-3 my-4 sm:my-1 flex flex-col justify-center items-center">
+                    <img src="./assets/bus-vector.png" alt="Bus" class="w-32 h-32" />
+                    <h3 class="text-center font-bold mt-2">2000+</h3>
+                    <p class="text-center font-semibold">Bus Collection</p>
+                </div>
+                <div
+                    class="h-52 w-56  border-2 border-gray-400 p-1 mx-3 my-4 sm:my-1 flex flex-col justify-center items-center">
+                    <img src="./assets/family.png" alt="Family" class="w-32 h-32" />
+                    <h3 class="text-center font-bold mt-2">2 Million+</h3>
+                    <p class="text-center font-semibold">Happy customers globally</p>
+                </div>
+                <div
+                    class="h-52 w-56  border-2 border-gray-400 p-1 mx-3 my-4 sm:my-1 flex flex-col justify-center items-center">
+                    <img src="./assets/ticket.png" alt="Ticket" class="w-32 h-32" />
+                    <h3 class="text-center font-bold mt-2">5000+</h3>
+                    <p class="text-center font-semibold">Tickets book everyday</p>
+                </div>
+            </div>
+        </section>
+        <section
+            class="w-full flex flex-col items-center md:items-start md:flex-row justify-center bg-gray-100 my-8 p-5">
+            <div class="border bg-white p-3 max-w-sm h-44 mx-1 my-2">
+                <div>
+                    <h3 class="my-1 font-semibold">Vatsal Agarwal</h3>
+                    <h4 class="my-2 font-semibold">Customer since 2020</h4>
+                </div>
+                <p class="w-10 h-5 rounded-md bg-green-600 text-white my-2 font-normal text-center text-sm">4.9 &#9734;
+                </p>
+                <p>Amazing travel experience with reserve. Excellent staff</p>
+            </div>
+            <div class="border bg-white p-3 max-w-sm h-44 mx-1 my-2 ">
+                <div>
+                    <h3 class="my-1 font-semibold">Rohan Sharma</h3>
+                    <h4 class="my-2 font-semibold">Customer since 2022</h4>
+                </div>
+                <p class="w-10 h-5 rounded-md bg-green-600 text-white my-2 font-normal text-center text-sm">4.3 &#9734;
+                </p>
+                <p>Amazing service. Always a best time with reserve.</p>
+            </div>
+            <div class="border bg-white p-3 max-w-sm mx-1 h-44 my-2">
+                <div>
+                    <h3 class="my-1 font-semibold">Virat Kohli</h3>
+                    <h4 class="my-2 font-semibold">Customer since 2019</h4>
+                </div>
+                <p class="w-10 h-5 rounded-md bg-green-600 text-white my-2 font-normal text-center text-sm">4.5 &#9734;
+                </p>
+                <p>Bus was clean and the journey was smooth. Reached on time.</p>
+            </div>
+        </section>
+    </main>
+    <footer class="w-full flex flex-col gap-1 sm:flex-row justify-between bg-red-100 p-2">
+        <p class="flex-1 text-center font-semibold">&copy; 2023 AlmaBetter. All rights reserved</p>
+        <div class="flex-1 flex justify-center gap-2">
+            <a href="https://www.facebook.com"><img src="./assets/facebook.png" alt="Facebook" class="w-8 h-8"></a>
+            <a href="https://www.twitter.com"><img src="./assets/twitter.png" alt="Twitter" class="w-8 h-8"></a>
+            <a href="https://www.instagram.com"><img src="./assets/instagram.png" alt="Instagram" class="w-8 h-8"></a>
+        </div>
+    </footer>
+</body>
+
+</html>
+Output
+notion image
+Transitions and Transforms
+Transition
+The transition property is a utility that allows you to define the transition effects applied to an element when its state changes. 
+It enables you to create smooth animations and transitions between different states, such as when an element is hovered over or focused
+The transition property in Tailwind CSS consists of multiple sub-properties that control different aspects of the transition effect:
+tranistion-{property}: This utility class is used to define the properties on which transform will act. It’s value can be transition, transition-all, transition-none, transition-color, transition-opacity, transition-transform etc.
+Example
+<button class="py-2 px-4 bg-blue-200 text-white rounded transition-colors transition-opacity hover:bg-blue-800 hover:opacity-75">
+      Hover Me
+</button>
+Output:
+ 
+Before hover
+Before hover
+After hover
+After hover
+Explanation: 
+In this example, we've used the transition-colors and transition-opacity utility classes to specify that the color and opacity changes will be smoothly transitioned. When the user hovers over the button, it will smoothly transition to a darker shade of blue with reduced opacity.
+transition-duration: In Tailwind CSS for transition-duration, we have the utility duration-{time}. It can have values like duration-75, duration-100, duration-150, etc., which means the duration is 75 ms.
+You can adjust the duration to suit your needs by using different values, such as duration-75 (75 ms) or duration-1000 (1000 ms, or 1 second). The transition effect will be smoother with longer durations and more abrupt with shorter ones.
+Example
+<button class="bg-blue-400 hover:bg-blue-800 transition duration-150 text-white font-bold py-2 px-4 rounded">
+    Click Me
+</button>
+Explanation: 
+In this example, the button will have a smooth transition of 150 ms (0.15 seconds) when the background color changes from its default state to the hover state (hover:bg-blue-800). The duration-150 class sets the transition duration to 150 ms.
+transition-timing-function: In Tailwind CSS, for transition-timing functions, we use a utility like ease-{timing}. It can have values like ease-in, ease-out, ease-linear or ease-in-out.
+Example
+<button class="px-4 py-2 bg-blue-500 text-white rounded-md transition duration-300 ease-in-out hover:bg-blue-700">
+    Hover me
+</button>
+Explanation:
+In this example, we're using the transition-timing-function utility class ease-in-out to create a smooth transition for the background color change when the button has hovered. The transition will start slowly, speed up in the middle, and then slow down again towards the end, creating a smooth easing effect.
+transition-delay: In Tailwind, we use the delay-{duration} syntax to specify custom delay values. It can have values like delay-75, delay-100, delay-150, which means the delay is 75, 100 or 150 milliseconds.
+Example
+<div class="bg-blue-500 h-20 w-20 rounded-md mx-auto mt-10 transition delay-1000 hover:bg-red-500">
+    <!-- This div will have a blue background color initially, but it will transition to red with a delay of 1000ms (1 second) when you hover over it. -->
+</div>
+Explanation:
+The example above shows a div element with the class bg-blue-500 h-20 w-20 rounded-md mx-auto mt-10 transition delay-1000 hover:bg-red-500. Let's break down the Tailwind classes used in this example:
+bg-blue-500: Sets the background color of the div to blue.
+h-20: Sets the height of the div to 20 pixels.
+w-20: Sets the width of the div to 20 pixels.
+rounded-md: Applies a medium border radius to make the div rounded.
+mx-auto: Centers the div horizontally on the page.
+mt-10: Adds a margin-top of 10 pixels to give some space between the div and the content above it.
+transition: Enables smooth transition animations on the div.
+delay-1000: Specifies a custom delay of 1000 milliseconds (1 second) before the transition starts.
+hover:bg-red-500: Changes the background color to red when you hover over the div.
+When you hover over the div, it will smoothly transition from blue to red, but with a delay of 1000 milliseconds before the transition starts. You can experiment with different delay-{duration} values to see how the delay affects the transition.
+Transforms
+Scale: The scale utility allows you to scale an element in both the horizontal and vertical directions. It accepts a value or a series of values to specify the scaling factor. The values can even be negative numbers.
+Example
+<div class="scale-125">
+  This div is 125% of its original size.
+</div>
+Output
+notion image
+In the example above, the scale-125 class scales the div to 125% of its original size.
+Rotate: The rotate utility allows you to rotate an element by a specified angle. It accepts a value or a series of values to specify the rotation angle. The values can be positive or negative numbers, followed by the unit deg for degrees.
+Example
+<div class="rotate-45">
+  This div is rotated 45 degrees clockwise.
+</div>
+Output
+notion image
+In the example above, the rotate-45 class rotates the div by 45 degrees.
+Translate: The translate utility allows you to move an element along the horizontal and vertical axes. It accepts a value or a series of values to specify the translation distance. The values can be pixels, percentages, or even negative numbers. It has two subproperties: translate-x-units and translate-y-units.
+Example
+<div class="translate-x-4 translate-y-2">
+  This div is translated 4 pixels to the right and 2 pixels down.
+</div>
+Output
+notion image
+In the example above, the translate-x-4 and translate-y-2 classes translate the div 4 pixels to the right and 2 pixels down, respectively.
+Skew: The skew utility allows you to skew an element along the horizontal and vertical axes. It accepts a value or a series of values to specify the skew angles. The values can be positive or negative numbers followed by the unit deg for degrees.
+Example
+<div class="skew-x-12 skew-y-6">
+  This div is skewed 12 degrees along the x-axis and 6 degrees along the y-axis.
+</div>
+Output
+notion image
+In the example above, the skew-x-12 and skew-y-6 classes skew the div 12 degrees along the x-axis and 6 degrees along the y-axis, respectively.
+Animation and Box Shadow
+Animation
+In Tailwind CSS, the animation utility allows you to create and apply animations to elements on your webpage. Tailwind provide a set of predefined utility classes that can be used to animate elements very easily.
+animate-spin: This utility animates an element by continuously rotating it 360 degrees clockwise. It is commonly used for creating loading spinners or other rotating effects.
+animate-ping: This utility animates an element by applying a pulse-like animation that gradually changes the opacity of the element from fully transparent to fully opaque and back.
+animate-pulse: This utility animates an element by scaling it up and down in size repeatedly, creating a pulsing effect. It is often used to draw attention to certain elements on a webpage.
+animate-bounce: This utility animates an element by bouncing it up and down. It applies a series of scale transformations to create the bouncing effect.
+Example
+Code:
+<!DOCTYPE html>
+
+<head>
+    <title>Tailwind CSS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="p-5">
+    <div class="animate-spin w-20 h-20 bg-orange-200">
+        Spin
+    </div>
+
+    <div class="animate-ping w-20 h-20 bg-green-300">
+        Ping
+    </div>
+
+    <div class="w-20 h-20 bg-yellow-300 animate-pulse">
+        This div will pulse with scaling.
+    </div>
+
+    <div class="w-20 h-20 bg-pink-300 animate-bounce">
+        This div will bounce up and down.
+    </div>
+
+</body>
+
+</html>
+Box Shadow
+Box Shadow Size: In Tailwind CSS, the box-shadow utility class is used to apply shadow effects to elements on a webpage.
+It allows you to add depth and visual separation between elements. The box-shadow property accepts a set of values to define the appearance of the shadow.
+The basic syntax for the box-shadow utility class in Tailwind CSS is:
+<div class="shadow-{size}"></div>
+Here, {size} refers to the size of the shadow,
+The {size} value determines the size and intensity of the shadow. Tailwind CSS provides several predefined shadow sizes that you can use:
+xs: Extra small shadow
+sm: Small shadow
+md: Medium shadow (default)
+lg: Large shadow
+xl: Extra large shadow
+2xl: Double extra large shadow
+Example
+<div class="shadow-2xl">
+        This div has a shadow
+</div>
+Output
+notion image
+ 
+Box Shadow Color: You can use the shadow-{color} utilities to change the color of box shadow. By default colored shadows have an opacity of 100%, but you can adjust this using the opacity modifier.
+Example
+<div class="shadow-2xl shadow-black">
+        This div has a black shadow
+</div>
+Output
+notion image
+Project Implementation 4
+Added Shadow to Box and animation to search button.
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserve</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Added Tailwind CDN -->
+</head>
+
+<body>
+    <header
+        class="w-full border-b-4 border-[rgba(201, 195, 195, 0.z778)] font-semibold flex justify-between p-2 items-center sticky top-0 bg-white">
+        <!-- Making Navbar Sticky -->
+        <div class="flex items-center ml-2 sm:ml-10">
+            <img src="./assets/bus.png" alt="bus" class="w-8 h-8 mr-1" />
+            <div class="text-orange-500 font-bold">RESERVE</div>
+        </div>
+        <nav class="flex-1 flex justify-end sm:justify-between ml-2 sm:ml-10">
+            <div class="hidden sm:inline">
+                <a href="" target="_blank" class="nav-elements mx-5">Tickets</a>
+                <a href="" target="_blank" class="nav-elements mx-5">Contact Us</a>
+            </div>
+            <div class="mr-1 sm:mr-5">
+                <a href="" class="rounded-md bg-orange-400 px-5 py-1 text-white mx-1 sm:mx-3">Login</a>
+                <a href="" class="nav-elements nx-1 sm:mx-3">Register</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section
+            class="w-full h-[40vh] bg-gradient-to-r from-cyan-500 to-blue-500 flex flex-col justify-center sm:justify-end items-center pb-5">
+            <div class="w-full flex justify-center flex-col sm:flex-row">
+                <div class=" sm:w-60 md:w-80  lg:w-96 border bg-white rounded-sm m-5 p-1 rounded-lg">
+                    <p class="pl-1 font-semibold">From:</p>
+                    <select name="Depart" class="border-none w-full">
+                        <option value="Delhi">Delhi</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Bengaluru">Bengaluru</option>
+                        <option value="Chennai">Chennai</option>
+                    </select>
+
+                </div>
+                <div class=" sm:w-60 md:w-80  lg:w-96 border bg-white rounded-sm m-5 p-1 rounded-lg">
+                    <p class="pl-1 font-semibold">To:</p>
+                    <select name="arrive" class="border-none w-full">
+                        <option value="Delhi">Delhi</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Bengaluru">Bengaluru</option>
+                        <option value="Chennai">Chennai</option>
+                    </select>
+                </div>
+            </div>
+            <button type="button"
+                class="rounded-md border-none bg-orange-400 px-7 text-white font-semibold py-2 animate-bounce">Search</button>
+        </section>
+
+        <section class="w-full mt-10">
+            <h1 class="text-2xl font-bold my-4 text-center">Travel with world's largest bus services</h1>
+            <div class="flex flex-col sm:flex-row items-center justify-center mt-10 mb-20">
+                <div
+                    class="h-52 w-56 border-2 border-gray-400 p-1 mx-3 my-4 sm:my-1 flex flex-col justify-center items-center shadow-md shadow-gray-400">
+                    <img src="./assets/bus-vector.png" alt="Bus" class="w-32 h-32" />
+                    <h3 class="text-center font-bold mt-2">2000+</h3>
+                    <p class="text-center font-semibold">Bus Collection</p>
+                </div>
+                <div
+                    class="h-52 w-56  border-2 border-gray-400 p-1 mx-3 my-4 sm:my-1 flex flex-col justify-center items-center shadow-md shadow-gray-400">
+                    <img src="./assets/family.png" alt="Family" class="w-32 h-32" />
+                    <h3 class="text-center font-bold mt-2">2 Million+</h3>
+                    <p class="text-center font-semibold">Happy customers globally</p>
+                </div>
+                <div
+                    class="h-52 w-56  border-2 border-gray-400 p-1 mx-3 my-4 sm:my-1 flex flex-col justify-center items-center shadow-md shadow-gray-400">
+                    <img src="./assets/ticket.png" alt="Ticket" class="w-32 h-32" />
+                    <h3 class="text-center font-bold mt-2">5000+</h3>
+                    <p class="text-center font-semibold">Tickets book everyday</p>
+                </div>
+            </div>
+        </section>
+        <section
+            class="w-full flex flex-col items-center md:items-start md:flex-row justify-center bg-gray-100 my-8 p-5">
+            <div class="border bg-white p-3 max-w-sm h-44 mx-1 my-2">
+                <div>
+                    <h3 class="my-1 font-semibold">Vatsal Agarwal</h3>
+                    <h4 class="my-2 font-semibold">Customer since 2020</h4>
+                </div>
+                <p class="w-10 h-5 rounded-md bg-green-600 text-white my-2 font-normal text-center text-sm">4.9 &#9734;
+                </p>
+                <p>Amazing travel experience with reserve. Excellent staff</p>
+            </div>
+            <div class="border bg-white p-3 max-w-sm h-44 mx-1 my-2 ">
+                <div>
+                    <h3 class="my-1 font-semibold">Rohan Sharma</h3>
+                    <h4 class="my-2 font-semibold">Customer since 2022</h4>
+                </div>
+                <p class="w-10 h-5 rounded-md bg-green-600 text-white my-2 font-normal text-center text-sm">4.3 &#9734;
+                </p>
+                <p>Amazing service. Always a best time with reserve.</p>
+            </div>
+            <div class="border bg-white p-3 max-w-sm mx-1 h-44 my-2">
+                <div>
+                    <h3 class="my-1 font-semibold">Virat Kohli</h3>
+                    <h4 class="my-2 font-semibold">Customer since 2019</h4>
+                </div>
+                <p class="w-10 h-5 rounded-md bg-green-600 text-white my-2 font-normal text-center text-sm">4.5 &#9734;
+                </p>
+                <p>Bus was clean and the journey was smooth. Reached on time.</p>
+            </div>
+        </section>
+    </main>
+    <footer class="w-full flex flex-col gap-1 sm:flex-row justify-between bg-red-100 p-2">
+        <p class="flex-1 text-center font-semibold">&copy; 2023 AlmaBetter. All rights reserved</p>
+        <div class="flex-1 flex justify-center gap-2">
+            <a href="https://www.facebook.com"><img src="./assets/facebook.png" alt="Facebook" class="w-8 h-8"></a>
+            <a href="https://www.twitter.com"><img src="./assets/twitter.png" alt="Twitter" class="w-8 h-8"></a>
+            <a href="https://www.instagram.com"><img src="./assets/instagram.png" alt="Instagram" class="w-8 h-8"></a>
+        </div>
+    </footer>
+</body>
+
+</html>
+Output
+ 
+Summary
+What did we learn?
+The position utility in Tailwind CSS allows you to control the positioning behavior of elements with intuitive classes like static, fixed, absolute, relative, and sticky, simplifying the process of positioning elements on a webpage.
+The flex utility class in Tailwind CSS enables Flexbox for a container element. It sets the display: flex property, allowing you to create flexible layouts with ease.
+The grid utility class establishes a container as a grid and provides default grid properties, such as setting up the grid template columns.
+The static, fixed, absolute, relative, and sticky utility classes in Tailwind CSS control the positioning behavior of elements using the position property.
+The transition utility in Tailwind CSS enables smooth transitions between different states of an element by specifying the properties to animate and the duration of the transition.
+With Tailwind CSS, you can apply transformation effects to elements using utility classes such as rotate, scale, translate, and skew, enabling you to manipulate and animate elements in 2D or 3D space.
+Tailwind CSS offers pre-defined animation classes like animate-spin, animate-pulse, and animate-bounce, allowing you to quickly add animations to elements without writing custom keyframe animations.
+The box-shadow utility in Tailwind CSS allows you to add shadow effects to elements by specifying properties like color, size, and position, enhancing the visual depth and dimensionality of the design.
+Shortcomings and Challenges
+Including the entire Tailwind CSS library may result in unused CSS in your project, which can increase file sizes and slow down page loading times.
+If not properly optimized, using a large number of utility classes can result in larger CSS files, impacting the performance of your website.
+Some older or less popular browsers may not fully support the newer CSS features and utility classes used in Tailwind CSS, requiring additional fallback styles or workarounds.
+Utility classes provide a convenient way to apply common styles quickly, but they may lack the fine-grained control needed for highly specific or unique design requirements.
+Best Practices
+Utilize utility classes for layout-related properties like flex, grid, positioning, and display, as they provide a convenient way to establish layout structures quickly.
+Avoid mixing utility classes with content-specific styles. Use utility classes for layout and general styling, and reserve custom CSS for specific content-related styles.
+Create a style guide or documentation to explain the utility classes used in your project, making it easier for other developers to understand and contribute to the codebase.
+ 
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+https://www.devwares.com/blog/how-to-add-tailwind-css-grid-to-your-project/
+https://tailwindcss.com/docs/responsive-design
+ 
+Try it Yourself
+Let's solve these coding problems in the VS Code IDE. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
+Task 1: Are you up for a design challenge? Put your creativity to the test with TailwindCSS in the VS Code IDE.
+Problem
+Create a responsive card grid using Tailwind CSS, HTML, and the following features:
+Use the "grid" display property to create a 2-column card layout on large screens and a single-column layout on smaller screens (e.g., mobile devices).
+Use the "flex" utility to center the content inside the cards.
+Position the cards with a slight elevation effect using the "relative" and "z-" properties.
+Make the card grid responsive by adjusting the layout and sizing for various screen sizes.
+Add smooth transitions when hovering over the cards using Tailwind CSS's transition classes.
+Apply a scaling effect to the cards when hovering over them using Tailwind CSS's transform classes.
+Card Content: Each card should contain an image, a title, and some sample text.
+Expected Output:
+notion image
+Solution
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tailwind CSS Card Grid</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container mx-auto py-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <!-- Card 1 -->
+      <div class="relative bg-white p-6 rounded-lg shadow-md transition-transform transform scale-100 hover:scale-105">
+        <img src="./assets/Blue.png" alt="Card 1" class="h-40 w-full object-cover rounded-lg mb-4">
+        <h2 class="text-xl font-bold">Card 1 Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="relative bg-white p-6 rounded-lg shadow-md transition-transform transform scale-100 hover:scale-105">
+        <img src="./assets/Yellow.png" alt="Card 2" class="h-40 w-full object-cover rounded-lg mb-4">
+        <h2 class="text-xl font-bold">Card 2 Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+      
+       <!-- Card 3 -->
+       <div class="relative bg-white p-6 rounded-lg shadow-md transition-transform transform scale-100 hover:scale-105">
+        <img src="./assets/Gradient.png" alt="Card 3" class="h-40 w-full object-cover rounded-lg mb-4">
+        <h2 class="text-xl font-bold">Card 3 Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+         <!-- Card 4 -->
+      <div class="relative bg-white p-6 rounded-lg shadow-md transition-transform transform scale-100 hover:scale-105">
+        <img src="./assets/Peach.png" alt="Card 4" class="h-40 w-full object-cover rounded-lg mb-4">
+        <h2 class="text-xl font-bold">Card 4 Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+      
+    </div>
+    </div>
+  </div>
+</body>
+
+</html>
+Task 2: Examine the grid system and flexbox, expressing your preference for the easier one to work with. Share your impressions on AlmaBetter's Community platform.
