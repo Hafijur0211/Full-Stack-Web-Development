@@ -820,4 +820,3 @@ JAR
 J: Just remember the dollar sign ($), as it's the key symbol that initiates jQuery magic.
 A: A for Attribute, recall that you can select elements using their attributes with the [attribute=value] syntax.
 R: R for Relationship, keep in mind the various relationship selectors like parent(), children(), siblings(), etc.
- 
