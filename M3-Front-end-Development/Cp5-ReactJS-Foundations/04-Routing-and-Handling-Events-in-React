@@ -1,0 +1,855 @@
+Routing and Handling Events in React
+Session Flow
+Learning Objective 
+Introduction
+Theme
+Primary Goals
+Routing and Handling Events in React
+Introduction to Routing in Reactjs
+Need of React Router
+React Router Installation
+How to Set Up React Router
+How to Route to other components
+Step 1 - Create multiple components
+Step 2 - Define routes
+Step 3 - Use Link to navigate to routes
+Types of Routes
+Nested Routes
+Index Routes
+“Not Found” Routes
+Project Implementation Step 1
+Handling Events in React
+Event Handlers
+Event Binding
+Event Handler Function
+Event Object
+Preventing Default Behavior
+Event Propagation and Bubbling
+Project Implementation Step 2
+Summary 
+What did we learn?
+Shortcomings & Challenges
+Best Practices
+Enhance your knowledge
+Try it yourself
+Learning Objective
+Introduction
+In React, routing and handling events are essential for creating dynamic and interactive user interfaces. React provides libraries and techniques to handle both routing and event handling effectively.
+Focus: React Router, Route Configuration, Nested Routes, Event Handlers, Synthetic Events, Event Binding
+Pre-requisites: JavaScript, React Basics and JSX
+Theme
+As the creator of React, Facebook uses routing and event handling extensively in their web applications. They employ React Router for managing complex routing needs in applications like Facebook and Instagram. Event handling is crucial for interactivity in features like liking posts, commenting, and real-time updates.
+Airbnb is a popular online marketplace for vacation rentals. Their front end is built using React, and they utilize routing for different sections of their website, such as search results, property listings, and user profiles. Event handling enables users to make bookings, send messages to hosts, and filter search results.
+Primary Goals
+Learn about the React Router library and its core components, such as BrowserRouter, Route, Switch, and Link.
+Understand how to attach event handlers to JSX elements using the onEventName syntax (e.g., onClick, onChange, onSubmit).
+Explore React's synthetic event system and how it handles cross-browser inconsistencies and provides a unified event interface.
+Learn about different techniques for binding event handlers to components and how to pass data or additional arguments to event handlers.
+Routing and Handling Events in React
+Introduction to Routing in Reactjs
+Routing is crucial for directing users to different pages based on their actions or requests. In ReactJS, the React Router library is used to develop single-page web applications with multiple routes defined in the router file. 
+When a user types a specific URL into their browser, the application checks for any matching routes in the router file and redirects the user to the appropriate route. This section will teach you how to use React-Router to add routing capabilities to your React application and transition between different views.
+If you want to add routing capabilities to your application, you can use the popular React-Router library.
+React Router is a widely-used library that is built on top of React and allows developers to create routing for their React applications using the React Router Package. 
+It provides a synchronous URL on the browser, along with the data that is to be displayed on the webpage. React Router maintains the application's standard structure and behavior, mainly used for developing single-page web applications.
+Need of React Router
+React Router is critical in displaying multiple views within a single-page React application. Without React Router, displaying multiple views in a React application would not be possible. Many popular social media websites like Facebook and Instagram rely on React Router to render multiple views.
+React Router Installation
+To install React Router, you need to follow these steps:
+Make sure you have a React project set up. If you don't have one, create a new React project using Create React App (CRA) by running the following command in your terminal:
+npx create-react-app my-app
+This will create a new directory named "my-app" with a basic React project structure.
+Navigate to your project directory:
+cd my-app
+Install React Router using npm or Yarn. In this example, we'll use npm:
+npm install react-router-dom
+This command installs React Router and its dependencies in your project.
+Once the installation is complete, you can use React Router in your application.
+How to Set Up React Router
+React Router provides different components that enable routing functionality in your React application. The most commonly used components are BrowserRouter, Switch, and Route.
+Here's a basic example of using React Router in your application:
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+function App() {
+  return (
+    <Router>
+      <div>
+        <Routes>
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
+        </Routes>
+      </div>
+    </Router>
+  );
+}
+
+function Home() {
+  return <h1>Home</h1>;
+}
+
+function About() {
+  return <h1>About</h1>;
+}
+
+function Contact() {
+  return <h1>Contact</h1>;
+}
+
+export default App;
+In this example, we import the necessary components from react-router-dom, such as BrowserRouter, Routes, and Route. We wrap our routes inside the Router component. Each Route component defines a path and the corresponding component to render when the path matches.
+That's it! React Router is now installed and ready to use in your React project. You can define additional routes, and nest routes, and use React Router's features to create a dynamic and navigable application.
+How to Route to other components
+Now that we have finished setting up let's focus on routing and rendering various components
+Step 1 - Create multiple components
+We will create the following components: Home  About and Contact, in the following manner:
+Home Component:
+function Home() {
+  return (
+    <div>
+      <h1>This is the home page</h1>
+    </div>
+  );
+}
+
+export default Home;
+About Component:
+import React from 'react'
+
+function About() {
+    return (
+        <div>
+            <h1>This is the about page</h1>
+        </div>
+    )
+}
+
+export default About
+Contact Component:
+import React from 'react'
+
+function Contact() {
+    return (
+        <div>
+            <h1>This is the contact page</h1>
+        </div>
+    )
+}
+
+export default Contact
+Step 2 - Define routes
+It's important to note that the App component is the main component where our React code gets initially rendered. 
+Therefore, we will be creating all our routes within this component. If you're not quite sure about what this means, don't worry. You'll have a better understanding after we go through the example below:
+App Component
+import { Routes, Route } from "react-router-dom"
+import Home from "./Home"
+import About from "./About"
+import Contact from "./Contact"
+
+function App() {
+  return (
+    <div className="App">
+      <Routes>
+        <Route path="/" element={ <Home/> } />
+        <Route path="about" element={ <About/> } />
+        <Route path="contact" element={ <Contact/> } />
+      </Routes>
+    </div>
+  )
+}
+
+export default App
+In the example provided, the Routes and Route features were imported. Also, all the required components were imported for the purpose of attaching a route to them.
+To explain the process, the Routes feature serves as a container or parent for all the individual routes that will be created in the application.
+In React Router, the Route component creates a single route. It requires two attributes to be specified:
+path: This attribute is used to specify the URL path of the desired component. It can be named whatever the developer wants. In the example given, the first pathname is a backslash (/), which means that the Home component will be the first component to be rendered when the app loads for the first time.
+element: This attribute is used to specify the component that the route should render.
+At this point, we have defined the routes for each path and attached them to their respective components.
+Step 3 - Use Link to navigate to routes
+Assuming you have followed the steps correctly without encountering any errors, the browser shout component.
+import { Link } from "react-router-dom";
+
+function Home() {
+  return (
+    <div>
+      <h1>This is the home page</h1>
+      <Link to="about">Click to view our about page</Link>
+      <Link to="contact">Click to view our contact page</Link>
+    </div>
+  );
+}
+
+export default Home;
+The Link component serves the same purpose as the anchor element (<a>) in HTML. Its to attribute specifies the path to which the link will take you.
+As earlier mentioned, we created the pathnames in the App component, so when you click on the link, the router will go through your routes and render the component with the corresponding pathname.
+It's important to always import Link from react-router-dom before using it.
+Types of Routes
+Nested Routes
+React Router's nested routing feature is a powerful tool that eliminates the need for complex layout code.
+When routes are nested, their paths will also be nested, resulting in the child inheriting the parent.
+function App() {
+  return (
+    <Routes>
+      <Route path="invoices" element={<Invoices />}>
+        <Route path=":invoiceId" element={<Invoice />} />
+        <Route path="sent" element={<SentInvoices />} />
+      </Route>
+    </Routes>
+  );
+}
+The route configuration has three route paths specified, namely:
+"/invoices"
+"/invoices/sent"
+"/invoices/:invoiceId"
+When the URL is set to "/invoices/sent", the component tree will be rendered as follows:
+<App>
+  <Invoices>
+    <SentInvoices />
+  </Invoices>
+</App>
+If the URL is /invoices/123, the Invoice component will be rendered,:
+<App>
+  <Invoices>
+    <Invoice />
+  </Invoices>
+</App>
+In older versions of React Router, it was necessary to arrange the routes in a specific order to render the correct one when multiple routes matched an ambiguous URL. However, with version 6 and above, this is no longer a concern since React Router now selects the most specific match automatically. For instance, the URL /invoices/sent matches both of these routes:
+<Route path="invoices/:invoiceId" element={<Team />} />
+<Route path="invoices/sent" element={<NewTeamForm />} />
+Observe the change in the inner component as the URL changes from "/invoices"to "/invoices/sent" and "/invoices/:invoiceId". The parent route component (<Invoices>) is responsible for rendering the child routes with the help of the <Outlet> component.
+In previous versions, the routes had to be ordered correctly for the appropriate component to render. However, with version 6 and above, React Router chooses the most specific match to render the component, eliminating the need for route ordering. The example below shows the complete implementation:
+import { Routes, Route, Outlet } from "react-router-dom";
+
+function App() {
+  return (
+    <Routes>
+      <Route path="invoices" element={<Invoices />}>
+        <Route path=":invoiceId" element={<Invoice />} />
+        <Route path="sent" element={<SentInvoices />} />
+      </Route>
+    </Routes>
+  );
+}
+
+function Invoices() {
+  return (
+    <div>
+      <h1>Invoices</h1>
+      <Outlet />
+    </div>
+  );
+}
+
+function Invoice() {
+  let { invoiceId } = useParams();
+  return <h1>Invoice {invoiceId}</h1>;
+}
+
+function SentInvoices() {
+  return <h1>Sent Invoices</h1>;
+}
+<Outlet>
+To render the nested UI when child routes are rendered, the parent route should use an <Outlet> component. This component is responsible for rendering the child routes within the parent component. If the parent route exactly matches the URL, it will render the child index route, or it won't render anything if there is no index route.
+For Example:
+function Dashboard() {
+  return (
+    <div>
+      <h1>Dashboard</h1>
+
+      {/* This element will render either <DashboardMessages> when the URL is
+          "/messages", <DashboardTasks> at "/tasks", or null if it is "/"
+      */}
+      <Outlet />
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Dashboard />}>
+        <Route
+          path="messages"
+          element={<DashboardMessages />}
+        />
+        <Route path="tasks" element={<DashboardTasks />} />
+      </Route>
+    </Routes>
+  );
+}
+Index Routes
+In React Router, index routes act as default child routes for a parent route. When a parent route has multiple children and the URL only matches the parent's path, an index route can be used to render something into the outlet. The index route is a child route with a path attribute that is an empty string. The index route will be rendered if the URL matches the parent's path exactly.
+Consider this example:
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route path="invoices" element={<Invoices />} />
+        <Route path="activity" element={<Activity />} />
+      </Route>
+    </Routes>
+  );
+}
+
+function Layout() {
+  return (
+    <div>
+      <GlobalNav />
+      <main>
+        <Outlet />
+      </main>
+    </div>
+  );
+}
+At the routes "/invoices" and "/activity", this page appears to be well-designed. However, when accessing "/" URL, it appears as a blank page because there is no child route to render in the main component. To address this, we can add an index route.:
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Activity />} />
+        <Route path="invoices" element={<Invoices />} />
+        <Route path="activity" element={<Activity />} />
+      </Route>
+    </Routes>
+  );
+}
+With the newly added index route, the Activity component will now be rendered inside the outlet when the URL is at "/". It is possible to have an index route at any level of the route hierarchy that will render when the parent matches but none of its other children do.
+function App() {
+  return (
+    <Routes>
+      <Route index element={<Home />} />
+      <Route path="dashboard" element={<Dashboard />}>
+        <Route index element={<DashboardHome />} />
+        <Route
+          path="invoices"
+          element={<DashboardInvoices />}
+        />
+      </Route>
+    </Routes>
+  );
+}
+“Not Found” Routes
+To handle cases where the URL doesn't match any of the defined routes, you can create a "not found" route using path="*". This route will match any URL but have the lowest precedence, meaning that the router will only choose it if no other routes match.
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="dashboard" element={<Dashboard />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
+}
+Project Implementation Step 1
+Through Navbar of e-commerce app, we'll set up routes for Product page.
+App.js
+import "./styles.css";
+
+import { Routes, Route } from "react-router-dom";
+
+// BELOW COMPONENTS
+import Home from "./component/home";
+import Navbar from "./component/navbar";
+import Products from "./component/products";
+import Product from "./component/product";
+import Cart from "./component/cart";
+
+export default function App() {
+  return (
+    <>
+    
+    <Navbar />
+      <Routes>
+        <Route exact path="/" element={<Home/>} />
+        <Route exact path="/products" element={<Products/>} />
+        <Route exact path="/products/:id" element={<Product/>} />
+        <Route exact path="/cart" element={<Cart/>} />
+      </Routes>
+    </>
+  );
+}
+Navbar.js
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { FaSignInAlt, FaUserPlus, FaShoppingCart } from "react-icons/fa";
+import image from "../assets/discord.png"
+
+
+const Navbar = () => {
+  const state = useSelector((state) => state.handleCart);
+  return (
+    <div className="nav_bar">
+      <nav className="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
+        <div className="container">
+        <div className="img"><a href="https://www.Almabetter.com/" target="_blank" ><img src={image} alt="Almabetter"/></a></div>
+          <NavLink className="navbar-brand fw-bold fs-4" to="/">
+            LA COLLECTION
+          </NavLink>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <NavLink className="nav-link fw-bold active" aria-current="page" to="/">
+                  Home
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link fw-bold" to="/products">
+                  Products
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link fw-bold" to="/about">
+                  About
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link fw-bold" to="/contact">
+                  Contact
+                </NavLink>
+              </li>
+            </ul>
+            <div className="buttons">
+              <NavLink to="/login" className="btn btn-outline-dark">
+                <FaSignInAlt className="me-1" /> Login
+              </NavLink>
+              <NavLink to="/register" className="btn btn-outline-dark ms-2">
+                <FaUserPlus className="me-1" /> Register
+              </NavLink>
+              <NavLink to="/cart" className="btn btn-outline-dark ms-2">
+                <FaShoppingCart className="me-1" /> Cart ({state.length})
+              </NavLink>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  );
+};
+
+export default Navbar;
+Home.js
+import React from "react";
+import Products from "./products";
+import img from '../assets/bg.jpg'
+
+const Home = () => {
+  return (
+    <div className="hero">
+      <div className="card bg-dark text-white border-0">
+        <img
+          src={img}
+          className="card-img"
+          alt="Background"
+          height="550px"
+        />
+        <div className="card-img-overlay d-flex flex-column justify-content-center">
+          <div className="container">
+            <h5 data-testid='home'  className="card-title display-3 fw-bolder mb-0">
+              NEW SEASON ARRIVALS
+            </h5>
+            <p className="card-text lead fs-2">CHECK OUT ALL THE TRENDS</p>
+          </div>
+        </div>
+      </div>
+      <Products />
+    </div>
+  );
+};
+
+export default Home;
+Output:
+Home page
+notion image
+Product page
+notion image
+Explanation:
+In this React code, the react-router-dom library is used for routing and navigation. The Routes and Route components from react-router-dom are used to define the routing structure for different components in the application.
+Let's go through each part of the code step by step:
+import { Routes, Route } from "react-router-dom";: This line imports the necessary components from the react-router-dom library. Routes is used as a container for defining routes, and Route is used to define individual routes.
+import Home from "./component/home";: This line imports the Home component from the ./component/home.js file. Similarly, other components like Navbar, Products, Product, and Cart are also imported.
+export default function App() { ... }: This is the main component of the application, and it serves as the entry point for rendering the entire application.
+<Navbar />: This line renders the Navbar component, which likely contains navigation links or other elements that will be present on every page of the application.
+<Routes> ... </Routes>: The Routes component is used to wrap all the individual Route components. It acts as a container for defining multiple routes.
+<Route exact path="/" element={<Home/>} />: This line defines a route that matches the exact path / (the root path) and renders the Home component when the URL matches this path.
+<Route exact path="/products" element={<Products/>} />: This line defines another route that matches the exact path /products and renders the Products component when the URL matches this path.
+<Route exact path="/products/:id" element={<Product/>} />: This line defines a dynamic route that matches a path with /products/ followed by an id parameter. For example, /products/1, /products/2, etc. The Product component will be rendered, and the id parameter can be accessed from the component's props.
+<Route exact path="/cart" element={<Cart/>} />: This line defines a route that matches the exact path /cart and renders the Cart component when the URL matches this path.
+Overall, the code sets up a simple routing configuration using the Routes and Route components. When the user navigates to different URLs in the application, the corresponding components (Home, Products, Product, Cart) will be rendered based on the matching route definitions. The Navbar component will be present on every page, providing navigation links for the user.
+Handling Events in React
+Handling events in React is an integral part of building interactive user interfaces. React provides a straightforward and declarative approach to handling events within components. Here's a detailed explanation of handling events in React:
+Event Handlers
+In React, event handlers are functions that get executed in response to specific events, such as clicking a button or submitting a form. Event handlers are typically defined as methods within a component.
+Handling Click Events:
+import React from 'react';
+
+class Button extends React.Component {
+  handleClick() {
+    console.log('Button clicked!');
+  }
+
+  render() {
+    return (
+      <button onClick={this.handleClick}>Click Me</button>
+    );
+  }
+}
+In this example, the handleClick method is an event handler for the click event. When the button is clicked, the method is called, and it logs a message to the console.
+Handling Input Change Events:
+import React from 'react';
+
+class InputField extends React.Component {
+  handleChange(event) {
+    console.log('Input value changed:', event.target.value);
+  }
+
+  render() {
+    return (
+      <input type="text" onChange={this.handleChange} />
+    );
+  }
+}
+The handleChange method is an event handler for the change event on the input field. Whenever the user types or modifies the input value, the method is called, and it logs the updated value to the console.
+Handling Form Submit Events:
+import React from 'react';
+
+class LoginForm extends React.Component {
+  handleSubmit(event) {
+    event.preventDefault();
+    console.log('Form submitted!');
+    // Perform additional form submission logic
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <input type="text" placeholder="Username" />
+        <input type="password" placeholder="Password" />
+        <button type="submit">Submit</button>
+      </form>
+    );
+  }
+}
+In this example, the handleSubmit method is an event handler for the submit event on the form. The method is called when the user submits the form. We prevent the default form submission behavior using event.preventDefault(), log a message to the console, and perform any additional form handling logic.
+These examples demonstrate how to define event handlers for different types of events in React components. Remember to bind the event handlers to the component instance if they need access to its state or methods. You can achieve this by explicitly using arrow functions or binding the function in the component's constructor.
+It's important to note that in functional components, you can define event handlers using the useState hook or useCallback hook to handle state updates and prevent unnecessary re-renders.
+Event Binding
+In React, event binding refers to the process of binding event handler functions to elements or components. There are different approaches to binding event handlers in React. Let's explore a few examples:
+Binding Event Handlers in Class Components:
+In class components, event handlers are typically defined as methods within the component class. You can use the bind() method or arrow functions to bind the event handler function to the component instance.
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0
+    };
+  }
+
+  handleClick() {
+    // Handle click logic
+    this.setState({ count: this.state.count + 1 });
+  }
+
+  render() {
+    return (
+      <button onClick={this.handleClick.bind(this)}>Click Me</button>
+    );
+  }
+}
+In this example, the handleClick method is bound to the component instance using the bind() method within the onClick event. 
+Another approach is to use an arrow function:
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0
+    };
+  }
+
+  handleClick = () => {
+    // Handle click logic
+    this.setState({ count: this.state.count + 1 });
+  }
+
+  render() {
+    return (
+      <button onClick={this.handleClick}>Click Me</button>
+    );
+  }
+}
+By using an arrow function for the event handler, it automatically binds the this context to the component instance, eliminating the need for explicit binding.
+Binding Event Handlers in Functional Components:
+In functional components, event handlers can be defined using the useState hook to manage the state. Since functional components don't have an instance, there's no need for explicit binding.
+import React, { useState } from 'react';
+
+function MyComponent() {
+  const [count, setCount] = useState(0);
+
+  const handleClick = () => {
+    // Handle click logic
+    setCount(count + 1);
+  }
+
+  return (
+    <button onClick={handleClick}>Click Me</button>
+  );
+}
+In this example, the handleClick function is defined using the useState hook to manage the count state variable. The event handler can directly access the count state without any explicit binding.
+These examples demonstrate different ways of binding event handlers in React. Whether you are using class components or functional components, the key is to ensure the correct binding of the event handler function to the component instance or the appropriate this context.
+Event Handler Function
+Consider a scenario where you have a button and want to handle a click event on that button to update the component's state and display a message. 
+Here's how you can define an event handler function for that:
+import React, { useState } from 'react';
+
+function Button() {
+  const [message, setMessage] = useState('');
+
+  const handleClick = () => {
+    setMessage('Button clicked!');
+  };
+
+  return (
+    <div>
+      <button onClick={handleClick}>Click Me</button>
+      <p>{message}</p>
+    </div>
+  );
+}
+In this example, we're using the useState hook to define a state variable message and its corresponding setter function setMessage. Initially, the message is an empty string.
+The handleClick function is the event handler function for the button's click event. When the button is clicked, this function gets executed. In this case, it sets the message state variable to "Button clicked!" using the setMessage function.
+The onClick attribute of the button element is set to the handleClick function, so it gets invoked when the button is clicked.
+The current value of the message state variable is displayed inside a paragraph (<p>) element.
+As a result, when you click the "Click Me" button, the handleClick function is called, and it updates the message state variable. React automatically re-renders the component, displaying the updated message on the page.
+This is a basic example of how you can use an event handler function in React to handle a click event and perform actions based on that event, such as updating the component's state.
+Event Object
+When handling events in React, the event object is automatically passed to the event handler function as the first argument. The event object provides information about the event that occurred, such as the target element, event type, and additional properties. 
+Here's an example of how to use the event object in handling events in React:
+import React from 'react';
+
+function MyComponent {
+  handleClick = (event) => {
+    console.log(event.target); // The element that triggered the event
+    console.log(event.type); // The type of event (e.g., "click")
+    console.log(event.clientX, event.clientY); // The coordinates of the mouse pointer when the event occurred
+  }
+
+    return (
+      <button onClick={handleClick}>Click Me</button>
+    );
+}
+
+export default MyComponent;
+In this example, we define a class component MyComponent with a handleClick method as the event handler for the onClick event of a button. The event parameter is automatically passed to the handleClick method when the button is clicked.
+Inside the handleClick method, we can access various properties of the event object. In this case, we log the target property to get a reference to the button element that triggered the event. We also log the type property to determine the type of event ("click" in this case). Additionally, we log the clientX and clientY properties to retrieve the coordinates of the mouse pointer when the event occurs.
+By utilizing the event object, you can access information about the event and perform further actions based on that information. The event object provides various properties and methods, allowing you to interact with the event and the elements involved in the event.
+Preventing Default Behavior
+Preventing default behavior in event handling is a common requirement in React applications. It allows you to stop the default action associated with an event, such as form submission or link navigation. 
+Here's an example that demonstrates how to prevent default behavior in React event handling:
+import React from 'react';
+
+function MyForm() {
+  const handleSubmit = (event) => {
+    event.preventDefault(); // Prevents the default form submission behavior
+    // Additional form handling logic here
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input type="text" />
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+
+export default MyForm;
+In this example, we have a simple form component called MyForm. The handleSubmit function is invoked when the form is submitted by calling event.preventDefault(), we prevent the default behavior of the form submission, which typically causes a page to reload.
+The event.preventDefault() method stops the event's default behavior from being executed. It's important to call this method within the event handler before performing any custom logic or making further actions based on the event.
+By preventing the default behavior, you gain control over how the form submission is handled in your React component. You can then perform custom logic, handle validation, make AJAX requests, or update the component state without causing a full page reload.
+Note that the event.preventDefault() method can be used in various event handling scenarios, such as preventing the default behavior of link clicks (<a> elements), form submissions, or button clicks. Just make sure to call it within the appropriate event handler and component context to achieve the desired effect.
+Event Propagation and Bubbling
+Event propagation and bubbling are important concepts in handling events in React, as they determine the order in which events are triggered and how they propagate through the component hierarchy. Let's explore event propagation and bubbling in more detail with an example.
+Consider the following component hierarchy:
+class ParentComponent extends React.Component {
+  handleClick = () => {
+    console.log("Click event handled by ParentComponent");
+  };
+
+  render() {
+    return (
+      <div onClick={this.handleClick}>
+        <ChildComponent />
+      </div>
+    );
+  }
+}
+
+class ChildComponent extends React.Component {
+  handleClick = () => {
+    console.log("Click event handled by ChildComponent");
+  };
+
+  render() {
+    return <button onClick={this.handleClick}>Click Me</button>;
+  }
+}
+In this example, we have a ParentComponent that contains a ChildComponent. Both components have their own event handlers for the click event.
+When you click the "Click Me" button, the event triggers the event handler defined in the ChildComponent. This is called the "capturing" phase of the event. The event then propagates up the component tree, triggering event handlers defined on parent components, until it reaches the topmost component. This phase is called the "bubbling" phase.
+In our example, when you click the button, the output will be:
+Click event handled by ChildComponent
+Click event handled by ParentComponent
+This demonstrates event bubbling, where the event propagates from the innermost component (ChildComponent) to the outermost component (ParentComponent).
+You can call the stopPropagation() method on the event object within an event handler to stop the event from bubbling further up the component tree. For example:
+class ChildComponent extends React.Component {
+  handleClick = (event) => {
+    event.stopPropagation();
+    console.log("Click event handled by ChildComponent");
+  };
+
+  render() {
+    return <button onClick={this.handleClick}>Click Me</button>;
+  }
+}
+With stopPropagation(), the output will be:
+Click event handled by ChildComponent
+In this case, the event will no longer propagate to the parent component's event handler.
+Understanding event propagation and bubbling allows you to control how events are handled in your React components. You can utilize bubbling to handle events at higher levels in the component hierarchy or stop event propagation to restrict event handling to specific components.
+That covers the basic concepts of handling events in React. With these principles in mind, you can create interactive components that respond to user actions, update the component's state, and trigger further actions based on events.
+Project Implementation Step 2
+Within the “Products” page, we'll add “Add to Cart” functionality to the products listed and getting notified through alert message as and when it's updated.
+Product.js
+import React from 'react'
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
+
+const Product = () => {
+
+  const info = {
+	    category: "men's clothing",
+	    description:"Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
+	    id:1,
+	    image:"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+	    price:109.95,
+	    rating:{ rate: 3.9, count: 120 },
+	    title:"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"
+	  }
+  const handleClick=()=>{
+    alert("Item added to cart")
+  }
+
+  return (
+    <div>
+      <div className="col-md-6">
+        <img
+          src={info.image}
+          alt={info.title}
+          height="100px"
+          width="100px"
+        />
+      </div>
+      <div className="col-md-6">
+        <h4 className="text-uppercase text-black-50">{info.category}</h4>
+        <h1 className="display-5">{info.title}</h1>
+        <p className="lead fw-bolder">
+          Rating {info.rating && info.rating.rate}
+      </p>
+        <h3 className="display-6 fw-bold my-4">$ {info.price}</h3>
+        <p className="lead">{info.description}</p>
+        <div className="container d-flex justify-content-evenly p-2 " >
+          <button  onClick={handleClick}>Add to cart</button>
+        </div>
+      </div>
+    </div>
+  )
+};
+
+
+export default Product;
+Output:
+notion image
+Explanation:
+The code has a function component Product that renders the product details and an "Add to Cart" button. Here's how event handling is implemented:
+The handleClick function is defined within the component. It is a simple function that displays an alert when called.
+In the JSX code, the onClick attribute is added to the "Add to cart" button element: <button onClick={handleClick}>Add to cart</button>. This attribute specifies the function that will be called when the button is clicked.
+When the button clicks, React triggers the specified function (handleClick) and executes its code.
+In this case, the handleClick function displays an alert message saying, "Item added to cart."
+The onClick event handler in React allows you to respond to user interactions, such as button clicks, by executing the provided function. In this example, when the "Add to cart" button is clicked, the handleClick function is called, resulting in an alert being displayed.
+Note that event handling in React is similar to regular HTML event handling but with a few differences. In React, event handlers are written in camelCase (e.g., onClick instead of onclick), and the value assigned to the event handler attribute should be a function reference (e.g., onClick={handleClick}) rather than an inline JavaScript code.
+You can expand upon this code and add more functionality as needed for your e-commerce app.
+ 
+ 
+Summary
+What did we learn?
+React Router is a popular library for handling routing in React applications.
+React Router provides components like BrowserRouter, Switch, and Route for setting up routes and rendering components based on the current URL.
+Routes are defined using the Route component, specifying the path and the corresponding component to render.
+React Router allows for nested routes, parameterized routes, and route matching. By using React Router, you can create multi-page applications with different routes and navigation between them.
+React provides a declarative way to handle events within components. Event handlers are functions that get executed in response to specific events like clicking a button or submitting a form.
+Event handlers are bound to JSX elements using attributes like onClick, onChange, or onSubmit. Event handlers can be defined as regular functions or arrow functions, with arrow functions being recommended to automatically bind the this context.
+Event objects are provided as the first parameter to event handler functions, allowing access to event-related information. The default behavior of certain events can be prevented by calling preventDefault() on the event object.
+React follows the event propagation model, where events propagate from child components to parent components by default (event bubbling). Event propagation can be stopped using the stopPropagation() method on the event object. Understanding event propagation and bubbling help control how events are handled within component hierarchies.
+Shortcomings & Challenges
+Routing can become complex as the application grows and the number of routes increases. Managing nested routes, authentication, and handling route transitions can become challenging.
+React Router relies on client-side routing, meaning the entire application must be loaded upfront. This can impact initial loading times and increase the bundle size, especially in large applications with many routes.
+Managing events across components can become challenging when working with complex components and event-handling logic. Ensuring proper event delegation and avoiding event clashes or excessive event listeners is important.
+Handling events can impact performance, especially if event handlers involve computationally expensive operations or if there are frequent state updates. It's essential to optimize event handling logic to maintain smooth user experiences.
+Best Practices
+Take some time to plan your application's routes before implementing them. Define the routes, their corresponding components, and any necessary nested routes. This helps maintain a clear structure and makes it easier to understand the routing logic.
+The NavLink component from React Router allows you to style the active link in your navigation menu based on the current route. It provides a className or activeClassName prop to apply styling to the active link.
+If your application requires nested routes, use the nested routing feature provided by React Router. It allows you to organize your components hierarchically and handle nested URLs efficiently.
+Event handlers should focus on handling the event and triggering the necessary actions. If an event handler becomes too large or complex, consider extracting the logic into separate functions or methods to maintain readability and modularity.
+When implementing event handling, keep accessibility in mind. Ensure that your event handlers do not hinder the accessibility of your application. For example, provide alternative methods for keyboard-only users to trigger events that are typically associated with mouse clicks.
+ 
+Enhance Your Knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+React Interactivity: https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing
+Dynamic Routes: Get Data using Dynamic Routes in React - DEV Community
+ 
+Try it Yourself
+Let's solve these coding problems in the AlmaBetter IDE. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
+Task 1: Master Frontend Challenges in the VS Code IDE and Elevate Your Skillset with Creative Solutions.
+Problem
+Build a simple React app with a dropdown menu and a display area. Based on the selected option in the dropdown, conditionally render different content in the display area.
+Expected Output
+ 
+Solution
+import React, { useState } from 'react';
+
+const App = () => {
+  const [selectedOption, setSelectedOption] = useState('option1');
+
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+
+  return (
+    <div>
+      <h1>Dropdown App</h1>
+      <label>
+        Select an option:
+        <select value={selectedOption} onChange={handleOptionChange}>
+          <option value="option1">Option 1</option>
+          <option value="option2">Option 2</option>
+          <option value="option3">Option 3</option>
+        </select>
+      </label>
+      <div>
+        {selectedOption === 'option1' && <p>This is content for Option 1</p>}
+        {selectedOption === 'option2' && <p>This is content for Option 2</p>}
+        {selectedOption === 'option3' && <p>This is content for Option 3</p>}
+      </div>
+    </div>
+  );
+};
+
+export default App;
+Task 2: Propose a scenario where event handling in React could be applied, and provide your insights on implementing it within AlmaBetter's Community platform.
