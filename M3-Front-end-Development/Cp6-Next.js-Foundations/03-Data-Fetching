@@ -1,0 +1,495 @@
+Data Fetching
+Session Flow
+Learning Objective
+Introduction
+Theme
+Primary Goals
+Data Fetching
+Overview of Data fetching
+getServerSideProps
+When do getServerSideProps run?
+Fetching data on the client side
+Using getServerSideProps to fetch data at the request time
+Caching with Server-Side Rendering (SSR)
+getStaticProps
+When should getStaticProps be used?
+When does getStaticProps run?
+Activity: Fill in the blanks
+getStaticPaths
+When should getStaticPaths be used?
+How do getStaticProps run with respect to getStaticPaths?
+Generating paths on-demand
+Incremental Static Regeneration
+On-demand Revalidation
+Testing on-Demand ISR during development
+Error handling and revalidation
+Activity: Solve the riddle
+Client-side Data Fetching
+Client-side data fetching with useEffect
+Client-side data fetching with SWR
+Summary
+What did we learn?
+Best Practices
+Shortcomings & Challenges
+Enhance your knowledge
+Try it Yourself
+ 
+Learning Objective
+Introduction
+Data Fetching properties in NextJs enable developers to fetch data from external sources during server-side rendering, optimizing website performance and reducing load times. By leveraging these properties, developers can create high-performing web applications that provide a seamless user experience for users.
+Focus:  getStaticProps, getServerSideProps, getInitialProps, Incremental Static Regeneration, and Client-side Data Fetching in Next.js
+Pre-requisite: Next.js Basics, Familiarity with React, Understanding of server-side rendering, API knowledge
+Theme
+Travelo allows users to search and book flights, hotels, and vacation packages. The website is built using Next.js. The homepage of Travelo displays a selection of featured travel destinations. Since this content may not change frequently and is important for SEO, getStaticProps is ideal for pre-rendering the page at build time. It fetches the featured destinations from the CMS or database and generates an HTML page that loads quickly for visitors. The flight search results page allows users to search for available flights based on their preferences. Since flight availability can change frequently, it's best to use Client-side Data Fetching with SWR to fetch and update the flight data on the client side. This ensures that users always see real-time and up-to-date flight options. The hotel details page displays comprehensive information about a specific hotel, including room availability, amenities, and user reviews. Since hotel information may change dynamically and depends on user requests, using getServerSideProps is suitable. This technique fetches the hotel data on the server side for each request, ensuring the latest information is displayed. The user dashboard provides personalized information, such as booking history, upcoming trips, and preferences. Travelo can use getInitialProps (if still used) or implement Client-side Data Fetching with SWR. 
+These techniques fetch user-specific data on the client side, improving the user experience and reducing server load. Travelo offers last-minute vacation deals that can change frequently. The last-minute deals section can be updated without rebuilding the entire site by using Incremental Static Regeneration. This ensures that users always see the latest deals while benefiting from the performance advantages of static pages.
+Primary Goals
+Understand how to fetch data during server-side rendering using NextJs's Data Fetching properties.
+Learn how to use getStaticProps, getServerSideProps, and getInitialProps to fetch data and render pages.
+Explore best practices for data fetching, such as minimizing API requests, caching data, and using incremental static regeneration.
+Learn about error handling in data fetching and best practices for implementing Incremental Static Regeneration and Client-side Data Fetching.
+ 
+Data Fetching
+Overview of Data fetching
+Next.js data provides various data fetching techniques to render your content, depending on your application's needs. These include pre-rendering using Server-side Rendering or Static Generation and updating or creating content at runtime with Incremental Static Regeneration.
+Server-side Rendering (SSR): Server-side Rendering (SSR) is a technique of rendering content on the server instead of the client. This technique helps to reduce the time to the first byte (TTFB), which is the time taken by the browser to receive the first byte of the page from the server.
+The server-side rendering technique offers an improved page's SEO by generating the HTML content on the server and sending it to the client. Next.js has built-in support for SSR using the getServerSideProps function, which can be used to generate dynamic server-side content.
+Static Generation (SG): Static Generation (SG) is another technique that generates HTML at build time rather than run time. Generating HTML at the time of build allows you to create speedy, scalable sites with minimal server overhead.
+This technique is handy for static sites and blog pages. With Next.js, you can easily use the getStaticProps function to generate static content at build time.
+Incremental Static Regeneration (ISR): Incremental Static Regeneration (ISR) is a technique that allows you to update or create new pages at runtime without re-rendering the entire site. This technique is perfect for pages that only sometimes change, such as product pages or blog posts. With Next.js, you can use the revalidate property to update the content of such pages at runtime while ensuring that your site's performance is not compromised.
+In summary, Server-side Rendering, Static Generation, and Incremental Static Regeneration are three powerful techniques that can help you improve your website's performance and SEO. With Next.js, you have built-in support for all these techniques, making choosing the proper technique for your specific use case easy.
+getServerSideProps
+When building a website with Next.js, you can use Server-Side Rendering, improving performance and providing a better user experience. To use this feature, you can export a function called getServerSideProps from a page. When this function is present, Next.js will pre-render the page on each request using the data returned by getServerSideProps.
+export async function getServerSideProps(context) {
+  return {
+    props: {}, // will be passed to the page component as props
+  }
+}
+By pre-rendering the page on the server, the user sees the fully rendered page immediately without having to wait for any client-side rendering. This can lead to faster loading times and a better user experience overall.
+When do getServerSideProps run?
+getServerSideProps runs at the request time on the server. This means that each time a user requests the page, the code inside getServerSideProps will run and fetch the necessary data for that request. This is useful for pages that need to fetch data that changes frequently or pages that require user-specific data.
+getServerSideProps only runs on the server side and never runs on the browser. If a page uses getServerSideProps, then:
+When you request this page directly, getServerSideProps runs at the request time, and this page will be pre-rendered with the returned props
+When you request this page on client-side page transitions through next/link or next/router, Next.js sends an API request to the server, which runs getServerSideProps
+getServerSideProps returns JSON, which will be used to render the page. All this work will be handled automatically by Next.js, so you don’t need to do anything extra as long as you have getServerSideProps defined.
+getServerSideProps can only be exported from a page. You can’t export it from non-page files.
+Note that you must export getServerSideProps as a standalone function — it will not work if you add getServerSideProps as a property of the page component.
+Fetching data on the client side
+Use getServerSideProps only when you need to render a page that requires data to be fetched at the request time. This could be due to the nature of the data or properties of the request, such as authorization headers or geo-location. Pages that use getServerSideProps will be server-side rendered at request time and only cached if cache-control headers are configured.
+If you do not need to render the data during the request, consider fetching the data on the client side or using getStaticProps.
+Using getServerSideProps to fetch data at the request time
+The following example shows how to fetch data at the request time and pre-render the result.
+function Page({ data }) {
+  // Render data...
+}
+
+export async function getServerSideProps() {
+  // Fetch data from external API
+  const res = await fetch(`https://.../data`);
+  const data = await res.json();
+
+  // Pass data to the page via props
+  return { props: { data } };
+}
+
+export default Page;
+Caching with Server-Side Rendering (SSR)
+To cache dynamic responses, you can use caching headers (Cache-Control) inside getServerSideProps. For example, using stale-while-revalidate. This value is considered fresh for ten seconds (s-maxage=10). If a request is repeated within the next 10 seconds, the previously cached value will still be fresh. If the request is repeated before 59 seconds, the cached value will be stale but still render (stale-while-revalidate=59). In the background, a revalidation request will be made to populate the cache with a fresh value. If you refresh the page, you will see the new value.
+export async function getServerSideProps({ req, res }) {
+  res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=10, stale-while-revalidate=59'
+  )
+
+  return {
+    props: {},
+  }
+}
+getStaticProps
+If you export a function named getStaticProps (Static Site Generation) from a page, Next.js will pre-render that page at build time using the props returned by getStaticProps.
+export async function getStaticProps(context) {
+  return {
+    props: {}, // will be passed to the page component as props
+  }
+}
+This means that the content will be generated once you build your app and reused for every request. It's a great approach for pages that can be pre-rendered, such as marketing pages, blog posts, and e-commerce product listings.
+Here's an example of how getStaticProps can be used to fetch data from an API:
+export async function getStaticProps() {
+  const res = await fetch('<https://myapi.com/data>');
+  const data = await res.json();
+
+  return {
+    props: {
+      data
+    }
+  }
+}
+This function fetches data from an API and returns it as props to the page component, which can then be used to render the page.
+In development (next dev), getStaticProps will be called on every request.
+When should getStaticProps be used?
+getStaticProps should be used in these situations:
+When the data needed to render the page is available before a user's request at build time.
+When the data comes from a headless CMS.
+Pre-rendering the page is necessary for SEO purposes and must load quickly. getStaticProps generates both HTML and JSON files, which a CDN can cache for better performance.
+When the data can be publicly cached and not specific to any user. However, this rule can be bypassed in certain situations by using Middleware to rewrite the path.
+Where can getStaticProps be used?
+getStaticProps can only be used on a page and cannot be exported from non-page files such as _app, _document, or _error. This is because React requires all necessary data before rendering the page, and getStaticProps generates the props needed for the page.
+getStaticProps must be exported as a standalone function and cannot be added as a property of the page component.
+When does getStaticProps run?
+getStaticProps is always executed on the server and not on the client. To ensure that code written inside getStaticProps is removed from the client-side bundle, you can use a tool such as next-code-elimination.
+getStaticProps always run during next build
+When using fallback: true, getStaticProps runs in the background
+When using fallback: blocking, getStaticProps is called before the initial render
+When using revalidate, getStaticProps runs in the background
+When using revalidate(), getStaticProps runs on-demand in the background
+When combined with Incremental Static Regeneration, getStaticProps will run in the background to revalidate the stale page and then serve the fresh page to the browser.
+However, getStaticProps cannot access incoming requests, including query parameters and HTTP headers, since it generates static HTML. If you require access to the request for your page, you can use Middleware in addition to getStaticProps.
+Statically generates both HTML and JSON:
+When a page is pre-rendered using getStaticProps at build time, Next.js generates a JSON file in addition to the HTML file. This JSON file contains the result of running getStaticProps.
+When using client-side routing through next/link or next/router, Next.js uses the precomputed JSON file as props for the page component. Therefore, client-side page transitions do not call getStaticProps.
+If Incremental Static Generation is used, getStaticProps will be executed in the background to generate the JSON needed for client-side navigation. This may result in multiple requests for the same page, but it is intended and does not impact end-user performance.
+Activity: Fill in the blanks
+Static Generation (SG) generates HTML at ________(build/run/request) time rather than run time.
+The function used in Next.js for Server-Side Rendering (SSR) is called ________ (getServerProps/getServerSideProps/getServerSide).
+When using getStaticProps, the function is executed on the ________ (client/server/both).
+getStaticProps generates both HTML and ________(javascript/JSON/CSS)  files, which a CDN can cache for better performance.
+Static Generation (SG) is a great approach for pages that can be ________(pre-rendered/client-rendered/server-rendered), such as marketing pages, blog posts, and e-commerce product listings.
+Answer
+Build
+getServerSideProps
+server
+JSON
+pre-rendered
+getStaticPaths
+To pre-render all paths specified by getStaticPaths for a page that uses dynamic routes and uses getStaticProps, you must export a function called getStaticPaths (Static Site Generation).
+// pages/posts/[id].js
+
+// Generates `/posts/1` and `/posts/2`
+export async function getStaticPaths() {
+  return {
+    paths: [{ params: { id: '1' } }, { params: { id: '2' } }],
+    fallback: false, // can also be true or 'blocking'
+  }
+}
+
+// `getStaticPaths` requires using `getStaticProps`
+export async function getStaticProps(context) {
+  return {
+    // Passed to the page component as props
+    props: { post: {} },
+  }
+}
+
+export default function Post({ post }) {
+  // Render post...
+}
+In development (next dev), getStaticPaths will be called on every request.
+When should getStaticPaths be used?
+You should use getStaticPaths if you’re statically pre-rendering pages that use dynamic routes and:
+The data comes from a headless CMS
+The data comes from a database
+The data comes from the filesystem
+The data can be publicly cached (not user-specific)
+The page must be pre-rendered (for SEO) and be very fast — getStaticProps generates HTML and JSON files, both of which can be cached by a CDN for performance
+getStaticPaths will only run during the production build, not during runtime.
+How do getStaticProps run with respect to getStaticPaths?
+getStaticProps runs during next build for any paths returned during the build.
+getStaticProps runs in the background when using fallback: true.
+getStaticProps is called before the first display when using fallback: blocking.
+Note:
+To use getStaticPaths, you need to use it together with getStaticProps.
+You cannot use getStaticPaths with getServerSideProps.
+You can export getStaticPaths from a Dynamic Route that also uses getStaticProps.
+You cannot export getStaticPaths from a non-page file like your components folder.
+You must export getStaticPaths as a standalone function, not as a property of the page component.
+Generating paths on-demand
+getStaticPaths allows you to decide which pages are created during the build instead of when they are needed with fallback. Creating more pages during a build will make it slower.
+You can postpone creating all pages until they are needed by returning an empty array for paths. This is useful when deploying your Next.js app to multiple environments. Example:
+// pages/posts/[id].js
+
+export async function getStaticPaths() {
+  /* When this is true (in preview environments) 
+    don't prerender any static pages (faster builds, 
+    but slower initial page load)
+  */
+
+  if (process.env.SKIP_BUILD_STATIC_GENERATION) {
+    return {
+      paths: [],
+      fallback: 'blocking',
+    };
+  }
+
+  // Call an external API endpoint to get posts
+  const res = await fetch('https://.../posts');
+  const posts = await res.json();
+
+  // Get the paths we want to prerender based on posts
+  // In production environments, prerender all pages
+  // (slower builds, but faster initial page load)
+  const paths = posts.map((post) => ({
+    params: { slug: post.slug },
+  }));
+
+  // { fallback: false } means other routes should 404
+  return { paths, fallback: false };
+}
+
+const DynamicPage = ({ slug }) => {
+  return (
+    <div>
+      <h1>Dynamic Page: {slug}</h1>
+      {/* Your content here */}
+    </div>
+  );
+};
+
+export default DynamicPage;
+Incremental Static Regeneration
+Next.js allows creating or updating static pages even after the site has been built. Incremental Static Regeneration (ISR) allows you to use static generation per page without rebuilding the entire site. This means that you can still enjoy the speed and efficiency of static pages while scaling up to millions of pages.
+To use ISR, add the revalidate prop to getStaticProps.
+function Blog({ posts }) {
+  return (
+    <ul>
+      {posts.map((post) => (
+        <li key={post.id}>{post.title}</li>))}
+    </ul>)
+}
+
+// This function gets called at build time on server-side.
+// It may be called again, on a serverless function, if
+// revalidation is enabled and a new request comes in
+export async function getStaticProps() {
+  const res = await fetch('https://.../posts')
+  const posts = await res.json()
+
+  return {
+    props: {
+      posts,
+    },
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every 10 seconds
+    revalidate: 10, // In seconds
+  }
+}
+
+// This function gets called at build time on server-side.
+// It may be called again, on a serverless function, if
+// the path has not been generated.
+export async function getStaticPaths() {
+  const res = await fetch('https://.../posts')
+  const posts = await res.json()
+
+  // Get the paths we want to pre-render based on posts
+  const paths = posts.map((post) => ({
+    params: { id: post.id },
+  }))
+
+  // We'll pre-render only these paths at build time.
+  // { fallback: 'blocking' } will server-render pages
+  // on-demand if the path doesn't exist.
+  return { paths, fallback: 'blocking' }
+}
+
+export default Blog
+If you request a pre-made page that was built when we created the website, it will display the saved page first.
+Any other requests for the same page within 10 seconds will also display the saved page immediately.
+After 10 seconds, the next request will still show the saved (old) page.
+Next.js will begin creating a new page in the background.
+When the new page is complete, Next.js will display the updated page and forget the old one. If creating the new page fails, the old page will still be displayed.
+If you request a page that has not yet been created, Next.js will create it for you when you request it for the first time. The next time you request it, you will receive the saved version instead of a new one.
+On-demand Revalidation
+If you set a revalidate time of 60, all visitors will see the same generated version of your site for one minute. After one minute, the cache will be cleared whenever someone visits the page again.
+Starting with v12.2.0, Next.js supports On-Demand Incremental Static Regeneration to manually purge the Next.js cache for a specific page. This makes it easier to update your site when:
+Content from your headless CMS is created or updated
+E-commerce metadata changes (price, description, category, reviews, etc.)
+You don't need to specify revalidate inside getStaticProps to use on-demand revalidation. If you omit to revalidate, Next.js will not revalidate the page until revalidate() is called.
+Using On-Demand Revalidation:
+To prevent unauthorized access to the revalidation API Route, your Next.js app needs a secret token. Create one that only your app knows. You can access the route manually or with a webhook using this URL structure:
+https://<your-site.com>/api/revalidate?secret=<token>
+Add the secret to your application's environment variables to complete the process, then create the revalidation API route.
+// pages/api/revalidate.js
+
+export default async function handler(req, res) {
+  // Check for secret to confirm this is a valid request
+  if (req.query.secret !== process.env.MY_SECRET_TOKEN) {
+    return res.status(401).json({ message: 'Invalid token' });
+  }
+
+  try {
+    // this should be the actual path not a rewritten path
+    // e.g. for "/blog/[slug]" this should be "/blog/post-1"
+    await res.revalidate('/path-to-revalidate');
+    return res.json({ revalidated: true });
+  } catch (err) {
+    // If there was an error, Next.js will continue
+    // to show the last successfully generated page
+    return res.status(500).send('Error revalidating');
+  }
+}
+Testing on-Demand ISR during development
+When you run your code locally with next dev, the getStaticProps function is called every time someone visits your website. To check if your on-demand ISR setup is correct, you need to create a build for your website and start the production server.
+$ next build
+$ next start
+Then, you can confirm that static pages have successfully been revalidated.
+Error handling and revalidation
+If there is a problem with background regeneration in getStaticProps, or if you intentionally cause an error, the last good page will still be shown. When the page is requested again, Next.js will attempt to run getStaticProps again.
+export async function getStaticProps() {
+  /* If this request throws an uncaught error, Next.js will
+		 not invalidate the currently shown page and
+		 retry getStaticProps on the next request. */
+  const res = await fetch('https://.../posts')
+  const posts = await res.json()
+
+  if (!res.ok) {
+    /* If there is a server error, you might want to throw an error 
+			 instead of returning so that the cache is not updated until 
+			 the next successful request.*/
+    throw new Error(`Failed to fetch posts, received status ${res.status}`)
+  }
+
+  // If the request was successful, return the posts and revalidate every 10 seconds.
+  return {
+    props: {
+      posts,
+    },
+    revalidate: 10,
+  }
+}
+Activity: Solve the riddle
+I am a function that generates HTML and JSON files. I work in tandem with another function called getStaticPaths. 
+I am a method used for statically pre-rendering pages with dynamic routes. You can create pages for various paths during the build process. 
+I allow you to decide which pages are created during the build and which ones are generated on demand. You can postpone creating all pages until they are needed. 
+I am used to automatically updating static pages even after building the website. I can be configured to revalidate the page data after a certain time interval. 
+I am a protective token authorizing requests to the on-demand Incremental Static Regeneration API Route. Without me, the revalidation process will not work.
+Answer
+getStaticProps
+getStaticPaths
+Incremental Static Regeneration
+Revalidate
+Secret Token
+Client-side Data Fetching
+Client-side data fetching is helpful when your page does not need to be indexed for SEO, does not require pre-rendering, or needs to update frequently. Unlike server-side rendering APIs, you can use client-side data fetching at the component level.
+When used at the page level, the data is fetched at runtime, and the page content updates as the data changes. When used at the component level, the data is fetched when the component loads, and the component content updates as the data changes.
+It is important to note that using client-side data fetching can affect your application's performance and page load speed because the data is fetched when the component or page loads and the data is not cached.
+Client-side data fetching with useEffect
+The following example shows how you can fetch data on the client side using the useEffect hook.
+import { useState, useEffect } from 'react'
+
+function Profile() {
+  const [data, setData] = useState(null)
+  const [isLoading, setLoading] = useState(false)
+
+  useEffect(() => {
+    setLoading(true)
+    fetch('/api/profile-data')
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data)
+        setLoading(false)
+      })
+  }, [])
+
+  if (isLoading) return <p>Loading...</p>if (!data) return <p>No profile data</p>return (
+    <div>
+      <h1>{data.name}</h1>
+      <p>{data.bio}</p>
+    </div>)
+}
+Client-side data fetching with SWR
+The creators of Next.js made a tool called SWR to help fetch data on the client side. Using SWR is a good idea because it can cache the data, check if it is still up-to-date, and fetch it again if needed.
+With SWR, your components will automatically receive constant data updates, making your user interface fast and reactive. You can still get the profile data just like you did before, but now SWR will handle the caching and updating of the data for you.
+import useSWR from 'swr'
+
+const fetcher = (...args) => fetch(...args).then((res) => res.json())
+
+function Profile() {
+  const { data, error } = useSWR('/api/profile-data', fetcher)
+
+  if (error) return <div>Failed to load</div>if (!data) return <div>Loading...</div>return (
+    <div>
+      <h1>{data.name}</h1>
+      <p>{data.bio}</p>
+    </div>)
+}
+Summary
+What did we learn?
+In Server-side Rendering (SSR), the content is rendered on the server, reducing Time To First Byte (TTFB) and improving SEO. The getServerSideProps function is used for dynamic server-side content.
+In Static Generation (SG), HTML is generated at build time, resulting in speedy, scalable sites. The getStaticProps function is used for generating static content at build time.
+Incremental Static Regeneration (ISR) allows updating or creating new pages at runtime without re-rendering the entire site. It's useful for pages with occasional changes.
+getServerSideProps pre-render the page on each request using fetched data, and it runs on the server side, not on the client, and is useful for frequently changing data or user-specific data, returns JSON used to render the page.
+getStaticProps pre-render the page at build time using fetched data. It is executed on the server side during next build and on every request during development. It creates both HTML and JSON files for better performance.
+getStaticPaths is used with dynamic routes and getStaticProps to pre-render specified paths. It runs only during production build and not during runtime. Useful for pages with dynamic routes and data from sources like headless CMS, databases, or filesystems.
+Next.js allows creating or updating static pages without rebuilding the entire site using Incremental Static Regeneration (ISR). When a pre-made page is requested, the saved page is displayed immediately. Subsequent requests within 10 seconds also show the saved page.
+On-Demand Revalidation allows manually purging the Next.js cache for specific pages, which is useful for updating content from headless CMS or e-commerce metadata changes. 
+Client-side data fetching is used when SEO indexing or pre-rendering is unnecessary and the data needs frequent updates.
+It can be used at the page or component level. Data fetched at the page level updates the entire page content, while component-level data fetching updates only that component's content.
+Next.js provides the tool SWR for client-side data fetching, which caches and updates data automatically for fast and reactive user interfaces.
+Best Practices
+Avoid making too many API requests, which can slow down your website. Instead, try to fetch data in batches or as needed.
+Use ISR to update data regularly without rebuilding the entire website. This technique can help you keep your website up-to-date while minimizing downtime.
+Avoid blocking the main thread while fetching data, leading to slow page load times. 
+Shortcomings & Challenges
+Higher complexity than traditional React development results in a higher learning curve.
+Limited browser support, requiring modern browser support that may not be available on older devices or browsers.
+Performance trade-offs may result in longer build times and higher server loads.
+ 
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+Building Forms: https://nextjs.org/docs/pages/building-your-application/data-fetching/building-forms
+Data Fetching: https://nextjs.org/docs/pages/building-your-application/data-fetching
+Caching in Next.js: https://javascript.plainenglish.io/how-to-cache-api-calls-in-next-js-f4b6aefa84f1
+ 
+Try it Yourself
+Let's solve these coding problems in the AlmaBetter IDE. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
+Task 1: Master Frontend Challenges in the VS Code IDE and Elevate Your Skillset with Creative Solutions.
+Problem
+Implement Conditional Rendering 
+Folder Structure:
+my-next-app/
+  |- components/
+  |    |- ConditionalComponent.js
+  |- pages/
+  |    |- index.js
+  |- package.json
+Create a component for conditional rendering.
+Implement conditional rendering on a page through a button that will show the text “Welcome to AlmaBetter!” when clicked (true), and the text will be hidden when the button is clicked again (false). 
+Run the Next.js development server.
+Hint: Implement a ternary operator.
+Solution
+// components/ConditionalComponent.js
+
+const ConditionalComponent = ({ showComponent }) => {
+  return (
+    <div>
+      {showComponent ? <p>Welcome to AlmaBetter!</p> : null}
+    </div>
+  );
+};
+
+export default ConditionalComponent;
+// pages/index.js
+
+import React, { useState } from 'react';
+import ConditionalComponent from '../components/ConditionalComponent';
+
+const HomePage = () => {
+  const [showComponent, setShowComponent] = useState(true);
+
+  const handleToggleComponent = () => {
+    setShowComponent((prevShowComponent) => !prevShowComponent);
+  };
+
+  return (
+    <div>
+      <h1>Conditional Rendering in Next.js</h1>
+      <button onClick={handleToggleComponent}>
+        {showComponent ? 'Hide Component' : 'Show Component'}
+      </button>
+      <ConditionalComponent showComponent={showComponent} />
+    </div>
+  );
+};
+
+export default HomePage;
+Task 2: After solving this question, how do you feel about your confidence level in this lesson? Share your experience and insights with your Cohort group on AlmaBetter's Community Platform.
