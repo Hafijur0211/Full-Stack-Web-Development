@@ -1,0 +1,378 @@
+Layout & Styles
+Session Flow
+Learning Objective
+Introduction
+Theme
+Primary Goals
+Layout & Styles
+Layout
+CSS Modules
+How to use CSS Modules?
+Global CSS
+Drawbacks of Global CSS
+External Stylesheet
+Activity: Fill in the blanks
+CSS-in-JS Libraries
+CSS Performance
+Summary
+What did we learn?
+Best Practices
+Shortcomings & Challenges
+Enhance your knowledge
+Try it Yourself
+ 
+Learning Objective
+Introduction
+Whether you're building a simple website or a complex web app, Next.js provides flexible and powerful approaches for styling your components and pages. With support for various styling methodologies, Next.js allows developers to choose the best approach that fits their workflow and project requirements.
+Focus: Layout, CSS Module, Global CSS, External Stylesheet, CSS-in-JS Libraries, and CSS Performance
+Pre-requisite: Basics of Next.js
+Theme
+Where we're building an e-commerce product listing page using Next.js, it will benefit from the strengths of each styling approach: CSS Modules ensure that the styles for the product card component are encapsulated and do not interfere with other parts of the application.
+Global CSS maintains consistent styling across all pages, providing a unified look and feel for the entire website.
+Tailwind CSS's utility classes speed up styling for common elements, enhancing development efficiency.
+Styled Components allow us to apply dynamic and custom styles to the user review section, creating an interactive user experience.
+CSS performance optimizations, such as minification and bundling, improve the loading speed of the web application.
+Primary Goals
+Familiarise yourself with various layout options available in Next.js.
+Learn the benefits of CSS Modules for component-based styling, avoiding global style conflicts, and maintaining a modular codebase.
+Master integrating global CSS files in Next.js to achieve consistent styling across all pages.
+Learn how to use popular CSS-in-JS libraries like Styled Components or Emotion in a Next.js project.
+Gain knowledge of best practices for writing efficient and maintainable CSS code.
+ 
+Layout & Styles
+Layout
+Layout styling is a fundamental aspect of web development that involves arranging and positioning elements on a web page. Several layout systems are available, but three popular ones are Flexbox, Grid, and the traditional layout system using elements like float, position, and display.
+Flexbox: Flexbox is a one-dimensional layout system that allows you to distribute elements along a single axis (either horizontally or vertically). It is particularly useful for creating responsive and flexible layouts. To use Flexbox, you apply the display: flex; property to the parent container, and it automatically arranges the child elements in a row (default) or column.
+Basic properties of Flexbox:
+display: flex;: Defines a flex container.
+flex-direction: Sets the direction of the main axis (row, column, row-reverse, column-reverse).
+justify-content: Aligns items along the main axis (flex-start, flex-end, center, space-between, space-around, space-evenly).
+align-items: Aligns items along the cross axis (flex-start, flex-end, center, baseline, stretch).
+flex: Defines how a flex item should grow or shrink relative to its siblings.
+CSS Grid: CSS Grid is a two-dimensional layout system that enables you to create complex grid structures for your web page. Unlike Flexbox, it works simultaneously in both row and column directions, making it ideal for creating multi-dimensional layouts.
+Basic properties of CSS Grid:
+display: grid;: Defines a grid container.
+grid-template-columns and grid-template-rows: Defines the columns and rows of the grid, specifying their size and flexibility.
+grid-gap (or gap): Defines the gap between grid cells.
+grid-template-areas: You can name grid areas and place items inside those areas using the grid-area property.
+Traditional Layout System: Before Flexbox and CSS Grid, web developers used a combination of float, position, and other properties to create layouts. While this approach is still in use, it's less common than using Flexbox or Grid due to its more powerful and flexible capabilities.
+Some properties used in the traditional layout system:
+float: This property allows elements to float to the left or right, allowing text and other elements to wrap around them.
+position: Elements can be positioned with position: static (default), position: relative, position: absolute, or position: fixed. Absolute and fixed positioning remove elements from the normal flow of the document.
+display: The display property can be used with values like block, inline, inline-block, etc., to control the layout behavior of elements.
+It's important to note that Flexbox and CSS Grid are more modern and recommended approaches for creating layouts because they provide more control and flexibility, especially for responsive designs. However, the traditional layout system still has its uses in specific scenarios.
+Unlock the true potential of your Next.js page by harnessing the dynamic powers of CSS, TailwindCSS, or Bootstrap! These design powerhouses will supercharge your layout skills and take your styling game to a whole new level. Whether you prefer the classic charm of CSS, the sleek efficiency of TailwindCSS, or the tried-and-true reliability of Bootstrap, the choice is yours! Let your creativity run wild and watch your Next.js page transform into a stunning masterpiece.
+CSS Modules
+In Next.js, CSS Modules are a popular approach for styling components in a modular and scoped manner. It allows you to write CSS styles for a specific component and ensures that those styles only apply to that component, preventing global style conflicts. CSS Modules automatically generate unique class names for your CSS classes, making them locally scoped to the component where they are imported.
+Here are some key benefits and features of using CSS Modules in Next.js:
+Modularity: With CSS Modules, you can create self-contained CSS files for each component. This promotes a modular approach, making it easier to maintain and refactor your codebase.
+Local Scope: The CSS class names defined in a CSS Modules file are automatically transformed into unique names, ensuring they are locally scoped to the component where they are imported. This prevents global style pollution.
+No Global Namespace: Since CSS Modules avoid using global CSS classes, it helps avoid naming collisions that can occur in large projects with traditional global styles.
+Readable and Descriptive Class Names: You can use meaningful class names in your CSS Modules, making it easier to understand the styles and their purpose within the component.
+Classname Composition: CSS Modules allow you to compose multiple class names in a component, making it convenient to apply different styles based on various conditions.
+Isolation: Each component's styles are isolated, meaning changes to one component won't unintentionally affect the styles of other components.
+Performance: CSS Modules can improve performance by reducing the size of CSS bundles due to the locally scoped nature of class names.
+How to use CSS Modules?
+To start using CSS Modules in Next.js, you need to follow the naming convention of "filename.module.css" for your CSS files. Next.js will automatically recognize and process these files as CSS Modules.
+Setup:
+Setting up CSS Modules: To use CSS Modules in Next.js, you must follow a specific naming convention for your CSS files. For example, if your component is named "Button," the corresponding CSS file should be named "Button.module.css”.
+Creating a Component with CSS Modules:
+Let's create a simple Button component and style it using CSS Modules:
+// components/Button.js
+
+import React from 'react';
+import styles from './Button.module.css';
+
+const Button = ({ text }) => {
+  return <button className={styles.button}>{text}</button>;
+};
+
+export default Button;
+/* components/Button.module.css */
+
+.button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+Using the Component:
+Now you can use the Button component in your pages or other components, and the CSS styles will be applied only to that specific instance of the component:
+// pages/index.js
+
+import React from 'react';
+import Button from '../components/Button';
+
+const HomePage = () => {
+  return (
+    <div>
+      <h1>Hello Next.js</h1>
+      <Button text="Click Me" />
+    </div>
+  );
+};
+
+export default HomePage;
+Output:
+notion image
+Global CSS
+Global CSS in Next.js is a style that applies across your entire application, affecting all components and pages uniformly. When using global CSS, the styles you define will be present on every page and component, providing a consistent look and feel throughout the application.
+Steps:
+Step 1: Create a Global CSS File
+Inside your Next.js project, create a new CSS file in the "styles" directory (if it doesn't exist). Name the file as "globals.css”. 
+Step 2: Add Global CSS Rules
+In the globals.css file, add the global CSS rules you want to apply to the index.js page or the entire application.
+/* styles/globals.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #efbcbc;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: rgb(42, 6, 163);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1.2rem;
+  color: rgb(72, 2, 12);
+  line-height: 1.6;
+}
+Step 3: Import the Global CSS in index.js
+In the pages/index.js file, import the global CSS file you just created using the Head component from next/head.
+// pages/index.js
+
+import React from 'react';
+
+
+const Home = () => {
+  return (
+    <div>
+      <h1>Welcome to Full Stack Course by AlmaBetter!</h1>
+      <p>Happy Coding!</p>
+    </div>
+  );
+};
+
+export default Home;
+Run the server.
+notion image
+Drawbacks of Global CSS
+While using global CSS can be convenient and suitable for certain scenarios, it also comes with some drawbacks that you should be aware of:
+Potential Style Conflicts: When using global CSS, it's easier to accidentally create style conflicts, especially in larger projects with multiple developers. If two different components use the same class name for styling, unintended style overrides can occur, leading to unexpected behavior and difficult-to-debug issues.
+Specificity Issues: Global CSS is more specific than local CSS (CSS Modules, Styled Components, etc.). This can make it challenging to override specific styles for individual components when needed, as global styles have a higher priority in the CSS cascade.
+Lack of Encapsulation: Global CSS does not provide the same level of encapsulation as other styling approaches like CSS Modules or Styled Components. Changes to global styles can impact the entire application, making it harder to isolate and maintain individual components.
+Performance Impact: Global CSS can lead to larger CSS bundles, as all styles defined in the global CSS file are applied to every application page. This can affect performance, especially for users on slower internet connections or mobile devices.
+Maintainability Challenges: Maintaining global CSS can become challenging as the project grows. It may be harder to keep track of all the styles applied across different components, leading to potential conflicts and difficulties in making changes.
+Less Predictable Dependencies: Global CSS can introduce unpredictable dependencies between components. If a component relies on styles defined in the global CSS, it becomes less portable and harder to reuse in different projects.
+Namespacing Issues: When using global CSS, it's crucial to ensure that class names are unique and won't clash with external libraries or future updates to the project.
+CSS Reset/Normalization: You may need to include a CSS reset or normalization file to ensure consistent rendering across different browsers, which can add to the project's CSS file size.
+However, it's essential to be mindful of potential issues and consider other styling approaches like CSS Modules or Styled Components, which provide better encapsulation and organization of styles. If you choose to use global CSS, following best practices and keeping the styles as modular and manageable as possible is essential.
+Simple to use and familiar for those experienced with traditional CSS, but it can lead to larger CSS bundles and difficulty managing styles as the application grows.
+External Stylesheet
+In Next.js, you can use external stylesheets to apply styles to your components and pages. External stylesheets are CSS files hosted on external servers or provided by external packages. These stylesheets can be imported and used in your Next.js application, allowing you to leverage pre-built styles from external sources or maintain your styles separately from your application code.
+Install External Package :
+If you want to use an external package that provides a stylesheet, you need to install the package using npm or yarn. For example, if you want to use a CSS framework like Bootstrap or a styling library like Tailwind CSS, you can install the package as follows:
+npm install bootstrap@5.3.1
+# or
+gem install bootstrap -v 5.3.1
+Step 1: Import the External Stylesheet:
+Once the package is installed, you can import the external CSS file directly into your components or pages. In Next.js, you can do this in multiple places:
+Inside a specific component:
+// components/MyComponent.js
+
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap stylesheet
+
+const MyComponent = () => {
+  return (
+    <div>
+      {/* Your component's content */}
+    </div>
+  );
+};
+
+export default MyComponent;
+Inside a Page:
+// pages/index.js
+
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap stylesheet
+
+const HomePage = () => {
+  return (
+    <div>
+      {/* Your page content */}
+    </div>
+  );
+};
+
+export default HomePage;
+Inside the _app.js file (to apply the external stylesheet globally):
+// pages/_app.js
+
+import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap stylesheet
+
+function MyApp({ Component, pageProps }) {
+  return <Component {...pageProps} />;
+}
+
+export default MyApp;
+Step 2: Use the Imported Styles:
+Once you've imported the external stylesheet, the styles provided by the package will be applied to your components or pages as intended. For example, if you imported Bootstrap, you can now use Bootstrap's classes to style your components:
+// page/index.js
+
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css'; 
+
+
+const Home = () => {
+  return (
+    <div className="container">
+      <p className="display-6 font-monospace fw-bold text-primary">Welcome to Full Stack Course by AlmaBetter!</p>
+      <p className="lead fst-italic text-danger">Happy Coding!</p>
+    </div>
+  );
+};
+
+export default Home;
+Run the server.
+notion image
+External stylesheets can be handy when using existing styles from popular CSS frameworks, libraries, or external sources. It helps to keep your application code and styles separate, promoting better organization and maintainability. Additionally, using external stylesheets can save you time, as you can leverage pre-built styles and focus on building the functionality of your components and pages.
+Activity: Fill in the blanks
+The ________________ (traditional layout system/modern layout system/advanced layout system) involves using a combination of float, position, and other properties to create layouts.
+The ___________ (dynamic CSS/local CSS/global CSS) style applies across the entire application, affecting all components and pages uniformly.
+CSS Modules allow you to create __________ (global/self-contained/external) CSS files for each component, promoting a modular approach in styling.
+CSS Grid works simultaneously in both _____________ (main and cross axes/row and column directions/horizontal and vertical directions).
+Global CSS can lead to larger CSS bundles, which may impact _____________ (readability/performance/Consistency).
+Answer
+traditional layout system
+global CSS
+self-contained
+row and column
+performance
+CSS-in-JS Libraries
+Next.js allows you to use various CSS-in-JS libraries for styling your components. CSS-in-JS is an approach where you write your CSS styles directly in your JavaScript code. This allows for more modular, scoped, and component-based styling. Here are some popular CSS-in-JS libraries that you can use in Next.js:
+Styled Components: Styled Components is one of the most popular CSS-in-JS libraries. It allows you to define styles as tagged template literals, creating a natural and intuitive way to style your components. Styled Components also provide great support for theming and dynamic styling.
+Emotion: Emotion is another powerful CSS-in-JS library with great performance and flexibility. It provides various features like nested selectors, theming, and global styles. Emotion also supports server-side rendering (SSR) in Next.js out of the box.
+notion image
+Material-UI: Material-UI is a popular UI component library for React, and it has built-in styles that can be used directly in your Next.js components. Material-UI provides a rich set of pre-built components with consistent Material Design styles.
+notion image
+Tailwind CSS: Although not a CSS-in-JS library, Tailwind CSS is a utility-first CSS framework that works very well with Next.js. You can use it in combination with the other CSS-in-JS libraries to take advantage of its utility classes for rapid UI development.
+Chakra UI: Chakra UI is another popular UI component library offering accessible and customizable components. Chakra UI provides a styled component API with built-in theming and style props for easy customization.
+notion image
+When using CSS-in-JS libraries in Next.js, you can choose the one that best fits your development workflow, coding style, and requirements. Many of these libraries work seamlessly with Next.js, providing SSR support, efficient server rendering, and a great developer experience. Additionally, Next.js makes it easy to use these libraries, allowing you to focus on building well-styled and performant React components for your web application.
+CSS Performance
+Writing performant CSS is crucial for improving the overall application performance in Next.js. Here are some best practices to follow:
+Minimize CSS Size: Minimize the size of your CSS files by removing unnecessary styles, comments, and whitespace. Smaller CSS files load faster, reducing the time required for initial page rendering.
+Use CSS Minification: Minify your CSS files before deploying them to production. Minification removes unnecessary spaces, line breaks, and comments to reduce file size further.
+Use CSS Sprites: Combine small images/icons into CSS sprites. CSS sprites reduce the number of HTTP requests, leading to faster page load times.
+Leverage Browser Caching: Set appropriate cache headers for your CSS files so that the user's browser can cache them. Cached files load faster on subsequent visits.
+Avoid Inline Styles: Minimize the use of inline styles as they can make the HTML markup larger and harder to maintain. Instead, keep the CSS in separate files and use class names to style elements.
+Reduce Specificity: Avoid using overly specific selectors in your CSS rules. High specificity can lead to slower CSS processing and make it harder to override styles when needed.
+Limit the Use of !important: Overusing !important can lead to specificity issues and make the CSS harder to maintain. Use it sparingly and only when necessary.
+Avoid Global Styles: Minimize the use of global CSS styles that apply to the entire application. Instead, I prefer component-based styling using CSS Modules or Styled Components.
+Utilize Server-Side Rendering (SSR): Take advantage of Next.js's server-side rendering (SSR) capabilities. SSR can inline critical CSS styles directly into the HTML, improving the initial render time.
+Lazy Load CSS: Load CSS files asynchronously or lazily when they are required on specific pages. This can improve the initial page load time.
+Optimize Background Images: Optimize background images to reduce file size. Use appropriate image formats (e.g., WebP) and compress images without significantly losing quality.
+Use Media Queries Wisely: Use media queries to deliver responsive styles to different devices. Avoid overly complex media queries that can slow down CSS rendering.
+Consider Critical CSS: Implement critical CSS techniques to deliver essential above-the-fold styles inline, reducing the time first to render.
+ 
+Summary
+What did we learn?
+CSS Modules are a popular approach in Next.js for styling components in a modular and scoped manner. CSS Modules ensure that styles only apply to the specific component where they are imported, preventing global style conflicts.
+Benefits of CSS Modules include modularity, local scope, no global namespace, readable class names, class name composition, isolation, and performance improvements.
+Global CSS in Next.js applies styles across the entire application, leading to potential style conflicts in larger projects. Global CSS has higher specificity than local CSS, making overriding specific styles for individual components harder.
+Next.js allows using external stylesheets, CSS-in-JS libraries, or CSS frameworks to style components and pages. External stylesheets are CSS files hosted externally or provided by packages, which can be imported into Next.js applications.
+CSS-in-JS libraries like Styled Components, Emotion, styled-jsx, Material-UI, Tailwind CSS, and Chakra UI offer modular and scoped styling.
+To ensure CSS performance, follow best practices: minimize CSS size, use CSS minification, employ CSS sprites, and leverage browser caching.
+Avoid inline styles, reduce specificity, and limit the use of !important to maintain CSS efficiently. Prefer component-based styling using CSS Modules or Styled Components over global styles.
+Utilize Next.js's SSR capabilities to inline critical CSS styles for faster initial rendering. Lazy load CSS files as needed to improve page load time.
+Optimize background images and use media queries wisely for responsive styles. Consider implementing critical CSS techniques to deliver essential above-the-fold styles inline.
+Best Practices
+Component-based Styling: Prefer component-based styling using CSS Modules or Styled Components over global styles. This improves code organization and makes it easier to maintain and update styles.
+Avoid Inline Styles: Minimize the use of inline styles as they can make the HTML markup larger and harder to maintain. Instead, keep the CSS in separate files and use class names to style elements.
+Server-Side Rendering (SSR): Utilize Next.js's SSR capabilities to inline critical CSS styles directly into the HTML, improving the initial render time and avoiding flash of unstyled content (FOUC).
+Critical CSS Techniques: Consider implementing critical CSS techniques to deliver essential above-the-fold styles inline, reducing the time first to render and improving user experience.
+Shortcomings & Challenges
+Performance Overhead: Global CSS may result in larger file sizes and slower loading times due to unnecessary styles being applied to the entire application.
+Specificity Problems: Higher specificity in global CSS can cause unexpected behavior when applying specific styles to individual components.
+Dependency Management: Relying on external stylesheets or CSS-in-JS libraries can introduce dependency management challenges, particularly when different components require different versions or styles.
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+https://blog.logrocket.com/best-styling-options-nextjs/ 
+https://www.smashingmagazine.com/2021/07/global-local-styling-nextjs/
+https://nextjs.org/blog/styling-next-with-styled-jsx
+ 
+Try it Yourself
+Let's solve these coding problems in the AlmaBetter IDE. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
+Task 1: Want to showcase your frontend coding skills? Solve these problems seamlessly in the VS Code IDE.
+Problem
+Suppose you have a page component named "ProfilePage" that displays a user's profile information and a profile picture. 
+Name: John Doe
+Email: john.doe@example.com
+Location: New York, USA
+How would you write the CSS styles for the "ProfilePage" component inside the component's JSX? You're free to apply any style.
+Solution
+// pages/profile.js
+
+const ProfilePage = () => {
+  return (
+    <div className="profile-container">
+      <div className="profile-details">
+        <img src="/profile-picture.png" alt="User Profile" />
+        <div className="profile-info">
+          <p>Name: John Doe</p>
+          <p>Email: john.doe@example.com</p>
+          <p>Location: New York, USA</p>
+        </div>
+      </div>
+      <style jsx>{`
+        .profile-container {
+          padding: 20px;
+          background-color: #f0f0f0;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+          font-size: 24px;
+          color: #333;
+          margin-bottom: 10px;
+        }
+
+        .profile-details {
+          display: flex;
+          align-items: center;
+        }
+
+        img {
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+          margin-right: 20px;
+        }
+
+        .profile-info {
+          font-size: 16px;
+          color: #555;
+        }
+
+        p {
+          margin: 5px 0;
+        }
+      `}</style>
+    </div>
+  );
+};
+
+export default ProfilePage;
+Task 2: Collaborate with fellow students in the AlmaBetter's Community platform and showcase your innovative and unique styling concepts.
