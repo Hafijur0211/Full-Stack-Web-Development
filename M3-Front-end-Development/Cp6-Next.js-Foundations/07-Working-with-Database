@@ -1,0 +1,305 @@
+Working with Database
+Session Flow
+Learning Objective
+Introduction
+Theme
+Primary Goals
+Working with Database
+API Routes
+Creating an API Route
+Handling Different HTTP Methods
+Query Parameters and Body Data
+Connecting to a Database & Querying the Data 
+Connecting to a Database
+Querying Data
+Activity: Crossword
+Fetching the Data from a Database 
+Assets in NextJS
+Static Assets
+Importing Assets
+Optimizing Assets
+Metadata in NextJS
+Activity: True/False
+Best Practices with Respect to Assets and Metadata
+Summary
+What did we learn?
+Best Practices
+Shortcomings & Challenges
+Enhance your knowledge
+Try it Yourself
+Learning Objective
+Introduction
+In NextJS, you can work with databases like MongoDB and PostgreSQL using libraries such as Mongoose and Sequelize. You can perform operations like querying and updating data. To avoid security vulnerabilities and performance issues, make sure to handle database connections and queries correctly.
+Focus: API Routes, database connection, Assets, metadata, and best practices in NextJS
+Pre-requisite: Basics of NextJS
+Theme
+The retailer's web application needs to have a database to store information on products, customers, and orders. Using NextJS, the web application can fetch data from the database on the server side and render it on the client side. This is a more efficient and faster way of delivering content to the user, as the data can be preloaded and cached. NextJS can also be used to handle form submissions and other database interactions, ensuring that the data is properly validated and sanitized before being stored in the database. This is important for maintaining data integrity and protecting against security vulnerabilities.
+By using databases in NextJS, the online retailer can provide a more seamless and secure user experience for its customers. The retailer can also analyze data from the database to gain insights into customer behavior and preferences, which can inform marketing and sales strategies.
+Primary Goals
+Learn how to create API routes in NextJS to handle database interactions
+Understand how to connect to a database and perform queries using libraries like Mongoose and Sequelize
+Explore different methods for fetching data from a database in NextJS, including server-side rendering and client-side rendering
+Learn how to handle assets and metadata in NextJS when working with databases
+ 
+Working with Database
+API Routes
+NextJS provides built-in API routes feature that allows developers to create serverless functions and endpoints for handling server-side logic and data fetching. These API routes can be used to create RESTful APIs, GraphQL endpoints, or handle any other custom server-side logic.
+Creating an API Route
+To create an API route in NextJS, create a new file inside the pages/api directory. The file should have the .js extension and export a default function that handles the incoming requests.
+Here's an example of a simple API route that returns a JSON response:
+export default function handler(req, res) {
+  res.status(200).json({ name: 'John Doe' })
+}
+Handling Different HTTP Methods
+API routes in NextJS can handle different HTTP methods such as GET, POST, PUT, DELETE, etc. You can use a switch statement inside the handler function to handle different methods and check for the method using the req.method property.
+Here's an example of an API route that handles both GET and POST requests:
+export default function handler(req, res) {
+  switch (req.method) {
+    case 'GET':
+      // handle GET request
+      res.status(200).json({ message: 'This is a GET request' })
+      break
+    case 'POST':
+      // handle POST request
+      res.status(200).json({ message: 'This is a POST request' })
+      break
+    default:
+      res.status(405).end() // method not allowed
+      break
+  }
+}
+Query Parameters and Body Data
+API routes in NextJS can also handle query parameters and request body data. To handle query parameters, you can use the req.query object, which contains key-value pairs of all the query parameters in the request URL.
+Here's an example of an API route that handles query parameters:
+export default function handler(req, res) {
+  const { name } = req.query
+
+  res.status(200).json({ message: `Hello ${name}` })
+}
+To handle request body data, you can use the req.body object, which contains the parsed JSON data if the request header contains the Content-Type: application/json header.
+Here's an example of an API route that handles request body data:
+export default function handler(req, res) {
+  const { username, password } = req.body
+
+  // validate username and password
+  // ...
+
+  res.status(200).json({ message: 'Login successful' })
+}
+ 
+API routes in NextJS provide a simple and efficient way to create serverless functions and endpoints for handling server-side logic and data fetching. With support for different HTTP methods, query parameters, and request body data, developers can easily create RESTful APIs or custom server-side logic to meet their application needs.
+Connecting to a Database & Querying the Data 
+NextJS is a popular React-based framework used for building server-side applications. It offers a powerful API for server-side rendering, routing, and other functionalities. This document explores how to connect NextJS to a database and query its data.
+Connecting to a Database
+Connecting NextJS to a database requires using middleware such as mongoose, mysql, pg, sequelize, or others. In this example, we'll use mongoose, a popular MongoDB middleware.
+First, install mongoose and dotenv packages by running the following command in your terminal:
+npm install mongoose dotenv
+Next, create a .env file in the root directory of your project and add your database connection string as follows:
+DB_CONNECTION_STRING=mongodb://localhost:27017/mydatabase
+Then, create a db.js file in the lib directory of your project with the following code:
+import mongoose from 'mongoose'
+
+const connection = {}
+
+async function connect() {
+  if (connection.isConnected) {
+    return
+  }
+
+  const db = await mongoose.connect(process.env.DB_CONNECTION_STRING, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+
+  connection.isConnected = db.connections[0].readyState
+}
+
+async function disconnect() {
+  if (!connection.isConnected) {
+    return
+  }
+
+  await mongoose.disconnect()
+}
+
+export default { connect, disconnect }
+This file exports an object with connect and disconnect methods that we can use to connect and disconnect from the database. The connect method connects to the database using the DB_CONNECTION_STRING environment variable we defined in the .env file.
+Querying Data
+Once we've connected to the database, we can query data from it using the mongoose API. 
+Here's an example of how to do that:
+import db from '../../lib/db'
+import User from '../../models/User'
+
+async function handler(req, res) {
+  await db.connect()
+
+  const users = await User.find({}, '-password')
+
+  await db.disconnect()
+
+  res.status(200).json(users)
+}
+
+export default handler
+This code imports the db object we defined earlier and the User model we've created. The handler function connects to the database using the db.connect() method, queries all users from the User collection while excluding the password field, and sends the data as a JSON response using res.status(200).json(users). Finally, it disconnects from the database using the db.disconnect() method.
+ 
+We've seen how to connect NextJS to a database using the mongoose middleware and query data from it using the mongoose API. With this knowledge, you can build powerful server-side applications that interact with databases and serve dynamic content to your users.
+Activity: Crossword
+notion image
+notion image
+Answer
+notion image
+Fetching the Data from a Database 
+NextJS is a robust framework that enables server-side rendering, static site generation, and client-side rendering. When working with NextJS, sometimes we need to fetch data from a database to display on our web pages. 
+This topic will discuss the process and steps required to fetch data from a database while working with NextJS.
+Step 1: Set Up a Database
+The first step is to set up a database. Various databases are available such as MySQL, PostgreSQL, MongoDB, etc. Choose a database that best suits your requirements and set it up accordingly.
+Step 2: Install Dependencies
+Next, you must install the required dependencies to connect to the database. For example, if you're using MongoDB, you must install the MongoDB package. Use the following command to install the MongoDB package:
+npm install mongodb
+Step 3: Create a Connection
+After installing the required dependencies, you must connect to the MongoDB database. You can do this by creating a new file and writing the following code:
+import { MongoClient } from 'mongodb'
+
+export async function connectToDatabase() {
+  const client = await MongoClient.connect(process.env.MONGODB_URI)
+  return client
+}
+In the above code, we create a new connection to a MongoDB database with the URI stored in an environment variable.
+Step 4: Write Queries
+Now that we have established a connection to the MongoDB database, we can write queries to fetch data from it. For example, if you want to fetch all the documents from a collection named 'users', you can write the following query:
+import { connectToDatabase } from './mongodb'
+
+export default async function handler(req, res) {
+  const client = await connectToDatabase()
+  const db = client.db()
+
+  const usersCollection = db.collection('users')
+  const users = await usersCollection.find().toArray()
+
+  res.status(200).json(users)
+}
+In the above code, we are fetching all the documents from the 'users' collection and then sending the fetched data as JSON in the response.
+Step 5: Display Data on Web Pages
+Finally, you can display the data on your web pages using NextJS's built-in data fetching methods. For example, if you want to fetch data on the server side, you can use the 'getServerSideProps' method. Here is an example:
+import { connectToDatabase } from '../lib/mongodb'
+
+export async function getServerSideProps() {
+  const client = await connectToDatabase()
+  const db = client.db()
+
+  const usersCollection = db.collection('users')
+  const users = await usersCollection.find().toArray()
+
+  return {
+    props: {
+      users: users.map((user) => ({
+        id: user._id.toString(),
+        name: user.name,
+        email: user.email,
+      })),
+    },
+  }
+}
+
+export default function Users({ users }) {
+  return (
+    <div>
+      <h1>Users</h1>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>
+            <p>{user.name}</p>
+            <p>{user.email}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+In the above code, we are fetching all the documents from the 'users' collection on the server side using the 'getServerSideProps' method. We then pass the fetched data as props to the 'Users' component and display it in an unordered list.
+That's it! You have successfully fetched data from MongoDB while working with NextJS.
+Assets in NextJS
+Assets in Next.js refer to any external resources that are used in a website or web application, such as images, stylesheets, or JavaScript files. In Next.js, there are several ways to handle assets.
+Static Assets
+Static assets are files that are served directly to the client without any processing. These can include images, font files, and other resources that are not dynamically generated. In Next.js, static assets can be stored in the public directory at the root level of the project. Next.js automatically serve these files and can be accessed using the public directory path. For example, if you have an image called logo.png stored in the public directory, you can include it in your application using the following code:
+<img src="/logo.png" alt="Logo" />
+Importing Assets
+Next.js also lets you import assets directly into your JavaScript or TypeScript files. This can be useful for including stylesheets or JavaScript modules that are specific to a particular component or page. You can use the import statement with the relative path to the asset to import an asset. For example, to import a stylesheet called styles.css located in the same directory as your component, you can use the following code:
+import styles from './styles.css';
+Optimizing Assets
+Next.js also includes several features to optimize the loading of assets in your application. These include automatic image optimization, which compresses and resizes images to reduce their file size, and code splitting, which allows you to load only the JavaScript and CSS that is needed for a particular page or component.
+Overall, Next.js provides a flexible and efficient way to handle assets in your web application, making it easier to create high-performance websites and applications that are optimized for speed and user experience.
+Metadata in NextJS
+Metadata in Next.js refers to information about a web page that is not displayed directly on the page itself but is included in the HTML code of the page. This metadata can include information such as the page title, description, keywords, author, and other information that search engines and other services can use to understand and categorize the page's content.
+ 
+In Next.js, you can include metadata in your pages using the Head component, which allows you to add custom HTML code to your pages' <head> section. 
+For example, to include a page title and description, you can use the following code:
+import Head from 'next/head';
+
+function MyPage() {
+  return (
+    <div>
+      <Head>
+        <title>My Page Title</title>
+        <meta name="description" content="This is my page description." />
+      </Head>
+      <div>My page content goes here.</div>
+    </div>
+  );
+}
+By including metadata in your pages, you can improve your website or application's search engine optimization (SEO) and make it easier for users to find and navigate your content.
+ 
+You can also set metadata dynamically using the getInitialProps method or the getServerSideProps method, depending on whether you are using server-side rendering or static site generation. This can be useful for including dynamic information in your metadata, such as the current page URL or the contents of a database.
+Next.js also provides several plugins and packages to help you manage your metadata more easily, such as next-seo and react-helmet. These packages provide additional features such as the automatic generation of metadata based on the content of your pages and support for social media metadata for sharing your content on platforms such as Twitter and Facebook.
+ 
+Activity: True or False
+NextJS allows developers to perform server-side rendering, static site generation, and client-side rendering.
+In NextJS, you can't import assets like stylesheets or JavaScript modules directly into your components using the 'import' statement.
+Metadata in NextJS includes information about a web page displayed directly on the page but not included in the HTML code.
+NextJS automatically compresses and resizes images to reduce their file size for better performance.
+Answer
+True
+False
+False
+False
+ 
+Best Practices with Respect to Assets and Metadata
+Here are some best practices to follow when working with assets and metadata in Next.js:
+Assets
+Use the public directory to store static assets that Next.js do not process.
+Use the import statement to import assets directly into your JavaScript or TypeScript files.
+Optimize your assets using automatic image optimization and code splitting features to improve your application's performance and user experience.
+Metadata
+Include metadata in your pages using the Head component to improve your website or application's search engine optimization (SEO).
+Use dynamic metadata to include information that changes based on the content of your pages or the user's actions.
+Use plugins and packages such as next-seo and react-helmet to easily manage your metadata and add features such as social media metadata.
+By following these best practices, you can ensure that your assets and metadata are optimized for performance, accessibility, and SEO, making it easier for users to find and use your website or application.
+Summary
+What did we learn?
+Next.js provides a powerful feature called API Routes, which allows developers to create serverless API endpoints within their Next.js application.
+To use a database with Next.js, you need to set up a connection between your application and the database. MongoDB is a popular database choice for Next.js applications due to its flexibility and ease of use.
+Once you have established a connection with the database, you can query data using MongoDB's powerful query language. You can use queries to retrieve data based on specific criteria, such as filtering by date, location, or other attributes.
+In Next.js, you can use server-side rendering (SSR) to fetch data from the database before rendering the page.
+Databases can also be used to store and retrieve assets and metadata, such as images, videos, and other files. 
+You can also use the same techniques for querying and fetching data to retrieve assets and metadata from the database.
+Best Practices
+Use connection pooling: To reuse database connections, improving performance and reducing the overhead of creating new connections for each request.
+Optimize assets: Like images, videos, and other files to reduce the size of your application and improve performance. Use tools like Next.js's Image component or image optimization libraries like sharp to optimize your images.
+Use a Content Delivery Network (CDN) to deliver assets like images and videos faster to your users.
+Shortcomings & Challenges
+Next.js may not be the best choice for applications with complex database relationships or queries requiring advanced SQL functionality.
+Next.js does not have built-in support for real-time data, so you may need to use third-party libraries or services to build real-time applications like chat apps or multiplayer games.
+ 
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+Best Databases for Next.js: https://upstash.com/blog/best-database-for-nextjs
+MongoDB Database: https://www.mongodb.com/docs/
+Authentication in Next.js: https://daily.dev/blog/authentication-in-nextjs
+ 
+Try it Yourself
+Let's dive right into the questions and have a blast answering them together. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy learning! 💻😄
+Task 1: Answer the following questions based on the learnings gained from this lesson:
+A) How do you securely store database credentials in Next.js?
+B) How can you handle database errors and perform error handling in Next.js?
+Task 2: Utilize Wisechat to arrive at the solution and share the outcome with your peers on AlmaBetter's Community platform.
