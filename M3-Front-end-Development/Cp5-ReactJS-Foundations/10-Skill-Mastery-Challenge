@@ -1,0 +1,108 @@
+Skill Mastery Challenge
+What did we learn?
+React.js promotes building applications using reusable components. Developers learn how to create, use, and compose components to structure their applications.
+JSX is a syntax extension for JavaScript that allows developers to write HTML-like code within JavaScript files. React.js uses JSX to define the structure and appearance of components.
+React.js utilizes a virtual representation of the DOM (Document Object Model) called the Virtual DOM. Developers learn how React's reconciliation algorithm efficiently updates the real DOM based on changes made to the Virtual DOM, optimizing performance.
+React.js introduces the concept of state and props to manage data in components. Developers learn how to define and update component state and pass data to child components through props.
+React.js provides a set of lifecycle methods that allow developers to control and respond to different stages of a component's lifecycle. This includes mounting, updating, and unmounting phases.
+React.js provides a declarative way to handle events within components. Developers learn how to attach event handlers to elements and manage user interactions.
+React Router is a popular library that enables developers to implement routing in React.js applications. It allows for navigation between different components based on the URL.
+While not explicitly covered in React.js Foundations, developers often learn about state management solutions like Redux or the React Context API to manage global state in larger applications.
+Best Practices
+Utilize React's state management capabilities effectively. Maintain minimal component state and prefer lifting state up whenever multiple components need access to the same data. For complex state management, consider using external libraries such as Redux or MobX.
+Embrace immutability when working with React. Instead of directly modifying state or props, create new objects or arrays with updated values. This approach helps with performance optimization and avoids unexpected side effects.
+Understand React's component lifecycle and make use of the appropriate lifecycle methods for initialization, updating, and unmounting of components. However, note that with the introduction of React Hooks, many lifecycle methods have been replaced with more flexible and efficient alternatives.
+Embrace functional components and Hooks for new projects. Hooks provide a more concise and reusable way to manage state and side effects.
+Interview Prep
+"Virtual DOM" in ReactJS
+The Virtual DOM is a concept in ReactJS where a lightweight representation of the actual DOM (HTML document object model) is created and synced with the real DOM. React uses a diffing algorithm to compare the virtual DOM with the actual DOM and efficiently updates only the necessary parts of the real DOM. This approach helps in improving performance by minimizing the number of direct manipulations to the actual DOM.
+React Hooks vs class components
+React Hooks are functions introduced in React 16.8 that allow you to use state and other React features in functional components. Hooks provide a way to write reusable logic and manage state in functional components without needing class components. Unlike class components, which rely on lifecycle methods, hooks enable you to directly use state, context, effect, and other features in functional components.
+Significance of using keys in React lists
+Keys are important when rendering lists of components in React. A key is a special attribute that helps React identify which items have changed, been added, or been removed from a list. React uses keys to efficiently update only the changed elements rather than re-rendering the entire list when a list is re-rendered. Keys should be unique within the list and stable across different renders to ensure optimal performance.
+"render props" in React
+"Render props" is a technique in React where a component receives a prop that is a function. This function renders the UI and can be called within the component's render method. The render prop pattern enables components to share their internal state or behavior with other components, allowing for greater reusability and composability. It provides an alternative to higher-order components (HOCs) or React hooks.
+Code splitting in React 
+Code splitting is a technique used to split a large JavaScript bundle into smaller chunks that can be loaded on demand. In React, tools like React.lazy and Suspense can be used for code splitting. By splitting the code into smaller chunks, you can reduce the initial load time of your application, as only the necessary code for the current page or component is loaded. This improves performance, especially for larger applications, by reducing the time it takes to load and parse JavaScript.
+Differences between functional and class components
+Aspect
+Functional Components
+Class Components
+State Management
+Use React Hooks (e.g., useState) to manage state
+Use this.state and this.setState to manage state
+Lifecycle Methods
+Can use React Hooks for certain lifecycle actions
+Use lifecycle methods like componentDidMount, etc.
+Code Length
+Shorter and more concise
+Longer and requires more boilerplate code
+Component Definition
+Function that returns JSX
+ES6 class that extends React.Component
+Accessing Props
+Passed as function arguments
+Accessed using this.props
+Stateful Components
+Use useState and useEffect hooks
+Maintain state using this.state
+Pure Components
+Use React.memo or React.PureComponent
+Use shouldComponentUpdate or PureComponent for optimization
+Refs
+Use useRef hook
+Use React.createRef or callback refs
+Learning Curve
+Easier to learn and use for beginners
+Steeper learning curve, especially with lifecycle methods
+Performance Optimization
+Use React.memo or useMemo hook for memoization
+Implement shouldComponentUpdate or PureComponent
+Differences between controlled and uncontrolled components
+Aspect
+Controlled Components
+Uncontrolled Components
+State Management
+State is managed by React.
+State is managed by the DOM.
+Value Initialization
+Value is set through props and updated through state changes.
+Value is set through default attribute values.
+Data Flow
+Unidirectional (Parent to Child).
+Bidirectional (Parent to Child and Child to Parent).
+Accessing Value
+Value can be accessed via state.
+Value accessed through DOM ref or event handling.
+Handling User Input
+Event handlers update state and trigger re-rendering.
+Event handlers modify DOM directly.
+Validation and Control
+Ideal for form validation and controlled user input.
+Less control over user input and validation.
+Performance
+Slightly more overhead due to re-renders on state changes.
+May have better performance in certain cases.
+Form Reset
+Resetting form is straightforward through state.
+Resetting form requires manual DOM manipulation.
+Usability and Testability
+Easier to test and maintain due to predictable behavior.
+Harder to test and debug, might lead to inconsistent behavior.
+Types of side effects in React component
+There are two types of side effects in React component. They are:
+Effects without Cleanup: This side effect will be used in useEffect which does not restrict the browser from screen update. It also improves the responsiveness of an application. A few common examples are network requests, Logging, manual DOM mutations, etc.
+Effects with Cleanup: Some of the Hook effects will require the cleanup after updating of DOM is done. For example, if you want to set up an external data source subscription, it requires cleaning up the memory else there might be a problem of memory leak. It is a known fact that React will carry out the cleanup of memory when the unmounting of components happens. But the effects will run for each render() method rather than for any specific method. Thus we can say that, before execution of the effects succeeding time the React will also cleanup effects from the preceding render.
+Shortcomings & Challenges
+Understanding concepts such as JSX, components, state management, and lifecycle methods can be challenging initially.
+Developers need to set up and manage components, states, and props, which can be time-consuming and increase the chances of errors.
+Setting up the development environment and configuring build tools like Webpack and Babel can be complex for beginners.
+ReactJS encourages reusability and modularity through component-based architecture. However, if not optimized correctly, rendering large component trees or frequent updates to the DOM can impact performance.
+Enhance Your Knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+Server-side rendering: How to implement server-side rendering in your React app in three simple steps (freecodecamp.org)
+Future of Frontend Development: https://www.linkedin.com/pulse/react-js-future-front-end-development-imtiaz-akib/
+ 
+Try it yourself
+Task 1: Take on the Competency Challenge Quiz. 🚀
+Task 2: Share your accomplishment to brag on the AlmaBetter Community Platform. 💻😄
