@@ -1,0 +1,384 @@
+Next.js Optimization Techniques
+Session Flow
+Learning Objective
+Introduction
+Theme
+Primary Goals
+Security, Testing & Deployment
+Overview of Optimization
+Image Optimization
+Using the Image Component
+Local Images
+Remote Images
+Domains
+Priority
+Image Sizing
+Styling
+Font Optimization
+Google Fonts
+Apply the font in <head>
+Single Page usage
+Local Font
+With Tailwind CSS
+Preloading
+Reusing Fonts
+Activity: True/False
+Summary
+What did we learn?
+Best Practices
+Shortcomings & Challenges
+Enhance your knowledge
+Try it Yourself
+ 
+Learning Objective
+Introduction
+NextJS provides built-in optimizations for images and fonts, allowing for faster load times and improved performance for web applications. These optimizations include automatic image optimization, font preloading, and more efficient loading of font files.
+Focus: Basis of Image Optimization and Font Optimization
+Pre-requisite: Next.js Basics
+Theme
+Image and font optimization are crucial for any web application, especially in industries where visuals significantly influence user experience.
+For example, in the e-commerce industry, product images are critical to the user's decision-making process. Slow loading times or poor image quality can lead to a loss in conversions and revenue.
+Similarly, font selection is key to establishing a brand's identity and aesthetic in the fashion industry. With NextJS's built-in optimizations for images and fonts, web developers can ensure fast load times and improved performance, leading to a better user experience and increased conversions.
+Primary Goals
+Understand the importance of image and font optimization in web development.
+Learn about NextJS's built-in optimizations for images and fonts.
+ 
+Optimization
+Overview of Optimization
+NextJS is a popular React framework with built-in features for optimizing images and fonts. Optimizing images and fonts is crucial for improving the performance of your website. This article will discuss the best practices for optimizing images and fonts in NextJS.
+Image Optimization
+Images make up a significant portion of the total size of a webpage. Optimizing images is essential for reducing page load time and improving the user experience. NextJS provides several built-in features for optimizing images.
+Automatic Image Optimization
+NextJS has an Automatic Image Optimization feature that automatically optimizes images based on the device size and resolution. This feature generates multiple image sizes and formats to provide each device's best possible image quality and size. You can enable this feature by adding the following code to your NextJS configuration file:
+// next.config.js
+module.exports = {
+  images: {
+    deviceSizes: [320, 420, 768, 1024, 1200],
+    imageSizes: [16, 32, 48, 64, 96],
+    domains: ['images.example.com'],
+    path: '/_next/image',
+    loader: 'default',
+  },
+}
+The deviceSizes array specifies the device sizes for which images should be generated. The imageSizes array specifies the image widths that should be generated. The domains array specifies the domains from which images can be loaded. The path property specifies the path for the optimized images. The loader property specifies the loader for the optimized images.
+Manual Image Optimization
+If you want more control over image optimization, you can use the next/image component. This component lets you specify the image size, quality, and format. Here's an example:
+import Image from 'next/image'
+
+function MyComponent() {
+  return (
+    <Image
+      src="/my-image.jpg"
+      alt="My Image"
+      width={500}
+      height={500}
+      quality={100}
+    />
+  )
+}
+The src property specifies the image source. The alt property specifies the alternative text for the image. The width and height properties specify the dimensions of the image. The quality property specifies the image quality.
+Font Optimization
+Fonts are another crucial webpage element that can significantly impact page load time. NextJS provides several features for optimizing fonts.
+Preloading Fonts
+NextJS allows you to preload fonts using the Head component. Preloading fonts can significantly reduce the time it takes for the browser to download and render them. Here's an example:
+import Head from 'next/head'
+
+function MyComponent() {
+  return (
+    <Head>
+      <link
+        rel="preload"
+        href="/fonts/my-font.woff2"
+        as="font"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+    </Head>
+  )
+}
+The href property specifies the font source. The as property specifies the resource type. The type property specifies the MIME type. The crossOrigin property specifies the CORS setting.
+Font Display
+NextJS also provides a font-display property that allows you to control how fonts are displayed while they are loading. By default, NextJS sets the font-display property to swap, which means the browser will display a fallback font until the custom font is loaded. Here's an example of how to change the font-display property:
+import Head from 'next/head'
+
+function MyComponent() {
+  return (
+    <Head>
+      <link
+        rel="stylesheet"
+        href="/fonts/my-font.css"
+        type="text/css"
+        media="all"
+      />
+      <style jsx global>{`
+        @font-face {
+          font-family: 'My Font';
+          src: url('/fonts/my-font.woff2') format('woff2'),
+            url('/fonts/my-font.woff') format('woff');
+          font-display: swap;
+        }
+      `}</style>
+    </Head>
+  )
+}
+The rel property specifies the relationship between the document and the linked resource. The href property specifies the font source. The type property specifies the MIME type. The media property specifies the media for which the stylesheet is intended. The @font-face rule specifies the font family and source. The font-display property specifies how the font should be displayed.
+Image Optimization
+next/image is a modified version of the HTML <img> element that includes multiple built-in optimizations designed to help achieve good Core Web Vitals. These scores are critical for measuring your website's user experience and are considered when ranking in Google search results.
+The Image component includes some optimizations such as:
+Improved Performance: Each device is served a correctly sized image using modern formats to enhance performance.
+Visual Stability: Automatic prevention of Cumulative Layout Shift ensures a stable visual experience.
+Faster Page Loads: Images are loaded only when they enter the viewport and optionally use blur-up placeholders, resulting in faster page loads.
+Asset Flexibility: On-demand resizing of images stored on remote servers offers greater flexibility in optimizing image assets.
+Using the Image Component
+To add an image to your application, import the next/image component:
+import Image from 'next/image'
+To add an image, specify its source (src), whether it's stored locally or remotely.
+Local Images
+To use a local image, import your .jpg, .png, or .webp files:
+import profilePic from '../public/me.png'
+The code cannot use dynamic await import() or require(). Instead, the import statement must be static to be analyzed at build time.
+Next.js will automatically determine the size of your image based on the imported file, which helps to keep your page from moving around while the image is loading.
+import Image from 'next/image'
+import profilePic from '../public/me.png'
+
+function Home() {
+  return (
+    <>
+      <h1>My Homepage</h1>
+      <Image
+        src={profilePic}
+        alt="Picture of the author"
+        // width={500} automatically provided
+        // height={500} automatically provided
+        // blurDataURL="data:..." automatically provided
+        // placeholder="blur" // Optional blur-up while loading
+      />
+      <p>Welcome to my homepage!</p>
+    </>
+  )
+}
+Remote Images
+Enter the web address in the src box to use a picture from another source. The web address can be long or short. Next.js cannot retrieve images from external websites during website creation, so you must also provide the width and height of the image. You may also include a blurDataURL if desired.
+import Image from 'next/image'
+
+export default function Home() {
+  return (
+    <>
+      <h1>My Homepage</h1>
+      <Imagesrc="/me.png"alt="Picture of the author"width={500}height={500}/>
+      <p>Welcome to my homepage!</p>
+    </>)
+}
+Domains
+Optimizing a remote image while still using the Next.js Image Optimization API is possible by keeping the loader at its default setting and entering an absolute URL for the Image src prop.
+To prevent malicious users from breaching the security of your application, it is essential to define a list of remote hostnames for use with the next/image component.
+Priority
+To improve the perceived loading speed of your page, it's important to prioritize the image that will be the Largest Contentful Paint (LCP) element by adding the priority property to it. This can be done through preload tags or priority hints, significantly boosting LCP.
+What is a good LCP score?
+LCP is a way to measure how quickly a webpage loads its main content. Having a fast LCP is important, as this helps users know that the page is useful. The ideal LCP is 2.5 seconds or less. To ensure that most of your users have a good experience, aim for the 75th percentile of page loads for mobile and desktop devices.
+  LCP score
+  LCP score
+The LCP element is usually the biggest image or text block visible on the page. If the LCP element is an <Image> without the priority property, a console warning will appear when you run next dev.
+To add the priority property to the LCP image, simply identify it and apply it as shown below.
+import Image from 'next/image'
+
+export default function Home() {
+  return (
+    <>
+      <h1>My Homepage</h1>
+      <Imagesrc="/me.png"alt="Picture of the author"width={500}height={500}priority
+      />
+      <p>Welcome to my homepage!</p>
+    </>)
+}
+Image Sizing
+Images can cause a problem called layout shift, where the image moves to other parts of the page while it loads, making the site frustrating to use. This problem is important because it has its own Core Web Vital, called Cumulative Layout Shift, which measures how much the layout of the site changes while it loads. To avoid layout shifts, always size your images so the browser knows how much space to reserve for them before they load.
+What is a good CLS score?
+A layout shift happens when a visible thing moves from one frame to another. To ensure that your website provides a good user experience, you should aim for a CLS score of 0.1 or lower. You can check if you're meeting this goal for most of your users by looking at the 75th percentile of page loads on mobile and desktop devices.
+  CLS score
+  CLS score
+The next/image tool guarantees good performance but must be used correctly to avoid layout shift.
+There are three ways to size images using next/image.
+Automatically: by importing the image as a static asset.
+Explicitly: by setting the width and height properties.
+Implicitly: by using fill, which will expand the image to fill its parent element.
+Styling
+You can follow the steps to style the Image component as styling a regular <img> element. However, remember to follow some guidelines:
+Use className or style instead of styled-jsx because it is only scoped to the current component. We recommend using the className prop with an imported CSS Module, a global stylesheet or inline styles with the style prop.
+When using fill, the parent element must have position: relative for proper rendering of the image element in that layout.
+When using fill, the parent element must have display: block, which is the default for <div> elements but should be specified otherwise.
+Font Optimization
+The next/font feature can automatically host any font file for you. This means you can quickly load web fonts without any layout problems caused by the size-adjust property used in CSS.
+Additionally, you can easily and safely use Google Fonts. The CSS and font files are downloaded during the build process and hosted with your other assets, so there are no requests made to Google by the browser.
+Google fonts
+Automatically host any Google Font yourself. The fonts are included in your website and served from the same place as your website.
+To start, import the font you want to use as a function from next/font/google. We suggest using variable fonts for the best results.
+To use the font on all your pages, add it to the _app.js file under /pages as shown below:
+// pages/_app.js
+import { Inter } from 'next/font/google'
+
+// If loading a variable font, you don't need to specify the font weight
+const inter = Inter({ subsets: ['latin'] })
+
+export default function MyApp({ Component, pageProps }) {
+  return (
+    <main className={inter.className}>
+      <Component {...pageProps} />
+    </main>
+  )
+}
+You must specify a weight if you can't use a variable font. You can specify multiple weights and/or styles by using an array:
+const roboto = Roboto({
+  weight: ['400', '700'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+})
+This will load the regular and bold weights of the Roboto font, with only the Latin subset included. You can then use the Roboto variable as a class name on any element to apply the font.
+Apply the font in <head>
+To use the font without a wrapper and className, inject it inside the <head> like this:
+// pages/_app.js
+import { Inter } from 'next/font/google'
+
+const inter = Inter({ subsets: ['latin'] })
+
+export default function MyApp({ Component, pageProps }) {
+  return (
+    <>
+      <style jsx global>{`
+        html {
+          font-family: ${inter.style.fontFamily};
+        }
+      `}</style>
+      <Component {...pageProps} />
+    </>
+  )
+}
+Single page usage
+To use the font on one page, just add it to that page like this:
+// pages/index.js
+import { Inter } from 'next/font/google'
+
+const inter = Inter({ subsets: ['latin'] })
+
+export default function Home() {
+  return (
+    <div className={inter.className}>
+      <p>Hello World</p>
+    </div>
+  )
+}
+Local font
+Import next/font/local and specify the src of your local font file.
+// pages/_app.js
+import localFont from 'next/font/local'
+
+// Font files can be colocated inside of `pages`
+const myFont = localFont({ src: './my-font.woff2' })
+
+export default function MyApp({ Component, pageProps }) {
+  return (
+    <main className={myFont.className}>
+      <Component {...pageProps} />
+    </main>
+  )
+}
+If you want to use multiple files for a single font family, src can be an array:
+const roboto = localFont({
+  src: [
+    {
+      path: './Roboto-Regular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: './Roboto-Italic.woff2',
+      weight: '400',
+      style: 'italic',
+    },
+	],
+})
+With Tailwind CSS
+To use a certain font with Tailwind CSS, we can make use of a CSS variable by using next/font.
+In the example below, we will use the Inter font from next/font/google (You can use any font from Google or Local Fonts). Load your font with the variable option to define your CSS variable name and assign it to inter. Then, use inter.variable to add the CSS variable to your HTML document.
+// pages/_app.js
+import { Inter } from 'next/font/google'
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+})
+
+export default function MyApp({ Component, pageProps }) {
+  return (
+    <main className={`${inter.variable} font-sans`}>
+      <Component {...pageProps} />
+    </main>
+  )
+}
+Finally, add the CSS variable to your Tailwind CSS config:
+// tailwind.config.js
+const { fontFamily } = require('tailwindcss/defaultTheme')
+
+/** @type {import('tailwindcss').Config} \*/
+module.exports = {
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+  ],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['var(--font-inter)', ...fontFamily.sans],
+      },
+    },
+  },
+  plugins: [],
+}s
+You can now use the font-sans utility class to apply the font to your elements.
+Preloading
+When you call a font function on your site's page, it is unavailable and loaded everywhere. Instead, the font is only loaded on the related route or routes based on the type of file where it is used:
+If it is a unique page, it is loaded on the unique route for that page.
+If it is in the custom App, it is loaded on all the site routes under /pages.
+Reusing fonts
+Each time you use the localFont or Google font function, the font is hosted in your application. If you load the same font function in multiple files, multiple instances of the same font are hosted. To avoid this, it is recommended that you:
+Call the font loader function in one shared file
+Export it as a constant
+Import the constant in each file where you want to use the font
+Activity: True or False
+NextJS provides an Automatic Image Optimization feature that automatically generates multiple image sizes and formats based on device size and resolution to improve website performance.
+The ideal Largest Contentful Paint (LCP) score, which measures how quickly a webpage loads its main content, is 2.75 seconds or less.
+NextJS provides a unique feature specific to it, called Dynamic Imports, which allows you to split your code into small chunks and load them on demand, leading to performance improvements, especially on mobile devices.
+The font-display property in NextJS allows you to control how fonts are displayed while they are loading, and by default, NextJS sets it to swap.
+NextJS doesn't provide any feature to specify the image size, quality, and format, giving you more control over image optimization.
+Answers
+True
+False
+False
+True
+False
+SummaryWhat did we learn?
+NextJS has built-in features for image optimization, including Automatic Image Optimization and Manual Image Optimization.
+Automatic Image Optimization generates multiple image sizes and formats based on device size and resolution, improving performance and user experience. Manual Image Optimization provides more control over image size, quality, and format using the next/image component.
+Images should be sized appropriately to avoid layout shifts and improve Core Web Vitals.
+NextJS offers features for font optimization, including preloading fonts using the Head component and controlling font display using the font-display property.
+Google Fonts can be used safely by downloading the CSS and font files during the build process and hosting them with other assets, reducing external requests.
+Fonts can be automatically hosted or used locally with the next/font package. Tailwind CSS can be combined with NextJS font features to apply custom fonts.
+Best Practices
+Optimize images and fonts to the smallest file size possible without sacrificing quality.
+Use a Content Delivery Network (CDN) to deliver optimized images and fonts to users quickly.
+Shortcomings & Challenges
+Large images and fonts can still negatively impact website performance, even with optimization.
+Third-party fonts and images may not be optimized for your site, slowing page load time.
+ 
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+Image Optimization: https://nextjs.org/docs/pages/building-your-application/optimizing/images
+Font Optimization: https://nextjs.org/docs/pages/building-your-application/optimizing/fonts
+Increase the speed of Next.js Apps: https://stackoverflow.blog/2022/12/20/best-practices-to-increase-the-speed-for-next-js-apps/
+ 
+Try it Yourself
+Let's dive right into the questions and have a blast answering them together. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy learning! 💻😄
+Task 1: Answer the following questions based on your insights from the lesson.
+A) In Next.js, what is the advantage of using the next/image component over the native <img> tag for image optimization, and how does it help improve web application performance?
+B) When optimizing fonts in Next.js applications, what technique can you employ to enhance performance, and how does it contribute to a better user experience?
+Task 2: Discover the concept of Lazy loading in Next.js and share a summary of your findings on AlmaBetter's Community Platform.
