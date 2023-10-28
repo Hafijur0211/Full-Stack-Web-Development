@@ -1,0 +1,184 @@
+Security, Testing & Deployment
+Session Flow
+Learning Objective
+Introduction
+Theme
+Primary Goals
+Security, Testing & Deployment
+Authentication using Iron-Session 
+Testing using Cypress
+Prerequisites
+Setting up Cypress with Next.js
+Writing Cypress Tests
+Activity: True/False
+Deployment of a Project
+Step 1: Create a Vercel Account
+Step 2: Install the Vercel CLI
+Step 3: Navigate to your Project Directory
+Step 4: Initialize the Project
+Step 5: Deploy Your Project
+Step 6: Update Your Project
+Summary
+What did we learn?
+Best Practices
+Shortcomings & Challenges
+Enhance your knowledge
+Try it Yourself
+ 
+Learning Objective
+Introduction
+Security, Testing & Deployment: In Next.js, security can be implemented in various ways, such as using HTTPS or authentication using Iron-session. Testing can be done using Cypress. Deployment can be done using services such as Vercel or AWS.
+Focus: An overview of security, testing, and deployment in the context of Next.js projects.
+Pre-requisite: Basics of NextJS
+Theme
+Airbnb is a popular online marketplace connecting people who want to rent out their homes with those looking for a place to stay. They use Next.js to build their website, meaning they must ensure their users' data is secure. Security is crucial to any online marketplace, and Airbnb is no exception. They have to implement various security measures, such as using HTTPS, sanitizing input data, and securing access tokens and secrets to protect their users' data from unauthorized access.
+Testing is also essential to building a website, and Airbnb uses Jest, which is built into Next.js, to test their website. They have to ensure that their website works properly and is easy to use for their users. Testing helps them identify and fix any issues before they go live, which saves them time and money in the long run.
+Finally, deployment is the process of making the website accessible to the users, and for this, Airbnb uses services such as Vercel or AWS, which provide easy-to-use deployment options and integrations with Next.js. By using these services, Airbnb ensures that its website is accessible to its users without any downtime or interruptions.
+Primary Goals
+Learn how to implement user authentication in a Next.js application using Iron-Session.
+Understand the basics of testing a Next.js application using Cypress.
+Master the deployment process of a Next.js app on Vercel.
+ 
+Security, Testing & Deployment
+Authentication using Iron-Session 
+Iron-session is a popular npm package that helps to manage user sessions in Next.js applications. It provides a secure way to store and manage session data, making it an ideal choice for authentication in Next.js.
+Here are the steps required for authentication using Iron-session in Next.js:
+Install Iron-session package: The first step is to install the Iron-session package in your Next.js application. You can do this by running the following command in your terminal:
+npm install iron-session
+Import Iron-session: Once you have installed the package, you need to import it in your Next.js application. You can do this by adding the following code to your pages/api directory:
+import { withIronSession } from "next-iron-session";
+
+export default withIronSession(
+  async (req, res) => {
+    // ...
+  },
+  {
+    password: process.env.SECRET_COOKIE_PASSWORD,
+    cookieName: "example-app/cookie",
+    cookieOptions: {
+      secure: process.env.NODE_ENV === "production",
+    },
+  }
+);
+Set up session options: After importing Iron-session, you must set up session options, such as password, cookieName, and cookieOptions. These options define the behavior of the session and how it is stored.
+Use session data: Once you have set up Iron-session, you can use session data in your Next.js application. You can access the session data by using the req.session object. 
+For example, if you want to get the user ID from the session, you can use the following code:
+const userId = req.session.get("userId");
+Protect routes: Finally, you can use Iron-session to protect routes in your Next.js application. To protect a route, you can wrap it with the withIronSession higher-order component. For example, if you want to protect the /dashboard route, you can use the following code:
+import { withIronSession } from "next-iron-session";
+
+export default withIronSession(
+  async (req, res) => {
+    // ...
+  },
+  {
+    password: process.env.SECRET_COOKIE_PASSWORD,
+    cookieName: "example-app/cookie",
+    cookieOptions: {
+      secure: process.env.NODE_ENV === "production",
+    },
+  }
+)(async function handler(req, res) {
+  // Your code here
+});
+ 
+That's it! By following these steps, you can easily set up authentication using Iron-session in your Next.js application.
+Testing using Cypress
+Cypress is an end-to-end testing framework that is used for testing web applications. Next.js is a popular React-based framework for building server-side rendered applications. This guide reviews the process and steps required for testing Cypress with Next.js.
+Prerequisites
+Before we begin, make sure that you have the following installed:
+Node.js
+NPM or Yarn
+Next.js
+Cypress
+Setting up Cypress with Next.js
+First, install Cypress by running the following command:
+npm install cypress --save-dev
+Next, create a new folder for your Cypress tests. In this example, we'll call it cypress-tests.
+Inside cypress-tests, create a new file called cypress.json. This file will hold the configuration options for Cypress.
+Add the following code to cypress.json:
+{
+  "baseUrl": "<http://localhost:3000>"
+}
+This sets the base URL for Cypress to use when running tests.
+Create a new script in your package.json file to start the Next.js server and run Cypress tests. Add the following code:
+"scripts": {
+  "start": "next start",
+  "cy:open": "cypress open",
+  "cy:run": "cypress run",
+  "test": "npm run start & npm run cy:run"
+}
+The test script starts the Next.js server and runs Cypress tests.
+Writing Cypress Tests
+To create a new Cypress test, create a new file inside the cypress-tests folder. In this example, we'll call it example.spec.js.
+Add the following code to example.spec.js:
+describe('Example Test', () => {
+  it('Visits the homepage', () => {
+    cy.visit('/')
+    cy.contains('Welcome to Next.js!').should('exist')
+  })
+})
+This test visits the homepage of our Next.js application and checks that the text "Welcome to Next.js!" exists.
+Run the Cypress test by running the following command:
+npm run test
+You should see a green checkmark in the Cypress window if the test passes. Cypress will highlight the failure and provide an error message if it fails.
+By following these steps, you can create robust end-to-end tests for your Next.js application.
+Activity: True/False
+Iron-session is a package used for end-to-end testing in Next.js applications.
+Iron-session helps to store and manage session data in Next.js applications securely.
+The cypress.json file in Cypress holds the configuration options for running tests.
+Iron-session can't be used to protect routes in a Next.js application.
+The cypress run command runs Cypress tests in the interactive mode.
+Answer
+False
+True
+True
+False
+False
+Deployment of a Project
+Vercel is a cloud platform that enables developers to deploy web projects easily. Next.js is a popular React-based framework that simplifies server-side rendering and other essential features. Here are the steps required for deploying a Next.js project to Vercel:
+Step 1: Create a Vercel Account
+The first step towards deploying your Next.js project to Vercel is to create an account on the platform. Head to the Vercel website and sign up for a new account if you don't already have one.
+Step 2: Install the Vercel CLI
+Next, you must install your computer's Vercel command-line interface (CLI). You can do this by running the following command in your terminal:
+npm install -g vercel
+Step 3: Navigate to your Project Directory
+Using your terminal, navigate to the project directory of your Next.js app.
+Step 4: Initialize the Project
+After navigating to the project directory, initialize the project by running the following command:
+vercel init
+This command will create a new project on Vercel and link it with the current directory.
+Step 5: Deploy Your Project
+Now that the project is linked to your Vercel account, you can deploy it by running the following command:
+vercel
+This command will build and deploy your Next.js project to Vercel. After the deployment, Vercel will provide you with a URL to view your app.
+Step 6: Update Your Project
+After deploying your project to Vercel, you can update it and redeploy it using the vercel command.
+By following the steps outlined above, you can ensure that your Next.js app is available to anyone with an internet connection.
+Summary
+What did we learn?
+Iron-session is a popular library for session management in Node.js and is commonly used for authentication in Next.js applications. 
+It provides a secure way to store user sessions in a server-side cookie, preventing session hijacking and other security vulnerabilities.
+Cypress is a modern testing framework that provides an easy-to-use API for writing end-to-end tests for web applications. 
+It's a popular choice for testing Next.js applications and provides features like live reloading, real-time reloading, and built-in debugging tools.
+Vercel is a cloud platform for deploying Next.js applications, providing an easy way to deploy and scale your application. 
+It provides a simple deployment workflow, automatic HTTPS, and global CDN, making it a great choice for hosting your Next.js application.
+Best Practices
+Set the httpOnly and secure flags on session cookies to prevent cross-site scripting (XSS) and session hijacking attacks.
+While testing using Cypress, use the cy.wait() command to ensure your tests wait for asynchronous operations to complete and  cy.get() to locate elements using data attributes instead of DOM selectors.
+Set up automatic deployment from your Git repository to Vercel to streamline the deployment process.
+Shortcomings & Challenges
+The iron session may not be the best choice for applications that require more advanced authentication features, such as social media logins, two-factor authentication, or OAuth.
+Cypress tests can be slower to run than unit tests, especially for large or complex applications, which may make it difficult to run tests frequently as part of a continuous integration (CI) or continuous delivery (CD) pipeline.
+Vercel's pricing model may not be suitable for high-traffic applications or requiring custom infrastructure configurations.
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+Deployment on Vercel: https://nextjs.org/docs/deployment
+Testing: https://nextjs.org/docs/pages/building-your-application/optimizing/testing
+ 
+Try it Yourself
+Let's dive right into the questions and have a blast answering them together. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy learning! 💻😄
+Task 1: Think and write about the following -
+A) What are aliases in Cypress, and how do they help improve test readability?
+B) Discuss how iron-session can be extended to support user roles and permissions to control access to different application parts.
+Task 2: Utilize Wisechat to arrive at the solution and share the outcome with your peers on AlmaBetter's Community platform.
