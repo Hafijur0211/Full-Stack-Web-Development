@@ -1,0 +1,242 @@
+Introduction to Database & DBMS
+Session Flow
+Learning Objective
+Introduction
+Theme
+Primary Goals
+Introduction to Database & DBMS
+What is backend?
+Backend Development
+Backend Developer Skills
+What is a Database?
+Applications of Database
+Activity: Fill in the blanks
+Database Management System (DBMS)
+Types of DBMS
+3-tier Architecture of DBMS
+Data Languages in DBMS
+Activity: Crossword Puzzle
+Summary
+What did we learn?
+Shortcomings & Challenges
+Best practices to follow
+Enhance your knowledge
+Try it yourself
+Learning Objective
+Introduction 
+Imagine a database as a super organized digital filing cabinet where all your information is neatly stored. It's like your virtual assistant that helps you find and manage stuff quickly, whether it's a list of your favorite movies or the contact details of your friends.
+Focus: Backend Development, Database, Database Management System, and Data Languages in DBMS
+Prerequisites: NA
+Theme
+Microsoft is a global technology giant known for its diverse range of products and services, many of which heavily rely on databases to function efficiently and effectively. One of Microsoft's flagship offerings in the realm of database management is Microsoft SQL Server. This relational database management system (RDBMS) is widely recognized as one of the industry leaders, catering to a multitude of applications, including data warehousing, transaction processing, and business intelligence.
+Primary Goals
+Learn the basics of what a database is, how it's organized, and its importance in modern applications.
+Gain a clear understanding of backend development, including server-side logic, data processing, and interaction with databases.
+Explore different types of DBMS and their architectures, such as relational, NoSQL, and distributed systems, to understand their strengths and weaknesses.
+Learn the types of data languages used in DBMS (DDL, DML, DCL, TCL) and how they're utilized for data definition, manipulation, control, and transactions.
+Understand the 3-tier architecture and how presentation, application, and database tiers work together to build efficient and scalable applications.
+ 
+Introduction to Database & DBMS
+What is Backend?
+The term "backend," in the context of web development, refers to the part of a web application or software system that is responsible for managing and processing data, as well as handling the logic and functionality that enable the application to function properly. The backend is essentially the behind-the-scenes component of a web application that users typically don't directly interact with, but it's crucial for making the frontend (user interface) work seamlessly.
+notion image
+Web Server: A web server is a software application or program that serves as the foundation for delivering web content over the internet or an intranet. It handles requests from clients (usually web browsers) and responds by sending the requested web pages, files, or resources back to the clients. In essence, a web server hosts websites and makes them accessible to users by processing their requests and providing the necessary data.
+Backend Development
+Backend development refers to the process of creating the server-side logic and components of a software application or website. It involves building the behind-the-scenes functionality that enables the application to work, interact with databases, manage user requests, and process data.
+Here are key aspects of backend development:
+Server Logic: Backend developers design and implement the logic that handles incoming requests from users, processes data, and generates responses. This can involve authentication, authorization, validation, and business logic.
+Database Management: Backend development involves interacting with databases to store, retrieve, and manipulate data. Developers design database schemas, write queries, and manage data integrity.
+API Development: Backend developers create APIs (Application Programming Interfaces) that allow communication between the frontend and backend. APIs define the structure and rules for data exchange.
+Backend Developer Skills
+Backend developers need a combination of technical skills and problem-solving abilities to create robust and efficient server-side applications.
+Here are some essential skills for backend developers:
+Data Structures and Algorithms: To get data from a database, a backend developer writes code that does the relational mapping. Among the most popular DBMSs are Oracle Database, PostgreSQL, SQL SERVER, MongoDB, and MySQL. You must be quite familiar with how they operate.
+notion image
+Programming Languages and Frameworks: One of the key traits of a backend developer is thorough knowledge of backend programming languages. The following items make up this.
+Two examples of JavaScript environments are Node.js and Express.js. In particular, Java was created from the ground up to be used on servers. Popular Java frameworks include Spring and Java Server Faces.
+The most popular programming language is Python. It is flexible and easy to use. Django and Flask are two examples of Python frameworks used for backend development.
+notion image
+Database Management Systems: To get data from a database, a backend developer writes code that does the relational mapping. Among the most popular DBMSs are MySQL, SQL SERVER and PostgreSQL, MongoDB, and Oracle Database. You must be quite familiar with how they operate.
+notion image
+Web Hosting Platforms:
+You can store your goods on a cloud service provider and access them online, thanks to web hosting solutions. Popular choices include Amazon Web Services (AWS), Google Cloud Platform (GCP), Microsoft Azure, and Heroku.
+notion image
+What is a Database?
+A database is a structured collection of data that is organized, stored, and managed in a way that allows for efficient retrieval, manipulation, and storage. Databases are used to store various types of information, ranging from simple lists to complex data structures, in a manner that facilitates easy access and manipulation by software applications.
+Databases are crucial components of modern software systems, and they serve as the foundation for many applications, including websites, mobile apps, enterprise software, and more.
+notion image
+The flow of data and interaction typically follows these steps:
+The client sends a request to the server. This request could be for loading a webpage, submitting a form, retrieving specific data, or any other action the application supports.
+The server receives the request and processes it. It interacts with the database if necessary to retrieve or update data.
+The server performs the necessary operations, such as executing business logic, applying security checks, and retrieving or modifying data in the database.
+Once the requested operations are completed, the server prepares a response and sends it back to the client.
+The client receives the response and renders it in the user interface, displaying the data or actions as required.
+Applications of Database
+Databases are used in a wide range of applications and industries, including:
+Business Applications: Databases are commonly used in business settings to store and manage customer information, sales data, inventory records, financial transactions, and employee records.
+Web Applications: Websites and web applications often rely on databases to store user profiles, content, and other dynamic information.
+E-commerce: Online shopping platforms use databases to store product information, customer orders, and payment details.
+Healthcare: Medical institutions use databases to store patient records, medical histories, treatment plans, and diagnostic data.
+Education: Educational institutions use databases to manage student records, course schedules, and academic information.
+Government: Government agencies use databases to store citizen data, administrative records, and public information.
+Research: Databases play a crucial role in scientific research by storing and organizing research data and findings.
+Entertainment: Streaming services use databases to manage media content such as movies, music, and TV shows.
+Overall, databases are crucial tools for efficiently storing and managing data in a structured manner. They are integral to the functioning of modern applications and play a key role in enabling data-driven decision-making and application functionality.
+ 
+Activity: Fill in the blanks
+The backend of a web application handles the ___________ (client / server) side logic and data processing.
+A backend developer is responsible for building the ___________ (UI / logic) and server-side components of a web application.
+A Database Management System (DBMS) is a ___________ (software / framework) that enables users to interact with a database.
+In a ___________ (hierarchical / network) DBMS, data is organized in a tree-like structure.
+___________ (distributed / network) DBMS is based on the mathematical model of directed graphs.
+Answers
+server
+logic
+software
+hierarchical
+network
+ 
+Database Management System (DBMS)
+A Database Management System (DBMS) is a software application that allows users to interact with databases, store, retrieve, manage, and manipulate data efficiently. It acts as an intermediary between users, applications, and the actual database, providing a way to organize and access data in a structured manner.
+notion image
+Here's an overview of what a DBMS does:
+Data Storage: A DBMS manages the physical storage of data on a computer or server. It handles the organization of data files, data structures, and indexes for efficient retrieval.
+Data Retrieval and Manipulation: Users and applications can retrieve, insert, update, and delete data using query languages such as SQL (Structured Query Language). DBMS translates user queries into low-level operations that interact with the underlying data.
+Data Security: DBMS offers mechanisms to control access to the data. It supports user authentication, authorization, and access control, ensuring that only authorized users can access and modify the data.
+Data Integrity: DBMS enforces data integrity constraints, such as uniqueness, referential integrity, and domain constraints, to maintain the accuracy and consistency of the data.
+Concurrency Control: DBMS manages multiple users accessing the data simultaneously, preventing conflicts and ensuring data consistency during concurrent operations.
+Scalability: Databases need to be designed with scalability in mind to accommodate growing amounts of data and increasing numbers of users. This can involve strategies such as sharding, replication, and distributed databases.
+Sharding refers to a technique used to horizontally partition a database into smaller, more manageable pieces called shards or partitions.
+Normalization: In relational databases, normalization is the process of organizing data to minimize redundancy and improve data integrity. It involves breaking down larger tables into smaller ones and establishing relationships between them.
+Backup and Recovery: DBMS provides tools for creating backups of data to prevent data loss due to hardware failures, software errors, or disasters. It enables data recovery in case of data corruption or loss.
+Types of DBMS
+Database Management Systems (DBMS) can be categorized into several types based on different criteria such as data model, usage, and architecture.
+Here are some of the common types of DBMS:
+Relational DBMS (RDBMS): This is one of the most prevalent types of DBMS. It uses a relational data model where data is organized into tables (relations) consisting of rows (tuples) and columns (attributes). Examples include MySQL, PostgreSQL, Oracle Database, and Microsoft SQL Server.
+Primary Key: Unique identifier for each row in a table, ensures data integrity, and provides a reference point for establishing relationships with other tables.
+Foreign Key: Links data between two tables, establishes relationships by referencing the primary key in another table, and helps maintain data consistency and integrity.
+NoSQL DBMS: These systems are designed to handle unstructured, semi-structured, or rapidly changing data. They don't adhere to the traditional relational model and offer more flexible data storage mechanisms.
+Different types of NoSQL databases include:
+Document Store: Data is stored in documents, typically using JSON or similar formats. Examples include MongoDB and Couchbase.
+Key-Value Store: Data is stored as key-value pairs, suitable for caching and simple data storage. Examples include Redis and Amazon DynamoDB.
+Columnar Store: Data is stored in columns rather than rows, making them suitable for handling large-scale distributed data. Examples include Apache Cassandra and HBase.
+Graph Database: These databases are optimized for managing highly interconnected data, such as social networks or knowledge graphs. Examples include Neo4j and Amazon Neptune.
+Object-Oriented DBMS (OODBMS): These systems store data as objects, similar to how object-oriented programming languages define objects. They are designed to work well with object-oriented programming languages. Examples include ObjectStore and Versant.
+Hierarchical DBMS: Hierarchical DBMS organizes data in a tree-like structure, where each record (node) has a single parent record except for the root, which has no parent. It's suitable for representing parent-child relationships but can be inflexible for handling complex or interconnected data. IMS (Information Management System) is a classic example of a Hierarchical DBMS.
+Network DBMS: Network DBMS models data as a network of interconnected records, represented as nodes, with each node potentially having multiple parent and child nodes. Examples include IDMS (Integrated Data Management System)
+Parallel DBMS: These systems are designed to run on parallel computing architectures, enabling them to handle large-scale data processing efficiently. Examples include Teradata and Amazon Redshift.
+Distributed DBMS: These databases distribute data across multiple servers or nodes, allowing for better scalability and fault tolerance. Examples include Apache Cassandra and Amazon DynamoDB.
+3-tier Architecture of DBMS
+The 3-tier architecture of a Database Management System (DBMS) is a design approach that separates the components of a DBMS into three distinct layers or tiers. Each tier has a specific role and responsibility in handling various aspects of data processing and management. This architecture enhances modularity, scalability, and maintainability.
+notion image
+Here are the three tiers of the 3-tier architecture:
+Presentation Tier (Client Tier): The presentation tier is the top layer that interacts directly with users and applications. Its main focus is on user interface and user interaction. It receives user input, displays output, and facilitates communication between users and the underlying database. This tier can include web browsers, desktop applications, mobile apps, and other user interfaces.
+Responsibilities:
+Presenting data and information to users in a human-readable format.
+Capturing user input and passing it to the application logic tier.
+Handling user authentication and authorization.
+Application Tier (Middle Tier): The application tier, also known as the middle tier, contains the business logic that processes data and user requests. It acts as an intermediary between the presentation tier and the data management tier. Here, data processing, business rules, and application-specific logic are implemented. This tier ensures that data is processed correctly before being sent to or retrieved from the database.
+Responsibilities:
+Processing user requests and formulating queries.
+Applying business rules and logic to data manipulation.
+Coordinating communication between the presentation tier and the data management tier.
+Implementing security measures and access control.
+Database Tier (Data Management Tier): The database tier is the bottom layer responsible for storing, managing, and retrieving data. It interacts directly with the database and performs tasks related to data storage, retrieval, and management. This tier is responsible for maintaining data integrity, enforcing constraints, and ensuring efficient data access and storage.
+Responsibilities:
+Storing and retrieving data from the underlying database.
+Managing database operations, including data insertion, updating, deletion, and querying.
+Enforcing data integrity through constraints, indexes, and relationships.
+Optimizing database performance and ensuring data consistency.
+The 3-tier architecture separates concerns, making the system more modular and easier to manage. Changes in one tier can be made without affecting the other tiers, as long as the interfaces between the tiers remain consistent. This architecture also supports better scalability by allowing each tier to be scaled independently based on demand.
+Data Languages in DBMS
+The term data languages generally refers to the various programming languages and commands used to interact with the database.
+notion image
+These four types of data languages together provide a comprehensive framework for interacting with and managing data within a DBMS. Each language type serves a specific purpose: DDL defines the structure, DML manipulates the data, DCL controls permissions, and TCL manages transactions.
+Let's dive into each of the four types of data languages in a DBMS:
+Data Definition Language (DDL): DDL is used to define and manage the structure of the database. It focuses on creating, altering, and deleting database objects that determine how data is stored and organized. DDL statements are responsible for establishing the schema of the database.
+Common DDL commands include:
+CREATE TABLE: Defines a new table along with its columns, data types, and constraints.
+ALTER TABLE: Modifies an existing table by adding, modifying, or deleting columns, constraints, or indexes.
+DROP TABLE: Deletes an existing table and its associated data permanently.
+Data Manipulation Language (DML): DML is used to interact with the data stored in the database. It involves operations that manipulate the actual data records within the database. DML statements allow you to insert, update, retrieve, and delete data.
+Common DML commands include:
+SELECT: Retrieves data from one or more tables based on specified conditions.
+INSERT: Adds new data records into a table.
+UPDATE: Modifies existing data records in a table.
+DELETE: Removes data records from a table.
+Data Control Language (DCL): DCL is responsible for controlling access to the database and managing permissions. It defines who can access the database and what actions they can perform. DCL statements are crucial for maintaining the security and integrity of the data.
+Common DCL commands include:
+GRANT: Provides specific privileges to users or roles, allowing them to perform certain actions on specified objects.
+REVOKE: Removes specific privileges from users or roles, restricting their access to certain actions.
+Transactional Control Language (TCL): TCL is used to manage transactions within the database. A transaction is a sequence of one or more operations that are treated as a single unit of work. TCL ensures that transactions are carried out reliably, maintaining the integrity of the data.
+Common TCL commands include:
+COMMIT: Saves all the changes made during a transaction and makes them permanent.
+ROLLBACK: Undoes the changes made during a transaction and reverts the database to its previous state.
+SAVEPOINT: Sets a point within a transaction to which you can later roll back.
+ 
+Activity: Crossword Puzzle
+ACROSS
+1. A method used to horizontally partition a database.
+3. The ________ tier is responsible for storing, managing, and retrieving data.
+6. The process of minimizing redundancy and improving data integrity
+DOWN
+2. This type of DBMS organizes data in a tree-like structure.
+4. The ________ tier contains business logic and data processing.
+5. Operation that saves changes made during a transaction.
+notion image
+Answers
+Sharding
+Hierarchical
+Database
+Application
+Commit
+Normalization
+ 
+Summary
+What did we learn?
+Backend handles server-side logic and data processing in web applications. It interacts with databases, performs business logic, and processes user requests.
+Backend developers build APIs, manage security, and ensure data integrity.
+DBMS is a software application to store, retrieve, and manage data efficiently.
+Common DBMS Types include RDBMS, NoSQL, OODBMS, hierarchical, network, parallel, and distributed systems.
+Data normalization minimizes redundancy and improves data integrity.
+Backup, recovery, and security measures are essential for data management. Application tier contains business logic and user request processing. Database tier manages data storage, retrieval, and integrity.
+Data languages are used to interact with databases in a structured manner.
+DDL defines schema, DML manipulates data, DCL controls permissions, and TCL manages transactions.
+Shortcomings & Challenges
+Poor database design can lead to data redundancy, leading to inefficiency, and inconsistency when updating data.
+Backend development can be complex due to managing server-side logic and data processing.
+DBMS security challenges involve protecting data from unauthorized access and breaches.
+Scalability challenges arise when managing increasing amounts of data and user demand.
+Legacy system migration can pose difficulties during data migration and maintenance.
+Best practices to follow
+Design databases and applications with scalability in mind to handle growth and increased user demand.
+Prioritize data security through encryption, access controls, and regular security audits.
+Keep up with emerging technologies like NoSQL and cloud-based databases for optimal performance.
+Maintain clean, organized code and adhere to best practices to ensure code maintainability.
+Implement regular data backups and recovery mechanisms to prevent data loss.
+ 
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+Database partitioning? What is it, why should I use it?
+Distributed Database Concepts
+ 
+Try it yourself
+Let's dive right into the task and have a blast solving it together. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy learning! 💻😄
+Task 1: Ready to start your Backend Development journey? Complete the given task for a headstart to your next lesson.
+Task
+Install MariaDB on your local system and remember it’s installation folder.
+For Windows
+Step 1: Download the MariaDB installer for Windows from the official website: https://mariadb.org/download/
+notion image
+Step 2: Run the installer and follow the on-screen instructions. Remember the location wherever you’re installing MariaDB.
+Step 3: During the installation, you will be asked to set a root password for the database. Make sure to remember this password as it will be used to access the database later.
+Step 4: Complete the installation, and MariaDB should now be installed on your Windows machine.
+For macOS
+Step 1: If you don't have Homebrew (a package manager for macOS) installed, you can install it by running the following command in your terminal:
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+Step 2: Once Homebrew is installed, you can use it to install MariaDB by running the following command in your terminal:
+brew install mariadb
+Step 3: After the installation is complete, start the MariaDB server using the following command:
+brew services start mariadb
+Step 4: MariaDB should now be installed and running on your macOS machine.
+Task 2: Describe any challenges you encountered and how you resolved them while solving the above Task on AlmaBetter's Community platform.
