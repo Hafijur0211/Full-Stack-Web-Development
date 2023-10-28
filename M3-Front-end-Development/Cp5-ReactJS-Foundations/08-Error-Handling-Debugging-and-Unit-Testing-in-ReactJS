@@ -1,0 +1,1511 @@
+Error Handling, Debugging, and Unit Testing in ReactJS
+Session Flow
+Learning Objective
+Introduction
+Theme
+Primary Goals
+Error Handling, Debugging, and Unit Testing in ReactJS
+Introduction to Error Handling and Debugging in React
+JavaScript Errors in React Applications
+Debugging Tools and Techniques in React
+Console Logging and Debugging Statements
+Project Implementation Step 1
+Using React Error Boundaries for Error Handling
+Project Implementation Step 2
+Catching and Handling Errors in Event Handlers and Async Functions
+Project Implementation Step 3
+Understanding Common React Errors and Their Solutions
+Unit Testing
+Project Implementation Step 4
+React Testing Library
+Types of Unit Testing in React
+How to perform testing in React?
+Examples of Testing in React
+Summary 
+What did we learn?
+Shortcomings & Challenges
+Best Practices
+Enhance your knowledge
+Try it yourself
+Learning Objective
+Introduction
+Implementing of error handling, utilizing debugging techniques, and writing thorough unit tests, allows developers to ensure that their ReactJS applications are resilient, maintainable, and provide a positive user experience.
+Focus: Error handling types and methods, debugging techniques, and Unit testing in React
+Pre-requisite: Fair understanding of ReactJS 
+Theme
+Airbnb is a global online marketplace that connects travelers with accommodation options. Their web application is built using ReactJS, and they heavily rely on these practices to ensure the reliability and quality of their platform. Airbnb recognizes the importance of proper error handling to provide a seamless user experience. They implement robust error-handling strategies to catch and handle errors within their React components. This allows them to gracefully handle any unexpected issues, preventing them from disrupting the user's booking or browsing experience. Airbnb utilizes debugging tools and techniques to identify and resolve issues in their ReactJS codebase. They leverage browser developer tools and React Developer Tools to inspect the component hierarchy, track data flow, and diagnose issues effectively. Debugging helps them identify and fix bugs, optimize performance, and improve overall user satisfaction. Unit testing plays a crucial role at Airbnb to ensure the quality and stability of their React components. They have a comprehensive unit testing strategy in place, where they write tests for individual components to verify their behavior in isolation. By thoroughly testing each component, they can catch bugs early, prevent regressions, and maintain a reliable and consistent user experience across their platform.
+Primary Goals
+Understand the importance of error handling and debugging in React applications.
+Learn how to use breakpoints, console logging, and other debugging techniques effectively.
+Understand the purpose and features of Unit testing in general and React Testing Library in particular.
+Learn how to write effective unit tests for component rendering, props and state, event handling, etc.
+ 
+Error Handling, Debugging, and Unit Testing in ReactJS
+Introduction to Error Handling and Debugging in React
+Error handling and debugging in React refers to the process of identifying, managing, and resolving errors and bugs that occur during the development or execution of a React application. React provides several mechanisms and best practices to handle errors and debug issues effectively. Here are some key aspects of error handling and debugging in React:
+Error Boundaries: React introduces a concept called "Error Boundaries" that allows you to catch and handle errors that occur during the rendering of a component tree. Error Boundaries are special React components that wrap a section of the component tree and define an error-handling behavior. When an error occurs within the Error Boundary or any of its child components, the Error Boundary component captures the error and displays an alternative UI or logs the error message.
+componentDidCatch(): This lifecycle method is used within Error Boundary components to catch and handle errors in React. By implementing this method, you can specify the error-handling logic for the Error Boundary component. It receives two arguments: error (the error object thrown by the child component) and info (an object with componentStack property providing the stack trace). You can use this information to log the error, update the UI, or perform any other necessary actions.
+Error handling in asynchronous code: When dealing with asynchronous operations like data fetching or API calls in React, it's important to handle any potential errors that may occur. You can use try...catch blocks or Promise.catch() method to capture and handle errors. Additionally, React offers tools like React Error Boundaries or libraries like react-error-boundary to handle errors in async code effectively.
+Debugging tools and techniques: React developers use various debugging tools and techniques to identify and fix issues in their applications. Some commonly used tools include browser developer tools (e.g., Chrome DevTools), React Developer Tools browser extension, logging libraries like console.log() or more advanced options like debugger statements. These tools help inspect the component tree, check the state and props of components, track down errors, and step through the code execution.
+Testing: Writing comprehensive tests for your React components using tools like Jest or React Testing Library can help catch errors and identify issues early in the development process. Proper unit tests, integration tests, and end-to-end tests can provide confidence in the stability and reliability of your React application.
+JavaScript Errors in React Applications
+Javascript errors can occur in React applications just like in any other JavaScript code. These errors can arise for various reasons, such as incorrect syntax, undefined variables, unexpected data types, or runtime issues. Here are some common types of JavaScript errors you may encounter in React applications:
+Syntax Errors: These errors occur when there is a mistake in the syntax of your JavaScript code. For example, missing parentheses, semicolons, or curly braces can lead to syntax errors. The JavaScript engine will throw a syntax error and usually point out the specific line where the error occurred.
+Example:
+// Missing closing parentheses
+const sum = (a, b => {
+  return a + b;
+};
+
+// Missing semicolon
+const message = 'Hello, world!'
+console.log(message)
+
+// Missing closing curly brace
+const person = {
+  name: 'John',
+  age: 30,
+  sayHello() {
+    console.log(`Hello, my name is ${this.name}`);
+  }
+Reference Errors: Reference errors occur when you try to access a variable or object that doesn't exist or is out of scope. For instance, if you mistype a variable name or try to access a property of an undefined object, a reference error will be thrown.
+Example:
+// Accessing an undefined variable
+console.log(username);
+
+// Accessing a property of an undefined object
+const person = { name: 'John' };
+console.log(person.age);
+Type Errors: Type errors occur when you perform an operation on a value of an unexpected type. For example, attempting to call a non-function as a function, accessing a property of a null or undefined value, or passing incorrect arguments to a function can result in type errors.
+Example:
+// Calling a non-function as a function
+const number = 42;
+number();
+
+// Accessing a property of a null or undefined value
+const user = null;
+console.log(user.name);
+
+// Passing incorrect arguments to a function
+function multiply(a, b) {
+  return a * b;
+}
+
+multiply(5, '2');
+Runtime Errors: Runtime errors occur during the execution of your code. These errors are often caused by logical mistakes or unexpected conditions. They can include errors like dividing by zero, infinite loops, or accessing an array element that is out of bounds.
+Example:
+// Dividing by zero
+const result = 10 / 0;
+console.log(result);
+
+// Infinite loop
+while (true) {
+  console.log('This loop will never end!');
+}
+
+// Accessing an array element that is out of bounds
+const numbers = [1, 2, 3];
+console.log(numbers[5]);
+Network Errors: In React applications that interact with APIs or perform network requests, network errors can occur. These errors can result from issues like server unavailability, incorrect endpoints, or problems with the network connection.
+Example:
+// Incorrect endpoint
+fetch('https://api.example.com/wrong-endpoint')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
+
+// Server unavailability
+fetch('https://api.example.com')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
+
+// Problems with network connection
+fetch('https://api.example.com')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
+Promises and Asynchronous Errors: When working with asynchronous operations like Promises, errors can occur during their resolution or rejection. Please handle these errors appropriately to avoid uncaught promise rejections, causing issues in your React application.
+Example:
+// Handling errors during Promise resolution
+const promise = new Promise((resolve, reject) => {
+  // Simulating an error during resolution
+  throw new Error('Something went wrong');
+});
+
+promise.catch(error => console.error('Error:', error));
+
+// Handling errors during Promise rejection
+const promise = new Promise((resolve, reject) => {
+  // Simulating an asynchronous error
+  setTimeout(() => reject(new Error('Async error')), 2000);
+});
+
+promise.catch(error => console.error('Error:', error));
+It's crucial to handle these errors gracefully in your React application to prevent crashes and provide a good user experience. You can use techniques like error boundaries, try-catch blocks, or Promise.catch() to handle and manage errors effectively. Additionally, thorough testing and using debugging tools can help identify and resolve JavaScript errors during the development phase.
+Debugging Tools and Techniques in React
+Several tools and techniques can help identify and resolve issues when debugging React applications. Here are some commonly used debugging tools and techniques in React:
+Browser Developer Tools: Modern web browsers like Chrome, Firefox, and Safari provide powerful developer tools that include various debugging features. These tools allow you to inspect the HTML structure, CSS styles, and JavaScript code of your React components. You can use the console to log messages, inspect variables, and execute JavaScript expressions. The debugger tool lets you set breakpoints and step through the code execution, helping you identify and analyze issues.
+Chrome DevTools
+Here's an overview of how to use Chrome Developer Tools for React debugging:
+Opening Chrome Developer Tools: To open Chrome Developer Tools, right-click anywhere on a webpage and select "Inspect" or press Ctrl + Shift + I (Windows/Linux) or Command + Option + I (Mac). This will open the Developer Tools panel.
+Inspecting Elements: With Chrome Developer Tools open, you can inspect and manipulate the HTML structure and CSS styles of your React components. Click on the "Elements" tab in the Developer Tools panel to view and interact with the DOM tree. You can select elements, modify their styles, and see the applied changes in real-time.
+Console: The "Console" tab in the Developer Tools panel is where you can log messages and execute JavaScript code. Ybatements strategically in your code to output useful information. Any logged messages will appear in the Console, allowing you to inspect variable values, track the flow of data, and debug your React application.
+Debugger: The "Sources" tab in the Developer Tools panel provides a debugger tool that allows you to set breakpoints in your JavaScript code. By placing breakpoints at specific lines, you can pause the execution of your React application and examine the state of variables, step through the code line by line, and trace the flow of execution. This helps identify and understand the cause of issues.
+Network Analysis: The "Network" tab in the Developer Tools panel is useful for debugging network-related issues in your React application. It provides insights into the network requests made by your application, including their status, headers, and response bodies. You can track API requests, identify errors or slow responses, and analyze network traffic.
+Performance Analysis: The "Performance" tab in the Developer Tools panel allows you to profile the performance of your React application. It captures and analyzes the timeline of events, including JavaScript execution, rendering, and network activity. By using this tool, you can identify performance bottlenecks, optimize your code, and improve the overall performance of your React application.
+These are just some of the main features of Chrome Developer Tools that can assist in debugging React applications. Remember to leverage the rich set of tools and explore their capabilities to debug and troubleshoot your React code effectively.
+React Developer Tools: React Developer Tools is a browser extension available for Chrome and Firefox that enhances the browser's developer tools specifically for React applications. It provides additional features tailored for React development, such as inspecting React component hierarchies, examining component props and state, and inspecting the virtual DOM. It enables you to visualize and debug the React component tree and its changes, making it easier to identify and resolve issues.
+Logging: Adding console.log statements strategically in your code can help trace the data flow and identify potential issues. You can log component props, state changes, and function calls to understand your application's behavior at different stages. Additionally, you can use more advanced logging libraries like debug or loglevel to manage logging in a structured and configurable manner.
+Error Boundaries: React's Error Boundaries are not only useful for handling errors but also for providing valuable debug information. By implementing Error Boundary components at strategic points in your component tree, you can catch and log errors, including their stack traces. This helps pinpoint the location and cause of errors, making debugging easier.
+React Profiler: React Profiler is a built-in tool in React that allows you to analyze the performance of your application and identify potential bottlenecks. It helps you understand which components take the most time to render, which renders are unnecessary, and how component updates are triggered. By using the React Profiler, you can optimize your application and improve its overall performance.
+Testing: Writing tests for your React components using tools like Jest, React Testing Library, or Enzyme is an effective way to catch bugs and prevent regressions. Tests can help you verify the behavior of individual components, simulate user interactions, and ensure that your application functions as intended. By incorporating testing into your development process, you can catch issues early and have a more stable codebase.
+By using these debugging tools and techniques, you can gain better insights into your React application, track down issues, and resolve them efficiently. Remember to combine different methods and experiment with the best tools for your specific debugging needs.
+Console Logging and Debugging Statements
+Console logging and debugging statements are valuable techniques for debugging React applications. They allow you to inspect variables, trace the data flow, and identify issues within your code. Here's how you can use console logging and debugging statements effectively in React:
+Logging Values: You can usebues of variables, objects, or expressions in the console. By strategically placing these statements throughout your React components and functions, you can gain insights into the state of your application at specific points in the code. For example
+const MyComponent = () => {
+  const message = 'Hello, world!';
+  console.log(message);
+
+  const handleClick = () => {
+    const name = 'John Doe';
+    console.log(`Button clicked by ${name}`);
+  };
+
+  return (
+    <button onClick={handleClick}>Click Me</button>
+  );
+};
+Debugging Statements: In addition to simple logging, you can use more advanced debugging statements like console.debug(), console.info(), or console.error() to provide different levels of importance and categorize your log messages. These statements help differentiate between different types of information and make the console output more structured and organized.
+const MyComponent = () => {
+  const value = 42;
+  console.debug('Debug statement');
+  console.info('Info statement');
+  console.error('Error statement');
+
+  return <div>{value}</div>;
+};
+Conditional Logging: You can conditionally log messages based on certain conditions or flags. This can be particularly helpful when you want to log information only under specific circumstances. For example:
+const MyComponent = () => {
+  const isLoading = true;
+
+  if (isLoading) {
+    console.log('Loading data...');
+  }
+
+  return <div>Loading...</div>;
+};
+Grouping and Labeling: To make console logs more organized, you can group related log statements using console.group() and console.groupEnd() or create labels using console.groupCollapsed() and console.groupEnd(). This is especially useful when you want to group logs within a specific context or function.
+const MyComponent = () => {
+  const fetchData = () => {
+    console.group('Fetch Data');
+    console.log('Fetching user data...');
+    console.log('Fetching posts data...');
+    console.groupEnd();
+  };
+
+  return (
+    <button onClick={fetchData}>Fetch Data</button>
+  );
+};
+Debugging with Breakpoints: In addition to console logging, you can use breakpoints in your code to pause the execution and inspect the state of variables at specific lines. This can be done by placing the debugger statement in your code. When the browser encounters this statement, it will pause the code execution, allowing you to step through the code and analyze variables and expressions.
+const MyComponent = () => {
+  const handleClick = () => {
+    debugger; // Code execution will pause here
+    const name = 'John Doe';
+    console.log(`Button clicked by ${name}`);
+  };
+
+  return (
+    <button onClick={handleClick}>Click Me</button>
+  );
+};
+ 
+By using these console logging and debugging techniques, you can gain valuable insights into the execution flow of your React components, identify issues, and track down bugs more effectively during development. Just remember to remove or disable console logs and breakpoints before deploying your application to a production environment.
+Project Implementation Step 1
+App.js
+import React, { useEffect } from 'react';
+
+function App() {
+  useEffect(() => {
+    console.log('Component mounted');
+    
+    // Simulating an async operation
+    setTimeout(() => {
+      console.log('Async operation completed');
+    }, 2000);
+  }, []);
+
+  return <div>My React App</div>;
+}
+
+export default App;
+Output:
+notion image
+Explanation:
+The useEffect hook is used to perform side effects in functional components. It takes a callback function as its first argument, which will be executed after the component renders. In this case, the callback function is logging "Component mounted" and setting up a simulated asynchronous operation.
+Inside the useEffect callback, the message "Component mounted" is logged to the console using console.log('Component mounted'). This message will be logged every time the component renders.
+The code then simulates an asynchronous operation using setTimeout. It sets a callback function to execute after a delay of 2000 milliseconds (2 seconds). Inside the callback, the message "Async operation completed" is logged to the console using console.log('Async operation completed').
+The useEffect hook has an empty dependency array [] as its second argument. This means that the effect will only run once, after the initial render of the component. The empty dependency array indicates that there are no dependencies that would require the effect to run again if they change.
+Finally, the return statement of the App component returns a JSX element <div>My React App</div>. This JSX element represents the content that will be rendered to the DOM when the component is mounted.
+To summarize, when the App component is mounted, the "Component mounted" message is logged to the console. Then, after a delay of 2 seconds, the "Async operation completed" message is logged. The component renders a <div> element with the text "My React App" as its content.
+ 
+Using React Error Boundaries for Error Handling
+React Error Boundaries provide a way to handle errors that occur within a component tree. You can wrap your components with an Error Boundary to catch and handle errors, preventing them from crashing the entire application. Here's how you can use React Error Boundaries for error handling:
+Create an Error Boundary Component: Start by creating a new component that will serve as your Error Boundary. It should implement the componentDidCatch(error, info) lifecycle method, which will be called when an error occurs within its child components.
+import React, { Component } from 'react';
+
+class ErrorBoundary extends Component {
+  componentDidCatch(error, info) {
+    // Handle the error here
+    // You can log the error, display an error UI, or perform other error handling actions
+    console.log('Error:', error);
+    console.log('Error Info:', info);
+  }
+
+  render() {
+    // Render the child components
+    return this.props.children;
+  }
+}
+
+export default ErrorBoundary;
+Wrap Components with the Error Boundary: Wrap the component tree that you want to be covered by the Error Boundary. This can be done by placing the Error Boundary component around the desired components in the render tree.
+import React from 'react';
+import ErrorBoundary from './ErrorBoundary';
+
+const App = () => {
+  return (
+    <div>
+      <h1>My React App</h1>
+      <ErrorBoundary>
+        {/* Components to be covered by the Error Boundary */}
+        {/* ... */}
+      </ErrorBoundary>
+    </div>
+  );
+}
+
+export default App;
+Error Handling within the Error Boundary: Inside the componentDidCatch method of the Error Boundary component, you can handle the error as needed. You can log the error, display an error message or UI, or take any other appropriate action based on your application's requirements.
+componentDidCatch(error, info) {
+  // Handle the error here
+  console.log('Error:', error);
+  console.log('Error Info:', info);
+
+  // Set the state to display an error message or UI
+  this.setState({ hasError: true });
+}
+Error Boundary Fallback UI: Optionally, you can add a fallback UI within the Error Boundary component to display when an error occurs. This UI can provide a user-friendly message or instructions on what to do when an error occurs.
+class ErrorBoundary extends Component {
+  state = {
+    hasError: false
+  };
+
+  componentDidCatch(error, info) {
+    // Handle the error here
+    console.log('Error:', error);
+    console.log('Error Info:', info);
+
+    // Set the state to display an error message or UI
+    this.setState({ hasError: true });
+  }
+
+  render() {
+    if (this.state.hasError) {
+      // Render the fallback UI when an error occurs
+      return <div>Oops! Something went wrong.</div>;
+    }
+
+    // Render the child components
+    return this.props.children;
+  }
+}
+ 
+By implementing Error Boundaries in your React application, you can isolate and handle errors within specific component trees, improving the overall stability and user experience. Remember to use Error Boundaries judiciously and wrap only the necessary parts of your component tree to catch and handle errors where needed.
+Project Implementation Step 2
+Product.js
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { addCart } from "../redux/action";
+import { useParams } from "react-router";
+import { NavLink } from "react-router-dom";
+import Skeleton from "react-loading-skeleton";
+import { FaStar } from "react-icons/fa";
+
+const ErrorBoundary = ({ children }) => {
+    const [hasError, setHasError] = useState(false);
+  
+    useEffect(() => {
+      setHasError(false);
+    }, [children]);
+  
+    if (hasError) {
+      return <div>Oops! Something went wrong.</div>;
+    }
+  
+    return children;
+  };
+
+const Product = () => {
+  const { id } = useParams();
+  const [product, setProduct] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+
+  const addProduct = (product) => {
+    dispatch(addCart(product));
+  };
+
+  useEffect(() => {
+    const getProduct = async () => {
+      
+        setLoading(true);
+        const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+        setProduct(await response.json());
+        setLoading(false);
+      
+    };
+    getProduct();
+  }, []);
+
+  const Loading = () => {
+    return (
+      <>
+        <div className="col-md-6">
+          <Skeleton height={400} />
+        </div>
+        <div className="col-md-6" style={{ lineHeight: 2 }}>
+          <Skeleton height={50} width={300} />
+          <Skeleton height={75} />
+          <Skeleton height={25} width={150} />
+          <Skeleton height={50} />
+          <Skeleton height={150} />
+          <Skeleton height={50} width={100} />
+          <Skeleton height={50} width={100} style={{ marginLeft: 6 }} />
+        </div>
+      </>
+    );
+  };
+
+  const ShowProduct = () => {
+    return (
+      <>
+        <div className="col-md-6">
+          <img
+            src={product.image}
+            alt={product.title}
+            height="400px"
+            width="400px"
+          />
+        </div>
+        <div className="col-md-6">
+          <h4 className="text-uppercase text-black-50">{product.category}</h4>
+          <h1 className="display-5">{product.title}</h1>
+          <p className="lead fw-bolder">
+            Rating {product.rating && product.rating.rate}
+            <FaStar />
+          </p>
+          <h3 className="display-6 fw-bold my-4">$ {product.price}</h3>
+          <p className="lead">{product.description}</p>
+          <button
+            className="btn btn-outline-dark px-4 py-2"
+            onClick={() => addProduct(product)}
+          >
+            Add to Cart
+          </button>
+          <NavLink to="/cart" className="btn btn-dark ms-2 px-3 py-2">
+            Go to Cart
+          </NavLink>
+        </div>
+      </>
+    );
+  };
+
+  return (
+    <div>
+      <div className="container py-5">
+        <div className="row py-4">
+          <ErrorBoundary>
+            {loading ? <Loading /> : <ShowProduct />}
+          </ErrorBoundary>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Product;
+Output:
+notion image
+Explanation:
+Let's break down the code and explain its functionality:
+The code starts with importing necessary dependencies, such as React, hooks (useState, useEffect), Redux-related elements (useDispatch, addCart), routing-related elements (useParams, NavLink), external library (Skeleton), and an icon component (FaStar).
+The ErrorBoundary component is a functional component that acts as an error boundary. It takes a children prop which represents the components or JSX wrapped inside the ErrorBoundary component.
+The hasError state variable is used to track whether an error has occurred within the children components. It is initially set to false using the useState hook.
+The useEffect hook is used to reset the hasError state to false whenever the children prop changes. This ensures that if an error occurs in the child components, the error boundary can reset itself for subsequent renders.
+If an error is detected (hasError is true), the ErrorBoundary component renders a fallback UI, which in this case is a simple "Oops! Something went wrong." message.
+If no error is detected, the ErrorBoundary component renders the children prop, which represents the wrapped components.
+The Product component is the main component that fetches and displays product details based on the id parameter from the URL.
+The useParams hook from react-router is used to extract the id parameter from the URL.
+State variables such as product (using useState) and loading (using useState) are initialized.
+The useDispatch hook from react-redux is used to access the Redux dispatch function, which will be used to trigger the addCart action.
+An asynchronous function called getProduct is defined using the useEffect hook. This function fetches product data based on the id parameter from the https://fakestoreapi.com API. The fetched data is then stored in the product state variable, and the loading state is updated accordingly.
+The Loading component displays a loading skeleton while the product data is being fetched. This is rendered conditionally when loading is true.
+The ShowProduct component displays the product details, such as the product image, category, title, rating, price, description, and buttons. It also handles the "Add to Cart" functionality.
+Finally, the Product component renders the content wrapped in the ErrorBoundary component. This ensures that any errors occurring within the Loading or ShowProduct components are caught and handled by the ErrorBoundary.
+The Product component is exported as the default export, making it available for use in other parts of the application.
+The ErrorBoundary component provides error handling capabilities by wrapping the components that may potentially throw errors. It catches any errors thrown by its children and displays a fallback UI instead of crashing the application. This helps in providing a better user experience by gracefully handling errors.
+Catching and Handling Errors in Event Handlers and Async Functions
+When it comes to catching and handling errors in event handlers and asynchronous functions in React, you can use a combination of error boundaries, try-catch blocks, and error-handling techniques. Here's how you can approach error handling in these scenarios:
+Event Handlers: When an error occurs within an event handler in React, it can cause the application to crash. To prevent this, you can wrap the event handler code with a try-catch block to catch any errors that may arise.
+const handleClick = () => {
+  try {
+    // Event handler code that may throw an error
+  } catch (error) {
+    // Handle the error
+    console.error('Error:', error);
+    // Perform any necessary error handling actions
+  }
+};
+By wrapping the event handler code with a try-catch block, you can catch errors and handle them appropriately. You can log the error, display an error message to the user, or perform any other error-handling actions that fit your application's needs.
+Async Functions: When working with asynchronous functions in React, you can use try-catch blocks or handle errors using promises. If you are using async/await syntax, you can catch errors by wrapping your asynchronous code within a try-catch block.
+const fetchData = async () => {
+  try {
+    // Asynchronous code that may throw an error
+  } catch (error) {
+    // Handle the error
+    console.error('Error:', error);
+    // Perform any necessary error handling actions
+  }
+};
+And if you are working with promises directly, you can use the .catch() method to handle errors.
+const fetchData = () => {
+  asyncFunction()
+    .then((data) => {
+      // Handle the resolved data
+    })
+    .catch((error) => {
+      // Handle the error
+      console.error('Error:', error);
+      // Perform any necessary error handling actions
+    });
+};
+By handling errors in asynchronous functions, you can gracefully manage exceptions during asynchronous operations, such as data fetching or API calls.
+Remember, error handling should be tailored to your specific application needs. Depending on the severity and nature of the error, you can choose to display error messages to the user, log the error to a server, show a fallback UI, or take other necessary actions to maintain a smooth user experience.
+Project Implementation Step 3
+Product.js
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { addCart } from "../redux/action";
+import { useParams } from "react-router";
+import { NavLink } from "react-router-dom";
+import Skeleton from "react-loading-skeleton";
+import { FaStar } from "react-icons/fa";
+
+const Product = () => {
+  const { id } = useParams();
+  const [product, setProduct] = useState([]); 
+  const [loading, setLoading] = useState(false);
+
+  const dispatch = useDispatch();
+  const addProduct = (product) => {
+    dispatch(addCart(product));
+  };
+
+  useEffect(() => {
+    const getProduct = async () => {
+      try{
+        setLoading(true);
+      const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+      setProduct(await response.json());
+      setLoading(false);
+      }catch(error){
+          console.log(error);
+      }
+    };
+   getProduct(); 
+  }, []);
+
+  const Loading = () => {
+    return (
+      <>
+        <div className="col-md-6">
+          <Skeleton height={400} />
+        </div>
+        <div className="col-md-6" style={{ lineHeight: 2 }}>
+          <Skeleton height={50} width={300} />
+          <Skeleton height={75} />
+          <Skeleton height={25} width={150} />
+          <Skeleton height={50} />
+          <Skeleton height={150} />
+          <Skeleton height={50} width={100} />
+          <Skeleton height={50} width={100} style={{ marginLeft: 6 }} />
+        </div>
+      </>
+    );
+  };
+  const ShowProduct = () => {
+    return (
+      <>
+        <div className="col-md-6">
+          <img
+            src={product.image}
+            alt={product.title}
+            height="400px"
+            width="400px"
+          />
+        </div>
+        <div className="col-md-6">
+          <h4 className="text-uppercase text-black-50">{product.category}</h4>
+          <h1 className="display-5">{product.title}</h1>
+          <p className="lead fw-bolder">
+            Rating {product.rating && product.rating.rate}
+            <FaStar />
+          </p>
+          <h3 className="display-6 fw-bold my-4">$ {product.price}</h3>
+          <p className="lead">{product.description}</p>
+          <button
+            className="btn btn-outline-dark px-4 py-2"
+            onClick={() => addProduct(product)}
+          >
+            Add to Cart
+          </button>
+          <NavLink to="/cart" className="btn btn-dark ms-2 px-3 py-2">
+            Go to Cart
+          </NavLink>
+        </div>
+      </>
+    );
+  };
+
+  return (
+    <div>
+      <div className="container py-5">
+        <div className="row py-4">
+          {loading ? <Loading /> : <ShowProduct />}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Product;
+Output:
+notion image
+Explanation:
+Let's go through the code and understand its functionality:
+The code imports necessary dependencies such as React, hooks (useState, useEffect), components (NavLink, Skeleton), Redux-related elements (useDispatch, addCart), and icons (FaStar).
+The Product component is defined as a functional component using an arrow function syntax.
+Within the component, the useParams hook from react-router is used to extract the id parameter from the URL. This allows the component to identify the specific product to fetch.
+Two state variables, product and loading, are defined using the useState hook. The product state will store the fetched product data, while loading will indicate whether the data is being fetched or not.
+The useDispatch hook from react-redux is used to access the dispatch function, which will be used to trigger the addCart action.
+The addProduct function is defined to dispatch the addCart action with the selected product as its payload when the "Add to Cart" button is clicked.
+The useEffect hook is used to fetch the product data when the component mounts. It makes an asynchronous request to the https://fakestoreapi.com API, using the extracted id parameter in the URL. The fetched data is then stored in the product state variable, and the loading state is updated accordingly. If an error occurs during the fetch, it is caught in the catch block, and the error is logged to the console.
+The Loading component is a functional component that renders a skeleton loading placeholder when the loading state is true.
+The ShowProduct component is a functional component that renders the fetched product details when the loading state is false. It displays the product image, title, category, rating, price, description, and buttons for adding the product to the cart or navigating to the cart page.
+The component returns JSX representing the layout and structure of the product details, with appropriate conditional rendering based on the loading state.
+Finally, the Product component is exported as the default export, making it available for use in other parts of the application.
+In summary, this code fetches and displays the details of a product based on the id parameter from the URL. It handles the loading state during the API request and provides functionality to add the product to the cart.
+Understanding Common React Errors and Their Solutions
+While working with React, you may encounter some common errors. Here are a few of them, along with their possible solutions:
+"Cannot read property 'X' of undefined" or "TypeError or “null": These errors occur when you try to access a property or method of an undefined or null value. To resolve this, ensure that the object or variable you are accessing is defined and not null before accessing its properties.
+"Expected a single React element" or "Adjacent JSX elements must be wrapped in an enclosing tag": These errors occur when you have multiple JSX elements adjacent to each other without a wrapper element. Wrap the adjacent JSX elements inside a single parent element or use a Fragment (<React.Fragment>) as a wrapper.
+"Each child in a list should have a unique 'key' prop": This warning occurs when rendering a list of components without specifying a unique "key" prop for each item. Assign a unique "key" prop to each component in the list to help React identify and optimize updates efficiently.
+"setState called during rendering" or "Can't perform a React state update on an unmounted component": These errors occur when you call setState within the render method or when the component is not mounted. Avoid calling setState inside the render method, as it can cause an infinite loop. Ensure that the component is mounted before calling setState and handle any asynchronous actions accordingly.
+"Invariant Violation: Maximum update depth exceeded": This error usually indicates that there is an infinite loop in your component's state or props updates. Review your component's logic to ensure that the state or props updates are properly controlled and avoid creating circular dependencies.
+"TypeError: 'X' is not a function": This error occurs when you try to call a function that is not defined or is not a function type. Verify that the function is correctly imported or defined and ensure that its name and usage are correct.
+"React Hook 'X' is called in a function that is neither a React function component nor a custom React Hook": This error indicates that you are using React Hooks (such as useState or useEffect) outside of a functional component or a custom React Hook. Use Hooks only within functional components or custom Hooks.
+"Warning: Can't perform a React state update on an unmounted component": This warning is often triggered when an asynchronous operation (e.g., API request) is still running after the component has unmounted. To avoid this warning, cancel or clean up any pending asynchronous operations when the component is unmounted. You can use techniques like useEffect with a cleanup function or libraries like axios with request cancellation.
+ 
+These are just a few examples of common errors in React and their possible solutions. Remember that each error can have various causes, so it's essential to carefully analyze the error message, review your code, and refer to the React documentation and community resources for further guidance.
+Unit Testing
+Unit testing is a crucial practice in software development, including React applications. It involves testing individual units or components of code in isolation to ensure they work correctly. In React, unit testing focuses on testing React components, their props, and their behavior. There are several reasons why it is necessary:
+Identify Bugs and Issues: Testing helps identify bugs, errors, and issues in software. By writing tests that cover various scenarios, you can catch and fix issues early in the development process before they reach users. This leads to improved software quality and a better user experience.
+Ensure Correctness and Reliability: Testing verifies that the software functions correctly and reliably. It ensures that the expected output or behavior is produced for a given set of inputs or conditions. This helps build confidence in the software's behavior and helps prevent unexpected errors or crashes.
+Maintain Code Quality and Refactor Safely: Tests act as a safety net when making changes to the codebase. When you refactor or modify existing code, running tests ensures that the changes do not introduce regressions or break existing functionality. It enables you to refactor code with confidence, knowing that the tests will catch any unintended side effects.
+Facilitate Collaboration and Communication: Tests serve as documentation for how the software is supposed to behave. They provide a clear specification of the expected functionality and can act as a form of communication among team members. Tests help clarify requirements, ensure consistent understanding, and facilitate collaboration within development teams.
+Enable Agile Development and Continuous Integration: Testing is crucial in Agile development methodologies and continuous integration workflows. It allows for faster development iterations by catching errors early and facilitating quick feedback loops. By automating tests and integrating them into the development process, you can ensure that the codebase remains stable and that changes can be merged with confidence.
+Improve Maintainability and Reduce Technical Debt: Tests contribute to the maintainability and long-term health of the codebase. They act as documentation and help ensure that changes to the software do not introduce unintended side effects. With a comprehensive test suite, you can easily refactor code, add new features, and improve the system over time without introducing regressions or breaking existing functionality.
+Enhance Software Robustness: Tests help uncover edge cases and handle exceptional situations. By testing boundary conditions, invalid inputs, and error-handling scenarios, you can ensure that the software remains robust and resilient. This improves the user experience by reducing the chances of unexpected failures or crashes.
+Project Implementation Step 4
+Home.test.js
+import React from 'react';
+import { render } from '@testing-library/react';
+import Home from "./home"
+
+describe('home component',()=>{
+    it('renders home',()=>{
+        const {getByTestId}=render(<Home/>)
+    const homeElement = getByTestId('home').textContent;
+    expect(homeElement).toEqual("NEW SEASON ARRIVALS")
+    })
+})
+Home.js
+import React from "react";
+import Products from "./products";
+import img from '../assets/bg.jpg'
+
+const Home = () => {
+  return (
+    <div className="hero">
+      <div className="card bg-dark text-white border-0">
+        <img
+          src={img}
+          className="card-img"
+          alt="Background"
+          height="550px"
+        />
+        <div className="card-img-overlay d-flex flex-column justify-content-center">
+          <div className="container">
+            <h5 data-testid='home'  className="card-title display-3 fw-bolder mb-0">
+              NEW SEASON ARRIVALS
+            </h5>
+            <p className="card-text lead fs-2">CHECK OUT ALL THE TRENDS</p>
+          </div>
+        </div>
+      </div>
+      <Products />
+    </div>
+  );
+};
+
+export default Home;
+Output:
+notion image
+Explanation:
+Let's break down the code and understand its structure and purpose:
+The import statements bring in the necessary dependencies. In this case, React is imported from the 'react' package, and the render function is imported from the '@testing-library/react' package. Additionally, the Home component is imported from a file called 'home'.
+The describe block sets up a test suite or group of related test cases. In this example, the suite is named 'home component'.
+The it function defines an individual test case within the suite. Here, the test case is named 'renders home'.
+Inside the test case, the render function is called with the Home component as its argument. The render function returns an object that contains various methods for selecting elements and interacting with the rendered component.
+The getByTestId function is used to select an element based on its data-testid attribute. In this case, it selects an element with the data-testid attribute set to 'home'.
+The textContent property is accessed on the selected element to retrieve its textual content.
+The expect function is used to make assertions about the test result. In this case, it asserts that the value of homeElement (the text content of the selected element) is equal to "NEW SEASON ARRIVALS".
+In summary, this unit test verifies that the Home component renders correctly and displays the expected text content. It utilizes the render function from the testing library to render the component, selects an element using getByTestId, and checks its text content using expect and toEqual assertions.
+React Testing Library
+The React Testing Library is a popular testing utility for React applications that helps you write effective and maintainable tests for your components. It provides a set of utilities and APIs specifically designed for testing React components by focusing on testing components' behavior from a user's perspective. The philosophy of React Testing Library is to encourage testing components as users would interact with them, resulting in more reliable and meaningful tests. 
+Installation:
+If you're using a Create React App project, the React Testing Library is already included. If not, you can install it along with its peer dependency, @testing-library/dom, and your preferred testing framework (Jest is a common choice). 
+To execute the following command, navigate to your project directory:
+npm install --save-dev @testing-library/react @testing-library/dom jest
+ 
+Here are some key features and concepts of React Testing Library:
+User-Centric Testing: React Testing Library encourages testing components from a user's perspective. It emphasizes interacting with components as a user would, rather than relying on implementation details. This approach leads to tests that are more robust, resilient to changes, and closer to real-world scenarios.
+DOM Testing: React Testing Library operates on the DOM level, allowing you to simulate user interactions and inspect the resulting DOM changes. It provides utilities to query elements based on their attributes, text content, or role, and perform assertions on them. This enables you to test component rendering, user interactions, and the resulting DOM state.
+Render and Cleanup: React Testing Library provides the render() function to render components in a test environment. It returns a set of utilities that allow you to access and interact with the rendered component and the resulting DOM. Additionally, it automatically cleans up the rendered component after each test, ensuring a clean slate for subsequent tests.
+Queries and Assertions: React Testing Library provides a range of query methods, such as getByLabelText(), getByTestId(), findByText(), etc., to locate elements in the rendered component. These queries return DOM elements or throw helpful error messages when elements cannot be found. You can then use assertions, such as expect() from testing frameworks like Jest, to make assertions on the queried elements.
+Asynchronous Testing: React Testing Library supports asynchronous testing scenarios, such as waiting for DOM updates or data fetching. It offers asynchronous query methods like findByText() and a waitFor() utility to handle asynchronous operations. This ensures that you can write tests that accurately reflect real-world scenarios involving asynchronous behavior.
+Accessibility Testing: React Testing Library promotes accessibility testing by encouraging you to test components' accessibility attributes and behaviors. It provides utilities to query elements based on accessibility roles or states, allowing you to make assertions on accessibility-related concerns.
+Integration with Testing Frameworks: React Testing Library integrates well with popular testing frameworks like Jest. It provides compatibility with Jest's assertions, mocking capabilities, and snapshot testing. It also supports other testing frameworks like Mocha, Jasmine, and Cypress.
+React Testing Library is widely adopted by the React community and is recommended for testing React components. Its user-centric approach and DOM-based testing philosophy contribute to more reliable and maintainable tests. By using React Testing Library, you can write tests that focus on component behavior and user experience, resulting in more effective and meaningful testing of your React applications.
+Types of Unit Testing in React
+In React, there are several types of unit testing that can be performed to ensure the correctness and reliability of your components. Here are some common types of unit tests for React:
+Component Rendering Tests: These tests focus on verifying that React components render correctly with the expected output. You can use rendering assertions to check if the component renders the correct HTML structure, text content, and props. Frameworks like React Testing Library or Enzyme provide APIs to simulate component rendering and allow you to make assertions on the rendered output.
+Props and State Tests: Props and state are fundamental to React components. With these tests, you verify that components correctly handle different combinations of props and state changes. You can test that the component renders different outputs based on different prop values or that state updates trigger the expected re-rendering.
+Event Handling Tests: Event handling is a common functionality in React components. These tests ensure that event handlers are correctly bound to DOM elements and that triggering events on those elements results in the expected behavior, such as state updates or UI changes. You can simulate events using testing libraries' event simulation APIs and assert that the component behaves as intended.
+Snapshot Testing: Snapshot testing is a technique where you capture the current state of a component or component tree and compare it with a previously stored snapshot. This ensures that the component's UI structure remains consistent over time. React testing frameworks, like Jest, provide snapshot testing functionality, allowing you to capture and compare snapshots easily.
+Mocking External Dependencies: React components often interact with external dependencies, such as APIs or services. Mocking these dependencies allows you to test components in isolation without relying on the actual behavior of external systems. You can use mocking libraries like Jest's jest.mock() or manual mocks to replace dependencies with controlled test doubles and verify the component's behavior accordingly.
+Asynchronous Operation Tests: Components that perform asynchronous operations, like fetching data from an API, should be tested to ensure they handle loading, success, and error states correctly. You can mock API responses and verify that the component correctly updates its state or UI based on the different asynchronous outcomes.
+Component Interaction Tests: In React applications, components often interact with each other through props or callbacks. These tests ensure that the parent and child components communicate and pass data correctly. You can test that the parent component provides the expected props to its children or that child components correctly invoke callback functions passed from the parent.
+It's important to select and implement the appropriate tests based on your specific use cases and requirements. Writing comprehensive unit tests helps ensure the stability, correctness, and maintainability of your React components.
+How to perform testing in React?
+Here's an overview of how to approach unit testing in React:
+Choose a Testing Framework: There are several popular testing frameworks for React, such as Jest, React Testing Library, and Enzyme. Jest is commonly used as it comes bundled with create-react-app and provides a comprehensive set of features for testing React components.
+Write Test Suites and Test Cases: Create test files alongside your component files with a .test.js or .spec.js extension. Each test file can contain one or multiple test suites, and each test suite should target a specific component or functionality. Within each test suite, you write individual test cases that verify the behavior of the component or functionality under test.
+Render Components and Perform Assertions: In each test case, render the component or set up the required environment for testing the functionality. Use the testing framework's APIs to simulate user interactions, trigger events, and capture the resulting state or UI changes. Finally, perform assertions to verify that the component or functionality behaves as expected.
+Test Component Props and State: Test various combinations of props and states to ensure the component renders correctly and behaves as intended. Verify that the component handles different props and state changes appropriately, including edge cases and boundary conditions.
+Test Component Interactions: Test the interaction between components, such as verifying that child components receive the correct props from parent components or that events triggered in child components correctly update the state or trigger callbacks in parent components.
+Test Asynchronous Operations: Test components that perform asynchronous operations like data fetching or API calls. Mock the API responses using the testing framework's mocking capabilities, and verify that the component handles loading, success, and error states correctly.
+Use Mocks and Spies: Use mocks and spies to replace external dependencies, such as APIs or services, with test doubles. This allows you to isolate the component under test and focus on its specific behavior without depending on real-world interactions.
+Test Coverage: Aim for good test coverage by ensuring that your tests cover a significant portion of your codebase. Strive to test critical paths, edge cases, and error scenarios to achieve a high level of confidence in your component's behavior.
+Continuous Integration: Integrate your unit tests into your continuous integration (CI) pipeline to ensure that tests are automatically executed with each code change. This helps catch issues early and ensures the stability of your codebase.
+Maintain and Update Tests: As your React application evolves, update your tests to reflect the changes in functionality or component behavior. Maintain your test suite alongside your codebase and regularly run tests to catch regressions.
+Unit testing in React provides confidence in the correctness and behavior of your components. It helps catch bugs early, encourages modularity and separation of concerns, and promotes a more robust and maintainable codebase.
+Examples of Testing in React:
+Testing DOM elements
+To test our DOM elements, we need to examine the TestElements.js file.
+File:TestElements.js
+import React from "react";
+
+const TestElements = () => {
+	const [counter, setCounter] = React.useState(0);
+
+	return (
+		<>
+			<h1 data-testid='counterText'>{counter}</h1>
+			<button data-testid='button-up' onClick={() => setCounter(counter + 1)}>
+				Up
+			</button>
+			<button
+				disabled
+				data-testid='button-down'
+				onClick={() => setCounter(counter - 1)}>
+				Down
+			</button>
+		</>
+	);
+};
+
+export default TestElements;
+The only thing that needs to be kept in mind is the data-testid attribute, which will be utilized to select these elements from the test file. With that in mind, let's proceed to write the unit test.
+ 
+Test whether the counter is equal to 0:
+import "@testing-library/jest-dom/extend-expect";
+import { cleanup, render, screen } from "@testing-library/react";
+
+import React from "react";
+import TestElements from "./TestElements";
+
+afterEach(cleanup);
+
+it("should equal to 0", () => {
+	// Arrange
+	const { getByTestId } = render(<TestElements />);
+	// Act
+	const counterBox = getByTestId("counterText"); // getElementById
+	// Evaluate/test/expect
+	expect(counterBox).toHaveTextContent(0);
+});
+Explanation: 
+The afterEach function with cleanup is used to clean up any rendered components after each test. This ensures that there are no lingering effects or conflicts between different tests.
+The it function is a test case that describes the behavior being tested. In this case, it specifies that the component should have a text content equal to 0.
+Inside the test case, the render function is used to render the TestElements component. This component is the one being tested.
+The getByTestId function is used to query the rendered component and retrieve the element with the data-testid attribute set to "counterText". This attribute is typically added to elements to make them easily accessible for testing purposes.
+The expect function is used to assert that the counterBox element has a text content equal to 0. This expectation verifies that the component behaves as expected.
+notion image
+ 
+Test whether the buttons are enabled or disabled:
+import "@testing-library/jest-dom/extend-expect";
+import { cleanup, render, screen } from "@testing-library/react";
+
+import React from "react";
+import TestElements from "./TestElements";
+
+afterEach(cleanup);
+
+it("should be enabled", () => {
+	// Arrange
+	render(<TestElements />);
+	// Act
+	const buttonActive = screen.getByTestId("button-up");
+	// Expect
+	expect(buttonActive).not.toHaveAttribute("disabled");
+});
+
+it("should be disabled", () => {
+	render(<TestElements />);
+	expect(screen.getByTestId("button-down")).toBeDisabled();
+});
+Explanation:
+The first test case begins with the it function, which defines an individual test case with a description.
+Inside the test case, the render function is used to render the "TestElements" component.
+The screen.getByTestId function retrieves the DOM element with the specified "button-up" test ID. This is a custom data attribute used to uniquely identify the element for testing purposes.
+The expect function is used to assert that the retrieved button does not have the "disabled" attribute. This test verifies that the button should be enabled.
+ 
+The second test case follows the same structure as the first one but checks a different aspect of the component.
+After rendering the "TestElements" component, the screen.getByTestId function is used to retrieve the DOM element with the "button-down" test ID.
+The expect function asserts that the retrieved button should be disabled.
+notion image
+ 
+ 
+Testing events
+Before we begin writing our unit tests, let's first take a look at what TestEvents.js file looks like.
+File:TestEvents.js
+import React from "react";
+
+const TestEvents = () => {
+	const [counter, setCounter] = React.useState(0);
+
+	return (
+		<>
+			<h1 data-testid='counter'>{counter}</h1>
+			<button data-testid='button-up' onClick={() => setCounter(counter + 1)}>
+				Up
+			</button>
+			<button data-testid='button-down' onClick={() => setCounter(counter - 1)}>
+				Down
+			</button>
+		</>
+	);
+};
+
+export default TestEvents;
+Now, let's write the tests.
+ 
+Test whether the counter increments and decrements correctly when we click on buttons:
+import "@testing-library/jest-dom/extend-expect";
+import { cleanup, fireEvent, render } from "@testing-library/react";
+import React from "react";
+import TestEvents from "./TestEvents";
+
+afterEach(cleanup);
+
+it("increments counter", () => {
+	// Arrange
+	const { getByTestId } = render(<TestEvents />);
+	// Act
+	const Upbutton = getByTestId("button-up");
+	fireEvent.click(Upbutton);
+	// Assert
+	const counterText = getByTestId("counter");
+	expect(counterText).toHaveTextContent("1");
+});
+
+it("decrements counter", () => {
+	// Arrange
+	const { getByTestId } = render(<TestEvents />);
+	// Act
+	const downButton = getByTestId("button-down");
+	fireEvent.click(downButton);
+	// Assert
+	const counterText = getByTestId("counter");
+	expect(counterText).toHaveTextContent("-1");
+});
+Explanation:
+The it function is a test case or a test block. In the first test case, it is testing the behavior of the component when the "Up" button is clicked. In the second test case, it is testing the behavior when the "Down" button is clicked.
+In each test case, the getByTestId function is used to get a reference to the elements with the specified data-testid attribute. The data-testid attribute is commonly used in testing to target specific elements for testing purposes.
+The fireEvent.click() function is used to simulate a click event on the respective button. It triggers the event handler associated with the button, simulating user interaction.
+Finally, the expect function is used to make assertions about the expected behavior of the component. It uses the custom matcher toHaveTextContent() to check the text content of the counterText element.
+ 
+notion image
+ 
+Testing asynchronous actions
+An asynchronous action refers to a task that can consume time to finish, such as an HTTP request, a timer, and so forth.
+File: TestAsync.js
+import React from "react";
+
+const TestAsync = () => {
+	const [counter, setCounter] = React.useState(0);
+
+	const delayCount = () =>
+		setTimeout(() => {
+			setCounter(counter + 1);
+		}, 1000);
+
+	return (
+		<>
+			<h1 data-testid='counter'>{counter}</h1>
+			<button data-testid='button-up' onClick={delayCount}>
+				Up
+			</button>
+			<button data-testid='button-down' onClick={() => setCounter(counter - 1)}>
+				Down
+			</button>
+		</>
+	);
+};
+
+export default TestAsync;
+Here the setTimeout() is used to delay the incrementing event by 1s.
+ 
+Test whether the counter is incremented after 1s:
+import "@testing-library/jest-dom/extend-expect";
+import {
+	cleanup,
+	fireEvent,
+	render,
+	screen,
+	waitFor,
+} from "@testing-library/react";
+import { act } from 'react-dom/test-utils';
+import React from "react";
+import TestAsync from "./TestAsync";
+
+beforeEach(() => {
+	jest.useFakeTimers()
+})
+
+it("increments counter after 1 sec", async () => {
+    // Arrange
+	render(<TestAsync/>)
+    // Act
+	const upButton = screen.getByTestId("button-up");
+	fireEvent.click(upButton);
+	jest.runAllTimers();
+	await screen.findByText('1'); // [findByText = getBytext + waitFor]
+});
+Explanation:
+Test Environment Setup: The beforeEach block is used to set up the test environment before each test case. In this case, jest.useFakeTimers() is called to mock the timers used in the component.
+Test Case: The code includes a single test case wrapped in the it function. The test case is titled "increments counter after 1 sec" to describe the expected behavior being tested.
+Arrange Phase: The render function is used to render the TestAsync component. This sets up the initial state for the test.
+Act Phase: The test simulates user interaction by selecting the "up" button using screen.getByTestId("button-up") and then triggering a click event on the button using fireEvent.click(upButton). This mimics the user action of clicking the button to increment the counter.
+Asynchronous Testing: In this case, the component being tested has an asynchronous behavior of incrementing the counter after 1 second. To handle this, the jest.runAllTimers() is called to advance the timers and simulate the passage of time. This ensures that the asynchronous behavior of the component is triggered.
+Assertion Phase: The test uses screen.findByText('1') to wait for the appearance of the text "1" in the rendered component. The findByText function combines getByText (to find the element) and waitFor (to wait for the element to appear). This assertion verifies that the counter has incremented to 1 after the asynchronous operation completes.
+notion image
+Testing React Redux
+In the previous lesson, we learned all about react and redux. Suppose you have yet to visit those, we strongly recommend reading those lessons to get a better understanding of redux. If not, let's review what the TestRedux.js file entails.
+File:TestRedux.js
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+const TestRedux = () => {
+	const state = useSelector(state => state.count);
+
+	const dispatch = useDispatch();
+
+	const increment = () => dispatch({ type: "INCREMENT" });
+	const decrement = () => dispatch({ type: "DECREMENT" });
+
+	return (
+		<>
+			<h1 data-testid='abcd'>{state}</h1>
+			<button data-testid='button-up' onClick={increment}>
+				Up
+			</button>
+			<button data-testid='button-down' onClick={decrement}>
+				Down
+			</button>
+		</>
+	);
+};
+
+export default TestRedux;
+And for the reducer:
+File: reducer.js
+export const initialState = {
+    count: 0,
+  }
+  
+  export function reducer(state = initialState, action) {
+    switch (action.type) {
+      case 'INCREMENT':
+        return {
+          count: state.count + 1,
+        }
+      case 'DECREMENT':
+        return {
+          count: state.count - 1,
+        }
+      default:
+        return state;
+    }
+  }
+ 
+Test whether the initial state is equal to 0:
+import "@testing-library/jest-dom/extend-expect";
+import { cleanup, render, fireEvent, screen } from "@testing-library/react";
+import React from "react";
+import { Provider } from "react-redux";
+import { legacy_createStore as createStore } from "redux";
+import TestRedux from "./TestRedux";
+import { reducer } from "./reducer";
+
+afterEach(cleanup);
+
+const renderWithRedux = (
+	component,
+	{ initialState, store = createStore(reducer, initialState) } = {},
+) => {
+	return {
+		...render(<Provider store={store}>{component}</Provider>),
+		store,
+	};
+};
+
+it("checks whether the initial state is equal to 0", () => {
+    // Arrange
+	renderWithRedux(<TestRedux />);
+    // Act
+    const counterText = screen.getByTestId("abcd");
+    // Assert
+	expect(counterText).toHaveTextContent(0);
+});
+Explanation: 
+To evaluate React Redux, a few essential imports are necessary. Additionally, we generate a custom utility function, renderWithRedux(), which renders the component and is used multiple times throughout the testing process.
+renderWithRedux() receives as parameters the component to render, the initial state, and the store. If there is no store, it will create a new one, and if it doesn't receive an initial state or a store, it returns an empty object.
+Subsequently, we employ render() to render the component and transfer the store to the Provider.
+With that in mind, we can pass the TestRedux component to renderWithRedux() to evaluate if the counter is identical to 0.
+ 
+notion image
+Test whether the counter increments and decrements correctly:
+import "@testing-library/jest-dom/extend-expect";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import React from "react";
+import { Provider } from "react-redux";
+import { legacy_createStore as createStore } from "redux";
+import { reducer } from "./reducer";
+import TestRedux from "./TestRedux";
+
+afterEach(cleanup)
+
+const renderWithRedux = (
+	component,
+	{ initialState, store = createStore(reducer, initialState) } = {},
+) => {
+	return {
+		...render(<Provider store={store}>{component}</Provider>),
+		store,
+	};
+};
+
+it("increments the counter through redux", () => {
+	renderWithRedux(<TestRedux />, {
+		initialState: { count: 5 },
+	});
+	fireEvent.click(screen.getByTestId("button-up"));
+	expect(screen.getByTestId("abcd")).toHaveTextContent("6");
+});
+
+it("decrements the counter through redux", () => {
+	renderWithRedux(<TestRedux />, {
+		initialState: { count: 100 },
+	});
+	fireEvent.click(screen.getByTestId("button-down"));
+	expect(screen.getByTestId("abcd")).toHaveTextContent("99");
+});
+To assess the incrementing and decrementing events, we provide an initial state as the second argument to renderWithRedux(). Consequently, we can trigger the button clicks and verify if the expected outcome matches the specified condition.
+ 
+notion image
+Next, we'll proceed to the following section where we will introduce React Context.
+Testing React Context
+Let's check the TextContext.js file.
+File: TextContext.js
+import React from "react";
+
+export const CounterContext = React.createContext(); // global context
+
+const CounterProvider = () => {
+	const [counter, setCounter] = React.useState(0);
+	const increment = () => setCounter(counter + 1);
+	const decrement = () => setCounter(counter - 1);
+
+	return (
+		<CounterContext.Provider value={{ counter, increment, decrement }}>
+			<Counter />
+		</CounterContext.Provider>
+	);
+};
+
+export const Counter = () => {
+	const { counter, increment, decrement } = React.useContext(CounterContext);
+	return (
+		<>
+			<h1 data-testid='counter'>{counter}</h1>
+			<button data-testid='button-up' onClick={increment}>
+				{" "}
+				Up
+			</button>
+			<button data-testid='button-down' onClick={decrement}>
+				Down
+			</button>
+		</>
+	);
+};
+
+export default CounterProvider;
+ 
+Test whether the initial state is equal to 0:
+import "@testing-library/jest-dom/extend-expect";
+import { cleanup, render, screen } from "@testing-library/react";
+import React from "react";
+import CounterProvider, { Counter, CounterContext } from "./TestContext";
+
+afterEach(cleanup);
+
+const renderWithContext = component => {
+	return {
+		...render(
+			<CounterProvider value={CounterContext}>{component}</CounterProvider>,
+		),
+	};
+};
+
+it("checks whether initial state is equal to 0", () => {
+	//Arrange
+	renderWithContext(<Counter />);
+	// Act
+	const countertextH1 = screen.getByTestId("counter");
+	// Assert
+	expect(countertextH1).toHaveTextContent(0);
+});
+Similar to the previous section concerning React Redux, we take a similar approach by producing a utility function named renderWithContext() that renders the component. However, this time it only accepts the component as an argument. In order to instantiate a new context, we provide CounterContext to the Provider.
+notion image
+ 
+Test whether the counter increments and decrements correctly:
+import "@testing-library/jest-dom/extend-expect";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import React from "react";
+import CounterProvider, { Counter, CounterContext } from "./TestContext";
+
+afterEach(cleanup);
+
+const renderWithContext = component => {
+	return {
+		...render(
+			<CounterProvider value={CounterContext}>{component}</CounterProvider>,
+		),
+	};
+};
+
+it("increments the counter", () => {
+	renderWithContext(<Counter />);
+
+	fireEvent.click(screen.getByTestId("button-up"));
+	expect(screen.getByTestId("counter")).toHaveTextContent("1");
+});
+
+it("decrements the counter", () => {
+	renderWithContext(<Counter />);
+
+	fireEvent.click(screen.getByTestId("button-down"));
+	expect(screen.getByTestId("counter")).toHaveTextContent("-1");
+});
+As evident, we trigger a click event in this scenario to evaluate whether the counter increments correctly to 1 and decreases to -1.
+notion image
+ 
+Testing React Router
+Let's check the TestRouter.js file.
+File: TestRouter.js
+import React from "react";
+
+import {
+  Link,
+  Route,
+  Routes,
+  useParams,
+} from "react-router-dom";
+
+const About = () => <h1>About page</h1>;
+const Home = () => <h1>Home page</h1>;
+const Contact = () => {
+  const { name } = useParams();
+  return <h1 data-testid="contact-name">{name}</h1>;
+};
+
+const TestRouter = () => {
+  const name = "Kapil";
+  return (
+    <>
+      <nav data-testid="navbar">
+        <Link data-testid="home-link" to="/">
+          Home
+        </Link>
+        <br />
+        <Link data-testid="about-link" to="/about">
+          About
+        </Link>
+        <br />
+        <Link data-testid="contact-link" to={`/contact/${name}`}>
+          Contact
+        </Link>
+      </nav>
+
+        <Routes>
+          <Route exact path="/" element={<Home/>} />
+          <Route path="/about" element={<About/>} />
+          <Route path="/contact/:name" element={<Contact/>} />
+        </Routes>
+    </>
+  );
+};
+
+export default TestRouter;
+In this scenario, certain components are rendered when navigating the Home page.
+ 
+import "@testing-library/jest-dom/extend-expect";
+import { cleanup, render, screen, fireEvent } from "@testing-library/react";
+import { createMemoryHistory } from "history";
+import React from "react";
+import { BrowserRouter as Router} from "react-router-dom";
+import TestRouter from "./TestRouter";
+
+afterEach(cleanup);
+
+const renderWithRouter = component => {
+	const history = createMemoryHistory();
+	return {
+		...render(<Router history={history}>{component}</Router>),
+	};
+};
+
+it("should render the home page", () => {
+	const { container, getByTestId } = renderWithRouter(<TestRouter />);
+	const navbar = screen.getByTestId("navbar");
+	const link = screen.getByTestId("home-link");
+
+	expect(container.innerHTML).toMatch("Home page");
+	expect(navbar).toContainElement(link);
+});
+To test React Router, we must initially have a navigation history to commence with. Consequently, we utilize createMemoryHistory() - as the name implies - to produce a navigation history.
+Subsequently, we utilize our utility function, renderWithRouter(), to render the component and provide the history to the Router component. This enables us to test whether the initial loaded page is the Home page and if the navigation bar is loaded with the expected links.
+notion image
+ 
+Test whether it navigates to other pages with the parameters when upon clicking on the links:
+import "@testing-library/jest-dom/extend-expect";
+import { cleanup, fireEvent, render } from "@testing-library/react";
+import { createMemoryHistory } from "history";
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import TestRouter from "./TestRouter";
+
+afterEach(cleanup);
+
+const renderWithRouter = component => {
+	const history = createMemoryHistory();
+	return {
+		...render(<Router history={history}>{component}</Router>),
+	};
+};
+
+it("should navigate to the about page", () => {
+	const { container, getByTestId } = renderWithRouter(<TestRouter />);
+
+	fireEvent.click(getByTestId("about-link"));
+
+	expect(container.innerHTML).toMatch("About Section ");
+});
+
+it("It should navigate to the contact page with the params", () => {
+	const { container, getByTestId } = renderWithRouter(<TestRouter />);
+
+	fireEvent.click(getByTestId("contact-link"));
+
+	expect(container.innerHTML).toMatch("Kapil");
+});
+To assess if the navigation operates correctly, we must trigger a click event on the navigation links.
+In the initial test, we verify whether the content matches the text in the About Page. In the subsequent test, we evaluate the routing parameters and ascertain whether they were correctly passed.
+notion image
+ 
+Testing HTTP Request
+As usual, let's first see what the TextAxios.js file looks like.
+File: TextAxios.js
+import axios from "axios";
+import React from "react";
+
+const TextAxios = ({ url }) => {
+	const [data, setData] = React.useState();
+
+	const fetchData = async () => {
+		const response = await axios.get(url);
+		setData(response.data.title);
+	};
+
+	return (
+		<>
+			<button onClick={fetchData} data-testid='fetch-data'>
+				Load Data
+			</button>
+			{data ? (
+				<div data-testid='show-data'>{data}</div>
+			) : (
+				<h1 data-testid='loading-text'>Loading...</h1>
+			)}
+		</>
+	);
+};
+
+export default TextAxios;
+As illustrated in this scenario, a basic component is present that comprises a button to initiate a request. If the data is not available, a loading message will be exhibited.
+Now, let's write the tests.
+ 
+Test whether the data are fetched and displayed correctly:
+import "@testing-library/jest-dom/extend-expect";
+import {
+	cleanup,
+	fireEvent,
+	render,
+	screen,
+	waitFor,
+} from "@testing-library/react";
+import axiosMock from "axios";
+import React from "react";
+import TestAxios from "./TestAxios";
+
+afterEach(cleanup);
+
+jest.mock("axios");
+
+it("should display a loading text", () => {
+	render(<TestAxios />);
+	expect(screen.getByTestId("loading-text")).toHaveTextContent("Loading...");
+});
+
+it("This should load and display the data", async () => {
+	//Arrange
+	const url = "https://jsonplaceholder.typicode.com/todos/1";
+	render(<TestAxios url={url} />);
+
+	// mock API response
+	axiosMock.get.mockResolvedValueOnce({
+		data: {
+			title: "delectus aut autem",
+		},
+	});
+
+	// Act
+	fireEvent.click(screen.getByTestId("fetch-data"));
+
+	// Assert - true / false
+	await waitFor(() => {
+		const mockData = screen.getByTestId("show-data");
+		expect(axiosMock.get).toHaveBeenCalledTimes(1);
+		expect(axiosMock.get).toHaveBeenCalledWith(url);
+		expect(mockData).toHaveTextContent("delectus aut autem");
+	});
+});
+This particular test case differs slightly as it involves managing an HTTP request. To accomplish this, we must simulate an axios request with the aid of jest.mock('axios').
+Subsequently, we may use axiosMock and implement the get() method. Lastly, we employ the Jest function mockResolvedValueOnce() to provide the mocked data as an argument. Now that we have set up the initial test, we can click on the button to retrieve the data in the second test and utilize async/await to resolve it. 
+At present, we must evaluate three things:
+If the HTTP request was executed accurately
+If the HTTP request was executed with the correct URL
+If the fetched data corresponds to the expected outcome.
+In the initial test, we verify whether the loading message appears when there is no data to be displayed.
+ 
+notion image
+ 
+ 
+ 
+Summary
+What did we learn?
+Error handling and debugging in React involve identifying, managing, and resolving errors and bugs during development and execution. 
+Developers can catch and handle errors by implementing error boundaries, using try-catch blocks, and leveraging debugging tools like browser developer tools and logging statements. 
+This improves the user experience, prevents crashes, and maintains code quality.
+Unit testing involves testing individual units or components of code in isolation to ensure they function correctly. 
+In React, unit tests focus on testing components, props, and behavior. 
+By writing comprehensive tests using frameworks like Jest or React Testing Library, developers can identify bugs, ensure correctness and reliability, facilitate collaboration, maintain code quality, and enhance software robustness.
+React Testing Library is a popular testing utility specifically designed for testing React components. 
+It emphasizes testing components from a user's perspective, operates on the DOM level, and provides utilities for querying elements, simulating user interactions, and making assertions. 
+By using React Testing Library, developers can write user-centric tests that reflect real-world scenarios, resulting in more reliable and meaningful tests.
+Shortcomings and Challenges
+Managing and coordinating error handling across multiple components, tracking down hard-to-reproduce bugs, and writing comprehensive tests can be challenging and time-consuming.
+Errors in asynchronous operations may not always be caught or propagated correctly, leading to unhandled rejections or difficult-to-debug issues.
+Writing comprehensive integration tests that cover all possible scenarios can be challenging and time-consuming.
+It can be time-consuming to keep the test suite up to date, especially when making significant changes to the codebase.
+Best Practices
+Start testing early in the development process and incorporate testing as an integral part of your workflow. 
+Test components in isolation to ensure that they work correctly without relying on the behavior of other components or external dependencies.
+Focus on testing the most important and high-risk parts of your application.
+Use error boundary components strategically in your component tree to prevent crashes and provide a better user experience.
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+https://legacy.reactjs.org/docs/testing.html
+https://blog.bitsrc.io/complete-guide-to-unit-tests-with-react-af6ed372244b
+ 
+Try it Yourself
+Let's solve these coding problems in the AlmaBetter IDE. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
+Task 1: Errors, beware! Step into the VS Code IDE arena and debug your way to victory.
+Problem
+You are working on a React application that displays a list of items fetched from an API. The application consists of two components: ItemList and Item. The ItemList component is responsible for fetching the data from the API and rendering a list of Item components. However, there are some issues with the code related to error handling and debugging.
+Your task is to identify and fix the bugs in the code and implement proper error handling to handle potential errors during API calls and rendering.
+Item.js
+// Item.js
+
+import React from 'react';
+
+const Item = ({ item }) => {
+  return (
+    <div>
+      <h3>{item.name}</h3>
+      <p>{item.description}</p>
+    </div>
+  );
+};
+
+export default Item;
+ItemList.js
+//ItemList.js
+
+import React, { useState, useEffect } from 'react';
+import Item from './Item';
+
+const ItemList = () => {
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetchItems();
+  }, []);
+
+  const fetchItems = async () => {
+    try {
+      const response = await fetch('https://api.example.com/items');
+      if (!response.ok) {
+        throw new Error('Error fetching data'); // Bug 1: Incorrect error handling
+      }
+      const data = await response.json();
+      setItems(data);
+      setLoading(false);
+    } catch (err) {
+      setError(err.message);
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>; // Bug 2: Displaying error message
+  }
+
+  return (
+    <div>
+      {items.map((item) => (
+        <Item key={item.id} item={item} />
+      ))}
+    </div>
+  );
+};
+
+export default ItemList;
+Please debug the code and fix the issues:
+The error handling in the fetchItems function is not correct. Update it to handle errors properly.
+The way error messages are displayed is not optimal. Modify the code to display errors in a better format.
+Solution
+// ItemList.js
+
+import React, { useState, useEffect } from 'react';
+import Item from './Item';
+
+const ItemList = () => {
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetchItems();
+  }, []);
+
+  const fetchItems = async () => {
+    try {
+      const response = await fetch('https://api.example.com/items');
+      if (!response.ok) {
+        throw new Error('Error fetching data');
+      }
+      const data = await response.json();
+      setItems(data);
+    } catch (err) {
+      setError('Failed to fetch data. Please try again later.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  return (
+    <div>
+      {items.map((item) => (
+        <Item key={item.id} item={item} />
+      ))}
+    </div>
+  );
+};
+
+export default ItemList;
+Explanation:
+In the fetchItems function, the incorrect error handling has been removed and replaced with a try-catch block. The throw new Error() statement inside the catch block will now throw an error when the API request fails with a non-200 status code.
+In the catch block, a user-friendly error message has been added using setError to inform users that there was an issue with fetching the data from the API.
+Finally, a block has been added to ensure that the loading state is always set to false after the API call is completed, regardless of success or failure.
+ 
+Task 2: Please describe any challenges you encountered and how you resolved them while solving this question on AlmaBetter's Community platform.
