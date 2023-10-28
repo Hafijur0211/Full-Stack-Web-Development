@@ -1,0 +1,22 @@
+Learning Objective
+Introduction
+Non-relational databases, also known as NoSQL databases, are a type of database management system that store and retrieve data in a way that doesn't rely on the traditional tabular structure of rows and columns.
+Focus: Non-Relational Database, MongoDB
+Prerequisites: Basics of Database
+Theme
+Twitter relies on NoSQL databases to store tweets and associated data. Given the high volume of tweets generated every second, NoSQL databases can handle the scalability and flexibility required to store and retrieve tweets in real-time. To generate personalized timelines for each user, Twitter uses NoSQL databases to quickly fetch and assemble tweets from various sources. This allows them to serve up-to-date content to users as they scroll through their feeds.
+Uber collects a massive amount of ride-related data, including GPS coordinates, driver and rider information, trip details, and more. NoSQL databases, particularly document-based or key-value stores, are used to efficiently store and manage this data. Uber heavily relies on geospatial data to match drivers with riders and calculate routes. NoSQL databases with geospatial indexing capabilities are used to optimize these processes for quick response times.
+Primary Goals
+Gain a clear understanding of the different types of NoSQL databases, including document-oriented, key-value, column-family, and graph databases.
+Understanding when to use NoSQL databases will help you make informed decisions in real-world projects.
+Learn how to design data models for NoSQL databases, such as document schemas or key-value structures.
+Gain proficiency in querying data from NoSQL databases and creating appropriate indexes for performance optimization.
+Learn how NoSQL databases handle scalability and distributed data storage.
+Chapter Essentials
+Learning Lessons
+The chapter comprises multiple lessons centered around Non-Relational Database fundamentals, MongoDB and Advanced operations in MongoDB.
+The lesson consists of learning material and engaging activities that enhance the learner's experience.
+In addition, every lesson includes 10 MCQs aimed at enhancing knowledge.
+Skill Mastery Challenge
+The chapter includes a Skill Mastery Challenge with a Summary section for the given chapter for best practices, challenges, and additional references, an Interview Prep section with industry-specific concepts, and a Competency Challenge featuring a one-hour session with 40 MCQs for reinforced learning and identifying improvement areas.
+Earning the Competency Challenge Certificate will ensure the completion of this chapter.
