@@ -1,0 +1,564 @@
+Managing State with Redux
+Session Flow
+Learning Objective
+Introduction
+Theme
+Primary Goals
+Managing State with Redux
+Introduction to Redux
+Why do we need Redux?
+How to Get Started with Redux
+How to Create the Redux Store
+How to Change the Store
+How to Create a Redux Store With Redux Toolkit
+How to Handle Asynchronous Code Using Action Creators
+Index Routes
+How to Handle Side Effects with useEffect or componentDidMount
+Project Implementation Step 1
+Summary 
+What did we learn?
+Shortcomings & Challenges
+Best Practices
+Enhance your knowledge
+Try it yourself
+Learning Objective
+Introduction
+Managing state with Redux is a popular approach used in JavaScript applications, especially in frameworks like React, to effectively handle and organize application data.
+Focus: Redux Store, Action, Reducer, Dispatch
+Prerequisites: JavaScript, React, and ES6 features
+Theme
+The popular streaming platform Netflix has adopted Redux for state management in their client-side applications. Redux allows them to handle user interactions, maintain playback states, and manage various UI components efficiently. It helps ensure a consistent user experience across different devices and platforms.
+Pinterest, the visual discovery and bookmarking platform, leverages Redux to manage the state of its application. Redux aids them in handling user actions, updating feeds and recommendations, and managing user profiles and boards. It provides a centralized approach to state management, allowing for better scalability and code organization.
+Primary Goals
+Gain a clear understanding of the Redux architecture, including the concepts of the Redux store, actions, reducers, and the unidirectional data flow. 
+Learn how to connect Redux to React components using the connect function from the react-redux library. 
+Learn about Redux middleware, like redux-thunk or redux-saga, and understand how to use them.
+Managing State with Redux
+Introduction to Redux
+Redux is an open-source JavaScript library for managing state in applications. It is commonly used with frameworks like React but can also be used with other JavaScript frameworks or even standalone applications.
+At its core, Redux follows a predictable state management pattern and provides a centralized store to manage application state. The fundamental principles of Redux are:
+Single Source of Truth: The entire application state is stored in a single JavaScript object called the "store." This store serves as the central repository for all the data required by the application.
+State is Read-Only and Immutable: In Redux, the state is read-only, meaning it cannot be directly modified. Instead, state changes are made by dispatching actions, which are plain JavaScript objects that describe an event or an intention to modify the state. The state is updated by creating new copies of the state with the desired modifications, while maintaining the immutability of the original state.
+Changes are Made by Pure Functions: Reducers are pure functions responsible for specifying how the state should be updated in response to dispatched actions. Reducers take the current state and an action as input and return a new state. They should not have side effects or modify the existing state directly but create a new state object.
+Unidirectional Data Flow: Redux follows a unidirectional data flow, where actions trigger state changes through reducers, and the updated state is propagated back to the components for re-rendering. This data flow pattern ensures that changes are predictable and makes it easier to understand and debug the application's state changes.
+By using Redux, developers can effectively manage the state of their applications, especially as the applications grow in complexity. Redux helps in organizing, accessing, and updating state across different components in a structured and predictable manner. It also provides powerful features like time travel debugging, middleware support, and a thriving ecosystem of extensions and integrations.
+While Redux introduces some additional complexity compared to local component state management, it offers benefits in terms of scalability, maintainability, and easier state debugging. It is particularly useful in large-scale applications or those with complex data flows and shared state among multiple components.
+notion image
+Why do we need Redux?
+Redux is commonly used in JavaScript applications, particularly with frameworks like React, because it offers several benefits and solves specific challenges in state management. Here are some reasons why we need Redux:
+Centralized State Management: Redux provides a centralized store to manage application state. This centralization allows for a single source of truth, making it easier to understand, track, and update the state of the entire application. It simplifies data flow and reduces the complexity of passing state between components.
+Predictable State Updates: Redux follows a strict pattern of state updates. State changes are made through dispatched actions, and reducers handle these actions to produce a new state. This predictability and immutability of state updates make it easier to understand and debug the application's behavior, as the changes to the state are traceable and controlled.
+Application Scalability: Redux provides a scalable approach to state management. It organizes state logic into actions and reducers, making it easier to handle complex application states. As applications grow in size and complexity, Redux helps manage state-related complexities by providing a clear structure and separation of concerns.
+Time Travel Debugging: Redux's architecture allows for time travel debugging, which means developers can replay past actions and see how the state evolved at different points in time. This feature greatly aids in debugging and understanding the application's behavior, especially in complex scenarios or when reproducing bugs.
+Facilitates Collaboration: Redux's structured and centralized state management simplifies collaboration among team members. Since the state is stored in a single location, team members can easily understand and work with the shared state. It promotes code consistency and helps prevent state-related bugs caused by different components managing their own state.
+Middleware and Ecosystem: Redux has a robust ecosystem with a wide range of middleware options available. Middleware allows developers to add custom functionality, such as handling asynchronous operations, logging, and more. This extensibility makes Redux adaptable to various application needs and enables developers to enhance the core Redux functionality.
+Integration with Libraries and Frameworks: Redux integrates well with popular JavaScript libraries and frameworks, especially React. Many libraries and tools are built specifically for Redux, providing seamless integration and additional features for efficient development.
+While Redux offers significant advantages, it's important to note that not all applications require Redux. It is most beneficial for larger and more complex applications with a significant amount of shared state and complex data flows. For smaller applications, local component state management might suffice. The decision to use Redux should be based on the specific needs and complexity of the project.
+How to Get Started with Redux
+Let's create a new React project so we can learn Redux basics.
+Execute the following command in the terminal/command prompt to create a new React project using create-react-app:
+npx create-react-app redux-demo
+Once you've created the project, delete all the files from the src folder and create a new file index.js inside the src folder.
+Now open the terminal again and execute the following command from the redux-demo folder:
+npm install redux@4.1.0
+The above command will install the Redux library with version 4.1.0 to use in your project (which is the latest version at the time of writing this article).
+How to Create the Redux Store
+In Redux, you use the store to manage and track the data that's changing in the application. To create a store, we need to import the createStore function like this:
+import { createStore } from 'redux';
+The createStore function accepts three arguments:
+the first argument is a function that is normally known as a reducer (required)
+the second argument is the initial value of the state (optional)
+the third argument is an enhancer where we can pass middleware, if any (optional)
+Take a look at the below code:
+import { createStore } from 'redux';
+
+const reducer = (state, action) => {
+  console.log('reducer called');
+  return state;
+};
+
+const store = createStore(reducer, 0);
+Here, we've first defined a reducer function using ES6 arrow function syntax. You can use the normal function instead of the arrow function if you want. Inside the reducer function, we're logging some text to the console and then returning the value of the state from the function.
+Then we pass that reducer function to the createStore function as the first argument and 0 as the initial value of the state as the second argument. The createStore function returns a store that we can use to manage the application data. The reducer function receives state and action as the parameters. The initial value of the state which we passed as 0 for the createStore function is automatically passed as the value of the state parameter. But it's a much more common practice to initialize the state inside the reducer itself rather than passing it as a second argument to the createStore function like this:
+import { createStore } from 'redux';
+
+const reducer = (state = 0, action) => {
+  console.log('reducer called');
+  return state;
+};
+
+const store = createStore(reducer);
+Here, we're using ES6 default parameter syntax for initializing the state parameter to value 0. Once the store is created, we can use the subscribe method provided by the store to subscribe to the changes in the store as shown below:
+store.subscribe(() => {
+  console.log('current state', store.getState());
+});
+Here, using the subscribe function, we're registering a callback function that will be called once the store is changed. And inside the callback function, we're calling the store.getState method to get the current value of the state. Now, open the src/index.js file and add the following contents inside it:
+import { createStore } from 'redux';
+
+const reducer = (state = 0, action) => {
+  console.log('reducer called');
+  return state;
+};
+
+const store = createStore(reducer);
+
+store.subscribe(() => {
+  console.log('current state', store.getState());
+});
+Now, if you run the application by executing the npm start command from the terminal and access http://localhost:3000/, you will see the reducer called message printed in the console.
+notion image
+This is because the reducer gets called immediately once we pass it to the createStore function.
+How to Change the Store
+Now we're done with creating the store. But the store is not much use to us right now. This is because the store is connected using the reducer function, but we have not added any code inside the reducer to manage the store. So let's do that.
+The only way to change the store is by dispatching actions.
+An action is an object sent to the store like this:
+store.dispatch({
+  type: 'INCREMENT'
+})
+Here, we're calling the dispatch function available on the store to send an action with the type INCREMENT to the store. The dispatch function takes an object as a parameter which is known as an action. The action must have a type property as shown above. If you don't pass the type property then you will get an error.
+The type can be any operation you want to perform, like ADD_USER, DELETE_RECORD, GET_USERS and so on. If you have multiple words, you can separate them with underscores like this { type: 'INCREMENT_NUMBER' }. Now, open the index.js file and replace its contents with the following code:
+import { createStore } from 'redux';
+
+const reducer = (state = 0, action) => {
+  if (action.type === 'INCREMENT') {
+    return state + 1;
+  } else if (action.type === 'DECREMENT') {
+    return state - 1;
+  }
+
+  return state;
+};
+
+const store = createStore(reducer);
+
+store.subscribe(() => {
+  console.log('current state', store.getState());
+});
+
+store.dispatch({
+  type: 'INCREMENT'
+});
+
+store.dispatch({
+  type: 'INCREMENT'
+});
+
+store.dispatch({
+  type: 'DECREMENT'
+});
+Now, if you run the application by executing the npm start command from the terminal, you will see the following logs printed in the console:
+notion image
+As you can see, for every action dispatched to the store, the store gets changed. So we're able to see the different values of the state in the console.
+In the above code, our reducer function looks like this:
+const reducer = (state = 0, action) => {
+  if (action.type === 'INCREMENT') {
+    return state + 1;
+  } else if (action.type === 'DECREMENT') {
+    return state - 1;
+  }
+
+  return state;
+};
+Whenever we call the store.dispatch function, the reducer function will be called. Whatever is returned from the reducer will become the new value of the store. So the first time we dispatch an action to the store like this:
+store.dispatch({
+  type: 'INCREMENT'
+});
+the first if condition inside the reducer function will be executed. It will increment the state value to 1 which was initially initialized to 0 using ES6 default parameter syntax. Then it will be returned from the reducer function.
+Note that we're using the value of the state to calculate the new value and we're not modifying the original state value like this:
+if (action.type === 'INCREMENT') {
+   state = state + 1;
+   return state;
+}
+So the above code is not correct, because in the reducer we should not modify the original state. Doing so will create issues in your application and so it's not recommended. And because we've added the store.subscribe function in the index.js file, we get notified about the changing store as we can see the logs in the console. 
+So when we again call the dispatch with type INCREMENT, the first if condition will be executed again. So it'll add 1 to the previous state value which was 1, and the final state value will become 2. Then we're dispatching the DECREMENT action to the store like this:
+store.dispatch({
+  type: 'DECREMENT'
+});
+which will execute the else condition inside the reducer and it will decrement the state value by 1 (so 2 - 1  will become 1).
+Note that, inside the reducer, we're also returning state at the end. So if none of the condition matches, the default previous state will be returned from the function. It's a common practice to use a switch statement inside the reducer instead of the if-else condition like this:
+const reducer = (state = 0, action) => {
+  switch (action.type) {
+    case 'INCREMENT':
+      return state + 1;
+    case 'DECREMENT':
+      return state - 1;
+    default:
+      return state;
+  }
+};
+In addition to the type, we can also pass extra information as a part of the action. Replace the contents of the index.js file with the following code:
+import { createStore } from 'redux';
+
+const reducer = (state = 0, action) => {
+  switch (action.type) {
+    case 'INCREMENT':
+      return state + action.payload;
+    case 'DECREMENT':
+      return state - action.payload;
+    default:
+      return state;
+  }
+};
+
+const store = createStore(reducer);
+
+store.subscribe(() => {
+  console.log('current state', store.getState());
+});
+
+store.dispatch({
+  type: 'INCREMENT',
+  payload: 1
+});
+
+store.dispatch({
+  type: 'INCREMENT',
+  payload: 5
+});
+
+store.dispatch({
+  type: 'DECREMENT',
+  payload: 2
+});
+Now, if you run the application by executing the npm start command from the terminal, you will see the following logs printed in the console:
+notion image
+Here, while dispatching an action to the store, we're passing a payload with some value which we're using inside the reducer to increment or decrement the store value. Here, we've used payload as a property name but you can name it whatever you want. Our reducer function looks like this now:
+const reducer = (state = 0, action) => {
+  switch (action.type) {
+    case 'INCREMENT':
+      return state + action.payload;
+    case 'DECREMENT':
+      return state - action.payload;
+    default:
+      return state;
+  }
+};
+So when we dispatch actions with type INCREMENT like this:
+store.dispatch({
+  type: 'INCREMENT',
+  payload: 1
+});
+
+store.dispatch({
+  type: 'INCREMENT',
+  payload: 5
+});
+the following code from the reducer will be executed:
+return state + action.payload;
+This will first add 1 and then 5 to the previous value of the state, so we go from 1 to 6. And because of the DECREMENT action type:
+store.dispatch({
+  type: 'DECREMENT',
+  payload: 2
+});
+we go from 6 to 4. So the final value of the store will become 4.
+How to Create a Redux Store With Redux Toolkit
+To create a Redux store using Redux Toolkit, you can follow these steps:
+Install Redux Toolkit: Start by installing Redux Toolkit as a dependency in your project. Open your terminal and run the following command:
+npm install @reduxjs/toolkit
+Import Dependencies: In your application code, import the necessary dependencies from Redux Toolkit:
+import { configureStore } from '@reduxjs/toolkit';
+Create Slice(s): Define your Redux slice(s) using the createSlice function provided by Redux Toolkit. A slice represents a portion of the Redux state and includes the reducer function and actions.
+import { createSlice } from '@reduxjs/toolkit';
+
+const counterSlice = createSlice({
+  name: 'counter',
+  initialState: 0,
+  reducers: {
+    increment: (state) => state + 1,
+    decrement: (state) => state - 1,
+  },
+});
+
+// You can create additional slices if needed
+Combine Reducers: If you have multiple slices, combine them into a single root reducer using the combineReducers function from Redux Toolkit:
+import { combineReducers } from '@reduxjs/toolkit';
+
+const rootReducer = combineReducers({
+  counter: counterSlice.reducer,
+  // Add more slices if present
+});
+Create Store: Use the configureStore function from Redux Toolkit to create your Redux store. Pass the root reducer as the reducer option:
+const store = configureStore({
+  reducer: rootReducer,
+});
+Accessing the Store: Now, you can access the Redux store in your application components by using the store variable you created. Typically, this is done by wrapping your component hierarchy with a <Provider> component from the react-redux library and passing the store as a prop:
+import { Provider } from 'react-redux';
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
+Dispatch Actions: To dispatch actions and update the state, you can use the useDispatch hook from react-redux in your functional components or the connect function for class components. Here's an example using the useDispatch hook:
+import { useDispatch } from 'react-redux';
+import { increment, decrement } from './counterSlice';
+
+const Counter = () => {
+  const dispatch = useDispatch();
+
+  const handleIncrement = () => {
+    dispatch(increment());
+  };
+
+  const handleDecrement = () => {
+    dispatch(decrement());
+  };
+
+  return (
+    <div>
+      <button onClick={handleIncrement}>Increment</button>
+      <button onClick={handleDecrement}>Decrement</button>
+    </div>
+  );
+};
+That's it! You have created a Redux store using Redux Toolkit. You can define more slices, reducers, and actions as needed and follow the same pattern for managing state in your application.
+How to Handle Asynchronous Code Using Action Creators
+So far, so good.
+But wait, there's still an important topic we haven't covered – how to handle side effects, or asynchronous code, with Redux.
+Consider a scenario where you'd want to dispatch an action that needs to handle a block of code that produces a side effect. But at the same time, reducers should be pure, side effect free, and synchronous.
+This means that adding any code in reducers that produce side effects goes against core Redux principles, and is super bad.
+To deal with such instances, we have two choices: either using useEffect/ componentDidMount, or by writing action creators.
+How to Handle Side Effects with useEffect or componentDidMount
+One way to handle side effect-producing code is to use useEffect. By doing this, we split the side effect producing code from the dispatched action itself, so the reducers remain pure and synchronous.
+But, one major drawback of using useEffect is code redundancy and duplication.
+If two or more components produce the same side effect, we'd want to have the same logic run in those components' useEffect hook, which is a bad practice.
+One quick workaround is to put the logic into a helper function and run this function at the root component, and have all the other components listen to the changes via the Redux state.
+This would be permissible and not necessarily a bad practice, but an even better way would be to use an action creator thunk.
+Project Implementation Step 1
+The code given below demonstrates the usage of Redux in a shopping cart feature of our e-commerce project.
+cart.js
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
+import { addCart, delCart } from "../redux/action";
+
+const Cart = () => {
+  const state = useSelector((state) => state.handleCart);
+  const dispatch = useDispatch();
+
+  const handleAdd = (item) => {
+    dispatch(addCart(item));
+  };
+  const handleDel = (item) => {
+    dispatch(delCart(item));
+  };
+
+  const emptyCart = () => {
+    return (
+      <div className="px-4 my-5 bg-light rounded-3 py-5">
+        <div className="container py-4">
+          <div className="row">
+            <h3>Your Cart is Empty</h3>
+          </div>
+        </div>
+      </div>
+    );
+  };
+  const cartItems = (product) => {
+    return (
+      <>
+        <div className="px-4 my-5 bg-light rounded-3 py-5">
+          <div className="container py-4">
+            <div className="row justify-content-center">
+              <div className="col-md-4">
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  height="200px"
+                  width="180px"
+                />
+              </div>
+              <div className="col-md-4">
+                <h3>{product.title}</h3>
+                <p className="lead fw-bold">
+                  {product.qty} X ${product.price} = $
+                  {product.qty * product.price}
+                </p>
+                <button
+                  className="btn btn-outline-dark me-4"
+                  onClick={() => handleDel(product)}
+                >
+                  <i className="fa fa-minus"></i>
+                </button>
+                <button
+                  className="btn btn-outline-dark"
+                  onClick={() => handleAdd(product)}
+                >
+                  <i className="fa fa-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  };
+  const buttons = () => {
+    return (
+      <>
+        <div className="container">
+          <div className="row">
+            <NavLink
+              to="/checkout"
+              className="btn btn-outline-dark mb-5 w-25 mx-auto"
+            >
+              Proceed to Checkout
+            </NavLink>
+          </div>
+        </div>
+      </>
+    );
+  };
+
+  return (
+    <div>
+      {state.length === 0 && emptyCart()}
+      {state.length !== 0 && state.map(cartItems)}
+      {state.length !== 0 && buttons()}
+    </div>
+  );
+};
+
+export default Cart;
+redux/action/index.js
+// For Add Item to Cart
+export const addCart = (product) => {
+  return {
+    type: "ADDITEM",
+    payload: product
+  };
+};
+
+// For Delete Item From Cart
+export const delCart = (product) => {
+  return {
+    type: "DELITEM",
+    payload: product
+  };
+};
+redux/reducer/handleCart.js
+const cart = [];
+
+const handleCart =(state = cart, action) => {
+    const product = action.payload;
+    switch (action.type) {
+        case "ADDITEM":
+            // Check if Product is Already Exist
+            const exist = state.find((x)=> x.id === product.id);
+            if(exist){
+                // Increase the Quantity
+                return state.map((x)=>
+                x.id === product.id ? {...x, qty: x.qty + 1} : x
+                );
+            }else{
+                const product = action.payload;
+                return[
+                    ...state,
+                    {
+                        ...product,
+                        qty: 1,
+                    }
+                ]
+            }
+            break;
+
+            case "DELITEM":
+                const exist1 = state.find((x)=> x.id === product.id);
+                if(exist1.qty === 1){
+                    return state.filter((x)=> x.id !== exist1.id);
+                }else{
+                    return state.map((x)=>
+                        x.id === product.id ? {...x, qty: x.qty-1} : x
+                    );
+                }
+                break;
+    
+        default:
+            return state;
+            break;
+    }
+
+}
+
+export default handleCart;
+redux/reducer/index.js
+import handleCart from "./handlecart";
+import { combineReducers } from "redux";
+
+const rootReducers = combineReducers({
+    handleCart,
+})
+
+export default rootReducers;
+redux/store.js
+import { createStore } from "redux";
+import rootReducers from "./reducer";
+
+const store = createStore(rootReducers);
+
+export default store;
+Output:
+notion image
+notion image
+Explanation:
+Let's break down the code and understand how Redux is working in this scenario.
+First, let's start with the Cart component:
+The useSelector hook is used to select a slice of the Redux store state. In this case, it selects the handleCart state from the store.
+The useDispatch hook is used to get the dispatch function from the Redux store. The dispatch function is used to dispatch actions to update the state.
+The handleAdd function is an event handler that is triggered when the user clicks the add button for a product in the cart. It dispatches the addCart action, passing the item (product) as the payload.
+The handleDel function is an event handler that is triggered when the user clicks the delete button for a product in the cart. It dispatches the delCart action, passing the item (product) as the payload.
+The emptyCart function renders a message indicating that the cart is empty.
+The cartItems function renders the information for each item in the cart. It displays the product image, title, quantity, price, and buttons to increment or decrement the quantity.
+The buttons function renders the "Proceed to Checkout" button.
+The component checks the length of the state array (representing the items in the cart) and conditionally renders the appropriate content based on whether the cart is empty or not.
+Moving on to the Redux-related files:
+In the redux/action/index.js file, the addCart action creator is defined, which returns an action with a type of "ADDITEM" and the product as the payload.
+The delCart action creator is defined, which returns an action with a type of "DELITEM" and the product as the payload.
+In the redux/reducer/handleCart.js file:
+The initial state of the cart is an empty array.
+The handleCart reducer function takes the current state and an action as parameters.
+The reducer handles two types of actions: "ADDITEM" and "DELITEM".
+When the "ADDITEM" action is dispatched, the reducer checks if the product already exists in the cart by finding a matching product ID. If it exists, the quantity is incremented. If it doesn't exist, a new item is added to the cart with a quantity of 1.
+When the "DELITEM" action is dispatched, the reducer checks if the quantity of the product in the cart is 1. If it is, the item is removed from the cart. If the quantity is greater than 1, the quantity is decremented.
+The reducer returns the updated state based on the action type and payload.
+In the redux/reducer/index.js file:
+The handleCart reducer is imported.
+The combineReducers function from Redux is used to combine multiple reducers into a single root reducer.
+The rootReducers object is created using combineReducers, with handleCart as one of the reducers.
+The rootReducers object is exported as the root reducer.
+In the redux/store.js file:
+The createStore function from Redux is used to create a Redux store.
+The rootReducers is passed to the createStore function to create the store with the combined reducers.
+Finally, the store is exported to be used in the application.
+Overall, the provided code implements Redux to manage the state of the cart, allowing for consistent and predictable updates to the cart items. Actions are dispatched to update the state, and the reducers handle the actions to update the state accordingly. The Cart component uses the useSelector and useDispatch hooks to interact with the Redux store and render the appropriate content based on the state.
+Summary
+What did we learn?
+Redux follows the principle of having a single source of truth for your application's state. This means that all the data for your application is stored in a single JavaScript object called the "store.”
+In Redux, the state is immutable, which means it cannot be directly modified. Instead, you create new copies of the state when updates are needed. This helps ensure predictable state changes and makes debugging easier.
+Actions are plain JavaScript objects that describe an event or an intention to change the state. They have a type property that describes the type of action being performed and can also contain additional data called the payload.
+Reducers are pure functions that specify how the application's state should change in response to actions. They take the current state and an action as input and return a new state. Reducers are responsible for updating the state immutably.
+The store is the central hub of Redux, which holds the application's state and provides methods to interact with it. It allows you to dispatch actions to trigger state changes, subscribe to changes, and retrieve the current state.
+To initiate a state change, you dispatch an action to the store using the store.dispatch(action) method. The action is then passed to the reducers, determining how the state should be updated.
+You can subscribe to the store's state changes by providing a callback function using store.subscribe(callback). This allows you to update your UI or perform other side effects in response to state changes.
+Redux supports middleware, which are functions that intercept actions before they reach the reducers. Middleware can be used for various purposes such as logging, asynchronous operations, or modifying actions.
+Shortcomings & Challenges
+The boilerplate code required to set up actions, reducers, and the Redux store can be overwhelming, especially for small or simple projects.
+Redux relies on immutability and pure functions, which can result in performance issues when working with large or deeply nested state objects. 
+Handling asynchronous Redux operations, such as API calls, can be challenging. 
+The unidirectional data flow and the separation of actions and reducers can make it difficult to trace the source of a bug or understand the state changes in complex scenarios.
+Best Practices
+Redux state should be treated as immutable, meaning it should not be directly modified. This ensures predictable state updates and helps with debugging and time-traveling in Redux.
+Avoid asynchronous logic, API calls, and other impure operations within reducers. Move those to other parts of your application, such as middleware or action creators.
+Take advantage of Redux DevTools for debugging your application's state changes.
+ 
+Enhance Your Knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+Asynchronous Actions: https://redux.gitbook.io/docs/advanced/asyncactions
+Redux Toolkit for Beginners: https://www.freecodecamp.org/news/redux-and-redux-toolkit-for-beginners/
+ 
+Try it Yourself
+Let's dive right into the questions and have a blast answering them together. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy learning! 💻😄
+Task 1: Challenge your frontend expertise by solving the question given below:
+Examine and differentiate the benefits Redux and Redux Toolkit provide from a developer's perspective.
+Task 2: Propose a mnemonic to easily remember the primary features of Redux Toolkit and share your insights on AlmaBetter's Community platform.
