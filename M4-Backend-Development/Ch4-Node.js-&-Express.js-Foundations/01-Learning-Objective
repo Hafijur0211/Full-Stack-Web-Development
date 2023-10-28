@@ -1,0 +1,24 @@
+Learning Objective
+Introduction
+NodeJS is a JavaScript runtime built on Chrome's V8 engine, and ExpressJS is a minimalist web framework for NodeJS that provides essential features for building web applications.
+Duration: 14 Hours
+Focus: NodeJS, ExpressJS, and Project Deployment using Render
+Prerequisite: VS code IDE installed on your device.
+Theme
+Imagine Myntra needs to handle thousands of concurrent users and process millions of daily transactions. Developers can use Node.js and Express.js to build a high-performance API that can handle a large volume of requests while ensuring security through authentication and middleware functions. Organizations like Netflix, PayPal, Uber, and LinkedIn use Node.js and Express.js to power their web and mobile applications, among other services.
+Netflix uses Node.js for its server-side applications. One notable example is the Netflix UI, which heavily relies on Node.js and Express.js for handling user requests, data processing, and real-time interactions.
+PayPal adopted Node.js and Express.js to build efficient and scalable server-side applications, APIs, and microservices, enabling faster development and better handling of high traffic.
+Primary Goals
+Learn how to build server-side applications using Node.js and Express.js. 
+Understand how to handle HTTP requests, create RESTful APIs, and manage routes for different parts of your application.
+Gain a solid understanding of Express.js middleware and routing.
+Learn how to integrate databases, such as MongoDB, MySQL, etc with Node.js and Express.js.
+Chapter Essentials
+Learning Lessons
+The chapter comprises multiple lessons centered around Node.js, Express.js, and Project Deployment using Render.
+The lesson consists of learning material and engaging activities that enhance the learner's experience.
+Once you have grasped a particular set of concepts, the lesson will proceed to Practical Implementation Steps. These steps aim to empower you with the ability to put theoretical knowledge into practice by working on a project.
+In addition, every lesson includes 10 MCQs aimed at enhancing knowledge.
+Skill Mastery Challenge
+The chapter includes a Skill Mastery Challenge with a Summary section for the given chapter for best practices, challenges, and additional references, an Interview Prep section with industry-specific concepts, and a Competency Challenge featuring a one-hour session with 40 MCQs for reinforced learning and identifying improvement areas.
+Earning the Competency Challenge Certificate will ensure the completion of this chapter.
