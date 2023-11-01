@@ -1,0 +1,279 @@
+Getting Started with Programming
+Session Flow
+Learning Objective
+Introduction
+Theme
+Primary Goals
+Getting Started with Programming
+What is Full Stack Web Development?
+Frontend vs Backend Web Development
+Why is MERN stack popular among Full Stack Engineers?
+Understanding the Web and its Building Blocks
+The 4 Fundament Building Blocks of the Web: Content, Client & Server, Protocol, Identification
+What is Programming? 
+Programming paradigms
+Imperative Programming
+Functional Programming
+Logic Programming
+Event-driven Programming
+Aspect-oriented Programming
+Concurrent Programming
+Common programming languages and their uses
+Activity: Guess the word
+Program structure and syntax
+Program structure
+Statements
+Semicolon
+Comments
+Setting up your development environment
+Running your first “Hello World!” program
+Activity: True or False 
+Summary
+What did we learn?
+Shortcomings & Challenges
+Best practices to follow
+Enhance your knowledge
+Try it yourself
+Learning Objective
+Introduction
+It involves choosing a programming language, setting up a development environment, and learning basic programming concepts such as variables, control flow, and functions. 
+Focus: What is Programming?, Programming Paradigms, Common Programming languages, Program Structure, and syntax
+Prerequisites: NA
+Theme
+Amazon's tremendous success can be largely attributed to its adept utilization of computers and technology in clever ways.
+One illustrative example of Amazon's tech-savvy approach is how it tailors product recommendations for its customers. Amazon pays attention to what you've purchased in the past and what you've looked at on their website. Then, they employ specialized math and computer techniques to determine what you might be interested in buying next. This personalized recommendation system helps customers discover new products they might like.
+Primary Goals
+Understand the fundamental programming concepts, including data types, variables, control structures, functions, and algorithms.
+Knowledge of programming paradigms, such as imperative, object-oriented, functional, and logic programming.
+Learn about common programming languages and their uses, including JavaScript, Java, C++, and Python.
+Understand program structure and syntax, including statements, expressions, variables, functions, and classes.
+Set up your development environment, including installing the necessary software tools, such as a text editor or an integrated development environment (IDE).
+Write and run your first program to gain hands-on experience.
+ 
+Getting Started with Programming
+Another key area where Amazon relies on computers is in its supply chain and inventory management. Amazon employs advanced computer programs that function like highly intelligent assistants. These digital assistants use mathematical algorithms and specialized learning to ensure that Amazon has enough products in stock and that they reach customers swiftly and efficiently. This means you can get your orders quickly and without any hitches.
+Additionally, Amazon's computer skills extend to the creation and maintenance of its digital platforms, including its website, mobile apps, and digital content services like movies and music. The company boasts a dedicated team of skilled computer experts who work diligently to ensure that these platforms not only function seamlessly but also continually evolve to meet the changing demands of technology and the preferences of users. This commitment to excellence keeps Amazon at the forefront of the digital landscape.
+What is Full Stack Web Development?
+Full stack web development involves creating, designing, and maintaining web applications using a wide range of technologies, tools, and frameworks tailored to both frontend (client-side) and backend (server-side) components of web development. A full-stack developer is a multifaceted professional capable of handling every aspect of a web application, from crafting visually attractive user interfaces to executing intricate business logic and overseeing databases.
+Frontend vs Backend Web Development
+Frontend Development
+Frontend development focuses on creating a web application's user interface and user experience. It involves designing and implementing the visual elements, including layout, navigation, and overall look and feel. Frontend developers use HTML, CSS, and JavaScript to create responsive and interactive websites that are compatible with various devices and browsers.
+Key frontend technologies and tools include:
+HTML5: A markup language used for structuring content on the web.
+CSS3: A stylesheet language used for styling HTML content and controlling the layout of web pages.
+JavaScript: A programming language that enables interactivity and dynamic content on websites.
+Frameworks and libraries: Bootstrap, React, Angular, and Vue.js are popular frameworks and libraries that help developers create complex UI components and manage the frontend codebase more effectively.
+ㅤ
+Libraries
+Frameworks
+Definition
+Collection of pre-written functions or code
+Comprehensive set of tools and libraries
+Control
+Developers have control over application flow and architecture
+Frameworks dictate the application flow and architecture
+Usage
+Can be used selectively to add specific functionality
+Requires building the entire application within the framework's structure
+Flexibility
+Provides more flexibility and choices
+Offers less flexibility as it enforces specific patterns
+Complexity
+Libraries are typically less complex
+Frameworks are more comprehensive and can be more complex
+Examples
+React (JavaScript library), Lodash (JavaScript utility library)
+Angular (TypeScript framework), Django (Python framework)
+Backend Development
+Backend development focuses on the server side of web applications. It involves implementing business logic, managing databases, and handling server-side operations such as user authentication, data storage, and retrieval. Backend developers work with server-side programming languages, databases, and server technologies to ensure seamless communication between the frontend and backend components.
+Key backend technologies and tools include:
+Programming languages: Python, PHP, Ruby, Java, and Node.js are widely used for backend development.
+Databases: Relational databases like MySQL, PostgreSQL, and SQL Server or Non Relational databases like MongoDB and Cassandra are used to store and manage data.
+Server technologies: Apache, Nginx, and Microsoft IIS are popular web server platforms that serve web pages and handle client requests.
+Frameworks: Django, Ruby on Rails, Laravel, and Express.js are common backend frameworks that speed up development and improve code quality.
+notion image
+Why is MERN stack popular among Full Stack Engineers?
+MERN is an acronym which stands for MongoDB, Express, React, and Node.js, the key technologies used in this stack. Here are some reasons for its popularity:
+JavaScript-based: The MERN stack is entirely based on JavaScript, both on the client-side and server-side. This makes it easier for developers to learn and work with since they only need to be proficient in one language for both front-end and back-end development.
+Scalability: Each component of the MERN stack is designed for scalability. MongoDB is a non-relational database that can handle large amounts of data, while Node.js enables efficient server-side processing. This makes MERN an attractive choice for building applications that need to scale with user growth.
+Strong Community: The MERN stack is popular because many developers work together to improve it and help new users learn it easily. This community also creates a wealth of resources, such as tutorials and documentation, that make learning and using the MERN stack more accessible.
+React: React, created by Facebook, is a widely-used and strong JavaScript library for making user interfaces. Its component-based architecture allows for easy code reusability and fast rendering of web pages, contributing to a better user experience.
+Performance: Node.js uses the V8 JavaScript engine, which is known for its high performance. This, combined with Express's non-blocking, event-driven architecture, allows the MERN stack to provide fast and efficient server-side processing.
+Flexible Data Model: MongoDB uses a flexible, schema-less data model that allows for rapid application development and easy adaptation to changing requirements. This makes the MERN stack well-suited for agile development methodologies.
+Wide Range of Libraries and Tools: The MERN stack has access to many libraries, tools, and frameworks, making it easier for developers to implement specific functionality or features in their applications.
+Understanding the Web and its Building Blocks
+The World Wide Web commonly known as the Web, is a vast interconnected system that allows users to access and share information across the globe. The Web has become a crucial aspect of our everyday lives, driving various activities such as social media interactions, online shopping, research, and communication. To better understand the Web, it's important to familiarize ourselves with its fundamental building blocks.
+The Web operates on the backbone of the Internet, which is a global network of computers connected through various technologies. It uses a standardized communication protocol called HTTP (Hypertext Transfer Protocol) to facilitate data exchange between web browsers (clients) and web servers (hosts). Web browsers interpret and display the content received from web servers, while web servers store and deliver the content as requested.
+The 4 Fundamental Building Blocks of the Web: Content, Client & Server, Protocol, Identification
+Content: Content is the information displayed on web pages, including text, images, videos, and interactive elements. Web content is primarily structured using HTML (Hypertext Markup Language) and styled with CSS (Cascading Style Sheets). Content is the backbone of the Web, as it conveys information, provides functionality, and creates user experiences. The quality, accessibility, and relevance of content are critical factors in the success of a website or web application.
+Client & Server: The Web operates on a client-server model, which is a system where clients (web browsers) request information and services from servers (host computers). Clients, such as Google Chrome, Mozilla Firefox, or Microsoft Edge, interpret and display web content received from servers. Web servers, on the other hand, store and deliver the requested content to clients. This interaction between clients and servers forms the basis for data exchange on the Web, enabling users to access and share information globally.
+Protocol: Protocols refer to the standardized guidelines that dictate how data is transferred across the internet. The primary protocol used for communication between web browsers and web servers is HTTP (Hypertext Transfer Protocol). HTTP provides a framework for requesting and delivering web content, ensuring that data is exchanged reliably and efficiently. HTTPS (Hypertext Transfer Protocol Secure) is an extension of HTTP that adds an additional layer of security through encryption, protecting sensitive data during transmission.
+Identification: Identification refers to the methods used to locate and access resources on the Web. URLs (Uniform Resource Locators) and domain names are the primary identification components. URLs are web addresses that uniquely identify resources on the Web, typically consisting of a protocol (e.g., HTTP or HTTPS), a domain name, and an optional path to a specific resource. Domain names are human-readable addresses that correspond to IP addresses, which are numerical identifiers assigned to devices connected to the Internet. The Domain Name System (DNS) plays a key role in converting domain names to IP addresses, enabling web browsers to find and establish connections with web servers.
+These four building blocks—content, client and server, protocol, and identification—work together to create the foundation of the Web. Understanding these components is essential for comprehending the complex nature of the World Wide Web and its role in modern communication and information sharing.
+What is Programming?
+Programming is the process of creating computer software, applications, and other computer-related functionalities by writing code that a computer can execute. It involves a combination of logical thinking, problem-solving, and creativity to design and develop a program that meets the user's needs.
+notion image
+Programming can also be compared to building a house. Just as a house requires a blueprint that outlines the design and construction of the building, programming involves creating a plan that outlines the functionality and design of the software. This plan is then translated into code, which is the building blocks of the software, just as bricks are the building blocks of a house. The code is then assembled and tested to ensure it meets the user's requirements and functions as intended.
+ 
+Suppose you aim to develop a software application that enables users to search and access book information from a library database. You need to write code that defines the data structure for the books, sets up the search functionality, and creates the user interface. This involves writing code that creates variables, loops, conditionals, and other programming constructs that allow the computer to perform the necessary tasks.
+Common programming languages and their uses
+Programming languages are tools for writing computer programs, applications, and software. Many programming languages are available today, each with its own syntax, features, and use cases. 
+Here are some of the most common programming languages and their uses:
+According to the Statista Report,
+notion image
+Languages
+1) Java
+2) Python
+3) JavaScript
+4) C++
+5) PHP
+6) Swift
+7) C#
+8) Ruby
+9) Kotlin
+10) SQL
+Uses
+Web development, enterprise applications, Android app development, big data processing
+Data science, machine learning, artificial intelligence, web development, scientific computing
+Web development, front-end development, server-side development, game development
+Operating systems, system software, game development, scientific computing
+Web development, server-side scripting, e-commerce development
+iOS app development
+Windows app development, game development, web development
+Web development, back-end development
+Android app development, server-side development
+Database management, data analysis
+ 
+Activity: Guess the word
+Imagine you are on a treasure hunt to find the hidden treasure. To reach the treasure, you must solve a series of riddles.
+I am a combination of HTML, CSS, and JavaScript. I determine how a web page looks and behaves.
+What am I?
+Answer
+If your answer is "Frontend Development," proceed to the next riddle. If not, revise your answer until you find the correct term.
+I am responsible for the server-side logic and data storage of a web application. I handle requests, process data, and interact with databases.
+What am I?
+Answer
+If your answer is "Backend Development," proceed to the next riddle. If not, revise your answer until you find the correct term.
+I am a popular stack used in Full Stack Web Development. I include MongoDB, Express.js, React, and Node.js.
+What am I?
+Answer
+If your answer is "MERN stack," proceed to the next riddle. If not, revise your answer until you find the correct term.
+I am the building block of the web that contains information such as text, images, videos, and more. I am displayed on web pages and consumed by users.
+What am I?
+Answer
+If your answer is "Content," proceed to the next riddle. If not, revise your answer until you find the correct term.
+I am the client and server communication rulebook of the web. I define how data is exchanged between the client and server.
+What am I?
+Answer
+If your answer is "Protocol" (specifically, the HTTP protocol), proceed to the next riddle. If not, revise your answer until you find the correct term.
+I am used to uniquely identify resources on the web. I provide a way to locate and access specific information.
+What am I?
+Answer
+If your answer is "Identification" (specifically, URLs or Uniform Resource Locators), congratulations! You have successfully completed the web adventure quest.
+ 
+Program structure and syntax
+Program structure and syntax are two fundamental concepts in programming. Program structure refers to how a program is organized and constructed, while syntax refers to the rules that govern the structure of the programming language.
+notion image
+Program Structure
+Program structure can vary depending on the programming language and the type of program being developed. However, most programs are composed of one or more functions or methods, which are sets of instructions that perform a specific task or set of tasks. Functions and methods are typically organized into classes or modules, which group related functions and data together. The main function or method is usually the program's entry point, where execution begins.
+In addition to functions and methods, programs often include data structures such as arrays, lists, and dictionaries, which are used to store and manipulate data. Programs may also include control structures such as conditionals (if statements), loops (while and for statements), and switches (case statements), which determine the flow of execution based on certain conditions.
+Statements
+Syntax constructs and commands are categorized as statements that execute actions.
+An instance of a statement is demonstrated by the code alert('Hello, world!'), which displays the message "Hello, world!".
+It is possible to include multiple statements in our code, and they can be separated using semicolons.
+For instance, we can divide the message "Hello World" into two alerts:
+alert('Hello'); 
+alert('World');
+Semicolon
+A semicolon can often be left out if a line break is present.
+Alternatively, the following would also function:
+alert('Hello')
+alert('World')
+Typically, a newline character indicates a semicolon in code, however, it is important to note that "most cases" doesn't equate to "every case"!
+In certain scenarios, a newline character does not signify a semicolon. For instance:
+alert(3 + 1 + 2);
+The output of the code is 6, and this is because JavaScript does not auto-insert semicolons in this scenario. It is instinctively clear that if the line finishes with a plus sign "+", it constitutes an "incomplete expression". Therefore, inserting a semicolon at that point would be inappropriate. In this situation, this behavior works as expected.
+Comments
+Over time, programs tend to increase in complexity, making it essential to include comments that explain what the code does and why.
+Comments can be inserted at any point in a script, and their presence does not affect the execution since the engine ignores them altogether.
+A one-line comment starts with two forward slashes //, and any content after them is treated as a comment. This comment may span the entirety of the line or follow a statement, like in this example:
+// This comment occupies a line of its own
+alert('Hello');
+
+alert('World'); // This comment follows the statement
+To create a multiline comment in JavaScript, start with a forward slash and an asterisk /*, and conclude with an asterisk and a forward slash */.
+Here's an example:
+/* An example with two messages.
+This is a multiline comment.
+*/
+alert('Hello');
+alert('World');
+Comments are disregarded by the program, implying that any code written inside /* ... */ will not be executed.
+Setting up your development environment
+Setting up a development environment is essential before starting any software development project. It involves configuring your computer with the necessary tools and software to write, test, and deploy your code. 
+Setting up a development environment for JavaScript typically involves the following steps:
+Choose a text editor or integrated development environment (IDE): Some popular options for JavaScript include Visual Studio Code, Sublime Text, and WebStorm.
+Install Node.js: Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. It allows you to run JavaScript code outside a web browser and provides various useful tools and libraries. You can download Node.js from the official website and follow the installation instructions for your operating system.
+Install a package manager: A package manager is a tool that allows you to install and manage libraries and dependencies for your project. Node.js's most popular package manager for Node.js is npm (Node Package Manager). You can install it by running the following command in your terminal:
+npm install npm -g
+Set up a project: Once you have installed Node.js and npm, you can create a new JavaScript project by creating a new folder and running the following command in your terminal:
+npm init
+After execution, a package.json file will be generated, which will contain details regarding your project and its dependencies.
+Install dependencies: To install dependencies for your project, execute the subsequent command in your terminal:
+npm install <package-name> --save
+Replace the placeholder <package-name> with the actual name of the package that you’re installing. The --save flag tells npm to add the package to your package.json file as a dependency.
+Install a bundler: JavaScript applications often use multiple modules or files, making managing dependencies and optimizing performance difficult. A bundler is a tool that takes all of your JavaScript files and combines them into a single file. Some popular bundlers for JavaScript include Webpack, Rollup, and Parcel.
+Configure your environment: Once you have installed the necessary tools and software, you may need to configure your environment to ensure everything works correctly. This may involve setting environment variables, configuring your text editor or IDE, or setting up your bundler.
+ 
+Setting up a development environment for JavaScript can be complex, but ensuring you can work efficiently and effectively on your project is important.
+Running your first "Hello, world!" program
+To run your first "Hello, world!" program in JavaScript, you can follow these steps:
+Open a text editor or integrated development environment (IDE) and create a new file.
+In the file, type the following code:
+console.log("Hello, world!");
+This code uses the console.log() method to print the string "Hello, world!" to the console.
+Save the file with .js extension, such as helloworld.js.
+Open your terminal or command prompt and go to the directory where you have saved the file.
+Run the file by typing the following command:
+node helloworld.js
+This command runs the JavaScript file using Node.js and should print "Hello, world!" to the console.
+ 
+Congratulations, you have now run your first "Hello, world!" program in JavaScript!
+According to Statista, as of October 2021, the most popular programming language globally is JavaScript, followed by Python and Java. This is based on the number of users on GitHub, a popular code hosting platform, and reflects the growing importance of web and mobile applications in today's digital age.
+ 
+Activity: True or False
+JavaScript applications cannot use multiple modules or files.
+Syntax includes rules for defining variables, functions, and classes.
+A bundler is a tool that takes all of your JavaScript files and combines them into a single file.
+Solution
+1) False
+2) True
+3) True
+ 
+Summary
+What did we learn?
+Programming is the process of creating computer software, applications, and functionalities by writing code that a computer can execute.
+Program structure refers to how a program is organized and constructed, while syntax refers to the rules that govern the structure of the programming language.
+Most programs comprise one or more functions or methods, which are sets of instructions that perform a specific task or set of tasks. Functions and methods are typically organized into classes or modules.
+Syntax includes rules for defining variables, functions, and classes, as well as rules for specifying control structures and data structures.
+Setting up a development environment involves configuring your computer with the necessary tools and software to write, test, and deploy your code. For JavaScript, this typically involves choosing a text editor or IDE, installing Node.js, a package manager, setting up a project, installing dependencies, installing a bundler, and configuring your environment.
+Shortcomings & Challenges
+Debugging: Debugging code can be frustrating and time-consuming. Sometimes, a small syntax error can cause hours of headaches, and the process of fixing the error can be tedious.
+Keeping up with new technologies: The programming field is constantly evolving, with new technologies, frameworks, and programming languages being developed every day. 
+Security vulnerabilities: Writing secure code is crucial, but ensuring that your code is free from security vulnerabilities can be difficult.
+Best practices to follow
+Plan before you start coding: A clear plan of what you want to accomplish is crucial before writing code. This includes defining your problem, determining the user requirements, and designing the software architecture.
+Use a consistent coding style: Consistency is key when it comes to writing code. Maintaining a consistent coding style enhances the readability and maintainability of your code.
+Code comments: Adding comments to your code can help other developers understand your thought process and how your code works.
+ 
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+Introduction to Programming Paradigms: https://www.freecodecamp.org/news/an-introduction-to-programming-paradigms/
+JavaScript Syntax Structure: https://www.easeout.co/blog/2020-10-19-javascript-syntax-structure/
+ 
+Try it yourself
+Don't forget to join the AlmaBetter Community to share your brilliant approaches and cheer each other on! 🚀😄
+Step 1: Write a summary in around 100 words:
+What are the reasons behind the popularity of the MERN stack? Can you provide some examples of websites that have been built using the MERN stack?
+Hint: You can use AlmaBetter WiseChat to obtain the information.
+Step 2: Share it on AlmaBetter Community Platform in your Cohort group.
