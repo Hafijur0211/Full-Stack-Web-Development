@@ -1,0 +1,562 @@
+ES5 & ES6 Concepts
+Session Flow
+Learning Objective 
+Introduction
+Theme
+Primary Goals
+ES5 & ES6 Concepts 
+ES5 Concepts
+“use strict”
+Multiline strings
+String trim()
+JSON.parse() and JSON.stringify()
+Getters and Setters
+ES6 Concepts
+Arrow Function
+Spread Operators
+Template Literals
+let and const Declarations
+Destructuring Assignment
+Activity: True or False
+Introduction to ES Modules
+Different types of JavaScript Module Systems
+Why is understanding the JS Module System important?
+Activity: Fill in the blanks
+Summary 
+What did we learn?
+Shortcomings & Challenges
+Best practices to follow
+Enhance your knowledge
+Try it yourself
+ 
+Learning Objective
+Introduction
+ES6, which is also known as ECMAScript 2015, is a version of JavaScript that introduced many new features and syntax improvements, such as let and const, arrow functions, template literals, destructuring, and more.
+Focus: ES5 & ES6 Concepts and Introduction to ES Modules
+Prerequisites: VS Code IDE with Node.js installed, JavaScript Basics & Foundations
+Theme
+A team of developers was working on a new web-based application project and facing challenges managing the growing complexity of their code. They discovered the benefits of using ES6 Modules, which allowed them to organize their code into reusable units and manage dependencies in a clear and organized way.
+By using ES6 Modules, the team was able to write cleaner and more maintainable code. The end result was a well-structured, scalable, and easy-to-modify web-based application.
+Primary Goals
+Understand the history of ECMAScript and the role of ES6.
+Learn about the new features introduced in ES6 such as arrow functions, let and const keywords, template literals, spread and rest operators, destructuring assignments, and more.
+Understand the benefits of using ES modules and how to use them in JavaScript.
+Understand the importance of the JS module system in developing large-scale applications.
+Learn about the different types of JS module systems such as CommonJS, AMD, and UMD.
+Understand the concept and benefits of using "use strict" in JavaScript code.
+ 
+ES5 & ES6 Concepts
+Sarah was a JavaScript developer who had been working with the language for a few years. She loved JavaScript's flexibility and power but sometimes found it frustrating to work with due to its inconsistencies and quirks. One day, Sarah heard about a new version of JavaScript called ES6, and she was intrigued.
+ES6 was a major update to the JavaScript language that introduced several new features and improvements. Sarah decided to learn more about ES6 and began by reading up on its key features.
+As Sarah continued exploring ES6, she found it was a powerful and flexible language that made writing clear, concise, and efficient code easier. She began incorporating ES6 features into her projects and found that her code was more reliable and easier to maintain.
+ES5 Concepts
+JavaScript ES5 (ECMAScript 5) is the fifth edition of the ECMAScript standard, released in December 2009. It introduced several important features and concepts that were widely used before newer versions of JavaScript (ES6 and beyond) were introduced.
+Here are some key concepts introduced in ES5:
+“use strict”
+Multiline strings
+String trim()
+JSON.parse() and JSON.stringify()
+Getters and Setters
+“use strict”
+"use strict" is a pragma in JavaScript that enables "strict mode" in a script or a function. It was introduced in ECMAScript 5 (ES5) to help developers write safer and more reliable code by enforcing stricter rules and disallowing certain unsafe practices. When you use "use strict", the JavaScript engine enters strict mode for the scope where it is placed, providing additional error-checking and improvements to the language.
+To enable strict mode, you simply include the string literal 'use strict'; at the beginning of a script or a function.
+For example:
+'use strict';
+
+// Code in strict mode goes here
+function myFunction() {
+  'use strict';
+  // Code in strict mode goes here
+}
+Here are some of the changes and restrictions enforced by strict mode:
+Variables must be declared before use: You can't use a variable without declaring it first with var, let, or const.
+No global variable creation: Assigning a value to an undeclared variable will throw an error instead of creating a new global variable.
+No octal literals: Octal literals (e.g., 010) are not allowed.
+No deleting variables: Deleting a variable using the delete operator is not allowed.
+No duplicate property names in objects: Duplicate property names in an object literal will cause an error.
+No duplicate function parameters: Declaring a function with duplicate parameters will throw an error.
+No use of reserved words as variable names: Using reserved keywords as variable names (e.g., eval, arguments, etc.) will throw an error.
+this in functions behaves differently: In strict mode, this is not automatically coerced to the global object in functions.
+By using "use strict", you can catch potential errors earlier, avoid common pitfalls, and improve the overall code quality and maintainability. It is considered a best practice to use strict mode in all JavaScript code to take advantage of these benefits.
+Multiline strings
+In ECMAScript 5 (ES5), you can use the backslash (\) to create multiline strings by escaping the line breaks.
+Here's the correct way to do it:
+const multilineString = "This is a multiline string \
+using the backslash to escape line breaks\
+in JavaScript ES5.";
+console.log(multilineString);
+
+// Output
+"This is a multiline string using the backslash to escape line breaks in JavaScript ES5."
+In the code above, the backslash is used to escape the line breaks, allowing the string to span multiple lines without causing a syntax error. When you print multilineString using console.log, it will display as a multiline string with each line concatenated into one continuous line.
+While this method can be used in ES5, it is worth noting that using template literals (introduced in ES6) or string concatenation are generally more commonly used approaches for creating multiline strings, as they offer better readability and maintainability. However, the backslash escape method is still valid and might be helpful if you need to work with older ES5 codebases or environments.
+String trim()
+In JavaScript, the trim() method is a built-in string method that removes whitespace characters from both the beginning and the end of a string. Whitespace characters include spaces, tabs, and newline characters. The trim() method does not modify the original string; instead, it returns a new string with leading and trailing whitespace removed.
+Here's how you can use the trim() method:
+const str = "    Hello, World!    ";
+const trimmedString = str.trim();
+
+console.log(trimmedString);
+
+// Output
+"Hello, World!"
+In this example, the trim() method removes the leading and trailing spaces from the original string, resulting in a new string "Hello, World!".
+Keep in mind that the trim() method only removes whitespace characters from the beginning and end of the string. If there are spaces or other whitespace characters within the string, they will not be affected by this method. If you want to remove whitespace characters from all positions in the string, you can use regular expressions or other methods like replace().
+const str = "  Hello, \\t World!\\n   ";
+const trimmedString = str.replace(/\\s+/g, '');
+
+console.log(trimmedString);
+
+// Output
+"Hello,World!"
+In the above example, we use a regular expression (/\\s+/g) to match one or more whitespace characters (\\s+) globally (g), and then we replace them with an empty string ''. This removes all whitespace characters from the string, including spaces, tabs, and newlines.
+JSON.parse() and JSON.stringify()
+JSON.parse() and JSON.stringify() are two important functions provided by JavaScript for working with JSON (JavaScript Object Notation) data. They allow you to convert JSON data to JavaScript objects and vice versa. Both of these functions were introduced in ECMAScript 5 (ES5).
+JSON.parse(): The JSON.parse() function is used to parse a JSON-formatted string and convert it into a JavaScript object.
+Syntax: JSON.parse(jsonString)
+jsonString: A valid JSON-formatted string that you want to parse.
+Example:
+const jsonString = '{"name": "John", "age": 30, "isStudent": true}';
+const parsedObject = JSON.parse(jsonString);
+
+console.log(parsedObject.name);
+console.log(parsedObject.age);
+console.log(parsedObject.isStudent);
+
+// Output
+"John"
+30
+true
+JSON.stringify(): The JSON.stringify() function is used to convert a JavaScript object into a JSON-formatted string.
+Syntax: JSON.stringify(jsonObject[, replacer[, space]])
+jsonObject: The JavaScript object you want to convert to a JSON-formatted string.
+replacer (optional): A function or an array used to customize the serialization of the object (more advanced usage).
+space (optional): A string or number representing the number of spaces for indentation in the resulting JSON string (for pretty-printing).
+Example:
+const person = { name: "Alice", age: 25, isStudent: false };
+const jsonString = JSON.stringify(person);
+
+console.log(jsonString);
+
+// Output
+'{"name":"Alice","age":25,"isStudent":false}'
+These functions are incredibly useful when working with JSON data, such as sending or receiving data from APIs, storing configurations, or exchanging data between different parts of an application. Together, JSON.parse() and JSON.stringify() provide a straightforward way to work with JSON data in JavaScript.
+Getters and Setters
+Getters and setters are a feature in JavaScript that allow you to define custom behavior when reading (getting) or writing (setting) the value of an object property. They provide a way to encapsulate data and perform additional actions when accessing or modifying object properties. Getters and setters are part of the ECMAScript 5 (ES5) standard and can be used with regular object literals, as well as with classes in modern JavaScript.
+Here's how you define getters and setters:
+Getter:
+A getter is a function that is defined as a property of an object using the get keyword.
+It is used to retrieve the value of the property when the property is accessed.
+The syntax for defining a getter is: get propertyName() { /* getter logic */ }
+Example:
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+};
+
+console.log(person.fullName);
+
+// Output
+"John Doe"
+In the example above, we define a getter for the fullName property of the person object. When we access person.fullName, the getter function is automatically invoked, and it returns the concatenation of firstName and lastName.
+Setter:
+A setter is a function that is defined as a property of an object using the set keyword.
+It is used to set the value of the property when the property is modified.
+The syntax for defining a setter is: set propertyName(value) { /* setter logic */ }
+Example:
+const person = {
+  _age: 30,
+  set age(newAge) {
+    if (newAge >= 0 && newAge <= 120) {
+      this._age = newAge;
+    } else {
+      console.log("Invalid age value");
+    }
+  }
+};
+
+person.age = 25; // Sets the age property using the setter
+console.log(person._age);
+
+person.age = 150; // Attempts to set an invalid age (will be rejected by the setter)
+console.log(person._age);
+
+// Output
+25
+25
+In this example, we define a setter for the age property of the person object. The setter validates the new age value and only updates the _age property if the new age is within a valid range (0 to 120). If the new age is invalid, a message is logged to the console, and the age remains unchanged.
+Getters and setters are powerful tools for controlling access to object properties, enforcing data validation, and implementing computed properties in JavaScript objects. They provide a way to abstract away the internal representation of an object and offer a cleaner and more controlled interface for working with object data.
+ES6 Concepts
+ES6 (ECMAScript 2015) is the sixth major release of the ECMAScript language specification for JavaScript. It brought significant improvements and new features to the language, making JavaScript more expressive, powerful, and developer-friendly.
+Some of the key concepts introduced in ES6 include:
+Arrow Function
+Spread Operator
+Template Literals
+let and const Declarations
+Destructuring Assignment
+Modules
+Arrow Function
+Arrow functions are a concise and expressive way to define functions in JavaScript. They were introduced in ECMAScript 6 (ES6) and provide a shorter syntax compared to traditional function expressions. Arrow functions are particularly useful for creating shorter and more readable code, especially when working with callbacks and handling the this context.
+The basic syntax of an arrow function is as follows:
+const functionName = (param1, param2, ...) => {
+  // Function body
+  // Return statement (if needed)
+};
+Arrow functions have the following characteristics:
+Implicit Return: If the function body consists of a single expression, the return statement is implied, and the result of the expression is automatically returned.
+Single Parameter: If the function has only one parameter, you can omit the parentheses around the parameter list.
+Multiple Parameters: If the function has multiple parameters or no parameters, you need to include the parentheses.
+No this Binding: Arrow functions do not have their own this binding. Instead, they inherit the this value from the surrounding lexical context. This makes arrow functions particularly useful when dealing with callbacks or working with this in nested functions.
+Spread Operator
+The spread operator is a feature introduced in ECMAScript 6 (ES6) that provides a concise and powerful syntax for working with arrays, objects, and function arguments. It uses the ellipsis (...) notation to spread the elements of an iterable (like an array or an object) into individual elements. The spread operator is particularly useful for copying, merging, and extracting values from arrays and objects.
+Array Spreading:
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+
+// Concatenate arrays
+const mergedArray = [...arr1, ...arr2];
+console.log(mergedArray);
+
+// Create a shallow copy of an array
+const originalArray = [10, 20, 30];
+const copiedArray = [...originalArray];
+console.log(copiedArray);
+
+// Output
+[1, 2, 3, 4, 5, 6]
+[10, 20, 30]
+Object Spreading:
+const obj1 = { x: 1, y: 2 };
+const obj2 = { z: 3 };
+
+// Merge objects
+const mergedObject = { ...obj1, ...obj2 };
+console.log(mergedObject);
+
+// Output
+{ x: 1, y: 2, z: 3 }
+Template Literals
+Template literals, also known as template strings, are a feature introduced in ECMAScript 6 (ES6) that allows you to create strings with embedded expressions. They provide a more concise and expressive way to define strings in JavaScript, especially when you need to include variables, expressions, or multiline content.
+Template literals are enclosed by backticks ( ) instead of single or double quotes. Within template literals, you can embed expressions using the ${} syntax.
+Here's the basic syntax of a template literal:
+const variable = "value";
+const templateLiteral = `This is a template literal with ${variable}.`;
+console.log(templateLiteral);
+
+// Output
+"This is a template literal with value."
+Template literals have several advantages over traditional strings:
+String Interpolation: Template literals allow you to embed expressions inside the string using ${}. Expressions within ${} are evaluated and replaced with their corresponding values.
+Multiline Strings: Template literals can span multiple lines, which makes them ideal for creating multiline strings without using explicit newline characters (\\n).
+Expression Evaluation: The expressions within ${} can be any valid JavaScript expressions, including variables, function calls, arithmetic operations, and even other template literals.
+Template literals have become widely used in modern JavaScript development due to their improved readability, easier multiline string creation, and seamless string interpolation capabilities. They are especially beneficial when working with dynamic content or when writing complex strings that would otherwise require concatenation or newline characters.
+let and const Declarations
+let and const are two block-scoped variable declarations introduced in ECMAScript 6 (ES6). They provide an alternative to the traditional var declaration, which was the primary way to declare variables before ES6. Both let and const are block-scoped, meaning they are only accessible within the block (enclosed by curly braces) where they are defined, making the code more predictable and maintainable.
+let Declaration:
+Variables declared with let can be reassigned new values.
+They are mutable, meaning their values can change after initialization.
+let variables are hoisted to the top of their block scope, but they are not initialized until the actual declaration is reached in the code.
+Example:
+let x = 10;
+x = 20;
+
+if (true) {
+  let y = 5;
+  console.log(y);
+}
+
+console.log(x);
+console.log(y);
+
+// Output
+5
+20
+Uncaught ReferenceError: y is not defined
+const Declaration:
+Variables declared with const cannot be reassigned once they are initialized.
+They are immutable, meaning their values cannot be changed after declaration.
+const variables must be initialized at the time of declaration.
+Example:
+const PI = 3.14159;
+// PI = 3.14; // Error: Cannot reassign a const variable
+
+if (true) {
+  const country = "USA";
+  console.log(country);
+}
+
+console.log(country);
+
+// Output
+USA
+Uncaught ReferenceError: country is not defined
+When to use let or const:
+Use let when you need to reassign the variable's value.
+Use const when you want to ensure that the variable's value remains unchanged after initialization and when you want to create constant values.
+Destructuring Assignment
+Destructuring assignment is a feature introduced in ECMAScript 6 (ES6) that allows you to extract values from arrays or properties from objects and assign them to variables in a more concise and convenient way. It provides an easy and readable method to unpack values from data structures like arrays and objects.
+Destructuring assignment is done using curly braces {} for objects and square brackets [] for arrays, along with the assignment operator (=). The syntax is as follows:
+Array Destructuring:
+const [variable1, variable2, ...rest] = array;
+Example:
+const numbers = [1, 2, 3, 4, 5];
+
+// Destructuring assignment
+const [first, second, ...restNumbers] = numbers;
+
+console.log(first);
+console.log(second);
+console.log(restNumbers);
+
+// Output
+1
+2
+[3, 4, 5]
+Object Destructuring:
+const { property1, property2, ...rest } = object;
+Example:
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 30,
+  country: "USA"
+};
+
+// Destructuring assignment
+const { firstName, lastName, ...restPerson } = person;
+
+console.log(firstName);
+console.log(lastName);
+console.log(restPerson);
+
+// Output
+"John"
+"Doe"
+{ age: 30, country: "USA" }
+Default Values and Renaming:
+You can also provide default values for variables if the corresponding value does not exist in the data structure. Additionally, you can use aliases (renaming) for variables during destructuring.
+Example:
+const person = {
+  firstName: "John",
+  lastName: "Doe"
+};
+
+// Destructuring with default value and renaming
+const { firstName, lastName, age = 25, country: homeCountry = "USA" } = person;
+
+console.log(firstName); 
+console.log(lastName);
+console.log(age);
+console.log(homeCountry);
+
+// Output
+"John"
+"Doe"
+25            // default value used
+"USA"         // renamed from "country"
+Destructuring assignment is commonly used in various scenarios, such as extracting data from API responses, working with function arguments, and accessing properties within complex data structures. It can make code more concise, readable, and expressive, especially when dealing with large objects or arrays.
+ 
+Activity: True or False
+"use strict" is a feature introduced in ES6 to enable strict mode in JavaScript.
+Template literals are a feature introduced in ES6 that allow you to create strings with embedded expressions.
+The let and const declarations in ES6 are block-scoped and can be reassigned new values.
+Arrow functions were introduced in ES5 and provide a shorter syntax compared to traditional function expressions.
+The spread operator is a feature introduced in ES6 for working with arrays, objects, and function arguments.
+Answers
+False
+True
+False
+False
+True
+ 
+Introduction to ES Modules
+ES Modules (ECMAScript Modules) are a standardized module system introduced in ECMAScript 6 (ES6) to enable a more organized and scalable way of structuring JavaScript code. Prior to ES6, JavaScript did not have a built-in module system, and developers relied on various module patterns and module loaders to manage dependencies and code organization.
+ES Modules provide a native, standardized way to work with modules in JavaScript, allowing developers to create reusable and maintainable code by encapsulating functionality and sharing it across multiple files or projects.
+Here's an overview of how ES Modules work:
+Exporting from a Module: To make functionality available to other modules, you use the export keyword followed by the elements you want to export (variables, functions, classes, or objects).
+// Example: exporting a function from a module
+export function add(a, b) {
+  return a + b;
+}
+
+// Example: exporting a constant from a module
+export const PI = 3.14159;
+Importing from a Module: To use functionality from another module, you use the import keyword followed by the path to the module file and the elements you want to import.
+// Example: importing a function and a constant from another module
+import { add, PI } from './math-utils.js';
+
+console.log(add(2, 3));
+console.log(PI);
+
+// Output
+5
+3.14159
+Default Exports and Imports: You can have a default export in a module, which allows you to export a single value as the default export. When importing, you can omit the curly braces and use any name you prefer.
+// Example: default export from a module
+const myDefault = 'Hello, World!';
+export default myDefault;
+
+// Example: importing a default export
+import greeting from './greetings.js';
+console.log(greeting);
+
+// Output
+"Hello, World!"
+Renaming Imports: You can use the as keyword to give a different name to an imported element.
+// Example: renaming the imported function
+import { add as sum } from './math-utils.js';
+
+console.log(sum(5, 10));
+
+// Output
+15
+ES Modules provide a clean and standardized way to structure code, manage dependencies, and create reusable components in JavaScript. They are widely supported in modern browsers and Node.js, making them an essential feature for modern JavaScript development. However, when working with ES Modules in the browser, keep in mind that the browser's support for module loading can require additional considerations, like using the type="module" attribute or bundling tools for production code.
+Different types of JavaScript Module Systems 
+JavaScript module systems come in a variety of forms, each with a unique syntax and method for declaring, importing, and exporting modules. Some of the most popular module systems in use today in JavaScript development are listed below:
+CommonJS: CommonJS is a module system used in Node.js and server-side environments, where modules are loaded synchronously using require and are cached after the first load.
+// Module using CommonJS
+const dependency1 = require('dependency1');
+const dependency2 = require('dependency2');
+
+function privateFunction() {
+  console.log("This is private");
+}
+
+module.exports = {
+  publicFunction: function() {
+    console.log("This is public");
+    dependency1.someFunction();
+    dependency2.anotherFunction();
+    privateFunction();
+  }
+};
+AMD: AMD(Asynchronous Module Definition) is a popular module format used in asynchronous environments, such as browsers, where modules are loaded asynchronously using define and require functions. AMD is particularly useful for browser-based applications where modules can be loaded dynamically as needed.
+// Module using AMD
+define(['dependency1', 'dependency2'], function(dep1, dep2) {
+  function privateFunction() {
+    console.log("This is private");
+  }
+
+  return {
+    publicFunction: function() {
+      console.log("This is public");
+      dep1.someFunction();
+      dep2.anotherFunction();
+      privateFunction();
+    }
+  };
+});
+
+// Usage of the module
+require(['myModule'], function(module) {
+  module.publicFunction();
+});
+UMD: UMD is a hybrid module format that aims to work in both CommonJS and AMD environments. It attempts to detect the available module system and adapts accordingly.
+Why is understanding the JS Module System important?
+Understanding the JavaScript module system is essential for several reasons, as it plays a crucial role in modern JavaScript development.
+Here are some key reasons why understanding the module system is important:
+Code Organization: Modules help organize code into smaller, manageable pieces, improving maintainability.
+Reusability: Modules allow code to be reused in different parts of the application.
+Dependency Management: Understanding modules helps handle dependencies effectively.
+Encapsulation: Modules enable encapsulation of private variables and functions, preventing global scope pollution.
+Scope Isolation: Modules ensure that variables and functions within them are isolated from other parts of the code.
+Asynchronous Loading: Module systems like AMD handle asynchronous loading of files in browsers.
+According to the State of JavaScript 2020 survey, ES6 is the most popular version of JavaScript, with 95.2% of respondents reporting using it.
+ 
+Activity: Fill in the blanks
+The JavaScript module system allows developers to organize their code into ________ (scalable / modular / complex) and maintainable modules.
+By breaking down a large codebase into smaller, self-contained modules, developers can focus on building and testing ________ (independent / complex / overlapping) pieces of functionality.
+Understanding the JavaScript module system is important because it allows developers to work with ________ (open-source / proprietary / legacy) libraries and frameworks.
+CommonJS was originally created for use in ________ (server / client / mobile) side JavaScript environments like Node.js.
+Answers
+modular
+independent
+open-source
+server
+ 
+Summary
+What did we learn?
+ES6 or ECMAScript 2015 introduced several new features and enhancements to the JavaScript language, including arrow functions, classes, let and const declarations, template literals, destructuring assignment, spread syntax, function parameter defaults, promises, and modules.
+JavaScript modules or ECMAScript modules allow developers to organize their code into reusable and maintainable modules by using a standardized module syntax.
+There are several types of JavaScript module systems available, including CommonJS, AMD, UMD, and ES modules.
+The "use strict" directive in ECMAScript 5 enables programmers to use a stricter JavaScript mode that helps them avoid frequent errors and enhances code quality.
+Shortcomings & Challenges
+Some of the new features of ES6 might not be supported by older browsers. This could be an issue if you're building an application that needs to support those browsers.
+The use of ES6 features can lead to larger file sizes compared to using traditional ES5 syntax.
+Modules can make code more complex, as developers have to keep track of multiple files and dependencies.
+Debugging code that uses modules can be more difficult, as the source code is split across multiple files.
+Best practices to follow
+Use const and let instead of var: const and let provide better scoping compared to var and are preferred in ES6.
+Use destructuring for easier data access: Destructuring makes it easier to access data from objects and arrays.
+Use arrow functions for concise anonymous functions: Arrow functions are concise and have a cleaner syntax compared to traditional anonymous functions.
+Make use of default parameters: Default parameters provide a convenient way to set default values for function parameters.
+Avoid using global variables: Use modules instead of global variables to keep your code organized and maintainable.
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+A Practical guide to ES6 modules: https://www.freecodecamp.org/news/how-to-use-es6-modules-and-why-theyre-important-a9b20b480773/
+ES6 Modules and How to Use Import and Export in JavaScript: https://www.digitalocean.com/community/tutorials/js-modules-es6
+ 
+Try it yourself
+Let's solve these coding problems in the AlmaBetter IDE. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
+Task 1: Conquer coding challenges in the AlmaBetter IDE and showcase your skills with innovative solutions.
+Problems
+Problem 1: Object Manipulation
+Once upon a time, there was a young boy named Ethan who loved to play treasure hunt. He would spend hours creating maps and clues for his friends to follow. One day, he decided to create a treasure hunt where the clues were hidden in an object. Each key in the object represented a clue, and the value was the location of the next clue. He wanted to make sure he had included all the necessary clues, but he didn’t know how to check all the keys in the object.
+Can you help Ethan by writing a function in ES5 syntax that takes an object as input and returns an array of all the keys in the object, representing all the clues in his treasure hunt?
+Example 1:
+Input: {"name": "John", "age": 25, "city": "New York"}
+Output: ['name', 'age', 'city']
+Problem 2: Object Manipulation
+Once upon a time, there was a young boy named Ethan who loved to play treasure hunt. He would spend hours creating maps and clues for his friends to follow. One day, he decided to create a treasure hunt where the clues were hidden in an object. Each key in the object represented a clue, and the value was the location of the next clue. He wanted to make sure he had included all the necessary clues, but he didn’t know how to check all the keys in the object.
+Can you help Ethan by writing a function in ES5 syntax that takes an object as input and returns an array of all the keys in the object, representing all the clues in his treasure hunt?
+Example 1:
+Input: {"name": "John", "age": 25, "city": "New York"}
+Output: ['name', 'age', 'city']
+Problem 3: String Manipulation
+Once upon a time, there was a young girl named Mia who loved to play word games. She would spend hours solving puzzles and riddles. One day, she decided to play a game where she had to remove all the vowels from a word or phrase to create a new, unrecognizable string. She found the game challenging and fun, but wished there was an easier way to remove all the vowels without having to do it manually.
+Can you help Mia by writing a function in ES6 syntax that takes a string as input and returns a new string with all the vowels removed?
+Example 1:
+Input: Hello, how are you?
+Output: Hll, hw r y?
+Solutions
+Problem 1: Object Manipulation
+function main() {
+    var obj = JSON.parse(readLine());
+    console.log(getObjectKeysES5(obj));
+}
+
+function getObjectKeysES5(obj) {
+    var keys = [];
+    for (var key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            keys.push(key);
+        }
+    }
+    return keys;
+}
+Problem 2: 
+function main() {
+    var obj = JSON.parse(readLine());
+    console.log(getObjectKeysES5(obj));
+}
+function getObjectKeysES5(obj) {
+    var keys = [];
+    for (var key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            keys.push(key);
+        }
+    }
+    return keys;
+}
+Problem 3: String Manipulation
+function main() {
+    var str = readLine();
+    console.log(removeVowelsES6(str));
+}
+const removeVowelsES6 = (str) => {
+  return str.replace(/[aeiou]/gi, '');
+};
+Task 2: Share the solution of first problem using ES6 syntax in your Cohort group at AlmaBetter Community Platform.
