@@ -1,0 +1,24 @@
+Learning Objective
+Introduction
+JavaScript, the versatile programming language, empowers you with decision statements like if-else and switch for handling conditions, and offers loops like for and while to tackle repetitive tasks. Delve into its array and string manipulation prowess, and master objects and JSON to organize data and create interactive web experiences.
+Focus: Decision Statements, Loops & Control statements, Arrays & Strings, Objects & JSON, Functions, Asynchronous coding in JavaScript, Basics of OOPS in JavaScript
+Prerequisites: VS Code IDE with Node.js installed, JavaScript Basics
+Theme
+Let's imagine a company called Bookstore that sells books online. The Bookstore company can have functions like searchBook(), addToCart(), and checkout() are used for specific tasks on the website. The company checks book availability using if-else statements and displays details if the book is in stock. An array of books is maintained and iterated through with a for loop to show available book details.
+Strings are manipulated to format book information, while asynchronous JavaScript ensures a smooth checkout process without blocking the user interface. A while loop prompts the user for necessary information until all fields are filled.
+Switch cases handle different payment options during checkout, displaying the appropriate form based on the selection. OOPS principles are implemented through classes like Book, Customer, and Order, facilitating better organization, encapsulation, and modularity of the code.
+Primary Goals
+Master functions, including handling arguments, return values, and grasping function scope and closures.
+Understand conditional statements with if-else statements for decision-making in code.
+Utilize for loops efficiently to iterate over arrays and perform repetitive tasks.
+Learn array and string manipulation techniques, such as accessing, modifying, and performing operations like searching and sorting.
+Explore asynchronous programming with callbacks, promises, and async/await for non-blocking tasks. Additionally, familiarize yourself with while loops, do-while loops, switch cases, and Object-Oriented Programming (OOP) principles.
+Chapter Essentials
+Learning Lessons
+The chapter comprises multiple lessons that center around Decision Statements, Loops & Control Statements, Arrays & Strings, Objects & JSON, JavaScript Functions, Asynchronous coding in JavaScript, and Basics of OOPS.
+The lesson consists of learning material and engaging activities that enhance the learner's experience.
+Lessons conclude with coding questions to practice various coding concepts in IDE. Solving the coding problems will enhance understanding and proficiency in the taught technologies.
+In addition, every lesson includes 10 MCQs aimed at enhancing knowledge.
+Skill Mastery Challenge
+The chapter includes a Skill Mastery Challenge with a Summary section for the given chapter for best practices, challenges, and additional references, an Interview Prep section with industry-specific concepts, and a Competency Challenge featuring a one-hour session with 40 MCQs for reinforced learning and identifying improvement areas.
+Earning the Competency Challenge Certificate will ensure the completion of this chapter.
