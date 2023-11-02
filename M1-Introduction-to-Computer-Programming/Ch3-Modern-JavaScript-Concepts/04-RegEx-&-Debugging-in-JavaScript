@@ -1,0 +1,484 @@
+RegEx & Debugging in JavaScript
+Session Flow
+Learning Objective
+Introduction
+Theme
+Primary Goals
+RegEx & Debugging in JavaScript 
+Regular Expressions
+RegEx Basics
+Global and Case-Insensitive RegEx Flags
+Character Sets
+Ranges
+Character Classes
+Groups
+Bracket Expressions
+Activity: True or False
+RegEx Methods
+Assertions
+Alternate Characters
+Activity: True or False
+RegEx Flags
+Quantifiers
+JavaScript Browser Debugging
+Activity: Fill in the blanks
+Summary 
+What did we learn?
+Shortcomings & Challenges
+Best practices to follow
+Enhance your knowledge
+Try it yourself
+ 
+Learning Objective
+Introduction
+Regular Expression (RegEx) is an object that describes a sequence of characters used for defining a search pattern.
+Focus: Regular Expressions and Debugging in JavaScript
+Prerequisites: VS Code IDE with Node.js installed, JavaScript Basics & Foundations
+Theme
+A software developer was building a search engine for a large online library and needed help with validating user inputs and delivering relevant results. They discovered the power of Regular Expressions (RegEx) in JavaScript and used it to validate inputs and search for specific patterns within the library's vast collection. RegEx allowed the developer to create a fast and accurate search engine that provided relevant results to users. The developer continued to use RegEx in their projects for its power and ease of use.
+Primary Goals
+Learn the art of seamless text manipulation with the prowess of Regular Expressions.
+Master JavaScript debugging using browser developer tools to conquer coding glitches with confidence!
+RegEx & Debugging in JavaScript
+Alan was a JavaScript developer who had been working on a project for several weeks. He was almost finished, but there was one problem: his code wasn't working properly. Irrespective of his numerous attempts to rectify it, there always appeared to be something that needed to be more accurate.
+Frustrated and tired, Alan decided to take a break and go for a walk. As he walked, he remembered something that one of his colleagues had mentioned: regular expressions.
+When he returned to his computer, Alan began experimenting with regex. He used it to search for specific patterns in his code and identify where things went wrong. He found that regex made it easier to pinpoint the exact location of errors and fix them quickly.
+Regular Expressions
+Regular expressions, often abbreviated as "regex" or "regexp," are powerful patterns used to match and manipulate text in strings. They provide a flexible and concise way to search, replace, and validate strings based on specific patterns. Regular expressions are supported in many programming languages, including JavaScript. They may look complicated and intimidating to new users.
+For example: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ This is a type of Regular Expression for certain pattern matching.
+The terminology used in Regex:
+Pattern: The regular expression pattern is a sequence of characters that defines the search criteria. It specifies the text pattern you want to match in a string.
+String: The test string is the input text on which you apply the regular expression pattern. The pattern is matched against this string to find matches or perform manipulations.
+Digit: In regex, the term "digit" refers to any numeric digit from 0 to 9.
+Letter: The term "letter" in regex refers to any alphabetic character from a to z (lowercase) or A to Z (uppercase).
+Symbol: A "symbol" in regex represents any special character, punctuation, or other non-alphanumeric characters. It includes characters like ! $ % ^ & * ( ) _ + | ~ - = { } [ ] : ” ; ' < > ? , ` . /.
+Space: In regex, "space" refers to a single whitespace character, such as a space or a tab.
+Character: In regex, a "character" is a general term used to refer to any single letter, digit, or symbol.
+RegEx Basics
+To learn regex quickly with this guide, visit Regex101, where you can build regex patterns and test them against strings (text) that you supply.
+When you open the site, you’ll need to select the JavaScript flavor, as that’s what we’ll be using for this guide. (Regex syntax is mostly the same for all languages, but there are some minor differences.)
+regex input field: cat
+test string: rat bat cat sat fat cats eat tat cat mat CAT
+notion image
+Regular expressions in JavaScript start and end with /. If you were to write a regular expression in JavaScript code, it would look like this:
+const matchregex = /cat/;           //This is the regex for matching cat word
+There is one more way of creating Regex in JavaScript i.e. using RegExp() object. In this way there is no need to add slashes like in above example.
+const matchregex = new RegExp("cat");
+Global and Case-Insensitive RegEx Flags
+By default, a regex pattern will only return the first match it finds. If you’d like to return additional matches, you need to enable the global flag, denoted as g.
+Regex patterns are also case-sensitive by default. You can override this behavior by enabling the insensitive flag, denoted by i. The updated regex pattern is now fully expressed as /cat/gi. As you can see below, all “cat” strings have been matched including the one with a different case.
+notion image
+We need to add these flags in the end of regex defined. In JavaScript for both Global and Case Insensitive Search the regex pattern will look like:
+Character Sets
+In the previous example, we learned how to perform exact case-sensitive matches. What if we wanted to match “bat”, “cat”, and “fat”. We can do this by using character sets, denoted with [] . Basically, you put in multiple characters that you want to get matched. 
+For example: [bcf]at will match multiple strings as follows:
+notion image
+In JavaScript it will look like:
+const matchregex=/[bcf]at/ 
+//or
+const matchregex=new RegExp("[bcf]at")
+Ranges
+Let’s assume we want to match all words that end with at. We could supply the full alphabet inside the character set, but that would be tedious.
+The solution is to use ranges like this [a-z]at:
+notion image
+In JavaScript it will look like:
+const matchregex=/[a-z]at/
+// or 
+const matchregex=new RegExp("[a-z]at")
+Character Classes
+Character Classes allow you to write regular expression patterns that are even more compact.
+Let’s go through them one by one:
+\d matches any digit that is the same as [0-9]
+\D Matches any character that is not a digit (Arabic numeral). equivalent to  [^0-9]
+\w matches any letter, digit and underscore character
+\s matches a whitespace character — that is, a space or tab
+\t matches a tab character only
+From what we’ve learned so far, we can write regular expressions like this:
+\w{5} matches any five-letter word or a five-digit number
+\d{11} matches an 11-digit number such as a phone number
+Groups
+All the special characters we just mentioned only affect a single character or a range set. What if we wanted the effect to apply to a section of the expression? We can do this by creating groups using round brackets (). 
+For example: The pattern book(.com)? will match both “book” and “book.com”, since we’ve made the “.com” part optional.
+Here’s a more complex example that would be used in a realistic scenario such as email validation:
+Pattern: @\w+\.\w{2,3}(\.\w{2,3})?
+Test String: abc.com abc@mail @mail.com @mail.co.ke
+notion image
+Bracket Expressions
+Inside the bracket expressions, you can place any special characters you want to use to specify the character sets.
+For example: const regex = /[A-Z]/.
+Notice that A-Z is inside the square brackets so this will search for all uppercase letters in the alphabet.
+[a-z] matches a string that has all lowercase letters in the entire alphabet
+[A-Z] matches a string that has all the uppercase letters in the entire alphabet
+[abcd] matches a string that has a, b, c, d
+[a-d] exactly the same as the previous example so you can either specify each character or group them
+[a-gA-C0-7] matches string that has lowercase letters a-g, uppercase letters A-C, or numbers 0-7
+[^a-zA-Z] matches a string that DOES NOT have all lowercase or uppercase letters
+Inside a character set, the ^ character means all the characters that are NOT in the a-z or A-Z.
+ 
+Activity: True or False
+Regular expressions (regex) are patterns used to match character combinations in strings.
+JavaScript supports regular expressions (regex) natively.
+To make a regex pattern, only the forward slash notation (/pattern/) can be used in JavaScript.
+The match() method of a string object or the test() method of a regex object can be used to match a regex pattern against a string.
+To match every occurrence of a pattern in a string, the g flag with the RegExp() function Object() { [native code] } can be used in JavaScript.
+Solution
+True
+True
+False
+True
+True
+ 
+RegEx Methods
+You can manipulate strings based on patterns and deal with Regular Expressions (RegEx) using a variety of JavaScript methods. I'll describe a few of the most popular JavaScript RegEx methods in this response.
+test(): The test() method tests whether a RegEx matches a string and returns a boolean value.
+For example:
+const regex = /dog/;
+const str = 'I have a dog.';
+const hasDog = regex.test(str);
+
+// Output
+true
+In this example, the test() method returns true because the string contains the word "dog".
+exec(): By using the exec() method, you can search for a RegEx match within a string and receive an array that contains details about the match. If there is no match found, null will be returned.
+For example:
+const regex = /dog/;
+const str = 'I have a dog.';
+const match = regex.exec(str);
+
+// Output
+["dog", index: 9, input: "I have a dog.", groups: undefined]
+In this example, the exec() method returns an array with one element ("dog") and some additional properties that provide information about the match.
+match(): If there is no RegEx match found, the match() method will return null. However, if there is a match found, the method will return an array that includes all of the matches found within the string.
+For example:
+const regex = /dog/;
+const str = 'I have a dog.';
+const matches = str.match(regex);
+
+// Output
+["dog"]
+In this example, the match() method returns an array with one element ("dog").
+4.  replace(): The replace() method searches for a RegEx match in a string and replaces it with a new string.
+For example:
+const regex = /dog/;
+const str = 'I have a dog.';
+const newStr = str.replace(regex, 'cat');
+
+// Output
+"I have a cat."
+In this example, the replace() method replaces the word "dog" with the word "cat".
+search(): Using the search() method, you can look for a RegEx match within a string and obtain the index of the first match. If there is no match found, the method will return -1.
+For example:
+const regex = /dog/;
+const str = 'I have a dog.';
+const index = str.search(regex);
+
+// Output
+9
+In this example, the search() method returns 9 because the first match of the RegEx is found at index 9 in the string.
+split(): The split() method splits a string into an array of substrings based on a RegEx match.
+For example:
+const regex = /\s+/;
+const str = 'I have a dog.';
+const words = str.split(regex);
+
+// Output
+["I", "have", "a", "dog."]
+In this example, the split() method splits the string into an array of words based on whitespace.
+These are only some instances of the RegEx methods that are accessible in JavaScript. By combining these methods with RegEx patterns, you can perform powerful string manipulation operations in your code.
+Assertions
+Assertions, also known as zero-width assertions or look around, are special regex characters that allow you to make sure that a pattern is (or is not) followed by another pattern without including the second pattern in the match. 
+Assertions don't consume any characters, which means that they don't match any actual characters in the string you're searching.
+Assertions include boundaries, which indicate the beginnings and endings of lines and words, and other patterns indicating in some way that a match is possible.
+There are 3 types of Assertions:
+Boundary Assertion
+Positive Assertion
+Negative Assertion
+Boundary Assertion:
+Characters
+Meaning
+^
+Matches the beginning of input. If the multiline flag is set to true, also matches immediately after a line break character. For example, /^A/ does not match the "A" in "an A", but does match the first "A" in "An A".
+$
+Matches the end of input. If the multiline flag is set to true, also matches immediately before a line break character. For example, /t$/ does not match the "t" in "eater", but does match it in "eat".
+\b
+Matches a word boundary. This is the position where a word character is not followed or preceded by another word-character, such as between a letter and a space.
+For Example:  /\bm/ matches the "m" in "moon".
+\B
+Matches a non-word boundary. This is a position where the previous and next character are of the same type: Either both must be words, or both must be non-words, for example between two letters or between two spaces. For example, /\Bon/ matches "on" in "at noon", and /ye\B/ matches "ye" in "possibly yesterday".
+Positive Assertions:
+(?=pattern): Positive Lookahead Assertion. Matches the pattern only if it's followed by another pattern.
+(?<=pattern): Positive Lookbehind Assertion. Matches the pattern only if it's preceded by another pattern.
+Negative assertions:
+(?!pattern): Negative Lookahead Assertion. Matches the pattern only if it's not followed by another pattern.
+(?<!pattern): Negative Lookbehind Assertion. Matches the pattern only if it's not preceded by another pattern.
+Alternate Characters
+In regex, we can specify alternate characters using the “pipe” symbol |. This is different from the special characters we showed earlier as it affects all the characters on each side of the pipe symbol. For example, the pattern sat|sit will match both “sat” and “sit” strings. 
+The above pattern can be expressed as s(a|i)t by using () parentheses.
+ 
+Activity: True or False
+The test() method returns a boolean value based on whether a RegEx matches a string.
+The exec() method returns an array with information about a RegEx match or null if no match is found.
+The match() method returns an array with the matches of a RegEx in a string or null if no match is found.
+The search() method returns the index of the first match of a RegEx in a string or 1 if no match is found.
+The split() method splits a string into an array of substrings based on a RegEx match.
+Answers
+True
+True
+True
+False
+True
+ 
+RegEx Flags
+In JavaScript, regular expressions (regex) support several optional flags that modify the behavior of the pattern matching. These flags are added after the closing slash of the regex pattern and are represented by single characters. Each flag serves a specific purpose and can be combined to achieve different matching behaviors.
+Here are the commonly used flags in JavaScript regex:
+i (Ignore case): The i flag makes the regex pattern case-insensitive. It allows the pattern to match both uppercase and lowercase characters.
+Example:
+const regex = /hello/i;
+console.log(regex.test("Hello"));
+console.log(regex.test("HELLO"));
+
+// Output
+true
+true
+g (Global search): The g flag enables global matching. It allows the regex pattern to find all occurrences of a match in the input string, not just the first one.
+Example:
+const regex = /a/g;
+console.log("abracadabra".match(regex));
+
+// Output
+["a", "a", "a", "a"]
+m (Multiline matching): The m flag enables multiline matching. It allows the regex pattern to match the start and end of each line in a multiline input string.
+Example:
+const regex = /^start/m;
+console.log("start\\nstart again".match(regex));
+
+// Output
+["start", "start"]
+s (Dot matches all): The s flag, also known as the "single-line" flag, enables the dot (.) to match all characters, including newlines.
+Example:
+const regex = /hello.world/s;
+console.log(regex.test("hello\\nworld"));
+
+// Output
+true
+These flags can be used individually or combined as needed. For example, to perform a case-insensitive and global search, use the regex pattern with the i and g flags together (/pattern/ig). Flags play an essential role in tailoring the behavior of regular expressions to suit specific matching requirements in JavaScript.
+Quantifiers
+In regular expressions, quantifiers are metacharacters used to specify the number of occurrences a character or a group of characters should have in order to be considered a match. They allow you to define the repetition of patterns and control how many times a certain element must appear in the input string. Quantifiers are applied to the character or group immediately preceding them.
+Here are some common quantifiers:
+* (Zero or More Quantifier): The * quantifier matches zero or more occurrences of the preceding character or group. It means that the character or group can appear any number of times, including not at all.
+Example:
+const regex = /ab*c/;
+console.log(regex.test("ac"));
+console.log(regex.test("abc"));
+console.log(regex.test("abbc"));
+console.log(regex.test("abbbbc"));
+
+// Output
+true
+true
+true
+true
++ (One or More Quantifier): The + quantifier matches one or more occurrences of the preceding character or group. It requires the character or group to appear at least once.
+Example:
+const regex = /ab+c/;
+console.log(regex.test("ac"));
+console.log(regex.test("abc"));
+console.log(regex.test("abbc"));
+console.log(regex.test("abbbbc"));
+
+// Output
+false
+true
+true
+true
+? (Zero or One Quantifier): The ? quantifier matches zero or one occurrence of the preceding character or group. It means the character or group is optional.
+Example:
+const regex = /ab?c/;
+console.log(regex.test("ac"));
+console.log(regex.test("abc"))
+console.log(regex.test("abbc"));
+console.log(regex.test("abbbc"));
+
+// Output
+true
+true
+false
+false
+{n} (Exact Quantifier): The {n} quantifier matches exactly "n" occurrences of the preceding character or group.
+Example:
+const regex = /ab{3}c/;
+console.log(regex.test("abbbc"));
+console.log(regex.test("abbc"));
+
+// Output
+true
+false
+{n,} (At Least "n" Quantifier): The {n,} quantifier matches "n" or more occurrences of the preceding character or group.
+Example:
+const regex = /ab{2,}c/;
+console.log(regex.test("abbc"));
+console.log(regex.test("abbbc"));
+console.log(regex.test("abc"));
+
+// Output
+true
+true
+false
+{n,m} (Between "n" and "m" Quantifier): The {n,m} quantifier matches between "n" and "m" occurrences (inclusive) of the preceding character or group.
+Example:
+const regex = /ab{2,4}c/;
+console.log(regex.test("abbc"));
+console.log(regex.test("abbbc"));
+console.log(regex.test("abbbbc"));
+console.log(regex.test("abbbbbc"));
+
+// Output
+true
+true
+true
+false
+Quantifiers are essential for defining the repetition and pattern matching rules in regular expressions, allowing you to create more flexible and powerful text matching patterns.
+JavaScript Browser Debugging
+Debugging JavaScript is the process of finding and resolving bugs in JavaScript code. The browser offers a number of tools to aid developers in the real-time debugging of JavaScript code.
+Some of the most popular JavaScript debugging methods used in browser environments are listed below:
+Browser Console: Every contemporary browser comes with a console that programmers can use to record information, errors, and warnings. JavaScript code can be debugged using the console by presenting details about variables, functions, and the call stack.
+Right-click on a web page, choose "Inspect," or use the F12 key on your keyboard to launch the console. After that, select the "Console" tab.
+Example:
+console.log('Hello, world!');
+
+// Output
+"Hello, world!"
+Breakpoints: Developers can halt the execution of a program at a specified point by adding a breakpoint to their code. This enables developers to traverse through the code line by line and inspect its present state.
+To add a breakpoint, select the "Sources" tab in the developer tools of the browser, navigate to the file you wish to debug, and then click the desired line number.
+Example:
+function foo() {
+  const x = 42;
+  debugger; // Adds a breakpoint here
+  console.log(x);
+}
+
+foo();
+
+// Output
+42
+Watches: A watch feature enables programmers to keep track of a particular variable or expression's value in real time. This enables programmers to track changes in a variable's value and troubleshoot intricate expressions.
+To add a watch, locate the file you wish to debug, select the "Sources" tab in the developer tools of the browser, and then right-click on the variable or expression you want to watch. Choose "Add to Watch" after that.
+Example:
+const x = 42;
+const y = 7;
+const z = x + y; // Add a watch for "z"
+console.log(z);
+
+// Output
+49
+Call Stack: A feature that shows the present state of the program, along with all the functions that have been called and their arguments, is called the call stack. This enables programmers to track the program's route during execution and locate the error.
+Example:
+function foo() {
+  bar();
+}
+
+function bar() {
+  baz();
+}
+
+function baz() {
+  throw new Error('Uh oh!');
+}
+foo();
+
+// Output
+Uncaught Error: Uh oh!
+These are some of the most commonly used JavaScript debugging techniques in a browser environment. By mastering these techniques, developers can easily identify and fix issues in their JavaScript code.
+According to the State of JavaScript 2020 survey, 57.6% of respondents reported using regular expressions in their JavaScript projects.
+ 
+Activity: Fill in the blanks
+JavaScript regular expressions support ______________ (options / quantifiers / flags), which alter the behavior of pattern matching.
+The ______________ (start / global / anchor) flag of JavaScript regular expressions is used to match not just the first instance of the pattern but all subsequent instances as well.
+If a developer wants to perform a case-insensitive search using JavaScript regular expressions, they should use the (ignore / insensitive / static) ______________ flag.
+The ______________ (multiline / match / multiple) flag is used to match the pattern against multiple lines.
+Answers
+flags
+global (g)
+ignore (i)
+multiline (m)
+ 
+Summary
+What did we learn?
+Regular expressions in JavaScript are used to validate, search, manipulate, and extract information from strings. They are created using the RegEx constructor or by enclosing a pattern in forward slashes. 
+Regular expressions can perform tasks such as validation, searching, replacing, and extracting information from a string. 
+The RegEx object provides methods like test(), exec(), match(), search(), replace(), and split() to perform operations on strings. Regular expressions can be complex, but with practice, they can be a helpful tool in your JavaScript applications.
+Browser debugging is an essential skill for JavaScript developers as it helps identify and fix problems in code. 
+Most modern browsers have built-in developer tools for debugging JavaScript code in real time. Standard techniques include console logging, setting breakpoints, using the call stack and scope chain, and inspecting the DOM. 
+Debugging can take time to get used to. Still, utilizing these techniques and becoming familiar with browser developer tools makes it easier to identify and fix problems in JavaScript code quickly.
+Shortcomings & Challenges
+Regular expressions can become very complex and challenging to understand, especially for those just learning them. It's essential to carefully consider the pattern you try to match and thoroughly test your regular expressions.
+Debugging can be time-consuming, especially if the codebase is large and complex. It can also be difficult to reproduce bugs and to determine the root cause of problems.
+Regular expressions can be computationally expensive, especially if the patterns are complex or if the strings being searched are large. It's essential to consider the performance implications of using regular expressions and to choose the most efficient solution for your specific use case.
+Best practices to follow
+Regular expressions can be challenging to get right, so it's essential to thoroughly test your patterns before using them in production.
+Complex patterns can be challenging to understand and debug, so it's best to keep patterns as simple as possible.
+Regular expressions can be computationally expensive, so choosing the most efficient solution for your specific use case is essential.
+ 
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+Regular Expressions Cheat Sheet: https://cheatography.com/davechild/cheat-sheets/regular-expressions/
+Regex in javaScript: https://linuxhint.com/regex-in-javascript/
+ 
+Try it yourself
+Let's solve these coding problems in the AlmaBetter IDE. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
+Task 1: Conquer coding challenges in the AlmaBetter IDE and showcase your skills with innovative solutions.
+Problems
+Problem 1: Extract Numbers
+Once upon a time, there was a young boy named Benjamin who loved to solve puzzles. He would spend hours working on crosswords, Sudoku, and other brain teasers. One day, he came across a puzzle that required him to extract all the numbers from a given string. He found the puzzle challenging and fun, but wished there was an easier way to extract the numbers without having to do it manually.
+Can you help Benjamin by writing a function that takes a string as input and uses Regular Expression in JavaScript to extract all the numbers from the string and return them in an array?
+Example 1:
+Input: The price of the product is $250.50
+Output: [250.50]
+ 
+Problem 2: Valid URL
+Once upon a time, there was a young girl named Victoria who loved to surf the internet. She would spend hours browsing websites and discovering new information. One day, she came across a list of URLs and wanted to make sure they were all valid before visiting them. She wished there was an easy way to validate the URLs without having to do it manually.
+Can you help Victoria by writing a function that takes a string as input and uses Regular Expression in JavaScript to validate if the string is a valid URL or not? The function should return true if the string is a valid URL, and false otherwise.
+Example 1:
+Input: https://www.example.com/
+Output: true
+Example 2:
+Input: example.com
+Output: false
+ 
+Problem 3: Remove Vowels
+Once upon a time, there was a young boy named Samuel who loved to play word games. He would spend hours solving puzzles and riddles. One day, he decided to play a game where he had to remove all the vowels from a word or phrase to create a new, unrecognizable string. He found the game challenging and fun, but wished there was an easier way to remove all the vowels without having to do it manually.
+Can you help Samuel by writing a function that takes a string as input and uses Regular Expression in JavaScript to remove all the vowels from the string and return the new string without any vowels?
+Example 1:
+Input: Hello, World!
+Output: Hll, Wrld!
+Solutions
+Problem 1: Extract Numbers
+function main() {
+  var str = readLine();
+  console.log(extractNumbers(str));
+}
+
+function extractNumbers(str) {
+  const regex = /\d+(\.\d+)?/g;
+  return str.match(regex).map(Number);
+}
+Problem 2: Valid URL
+function main() {
+  var url = readLine();
+  console.log(isValidURL(url));
+}
+
+function isValidURL(url) {
+  const regex = /^(ftp|http|https):\/\/[^ "]+$/;
+  return regex.test(url);
+}
+Problem 3: Remove Vowels
+function main() {
+  var str = readLine();
+  console.log(removeVowels(str));
+}
+
+function removeVowels(str) {
+  return str.replace(/[aeiou]/gi, '');
+}
+Task 2: After solving these questions, how do you feel about your level of confidence in this lesson, share your experience with your Cohort group at AlmaBetter Community Platform.
