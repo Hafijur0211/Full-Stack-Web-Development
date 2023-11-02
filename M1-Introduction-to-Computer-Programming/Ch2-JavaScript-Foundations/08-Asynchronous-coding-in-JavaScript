@@ -1,0 +1,426 @@
+Asynchronous coding in JavaScript
+Session Flow
+Learning Objective 
+Introduction
+Theme
+Primary Goals
+Asynchronous coding in JavaScript 
+JavaScript Event Loop
+JavaScript single-threaded model
+Callbacks in JavaScript
+Activity: Fill in the blanks
+JavaScript setTimeout() and setInterval()
+JavaScript clearTimeout() and clearInterval()
+Activity: True or False
+Summary 
+What did we learn?
+Shortcomings & Challenges
+Best practices to follow
+Enhance your knowledge
+Try it yourself
+ 
+Learning Objective
+Introduction
+Asynchronous programming in JavaScript allows you to run multiple tasks simultaneously without blocking the main thread and ensures fast and efficient execution of code.
+Focus: JavaScript loops and various methods such as - setTimeOut() and setInterval()
+Prerequisites: VS Code IDE with Node.js installed, JavaScript Basics
+Theme
+The JavaScript engine uses an event loop to efficiently manage multiple tasks in a web application. The event loop is like a never-ending loop that constantly checks the message queue for any new tasks that need to be executed, such as user interactions, network requests, timers, or any other actions. As soon as a task is added to the message queue, the event loop picks it up and executes it, and once it's completed, the event loop goes back to recheck the message queue for any new tasks.
+The event loop in JavaScript ensures that the web application runs smoothly and efficiently, allowing for a seamless user experience. It acts like a chef in a restaurant who must manage multiple tasks at once, such as preparing different dishes for multiple customers and, monitoring the oven, plating the finished dishes. Just like the chef, the event loop must constantly check for new tasks and execute them as efficiently as possible.
+Primary Goals
+Understand the usage of setTimeout() and setInterval() for handling asynchronous tasks in JavaScript.
+Learn how the event loop works and its role in managing asynchronous code execution, ensuring smooth performance and responsiveness in JavaScript applications.
+ 
+Asynchronous coding in JavaScript
+Samantha was a software developer who had just started working on a new project. She was excited to be working with JavaScript. Still, she quickly realized that she would need to learn about asynchronous programming if she was going to build a responsive and fast application.
+At first, Samantha found asynchronous programming to be challenging. She was used to writing code that executed linearly, from top to bottom. But with asynchronous programming, she had to deal with code that was executed out of order and callbacks that fired at unpredictable times.
+However, she was determined to learn, so she dove into the topic headfirst. She started by learning about callbacks, promises, and async/await. She also learned about the event loop, which was responsible for managing the execution of asynchronous code in JavaScript.
+She discovered that asynchronous programming could make her application more responsive and faster. By using callbacks and promises, she could avoid blocking the main thread of the application, which could cause the application to freeze or become unresponsive.
+JavaScript Event Loop
+JavaScript single-threaded model
+JavaScript, being single-threaded, can only perform one task at a time. When executing a script, the JavaScript engine processes it from the top of the file to the bottom, managing execution contexts and the call stack.
+During the execution of a lengthy function, interactions with the web browser become unresponsive, causing the page to hang. Such functions are termed as blocking functions, as they block all interactions on the webpage, including mouse clicks.
+An illustration of a blocking function is when a function calls an API from a remote server, which may introduce delays in the script's execution.
+The following illustration simulates a blocking function using a huge loop:
+function task(message) {
+    // emulate time consuming task
+    let n = 10000000000;
+    while (n > 0){
+        n--;
+    }
+    console.log(message);
+}
+
+console.log('Start script...');
+task('Call an API');
+console.log('Done!');
+In this example, the function "task()" contains a large "[while] loop that simulates a time-consuming activity. The blocking function "task()" is used.
+Depending on how quickly the machine is running, the script hangs for a little while and outputs the following:
+Start script...
+Download a file.
+Done!
+notion image
+The JavaScript engine executes the script by placing the first call, "console.log( )" at the top of the call stack. The "task()" function is then executed after being positioned at the top of the call stack.
+Nevertheless, the 'task()' function won't finish immediately. The notification "Download a file." will therefore appear shortly. The JavaScript engine removes the completed "task()" function from the call stack after it has finished.
+The JavaScript engine makes the final call to the “console.log('Done!')” function, which is subsequently executed.
+notion image
+Callbacks in JavaScript
+Callbacks in JavaScript refer to functions that are passed as arguments to another function and are executed after the completion of that function. They are a way to handle asynchronous operations, allowing code to continue executing without waiting for the completion of the operation.
+Callbacks are commonly used in scenarios like fetching data from a server, reading files, or handling user input events, where the operation may take some time to complete. Instead of blocking the code, a callback function is provided to be executed once the operation is finished, ensuring that the result is processed correctly.
+Example:
+// Function with a callback
+function fetchDataFromServer(callback) {
+  // Simulating an asynchronous operation
+  setTimeout(function() {
+    const data = {
+      name: "John",
+      age: 30
+    };
+    callback(data); // Execute the callback function with the fetched data
+  }, 1000);
+}
+
+// Callback function to handle the fetched data
+function displayData(data) {
+  console.log(`Name: ${data.name}, Age: ${data.age}`);
+}
+
+// Call the function with the callback
+fetchDataFromServer(displayData);
+
+// Output
+"Name: John, Age: 30"
+In the example above, fetchDataFromServer is an asynchronous function that fetches data from a server after a delay of 1 second (simulated using setTimeout). It takes a callback function displayData as an argument. Once the data is fetched, the displayData function is executed with the retrieved data. This way, we can handle the fetched data without blocking the rest of the code execution.
+Normally, blocking functions are placed in callback functions for subsequent execution to avoid interfering with other processes.
+For instance:
+function task(message) {
+  // emulate time consuming task
+  let n = 100000000;
+  while (n > 0) {
+    n--;
+  }
+  console.log(message);
+}
+
+console.log('Start script...');
+
+setTimeout(() => {
+  task('Download a file.');
+}, 1000);
+
+console.log('Done!');
+
+// Output
+Start script...
+Done!
+Download a file.
+You'll see the messages "Start script..." and "Done!" right away in this case. You will then see the notice "Download a file" after that.
+The JavaScript engine can only perform one task at once, as was already described. To be more specific, the JavaScript runtime can only perform one action at once.
+The JavaScript engine is only one of the parts of the web browser. The web browser can perform these tasks simultaneously and asynchronously when you use the setTimeout() function, send a fetch request, or click a button.
+Fetch requests, DOM events, and setTimeout() are all a part of the web browser's Web APIs.
+In our example: The JavaScript engine calls the setTimeout() method, which the Web API inserts on the call stack and sets to expire in one second.
+notion image
+Then JavaScript engine place the task() function is into a queue called a callback queue or a task queue:
+notion image
+The callback queue and the call stack are both continuously monitored by the event loop, which runs in the background.
+The next function from the callback queue is added to the call stack if the call stack is not empty. If it is not empty, the event loop waits until it is. Nothing happens if the callback queue is empty:
+notion image
+See another example:
+console.log('Hi!');
+
+setTimeout(() => {
+    console.log('Execute immediately.');
+}, 0);
+
+console.log('Bye!');
+
+// Output
+Hi!
+Bye!
+Execute immediately.
+The message "Execute instantly." should come before the message "Bye!" in this example because the timeout is zero seconds. But that isn't how it operates.
+Once the call stack is devoid of any functions, the JavaScript engine proceeds to execute the next function call that had been added to the callback queue. In other words, it is executed by the JavaScript engine after "console.log('Bye!')".
+The following picture illustrates JavaScript runtime, Web API, Call stack, and Event loop:
+notion image
+In order to achieve concurrency, the call stack and callback queue duties are coordinated by the JavaScript event loop, which is a continuously running process.
+ 
+Activity: Fill in the blanks
+When a function takes too long to complete, the web page ____ (slows down / crashes / freezes), making it impossible for you to interact with the browser. 
+Normally, blocking functions are placed in _________ (synchronous callbacks / asynchronous callbacks / higher-order functions)for subsequent execution to avoid interfering with other processes. 
+The JavaScript engine can only perform one task at once, but the web browser can perform these tasks _______ & ___________ (sequentially / simultaneously / concurrently / randomly) when you use the setTimeout() function, send a fetch request, or click a button. 
+Answers
+freezes
+asynchronous callbacks
+Simultaneously, concurrently
+ 
+JavaScript setTimeout() and setInterval()
+JavaScript setTimeout() and setInterval() are two methods used for scheduling and executing functions asynchronously after a specified time interval.
+setTimeout(): This method is used to execute a function once after a specified delay (in milliseconds). It takes two parameters: the function to be executed and the delay time.
+Syntax:
+setTimeout(function, delay);
+Example:
+Write a program to display the text After 3 Second
+// display a text using the setTimeout method
+function greet() {
+  console.log('This will appear next. Hello World!');
+}
+
+setTimeout(function() {
+  console.log("This message appears after 3 seconds");
+  greet();
+}, 3000);
+
+// Output
+"This message appears after 3 seconds"
+"This will appear next. Hello World!"
+The setTimeout() method in the aforementioned software invokes the greet() function after 3000 milliseconds (3 second).
+As a result, after 3 seconds the application only displays the text "This will appear next. Hello World!" once.
+ 
+It is possible to provide extra arguments to the setTimeout() method.
+Syntax:
+setTimeout(function, delay, arg1, arg2, ...);
+In this syntax, the first parameter is the function that will be executed after the specified delay. The second parameter is the delay time in milliseconds.
+Any additional parameters after the delay time will be passed to the function as arguments. These arguments can be accessed inside the function using the arguments object.
+Example:
+function sayHello(name, message) {
+  console.log(`Hello, ${name}! ${message}`);
+}
+
+setTimeout(sayHello, 3000, "John", "How are you?");
+
+// Output
+Hello, John! How are you?     // After 3 seconds
+In this example, the sayHello() function is called after a 3-second delay with two additional arguments: "John" and "How are you?". The function will output the message "Hello, John! How are you?" to the console.
+setInterval(): This method is used to repeatedly execute a function with a fixed time delay between each execution. It takes two parameters: the function to be executed and the time interval (in milliseconds).
+Syntax:
+setInterval(function, interval);
+Example:
+Display Time Every 3 Second
+function displayTime() {
+  var currentTime = new Date();
+  var hours = currentTime.getHours();
+  var minutes = currentTime.getMinutes();
+  var seconds = currentTime.getSeconds();
+  var timeString = hours + ":" + minutes + ":" + seconds;
+  console.log(timeString);
+}
+
+setInterval(displayTime, 3000);
+
+// Output
+"12:3:55"
+"12:3:59"
+"12:4:2"
+"12:4:5"
+"12:4:7"
+"12:4:10"
+.
+.
+.
+..
+The application mentioned above updates the time every 3 seconds.
+After the time period (in this case, 3 seconds), the setTimeout() method only calls the procedure once.
+But because the function in the aforementioned program is calling itself, it updates the time every 3 seconds.
+This program is perpetual (until the memory runs out).
+Both setTimeout() and setInterval() return a numeric value (an identifier or ID) that can be used to cancel the scheduled function execution using clearTimeout() or clearInterval() respectively.
+JavaScript clearTimeout() and clearInterval()
+In JavaScript, clearTimeout() and clearInterval() are methods used to cancel scheduled function executions set by setTimeout() and setInterval(), respectively.
+clearTimeout(): In JavaScript, clearTimeout() is a method used to cancel a scheduled function execution set by setTimeout(). It clears the timer before the specified function gets a chance to execute, preventing its invocation.
+Syntax:
+clearTimeout(timerId);
+Here, timerId is the numeric ID returned by the setTimeout() function when scheduling the execution of a function. By passing the timerId to clearTimeout(), the associated timeout is canceled, and the function will not be executed.
+Example:
+function sayHello() {
+  console.log("Hello, World!");
+}
+
+const timerId = setTimeout(sayHello, 1000); // Schedule sayHello function to run after 1000 milliseconds (1 second)
+
+// Now, if you want to cancel the execution of the sayHello function before it runs:
+clearTimeout(timerId);
+clearTimeout() is useful when you want to abort the execution of a function that has been scheduled but is no longer needed or relevant, helping to avoid unnecessary or unwanted function calls.
+clearInterval(): In JavaScript, clearInterval() is a method used to cancel a repetitive function execution set by setInterval(). It stops the repetitive invocation of the specified function at the specified intervals.
+Syntax:
+clearInterval(intervalId);
+Here, intervalId is the numeric ID returned by the setInterval() function when scheduling the repetitive execution of a function. By passing the intervalId to clearInterval(), the associated interval is canceled, and the function will no longer execute repeatedly.
+Example:
+let count = 0;
+
+function displayCount() {
+  count++;
+  console.log(`Count: ${count}`);
+  if (count === 5) {
+    clearInterval(intervalID);
+    console.log("Interval stopped.");
+  }
+}
+
+let intervalID = setInterval(displayCount, 1000);
+This program defines a displayCount function that increments a count variable and outputs it to the console. In this program, the setInterval() method is utilized to invoke the displayCount() function every second (1000 milliseconds), and the resulting interval ID is assigned to the intervalID variable.
+When the count variable reaches 5, the clearInterval() function is called with the intervalID variable to stop the interval. The program then logs a message to the console to indicate that the interval has been stopped.
+clearInterval() is useful when you want to stop the continuous execution of a function that was scheduled to run at specific intervals. It gives you control over stopping the repetition when the scheduled task is no longer needed or relevant, preventing unnecessary function invocations and improving the efficiency of your JavaScript code.
+Callbacks were the traditional way of handling asynchronous code in JavaScript, but they can lead to callback hell and difficult-to-read code. According to a survey of over 20,000 JavaScript developers, 63.5% reported using callbacks, but only 15.3% said they preferred them.
+ 
+Activity: True or False
+The setTimeout() method executes a block of code after a specific amount of time. 
+The syntax for setTimeout() is setTimeout(function, seconds). 
+The value returned by the setTimeout() method is a positive integer called intervalID . 
+To run a block of code only once after a certain amount of time, use the setInterval() method.
+Answers
+True
+False
+True
+False
+ 
+Summary
+What did we learn?
+In JavaScript, only one task can be processed at a time since it's a single-threaded programming language. To handle multiple tasks, it uses an event loop mechanism that schedules and executes tasks one at a time in a sequential manner. 
+Understanding the single-threaded nature of JavaScript is essential for writing efficient and scalable code that can run smoothly in this environment.
+The JavaScript event loop is a mechanism that allows the single-threaded language to handle multiple tasks by scheduling and executing them one by one in a sequential manner. 
+The event loop continuously checks the message queue for tasks waiting to be processed and executes them. It's crucial for handling asynchronous operations and enables efficient handling of multiple tasks in a single-threaded environment. Understanding the event loop is essential for writing efficient and performant JavaScript code.
+setTimeout() is a JavaScript function that schedules a task to run after a specified amount of time has passed. The syntax is setTimeout(function, milliseconds), where the function is the code to be executed and milliseconds is the amount of time to wait before executing the code.
+ setTimeout() is often used in web development for tasks such as updating page content, showing notifications, and more. It is non-blocking, meaning it runs in the background while the JavaScript engine executes other code.
+setInterval() is a JavaScript function that allows you to run a function or code block repeatedly at a specified interval. The syntax is setInterval(function, milliseconds), where a function is a code to be executed repeatedly, and milliseconds is the time interval between each execution.
+setInterval() is often used in web development for tasks such as updating page content, animating elements, and checking for new data. It is non-blocking, meaning it runs in the background while the JavaScript engine executes other code. The actual interval may vary slightly depending on performance and the amount of code being executed, so it's a good practice to use setTimeout() with a dynamically calculated interval.
+clearInterval() is a JavaScript function that stops a repeating function scheduled with setInterval(). The syntax is clearInterval(intervalId), where intervalId is the value returned by setInterval(). It is important to clear intervals when they are no longer needed to prevent memory leaks and improve performance.
+Shortcomings & Challenges
+Asynchronous programming can be challenging to understand and debug, especially for developers who are new to the concept. Understanding the flow of code execution, callbacks, and promises can be challenging, leading to mistakes and bugs.
+When using a large number of nested callbacks, it can become challenging to understand the structure of the code and the order of events. This is often called "Callback Hell" and can lead to unmaintainable code.
+Error handling can be difficult when using asynchronous programming, as errors that occur in asynchronous code can be challenging to catch and diagnose.
+Not all browsers support all the features of asynchronous programming in JavaScript. This can lead to compatibility issues and require additional code to ensure that the code works on all browsers.
+Best practices to follow
+Promises are a powerful tool for managing asynchronous code and provide a more structured way to handle callbacks and errors.
+Minimize the use of nested callbacks and use Promises, async/await, or modular code to make the code more readable and maintainable.
+async/await is a modern approach to asynchronous programming in JavaScript and provides a more intuitive and readable way to handle asynchronous code.
+Blocking code can slow down the performance of your application and make it unresponsive. Make sure to perform time-consuming operations asynchronously to keep the UI responsive.
+setTimeout() and setInterval() are powerful tools for scheduling asynchronous code, but make sure to use them wisely to avoid memory leaks and other performance issues.
+ 
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+JavaScript Asynchronous Programming and Callbacks: https://nodejs.dev/en/learn/javascript-asynchronous-programming-and-callbacks/
+Synchronous vs Asynchronous JavaScript: https://www.freecodecamp.org/news/synchronous-vs-asynchronous-in-javascript/
+Microtasks and Macrotasks: https://blog.bitsrc.io/microtask-and-macrotask-a-hands-on-approach-5d77050e2168
+ 
+Try it yourself
+Let's solve these coding problems in the AlmaBetter IDE. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
+Task 1: Conquer coding challenges in the AlmaBetter IDE and showcase your skills with innovative solutions.
+Problems
+Problem 1: Counter
+Once upon a time, there was a young girl named Emma who loved to play hopscotch. She would spend hours jumping and hopping on the squares drawn on the ground. One day, she decided to play a new version of hopscotch where she had to start at a specific square and then hop to the next square, one more than the previous square every time (n, n + 1, n + 2, etc). She found the game challenging and fun, but wished there was an easier way to keep track of which square she had to hop to next.
+Can you help Emma by writing a function that takes an integer n representing the starting square, and returns a counter function. This counter function initially returns n and then returns 1 more than the previous value every subsequent time it is called, representing the next square Emma has to hop to.
+Example 1:
+Input: n = 10
+Output: [10,11,12]
+Example 2:
+Input: n = -2
+Output: [-2,-1,0]
+Problem 2: Counter II
+Once upon a time, there was a young boy named Alex who loved to play with toy cars. He would spend hours racing them around the track he had built in his room. One day, he decided to keep track of the number of laps each car completed. He wanted to be able to increment the lap count, decrement it if he made a mistake, and reset it back to the starting lap count if needed. He wished there was an easier way to keep track of the lap count for each car.
+Can you help Alex by writing a function createCounter that accepts an initial integer init representing the starting lap count, and returns an object with three functions: increment() which increases the current lap count by 1 and then returns it, decrement() which reduces the current lap count by 1 and then returns it, and reset() which sets the current lap count back to init and then returns it?
+Example 1:
+Input: init = 5, calls = ["increment","reset","decrement"]
+Output: [6,5,4]
+Explanation:
+const counter = createCounter(5);
+counter.increment(); // 6
+counter.reset(); // 5
+counter.decrement(); // 4
+Example 2:
+Input: init = 0, calls = ["increment","increment","decrement","reset","reset"]
+Output: [1,0,-1]
+Explanation:
+const counter = createCounter(0);
+counter.increment(); // 1
+counter.reset(); // 0
+counter.decrement(); // -1
+Problem 3: Chunk Array
+Once upon a time, there was a young girl named Sophie who loved to read books. She would spend hours lost in the pages of her favorite stories. One day, she decided to organize her bookshelf by dividing her books into smaller groups, or chunks, each containing a specific number of books. She wanted to be able to easily find and access her books, but she didn’t know how to divide them into chunks of the right size.
+Can you help Sophie by writing a function that takes an array arr representing her books and a chunk size size, and returns a chunked array? A chunked array contains the original elements in arr, but consists of subarrays each of length size. The length of the last subarray may be less than size if arr.length is not evenly divisible by size. You may assume the array is the output of JSON.parse. In other words, it is valid JSON. Please solve it without using lodash’s _.chunk function.
+Example 1:
+Input: arr = [1,2,3,4,5], size = 1
+Output: [[1],[2],[3],[4],[5]]
+Explanation: The arr has been split into subarrays each with 1 element.
+Example 2:
+Input: arr = [1,9,6,3,2], size = 3
+Output: [[1,9,6],[3,2]]
+Explanation: The arr has been split into subarrays with 3 elements. However, only two elements are left for the 2nd subarray.
+Example 3:
+Input: arr = [8,5,3,2,6], size = 6
+Output: [[8,5,3,2,6]]
+Explanation: Size is greater than arr.length thus all elements are in the first subarray.
+Example 4:
+Input: arr = [], size = 1
+Output: []
+Explanation: There are no elements to be chunked so an empty array is returned.
+Solutions
+Problem 1: Counter
+function main() {
+  var n = parseInt(readLine());
+  const counter = createCounter(n);
+  console.log(counter());
+  console.log(counter());
+  console.log(counter());
+}
+
+var createCounter = function(n) {
+  return function() {
+    return n++;
+  };
+};
+Problem 2: Counter II
+function main() {
+  var init = parseInt(readLine());
+  const counter = createCounter(init);
+  console.log(counter.increment());
+  console.log(counter.reset());
+  console.log(counter.decrement());
+}
+
+var createCounter = function(init) {
+  let presentCount = init;
+
+  function increment() {
+    return ++presentCount;
+  }
+
+  function decrement() {
+    return --presentCount;
+  }
+
+  function reset() {
+    return (presentCount = init);
+  }
+
+  return {
+    increment,
+    decrement,
+    reset
+  };
+};
+Problem 3: Chunk Array
+function main() {
+  var arr = readLine().split(" ").map(x => parseInt(x));
+  var size = parseInt(readLine());
+  console.log(chunk(arr, size));
+}
+
+var chunk = function(arr, size) {
+  let resArr = [],
+    tempArr = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    tempArr.push(arr[i]);
+
+    if (tempArr.length == size) {
+      resArr.push(tempArr);
+      tempArr = [];
+    }
+  }
+
+  if (tempArr.length) {
+    resArr.push(tempArr);
+  }
+
+  return resArr;
+};
+Task 2: Share an alternative approach to solving one of the problems within your Cohort group on the AlmaBetter Community Platform.
