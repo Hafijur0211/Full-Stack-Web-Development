@@ -1,0 +1,464 @@
+Working with MariaDB
+Session Flow
+Learning Objective
+Introduction
+Theme
+Primary Goals
+Working with MariaDB
+Filtering and Sorting Query results
+Distinct keyword
+Order By
+Limit and Offset
+Practical Implementation 1
+Activity: Fill in the blanks
+Aggregation Function
+Count Function
+Sum Function
+Average Function
+Max Function
+Min Function
+Group By
+Practical Implementation 2
+Activity: Crossword Puzzle
+Multi-table queries with JOINs
+Inner Join
+Left Join (Left Outer Join)
+Right Join (Right Outer Join)
+Full Join (Full Outer Join)
+Cross Join (Cartesian Join)
+Practical Implementation 3
+Activity: True or False
+Summary
+What did we learn?
+Shortcomings & Challenges
+Best practices to follow
+Enhance your knowledge
+Try it yourself
+Learning Objective
+Introduction 
+MariaDB is like a computer program that helps store and organize information in a structured way. To talk to this program and ask it questions or tell it what to do, we use a special language called SQL. It's like having a conversation with a database to get information or make changes to it.
+Focus: Filtering and Sorting Query results, Aggregation Function and Multi-table queries with JOINs
+Prerequisites: Relational Database and MariaDB overview
+Theme
+One of the largest user bases for MariaDB is Wikipedia, the world's largest online encyclopedia. Wikipedia's backend infrastructure relies on MariaDB for handling the enormous amount of data and queries from users. Wikipedia uses aggregation queries to count the number of articles in each category, calculate the average word count of articles, or find the most edited articles in a given time period.
+Wikipedia has various tables that store different types of information. They use joins to retrieve data from multiple tables and combine it for presentation on web pages.
+Primary Goals
+Explore how to sort query results in ascending or descending order using the ORDER BY clause.
+Learn about aggregate functions like SUM, AVG, COUNT, MAX, and MIN for performing calculations on datasets.
+Understand how to use the GROUP BY clause to group data into categories.
+Master the concept of joining tables using different types of joins, including Inner Join, Left Join, Right Join, and Full Join.
+ 
+Working with MariaDB
+Filtering and Sorting Query results
+Distinct keyword
+Even though the data in a database may be unique, the results of any particular query may not be. In such cases, SQL provides a convenient way to discard rows that have a duplicate column value by using the DISTINCT keyword.
+SELECT DISTINCT column1, column2, …
+FROM mytable
+WHERE condition(s);
+Order By
+In SQL, the ORDER BY clause is used to arrange the result set of a query in a specific order based on one or more columns. It allows you to sort the retrieved data in either ascending (ASC) or descending (DESC) order, providing control over how the data is presented.
+SELECT column1, column2, …
+FROM mytable
+WHERE condition(s)
+ORDER BY column2 ASC/DESC;
+Limit and Offset
+The LIMIT and OFFSET clauses are used to control the number of rows returned in a query result and to specify a starting point for retrieving rows. They are commonly used for pagination, allowing you to display subsets of data at a time.
+LIMIT: It's like telling SQL how many rows to give you from the results. For instance, LIMIT 5 means you only want 5 rows.
+OFFSET: It's like saying, "Start giving me rows from here." For example, LIMIT 5 OFFSET 10 means you want 5 rows, but you want to start counting from row 11.
+SELECT column1, column2, …
+FROM mytable
+WHERE condition(s)
+ORDER BY column1 ASC/DESC
+LIMIT num_limit OFFSET num_offset;
+Practical Implementation 1
+To make things a bit more challenging, we've intentionally mixed up the order of the data in the Movies table in the exercise. This is to simulate the kind of disorganized data you might encounter in real-world scenarios. Go ahead and apply the keywords and clauses we've discussed above in your queries to retrieve and manage this shuffled data effectively.
+Table - Movies
+Table - Movies
+List all directors of Pixar movies (alphabetically), without duplicates
+SELECT DISTINCT Director
+FROM Movies
+ORDER BY Director ASC;
+notion image
+List the last four Pixar movies released (ordered from most recent to least)
+SELECT Title
+FROM Movies
+ORDER BY Year DESC
+LIMIT 4;
+notion image
+List the first five Pixar movies sorted alphabetically
+SELECT Title
+FROM Movies
+ORDER BY Title ASC
+LIMIT 5;
+notion image
+List the next five Pixar movies after skipping the first five and their release year sorted by release year in Ascending order
+SELECT Title, Year
+FROM Movies
+ORDER BY Year ASC
+LIMIT 5 OFFSET 5;
+notion image
+ 
+Activity: Fill in the blanks
+To retrieve only unique values from a column in a SQL query, you can use the ________(distinct / unique) keyword.
+To sort the query results in ascending order based on a specific column, you can use the ________(order by / sort by) keyword.
+The ________(restrict / limit) clause is used to limit the number of rows returned by a SQL query.
+The ________(skip / offset) clause is used to specify how many rows to skip before starting to retrieve rows in a SQL query.
+Answers
+Distinct
+Order By
+Limit
+Offset
+ 
+Aggregation Function
+An aggregation query in SQL is used to perform calculations on a dataset and return summarized information. This type of query typically involves using aggregate functions like SUM, AVG, COUNT, MAX, or MIN to derive statistical or summary data from a table. The GROUP BY clause is often used in conjunction with aggregate functions to group rows with similar values into summary rows.
+ 
+Consider a table named Sales with the following data:
+Table- Sales
+Table- Sales
+Count Function
+COUNT is used to count the number of rows in a result set or the number of non-null values in a specific column. The MariaDB count() is an aggregate function that returns the number of rows in a table.
+Here is the syntax of the COUNT() function:
+COUNT( all | distinct expression);
+The count() function accepts a set of rows and returns the number of rows in the set. The count(expression) is the same as count(all expression) that returns the number of non-null values including duplicates. The count(distinct expression) returns the number of unique non-null values.
+The count(*) returns the number of values including nulls.
+Example
+Count the total number of sales.
+SELECT COUNT(*) AS TotalSales FROM Sales;
+Output:
+notion image
+Sum Function
+SUM calculates the sum of values in a numeric column. The MariaDB SUM() is an aggregate function that returns the sum of numbers.
+Here is the syntax of the SUM() function:
+SUM(all | distinct expression)
+The sum() function takes a set of numbers and returns a total of them. The distinct option instructs the sum() function to ignore duplicates and calculates the total of distinct values while the all option enables the sum() function to calculate the total of values including duplicates. By default, the sum() function uses the all option.
+If the set of input numbers is empty or all values in the set are null, the sum() function returns null
+Example
+Calculate the total quantity sold.
+SELECT SUM(Quantity) AS TotalQuantity FROM Sales;
+Output:
+notion image
+Average Function
+AVG calculates the average of values in a numeric column. The MariaDB AVG() is an aggregate function that accepts a set of numbers and returns the average.
+The following illustrates the syntax of the AVG() function:
+AVG(expression)
+The avg() function returns null if the set is empty. It ignores null values in the input arguments.
+Example
+Calculate the average price of products sold.
+SELECT AVG(Price) AS AveragePrice FROM Sales;
+Output:
+notion image
+Max Function
+MAX returns the maximum value in a column. The MAX() is an aggregate function that returns the maximum value in a set.
+The following illustrates the syntax of the MAX() function:
+MAX(expression)
+The max() function returns null if the set is empty. The max() function ignores null values.
+Example
+Find the maximum quantity of products sold.
+SELECT MAX(Quantity) AS MaxQuantity FROM Sales;
+Output:
+notion image
+Min Function
+MIN returns the minimum value in a column. The MIN() is an aggregate function that returns the minimum value in a set.
+Here is the syntax of the MIN() function:
+MIN(expression)
+Note that the min() function returns null if the set of input values is empty. Like the max() function, the min() function ignores null values.
+Example
+Find the minimum price of products.
+SELECT MIN(Price) AS MinPrice FROM Sales;
+Output:
+notion image
+ 
+Group By
+The GROUP BY clause in SQL is used to group rows with the same values in one or more columns into summary rows. It is commonly used in conjunction with aggregate functions like SUM, AVG, COUNT, MAX, or MIN to perform calculations on groups of rows rather than the entire dataset.
+GROUP BY is used to group the data based on specific columns, and then aggregation functions can be applied to each group. The group by clause groups rows of a result into groups.
+The following illustrates the syntax of the GROUP BY clause:
+SELECT column1, column2
+FROM table_name
+GROUP BY column1, column2,...;
+The following shows the syntax of the GROUP BY clause used with an aggregate function:
+SELECT column1, column2, aggregate_function(column_to_be_aggregated)
+FROM table_name
+GROUP BY column1, column2;
+In this syntax, the group by clause groups rows into groups and the aggregate function is applied to each group to return the summary row.
+Example
+Calculate the total quantity sold and the average price for each category.
+SELECT Category, SUM(Quantity) AS TotalQuantity, AVG(Price) AS AveragePrice
+FROM Sales
+GROUP BY Category;
+Output:
+notion image
+In this example, the data is grouped based on the Category column, and SUM and AVG functions are applied to Quantity and Price columns, respectively, for each category.
+In MariaDB, the AUTO_INCREMENT attribute creates a unique number for each row in a table. Each table can contain only one AUTO_INCREMENT column.
+Practical Implementation 2
+Create a SalesItems table in your MariaDB database with the following query.
+CREATE TABLE SalesItems (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    product_name VARCHAR(255) NOT NULL,
+    category VARCHAR(255),
+    price DECIMAL(10, 2) NOT NULL,
+    quantity_sold INT NOT NULL,
+    sale_date DATE NOT NULL
+);
+Insert the following data into the SalesItems table by running the given query.
+INSERT INTO SalesItems (product_name, category, price, quantity_sold, sale_date)
+VALUES
+    ('iPhone 13 Pro', 'Electronics', 999.99, 50, '2023-08-15'),
+    ('Samsung Galaxy S22', 'Electronics', 899.99, 40, '2023-08-16'),
+    ('Sony 65-inch 4K Smart TV', 'Electronics', 799.99, 30, '2023-08-17'),
+    ('PlayStation 5', 'Electronics', 499.99, 20, '2023-08-15'),
+    ('Nintendo Switch', 'Electronics', 299.99, 35, '2023-08-16'),
+    ('Bose QuietComfort 45 Headphones', 'Electronics', 299.99, 25, '2023-08-17'),
+    ('Harry Potter and the Goblet of Fire', 'Books', 14.99, 100, '2023-08-15'),
+    ('The Great Gatsby', 'Books', 12.99, 75, '2023-08-16'),
+    ('To Kill a Mockingbird', 'Books', 19.99, 60, '2023-08-17'),
+    ('LEGO Star Wars Millennium Falcon', 'Toys', 149.99, 15, '2023-08-15'),
+    ('Barbie Dreamhouse', 'Toys', 99.99, 20, '2023-08-16'),
+    ('Nerf N-Strike Elite Blaster', 'Toys', 29.99, 50, '2023-08-17');
+Table- SalesItems
+Table- SalesItems
+Let's write some queries to fetch the required data using the above table.
+Find the total number of sales records from the SalesItems table.
+SELECT COUNT(*) AS Total_Sales_Records
+FROM SalesItems;
+notion image
+Calculate the total revenue generated from all sales from the SalesItems table. Consider the revenue as the product of price and quantity_sold.
+SELECT SUM(price * quantity_sold) AS total_revenue
+FROM SalesItems;
+notion image
+Calculate the average price of all the products from the SalesItems table.
+SELECT AVG(price) AS average_price
+FROM SalesItems;
+notion image
+Find the maximum price among all products from the SalesItems table.
+SELECT MAX(price) AS maximum_price
+FROM SalesItems;
+notion image
+Find the minimum price among all products from the SalesItems table.
+SELECT MIN(price) AS minimum_price
+FROM SalesItems;
+notion image
+Find the total quantity sold for each product category in the alphabetical order from the SalesItems table
+SELECT category, SUM(quantity_sold) AS total_quantity_sold
+FROM SalesItems
+GROUP BY category
+ORDER BY category ASC;
+notion image
+ 
+Activity: Crossword Puzzle
+notion image
+Across
+1. When you want to see the total of a numeric column, you would use this function
+4. The function that computes the arithmetic mean of a numeric column.
+5. A function that returns the total number of rows that meet a specified condition.
+Down
+2. This aggregation function finds the highest value in a column.
+3. An SQL clause used to group rows that have the same values in specified columns.
+Answers
+sum
+max
+group
+average
+count
+ 
+Multi-table queries with JOINs
+In MariaDB, a join is an operation that allows you to combine rows from two or more tables based on a related column between them. It is a fundamental feature of relational databases that enables you to retrieve data from multiple tables simultaneously, creating a single result set.
+Joins are essential for extracting meaningful information from a database as they allow you to establish relationships between tables and retrieve data that spans across different entities or categories.
+The syntax for joining tables is as follows:
+SELECT column1, column2, ....
+FROM table1
+JOIN table2 ON table1.column_name = table2.column_name;
+table1.column_name = table2.column_name: Defines the condition for the join. This condition specifies how the rows in table1 are related to the rows in table2. It typically involves matching values in a common column (e.g., a foreign key).
+Inner Join
+notion image
+An Inner Join returns only the rows that have matching values in both tables based on the specified join condition.
+Rows from both tables that don't meet the condition are excluded from the result set.
+It's the most common type of join and is used to retrieve data where there is a relationship between the tables.
+The syntax for the Inner Join in MariaDB is as follows:
+SELECT column1, column2, ...
+FROM table1
+INNER JOIN table2 ON table1.column_name = table2.column_name;
+Left Join (Left Outer Join)
+notion image
+A Left Join returns all rows from the left table and the matching rows from the right table based on the join condition.
+If there's no match in the right table, null values are returned for the columns from the right table.
+It's useful for retrieving all records from the left table and associated data from the right table when available.
+The syntax for the LEFT JOIN in MariaDB is as follows:
+SELECT column1, column2, ...
+FROM table1
+LEFT JOIN table2 ON table1.column_name = table2.column_name;
+Right Join (Right Outer Join)
+notion image
+A Right Join is similar to a Left Join but returns all rows from the right table and the matching rows from the left table.
+If there's no match in the left table, null values are returned for the columns from the left table.
+It's less commonly used than Left Join but can be helpful in certain scenarios.
+The basic syntax of the RIGHT JOIN in MariaDB is as follows:
+SELECT column1, column2, ...
+FROM table1
+RIGHT JOIN table2 ON table1.column_name = table2.column_name;
+Full Join (Full Outer Join)
+notion image
+A Full Join returns all rows when there is a match in either the left or right table.
+If there's no match in one of the tables, null values are returned for the columns from that table.
+It combines the results of both Left Join and Right Join.
+The syntax for performing a FULL JOIN in MariaDB is as follows:
+SELECT column1, column2, ...
+FROM table1
+LEFT JOIN table2 ON table1.column_name = table2.column_name
+UNION
+SELECT column1, column2, ...
+FROM table1
+RIGHT JOIN table2 ON table1.column_name = table2.column_name;
+Cross Join (Cartesian Join)
+notion image
+A Cross Join returns the Cartesian product of two tables, meaning it combines each row from the first table with every row from the second table.
+It doesn't require a join condition and can result in a large number of rows if the tables are sizable.
+Cross Joins are used when you need to generate all possible combinations between two sets of data.
+The basic syntax of a CROSS JOIN is as follows:
+SELECT column1, column2, ...
+FROM table1
+CROSS JOIN table2;
+You might see queries where the INNER JOIN is written simply as a JOIN. These two are equivalent, but we will continue to refer to these joins as inner-joins because they make the query easier to read once you start using other types of joins.
+Practical Implementation Step 3
+Let's create two tables - employees and departments with the following schema and add the given data
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    employee_name VARCHAR(50),
+    department_id INT,
+    hire_date DATE
+);
+CREATE TABLE departments (
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(50),
+    manager_id INT,
+    location VARCHAR(100)
+);
+INSERT INTO employees (employee_id, employee_name,
+department_id, hire_date)
+VALUES
+    (1, 'Rajesh Sharma', 101, '2019-02-15'),
+    (2, 'Priya Patel', 102, '2020-04-22'),
+    (3, 'Amit Singh', 101, '2021-11-10'),
+    (4, 'Sneha Verma', 103, '2022-07-05'),
+    (5, 'Divya Yadav', 102, '2018-03-18'),
+    (6, 'Vikram Khanna', null, '2023-01-12'),
+    (7, 'Anjali Gupta', 101, '2019-09-30'),
+    (8, 'Kunal Mehta', 102, '2020-12-08'),
+    (9, 'Neha Choudhary', null, '2021-08-14'),
+    (10, 'Sanjay Dubey', 101, '2018-06-25');
+Table- employees
+Table- employees
+INSERT INTO departments (department_id, department_name,
+manager_id, location)
+VALUES
+    (101, 'Finance', 1, 'Mumbai'),
+    (102, 'Engineering', 2, 'Bangalore'),
+    (103, 'Sales', 3, 'Delhi'),
+    (104, 'Marketing', 4, 'Chennai'),
+    (105, 'Human Resources', 5, 'Kolkata');
+Table- departments
+Table- departments
+Retrieve all employees and their corresponding departments where there is a match between the department_id column in both tables.
+notion image
+SELECT e.employee_name, e.department_id, d.department_name
+FROM employees e
+INNER JOIN departments d ON e.department_id = d.department_id;
+Retrieve all employees and their corresponding departments. If an employee does not have a department, it will still be included in the result with NULL values for department-related columns.
+notion image
+SELECT e.employee_name, e.department_id, d.department_name
+FROM employees e
+LEFT JOIN departments d ON e.department_id = d.department_id;
+Retrieve all departments and their corresponding employees. If a department does not have any employees, it will still be included in the result with NULL values for employee-related columns.
+notion image
+SELECT d.department_name, e.employee_id, e.employee_name
+FROM departments d
+LEFT JOIN employees e ON d.department_id = e.department_id;
+Retrieve all employees and departments. It includes all rows from both tables and fills in NULL values for missing data where there is no match.
+notion image
+-- Retrieve all employees and their departments, including NULL values for missing data
+SELECT e.employee_id, e.employee_name, e.department_id AS emp_department_id,
+       d.department_id, d.department_name, d.manager_id, d.location
+FROM employees e
+LEFT JOIN departments d ON e.department_id = d.department_id
+UNION ALL
+-- Retrieve departments without employees (if any)
+SELECT NULL AS employee_id, NULL AS employee_name, NULL AS emp_department_id,
+       d.department_id, d.department_name, d.manager_id, d.location
+FROM departments d
+LEFT JOIN employees e ON d.department_id = e.department_id
+WHERE e.employee_id IS NULL;
+ 
+Activity: True or False
+An Inner Join returns all rows from both tables, combining them based on a specified condition.
+Cross Joins are generally used when you want to create a Cartesian product intentionally, and they are less common in practical SQL queries.
+A Full Join (Full Outer Join) returns all rows from both tables, including both matching and non-matching rows.
+A Full Join can be emulated by performing a Union of a Left Join and a Right Join between two tables.
+A Right Join and a Left Join produce the same result if you swap the order of the tables and reverse the direction of the join condition.
+Answers
+False
+True
+True
+True
+True
+ 
+Summary
+What did we learn?
+The DISTINCT keyword in SQL allows you to eliminate duplicate rows in query results.
+The ORDER BY clause is used to sort query results based on specified columns in ascending (ASC) or descending (DESC) order.
+LIMIT and OFFSET clauses control the number of rows returned and specify a starting point for retrieving rows, often used for pagination.
+Aggregation functions such as SUM, AVG, COUNT, MAX, and MIN enable calculations on data within a table.
+The GROUP BY clause groups rows based on specific columns, allowing aggregate functions to be applied to grouped data for summary statistics.
+SQL joins are used to combine rows from multiple tables based on related columns.
+Types of joins include INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL JOIN, and CROSS JOIN.
+INNER JOIN returns rows with matching values in both tables.
+LEFT JOIN returns all rows from the left table and matching rows from the right.
+RIGHT JOIN returns all rows from the right table and matching rows from the left.
+FULL JOIN returns rows with matches in either the left or right table.
+CROSS JOIN returns the Cartesian product of two tables.
+SQL queries may use INNER JOIN or simply JOIN, with both being equivalent.
+Shortcomings & Challenges
+Aggregation queries like Count, Sum, Avg, Min, Max, etc., can be resource-intensive, especially when performed on large datasets. 
+The use of keys and joins in queries can expose sensitive information if proper access controls and security measures are not in place.
+Best practices to follow
+Use the appropriate type and size for keys to optimize storage and indexing performance
+Ensure that the data is appropriately indexed to optimize the performance of aggregation queries.
+Avoid using unnecessary complex expressions or functions in aggregation queries, as they can slow down the execution.
+ 
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+Date & Time Functions
+Optimization and Indexes
+ 
+Try it yourself
+Let's solve these coding problems in the AlmaBetter IDE. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
+Task 1: Want to showcase your database proficiency? Explore these challenges and demonstrate your skills in MariaDB tables.
+Problems
+Problem 1: Longest time employee
+Find the longest time that an employee has been at the studio from the given Employees table.
+Table- Employees
+Table- Employees
+Expected Output:
+notion image
+Problem 2: Average number of years
+For each role, find the average number of years employed by employees in that role from the given Employees table.
+Table- Employees
+Table- Employees
+Expected Output:
+notion image
+Problem 3: Total number of employee years
+Find the total number of employee years worked in each building from the given Employees table.
+Table- Employees
+Table- Employees
+Expected Output:
+notion image
+Solutions
+Solution 1: Longest time employee
+SELECT MAX(Years_employed) FROM employees;
+Solution 2: Average number of years employed
+SELECT role, AVG(years_employed) as Average_years_employed
+FROM employees
+GROUP BY role;
+Solution 3: Total number of employee years
+SELECT building, SUM(years_employed) as Total_years_employed
+FROM employees
+GROUP BY building;
+Task 2: How do you feel about your confidence level after practicing the code in this lesson? Share your experience and insights with your Cohort group on AlmaBetter's Community Platform.
