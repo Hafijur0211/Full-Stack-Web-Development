@@ -1,0 +1,384 @@
+Database Transaction & ER Diagram
+Session Flow
+Learning Objective
+Introduction
+Theme
+Primary Goals
+Database Transaction & ER Diagram
+Database Transaction
+ACID Properties
+Transaction State
+Defining Database Transaction
+SAVEPOINT
+Activity: Fill in the blanks
+Entity Relationship (ER) Diagrams
+What is ER Model?
+ER Diagram Symbols & Notations
+Cardinality
+ER Diagram Implementation
+Activity: True or False
+Summary 
+What did we learn?
+Shortcomings & Challenges
+Best practices to follow
+Enhance your knowledge
+Try it yourself
+Learning Objective
+Introduction 
+A database transaction is a logical unit of work that represents a sequence of one or more database operations (e.g., insert, update, delete) that need to be executed together as a single indivisible unit. An Entity-Relationship Diagram (ERD) is a graphical representation used to model and visualize the logical structure of a database system.
+Focus: Database Transaction, ER Diagram
+Prerequisite: Relational Database, Database Design & Normalization
+Theme
+Google relies heavily on database transactions to ensure data integrity and consistency across its products and services. For instance, when you perform a search on Google, it involves multiple database transactions to retrieve relevant search results and ensure that the data returned is accurate and up-to-date. ER Diagrams are also crucial in Google's database design process. They use ER diagrams to model the relationships between entities, such as users, websites, and search queries, which helps them design and optimize their databases for efficient data retrieval.
+As an e-commerce giant, Amazon heavily utilizes database transactions to manage order processing, inventory management, and customer interactions. When a customer places an order on Amazon, multiple database transactions are involved to update inventory levels, process payments, and track order status. ER Diagrams are instrumental in Amazon's database design to represent the relationships between various entities like customers, products, orders, and shipping information. This allows them to organize and optimize their databases to handle the vast amount of data associated with their online retail operations.
+Primary Goals
+Gain knowledge about what a database transaction entails and its role in upholding data consistency and integrity.
+Familiarize yourself with the four ACID properties, namely Atomicity, Consistency, Isolation, and Durability.
+Comprehend the various stages a transaction can go through, including active, partially committed, committed, and aborted, and how these stages impact data modifications.
+Acquire an understanding of the Entity-Relationship Model, including its key components like entities, attributes, and relationships.
+Explore the concept of cardinality within ER diagrams, which describes the numerical relationships between entities in a database model.
+ 
+Database Transaction & ER Diagram
+Database Transaction
+A database transaction is a logical unit that generally includes several low-level steps. If one step of the transaction fails, the whole transaction fails. A database transaction is used to create, update, or retrieve data.
+Think of a database transaction as a series of operations performed within a DBMS. The transaction system ensures that the data in the database always remains in a reliable and consistent state.
+notion image
+If a transaction is successful, the data in the database is updated as described in the instructions contained in the transaction. This is called a “commit.”
+If a transaction fails, all transaction steps performed prior to the step that led to the failure are reversed. The data in the database returns to its initial state as if the transaction had never been executed. This operation is called a “rollback.”
+In other terms, a database transaction ends with a commit or rollback. This ensures that database transactions are Atomic, Consistent, Isolated, and Durable.
+ACID Properties
+To ensure the correctness of a transaction, a database must be atomic, consistent, isolated, and durable. These four properties are commonly known under the acronym ACID.
+notion image
+ACID (Atomicity, Consistency, Isolation, Durability) is a set of properties that guarantee reliability and consistency in database transactions.
+Atomicity: More often, but not always, a transaction is made of multiple SQL statements. The atomic property states that all the statements must either be complete entirely or have no effect whatsoever. No partial execution should be permitted. The idea is that a transaction must always leave the database in a consistent state. This leads us to the second property.
+Consistency: From the previous explanation, we understand that the transaction must only bring the database from one valid state to another. This property ensures that there are no database constraints violations.
+Isolation: The isolation property guarantees that the uncommitted state changes are not visible or do not affect other concurrent transactions.
+Durability: This property states that a committed transaction must permanently change the state of the database, even in case of a system failure like a power outage or crash. This implies that a successful transaction must always be recorded in non-volatile memory and/or a persisted transaction log.
+The ACID qualities work together to guarantee that database transactions are trustworthy, consistent, and free from corruption or data loss. All mission-critical applications that demand rigorous data integrity and consistency, such as financial transactions, medical records, and other significant systems, must have these features.
+Transaction State
+A transaction refers to a logical unit of work in computer science and database management consisting of a sequence of database activities carried out as a single, indivisible unit. A transaction's lifecycle state is referred to as the transaction state.
+In the case of a transactional database, the life cycle of a transaction can be described by the following four steps:
+The transaction begins: The transactional database prepares everything required to execute the transaction.
+The queries defined in the transaction are executed: This is when data manipulation takes place.
+If no errors occur, the transaction is committed: The transaction ends successfully.
+If an error occurs, it rolls back the transaction: The transaction ends with failure and any query executed before it failed is reversed.
+notion image
+Specifically, a transaction in DBMS can have the following five states:
+State
+Transaction types
+Active
+This is the initial state of every transaction in a database. This state means that the transaction is being executed and can perform read and write operations.
+Partially Committed
+A transaction enters this state after performing its final operation/query.
+Committed
+A transaction is in this state if it has performed all its operations successfully. The effects of the transaction are now permanent in the database system.
+Failed
+A transaction enters this state if any transaction fails or if the transaction is aborted before completing. A failed transaction cannot proceed further.
+Terminated
+It is the final state of each transaction. It means that the transaction is finished, either successfully or not.
+Active State: When a transaction is first created, it is in its active state. The transaction is currently active and carrying out database actions.
+Partially Committed State: A transaction enters the committed state when all of its database activities have been completed successfully. In this stage, the transaction has been designated as ready for commitment but has not yet been committed.
+Committed State: The transaction enters the committed state once it has successfully completed and all database activities have been committed to the database. The modifications made by the transaction in this state are irreversible.
+Aborted State: A transaction enters the aborted state whenever it meets an error or is deliberately rolled back. The database is returned to its previous state before the transaction was started in this state, and all the modifications performed by the transaction are undone.
+The transaction state ensures the database's consistency and dependability, which is crucial. Several database operations can be carried out concurrently using transactions, guaranteeing that either all will succeed or none will. By doing this, data consistency and integrity are maintained in the database.
+In conclusion, a crucial part of database administration is the transaction state, which enables many actions to be carried out as a single, cohesive unit to guarantee data consistency and reliability.
+Defining Database Transaction
+A database transaction is generally defined by a set of instructions wrapped by two keywords. This is especially true when it comes to transactions in SQL. These two keywords mark the beginning and end of the transaction, respectively.
+In PostgreSQL, MariaDB, and MySQL these are: START TRANSACTION and COMMIT.
+A typical example to understand transactions is bank transfers.
+📌
+Let's say we have two clients in our database, Sarah and John. The first one wants to transfer an amount of 20 dollars to the second client. Here's the process so far:
+Decrease Sarah's total amount by 20 dollars
+Increase John's total amount by 20 dollars
+But the problem is that both of these two operations must be fully completed (commit) or not at all (rollback).
+Let’s start by creating a clients table in your database and fill with our two customers data.
+-- Create the clients table
+CREATE TABLE clients (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    money DECIMAL(10, 2)
+);
+
+-- Insert data for Sarah and John
+INSERT INTO clients (name, money) VALUES
+    ('Sarah', 1000.00),
+    ('John', 1000.00);
+Checking data in the database
+Checking data in the database
+ 
+Now we'll proceed with our operations above.
+The first operation looks like this:
+Let's implement the second operation:
+-- Decreasing Sarah's total 
+UPDATE client
+SET amount = amount - 20
+WHERE id = 1;
+
+SELECT * FROM client
+-- Increasing John's total
+UPDATE client
+SET amount = amount + 20
+WHERE id = 2;
+
+SELECT * FROM client
+The operation is completed. We run two separate operations in this process. The best thing to do is to run both of these as ONE operation. This leads us to transactions.
+-- Begin the transaction
+START TRANSACTION;
+
+-- Decrease the money for the first client
+UPDATE clients
+SET money = money - 20
+WHERE id = 1;
+
+-- Increase the money for the second client
+UPDATE clients
+SET money = money + 20
+WHERE id = 2;
+
+-- Retrieve the current database details
+SELECT * FROM clients;
+
+-- Commit/Rollback the transaction (to save/revert the changes)
+COMMIT/ROLLBACK;
+Checking data after completed transaction
+Checking data after completed transaction
+ROLLBACK is used to cancel or undo the changes made during a transaction if an unexpected issue or error occurs. This ensures that the database remains consistent and unaffected by incomplete or erroneous changes.
+-- Begin the transaction
+START TRANSACTION;
+
+-- Decrease the money for the first client
+UPDATE clients
+SET money = money - 20
+WHERE id = 1;
+
+-- Increase the money for the second client
+UPDATE clients
+SET money = money + 30
+WHERE id = 2;
+-- Cashier added 30 instead of 20
+
+-- Retrieve the current database details (before ROLLBACK)
+SELECT * FROM clients;
+
+-- Rollback the transaction (to revert the changes)
+ROLLBACK;
+
+-- Retrieve the current database details (after ROLLBACK)
+SELECT * FROM clients;
+Cashier added 30 instead of 20
+Cashier added 30 instead of 20
+ 
+ 
+ 
+Restored back to the previous state (before the transaction) after ROLLBACK command.
+Restored back to the previous state (before the transaction) after ROLLBACK command.
+SAVEPOINT
+Savepoints are markers or points in a transaction within a relational database management system (RDBMS) that allow you to create intermediate points to which you can later roll back. They provide a way to create a more fine-grained control structure for managing transactions.
+In MariaDB, SAVEPOINT, ROLLBACK TO SAVEPOINT, and RELEASE SAVEPOINT are commands used to create a savepoint within a transaction, rollback to a specific savepoint, and release a savepoint, respectively. These commands can be used to manage transactions with greater flexibility and granularity.
+Here is a detailed explanation of these commands:
+SAVEPOINT: Use SAVEPOINT to create a savepoint within a transaction. A savepoint represents a specific point in the transaction to which you can later roll back.
+-- Begin the transaction
+START TRANSACTION;
+
+-- Create a savepoint
+SAVEPOINT my_savepoint;
+
+-- Perform some operations within the transaction
+-- If an error occurs, you can later roll back to the savepoint
+-- Commit the transaction when everything is successful
+COMMIT;
+ROLLBACK TO SAVEPOINT: Use ROLLBACK TO SAVEPOINT to roll back the transaction to the specified savepoint. This action undoes all changes made after the savepoint.
+-- Roll back to the savepoint
+ROLLBACK TO my_savepoint;
+RELEASE SAVEPOINT: Use RELEASE SAVEPOINT to release a savepoint. This doesn't affect the transaction but frees up the savepoint's resources.
+-- Release the savepoint
+RELEASE SAVEPOINT my_savepoint;
+Example
+Here's an example showing the use of SAVEPOINT, ROLLBACK TO SAVEPOINT, and RELEASE SAVEPOINT in SQL:
+Let's say you have a database table called employees with columns id, name, department, and salary. You want to update the salary for a particular employee, but you want to be able to roll back the transaction if something goes wrong.
+Here's how you could use SAVEPOINT, ROLLBACK TO SAVEPOINT, and RELEASE SAVEPOINT to accomplish this:
+First, start a transaction:
+START TRANSACTION;
+Next, set a savepoint:
+SAVEPOINT before_update;
+Now, update the salary for the employee with ID 123:
+UPDATE employees SET salary = 60000 WHERE id = 123;
+You can then check the results of the update:
+SELECT * FROM employees WHERE id = 123;
+Assuming everything looks good, you can commit the transaction:
+COMMIT;
+But let's say something goes wrong, and you want to roll back to the savepoint you set earlier. You can do this using ROLLBACK TO SAVEPOINT:
+ROLLBACK TO SAVEPOINT before_update;
+This will undo the update you made to the salary for employee ID 123 but leave any other changes made since the savepoint intact.
+Finally, you can release the savepoint so that it can no longer be used:
+RELEASE SAVEPOINT before_update;
+And that's how you can use SAVEPOINT, ROLLBACK TO SAVEPOINT, and RELEASE SAVEPOINT to perform a transaction that can undo changes if needed.
+ 
+Activity: Fill in the blanks
+The state of a transaction before any changes are made is called ____________ (active / inactive).
+In ACID properties, 'C' stands for ____________ (consistency / committed).
+The final state of a transaction after successful completion is called ____________ (committed / debited).
+A SAVEPOINT is a named ____________ (rollback / marker) in a transaction.
+After a successful COMMIT, all SAVEPOINTs are ____________ (preserved / released).
+SAVEPOINTs are used to create ____________ (final / immediate) points in a transaction for more granular control.
+Answers
+Active
+Consistency
+committed
+marker
+released
+immediate
+ 
+Entity Relationship (ER) Diagrams
+What is ER Model?
+Entity Relationship Model, or ER Model, is a high-level conceptual data model diagram. To create a well-designed database, rigorous analysis of the data requirements is assisted by the ER model. The ER Model depicts actual people, things, and their connections. Before deploying your database, it is recommended that you create an ER Model in a DBMS.
+notion image
+Imagine you want to organize information in a computer about, let's say, a library. You'd have books, readers, and maybe librarians. The ER Model is like a plan that helps you decide how to organize this information.
+Entities: Think of these as categories. In our library example, "Books," "Readers," and "Librarians" are entities. Each entity has its own set of information, like book titles, reader names, and librarian IDs.
+Attributes: These are like details about each category. For books, attributes could be the title, author, and publication year. For readers, attributes could be their names and addresses. Attributes describe what you want to know about each thing.
+Relationships: Think of these as connections between categories. In our library, readers borrow books, so there's a relationship between "Readers" and "Books." A relationship shows how different categories are linked.
+Keys: These are special. They're like ID cards for each thing in your categories. For books, it could be a unique code. For readers, it might be a library card number. Keys help make sure we don't mix up or duplicate things.
+Cardinality: This tells you how many of one thing can be connected to how many of another. For example, a reader can borrow many books, but a book can be borrowed by many readers. That's what we mean by "many-to-many."
+So, the ER Model helps you plan how to organize information in a way that makes sense. It's like drawing a map of how all the pieces fit together, so when you build a computer system to store this information, it works smoothly and accurately.
+ER Diagram Symbols & Notations
+Entity-Relationship (ER) diagrams use specific symbols and notations to represent the different components of a database model, including entities, attributes, relationships, and cardinality. Here are the common symbols and notations used in ER diagrams:
+Entity: An entity is represented by a rectangle with rounded corners. The name of the entity is written inside the rectangle.
+Attribute: Attributes are depicted as ovals connected to their respective entity by a straight line. Each attribute has its name written inside the oval. 
+Relationship: Relationships between entities are represented by diamond shapes connecting the related entities. The name of the relationship is written inside the diamond. Lines connect the diamond to the related entities.
+Primary Key: The primary key is a special attribute that uniquely identifies each instance of an entity. It is typically underlined or emphasized in some way.
+Cardinality: Cardinality indicates how many instances of one entity can be related to another entity. It is often represented using notations near the lines connecting entities. Common cardinality notations include "1" (one), "M" (many), and "0" (zero).
+Weak Entity: A weak entity is an entity that doesn't have a primary key of its own and relies on another entity for identification. Weak entities are usually represented with a double rectangle.
+Components of the ER Diagram
+notion image
+In an Entity-Relationship (ER) diagram, there are three primary components that help illustrate the structure and relationships of a database:
+Entities:
+What They Represent: Entities are like the main categories or things about which you want to store information in your database. They represent real-world objects, concepts, or entities.
+How They Are Shown: In an ER diagram, entities are typically represented by rectangles with rounded corners. The name of the entity is written inside the rectangle.
+Example: If you're designing a database for a library, "Book," "Author," and "Reader" could be entities. Each entity represents a category of information you want to store.
+Attributes:
+What They Represent: Attributes are the characteristics or properties of the entities. They describe the specific pieces of information you want to capture about each entity.
+How They Are Shown: Attributes are usually depicted as ovals or ellipses connected to their respective entity by a straight line. The attribute's name is written inside the oval.
+Example: If you have an entity "Book," attributes could include "Title," "Author," and "Publication Year." These attributes describe the details you want to know about each book.
+Relationships:
+What They Represent: Relationships indicate how entities are connected or related to each other within the database. They show how different categories of information are linked.
+How They Are Shown: Relationships are represented by diamond shapes connecting the related entities. The name of the relationship is written inside the diamond, and lines connect the diamond to the related entities.
+Example: In a library database, you might have a relationship between the "Reader" and "Book" entities, represented by a diamond labeled "Borrows." This indicates that readers can borrow books, establishing a connection between the two entities.
+Cardinality
+In ER diagrams, cardinality defines the relationship between two entities. It refers to the number of instances of one entity that are related to the number of instances of another entity.
+There are four types of cardinalities:
+notion image
+ 
+One-to-One (1:1): In a one-to-one relationship, one instance of an entity is related to only one instance of another entity. For example, one employee can work in one department only.
+One-to-Many (1:N): In a one-to-many relationship, one instance of an entity is related to multiple instances of another entity. For example, one publisher can publish many books.
+Many-to-One (N:1): In a many-to-one relationship, multiple instances of an entity are related to only one instance of another entity. For example, multiple books can be there in one section(class).
+Many-to-Many (M:N): In a many-to-many relationship, multiple instances of an entity are related to multiple instances of another entity. For example, multiple courses can be enroll be enrolled by multiple students.
+ER Diagram Implementation
+Let's examine them through an example of an Entity Relationship Diagram:
+📌
+In a university setting, students enroll in courses. Each student must be enrolled in at least one course or more, and each course is taught by a single professor who can teach only one course to maintain the quality of instruction.
+Step 1: Entity Identification
+We have three entities, namely:
+Student
+Course
+Professor
++-------------+    +-------------+    +-------------+ 
+|   Student   |    |    Course   |    |  Professor  |
++-------------+    +-------------+    +-------------+
+|             |    |             |    |             |      
+|             |    |             |    |             |    
++-------------+    +-------------+    +-------------+
+notion image
+Step 2: Relationship Identification
+We have the following two relationships
+The student is assigned a course
+Professor delivers a course
++-------------+                     +-------------+                         +-------------+ 
+|   Student   |      Assigned       |    Course   |         Delivers        |  Professor  |
++-------------+ ------------------- +-------------+ ----------------------- +-------------+
+|             |                     |             |                         |             |      
+|             |                     |             |                         |             |    
++-------------+                     +-------------+                         +-------------+
+notion image
+Step 3: Cardinality Identification
+For them problem statement we know that,
+A student can be assigned multiple courses
+A Professor can deliver only one course
++-------------+                     +-------------+                         +-------------+ 
+|   Student   |      Assigned       |    Course   |         Delivers        |  Professor  |
++-------------+ M --------------- N +-------------+ 1 ------------------- 1 +-------------+
+|             |                     |             |                         |             |      
+|             |                     |             |                         |             |    
++-------------+                     +-------------+                         +-------------+
+notion image
+Step 4: Identify Attributes
+To find qualities, you must examine the company's files, forms, reports, and data. To identify entities, you can also interview a range of stakeholders. It's crucial to first discover the attributes without assigning them to a specific entity.
+You must map the attributes to the recognized entities once you have a list of attributes. Ascertain that each characteristic belongs to only one specific entity. Use a modifier to make an attribute distinct if you believe it should apply to multiple entities.
+Find the main Keys after the mapping is complete. Create a unique key if one doesn't already exist.
+notion image
+To simplify things, we have only considered one attribute for the Course entity, such as Duration, Credits, Assignments, etc.
+Step 5: Create the ERD Diagram
+A more modern representation of Entity Relationship:
++-------------+                     +-------------+                         +--------------+ 
+|   Student   |      Assigned       |    Course   |         Delivers        |  Professor   |
++-------------+ N --------------- N +-------------+ 1 ------------------- 1 +--------------+
+| Student_ID  |                     |  Course_ID  |                         | Employee_ID  |      
+| StudentName |                     |  CourseName |                         | ProfssorName |    
++-------------+                     +-------------+                         +--------------+
+notion image
+ 
+Activity: True or False
+A relationship in an ER Diagram is represented by an arrow pointing from one entity to another.
+Cardinality in an ER Diagram represents the number of occurrences of an entity related to another entity.
+An ER Diagram can have only one entity type.
+Weak entities in an ER Diagram depend on the existence of a strong entity.
+In an ER Diagram, attributes are represented using diamonds.
+Answers
+False
+True
+False
+True
+False
+ 
+Summary
+What did we learn?
+A database transaction is a logical unit of work that represents a sequence of one or more database operations. 
+Transactions are used to ensure that database operations are performed in a reliable and consistent manner, even in the presence of failures or errors.
+The ACID properties (Atomicity, Consistency, Isolation, Durability) define the characteristics that a transaction must exhibit to maintain data integrity.
+A transaction is atomic, meaning it is treated as a single, indivisible unit of work. 
+A transaction ensures that the database remains in a valid state before and after its execution. 
+Transactions are isolated from each other, meaning the changes made by one transaction are not visible to other transactions until the first transaction is committed.
+Once a transaction is committed, its changes become permanent and survive any subsequent system failures or crashes. 
+An Entity-Relationship (ER) Diagram visualizes the data model used to design a database. 
+Entities represent real-world objects or concepts that must be stored in the database. 
+Attributes are the properties or characteristics of entities. Each entity has specific attributes associated with it.
+Relationships describe how entities are related to each other. They can be one-to-one, one-to-many, or many-to-many.
+Shortcomings & Challenges
+Issues like data inconsistency and conflicts may arise without proper concurrency control mechanisms.
+Deadlocks occur when two or more transactions wait for each other to release locks, resulting in a standstill. 
+ER diagrams can sometimes be ambiguous, leading to multiple interpretations of the relationships or cardinalities between entities. 
+Best practices to follow
+Minimize the time a transaction takes to reduce the chances of conflicts with other transactions and improve concurrency. 
+Implement proper error-handling mechanisms and rollback procedures to ensure that the database remains consistent if a transaction fails or encounters an error.
+Ensure that each attribute is atomic and contributes directly to the entity's definition.
+ 
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+Flat & Nested Distributed Transactions
+ER Diagram Representation
+ 
+Try it yourself
+Let's dive right into the questions and have a blast answering them together. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy learning! 💻😄
+Task 1: Want to create effective data models? Put your ER diagram skills to the test with these challenges.
+Problem
+Create an ER diagram for a university database system that includes the following entities: Student, Course, Instructor, Department, Section and Time Slot. Include appropriate attributes and relationships between entities. For instance, a student can enroll in multiple courses, and each course is taught by one professor.
+Solution
+To create the ER diagram for the university database system, we'll represent each entity with rectangles and the relationships between entities with lines connecting them. Below is the ER diagram for the given entities:
+notion image
+In the above ER diagram:
+Student, Course, Instructor, Department, Section, Classroom and Time Slot are represented as entities with their corresponding attributes.
+Each entity has a primary key (PK) that uniquely identifies the records in the table (e.g., StudentID, CourseID, InstructorID, DepartmentID, etc).
+The relationship between Department and Course is represented as a one-to-one relationship. 
+Each Department entity is linked to the Instructor entity through a one-to-many relationship, indicating that a course can be taught by one professor, but a professor can teach multiple courses.
+The Department entity is associated with the instructor entity, implying that each professor is affiliated with a department.
+This ER diagram visually represents the relationships and attributes between the entities in the university database system.
+Task 2: Prepare a list of the recommended practices you've adhered to when creating ER diagrams, and share this information with your peers on the AlmaBetter Community Platform.
