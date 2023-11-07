@@ -1,0 +1,396 @@
+Relational Database & MariaDB Overview
+Session Flow
+Learning Objective
+Introduction
+Theme
+Primary Goals
+Relational Database & MariaDB Overview
+Introduction to Relational Database
+Important terminologies in RDBMS
+Examples of Relational Databases
+SQL Server Keys
+Introduction to MariaDB
+Key Features of MariaDB
+Getting Started with MariaDB
+Installing MariaDB
+Starting MariaDB Server
+Activity: True or False
+CRUD operations in MariaDB
+Significance of CRUD operations in a database
+CRUD operations in Maria DB
+Create (INSERT) Operation
+Practical Implementation Step 1
+Read (SELECT) Operation
+Practical Implementation Step 2
+Update (UPDATE) Operation
+Practical Implementation Step 3
+Delete (DELETE) Operation
+Practical Implementation Step 4
+Activity: Fill in the blanks
+Summary
+What did we learn?
+Shortcomings & Challenges
+Best practices to follow
+Enhance your knowledge
+Try it yourself
+Learning Objective
+Introduction
+A relational database is like a digital version of a well-organized Excel sheet. It's where data is neatly organized into tables, sort of like different sheets in your workbook. And when we talk about CRUD operations (Create, Read, Update, Delete) in MariaDB, we're basically talking about how you can easily add, view, change, and remove data from those tables.
+Focus: Introduction to Relational Database & MariaDB, and CRUD operations in MariaDB
+Prerequisites: Introduction to Database & DBMS
+Theme
+Wikipedia, the popular online encyclopedia, relies on MariaDB to manage and serve its vast amount of content. CRUD operations are used to create new articles, read existing ones, update content, and delete outdated or irrelevant pages.
+Google has used MySQL and its derivatives (like MariaDB) for various applications and services. CRUD operations significantly manage data within Google's internal tools and systems, from user management to content organization.
+WordPress, the widely used content management system (CMS), supports MySQL and MariaDB. CRUD operations are fundamental to WordPress, as they are used to create and manage blog posts, pages, comments, and other content within the platform.
+Primary Goals
+Learn about relational database management systems (RDBMS) and how they organize data.
+Understand how to perform Create, Read, Update, and Delete operations in MariaDB using SQL queries.
+ 
+Relational Database & MariaDB Overview
+Introduction to Relational Database
+A Relational Database Management System (RDBMS) is a type of database management system that stores and manages data using a relational data model. In this model, data is organized into tables (also called relations), which consist of rows (also called tuples) and columns (also called attributes). RDBMSs are widely used for various applications due to their well-defined structure, ease of use, and the ability to establish relationships between data.
+notion image
+For example, think about a Customer table and an Order table. You can use the unique IDs in these tables to connect a customer with their orders, making it easier to track who bought what.
+The Customer table contains data about the customer:
+Customer ID (primary key)
+Customer name
+Billing address
+Shipping address
+In the Customer table, the customer ID is a primary key that uniquely identifies who the customer is in the relational database. No other customer would have the same Customer ID.
+ 
+The Order table contains transactional information about an order:
+Order ID (primary key)
+Customer ID (foreign key)
+Order date
+Shipping date
+Order status
+Here, the primary key to identify a specific order is the Order ID. You can connect a customer with an order by using a foreign key to link the customer ID from the Customer table.
+notion image
+The two tables are now related based on the shared customer ID, which means you can query both tables to create formal reports or use the data for other applications. For instance, a retail branch manager could generate a report about all customers who made a purchase on a specific date or figure out which customers had orders that had a delayed delivery date in the last month.
+Important terminologies in RDBMS
+notion image
+Tables and Relations
+Tables: RDBMS stores data in tables, which are structured collections of rows and columns. Each table represents a specific entity or concept, such as customers, orders, or products.
+Rows (Tuples): Each row in a table represents a single instance of the entity being modeled. It contains data related to that instance, organized in columns.
+Columns (Attributes): Columns represent individual pieces of information about the entities. Each column has a data type that defines the kind of data it can hold, such as integers, strings, dates, etc.
+Structured Query Language (SQL)
+SQL is the standardized language used to interact with RDBMS.
+It enables users to perform various operations on data, including querying (SELECT), inserting (INSERT), updating (UPDATE), and deleting (DELETE) records.
+Normalization
+Normalization is the process of organizing data within tables to eliminate redundancy and dependency issues.
+It involves breaking down large tables into smaller, related tables and defining relationships between them. This process reduces data anomalies and improves data integrity.
+Indexes
+Indexes improve query performance by providing fast access to specific rows based on indexed columns.
+They are particularly useful for speeding up searches and retrieval of data from large tables.
+Joins
+Joins allow data from multiple tables to be combined based on related columns.
+Different types of joins (e.g., INNER JOIN, LEFT JOIN, RIGHT JOIN) determine how data is matched and combined.
+Examples of Relational Database
+Relational databases are widely used in various applications and industries due to their structured and organized approach to data management.
+Here are some examples of relational databases:
+MySQL: MySQL is one of the most popular open-source relational database management systems. It is used in many web applications as the backend database, including WordPress, Joomla, and Drupal.
+MariaDB: MariaDB is an open-source relational database management system and a MySQL fork. It's often used as an alternative to MySQL and offers similar functionality.
+PostgreSQL: PostgreSQL is an open-source relational database system known for its advanced features, extensibility, and support for complex queries. It's commonly used in web applications.
+Oracle Database: Oracle Database is a powerful and highly scalable relational database used in large enterprises for handling massive volumes of data. It's known for its robustness and reliability.
+Microsoft SQL Server: SQL Server is a relational database management system developed by Microsoft. It's commonly used in enterprise-level applications and integrates well with Microsoft's other products.
+SQL Server Keys
+In SQL Server, keys play a crucial role in maintaining data integrity and organizing data within a database. A key is a column or set of columns in a table that uniquely identifies each row in that table. It helps to organize and retrieve data efficiently. 
+notion image
+Here are the seven types of keys commonly used in SQL Server, along with their brief explanations and example syntax (You’ll learn more about SQL syntax in upcoming lessons):
+Primary Key:
+A primary key uniquely identifies each row in a table and ensures that no two rows have the same key value.
+Syntax Example:
+CREATE TABLE Table1 (
+    EmpID INT PRIMARY KEY,
+    EmpName VARCHAR(50),
+    EmpLicence VARCHAR(50),
+		EmpPassport VARCHAR(50
+);
+Foreign Key:
+A foreign key establishes a relationship between two tables by referencing the primary key of another table. It enforces referential integrity.
+Syntax Example:
+CREATE TABLE Table1 (
+    EmpID INT PRIMARY KEY,
+    EmpName VARCHAR(50),
+		DId INT,
+    FOREIGN KEY (DId) REFERENCES Table2(DId)
+);
+Unique Key:
+A unique key enforces uniqueness in a column or set of columns but allows for at least one NULL value.
+Syntax Example:
+CREATE TABLE Table1(
+    EmpID INT,
+    EmpName VARCHAR(50),
+    EmpLicence VARCHAR(50),
+		EmpPassport VARCHAR(50) UNIQUE
+);
+Alternate Key:
+An alternate key is a candidate key that could be used as a primary key but isn't. It's still unique but not chosen as the primary key.
+Syntax Example: Similar to the primary key example.
+Composite Key:
+A composite key consists of two or more columns that together uniquely identify rows. It's used when a single column doesn't guarantee uniqueness.
+Syntax Example:
+CREATE TABLE Orders (
+    EmpID INT,
+    EmpName VARCHAR(50),
+    EmpLicence VARCHAR(50),
+		EmpPassport VARCHAR(50
+    PRIMARY KEY (EmpId, EmpPassport)
+);
+Candidate Key:
+A candidate key is a minimal set of attributes that can uniquely identify a tuple. It's a potential candidate for being the primary key.
+Syntax Example: Same as primary key, syntax.
+Super Key:
+A super key is a set of one or more attributes that can uniquely identify a tuple (row) in a table. It's a superset of a candidate key.
+Syntax Example: Same as primary key, candidate key or alternate key syntax.
+It's important to note that these keys are fundamental to maintaining data integrity and relationships in SQL Server databases. Choose the appropriate key type based on the specific requirements of your database schema and application.
+Introduction to MariaDB
+MariaDB is an open-source relational database management system (RDBMS) and a fork of MySQL, which means it was derived from the MySQL codebase. The original developers of MySQL created it after concerns arose about MySQL's acquisition by Oracle Corporation in 2010.
+MariaDB is designed to be fully compatible with MySQL, which means that applications and code written for MySQL can be used with MariaDB without any modifications. This compatibility makes it an attractive choice for those who want to switch from MySQL to a more community-driven and open-source alternative.
+notion image
+Key Features of MariaDB
+Open Source: MariaDB is licensed under the GNU General Public License (GPL), which makes it freely available for use, modification, and distribution.
+High Performance: MariaDB is known for its high performance and scalability, making it suitable for demanding applications and large-scale deployments.
+Compatibility: As a MySQL fork, MariaDB maintains strong compatibility with MySQL, allowing seamless migration and support for existing MySQL applications and databases.
+Storage Engines: MariaDB supports multiple storage engines, including InnoDB (default), MyRocks, Aria, and more. This allows users to choose the most appropriate storage engine for their specific use case.
+Replication: MariaDB supports both asynchronous and synchronous replication, enabling data distribution and high availability across multiple database servers.
+Security Features: MariaDB includes various security features, such as encryption at rest and in transit, role-based access control (RBAC), and SSL/TLS support.
+Dynamic Columns: MariaDB allows the creation of dynamic columns, which allows flexibility in the schema without altering the table structure.
+User-Defined Functions (UDFs): MariaDB supports user-defined functions, which allows users to extend the functionality of the database using custom functions written in programming languages like C/C++.
+JSON Support: MariaDB provides built-in support for JSON data, allowing storage and querying of JSON documents.
+Multi-Version Concurrency Control (MVCC): Like MySQL, MariaDB uses MVCC to manage concurrent transactions, providing better isolation and performance.
+Getting Started with MariaDB
+Getting started with MariaDB is relatively straightforward, and it involves the following steps:
+Installing MariaDB
+The first step is to install MariaDB on your system. The installation process may vary depending on your operating system.
+For Windows
+Step 1: Download the MariaDB installer for Windows from the official website: https://mariadb.org/download/
+notion image
+Step 2: Run the installer and follow the on-screen instructions. Remember the location wherever you’re installing MariaDB.
+Step 3: During the installation, you will be asked to set a root password for the database. Make sure to remember this password as it will be used to access the database later.
+Step 4: Complete the installation, and MariaDB should now be installed on your Windows machine.
+For macOS
+Step 1: If you don't have Homebrew (a package manager for macOS) installed, you can install it by running the following command in your terminal:
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+Step 2: Once Homebrew is installed, you can use it to install MariaDB by running the following command in your terminal:
+brew install mariadb
+Step 3: After the installation is complete, start the MariaDB server using the following command:
+brew services start mariadb
+Step 4: MariaDB should now be installed and running on your macOS machine.
+Starting MariaDB Server
+After installation, start the MariaDB server. The process of starting the server may vary depending on your operating system.
+On Windows
+Open Command Prompt by pressing Win+R key and then type cmd in Run program.
+notion image
+Navigate to the MariaDB bin directory: If you installed MariaDB in the default location, use the below command to navigate to the MariaDB bin directory, replacing <version> with the installed version number.
+cd C:\Program Files\MariaDB <version>\bin
+notion image
+Start the server using the MariaDB command line client with the given command. You'll be prompted to enter the root password which you have set during the installation process.
+mysql -u root -p
+notion image
+On macOS
+You can start MariaDB using Homebrew:
+brew services start mariadb
+That's it! You have now successfully installed and started MariaDB. You can now start building your applications and using MariaDB for data storage and management.
+ 
+Activity: True or False
+Relational databases store data in a structured manner, using tables with rows and columns.
+Examples of relational databases include MySQL, PostgreSQL, and MongoDB.
+MariaDB was developed by Microsoft Corporation.
+MariaDB does not support SQL queries and transactions.
+MariaDB is a popular open-source relational database management system that is compatible with MySQL.
+Answers
+ 
+CRUD operations in MariaDB
+CRUD operations are the fundamental operations used to manage data in a database. The acronym CRUD stands for Create, Read, Update, and Delete, and these operations represent the basic tasks that can be performed on data in a database system. Each operation serves a specific purpose:
+notion image
+Create (INSERT) Operation
+The Create operation is used to add new data records to a database. It involves inserting new data into a table or collection. This operation is essential for populating the database with new information. 
+To perform the Create operation (INSERT) in MariaDB, you can use the SQL INSERT INTO statement. This statement allows you to add new records (rows) into a table in the database.
+Here's how to perform the Create operation in MariaDB:
+Connect to MariaDB Server: Before performing any database operations, you need to connect to the MariaDB server. You can do this using the MySQL command-line client or any database management tool that supports MariaDB.
+Select the Database: If you have multiple databases on your server, make sure to select the specific database where you want to add the new data.
+You can create one by using the below command.
+CREATE DATABASE your_database_name;
+You can use the USE statement to select the database.
+USE your_database_name;
+Create the Table in your Database(if it does not exist): You can create a table by using below command. SQL has many different types of Datatypes. Few of them are:
+Integer (int): Used to store whole numbers (positive or negative) without decimal places.
+Varchar (varchar(255)): VARCHAR is used for variable-length character strings.
+Date (date): Stores a date (year, month, and day) value.
+Boolean (boolean): Used to store true/false values.
+CREATE TABLE table_name (
+    column1 datatype,
+    column2 datatype,
+    column3 datatype,
+   ....
+);
+Write and execute the SQL Insert Statement: Now, you can write the SQL INSERT INTO statement to add new data to the table.
+The basic syntax of the INSERT INTO statement is as follows:
+INSERT INTO table_name (column1, column2, column3, ...)
+VALUES (value1, value2, value3, ...);         // For single record
+
+INSERT INTO table_name (column1, column2, column3, ...)
+VALUES (record1), (record2), (record3);       // For multiple records
+table_name: The name of the table where you want to insert data.
+(column1, column2, column3, ...): The list of columns in the table that you want to insert data into. If you're inserting data into all columns, you can skip this statement in the query.
+VALUES (value1, value2, value3, ...): The corresponding values that you want to insert into the specified columns. The number of values must match the number of columns.
+Practical Implementation Step 1
+Let's say we have to create a table named users with columns Name, Age, and City and we want to insert few records into the users table.
+CREATE TABLE users(
+			Name varchar(255),
+			Age int,
+			City varchar(255)
+);
+notion image
+INSERT INTO users
+VALUES ("Ravi", 24, "New Delhi"),
+			 ("Kartik", 37, "Mumbai"),
+			 ("Sagar", 31, "New Delhi"),
+			 ("Vikram", 26, "Mumbai");
+notion image
+Read (SELECT) Operation
+The Read operation is used to retrieve data from the database. It involves fetching existing data records from one or more tables or collections. This operation is crucial for querying and accessing information stored in the database.
+Performing a read operation in MariaDB involves fetching data from one or more tables based on specific criteria using the SQL SELECT statement. The SELECT statement allows you to retrieve data from a table or multiple tables, filter the results using conditions, and specify the columns you want to retrieve.
+Here's how you can perform a read operation in MariaDB:
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+Explanation
+SELECT: This is the keyword used to indicate that you want to retrieve data from the database.
+column1, column2, ...: These are the names of the columns you want to retrieve from the table. You can specify one or multiple column names separated by commas. If you want to retrieve all columns, you can use  instead.
+FROM table_name: This specifies the name of the table from which you want to retrieve data.
+WHERE condition: This is an optional clause that allows you to filter the data based on specific conditions. If you omit the WHERE clause, all rows from the specified table will be retrieved.
+Practical Implementation Step 2
+Retrieve all columns from a table:
+SELECT * FROM users;
+notion image
+ 
+Retrieve specific columns from a table:
+SELECT Name, City FROM users;
+notion image
+ 
+Retrieve data with a condition (using the WHERE clause):
+SELECT * FROM users WHERE Age > 30;
+notion image
+ 
+Retrieve data with multiple conditions:
+SELECT * FROM users WHERE Age > 25 AND City = "Mumbai";
+notion image
+These are some of the common ways to perform read operations in MariaDB. The SELECT statement provides a powerful tool to retrieve data from the database based on various conditions and requirements. You can combine different clauses to tailor the query to your specific needs.
+Update (UPDATE) Operation
+The Update operation is used to modify existing data records in the database. It involves changing the values of one or more fields within a record. This operation is necessary for updating data that might have changed or correcting errors in the database.
+In MariaDB, the Update operation allows you to change the values of one or more fields within a record based on specific criteria or conditions.
+The Update operation is performed using the SQL UPDATE statement, which has the following syntax:
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+table_name: The name of the table where you want to update the data.
+column1, column2, ...: The names of the columns you want to update.
+value1, value2, ...: The new values that you want to set for the specified columns.
+WHERE condition: The condition that determines which rows will be updated. If you omit the WHERE clause, all rows in the table will be updated.
+It's important to be cautious when using the Update operation, especially with the WHERE clause. Without a proper condition, the update query may affect multiple rows or the entire table, leading to unintended changes in the data. Always use the WHERE clause to specify the exact records you want to update to ensure data integrity.
+Practical Implementation Step 3
+We have already created a table named users with the following data:
+notion image
+Now, let's say we want to update the City of a user named Kartik to Chennai.
+UPDATE users
+SET City = "Chennai"
+WHERE Name = "Kartik";
+After executing this update query, the table users will be updated as follows:
+notion image
+notion image
+Delete (DELETE) Operation
+The Delete operation is used to remove data records from the database. It involves deleting one or more records from a table or collection. This operation is essential for removing data that is no longer needed or obsolete.
+In MariaDB, you can perform the Delete operation to remove data records from a table using the DELETE statement. The DELETE statement allows you to specify a condition to target specific records for deletion.
+Here's the syntax for the DELETE statement in MariaDB:
+DELETE FROM table_name
+WHERE condition;
+DELETE FROM: This part of the statement specifies the table from which you want to delete data.
+WHERE: This optional part allows you to specify a condition that determines which records will be deleted. If you omit the WHERE clause, all records in the table will be deleted.
+condition: The condition is used to filter the records to be deleted. It can be any valid expression that evaluates to either true or false. Records that meet the condition will be deleted.
+Be cautious when using the DELETE statement without a WHERE clause, as it will delete all records from the specified table. 
+Always ensure you have a backup of the data before performing any deletion operations, especially if the operation is irreversible.
+Be careful with conditions used in the WHERE clause to avoid unintended data loss.
+When deleting large amounts of data, consider using transactions to ensure data consistency and to rollback in case of errors.
+Practical Implementation Step 4
+We have a table called users with the following data:
+notion image
+Deleting a Specific Record: Suppose you want to delete a user with Age < 25;
+DELETE FROM users
+WHERE Age < 25;
+notion image
+Deleting All Records from a Table:
+If you want to delete all records from the employees table (use with caution as this removes all data):
+DELETE FROM users;
+notion image
+ 
+Activity: Fill in the blanks
+CRUD operations stand for ________(create / connect), read, update and delete operations in a database.
+In an INSERT statement, you specify the name of the table after the _______(into / from) keyword.
+In MariaDB, the SELECT statement is used for _________(inserting / retrieving) data from one or more tables.
+The DISTINCT keyword is used to retrieve _________(unique / duplicate) values from a specified column.
+To update specific records, you should use a WHERE clause to specify the ____________(columns / conditions) that need to be updated.
+Answers
+Create
+Into
+Retrieving
+Unique
+Conditions
+ 
+Summary
+What did we learn?
+A relational database is like a digital filing system, neatly organizing data in tables with rows and columns, enabling easy connections between information. 
+Relational databases ensure data integrity, scalability, structured data management, security, and support complex queries. They follow ACID compliance and benefit from a mature ecosystem for application development.
+CRUD stands for Create, Read, Update, and Delete, which are the fundamental operations used to manage data in a database. 
+We learned how to use the INSERT statement in MariaDB to add new data records to a table. The INSERT statement allows us to specify the values for each column in the new record.
+We explored the SELECT statement, which is used to retrieve data from a table. The SELECT statement allows us to specify the columns we want to retrieve and filter the data based on conditions.
+We saw how the UPDATE statement can be used to modify existing data records in a table. The UPDATE statement allows us to change the values of one or more columns in the records that match a specified condition.
+We learned how to use the DELETE statement to remove data records from a table. The DELETE statement allows us to specify a condition to target specific records for deletion.
+Shortcomings & Challenges
+As the size of the database grows, CRUD operations can become slower, especially for complex queries. 
+Ensuring data integrity and proper validation of user input can be challenging. 
+Maintaining data security, such as preventing unauthorized access to sensitive information, is crucial. 
+Best practices to follow
+Before executing any CRUD operation, validate and sanitize user input to prevent invalid or harmful data from being inserted, updated, or deleted in the database.
+Group related CRUD operations within transactions to ensure atomicity and consistency. 
+Instead of using SELECT *, explicitly specify the columns you need in the SELECT statement. 
+ 
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+What is a Relational Database (RDBMS)?
+CRUD operations in SQL Server
+ 
+Try it yourself
+Let's dive right into the questions and have a blast answering them together. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy learning! 💻😄
+Task 1: Ready to master CRUD operations in SQL? Put your SQL skills to test with these SQL problems.
+Problems
+Problem 1: Salesperson Information 1
+Write a SQL query that displays all the information about all salesperson from salesman table.
+Table- salesman
+Table- salesman
+Expected Output:
+notion image
+Problem 2: Salesperson Information 2
+Write a SQL query that displays the name and commission information about all salesperson from salesman table.
+Table- salesman
+Table- salesman
+Expected Output:
+notion image
+Problem 3: Salesperson Information 3
+Write a SQL query that displays the name and city of the salesperson who live in Paris from salesman table.
+Table- salesman
+Table- salesman
+Expected Output:
+notion image
+Solutions
+Solution 1: Salesperson Information 1
+SELECT * FROM salesman;
+Solution 2: Salesperson Information 2
+SELECT name, commission
+FROM salesman;
+Solution 3: Salesperson Information 3
+SELECT name, city
+FROM salesman
+WHERE city = 'Paris';
+Task 2: Let's promote collaborative learning within your Cohort group by sharing your answers on the AlmaBetter Community Platform.
