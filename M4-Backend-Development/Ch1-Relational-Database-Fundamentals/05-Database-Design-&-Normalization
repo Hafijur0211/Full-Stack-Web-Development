@@ -1,0 +1,364 @@
+Database Design & Normalization
+Session Flow
+Learning Objective
+Introduction
+Theme
+Primary Goals
+Database Design & Normalization
+Database Design
+Why is Database Design important?
+Database Life Cycle
+Logical Data Model vs Physical Data Model
+Schema Design
+Schema Design Implementation
+Why design Database Schema?
+Activity: True or False
+Database Normalization
+Normal Forms
+1NF, 2NF, and 3NF Implementation
+Activity: Fill in the blanks
+Summary
+What did we learn?
+Shortcomings & Challenges
+Best practices to follow
+Enhance your knowledge
+Try it yourself
+Learning Objective
+Introduction
+Database design involves structuring how data is stored and related in a database, ensuring it's easy to access and manage. Normalization, on the other hand, is the process of eliminating data redundancy and improving data integrity by breaking down tables into smaller, related ones.
+Focus: Database Design, Lifecycle, Database Schema and Normalisation.
+Prerequisites: Fundamentals of Database and DBMS
+Theme
+Google and Amazon deal with massive amounts of data, and they design their databases to be highly scalable. They use distributed database systems that can span multiple data centers and regions to handle their global user base. They design their schemas to be flexible and accommodate changes over time. As their applications and data requirements evolve, they can modify the schema without significant disruptions. In cases where complex queries and join operations are required, they normalize the data to reduce the need for large and costly join operations. This can improve query performance. Normalization helps maintain data consistency by minimizing the chances of data anomalies or inconsistencies. This is crucial when dealing with transactional data.
+Primary Goals
+Gain a solid understanding of the fundamental concepts and principles of database design.
+Learn the various normal forms and apply normalization techniques to eliminate data redundancy and ensure data integrity.
+Understand how to enforce data integrity constraints, implement security measures, and handle data backups and recovery.
+Learn how to design databases that can scale with increasing data and evolve as application requirements change.
+ 
+Database Design & Normalization
+Database Design
+Database design is the process of creating a structured and efficient database schema that represents the data requirements of an application or system. Proper database design is crucial for ensuring data integrity, efficiency, and ease of use.
+Designing a proper database reduces the maintenance cost, thereby improving data consistency, and the cost-effective measures are greatly influenced in terms of disk storage space.
+Why is Database Design important?
+Database design is of great importance for several key reasons:
+Data Integrity and Accuracy: A well-designed database enforces data integrity by ensuring that data is accurate, consistent, and free from duplication. Properly defined relationships, constraints, and normalization prevent data anomalies and discrepancies.
+Efficient Data Retrieval: A good database design optimizes data retrieval operations. Well-chosen indexes and efficient table structures lead to faster query performance, resulting in a more responsive application.
+Scalability: Effective database design considers future scalability needs. A well-structured schema allows for easy expansion of the database as the volume of data and user interactions increase.
+Reduced Redundancy: Proper normalization and design minimize data redundancy. This leads to a smaller storage footprint and reduces the likelihood of data inconsistencies.
+Easier Maintenance: A clear database schema makes it easier to identify and fix issues. Changes or updates to the system can be implemented more smoothly without causing unexpected problems.
+Database Life Cycle
+notion image
+These stages align with the process of designing, implementing, and maintaining a database system. Let's briefly go through each stage:
+Requirement Analysis:
+Gather and analyze the requirements for the database from stakeholders and users.
+Understand the data that needs to be stored, the relationships between data elements, and the overall scope of the system.
+Logical Design:
+Create a logical data model that defines the structure of the database without focusing on the technical details.
+Identify entities, attributes, relationships, and constraints using techniques like Entity-Relationship Diagrams (ERDs).
+Physical Design:
+Translate the logical data model into a physical database design that considers technical aspects.
+Define the actual database schema, including tables, columns, data types, and relationships.
+Implement data normalization to reduce redundancy and improve data integrity.
+Implementation:
+Set up the physical database structure in the chosen Database Management System (DBMS).
+Create the tables, indexes, relationships, and other database objects based on the physical design.
+Populate the database with initial data if required.
+Maintenance and Evolution:
+Monitor and maintain the database to ensure its performance, reliability, and security.
+Make necessary adjustments to the schema as the application evolves and requirements change.
+Perform regular backups, address issues, optimize queries, and apply updates to the database system.
+Logical Data Model vs Physical Data Model
+A Logical Data Model is like a map that shows how information in a system is related, without worrying about how it's stored in a computer. It uses concepts such as things (entities), their qualities (attributes), and connections (relationships). This helps everyone understand the data needed for a project before getting into technical details.
+Logical data model diagram for e-commerce
+Logical data model diagram for e-commerce
+Logical Data Model Explanation
+This logical data model captures orders of various products via an online store. All of the data detailing each customer's order is stored within the Order Line.
+One order includes information about the product and customer from the individual entities; Product and Customer. Within these tables, there is no duplicate information — if a specific customer has ordered something in the past, their data is already stored in the Customer table and with a new order this personal data is reused without the need to save it again.
+The same applies to the Product table — information about a specific product is stored only once, but this product can be a part of different orders. Then, to get detailed information, the order date is added to each order.
+A Physical Data Model is like a detailed map for a computer database. It shows exactly how data will be stored on the computer's hard drive, including things like tables, columns, and how they connect. It's like a blueprint that helps programmers set up the actual storage and retrieval of information in a way that's efficient for the computer to work with.
+Physical data model diagram for e-commerce
+Physical data model diagram for e-commerce
+Physical Data Model Explanation
+The following physical data model examples are derived from the logical data model examples. It is worth noting that while logical data models serve as blueprints for physical data models, their attributes and names do not have to be the same as physical data model tables and columns.
+In short, objects in physical data models can be named differently, but they still have the same purpose. Each logical data model example is translated into a physical data model schema.
+Entities have been transformed into tables and attributes into table columns. Their names are also translated into technical terms — how they could be implemented and stored in the database. In addition, each column's data type has been specified.
+Schema Design
+Imagine you have lots of different types of information to keep track of, like names, addresses, and phone numbers of your friends. You could put all of this into one long list, but that would be messy and hard to manage. Instead, you might decide to organize it into separate sections or tables, like one for names, one for addresses, and one for phone numbers.
+Schema design is like deciding what these sections or tables should look like. Schema design is a critical step in the database development process. It involves defining the structure of a database, including the tables, fields, data types, relationships, and constraints. A well-designed schema ensures that data is organized efficiently, maintains data integrity, and supports the intended functionality of the database.
+notion image
+In general, the creation of every database-driven application begins with schema design. Performance can be increased, maintenance costs can be decreased, and it is simpler to add new features or change current ones when a schema is well-designed.
+Schema Design Implementation
+To illustrate the magic of a relational database, we’ll be designing a database for a retailer that wants to manage their products, customers, orders, and employees.
+📌
+Design a database for a new retailer in town. This retailer really cares about customer relationships and wants to reward customers who meet a spending goal and gift these top customers on the 1 year anniversary of their first purchase. This retailer needs a way to organize products by price and category to make smart recommendations to their customers based on their age. This retailer also wants to track the best-performing employees to reward those with the highest sales with a raise at the end of the year.
+Here are the major to-dos when designing our schema we will cover:
+Understand business needs
+Identify entities
+Identify properties/fields on those entities
+Define relationships between tables
+Understand business needs
+The first step in designing a relational database schema is to understand the needs of the business. This will help us determine what type of information we should be storing. For example, if we are working with a retailer that wants to offer an anniversary gift for clients on their first anniversary, we would have to store the date a customer joins.
+A recap of the requirements for our customers:
+Store customer spending to-date
+Store customer anniversary date of first purchase
+Store customer’s age
+Store employee sales total in dollar amount
+Store products and include a category and price property
+Define entities
+notion image
+Once that is clear, the next step is defining the entities we want to store data about. These entities will also be our tables.
+Following the retailer example, our entities should be:
+customers
+products
+orders
+employees
+This could extend to add more entities like stores if there are multiple storefront locations, manufacturers, etc., depending on the needs of the business. For this blog post, we’ll just be working with the four entities we defined above to meet the needs of our fictitious client. We can represent an entity in our ERD with a rectangle and the table/entity name at the top.
+Define properties
+notion image
+Once we’ve identified our entities, we should define what fields we want to store about these entities. One important thing to keep in mind is that each table, or entity, should have one unique, identifying property. This unique value is known as the primary key, and this helps us differentiate records from each other. For example, if we have two customers with the same name or same birthdate, we would have to spend some time figuring out which customer is the one we intend to work with.
+Two common ways to come up with a primary key:
+Programmatically generate a unique value
+Assign an integer that automatically increases with each new entry
+All of these are straightforward and were taken directly from the specs that the business gave us. For example, the business wants to know which customer made the purchase, which employee made the sale, and which products were in the order. In the Orders table, you will noticed that we reference a customerID, employeeID, and productID to meet those needs.
+Define Relationships
+When a primary key appears in another table, that field is called a foreign key in that table. The relationship between primary keys and foreign keys creates the relationship between tables.
+notion image
+Once we’ve defined our entities and their properties, we can think about how these tables relate to each other. The fundamental principle in relational databases is the establishment of relationships between tables. A parent table will have a unique primary key column, and a child table will have its own primary key and then a parent_id column that references the parent table. We have already inadvertently done this when we defined the properties in the preceding step.
+For example, the customers table has a customerID, which is the primary key. In the Orders table, we set an orderID as the primary key and reference the customerID to denote which customer made the order. Similarly, we also have a column referencing the Employees table, employeeID, to denote which employee made the sale.
+Discover the available platforms where you can create your database schema, such as draw.io, dbSchema, and more. To design your schema using dbSchema.
+Why design Database Schemas?
+Database schema design is a critical process that involves structuring and organizing data in a way that ensures data accuracy, accessibility, and efficiency. A well-designed schema provides a framework for categorizing and linking data, enforces data integrity through constraints, optimizes data retrieval with appropriate indexing, supports future scalability needs, enhances data security through access controls, simplifies maintenance and development tasks, and enables the application of business logic for automation.
+Additionally, it facilitates data analysis and reporting while maintaining consistency through naming conventions and coding standards. In essence, a thoughtfully designed schema serves as the foundation for a robust and reliable database system that effectively meets the needs of applications and businesses.
+ 
+Activity: True or False
+Database design ensures that data is organized, efficient, and easy to manage.
+Database design is a one-time process that doesn't require any updates or modifications over time.
+The logical data model deals with the implementation details and storage considerations of the database.
+Schema design refers to the process of creating a blueprint for organizing and structuring a database.
+The Database Life Cycle consists of only one phase, which is the design phase.
+Answers
+True
+False
+False
+True
+False
+ 
+Database Normalization
+Database normalization refers to the process of organizing a database in such a way that it minimizes data redundancy and maximizes data integrity. Normalization aims to eliminate data inconsistencies and anomalies by breaking down a large table into smaller, more organized and structured tables.
+Normalizing a database can minimize data redundancy and maximize data integrity, making it easier to maintain and manipulate the data over time. However, balancing normalization with performance considerations is important, as overly normalized databases can be slow and complex to query.
+Normal Forms
+There are several normal forms in database normalization, each with its own set of requirements.
+All the types of database normalization are cumulative – meaning each one builds on top of those beneath it. So all the concepts in 1NF also carry over to 2NF, and so on.
+The most commonly used normal forms are:
+First Normal Form (1NF)
+Second Normal Form (2NF)
+Third Normal Form (3NF)
+Boyce-Codd Normal Form (BCNF)
+Fourth Normal Form (4NF)
+Fifth Normal Form (5NF)
+notion image
+Here's a brief explanation of common normal forms:
+First Normal Form (1NF): 1NF requires that each column in a table contains only atomic (indivisible) values.
+This means that a column should not contain arrays, nested structures, or lists.
+Each cell in the table must hold a single piece of data.
+Second Normal Form (2NF): In 2NF, besides meeting the requirements of 1NF, tables must ensure that non-prime (non-key) attributes are fully functionally dependent on the primary key.
+This means that every non-key attribute must depend on the entire primary key, not just part of it.
+Third Normal Form (3NF): 3NF extends the principles of 2NF by addressing transitive dependencies.
+It ensures that non-key attributes are not transitively dependent on the primary key through other non-key attributes.
+This eliminates indirect relationships and promotes data consistency.
+Boyce-Codd Normal Form (BCNF): BCNF is a refinement of 3NF and imposes stricter requirements.
+In BCNF, for every non-trivial functional dependency X -> Y, X must be a superkey, meaning it must be a candidate key or part of it.
+This rule aims to further reduce redundancy and potential anomalies.
+Fourth Normal Form (4NF): 4NF addresses multi-valued dependencies.
+It ensures that a table does not contain multiple independent sets of multi-valued facts about an entity.
+When dealing with complex relationships, 4NF separates such facts into separate tables, preventing data duplication.
+Fifth Normal Form (5NF): 5NF, also known as Project-Join Normal Form (PJ/NF), deals with join dependencies. It's employed in databases with complex data structures, requiring that tables be decomposed to prevent anomalies when performing joins. This is particularly relevant in distributed and highly normalized database systems.
+1NF, 2NF, and 3NF Implementation
+Imagine we're building a restaurant management application. That application needs to store data about the company's employees and it starts out by creating the following table of employees:
+First Normal Form (1NF)
+Table- employees
+Table- employees
+All the entries are atomic and there is a composite primary key (employee_id, job_code) so the table is in the first normal form (1NF).
+But even if you only know someone's employee_id, then you can determine their name, home_state, and state_code (because they should be the same person). This means name, home_state, and state_code are dependent on employee_id (a part of primary composite key). So, the table is not in 2NF. We should separate them to a different table to make it 2NF.
+Second Normal Form (2NF)
+Table- employee_roles
+Table- employee_roles
+Table- employees
+Table- employees
+Table- jobs
+Table- jobs
+home_state is now dependent on state_code. So, if you know the state_code, then you can find the home_state value. We should separate them again to a different table to make it 3NF.
+Third Normal Form (3NF)
+Table- employees
+Table- employees
+ 
+Table- jobs
+Table- jobs
+Table- employee_roles
+Table- employee_roles
+Table- states
+Table- states
+Now our database is in 3NF.
+By splitting the table this way, we eliminated the transitive dependency and ensured that each non-key column fully depended on the primary key. This makes updating and maintaining the database easier and avoids data anomalies and inconsistencies.
+ 
+Activity: Fill in the blanks
+In Database Normalization, the process of organizing data in a database to eliminate _____________(redundancy / complexity) is known as normalization.
+The first normal form (1NF) requires that each column in a table must contain ___________(indexed / atomic) values.
+3NF Implementation involves removing ______________(transitive / nullable) dependencies.
+In 2NF, a table is typically divided into multiple tables to eliminate data ___________(normalisation / redundancy).
+An attribute is said to be in the ___________(2NF / 3NF) form if it is not transitively dependent on the primary key.
+Answers
+Redundancy
+Atomic
+Transitive
+Redundancy
+3NF
+ 
+Summary
+What did we learn?
+Database design is crucial because it lays the foundation for efficient data storage, retrieval, and management.
+Good database design can improve system performance and reduce redundancy.
+The database life cycle encompasses all the stages of a database system, including requirements analysis, design, implementation, testing, maintenance, and eventual retirement.
+The logical data model describes the structure of data in an abstract and implementation-independent way.
+The physical data model represents how data is stored and organized on the physical storage media.
+The logical model focuses on data entities, attributes, and relationships, while the physical model deals with storage, indexes, and optimization.
+Schema design involves defining the structure and organization of a database.
+It includes specifying tables, columns, relationships, constraints, and data types.
+Designing database schemas helps in organizing data for easy retrieval and manipulation.
+Well-designed schemas support data consistency, integrity, and security.
+Database normalization is a technique used to organize data efficiently and reduce data redundancy.
+The goal is to achieve specific normal forms (1NF, 2NF, 3NF, etc.) to ensure data integrity.
+Normal forms are rules or guidelines that specify the level of redundancy allowed in a database.
+1NF (First Normal Form): Ensures that each column contains only atomic (indivisible) values.
+2NF (Second Normal Form): Further eliminates partial dependencies within a table.
+3NF (Third Normal Form): Eliminates transitive dependencies between columns.
+Shortcomings & Challenges
+Poorly designed databases can lead to slow query performance and inefficient use of system resources.
+Designing for future scalability needs can be difficult, and scaling an existing database can be a complex task.
+Achieving higher normal forms (e.g., 4NF, 5NF) can be complex and may not always be necessary.
+Normalization can sometimes lead to performance overhead because it may require more complex joins and queries to retrieve data from multiple normalized tables.
+Best practices to Follow
+Select the most suitable data types for each column to optimize storage and performance.
+Anticipate future growth and design the database accordingly.
+Well-designed schemas simplify maintenance, updates, and troubleshooting.
+Effective schema design can accommodate growth and changes in data requirements.
+ 
+Enhance your knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+A Detailed Guide to Database Schema Design | Vertabelo Database Modeler
+A Step-By-Step Guide to Normalization in DBMS With Examples (databasestar.com)
+ 
+Try it yourself
+Let's solve these coding problems in the AlmaBetter IDE. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
+Task 1: Ready to enhance your database design proficiency? Explore these challenges and demonstrate your skills in designing effective data schemas.
+Problem
+You are working with a small company that sells various products online. The company has decided to create a database to store information about its products, customers, and orders. They have provided you with the initial design of the database, but it appears to have some redundancy and potential anomalies. Your task is to normalize the database to improve its structure and eliminate any data inconsistencies.
+The initial database design consists of the following three tables:
+Table: Products
+ProductID
+ProductName
+Category
+Supplier
+UnitPrice
+1
+Laptop
+Electronics
+Supplier1
+800
+2
+Desk
+Furniture
+Supplier2
+200
+3
+Smartphone
+Electronics
+Supplier3
+600
+4
+Chair
+Furniture
+Supplier2
+50
+5
+Tablet
+Electronics
+Supplier1
+400
+Table: Customers
+CustomerID
+CustomerName
+Address
+Email
+101
+John Smith
+123 Main St.
+john@example.com
+102
+Jane Doe
+456 Maple Ave.
+jane@example.com
+103
+Bob Johnson
+789 Oak Rd.
+bob@example.com
+104
+Mary Williams
+101 Pine Dr.
+mary@example.com
+Table: Orders
+OrderID
+CustomerID
+ProductID
+Quantity
+OrderDate
+501
+101
+1
+2
+2023-05-10
+502
+102
+2
+1
+2023-05-12
+503
+101
+3
+3
+2023-05-15
+504
+104
+1
+1
+2023-05-18
+505
+103
+4
+4
+2023-05-20
+Task:
+Normalize the given database to at least the Third Normal Form (3NF). Clearly state each normalization step you take and provide the resulting tables after each step.
+Solution
+Step 1: Remove Partial Dependencies (1NF)
+The first step is to ensure that each table is in the First Normal Form (1NF). To achieve this, we need to make sure that there are no repeating groups or arrays in the tables.
+Normalize the Products table:
+Products (ProductID, ProductName, UnitPrice)
+Suppliers (SupplierName, SupplierID) Note: A separate table to store suppliers to avoid repeating groups in the Products table.
+Normalize the Customers table:
+Customers (CustomerID, CustomerName, Address, Email)
+The Orders table is already in 1NF and has a foreign key relationship with Customers and Products.
+Step 2: Remove Partial Dependencies (2NF)
+The second step is to eliminate partial dependencies by creating separate tables for each set of attributes that functionally depend on part of the primary key.
+Orders (OrderID, CustomerID, OrderDate)
+OrderDetails (OrderID, ProductID, Quantity)
+Step 3: Remove Transitive Dependencies (3NF)
+The third step is to remove any transitive dependencies. At this stage, we should ensure that non-key attributes depend only on the primary key and not on other non-key attributes.
+Products (ProductID, ProductName, UnitPrice)
+Suppliers (SupplierID, SupplierName) Note: The Supplier attribute is removed from the Products table to avoid transitive dependency.
+Customers (CustomerID, CustomerName, Address, Email)
+Orders (OrderID, CustomerID, OrderDate)
+OrderDetails (OrderID, ProductID, Quantity)
+The final normalized database is now in the Third Normal Form (3NF), and all potential anomalies and redundancies have been eliminated.
+Task 2: Please describe any challenges you encountered and how you resolved them while solving this question on AlmaBetter's Community platform.
