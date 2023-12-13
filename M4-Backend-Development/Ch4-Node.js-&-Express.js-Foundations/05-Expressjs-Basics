@@ -1,0 +1,567 @@
+Express.js Basics
+Session Flow
+Learning Objective
+Introduction
+Theme
+Primary Goals
+ExpressJS Basics
+What’s an API?
+REST
+Intro to Express JS
+What is Express JS?
+Features of Express JS
+How to create a server using Express?
+Activity: Fill in the blanks
+Express Routing
+Creating a basic REST API using Express
+Project Implementation Step 1
+Using Postman for testing API
+Activity: True or False
+Summary
+What did we learn?
+Shortcomings & Challenges
+Best Practices
+Enhance Your Knowledge
+Try it yourself
+Learning Objective
+Introduction
+Express.js is a popular web framework for Node.js that simplifies the process of building web applications and APIs. It provides a set of tools and features to handle HTTP requests, routing, middleware, and more.
+Focus: API, ExpressJS Routing, HTTP server, API Testing with Postman
+Prerequisite: NodeJS installed on your device, NodeJS Basics
+Theme 
+Imagine you're developing an e-commerce website that allows users to browse products, add items to their cart, and place orders. You must design and develop a robust API to handle various operations, such as retrieving product information, managing shopping carts, and processing orders. You'll define endpoints like /products, /cart, and /orders that clients (like web browsers or mobile apps) can use to interact with your server. ExpressJS will be used to create routes for different API endpoints. For instance, you'd define routes like GET /products to retrieve a list of products, POST /cart/add to add items to the cart, and POST /orders/place to place an order. Express's routing mechanism helps organize and manage these different routes efficiently. Express will act as an HTTP server, receiving and responding to client requests. It handles incoming HTTP requests, processes them, and sends back appropriate responses. The HTTP server aspect of Express is crucial for ensuring seamless communication between the client side (such as browsers or apps) and the server-side (your backend application). 
+After implementing your API, you'll want to test its functionality before deploying it to a live environment. Postman, a popular API testing tool, allows you to simulate API requests and responses. You can use Postman to verify that your endpoints are working as expected, test different scenarios (like adding items to the cart and placing orders), and catch any potential bugs or errors in your API logic.
+Primary Goals
+Gain a solid understanding of HTTP methods (GET, POST, PUT, DELETE, etc.) and how web servers and clients communicate. 
+Understand the basics of RESTful APIs and how they are designed.
+Learn how to use Express.js to build server-rendered and API-based web applications. 
+Understand how to serve static files, render HTML templates, and handle form submissions.
+Explore the routing system in Express.js and learn how to define different routes for various endpoints. 
+ 
+ExpressJS Basics
+What's an API?
+An API (Application Programming Interface) is a set of guidelines, procedures, and resources used to develop software programmes. APIs allow developers to include third-party services in their applications by defining how various software components should communicate. Developers can access functionality offered by other businesses or organizations by using an API without comprehending the underlying code.
+In addition to other software programmes, online and mobile applications frequently employ APIs. They offer a uniform method for accessing services like payment processing, social media, weather information, and many other forms of functionality for developers. By utilizing the services of others, developers can create more robust and feature-rich applications with the use of APIs in a shorter amount of time.
+notion image
+APIs are used not only for software development, but also for hardware integration. This is known as an "API for hardware" or an "API for physical things". For example, a company called Nest, which produces smart thermostats, has an API that allows developers to build applications that can interact with the thermostat and control it remotely. Another example is the Tesla API, which allows developers to build applications that can interact with a Tesla car and control its features, such as unlocking the doors or turning on the air conditioning.
+REST
+The creation of web services, including APIs, is guided by a set of architectural principles called REST (Representational State Transfer). RESTful APIs are popular because they are straightforward, light, and simple to comprehend.
+GET, POST, PUT, and DELETE HTTP methods are used by a RESTful API to interact with resources specified by distinct URIs (Uniform Resource Identifiers). A GET call to the URI https://api.example.com/customers, for instance, would return a list of all the system's customers. A new customer resource would be created if a POST request was made to the URL https://api.example.com/customer.
+The client (such as a web browser or mobile app) submits queries to the server (such as a web server) through RESTful APIs, which operate on a client-server model. Typically, the responses come in a format that the client can easily parse, such as JSON (JavaScript Object Notation) or XML (eXtensible Markup Language).
+Each request should be self-contained, meaning it should contain all the data required to fulfill the request. This is one of the fundamental tenets of REST. As a result, scaling the API and managing high demand levels is simple.
+Intro to Express JS
+What is Express JS?
+A well-liked web application framework for Node.js is called Express.js. It offers a suite of tools for creating web and mobile apps, including middleware for typical web application activities, support for managing HTTP requests, and a template engine for displaying views.
+Express.js is renowned for its ease of use and flexibility, enabling developers to easily create straightforward and sophisticated applications. Also, it has a sizable and vibrant community that offers a plethora of assets, tools, and plugins to expand its functionalities.
+These are a few explanations for why programmers pick Express.js:
+Express.js is a lightweight, adaptable framework that only offers the essential capabilities required to build online applications, letting developers select their own libraries and tools.
+Support for robust middleware: Express.js provides a robust middleware system that enables developers to handle several typical tasks like authentication, logging, and error handling.
+Substantial and active developer community: Express.js has a sizable and active development community, which offers a multitude of assets, tools, and plugins to enhance its functionality.
+High performance: Express.js is a wonderful option for developing high-performance online apps because it is quick and scalable by design.
+Compatibility with other Node.js modules: Express.js is easily integrated with other web application components since it is compatible with a wide range of other Node.js modules.
+Express.js is one of the most well-liked options among Node.js developers since it offers a robust and adaptable framework for creating online apps.
+Features of Express JS
+Middleware: Middleware is a request handler with access to the application's request-response cycle.
+Routing refers to how an application's endpoint's URLs respond to client requests.
+Templating: It provides templating engines to build dynamic content on the web pages by creating HTML templates on the server.
+Debugging: Express makes it easier as it identifies the exact part where bugs are.
+How to create a server using Express?
+To create a server using Express.js, you can follow these steps:
+Install Node.js and Express.js: To get started, you must install Node.js and Express.js. You can download and install Node.js from the official website (https://nodejs.org/en/download/). Once you have installed Node.js, you can install Express.js by running the following command in your terminal: npm install express.
+Create a new file for your server: Create a new file for your server (e.g. server.js) and open it in your text editor.
+Require the Express.js module: In your server.js file, require the Express.js module by adding the following line of code at the top of your file: const express = require('express');.
+Create an instance of the Express.js application: To create a new instance of the Express.js application, add the following line of code below the previous one: const app = express();.
+Define a route: Use the .get() method on your Express.js application instance to define a route. For example, to define a route for the homepage, you could add the following code:
+app.get('/', (req, res) => {
+  res.send('Hello, world!');
+});
+This code defines a route for the homepage ('/') that sends the client's response 'Hello, world!'.
+Start the server: To start the server, add the following line of code at the bottom of your server.js file: app.listen(3000, () => console.log('Server started on port 3000'));. This code starts the server and listens for incoming requests on port 3000.
+Run the server: To run the server, navigate to your project directory in your terminal and run the following command: node server.js. This should start the server and display the message 'Server started on port 3000' in your terminal.
+Now, if you open your web browser and navigate to http://localhost:3000/, you should see the message 'Hello, world!' displayed in your browser.
+This is a basic example of how to create a server using Express.js. From here, you can add more routes, middleware, and functionality to build more complex web applications.
+ 
+Activity: Fill in the blanks
+Express.js is a ______________(front-end / back-end) web application framework for Node.js.
+To create a server using Express, you typically start by importing the ______________(server / express) module.
+To listen for incoming requests on a specific _______________(port / url), you can use the listen method.
+One of the methods is ____________(get / put), which is used to retrieve resource representations.
+To update a resource in REST, the ____________(put / patch) HTTP method is often used.
+Answers
+Backend
+Express
+Port
+GET
+PUT
+ 
+Express Routing
+The popular Node.js framework Express is used to create web apps. One of its key features is Express's routing mechanism, which enables developers to specify how the application reacts to client requests.
+Incoming HTTP requests are matched by express routing to particular routes specified by the developer. Each route has a callback function that is run when the route is matched and a specific HTTP method (such as GET, POST, PUT, or DELETE).
+The following is the fundamental syntax for defining a route in Express:
+app.METHOD(PATH, HANDLER)
+app: an instance of the Express application.
+METHOD: the HTTP method (e.g., GET, POST, PUT, DELETE) associated with the route.
+PATH: the URL path for the route.
+HANDLER: a callback function that is executed when the route is matched.
+For example, the following code defines a route that responds to a GET request to the root URL ("/"):
+app.get('/', function(req, res) {
+  res.send('Hello, world!')
+})
+Express will execute the callback function when a client sends a GET request to the root URL, which provides a response with the text "Hello, world!" when the request matches this route.
+Route parameters, which are blank spaces in the URL path that can match any string, are another feature of routes. For instance, the code that follows creates a route that reacts to a GET request to a URL containing a product ID:
+app.get('/products/:id', function(req, res) {
+  const productId = req.params.id
+  res.send(`Product ID: ${productId}`)
+})
+Express will match the GET request to this route when a customer sends a request to a URL like "/products/123" and will extract the value "123" from the "id" argument. The response is then sent via the callback function with the text "Product ID: 123".
+Middleware functions, or those that run before or after the route handler, are also supported by Express. Middleware functions and other activities like logging or authentication can modify the request or answer objects. The app.use method defines middleware functions, which are then performed in the order in which they are defined.
+For example, the following code defines a middleware function that logs the incoming request method and URL:
+app.use(function(req, res, next) {
+  console.log(`${req.method} ${req.url}`)
+  next()
+})
+This middleware function will run whenever a client sends a request to the server before any routes are matched and log the HTTP method and URL of the request.
+Express routing, in general, offers a versatile and potent method for specifying how your application responds to client requests. You may easily create complicated web apps by specifying routes and middleware routines.
+Creating a basic REST API using Express
+To create a basic REST API using Express, follow these steps:
+Create a new Node.js project and install Express:
+npm init
+npm install express
+Create a new file called server.js and require Express:
+const express = require('express');
+const app = express();
+Define a route to handle HTTP GET requests to the root URL:
+app.get('/', (req, res) => {
+  res.send('Hello, world!');
+});
+Start the server and listen on a specific port:
+app.listen(3000, () => {
+  console.log('Server listening on port 3000');
+});
+You currently have a straightforward Express application that replies with "Hello, world!" in response to a client sending a GET request to the root URL.
+You must define additional routes that deal with requests for particular resources if you wish to build a REST API. Let's build a route that returns a list of users, for illustration:
+const users = [
+  { id: 1, name: 'Alice' },
+  { id: 2, name: 'Bob' },
+  { id: 3, name: 'Charlie' }
+];
+
+app.get('/users', (req, res) => {
+  res.json(users);
+});
+This route sends a JSON representation of the users array in response to HTTP GET queries to the /users URL.
+To create a route that handles HTTP POST requests to create a new user, you can use the app.postmethod:
+app.post('/users', (req, res) => {
+  const { name } = req.body;
+  const id = users.length + 1;
+  const user = { id, name };
+  users.push(user);
+  res.json(user);
+});
+This route expects a JSON payload in the request body with a name property, creates a new user object with an auto-generated ID, adds the user to the users array, and responds with the new user object.
+To handle HTTP PUT requests to update an existing user, you can use the app.put method:
+app.put('/users/:id', (req, res) => {
+  const { id } = req.params;
+  const { name } = req.body;
+  const user = users.find(u => u.id == id);
+  if (!user) {
+    res.status(404).send('User not found');
+  } else {
+    user.name = name;
+    res.json(user);
+  }
+});
+This route expects a user ID in the URL path and a JSON payload in the request body with a name property. It finds the user with the specified ID in the users array, updates the user's name property, and responds with the updated user object. If no user is found with the specified ID, the route responds with a 404 error.
+Finally, to handle HTTP DELETE requests to delete an existing user, you can use the app.delete method:
+app.delete('/users/:id', (req, res) => {
+  const { id } = req.params;
+  const index = users.findIndex(u => u.id == id);
+  if (index < 0) {
+    res.status(404).send('User not found');
+  } else {
+    const user = users[index];
+    users.splice(index, 1);
+    res.json(user);
+  }
+});
+This route expects a user ID in the URL path, finds the index of the user with the specified ID in the users array, removes the user from the array, and responds with the deleted user object. If no user is found with the specified ID, the route responds with a 404 error.
+Here is the complete example code for a simple REST API using Express:
+const express = require('express');
+const app = express();
+
+const users = [
+  { id: 1, name: 'Alice' },
+  { id: 2, name: 'Bob' },
+  { id: 3, name: 'Charlie' }
+];
+
+app.use(express.json());
+
+app.get('/', (req, res) => {
+  res.send('Hello, world!');
+});
+
+app.get('/users', (req, res) => {
+  res.json(users);
+});
+
+app.post('/users', (req, res) => {
+  const { name } = req.body;
+  const id = users.length + 1;
+  const user = { id, name };
+  users.push(user);
+  res.json(user);
+});
+
+app.put('/users/:id', (req, res) => {
+  const { id } = req.params;
+  const { name } = req.body;
+  const user = users.find(u => u.id == id);
+  if (!user) {
+    res.status(404).send('User not found');
+  } else {
+    user.name = name;
+    res.json(user);
+  }
+});
+
+app.delete('/users/:id', (req, res) => {
+  const { id } = req.params;
+  const index = users.findIndex(u => u.id == id);
+  if (index < 0) {
+    res.status(404).send('User not found');
+  } else {
+    const user = users[index];
+    users.splice(index, 1);
+    res.json(user);
+  }
+});
+
+app.listen(3000, () => {
+  console.log('Server listening on port 3000');
+});
+Note that we use the express.json()middleware to parse JSON payloads in the request body. Before defining any routes that expect JSON payloads in the request body, this middleware must be added.
+Project Implementation Step 1
+server.js
+const express = require('express');
+const errorHandler = require('./middleware/errorHandler');
+const connectDb = require('./config/dbConnection');
+const dotenv = require('dotenv').config();
+
+const port = process.env.PORT;
+connectDb();
+const app = express();
+app.use(express.json())
+app.use("/api/contacts", require("./routes/contactRoutes"))
+app.use("/api/users", require("./routes/userRoutes"))
+app.use(errorHandler)
+
+app.listen(port, () => {
+    console.log(`server is running on ${port}`)
+})
+userRoutes.js
+const express=require("express");
+const { registerUser, loginUser, currentUser } = require("../controllers/userController");
+const validateToken = require("../middleware/validateTokenHandler");
+const router=express.Router();
+
+router.post("/register", registerUser)
+router.post("/login",loginUser)
+router.get("/current", validateToken, currentUser)
+ 
+module.exports=router;
+userController.js
+const asyncHandler = require('express-async-handler');
+const User = require("../models/usersModel");
+const bcrypt = require("bcrypt");
+const jwt = require('jsonwebtoken');
+
+//@desc     Register the user
+//@route    POST /api/users/register
+//@access   Public
+const registerUser = asyncHandler(async (req, res) => {
+    const { username, email, password } = req.body;
+    if (!username || !email || !password) {
+        res.status(400);
+        throw new Error("All fields are mandatory")
+    }
+    const userAvailable = await User.findOne({ email });
+    if (userAvailable) {
+        res.status(400);
+        throw new Error("User Already registered!")
+    }
+    //Hash Password
+    const hashedPassword = await bcrypt.hash(password, 10);
+    console.log(hashedPassword)
+    const user = await User.create({
+        username,
+        email,
+        password: hashedPassword,
+    })
+    console.log(`User created ${user}`)
+    if (user) {
+        res.status(201).json({ _id: user.id, email: user.email })
+    } else {
+        res.status(400)
+        throw new Error("User data is not valid")
+    }
+    res.json({ message: "register user" });
+})
+
+//@desc     Login for user
+//@route    POST /api/users/login
+//@access   Public
+const loginUser = asyncHandler(async (req, res) => {
+    const { email, password } = req.body;
+    if (!email || !password) {
+        res.status(400)
+        throw new Error("All Fields are Mandatory");
+    }
+    const user = await User.findOne({ email });
+    //compare password with hashpassword
+    if (user && (await bcrypt.compare(password, user.password))) {
+        const accessToken=jwt.sign({
+            user:{
+                username:user.username,
+                email:user.email,
+                id:user.id,
+            }
+        }, process.env.ACCESS_TOKEN_SECRET,{expiresIn:"10m"});
+        res.status(200).json({ accessToken })
+    }else{
+        res.status(401)
+        throw new Error("Email or Password is not valid")
+    }
+})
+
+//@desc     Current user
+//@route    GET /api/users/current
+//@access   Private
+const currentUser = asyncHandler(async (req, res) => {
+    res.json(req.user)
+})
+
+module.exports = { registerUser, loginUser, currentUser }
+Now if we send a POST request on http://localhost:3000/api/users/register endpoint in Postman with the data then a new user will get registered and its credentials will be saved in our database.
+Output: 
+notion image
+ 
+In the above snapshot :
+1 shows the method of request which is POST, and is necessary because we are registering a user.
+2 shows the exact url on which we are making the request(make sure that your server is running using node server.js or nodemon server.js and your node application is connected with the database).
+3 is the required data that a user need to provide while registering.
+4 is the response of our server to the user which is a JSON file containing the _id field coming from our MongoDB database, this is the id of our document that we’ve just created by registering a new user.
+Here is a snapshot of out MongoDB
+Before registering a user
+notion image
+After registering a new user
+notion image
+Explanation:
+server.js
+Import Dependencies:
+The code starts by importing necessary Node.js modules and custom middleware:
+express: The Express framework for building web applications.
+errorHandler: A custom middleware for handling errors.
+connectDb: A function to establish a connection to a database.
+dotenv: A module for loading environment variables from a .env file.
+Load Environment Variables:
+The dotenv module is used to load environment variables from a .env file (if present) and make them available to the Node.js process. This allows sensitive configuration data to be stored securely.
+Configure and Connect to the Database:
+The connectDb() function is called to establish a connection to the database. This is assumed to be defined in the dbConnection.js file under the config directory. Establishing a database connection is crucial for handling data storage and retrieval in the API.
+Create Express App:
+An Express application (app) is created using express().
+Middleware Setup:
+app.use(express.json()): This middleware parses incoming JSON data in request bodies, making it available as req.body for route handlers.
+app.use("/api/contacts", require("./routes/contactRoutes")): Mounts the routes defined in contactRoutes.js under the /api/contacts path. These routes handle various CRUD operations related to contacts.
+app.use("/api/users", require("./routes/userRoutes")): Similarly, mounts the routes defined in userRoutes.js under the /api/users path. These routes handle user-related operations.
+app.use(errorHandler): This middleware is used as a catch-all error handler. If any errors occur in the request handling process, they will be passed to this middleware for appropriate error handling and response generation.
+Start Server:
+The Express app starts listening on the specified port (process.env.PORT) for incoming HTTP requests. When the server is successfully started, a message is logged to the console indicating the server is running.
+userRoutes.js
+Import Required Modules:
+express: This module is imported to create an instance of the Express application.
+registerUser, loginUser, currentUser: These are functions imported from the "../controllers/userController" module. These functions are used to handle user registration, login, and retrieving current user information, respectively.
+validateToken: This middleware function is imported from "../middleware/validateTokenHandler". It is used to validate the authentication token for protected routes.
+Create Router Instance:
+const router = express.Router();
+An instance of the Express router is created using the express.Router() function. This router will handle the defined routes and their associated handlers.
+Define Routes and Associated Handlers:
+User Registration Route:
+router.post("/register", registerUser);
+When a POST request is made to the "/register" endpoint, the registerUser function from the userController module will be called to handle the registration process.
+User Login Route:
+router.post("/login", loginUser);
+When a POST request is made to the "/login" endpoint, the loginUser function from the userController module will be called to handle the login process.
+Current User Route (Protected by Middleware):
+router.get("/current", validateToken, currentUser);
+When a GET request is made to the "/current" endpoint, the validateToken middleware is first executed to verify the authenticity of the authentication token. If the token is valid, the currentUser function from the userController module will be called to retrieve information about the currently authenticated user.
+Export Router:
+module.exports = router;
+The configured router is exported so that it can be used in other parts of the application. This exported router can be mounted on the main Express app using app.use().
+userController.js
+userController.js implements user registration, user login, and a route to get the current user's information. It uses the express-async-handler library to handle asynchronous errors in an Express route handler. The code interacts with a MongoDB database (based on the usage of User model) to store and retrieve user data.
+Let's break down the code step by step:
+Imports and Dependencies:
+asyncHandler: A middleware that wraps asynchronous route handlers and automatically handles any errors that might occur during their execution.
+User: A model representing a user in a MongoDB database.
+bcrypt: A library used for hashing passwords securely.
+jsonwebtoken: A library for generating JSON Web Tokens (JWT) for user authentication.
+Register User (registerUser):
+A POST route handler for user registration at /api/users/register.
+It extracts username, email, and password from the request body.
+Checks if any of these fields are missing; if so, it responds with a 400 status and an error message.
+Queries the database to check if a user with the given email already exists. If so, it responds with a 400 status and an error message.
+Hashes the provided password using bcrypt and a salt factor of 10.
+Creates a new user in the database with the hashed password.
+Responds with a 201 status and the created user's _id and email.
+Login User (loginUser):
+A POST route handler for user login at /api/users/login.
+Extracts email and password from the request body.
+Checks if both fields are present; if not, it responds with a 400 status and an error message.
+Queries the database to find a user with the given email.
+Compares the provided password with the hashed password stored in the database using bcrypt. If they match, a JWT is generated containing user information (username, email, id) and sent back as a response with a 200 status.
+If the user does not exist or the password doesn't match, it responds with a 401 status and an error message.
+Current User (currentUser):
+A GET route handler to retrieve the current user's information at /api/users/current.
+Assumes that the user's information is stored in the req.user object, which might be populated by an authentication middleware.
+Responds with a JSON representation of the current user's information.
+Exports:
+Exports the registerUser, loginUser, and currentUser functions to be used in other parts of the application.
+ 
+Using Postman for testing API
+In this step, you will use Postman to make test requests to your running server.
+Postman is a popular tool for testing RESTful APIs. It allows you to send HTTP requests and receive responses from a server, providing a graphical user interface.
+So, let's get started !! You can download Postman from here.
+After downloading and installing the Postman, open the software.
+notion image
+Explaining the Interface
+The longest middle input field that looks like a search bar is where the URL we want to GET, POST, DELETE, etc., is fed.
+Just to the left is a drop-down button with all the various HTTP methods as options. If you want to POST to the URL that you have specified, select POST.
+To the right of it is the params button. If you click on it, a new interface will appear. Params are basically the data that we want to send to the server with our request. We will use this params interface to POST to put the app a new User.
+To the left of this button is the Send button, which is used in sending the request to the server or the app in this case.
+Sending and receiving requests through Postman
+• Enter the URL you want to hit in the above URL bar. We will put the URL of the API we just created above i.e. http://localhost:3000/list_movies
+Let's select our HTTP method to send the request as GET in the left button. Now click on the Send button.
+notion image
+ 
+Activity: True or False
+Express is a popular Node.js library used for building web servers  and APIs.
+Express routing allows you to define different routes for handling HTTP requests.
+In Express, you cannot define multiple route handlers for the same route to handle different HTTP request methods.
+Express middleware functions can be used to perform tasks such as authentication, logging, or data validation before reaching route handlers.
+Postman is a popular tool for testing APIs by sending HTTP requests and inspecting the responses.
+Postman allows you to save and organize your API requests in collections for easier management.
+Answers
+True
+True
+False
+True
+True
+True
+ 
+Summary
+What did we learn?
+RESTful APIs use standard HTTP methods like GET, POST, PUT, and DELETE to perform CRUD (Create, Read, Update, Delete) operations on resources.
+Resources are represented in the form of URLs, and data can be exchanged using JSON or XML.
+Express.js is a popular web application framework for Node.js.
+Express.js is built on top of Node.js and simplifies the process of handling HTTP requests and responses.
+It offers a robust set of features while still allowing developers the flexibility to choose their preferred tools and libraries.
+It allows for the creation of scalable and high-performance web applications.
+Express.js has a vast community and extensive documentation, making it easy for developers to find resources and support.
+Express.js offers middleware support, allowing developers to add functionality to the request-response cycle.
+It provides routing capabilities to handle different HTTP methods and endpoints.
+Route handlers can be used to handle specific requests and generate responses.
+Express.js can be used to create a basic RESTful API by defining routes for various CRUD operations on resources.
+Postman is a popular API testing tool that allows you to send HTTP requests to your API endpoints and receive responses.
+It is useful for testing and debugging APIs during development.
+Shortcomings & Challenges
+RESTful APIs can sometimes suffer from over-fetching or under-fetching of data, resulting in inefficient data transfers.
+Managing complex routing with multiple endpoints in large applications can become hard to maintain.
+The order of routes matters in Express.js, and defining routes incorrectly can lead to unexpected behavior.
+Best Practices
+Use descriptive and consistent naming conventions for endpoints and resources.
+Use meaningful status codes to indicate the result of API requests.
+Use app.listen() to start the server on a specified port.
+ 
+Enhance Your Knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+Authentication and Authorization: Authentication and Authorization in Node JS | Codementor
+Template Engine: Using template engines with Express (expressjs.com)
+ 
+Try it Yourself
+Let's solve these coding problems in the VS Code IDE. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
+Task 1: Challenge Your Backend Proficiency by Tackling these Coding Questions using Express.js within VS Code IDE.
+Problem
+Set Up Project
+Create the Server in servrer.js
+Set up a basic route to test the server.
+Create a new file called tasks.js
+Define the routes for creating, reading, and deleting tasks in tasks.js
+Test the API in Postman
+Solution
+1. Set Up Project:
+Create a new directory for your project and navigate into it using your terminal:
+mkdir express-tasks-api
+cd express-tasks-api
+Initialize a new Node.js project:
+npm init -y
+Install necessary packages:
+npm install express body-parser
+2. Create the Server in server.js:
+Create a file named server.js in your project directory and set up a basic Express server:
+const express = require('express');
+const bodyParser = require('body-parser');
+
+const app = express();
+const PORT = 3000;
+
+app.use(bodyParser.json());
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+3. Set up a Basic Route to Test the Server:
+Modify server.js to add a basic route that responds with a message:
+app.get('/', (req, res) => {
+  res.send('Welcome to the Tasks API');
+});
+4. Create a New File called tasks.js:
+Create a file named tasks.js in your project directory.
+5. Define the Routes for Creating, Reading, and Deleting Tasks in tasks.js:
+In tasks.js, set up routes for creating, reading and  deleting tasks:
+const express = require('express');
+const router = express.Router();
+
+let tasks = [];
+
+// Create a task
+router.post('/tasks', (req, res) => {
+  const { title, description } = req.body;
+  const newTask = { title, description };
+  tasks.push(newTask);
+  res.json(newTask);
+});
+
+// Read all tasks
+router.get('/tasks', (req, res) => {
+  res.json(tasks);
+});
+
+
+// Delete a task
+router.delete('/tasks/:id', (req, res) => {
+  const taskId = req.params.id;
+  tasks = tasks.filter(task => task.id !== taskId);
+  res.json({ message: 'Task deleted successfully' });
+});
+
+module.exports = router;
+6. Test the API in Postman:
+Open Postman and create requests to test your API. Make sure you have the server running (node server.js).
+Create a new task: Send a POST request to http://localhost:3000/tasks with a JSON body containing title and description.
+Read all tasks: Send a GET request to http://localhost:3000/tasks.
+Delete a task: Send a DELETE request to http://localhost:3000/tasks/:id (replace :id with the task ID).
+Remember to import the tasks.js router in your server.js:
+const tasksRouter = require('./tasks');
+app.use('/', tasksRouter);
+Task 2: Discuss your approach to resolving any challenges encountered while solving this question on AlmaBetter's Community platform.
