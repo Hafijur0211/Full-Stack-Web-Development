@@ -1,0 +1,538 @@
+Node.js Basics
+Session Flow
+Learning Objective
+Introduction
+Theme
+Primary Goals
+NodeJS Basics
+What is Nodejs?
+What is a Multi-Page application?
+Installation of Node.Js and NPM
+Step 1: Download the Installer
+Step 2: Install Node.js and NPM
+Step 3: Check Node.js and NPM Version
+NPM(Node Package Manager)
+Package.json
+Yarn
+Activity: Agree or Disagree
+NPX: Node Package Runner
+Easily run local commands
+Installation-less command execution
+Creation of a Node project
+Modules in Node.Js
+Types of modules in node.js
+Nodejs Core Modules
+Nodejs Local Modules
+Nodejs Third-Party Modules
+HTTP Module
+Practical Implementation Step 1
+Activity: Fill in the blanks
+File System Module
+Practical Implementation Step 2
+Path Module
+OS Module
+Activity: True or False
+Summary
+What did we learn?
+Shortcomings & Challenges
+Best Practices
+Enhance Your Knowledge
+Try it yourself
+Learning Objective
+Introduction 
+NodeJS is a runtime environment for JavaScript on the server side that enables developers to create web applications that are scalable and high-performing.
+Focus: NodeJS, Node Modules
+Prerequisite: VS code IDE Installed
+Theme
+NodeJS is a powerful tool popular organizations such as Netflix, LinkedIn, and PayPal use to build high-performance and scalable web applications. It uses a non-blocking I/O model, making it ideal for simultaneously handling large volumes of requests.
+For example, Netflix relies on NodeJS to deliver a seamless streaming experience to millions of users worldwide. Similarly, LinkedIn uses NodeJS to power its real-time messaging feature. With NodeJS, you can build robust and efficient web applications that handle large traffic volumes without compromising performance. Acquiring proficiency in the fundamentals of NodeJS can elevate your web development abilities to the next level, enabling you to construct powerful applications that rival the best in the industry.
+Primary Goals
+Learn how to create and use modules in Node.js. Modular programming is a key practice in Node.js development, allowing you to break down your code into smaller, reusable components. 
+Understanding how to import and export modules and organize your codebase will make your projects more maintainable and scalable.
+Familiarize yourself with the Node.js core modules like HTTP, File System, and Path. Learning them will help you perform various tasks in Node.js applications, from handling HTTP requests to reading and writing files.
+Learn how to use NPM to install third-party packages, manage dependencies, and create package.json files.
+ 
+NodeJS Basics
+What is Node.Js?
+Node.js is an open-source, cross-platform server-side runtime environment for JavaScript that enables programmers to create scalable online apps that perform well. Built on the V8 JavaScript engine that powers Google Chrome, developers can utilize JavaScript for both front-end and back-end web development.
+notion image
+Because Node.js is event-driven and non-blocking, it can manage numerous connections simultaneously without becoming sluggish. It is ideal for developing real-time web applications and APIs because it uses an event loop to control the flow of requests and responses.
+What is a Multi-Page application?
+A Multi-Page Application (MPA) is a type of web application architecture in which each application page is a separate HTML document with its unique URL. When a user engages with the interface in an MPA, the browser dispatches a request to the server to load a fresh HTML page that generally encompasses the application logic, presentation, and data.
+Advantages of Multi-Page Applications:
+Excellent search engine optimization: Because each page in an MPA has a distinct URL, search engines can easily index and rank individual pages, improving search engine optimization.
+High Browser Compatibility: As MPAs often use standard HTML, CSS, and JavaScript, they work well on a variety of browsers and mobile devices.
+Simple to Build and Maintain: Developing and maintaining an MPA is frequently easier and easier than creating a sophisticated SPA.
+More Security: MPAs can provide greater security than SPAs since each page is loaded separately. SPAs are more susceptible to attacks like Cross-Site Scripting (XSS) and Cross-Site Request Forgery (CSRF).
+Disadvantages of Multi-Page Applications:
+Time-consuming: MPAs can load and browse more slowly than SPAs since each page requires a full page refresh.
+Reduced User Experience: Compared to SPAs, MPAs may be less responsive and interactive, reducing user experience.
+Problems with Large-Scale Applications: An MPA may become more challenging to create and maintain as an application expands in size and complexity.
+Restricted Offline Capabilities: MPAs may not perform well offline because they rely on server-side rendering, which might be a drawback for some applications.
+Installation of Node.Js and NPM
+In this section, we'll walk you through the installation procedure step-by-step. So let's begin with the first action right away.
+Step 1: Download the Installer
+Retrieve the Windows Installer from the NodeJs website, ensuring you have obtained the most recent edition, including the NPM package manager.
+Here, we are choosing the 64-bit version of the Node.js installer.
+notion image
+For you, the LTS (Long-term Support) version is strongly advised. Install the installer package by double-clicking it after downloading it.
+Your browser will download a msi file. Choose the appropriate location for it.
+Step 2: Install Node.js and NPM
+notion image
+Double-click the.msi binary files to start the installation procedure after selecting the installation directory. Then provide permission for the application to run.
+Once you click "Next," you will see a welcome message on your screen. The setup procedure will begin.
+Choose the location where you want Node.js to be installed.
+notion image
+You will get a custom page setup on the screen by clicking on the Next button. Make sure you choose npm package manager, not the default of Node.js runtime. This way, we can install Node and NPM simultaneously.
+The following features will be installed by default:
+Node.js runtime
+Npm package manager
+Online documentation shortcuts
+Add to Path
+notion image
+Bang! The setup is ready to install Node and NPM. Let’s click on the Install button so hard!
+notion image
+Step 3: Check Node.js and NPM Version
+If you doubt whether you have installed everything correctly, let’s verify it with “Command Prompt”.
+notion image
+A Command Prompt window will emerge on the display.
+To confirm Node installation, type node -v command.
+To confirm NPM installation, type npm -v command.
+And you don’t need to worry if you see different numbers than mine as Node and NPM are updated frequently.
+notion image
+In my case, the version of node.js is v18.15.0, and npm is 9.5.0.
+We just saw that we had installed NPM with Node.Js, so let’s now learn what NPM is.
+NPM(Node Package Manager)
+The JavaScript programming language has a package management called NPM, or Node Package Manager. It is used to install, manage, and share packages of reusable code that may be used in Node.js applications and is the default package manager for the Node.js runtime environment.
+NPM gives users access to a sizable and expanding library of open-source packages that are simple to install and include in Node.js projects. It makes it simple for developers to exchange code, manage dependencies, and work together on projects.
+NPM packages are distributed in the form of modules, which can include code, documentation, and metadata. NPM offers a range of commands for package management, including the ability to install packages globally or locally to a particular project.
+npm install: Installs all dependencies listed in a package.json file.
+npm install <package-name>: Installs a specific package.
+npm uninstall <package-name>: Removes a specific package.
+npm update: Updates all dependencies listed in a package.json file.
+package.json
+In Node.js projects, the package.json file is used to specify the project's metadata and dependencies. It is a default file that is created when you use the npm init command to start a new Node.js project.
+Many fields that define the project are included in the package.json file, including:
+name: The name of the project.
+version: The version number of the project.
+description: A brief description of the project.
+main: The entry point file for the project.
+dependencies: A list of the project's dependencies, including each dependency's name and version number.
+devDependencies: A list of the project's development dependencies, including each dependency's name and version number.
+scripts: A set of commands that can be executed using npm run <command>.
+Because they include a list of the packages that the project depends on, the dependencies and devDependencies fields are crucial. The npm install command, which reads the package.json file and installs the packages listed in the dependencies and devDependencies fields, can be used to set up these packages.
+Using the npm run command> syntax, developers can define a collection of unique commands in the scripts field. The project can be built, tests can be run, and the application can be deployed using these commands.
+The package.json file may additionally contain other metadata, such as the project's license, author, and repository details, in addition to these fields.
+The package.json file, which describes the project's dependencies, metadata, and other crucial information that is utilized throughout the development and deployment process, is a crucial component of any Node.js project.
+YARN
+Facebook created Yarn, a package manager for JavaScript and Node.js applications, as a rival to NPM in 2016. As a potent tool for managing dependencies, it has grown in favor among developers because it is intended to be faster, more secure, and more dependable than NPM.
+Yarn and NPM both use the package.json file format, which may be used to install and manage packages. However, Yarn has a number of significant advantages to NPM, such as:
+Performance improvement: Yarn installs packages using a deterministic mechanism, making the process quicker and more dependable, especially for large projects with many dependencies.
+Offline caching: Yarn keeps a cache of downloaded packages, which can be used to speed up installations and enable offline installations.
+Parallel processing: Yarn has parallel processing capabilities, which can further enhance performance on multi-core platforms.
+Improved security: Yarn has several security features that help avoid package tampering and other security problems, such as checksums and the ability to validate package signatures.
+In addition to these benefits, Yarn also provides a number of sophisticated tools that can simplify the management of dependencies in complex projects, such as:
+Workspaces: Yarn supports using workspaces, which allows developers to manage multiple packages in a single project and share dependencies between packages.
+Selective installs: Yarn allows developers to selectively install specific packages rather than installing all dependencies listed in a package.json file.
+Improved CLI: Yarn provides a more advanced CLI than NPM, with features such as auto-completion and improved error handling.
+ 
+Acitvity: Agree or Disagree
+Node.js is primarily used for client-side scripting in web development.
+Node.js allows JavaScript to run on the server-side.
+In a Single-Page application, the entire content is loaded from the server each time a new page is requested.
+You can skip checking the version of NPM because it's not important.
+Package.json is used to manage dependencies and scripts for a Node.js project.
+Yarn is an alternative to NPM and cannot be used alongside it in the same project.
+Answers
+Disagree
+Agree
+Disagree
+Disagree
+Agree
+Agree
+ 
+NPX: Node Package Runner
+Since its release in July 2017 with npm version 5.2, the npx command has been a highly potent tool.
+The npx command enables you to execute code that has been developed with Node.js and released through the npm registry.
+Easily run local commands
+To make certain that the executable commands were readily available and instantly usable, Node.js developers used to circulate most of them as global packages. Because you couldn't truly install several versions of the same command, this was a hassle.
+By invoking npx commandname, the correct command version within the project's 'node modules' directory can be automatically located without requiring familiarity with the exact path or necessitating the installation of the package globally or within the user's path.
+Installation-less command execution
+Another fantastic feature of "npx" is the ability to execute commands without first installing them.
+This is largely helpful since
+Nothing needs to be installed.
+Using the syntax @version, you can execute various iterations of the same command.
+The 'cowsay' command is a common example of how to use 'npx'.
+The command "cowsay" will print a cow saying whatever you entered. For instance:
+will print "cowsay "Hi"
+ _______
+< Hello >
+ -------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+This approach is only feasible if you have already globally installed the cowsay command from npm. Otherwise, an error will arise when attempting to execute the command.
+With npx, you can run an npm command without prior installation. If the command cannot be located, npx will install it into a centralized cache.
+npx cowsay "Hello"
+will do the job.
+Now, this is a funny useless command. Other scenarios include:
+running the vue CLI tool to create new applications and run them: npx @vue/cli create my-vue-app
+creating a new React app using create-react-app: npx create-react-app my-react-app
+and many more.
+Now, let’s create a new node project:
+Creation of a Node project
+To create a Node.js project, follow these steps:
+Launch your command prompt or terminal and navigate to the folder where you intend to initiate the project.
+Execute the npm init command to begin a new Node.js project, generating a package.json file in the designated directory.
+npm init
+Provide your project's initial metadata, including the name, version, description, entry point, and other information, by responding to the questions that occur.
+Install any prerequisites for your project using the npm install command, followed by the name of the package you want to install.
+npm install <package-name>
+Your Node.js code should be written and saved in the same directory as the package.json file.
+Use the node command, followed by the project's entry point file name, to run your Node.js programme.
+node <entry-point-file>.js
+Modules in Node.Js
+A core idea of Node.js is modules, which let you split your code into reusable files. A module in Node.js is only a file containing code. It is possible to utilize modules to group together comparable pieces of code and data, making it simpler to manage and reuse code throughout your programme.
+Built-in and external modules are the two different categories of modules in Node.js. External modules are modules developed by outside developers that may be installed using a package manager like NPM instead of built-in modules, which come with Node.js itself.
+Types of Modules in Node.Js
+There are three types of modules
+1) Core Modules
+2) local Modules
+3) Third-party Modules
+Nodejs Core Modules
+Several built-in modules, usually called core modules, are included with Node.js and offer a broad range of capabilities for creating Node.js applications. Similar to how other Node.js modules are loaded into your application using the need function, these core modules are installed with Node.js itself.
+Some of Node.js's essential modules that are most frequently used are listed below:
+fs - This module provides an API for interacting with the file system. This module can read and write files, create directories, and more.
+http and https - These modules provide functionality for creating HTTP and HTTPS servers, making HTTP requests, and handling HTTP responses.
+path - This module provides methods for working with file and directory paths, including joining paths, normalizing paths, and resolving paths.
+crypto - This module provides cryptographic functionality, including hash functions, HMAC algorithms, and encryption and decryption functions.
+util - This module provides a set of utility functions that can be used to perform common tasks in Node.js, such as formatting strings, working with events, and more.
+os - This module provides information about the operating system that Node.js is running on, including the hostname, CPU architecture, and memory usage.
+events - This module provides an event-driven architecture for building Node.js applications. This module can create and handle custom events in your application.
+Nodejs Local Modules
+A module in Node.js is a chunk of code that may be reused and imported from one file into another. Local modules are those that are developed and utilized exclusively within a single project.
+You can easily create a new JavaScript file and specify the module's functionality inside to create a local module in Node.js. The module.exports object can then be used to export the functionality. For illustration, suppose we have a file called myModule.js that has the following code in it:
+const add = (a, b) => {
+  return a + b;
+};
+
+const subtract = (a, b) => {
+  return a - b;
+};
+
+module.exports = {
+  add,
+  subtract
+};
+Using the module.exports object we define the two functions add and subtract in our example and export them. The require function can then be used to import this module into a different file like follows:
+const myModule = require('./myModule');
+
+console.log(myModule.add(2, 3)); // Output: 5
+console.log(myModule.subtract(5, 3)); // Output: 2
+In this illustration, we import the myModule module and conduct computations with its exposed add and subtract functions.
+Node.js's local modules are a potent tool that lets you arrange your project's functionality into different files and write reusable code.
+Nodejs Third Party Modules
+In Node.js, third-party modules are external packages or libraries that are not part of the Node.js core modules but can be easily installed and used in Node.js applications to extend their functionality. These modules are typically published on the Node Package Manager (NPM) registry, where developers can find and install them using the npm command-line tool or the built-in package manager in their IDE. 
+Here are some examples of popular third-party modules in Node.js:
+Express.js: Express.js is a minimalist web framework for Node.js that simplifies the process of building web applications and APIs. It provides a set of functionalities for routing, middleware, and handling HTTP requests and responses.
+Lodash: Lodash is a utility library that provides a wide range of helper functions for common programming tasks, such as array manipulation, object operations, and string handling.
+Axios: Axios is a popular HTTP client library that simplifies making HTTP requests from Node.js. It supports features like promise-based requests, request/response interceptors, and automatic JSON parsing.
+Moment.js: Moment.js is a date and time manipulation library that provides an easy way to parse, manipulate, and format dates in JavaScript.
+Multer: Multer is a middleware for handling file uploads in Node.js. It simplifies the process of handling multipart/form-data requests and processing file uploads.
+HTTP Module
+The built-in Node.js HTTP module offers functionality for setting up HTTP servers and sending HTTP queries.
+The http.createServer() method can be used to create an HTTP server using the HTTP module. For instance, the code that follows establishes a server that listens on port 3000 for incoming requests and answers with "Hello, World!" to any such requests:
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello, World!\n');
+});
+
+server.listen(3000, () => {
+  console.log('Server running on http://localhost:3000/');
+});
+In this example, we construct an HTTP server that watches for incoming requests using the http.createServer() method. Each incoming request triggers a call to the callback function supplied to the createServer() method, which sets the response status code, content type, and response body.
+The http.request() method can be used to send an HTTP request using the HTTP module. The code below, for instance, sends a GET request to the Google site and logs the outcome:
+const http = require('http');
+
+const options = {
+  hostname: 'www.google.com',
+  port: 80,
+  path: '/',
+  method: 'GET'
+};
+
+const req = http.request(options, res => {
+  console.log(`statusCode: ${res.statusCode}`);
+
+  res.on('data', d => {
+    process.stdout.write(d);
+  });
+});
+
+req.on('error', error => {
+  console.error(error);
+});
+
+req.end();
+In this example, we request an HTTP to the Google homepage using the http.request() method. The hostname, port, path, and request method are all specified in an options object that is passed to the method. Also, a callback function is defined that reports the data and response status code to the console. To send the request, we finally utilise the req.end() method.
+Project Implementation Step 1
+index.js
+const http=require('http');
+
+const server=http.createServer((req,res)=>{
+    res.end("<h1>Hello from AlmaBetter</h1>")
+});
+
+server.listen(3000,()=>{
+    console.log("server is running")
+})
+Output:
+On Terminal
+notion image
+Explanation:
+On Browser     http://localhost:3000
+notion image
+The given code is a simple Node.js program that creates an HTTP server to handle incoming requests and respond with fixed HTML content. Let's break down the code step by step to understand its works:
+Importing the 'http' module:
+const http = require('http');
+This line imports the built-in http module in Node.js, which provides functionality to create and interact with HTTP servers and clients.
+Creating an HTTP server:
+const server = http.createServer((req, res) => {
+    res.end("<h1>Hello from AlmaBetter</h1>")
+});
+The code creates an HTTP server using the http.createServer() method. The method takes a callback function as its argument. This callback function is executed every time the server receives an HTTP request.
+Handling incoming requests:
+(req, res) => {
+    res.end("<h1>Hello from AlmaBetter</h1>")
+}
+The callback function takes two parameters: req and res. req represents the HTTP request object, and res represents the HTTP response object. This function is executed in this code whenever a request is made to the server.
+Sending a response:
+res.end("<h1>Hello from AlmaBetter</h1>")
+The res.end() method returns a response to the client. In this case, it sends the HTML content <h1>Hello from AlmaBetter</h1> as the response. After sending the response, the server considers the request-response cycle complete.
+Starting the server and listening on a specific port:
+server.listen(3000, () => {
+    console.log("server is running")
+})
+The server.listen() method starts the HTTP server and makes it listen on a specific port for incoming requests. In this code, the server listens on port 3000 (http://localhost:3000/). The callback function is executed once the server is up and running, and the message "server is running" is printed to the console.
+When you run this code, it creates an HTTP server, and whenever you access http://localhost:3000/ in your web browser or through any HTTP client, the server responds with the HTML content "<h1>Hello from AlmaBetter</h1>".
+ 
+Activity: Fill in the blanks
+NPX is commonly used for the ________(compilation / creation) of a Node project.
+Node.js ________(local / core) Modules are built-in modules that come with Node.js and provide essential functionality.
+Node.js ________(local / third-party) Modules are modules created by developers for specific project needs and are not a part of the Node.js core.
+The ________(HTTP / TCP) Module in Node.js is used for building web servers and making HTTP requests.
+Answers
+Creation
+Core
+Third-Party
+HTTP Module
+ 
+File System Module
+The File System (fs) module is a pre-built component in Node.js that offers capabilities for interacting with the file system. You can use it to create directories, read and write files, and carry out other file system activities.
+You can carry out the following typical activities using the fs module:
+Reading a file
+To read the contents of a file, you can use the fs.readFile()method. An instance of this is when the code below is used to retrieve the contents of a file titled example.txt:
+const fs = require('fs');
+
+fs.readFile('example.txt', 'utf8', (err, data) => {
+  if (err) throw err;
+  console.log(data);
+});
+In this illustration, we read the contents of the file example.txt using the fs.readFile() method. The encoding type, in this case, utf8, is the second argument. The 3rd parameter is a callback function that gets invoked once the file has been read. The file's contents are contained in the callback function's data argument.
+Writing to a file
+You can use the fs.writeFile() method to write data to a file. For example, the following code writes a string to a file named example.txt:
+const fs = require('fs');
+
+fs.writeFile('example.txt', 'Hello, World!', (err) => {
+  if (err) throw err;
+  console.log('Data written to file');
+});
+In this example, we use the fs.writeFile() method to write the string "Hello, World!" to the file example.txt. When the data has been successfully written to the file, the third parameter, which is a callback function, is executed.
+Creating a directory
+The fs.mkdir() method can be utilized to generate a directory. For example, the following code creates a directory named test:
+const fs = require('fs');
+
+fs.mkdir('test', (err) => {
+  if (err) throw err;
+  console.log('Directory created');
+});
+In this example, we'll create a directory called test using the fs.mkdir() function. The second argument is a callback function that is run after the directory has been created.
+These are but a few illustrations of what the Node.js File System module is capable of. It's worthwhile to look through the documentation to learn more about the fs module's extensive features for working with the file system.
+Project Implementation Step 2
+index.js
+const http=require('http');
+const fs=require('fs')
+
+fs.writeFileSync("index.txt","<h1>Hello From AlmaBetter, but this time from another file</h1>");
+const data=fs.readFileSync("index.txt",'utf-8');
+
+const server=http.createServer((req,res)=>{
+    res.end(data)
+});
+
+server.listen(3000,()=>{
+    console.log("server is running")
+})
+Output:
+notion image
+Explanation: 
+The given code is a simple Node.js server that uses the http module to create an HTTP server and the fs module to read and write files. Let's break down the code and focus on the fs module part:
+fs.writeFileSync("index.txt", "<h1>Hello From AlmaBetter, but this time from another file</h1>");: In this line, the fs.writeFileSync method is used to create a new file named "index.txt" and write the provided HTML content into it. This method is synchronous, meaning it blocks the execution until the file is written completely.
+const data = fs.readFileSync("index.txt", 'utf-8');: The fs.readFileSync method is used to read the content of the "index.txt" file synchronously. The second argument 'utf-8' specifies the encoding of the file data, which ensures that the returned content is interpreted as a string.
+const server = http.createServer((req, res) => { res.end(data); });: This code creates an HTTP server using the http.createServer method. When a client makes a request to this server, it will respond with the content read from the "index.txt" file stored in the data variable.
+server.listen(3000, () => { console.log("server is running"); }): This line starts the HTTP server, which listens on port 3000. When the server is successfully started, it will log the message "server is running" to the console.
+Now, when you run this Node.js script and visit http://localhost:3000 in your web browser or make an HTTP request to the server using tools like cURL or Postman, the server will respond with the content read from the "index.txt" file, which is the HTML content:
+<h1>Hello From AlmaBetter, but this time from another file</h1>
+In summary, the code uses the fs module to write an HTML content into a file named "index.txt" and then reads the content from the same file. The HTTP server is set up to respond with this content whenever a client makes a request to the server.
+Path Module
+Working with file and directory paths can be done using the built-in Node.js module called Path. It offers strategies for resolving pathways, merging paths, and normalizing paths.
+You can carry out the following typical operations with the Path module:
+Normalizing a path
+To normalize a path, you can use the path.normalize() method. For example, the following code normalizes a path:
+const path = require('path');
+
+const normalizedPath = path.normalize('/foo/bar//baz/asdf/quux/..');
+console.log(normalizedPath);
+In this example, we use the path.normalize() method to normalize the path /foo/bar//baz/asdf/quux/... The method removes any unnecessary slashes and resolves any .. and . segments in the path.
+Joining paths
+The path.join() method can be used to combine two or more path segments into a single path. As an illustration, the code below combines two path segments:
+const path = require('path');
+
+const joinedPath = path.join('/foo', 'bar', 'baz/asdf', 'quux', '..');
+console.log(joinedPath);
+In this example, we use the path.join()method to join the path segments /foo, bar, baz/asdf, and quux. The method resolves any ..and .segments in the path and joins the segments using the correct platform-specific separator.
+Resolving a path
+The path.resolve() method can be used to resolve a path relative to a given base path. The code shown below, for instance, resolves a path relative to the active working directory:
+const path = require('path');
+
+const resolvedPath = path.resolve('foo/bar', '/tmp/file/', '..', 'a/../subfile');
+console.log(resolvedPath);
+In this example, we use the path.resolve()method to resolve the path foo/bar, relative to the current working directory, and then resolve the path /tmp/file/, .., and a/../subfile
+ relative to the resulting path. The method resolves any .. and . segments in the path and returns an absolute path.
+OS Module
+The OS (Operating System) module in Node.js is a pre-built module that offers features for interacting with the operating system. You can access data about the platform, hostname, CPU architecture, and memory use of the currently running operating system.
+The OS module can be used in the following ways, as examples:
+Getting the platform
+To get the platform of the current operating system, you can use the os.platform()
+ method. For example, the following code logs the platform:
+const os = require('os');
+
+console.log(os.platform());
+In this example, we use the os.platform() method to retrieve the platform of the current operating system.
+Getting the hostname
+To get the hostname of the current operating system, you can use the os.hostname() method. For example, the following code logs the hostname:
+const os = require('os');
+
+console.log(os.hostname());
+In this example, we use the os.hostname()method to retrieve the hostname of the current operating system.
+Getting the CPU architecture
+To get the CPU architecture of the current operating system, you can use the os.arch() method. For example, the following code logs the CPU architecture:
+const os = require('os');
+
+console.log(os.arch());
+In this example, we use the os.arch()method to retrieve the CPU architecture of the current operating system.
+ 
+Activity: True or False
+The fs.writeFile() function is synchronous and blocks the event loop until the operation is completed.
+The fs.mkdir() function can be used to create multiple nested directories with a single call.
+The path.join() method always uses forward slashes ("/") as the path separator, regardless of the operating system.
+The path.normalize() method resolves and simplifies a file path, removing any redundant or ".." segments.
+The os.platform() method returns the version of the Node.js runtime.
+The os.hostname() method returns the network hostname of the operating system.
+Answers
+False
+True
+False
+True
+False
+True
+ 
+Summary
+What did we learn?
+Node.js is a runtime environment for JavaScript that is both open-source and cross-platform.
+Node.js runs in a single process, with asynchronous I/O primitives, preventing JavaScript code from blocking.
+Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine, which allows developers to run JavaScript code on the server side. It provides an event-driven, non-blocking I/O model that efficiently handles asynchronous operations.
+Learn how to download and install Node.js and NPM (Node Package Manager) on our computers.
+Package.json is a JSON file containing metadata about a Node.js project and a list of dependencies required. It is essential for managing and tracking project dependencies effectively.
+Yarn is an alternative package manager to NPM, offering faster and more efficient dependency management, fully compatible with NPM.
+NPX is a tool that comes with NPM, enabling the execution of local commands from packages that are not globally installed. It allows running commands directly from the NPM registry or locally installed packages without installing them globally.
+Gained knowledge about different types of modules in Node.js, including Node.js Core Modules (built-in modules), Node.js Local Modules (created by developers), and Node.js Third-Party Modules (external modules available on NPM).
+Shortcomings & Challenges
+Node.js follows a single-threaded event loop architecture, which means it processes one request at a time and means that long-running synchronous operations can block the event loop and lead to decreased performance.
+When handling multiple asynchronous operations in Node.js, it's common to encounter "callback hell," where deeply nested callbacks can make the code difficult to read and maintain. 
+Since Node.js is single-threaded, it may not be the best choice for CPU-intensive tasks or applications that require heavy parallel processing. 
+Node.js applications are vulnerable to common web application security issues, such as injection attacks, cross-site scripting (XSS), and cross-site request forgery (CSRF). 
+Best Practices
+Leverage Node.js's non-blocking I/O model and use asynchronous programming to handle I/O operations. Avoid synchronous operations that can block the event loop and degrade application performance. 
+Use Promises or the async/await syntax to handle asynchronous operations elegantly. These approaches enhance the readability of asynchronous code and prevent callback hell.
+Minimize using global variables instead, use local variables, and encapsulate functionality within modules.
+ 
+Enhance Your Knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+NodeJS Basics: Explore Node.js basic concepts - IBM Developer
+Introduction to NodeJS: https://nodejs.dev/en/learn/
+ 
+Try it Yourself
+Let's dive right into the questions and have a blast answering them together. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy learning! 💻😄
+Task 1: Ready to level up your backend skills? Dive into these coding challenges right in the VS Code IDE.
+Problem
+Create a simple HTTP server that serves a static HTML file.
+Create an HTML file named "index.html" with some basic content (e.g., a heading and a paragraph).
+Write a Node.js script to create an HTTP server that reads the "index.html" file and serves it to any incoming HTTP request.
+When a client makes a GET request to the server (e.g., by accessing http://localhost:3000 in the browser), the server should respond with the content of the "index.html" file.
+Solution
+Create an index.html file in the same directory as your Node.js script:
+index.html:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple HTTP Server</title>
+</head>
+<body>
+    <h1>Welcome to Simple HTTP Server</h1>
+    <p>This is a basic HTML file served by a Node.js server.</p>
+</body>
+</html>
+Write a Node.js script to create the HTTP server and serve the index.html file:
+server.js:
+const http = require('http');
+const fs = require('fs');
+const path = require('path');
+
+const server = http.createServer((req, res) => {
+    // Check if the request is a GET request for the root path
+    if (req.method === 'GET' && req.url === '/') {
+        const filePath = path.join(__dirname, 'index.html');
+
+        // Read the content of the HTML file
+        fs.readFile(filePath, 'utf8', (err, content) => {
+            if (err) {
+                res.writeHead(500, { 'Content-Type': 'text/plain' });
+                res.end('Internal Server Error');
+                return;
+            }
+
+            // Set the response headers and send the HTML content
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.end(content);
+        });
+    } else {
+        res.writeHead(404, { 'Content-Type': 'text/plain' });
+        res.end('404 Not Found');
+    }
+});
+
+const PORT = 3000;
+server.listen(PORT, () => {
+    console.log(`Server is listening on port ${PORT}`);
+});
+Run the Node.js script using the command:
+node server.js
+Open a web browser and navigate to http://localhost:3000. You should see the content of the index.html file displayed in your browser.
+Task 2: Let's promote collaborative learning within your Cohort group by sharing your answers on the AlmaBetter Community Platform.
+ 
