@@ -114,11 +114,13 @@ Need for JavaScript
 Limitations and Constraints of the Webpage Created with HTML & CSS:
 This simple static HTML currently lacks responsiveness but includes images, text, buttons, and other UI features.
 The website needs to be utilized from a business or a customer standpoint.
+
 JavaScript is useful because it provides the following advantages:
 Our system is lightning-fast because it runs code locally instead of contacting the server.
 Create highly responsive interfaces and elevate the user experience with ease.
 JavaScript does not require a compilation step. Instead, an interpreter in the browser reads over the JavaScript code, interprets each line, and runs it.
 Enhance functionality on the fly without server latency, providing a seamless experience for your users.
+
 What makes them so well-loved by programmers?
 As of today, there are 1.9 billion websites on the Internet, with 95% of them utilizing JavaScript in some capacity.
 To improve the functionality of certain websites and web applications, try disabling JavaScript access on your web browser. JavaScript is responsible for managing the interactivity of the web, and turning it off may cause some sites to appear less engaging.
@@ -128,6 +130,7 @@ Add interactive elements to your website
 Develop web and mobile applications
 Create web servers
 Develop games
+
 Why is JavaScript Popular?
 Versatility: JavaScript is primarily used for front-end development, but it can also be used for server-side programming with Node.js. This flexibility allows developers to work across the full stack with a single language.
 Browser compatibility: JavaScript is supported by all modern web browsers, making it an essential tool for creating interactive and dynamic websites that work across different platforms and devices.
@@ -135,6 +138,7 @@ Ease of learning: JavaScript has a relatively simple syntax and is considered ea
 Large community and ecosystem: JavaScript has a massive community of developers, which means there are abundant resources, tutorials, and tools available for learning and problem-solving. Additionally, there are numerous libraries and frameworks, such as React, Angular, and Vue.js, that make development faster and more efficient.
 Regular updates and improvements: JavaScript is continuously evolving, with new features being added to the language regularly through the ECMAScript standard. This ensures that JavaScript stays up-to-date with modern programming practices and techniques.
 Asynchronous programming: JavaScript supports asynchronous programming, which is essential for handling multiple tasks simultaneously, such as handling user input or fetching data from a server without blocking the main thread.
+
 Role of JavaScript in Web Development and UX
 Client-Server Cycle
 notion image
