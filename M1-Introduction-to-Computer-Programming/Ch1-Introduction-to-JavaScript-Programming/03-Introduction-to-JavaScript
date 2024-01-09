@@ -1,52 +1,97 @@
 Introduction to JavaScript
+
 Session Flow
+
 Learning Objective 
+
 Introduction
+
 Theme
+
 Primary Goals
+
 Introduction to JavaScript 
+
 Do you know What JavaScript is?
+
 Why Dynamically Typed Language?
+
 Need for JavaScript
+
 What makes them so well-loved by programmers?
+
 Why is JavaScript Popular?
+
 Role of JavaScript in Web Development and UX
+
 Client-Server Cycle
+
 Usability of JavaScript in Front-end
+
 Interactivity
+
 AJAX
+
 Cross browser compatibility and Standards compliance
+
 Plugins
+
 Frameworks
+
 Usability of JavaScript in the Back-end
+
 JavaScript Engine
+
 Activity: Guess the words
+
 Variables
+
 What is a Variable?
+
 JavaScript Variable Scope
+
 How to declare variables in JavaScript?
+
 “var” Keyword in JavaScript
+
 “let” Keyword in JavaScript
+
 “const” Keyword in JavaScript
-Activity: Code Practice 
+
+Activity: Code Practice
+
 Data Types
+
 Concept of Data Types
+
 Understanding Special Types in JavaScript
+
 JavaScript Type Conversions
+
 Type Conversion Table in JavaScript 
+
 Summary 
+
 What did we learn?
+
 Shortcomings & Challenges
+
 Best practices to follow
+
 Enhance your knowledge
+
 Try it yourself
+
 Learning Objective
+
 Introduction
 JavaScript is a high-level, interpreted, and dynamic programming language used for client-side web development, creating interactive web pages, and implementing complex logic on the front end.
 Focus: Basics of JavaScript, Variables, Data types, Special types in JavaScript
 Prerequisites: VS Code IDE with Node.js installed
+
 Theme
 Imagine you are browsing an online shopping website, and you add an item to your cart. Without refreshing the page, the website immediately updates the cart icon to show the number of items you have added. This is made possible by JavaScript, which allows for dynamic updates to web pages without requiring a full page refresh. JavaScript is also responsible for many interactive website features, such as dropdown menus, pop-ups, and sliders.
+
 Primary Goals
 Understand the basics of JavaScript
 Learn about JavaScript variables and syntax
@@ -54,14 +99,17 @@ Learn about JavaScript variables and syntax
 Introduction to JavaScript
 Social media platforms extensively use JavaScript to provide a seamless user experience. One example is Facebook which uses JavaScript for various features on its platform. When you first log in, Facebook uses JavaScript to load your personalized news feed, which includes posts from your friends, pages you follow, and advertisements. Scrolling through the news feed triggers additional JavaScript code, which dynamically loads more posts as you reach the end of the current batch.
 Facebook's chat feature also uses JavaScript to provide real-time updates of your conversations, with new messages appearing on the page without needing a manual refresh. The platform also uses JavaScript to handle interactions within posts, such as liking and commenting, display pop-up notifications, and handle user authentication.
+
 Do you know What JavaScript is?
 notion image
 JavaScript is an interpreted, high-level programming language frequently used to develop dynamic web pages.
 JavaScript is used when a web page has features that go beyond just displaying information, such as updates, alerts, and actions triggered by button clicks.
 notion image
+
 Why Dynamically Typed Language?
 In the world of programming, dynamically-typed languages stand out as the ones where the interpreter assigns the variable's type at runtime based on its value at the moment. This feature allows for greater flexibility in coding, as well as faster prototyping and testing.
 It's unnecessary to declare the variable type when declaring a variable explicitly.
+
 Need for JavaScript
 Limitations and Constraints of the Webpage Created with HTML & CSS:
 This simple static HTML currently lacks responsiveness but includes images, text, buttons, and other UI features.
