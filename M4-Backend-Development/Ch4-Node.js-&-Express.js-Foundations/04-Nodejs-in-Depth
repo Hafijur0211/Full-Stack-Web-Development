@@ -1,0 +1,674 @@
+Node.js in Depth
+Session Flow
+Learning Objective
+Introduction
+Theme
+Primary Goals
+NodeJS in Depth
+Buffer
+URL
+Managing Modules with NPM
+Project Implementation Step 1
+Activity: Crossword Puzzle
+Development Dependencies
+Automatically Generated Files
+Installing from package.json
+Global Installations
+Managing Modules
+Listing Modules
+Updating Modules
+Uninstalling Modules
+Auditing Modules
+Nodemon
+Installing Nodemon
+Using Options
+Using Configurations
+Chalk
+Activity: 
+User-Defined Modules
+Creating a Module
+Testing the Module
+Saving Local Module as a Dependency
+Debugging Nodejs Applications
+Using Watchers with the Node.js Debugger
+Using Breakpoints With the Node.js Debugger
+Project Implementation Step 2
+Activity: True or False
+Summary
+What did we learn?
+Shortcomings & Challenges
+Best Practices
+Enhance Your Knowledge
+Try it yourself
+Learning Objective
+Introduction
+NodeJS is a server-side JavaScript runtime allowing developers to build scalable, high-performance applications using an event-driven and non-blocking I/O model.
+Focus: NodeJS, npm modules, Buffer, URL, Nodemon, Debugging
+Prerequisite: VS Code IDE and Nodejs Installed
+Theme
+Walmart, one of the world's largest retailers, uses Node.js in its eCommerce platform to handle the backend services and APIs. Node.js allows Walmart to create a responsive and performant web experience for its online shoppers. With Node.js' event-driven and non-blocking I/O model, Walmart can efficiently process a high volume of concurrent requests from its vast customer base. Node.js also seamlessly enables Walmart to handle real-time inventory updates, order processing, and customer interactions.
+Uber, the ride-hailing and transportation company, uses Node.js for various services and applications. Node.js is particularly well-suited for handling real-time data streaming and real-time analytics, which are crucial for Uber's dynamic and constantly changing ride requests and driver tracking. Node.js allows Uber to process and handle a massive amount of data and real-time events efficiently. Moreover, the event-driven architecture of Node.js fits well with Uber's need for handling concurrent connections and providing timely updates to its users.
+Primary Goals
+Understand how to create, read, and manipulate buffers effectively. Learn how to initialize and manage a new Node.js project using NPM.
+Learn when and why to use development dependencies, such as testing frameworks, build tools, and linters.
+Understand how Nodemon helps in the development workflow by saving time and effort during manual restarts.
+Learn various debugging techniques in Node.js, including using console.log, debugger statements, and the built-in debugger module.
+ 
+NodeJS in Depth
+Buffer
+A buffer in Node.js is a temporary memory storage space for storing and manipulating binary data. A buffer is an array of integers, where each integer stands for a single byte of data. Buffers can be used to send data over a network or to a file and store binary data like pictures or audio.
+To produce, modify, and read binary data, use the Node.js Buffer module. The module offers methods for interacting with existing buffers as well as a Buffer function Object() { [native code] } that may be used to generate new buffers.
+The key features of the Buffer module are given below:
+Creating Buffers: A new buffer of a specific size can be created using the Buffer function Object() { [native code] }. The buffer's size can be given in bytes or as the total number of elements.
+const buf1 = new Buffer.alloc(10); // creates a buffer of 10 bytes
+const buf2 = new Buffer.alloc([10, 20, 30, 40, 50]); // creates a buffer of 5 bytes
+const buf3 = new Buffer.alloc(5,'hello', 'utf-8'); // creates a buffer of 5 bytes with the string 'hello'
+Writing to Buffers: The write method can be used to write to buffers. An optional offset and length are the second and third arguments to the write method, which also accepts a string or buffer as its first argument.
+const buf = new Buffer.alloc(10,'hello','utf-8'); // writes the string 'hello' to the buffer
+Reading from Buffers: The read method can be used to read buffers. The read method returns a string or buffer containing the data read from the buffer and accepts an optional offset and length as its first and second arguments.
+const buf = new Buffer.alloc(5,'hello','utf-8');
+const str = buf.subarray(2, 4); // returns a new buffer containing 'll'
+Converting Buffers: Buffers can be converted to strings using the toString method. The toString method takes an optional encoding as its first argument.
+const buf = new Buffer.alloc(5,'hello','utf-8');
+const str = buf.toString('utf-8',0,buf.length); // returns the string 'hello'
+Copying Buffers: The copy method can be used to copy buffers. The first parameter of the copy method is a target buffer, while the second, third, and fourth arguments are optional source, target offset, and length arguments.
+const buf1 = Buffer.alloc(5,'hello','utf-8');
+const buf2 = new Buffer.alloc(5);
+buf1.copy(buf2); // copies the data from buf1 to buf2
+console.log(buf2.toString('utf-8'));
+notion image
+URL
+Node.js's URL module offers a mechanism to parse, format, and work with URLs (Uniform Resource Locators). Since it is a built-in module, there is no requirement for installation.
+Below is a quick rundown of the features offered by the URL module:
+Parsing URLs
+To parse a URL string and return an object containing all of its components, use the url.parse() method. The protocol, hostname, port, path, query parameters, and hash are among the components. Here's an illustration:
+const url = require('url');
+const urlString = 'https://www.example.com/path/to/page?param1=value1&param2=value2#section1';
+const parsedUrl = url.parse(urlString);
+console.log(parsedUrl.protocol); // 'https:'
+console.log(parsedUrl.host); // 'www.example.com'
+console.log(parsedUrl.pathname); // '/path/to/page'
+console.log(parsedUrl.query); // 'param1=value1&param2=value2'
+console.log(parsedUrl.hash); // '#section1'
+notion image
+Formatting URLs
+The url.format()method can be used to format an object containing the components of a URL into a string. Here's an example:
+const url = require('url');
+const urlObject = {
+  protocol: 'https:',
+  slashes: true,
+  auth: null,
+  host: 'www.example.com',
+  port: null,
+  hostname: 'www.example.com',
+  hash: '#fragment',
+  search: '?query=value',
+  query: { query: 'value' },
+  pathname: '/path/to/file',
+  path: '/path/to/file?query=value',
+  href: 'https://www.example.com/path/to/file?query=value#fragment'
+};
+const urlString = url.format(urlObject);
+console.log(urlString);
+notion image
+url.resolve(from, to)
+This method resolves a relative URL (to) against a base URL (from) and returns the absolute URL.
+const url = require('url');
+const fromUrl = 'https://www.example.com/path/to/file';
+const toUrl = '../other/file';
+const resolvedUrl = url.resolve(fromUrl, toUrl);
+console.log(resolvedUrl);
+notion image
+Managing Modules with NPM
+For managing packages and dependencies in Node.js applications, NPM (Node Package Manager) is a potent tool. Here are some pointers on using NPM to manage modules:
+Install a package: Use the subsequent command in your project directory to install a package:
+npm install <package-name>
+By doing this, the package and its dependencies will be installed in your project's node modules directory.
+Save a package as a dependency: If you want to save a package as a dependency for your project, you can add the -save flag to the install command like this:
+npm install <package-name> --save
+By performing this action, the package will be included in the dependencies segment of your package.json document.
+Save a package as a development dependency: If you want to save a package as a development dependency (i.e. a package that is only needed during development, not in production), you can add the -save-dev flag to the install command like this:
+npm install <package-name> --save-dev
+By performing this action, the package will be included in the devDependencies segment of your package.json document.
+Update a package: To update a package to the latest version, you can run the following command:
+npm update <package-name>
+This will update the package and its dependencies to the latest version.
+Uninstall a package: To uninstall a package, you can run the following command:
+npm uninstall <package-name>
+Your project will be rid of both the package and its dependencies through this action.
+List installed packages: To see a list of all the packages installed in your project, you can run the following command:
+npm ls
+This will show you a tree view of all the packages and their dependencies.
+Manage package versions: To indicate the desired version of a package during installation, append @<version> to the package name within the install command. For example:
+npm install <package-name>@<version>
+This will install the specified version of the package.
+Lock packages to specific versions: To lock packages to specific versions, you can use a package-lock.json file. This file will keep track of the exact versions of packages installed in your project, and can be used to ensure consistency across different environments.
+Publish your own package: If you want to publish your own package to NPM, you can use the npm publish command. This will publish your package to the NPM registry, where it can be installed by others.
+In general, NPM is a potent instrument for module administration in Node.js applications. By implementing these guidelines, you can proficiently oversee packages and dependencies within your projects.
+Practical Implementation Step 1
+Lets install some modules which we will be using in our backend project:
+Write ‘npm i express mongoose dotenv bcrypt jsonwebtoken’ in your terminal
+express:
+Express is a popular web application framework for Node.js that simplifies the process of building web applications and APIs. It provides a set of robust and flexible features, including routing, middleware support, templating engines, and handling HTTP requests and responses. Express makes it easier to define routes, handle HTTP methods (GET, POST, etc.), and implement various features required for web development, making the development process more efficient and organized.
+mongoose:
+Mongoose is an Object Data Modeling (ODM) library for MongoDB in Node.js. MongoDB is a NoSQL database, and Mongoose simplifies the interaction with MongoDB by providing a schema-based solution for data modeling. It allows developers to define data schemas, perform CRUD operations, handle relationships between documents, and validate data before saving it to the database. Mongoose also supports features like middleware and querying, making it a powerful tool for working with MongoDB in Node.js applications.
+bcrypt:
+bcrypt is a library used for password hashing in Node.js applications. It provides a secure way to hash passwords before storing them in a database, which helps protect user data from potential security breaches. The hashing process involves multiple rounds of salting and hashing the password, making it computationally expensive and time-consuming for attackers attempting to crack the hashed passwords. Using bcrypt ensures that passwords are stored securely and helps enhance the overall security of an application.
+jsonwebtoken:
+jsonwebtoken is a library used for generating and verifying JSON Web Tokens (JWT) in Node.js applications. JWT is a compact and self-contained way to represent information between two parties as a JSON object. It is often used for user authentication and authorization in web applications. When a user logs in or authenticates, the server generates a JWT containing user-specific information. This token is then sent to the client, and subsequent requests to the server include this token to identify the user and grant access to certain resources or routes. jsonwebtoken simplifies the process of creating and verifying JWTs securely.
+dotenv:
+dotenv is a module used for managing environment variables in Node.js applications. Environment variables are used to store configuration and sensitive information, such as API keys, database credentials, or other application-specific settings. dotenv allows developers to define these variables in a .env file and then load them into the Node.js application's process environment during runtime. It simplifies the configuration process and ensures that sensitive information is kept separate from the application code and version control, making it more secure and manageable.
+ 
+Activity: Crossword Puzzle
+notion image
+Across
+2. A temporary data storage area often used for efficient data transfer
+4. The command used to install a new package in Node.js using NPM.
+Down
+1. A popular HTTP method for retrieving data from a server.
+3. Abbreviation for Uniform Resource Locator.
+5. A package manager for JavaScript that helps you manage project dependencies.
+Answers
+get
+buffer
+url
+install
+npm
+ 
+Development Dependencies
+Development dependencies in Node.js are packages or modules needed for creating, testing, and running a production version of an application. The devDependencies column of the package.json file contains a list of them, and they are often installed using package management like npm or yarn.
+In Node.js, a few instances of development dependencies are:
+Testing frameworks and libraries, such as Mocha or Jest
+Code coverage tools, such as Istanbul or Coveralls
+Linting tools, such as ESLint or JSHint
+Build tools, such as Webpack or Gulp
+Documentation generators, such as JSDoc or Swagger
+To install a development dependency in Node.js using npm, you can use the following command:
+npm install <package-name> --save-dev
+The package will be installed as well as added to your package.json file's devDependencies field.
+Use the npm install —production command to install only the packages needed for production while leaving out the development dependencies when you're ready to deploy your application.
+Automatically Generated Files
+The package-lock.json file and node modules directory in Node.js are automatically produced files that are used to manage an application's dependencies.
+All the third-party packages or modules needed by the application are located in the node modules directory. This directory is where a package is downloaded and installed when you use a package manager like npm.
+When you use the npm install command, npm automatically creates the package-lock.json file. The versions of the packages and the dependencies that are installed in the node modules directory are secured using this method. By ensuring that identical package versions are installed on all systems where the application is deployed, it becomes possible to prevent any possible clashes or inconsistencies.
+Installing from package.json
+Before you begin working on a new project, you can easily set up the same project dependencies using your package.json and package-lock.json files. To show this, go one level higher in your directory tree and make a new folder with the following name at the same level as the first sample folder:
+cd ..
+mkdir cloned_sampleproject
+Move into your new directory:
+cd cloned_sampleproject
+To install the necessary modules for this project, please copy the package.json and package-lock.json files from locator to cloned_locator directory, and then run the installation command.
+npm i
+To install the modules, npm will look for a package-lock.json file. In the absence of a lock file, the determination of installs would be based on reading the package.json file. Installing from package-lock.json is typically speedier because npm does not have to spend time determining which version is appropriate to install because the lock file specifies the exact version of modules and their dependencies.
+You may choose to skip the development dependencies when delivering to production. Remember that your app won't be affected by development dependencies, which are listed in the package.json file's devDependencies section. Omit the development requirements when installing modules as part of the deployment process for your application by running:
+npm i --production
+Stick with your development build for now since the installation process, when the --production flag is used, disregards the devDependencies section.
+Global Installations
+You have been setting up npm modules for the locator project so far. You may install packages globally using npm as well. This indicates that, like any other shell command, the package is accessible to your user throughout the system. The numerous Node.js modules that are CLI tools can benefit from this functionality.
+You must include the -g parameter to the command in order to install a package globally:
+npm i nodemon -g
+Managing Modules
+More than just installing modules is possible with full-featured package management. npm offers more than 20 commands for managing dependencies. This step requires you to:
+List the installed modules.
+Upgrade your module installation to a newer version.
+Remove modules you no longer require.
+Do a security audit on your modules to identify and patch any security holes.
+Any of these commands can be executed worldwide by adding the -g flag to them, much like you do when installing globally, even though the examples will be run in the example folder.
+Listing Modules
+Using the "list" or "ls" command would be a more convenient way to check the modules installed in a project rather than directly reading the package.json file. To do this, enter:
+npm ls
+// OUTPUT
+├── axios@0.27.2
+└── eslint@8.0.0
+When you use the depth option, you can specify the desired level of the dependency tree to be displayed. A value of 0 will show only the top-level dependencies. To view the complete dependency tree, you can use the all argument.
+npm ls --all
+
+//OUTPUT
+├─┬ axios@0.27.2
+│ ├── follow-redirects@1.15.1
+│ └─┬ form-data@4.0.0
+│   ├── asynckit@0.4.0
+│   ├─┬ combined-stream@1.0.8
+│   │ └── delayed-stream@1.0.0
+│   └─┬ mime-types@2.1.35
+│     └── mime-db@1.52.0
+└─┬ eslint@8.0.0
+  ├─┬ @eslint/eslintrc@1.3.0
+  │ ├── ajv@6.12.6 deduped
+  │ ├── debug@4.3.4 deduped
+  │ ├── espree@9.3.2 deduped
+  │ ├── globals@13.15.0 deduped
+  │ ├── ignore@5.2.0
+  │ ├── import-fresh@3.3.0 deduped
+  │ ├── js-yaml@4.1.0 deduped
+  │ ├── minimatch@3.1.2 deduped
+  │ └── strip-json-comments@3.1.1 deduped
+Updating Modules
+Keeping your npm modules current is a good idea. This increases your chance of receiving a module's most recent security updates. Check whether any modules may be updated with the obsolete command:
+npm outdated
+// OUTPUT
+Package  Current  Wanted  Latest  Location             Depended by
+eslint     8.0.0  8.17.0  8.17.0  node_modules/eslint  sampleproject
+This command begins by listing the installed "Package" and the "Current" version. The version in 'package.json' matches your version requirement is indicated in the 'Wanted' column. The 'Latest' column displays the module's most recent published version.
+The package's location in the dependency tree is indicated by the 'Location' column. Like 'ls,' the 'outdated' command has the '—depth' flag. The default depth is zero.
+It appears that 'eslint' can be updated to a more recent version. Use the update or up command as follows:
+npm up eslint
+
+// OUTPUT
+removed 7 packages, changed 4 packages, and audited 91 packages in 1s
+
+14 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+You can use the package name as an argument with the npm ls command to check the version of eslint that you are currently using.
+npm ls eslint
+The output will be similar to the npm ls command you previously used, but it will display only the versions of the eslint package.
+Output
+└─┬ eslint@8.17.0
+  └─┬ eslint-utils@3.0.0
+    └── eslint@8.17.0 deduped
+To update all modules simultaneously, you would input:
+npm up
+Uninstalling Modules
+Use the npm uninstall command followed by the name of the module you wish to remove in Node.js to uninstall a module. the following steps:
+Open a terminal or command prompt.
+Navigate to your project directory where the node_modules directory is located.
+To uninstall a specific module, execute the command npm uninstall <module_name>, replacing <module_name> with the name of the module you wish to remove.
+If the module is a global module, you may need to add the g flag to the command, like so: npm uninstall -g <module_name>
+Example:
+npm uninstall lodash
+The lodash module will be removed from your project as a result.
+Keep in mind that if no other module in your project requires them, you might also be able to delete a module's dependencies when you uninstall it. The npm ls command can be used to see a module's dependencies.
+Also, it is a good idea to update your project's package.json file and submit the changes to your version control system in order to keep track of the modules you uninstall.
+Auditing Modules
+The npm audit command in Node.js can be used to search for security flaws in the installed packages in your project. The program examines the dependencies of your project against a database of recognized vulnerabilities, producing a report that outlines any identified security flaws and provides potential solutions.
+To conduct an audit, do the following:
+Open a terminal or command prompt.
+Navigate to your project directory where the package.json file is located.
+Run the command npm audit.
+Review the output of the audit report, which will show any vulnerabilities and suggested fixes.
+Here is an example of what the npm auditoutput may look like:
+found 3 vulnerabilities (1 moderate, 2 high)
+  run `npm audit fix` to fix them, or `npm audit` for details
+The above case shows that the audit discovered three vulnerabilities, two of which were classified as high severity and one as moderate severity. The command advises running npm audit fix to try and automatically fix the flaws or npm audit to view additional information about the flaws.Regularly examining your project's dependencies is crucial to promptly detect and address any vulnerabilities. You can also set up automated audits as part of your continuous integration and deployment (CI/CD) pipeline to catch vulnerabilities early in the development process.
+Nodemon
+The Node.js tool Nodemon facilitates the development process by relaunching the Node.js application everytime a file is changed in the project directory. Developers no longer have to manually restart the application each time a change is made, saving them time and effort.
+The name "nodemon" is a combination of "node" (as in Node.js) and "daemon" (a computer program that runs in the background). However, the name is also a pun on the word "demon," which is a supernatural being often associated with evil or mischief.
+According to the creator of nodemon, Isaac Z. Schlueter, the name "nodemon" was chosen because the tool can be mischievous in nature, as it automatically restarts an application, which can sometimes cause unexpected behavior. The name was also intended to be a bit playful and memorable, which certainly seems to have worked given the tool's popularity among developers.
+Installing nodemon
+You must first install nodemon on your computer. Using npm, add the utility to your project either globally or locally:
+Global Installation
+You can install nodemon globally with npm:
+npm install nodemon --global
+Local Installation
+Nodemon can also be installed locally. With "—save-dev" (or "—dev") during a local installation, you can add "nodemon" as a dev dependency.
+With 'npm', install 'nodemon' locally:
+npm install nodemon --save-dev
+You can only use the "nodemon" in that specific project if you use a local install, so keep that in mind.
+You can use "nodemon" to launch a Node script after installing it. For instance, if your server.js file has a nodejs server, you may start nodemon and check for updates as follows:
+nodemon server.js
+You can provide arguments in the same manner as running the script with Node:
+nodemonserver.js 3006
+Whenever you make changes to a file located in the current directory or its subdirectories with one of the pre-defined watched extensions (e.g., '.js', '.mjs', '.json', '.coffee', or '.litcoffee'), the process will resume.
+By entering "rs" and pressing "ENTER," the process can be restarted whenever you choose.
+Instead, "nodemon" will also search for a "main" file defined in the "package.json" file for your project:
+notion image
+When a main file is not defined, nodemon will scan for a start script:
+notion image
+Instead of writing nodemon server.js to start our node application we can write a script for our node application in our package.jsoon file which will help us to write a more simple command in the terminal for starting our node application.
+notion image
+Now that we have added the dev script for starting our node application, we need to write npm run dev in the terminal to start our node application. This comes in handy when we have a very long or different name for our node project.
+Using Options
+It is possible to adjust the available configuration settings for nodemon.
+Let's review some of the primary options available for nodemon:
+exec: To specify a binary for executing the file, use the -exec switch. It can be useful when combined with the ts-node binary to watch for changes and run TypeScript files.
+ext: Specify a list of file extensions to watch by using the -ext switch followed by a comma-separated list of extensions (e.g., -ext js,ts).
+delay: If not specified, nodemon waits for one second to restart the process after detecting a file change. However, you can use the -delay switch to specify a different delay. For instance, nodemon --delay 3.2 would set a delay of 3.2 seconds.
+watch: Specify multiple directories or files to monitor by using the -watch switch. For each directory you want to watch, add one -watch switch. By default, nodemon watches the current directory and its subdirectories. The -watch switch allows you to narrow this down to specific subdirectories or files.
+ignore: To ignore certain files, file patterns, or directories, use the -ignore switch.
+verbose: Use the -verbose switch for more detailed output with information on which file(s) triggered a restart.
+You can view all the available options with the following command:
+nodemon --help
+Let's use the available options to construct a command that meets the following requirements:
+Watch the "server" directory.
+Only watch files with a ".ts" extension.
+Ignore files with a ".test.ts" suffix.
+Execute the file "server/server.ts" with ts-node.
+Wait for three seconds before restarting after a file changes.
+nodemon --watch server --ext ts --exec ts-node --ignore '*.test.ts' --delay 3 server/server.ts
+The output on the terminal/console will show:
+[nodemon] 2.0.15
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): server
+[nodemon] watching extensions: ts
+[nodemon] starting `ts-node server/server.ts`
+The above command makes use of the watch, ext, exec, ignore, and delay options to fulfill the requirements of our scenario.
+Using Configurations
+While running "nodemon," adding configuration switches can be laborious as in the preceding example. For projects that call for complex configurations, it is preferable to define these choices in a "nodemon.json" file.
+For instance, the following configurations are identical to those in the preceding command-line example but are stored in a "nodemon.json" file:
+{
+  "watch": [
+    "server"
+  ],
+  "ext": "ts",
+  "ignore": [
+    "*.test.ts"
+  ],
+  "delay": "3",
+  "execMap": {
+    "ts": "ts-node"
+  }
+}
+Instead of using the --execswitch, execMapcan be used to specify binaries for specific file extensions. This is demonstrated in the code snippet above, which uses execMapto map the .jsextension to the babel-nodebinary.
+ 
+Another way to configure nodemonwithout adding a nodemon.json config file is to add the configurations to the package.jsonfile under a nodemonConfig
+key.
+{
+  "name": "nodemon-example",
+  "version": "1.0.0",
+  "description": "",
+  "nodemonConfig": {
+    "watch": [
+      "server"
+    ],
+    "ext": "ts",
+    "ignore": [
+      "*.test.ts"
+    ],
+    "delay": "3",
+    "execMap": {
+      "ts": "ts-node"
+    }
+  },
+  // ...
+After making the necessary modifications to either nodemon.json or package.json, you can start nodemon with the desired script and it will use the new configurations. By doing so, you can avoid copy-and-paste mistakes or typos in the command line by saving, sharing, and repeating your configurations.
+Chalk
+Chalk is a well-liked Node.js module that makes it simple to design and colour terminal output. It offers a straightforward API for formatting text using ANSI escape codes in the terminal.
+You must use npm to add Chalk as a dependency to your project before you can use it. the following steps:
+Open a terminal or command prompt.
+Navigate to your project directory where the package.json file is located.
+Run the command npm install chalk.
+In your Node.js application, import the chalk module by including the following line at the top of your file:
+const chalk = require('chalk');
+ 
+Activity: Fill in the blanks
+The npm ____________(upgrade / update) command is used to update outdated modules in your project.
+When you want to remove a module from your project, you can use the npm _____________(remove / uninstall) command.
+You can install Nodemon globally using _____________(npm install -g / npm global add).
+Nodemon is primarily used for _____________(automatic restarts / live reloading) in Node.js development. 
+Chalk is a popular library for adding ____________(color / images) to text in the terminal.
+Answers
+Update
+Uninstall
+npm install -g
+Automatic Restart
+Color
+ 
+User-Defined Modules
+Creating a Module
+You will be guided through creating your first Node.js module in this step. Your module will have an array containing a variety of colours and a function to choose one at random. To make the function and array accessible to outside programmes, you will use the 'exports' property that is built into Node.js.
+Choosing the information about colours that will be stored in your module is the first step. Every colour will be represented by an object with two properties: A user-friendly "name" attribute and a "code" attribute that stores the HTML color code as a string. HTML colour codes, which are six-digit hexadecimal values, let you alter the colour of various web page elements.
+Next, you need to determine which colors you want to include in your module. Your module should consist of an array named allColors that holds six colors. Additionally, you'll need to create a function called getRandomColor() that randomly selects a color from the array and returns it.
+To begin, create a new directory named colors using the terminal and navigate into it:
+mkdir colors
+cd colors
+// INITIALIZE NPM
+npm init -y
+You skipped the typical prompts to configure your package.json by using the -y flag. If this were a module that you wanted to add to npm, you would respond to each prompt with accurate information.
+Open a text editor and navigate to the folder. You must create a class called "Color" first. The HTML code for your "Color" class along with its name will be instantiated. To build the class, include the following lines:
+class Color {
+  constructor(name, code) {
+    this.name = name;
+    this.code = code;
+  }
+}
+Having established your Color data structure, it's time to add some instances to your module. Write the following array to the file:
+const allColors = [
+  new Color('fieryorange', '#FFA07A'),
+  new Color('coolcyan', '#00CED1'),
+  new Color('lavender', '#E6E6FA'),
+  new Color('vibrantgreen', '#00FF7F'),
+  new Color('boldblue', '#0000FF'),
+  new Color('gentlegold', '#FFD700'),
+];
+Finally, create a function that selects a random item from the allColors array you just defined:
+exports.getRandomColor = () => {
+  return allColors[Math.floor(Math.random() * allColors.length)];
+}
+
+exports.allColors = allColors;
+The keyword "exports" refers to a global object found in all Node.js modules. When other Node.js modules import a module, all of the functions and objects contained in the module's "exports" object are made available. For instance, the 'exports' object directly creates the 'getRandomColor()' function. Next you added a property called "allColors" to the "exports" object that makes a reference to the array of local constants named "allColors" that were established earlier in the script.
+When other modules import this module, both "allColors" and "getRandomColor()" will be made available and can be utilized.
+Testing the Module
+Verify that your module is functional before creating an entire application. To load the "colours" module, utilise the REPL in this step. You will use the "getRandomColor()" method while in the REPL to check if it operates as you anticipate it to.
+In the same folder as the "index.js" file, launch the Node.js REPL:
+node
+Once the REPL is launched, the > prompt will appear, indicating that you can input JavaScript code that will be promptly evaluated. Start by typing the following command:
+colors = require('./index');
+In the given command, the require() function is utilized to load the colors module at its entry point. Upon hitting ENTER, the output will be displayed:
+{
+  getRandomColor: [Function],
+  allColors: [
+    Color { name: 'brightred', code: '#E74C3C' },
+    Color { name: 'soothingpurple', code: '#9B59B6' },
+    Color { name: 'skyblue', code: '#5DADE2' },
+    Color { name: 'leafygreen', code: '#48C9B0' },
+    Color { name: 'sunkissedyellow', code: '#F4D03F' },
+    Color { name: 'groovygray', code: '#D7DBDD' }
+  ]
+}
+The REPL outputs the value of "colours," which corresponds to all the imported functions and objects from the "index.js" file. Node.js returns all the information found in a module's 'exports' object when the 'require' keyword is used.
+Remember that you updated the exports section of the "colours" module with "getRandomColor()" and "allColors." As a result, when they are imported, you may see them both in the REPL. To test its functionality, call the function from the command line.
+Saving Local Module as a Dependency
+You imported your module with a relative path when testing it in the REPL. This means that in order to obtain the contents of the "index.js" file, you used the file's position in respect to the working directory. While this method works, it is typically a nicer programming experience to import modules by their names because this prevents the import from breaking when the context changes. In this step, you will use npm's local module 'install' feature to install the 'colours' module.
+Make a new Node.js module and place it outside of the colors folder. First, create a new folder in the previous directory:
+cd ..
+mkdir really-large-application
+cd really-large-application
+// INITIALIZE NPM
+npm init -y
+Install your colors module and include the --save flag to ensure it is added to your package.json file:
+npm install --save ../colors
+You just installed your colors module in the new project. Open the package.json file to see the new local dependency:
+{
+  "name": "really-large-application",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "file:../colors"
+  }
+}
+Confirm that the colors module is present in your node_modules directory by running the following command:
+ls node_modules
+// OUTPUT
+colors
+Use the local module you've installed to run this new programme. Open your text editor once more, then create a new JavaScript file named "index.js."
+The 'colours' module will be imported first by the programme. Then, using the module's 'getRandomColor()' function, it will select a colour at random. Lastly, it prints a message to the console informing the user of the appropriate colour.
+'index.js' should contain the code shown below:
+ 
+const colors = require('colors');
+
+const chosenColor = colors.getRandomColor();
+console.log(`You should use ${chosenColor.name} on your website. It's HTML code is ${chosenColor.code}`);
+Save and exit this file. 
+Run the file :
+node index.js
+// OUTPUT
+You should use leafygreen on your website. It's HTML code is #48C9B0
+The colours module has now been successfully installed, and you can handle it just like any other npm package used in your project. To access the new features, you would need to execute npm update in your applications if you added more colours and features to your local colours module.
+Debugging Nodejs Applications
+Debugging Node.js applications can be done using different approaches, here are some common methods:
+Debugging using console.log() statements:
+Using console.log() statements is one of the simplest ways to debug your Node.js application. You can verify the status of a particular line of code or print a variable's value using console.log() instructions.
+Debugging using the Node.js debugger:
+You may debug your application using the built-in debugger in Node.js. Running your application with the —inspect flag will launch the debugger. an instance would be node —inspect app.js. By doing this, you may launch the debugger and connect to it with a debugger client like Chrome DevTools or Microsoft Studio Code.
+Debugging using the Chrome DevTools:
+You may also debug your Node.js application using the Chrome DevTools. To achieve this, use Chrome DevTools and choose the Node.js tab after starting your application with the —inspect flag.
+Debugging using Visual Studio Code:
+You can debug your Node.js application using the built-in debugger if you're using Visual Studio Code as your editor. The debugger lets you set breakpoints, analyse variables, and step through your code.
+Debugging using third-party libraries:
+There are also several third-party libraries available for debugging Node.js applications, such as node-inspectorand ndb.
+The Node.js debugger relies on the V8 JavaScript engine, which is also utilized by Google Chrome to run JavaScript code. However, because the debugger is built on top of the V8 engine, it can also be used to debug code written in other languages that are supported by V8, such as C++, Python, and Ruby.
+Using Watchers with the Node.js Debugger
+You can use observers to keep track of the values of particular variables or expressions while your code executes when debugging Node.js applications. With the aid of a watcher, you can keep tabs on the value of a particular variable or expression and observe how it changes over time. This can help you find flaws or understand how your code operates.
+The Node.js debugger can be used with watchers in the following ways:
+Run your code using the —inspect flag, as in node —inspect app.js, to launch the Node.js debugger.
+Once the debugger has started, you can set a watcher by using the watch command and the variable or expression's name that you wish to keep an eye on. For instance, the command watch("count") can be used to keep track on the value of a variable with the name count.
+In your observer, you can even use more complicated expressions, like watch("myArray.map(item => item * 2)").
+The debugger will periodically evaluate the expression in your watcher as your code executes and display the result. In the debugger console, type watchers to see the value of your watcher.
+Use the unwatch command and the name of the watcher you wish to get rid of in order to delete them. For instance, you could use the command unwatch("myWatcher") to get rid of a watcher you created with that name.
+Using watchers can help you gain a deeper understanding of how your code works and identify bugs more easily. However, keep in mind that using too many watchers can slow down your code, so use them judiciously.
+Using Breakpoints With the Node.js Debugger
+While debugging Node.js apps, breakpoints are an effective tool. They enable you to check the status of your application while pausing the execution of your code at a particular point. The Node.js debugger can be used with breakpoints in the following ways:
+Run your code using the —inspect flag, as in node —inspect app.js, to launch the Node.js debugger.
+Add the keyword "debugger" to your code at the position where you want to create a breakpoint. For instance, you may put the phrase debugger on the line directly before the function declaration if you want to pause your code at the start of a function called myFunction.
+When the debugger reaches a breakpoint, it will stop running your code, so you may check the status of your application. You can execute commands and look at variables using the debugger console.
+Use the continue command in the debugger console to run your code after hitting a breakpoint.
+Using conditional breakpoints allows you only to halt your code when a certain condition is satisfied. Right-click on the line where you want to place the breakpoint and select "Edit breakpoint" to create a conditional breakpoint. Enter the condition you want to use after that.
+Right-click on the line where the breakpoint is set and select "Remove breakpoint" to remove the breakpoint.
+Practical Project Implementation Step 2
+Here, guess the output of the below-provided code
+index.js
+const http=require('http');
+const fs=require('fs');
+
+fs.writeFile("index.txt","<h1>Hello From AlmaBetter, but this time from another file</h1>", (err)=>{
+    if(err){
+        console.log(err);
+    }else{
+        console.log("written to file");
+    }
+});
+
+const info = fs.readFile("index.txt",'utf-8',(err, data)=>{
+    if(err){
+        console.log(err)
+    }else{
+        return data;
+    }
+});
+
+const server=http.createServer(async (req,res)=>{
+	   res.end(data);    
+});
+
+server.listen(3000,()=>{
+    console.log("server is running")
+})
+You guys must be thinking when a request is made to the server at http://localhost:3000 then “Hello From AlmaBetter, but this time from another file” will get printed on the output screen.
+But here we’ve used asynchronous methods of ‘fs’ module, which means that, at the time when “res.end(data);” will be executed, variable info contains no information of any kind and has a value of undefined.
+Now when we use the VS code’s debugger, we will get to know that
+notion image
+At line 17, the variable data has the content of the file “index.txt” and the variable info is undefined, which can be seen in the red boxes, but when we jump to line 23, we’ll get to know that variable info is still not defined which can be seen clearly in the below given snapshot.
+notion image
+This is a very common mistake that beginners make. They do not know how asynchronous programming works. Here, reading and writing are both asynchronous, and hence they do not block the flow of the code. Thus, the variable info was not initialised when line 23 was executed.
+ 
+Activity: True or False
+You can create a module in Node.js by simply defining a JavaScript file with functions and variables.
+To test a user-defined module, you can import it using the require function and use its functions and variables.
+To use a local module as a dependency in another Node.js project, you need to publish it to the npm registry.
+Watchers in the Node.js debugger allow you to track changes in specific variables and expressions during debugging.
+Breakpoints are markers you can set in your code to pause the execution of a Node.js program at specific locations for inspection.
+Answers
+True
+True
+False
+True
+True
+ 
+Summary
+What did we learn?
+Buffer is a built-in class in Node.js that allows you to handle binary data efficiently. It is particularly useful when dealing with streams, file system operations, or networking. 
+Buffer instances represent raw memory allocated outside of the V8 JavaScript engine and can be used to manipulate binary data directly.
+The URL module in Node.js provides utilities for parsing and formatting URLs. It allows you to extract various components of a URL like the protocol, hostname, pathname, query parameters, etc. 
+NPM is the default package manager for Node.js, allowing developers to install, manage, and share reusable code packages. 
+By specifying dependencies in the package.json file, you can keep track of the required packages and their versions for your project. NPM allows you to specify two types of dependencies: regular and development. 
+Development dependencies are packages only required during development, such as testing frameworks, build tools, etc. When you deploy your application, these dependencies are not included in the production environment.
+Nodemon is a popular development tool for Node.js that helps automate the development workflow. 
+Nodemon monitors change in your Node.js application files and automatically restarts the server when it detects any modifications. This saves developers from manually stopping and restarting the server whenever they make code changes.
+Node.js provides built-in debugging features that help developers identify and fix issues in their code. One common approach is using the debugger statement to pause the execution of the code and inspect variables and flow at that point. 
+Additionally, Node.js has a built-in inspect flag that enables the Node.js debugger, allowing you to use Chrome DevTools or other debugging clients for more advanced debugging capabilities.
+Shortcomings & Challenges
+Including development dependencies in production, bundles can increase the size of the final application, affecting loading times and performance.
+Running Nodemon can consume more system resources compared to standard Node.js, as it continuously monitors for file changes.
+Debugging asynchronous code can be challenging, as breakpoints might be hit in unexpected order or execution context, making it difficult to track control flow.
+Best Practices
+Prefer using Buffer.alloc() over Buffer.allocUnsafe() to create new buffers, as it ensures the buffer is initialized, preventing exposure of sensitive data.
+When dealing with query parameters, use URLSearchParams to handle parsing and encoding.
+Use the --save or --save-dev flags when installing packages to update the dependencies or devDependencies sections in the package.json automatically.
+Use console.log() or console.debug() statements to print values and debug information during development.
+ 
+Enhance Your Knowledge
+Supercharge your knowledge by exploring the resources provided! 📚
+Event loop: The event loop - JavaScript | MDN (mozilla.org)
+Streams in Nodejs: Node.js Streams: Everything you need to know (freecodecamp.org)
+ 
+Try it Yourself
+Let's solve these coding problems in the AlmaBetter IDE. Don't forget to join the AlmaBetter Community Platform to share your brilliant approaches and cheer each other on! 🚀 Happy coding! 💻😄
+Task 1: Challenge your Backend expertise by solving these coding questions using the VS Code IDE.
+Problem
+Create a new Node.js file called buffer_example.js.
+Implement a function that takes a string as input and converts it to a Buffer object using the Buffer.from() method.
+Use the Buffer.toString() method to convert the Buffer object back to a string and log the result to the console.
+Create another function that takes a URL as input and uses the URL module to extract the hostname, pathname, and search parameters.
+Test both functions with sample input data.
+Hint: 
+For the Buffer part:
+Take a look at the Buffer.from() method in Node.js. It allows you to create a Buffer object from a given string, buffer, array, or array-like object.
+To convert the Buffer object back to a string, you can use the Buffer.toString() method.
+For the URL part:
+Node.js has a built-in URL module that allows you to work with URLs easily.
+Start by requiring the URL module in your script (const { URL } = require('url')).
+Use the URL constructor to create a URL object from the input URL string.
+You can then access various properties of the URL object, such as hostname, pathname, and searchParams, to extract the relevant information.
+Solution
+buffer_example.js
+// Import the required modules
+const { URL } = require('url');
+
+// Function to convert string to Buffer and back to string
+function bufferExample(inputString) {
+    // Convert the input string to a Buffer
+    const buffer = Buffer.from(inputString);
+
+    // Convert the Buffer back to a string
+    const convertedString = buffer.toString();
+
+    return convertedString;
+}
+
+// Function to extract information from a URL
+function extractURLInfo(inputURL) {
+    // Create a new URL object using the input URL
+    const urlObj = new URL(inputURL);
+
+    // Extract and return the hostname, pathname, and search parameters
+    const hostname = urlObj.hostname;
+    const pathname = urlObj.pathname;
+    const searchParams = urlObj.searchParams;
+
+    return {
+        hostname,
+        pathname,
+        searchParams: Array.from(searchParams.entries())
+    };
+}
+
+// Test the functions with sample input data
+const inputString = 'Hello, this is a sample string!';
+const convertedString = bufferExample(inputString);
+console.log('Original String:', inputString);
+console.log('Converted String:', convertedString);
+
+const inputURL = 'https://www.example.com/path/to/resource?param1=value1&param2=value2';
+const urlInfo = extractURLInfo(inputURL);
+console.log('URL Info:', urlInfo);
+Task 2: Utilize Wisechat to arrive at the solution and share the outcome with your peers on AlmaBetter's Community platform.
