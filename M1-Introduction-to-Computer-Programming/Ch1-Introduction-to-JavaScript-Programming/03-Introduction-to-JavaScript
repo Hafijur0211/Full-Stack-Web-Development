@@ -144,6 +144,7 @@ Client-Server Cycle
 notion image
 With the help of JavaScript frameworks, it is now possible to render dynamic content directly from the browser by requesting only the necessary content. In this scenario, the server only serves the required base HTML wrapper.
 This transformation provided visitors with a seamless user experience due to the minimal loading time of the web page. The page did not reload once loaded, further enhancing the experience.
+
 Server-side Rendering
 As discussed earlier, the traditional method of rendering dynamic web content involves the following steps:
 The user sends a request to a website (usually through a browser).
@@ -152,6 +153,7 @@ After compilation, the HTML is transmitted to the client's web browser to be ren
 The browser downloads the HTML and displays the site to the end user.
 The browser also downloads JavaScript (JS), and as it executes the JS, it makes the page interactive.
 notion image
+
 Client-side Rendering
 The typical process for rendering a web page in a client-side rendering scenario is as follows:
 The user initiates a request to a website, typically through a browser.
@@ -160,31 +162,40 @@ The browser downloads the HTML, followed by JavaScript. Meanwhile, the user obse
 Once the browser fetches the JavaScript, it sends requests to the server via AJAX to retrieve dynamic content and processes it to produce the final content.
 When the server responds, the final content is rendered using DOM processing within the user's browser.
 notion image
+
 Usability of JavaScript in Front-end
 A front-end web developer creates the code and markup that is displayed by a web browser when you visit a website. In other words, they determine what you see on a webpage.
 To build a webpage, there are three main components to consider: HTML, CSS, and JavaScript. While HTML provides the structure and content of a site, CSS (Cascading Style Sheets) adds visual appeal, and JavaScript enables interactivity.
 These components work in harmony to create an effective website. This blog post will focus on JavaScript and its practical applications.
+
 Interactivity
 JavaScript is a powerful tool for websites. It enables you to create interactive UI components like image sliders, pop-ups, mega menus, form validations, tabs, accordions, and more.
+
 AJAX
 You might be thinking of the cleaning product, but AJAX stands for Asynchronous JavaScript and XML in this case. It enables a webpage to communicate with the web server in the background without requiring a page reload.
+
 Cross browser compatibility and Standards compliance
 Many different web browsers are available, including Firefox, Chrome, Safari, Opera, and Internet Explorer (versions 10, 11, and Edge), which are compatible with different operating systems and devices. Unfortunately, each browser has its own unique bugs and quirks, and while W3C compliance standards are improving, there are still times when a front-end web developer needs to use JavaScript to resolve issues.
+
 Plugins
 There are several plugins that run on JavaScript. If you have visited a website with banner ads, chat support, suggested content, forms, or social sharing, a third-party JavaScript plugin likely powers it. Typically, these plugins have configurable options that require additional setup to function properly. It’s important to comprehend these options. Plugins are generally designed to be easily added to a site with minimal changes.
+
 Frameworks
 A JavaScript framework is essential for rendering complex dynamic interactions on a webpage. It is particularly useful for multi-step form-fills, where certain steps depend on previously entered information and certain data is populated based on previous inputs. A framework can make accomplishing this task easier, and problems can arise quickly.
 Using a JavaScript framework resolves these issues and enables you to complete your form-fill seamlessly, satisfying your clients. While dozens of frameworks are available, the most popular ones (as of this writing) are Google’s Angular, Facebook’s React, and the open-source Vue.js.
 JavaScript is a fundamental tool for front-end web developers. Without it, dynamic web applications like image carousels and partial page reload that retain your position would not exist.
 notion image
+
 Usability of JavaScript in the Back-end
 The rise in popularity of Node.js has led to an increased usage of JavaScript as a backend language. It is important to grasp the language's basics and general rules to begin working with JavaScript in the backend.
+
 JavaScript Engine
 Each web browser has its own JavaScript engine that supports JavaScript scripts so that they can function properly. The main task of a JavaScript engine is to take JavaScript code and convert it into optimized code, fast that can be interpreted by a browser. Here are the names of the JavaScript engines used in some of the most popular web browsers:
 Chrome: V8
 Firefox: SpiderMonkey
 Safari: JavaScript Core
 Microsoft Edge/Internet Explorer: Chakra/ChakraCore.
+
 Activity: Solve the Crossword
 DOWN
 A programming language used to create interactive effects within web browsers
